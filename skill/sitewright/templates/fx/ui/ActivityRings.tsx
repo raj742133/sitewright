@@ -58,10 +58,10 @@ export default function ActivityRings({ rings = DEFAULT_RINGS, title = 'Daily ac
             </li>
           ))}
         </ul>
-        <button type="button" className="ui-activity-rings-replay" onClick={play} disabled={reduced} aria-label="Replay ring animation">
+        {!reduced && <button type="button" className="ui-activity-rings-replay" onClick={play} aria-label="Replay ring animation">
           <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M13 8a5 5 0 1 1-1.6-3.7" /><path d="M13 2.5v3h-3" /></svg>
           Replay
-        </button>
+        </button>}
       </figcaption>
     </figure>
   );

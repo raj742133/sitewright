@@ -87,4 +87,4 @@ export default function ModelSelector({ items = SAMPLE, value, onChange, effortL
   );
 }
 
-export function Demo() { return <ModelSelector />; }
+export function Demo() { return <ModelSelector items={SAMPLE.map((i) => ({ ...i, group: undefined }))} />; }

@@ -14,7 +14,7 @@
 .ui-scroll-timeline-bar{height:8px;border-radius:99px;background:var(--line,rgba(128,128,128,.3));overflow:hidden}
 .ui-scroll-timeline-fill{height:100%;width:100%;transform-origin:left;background:var(--primary,#2563eb);border-radius:99px}
 .ui-scroll-timeline-num{font:700 26px/1 var(--font-mono,ui-monospace,monospace);font-variant-numeric:tabular-nums;margin:0}
-.ui-scroll-timeline-icon{position:absolute;right:16px;top:50%;margin-top:-18px;width:36px;height:36px;color:var(--signal,#f59e0b)}
+.ui-scroll-timeline-icon{position:absolute;right:16px;bottom:16px;width:36px;height:36px;color:var(--signal,#f59e0b)}
 .ui-scroll-timeline-hint{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:11px;color:var(--muted,#6b7280);pointer-events:none}
 .ui-scroll-timeline-scroller[data-static="1"]{overflow:visible;height:auto}
 .ui-scroll-timeline-scroller[data-static="1"] .ui-scroll-timeline-track{height:auto}

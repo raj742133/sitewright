@@ -37,10 +37,12 @@ export default function PerforatedTicket({ header, children, stub, tilt = 6, cla
   }, [fine, reduced, tilt]);
   return (
     <div ref={ref} className={`ui-perforated-ticket-root ${className ?? ''}`} role="group" aria-label={label}>
-      <div className="ui-perforated-ticket-shape">
-        {header !== undefined && <div className="ui-perforated-ticket-head">{header}</div>}
-        <div className="ui-perforated-ticket-body">{children}</div>
-        {stub !== undefined && <><div className="ui-perforated-ticket-perf" aria-hidden="true" /><div className="ui-perforated-ticket-stub">{stub}</div></>}
+      <div className="ui-perforated-ticket-shape" data-stub={stub !== undefined}>
+        <div className="ui-perforated-ticket-top">
+          {header !== undefined && <div className="ui-perforated-ticket-head">{header}</div>}
+          <div className="ui-perforated-ticket-body">{children}</div>
+        </div>
+        {stub !== undefined && <div className="ui-perforated-ticket-stub">{stub}</div>}
       </div>
     </div>
   );
