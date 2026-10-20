@@ -43,7 +43,7 @@ export function PlayingCard({ rank, suit, faceDown, className }: PlayingCardProp
 const HAND: CardData[] = [{ rank: 'A', suit: 'spades' }, { rank: 'K', suit: 'hearts' }, { rank: 'Q', suit: 'clubs' }, { rank: 'J', suit: 'diamonds' }, { rank: '10', suit: 'hearts' }];
 
 /** A fanned hand: hover or use the arrow keys to raise a card, click (or Enter/Space) to play it out of the hand. */
-export default function PlayingCards({ cards = HAND, spread = 9, onPlay }: PlayingCardsProps) {
+export default function PlayingCards({ cards = HAND, spread = 6, onPlay }: PlayingCardsProps) {
   const [hand, setHand] = useState(cards);
   const [table, setTable] = useState<CardData | null>(null);
   const [active, setActive] = useState(-1);
@@ -85,7 +85,7 @@ export default function PlayingCards({ cards = HAND, spread = 9, onPlay }: Playi
               aria-label={`${label(c)}, ${i + 1} of ${n}. Press to play.`}
               tabIndex={active === i || (active < 0 && i === 0) ? 0 : -1}
               data-up={up || undefined}
-              style={{ ['--ui-pc-x' as string]: `${d * 26}px`, ['--ui-pc-r' as string]: `${d * spread}deg`, ['--ui-pc-y' as string]: `${Math.abs(d) * Math.abs(d) * 2.5}px`, zIndex: up ? 20 : i + 1 }}
+              style={{ ['--ui-pc-x' as string]: `${d * 22}px`, ['--ui-pc-r' as string]: `${d * spread}deg`, ['--ui-pc-y' as string]: `${Math.abs(d) * Math.abs(d) * 2}px`, zIndex: up ? 20 : i + 1 }}
               onPointerEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
               onKeyDown={(e) => key(e, i)}

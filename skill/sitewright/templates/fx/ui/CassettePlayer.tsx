@@ -13,13 +13,13 @@ export interface CassettePlayerProps {
 
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
 
-function Reel({ cx, r }: { cx: number; r: number }) {
+function Reel({ cx, cy, r }: { cx: number; cy: number; r: number }) {
   return (
     <g>
-      <circle cx={cx} cy={46} r={r} fill="#2a2522" />
-      <g className="ui-cassette-player-hub" style={{ transformOrigin: `${cx}px 46px` }}>
-        <circle cx={cx} cy={46} r={9} fill="#e9e4da" />
-        {[0, 60, 120, 180, 240, 300].map((a) => <rect key={a} x={cx - 1.3} y={37.6} width={2.6} height={5.2} rx={1} fill="#2a2522" transform={`rotate(${a} ${cx} 46)`} />)}
+      <circle cx={cx} cy={cy} r={r} fill="#6b5a42" />
+      <g className="ui-cassette-player-hub" style={{ transformOrigin: `${cx}px ${cy}px` }}>
+        <circle cx={cx} cy={cy} r={6} fill="#e9e4da" />
+        {[0, 60, 120, 180, 240, 300].map((a) => <rect key={a} x={cx - 1} y={cy - 5.500} width={2} height={3.500} rx={0.800} fill="#2a2522" transform={`rotate(${a} ${cx} ${cy})`} />)}
       </g>
     </g>
   );
@@ -54,15 +54,14 @@ export default function CassettePlayer({ title = 'Midnight Tape', artist = 'The 
       <div className="ui-cassette-player-top">
         <svg viewBox="0 0 120 80" className="ui-cassette-player-art" aria-hidden="true" focusable="false">
           <rect x="1" y="1" width="118" height="78" rx="7" fill="#cbb892" stroke="#7a6a4a" strokeWidth="1.5" />
-          <rect x="9" y="8" width="102" height="36" rx="3" fill="#f4efe4" />
-          <rect x="9" y="8" width="102" height="9" rx="3" fill="#d8563f" />
-          <text x="14" y="38" fontSize="9" fontWeight="700" fill="#2a2522" fontFamily="ui-monospace, monospace">{title.length > 18 ? `${title.slice(0, 17)}…` : title}</text>
-          <g transform="translate(0 6)">
-            <Reel cx={34} r={7 + 6 * (1 - p)} />
-            <Reel cx={86} r={7 + 6 * p} />
-          </g>
-          <path d="M20 70 L30 62 H90 L100 70Z" fill="#a8956b" />
-          {[40, 52, 64, 76].map((x) => <circle key={x} cx={x} cy={69} r={1.6} fill="#2a2522" />)}
+          <rect x="8" y="7" width="104" height="44" rx="3" fill="#f4efe4" />
+          <rect x="8" y="7" width="104" height="13" rx="3" fill="#d8563f" />
+          <text x="13" y="16.500" fontSize="8" fontWeight="700" fill="#fff" fontFamily="ui-monospace, monospace">{title.length > 20 ? `${title.slice(0, 19)}…` : title}</text>
+          <rect x="22" y="24" width="76" height="24" rx="12" fill="#2a2522" />
+          <Reel cx={38} cy={36} r={6.500 + 4 * (1 - p)} />
+          <Reel cx={82} cy={36} r={6.500 + 4 * p} />
+          <path d="M18 78 L28 58 H92 L102 78Z" fill="#a8956b" />
+          {[40, 52, 64, 76].map((x) => <circle key={x} cx={x} cy={67} r={1.600} fill="#2a2522" />)}
         </svg>
         <div className="ui-cassette-player-meta">
           <strong>{title}</strong>

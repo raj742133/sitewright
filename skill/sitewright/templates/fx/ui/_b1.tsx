@@ -250,11 +250,11 @@ export function Frame(p: FrameProps) {
       </div>
       {p.extra}
       <div className="ui-chart-sr" aria-live="polite" role="status">{tip ? `${tip.title}: ${tip.rows.map((r) => `${r.label ?? ''} ${r.value}`).join(', ')}` : ''}</div>
-      <table className="ui-chart-sr">
+      <div className="ui-chart-sr"><table>
         <caption>{p.title}</caption>
         <thead><tr>{p.table.head.map((x) => <th key={x} scope="col">{x}</th>)}</tr></thead>
         <tbody>{p.table.rows.map((r, i) => <tr key={i}>{r.map((c, j) => (j === 0 ? <th key={j} scope="row">{c}</th> : <td key={j}>{c}</td>))}</tr>)}</tbody>
-      </table>
+      </table></div>
     </figure>
   );
 }
