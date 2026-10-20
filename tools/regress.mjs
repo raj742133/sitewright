@@ -93,15 +93,16 @@ async function one(site, variant, port, modules) {
   const build = await run('npm', ['run', 'build'], { cwd: dir });
   r.build = build.code ? 'FAIL' : 'ok'; if (build.code) { r.fails.push(build.out.trim().split('\n').slice(-6).join(' ')); return r; }
   // `npm run dev` is what people actually use, and it renders differently from the production build (it once answered every page that
-  // touched the database with a 500 while the build verified clean), so start it and make sure the first page comes back.
-  const dev = await devSmoke(dir, port + 1000);
-  if (dev) { r.build = 'ok'; r.fails.push(`dev server: ${dev}`); }
-  if (flag('no-verify')) { r.verify = 'skipped'; return r; }
+  // touched the database with a 500 while the build verified clean), so start it and make sure the first page comes back. It goes
+  // last: `next dev` overwrites the production build that the browser check drives.
+  const devCheck = async () => { const dev = await devSmoke(dir, port + 1000); if (dev) r.fails.push(`dev server: ${dev}`); };
+  if (flag('no-verify')) { r.verify = 'skipped'; await devCheck(); return r; }
   const v = await run(process.execPath, [path.join(SKILL, 'scripts', 'verify.mjs'), '--site', dir, '--port', String(port), '--out', path.join(dir, '_shots')], { cwd: process.cwd() });
   const m = /(\d+)\/(\d+) checks passed(?:, (\d+) skipped[^,]*)?(?:, (\d+) FAILED)?/.exec(v.out);
   if (!m) { r.verify = 'could not run'; r.fails.push(v.out.trim().split('\n').slice(-3).join(' ')); return r; }
   r.verify = `${m[1]}/${m[2]}${m[3] ? ` (${m[3]} skipped)` : ''}${m[4] ? ` ${m[4]} FAILED` : ''}`;
   r.fails.push(...[...v.out.matchAll(/^ {2}FAIL {2}(.+)\n {8}(.+)$/gm)].map((x) => `${x[1]}: ${x[2]}`));
+  await devCheck();
   return r;
 }
 
