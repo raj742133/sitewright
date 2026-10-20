@@ -67,3 +67,9 @@
 @media (prefers-reduced-motion: reduce) {
   .fxg .rv { opacity: 1; transform: none; transition: none; }
 }
+
+.fxg-ui { margin-top: 18px; }
+.fxg-ui-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 16px; }
+.fxg-ui-item { border: 1px solid var(--line); border-radius: 16px; background: var(--raised-2, var(--raised)); padding: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.fxg-ui-item h3 { font-size: 15px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.fxg-ui-stage { min-height: 150px; display: grid; place-items: center; border-radius: 12px; background: var(--raised); border: 1px dashed var(--line); padding: 12px; overflow: hidden; }
