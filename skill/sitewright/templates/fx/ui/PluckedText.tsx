@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { clamp, smoothPath, usePrefs, useActive } from './_n2';
 
 export interface PluckedTextProps {
@@ -97,12 +97,14 @@ export default function PluckedText({ text = 'Pluck the string', className, styl
       <span className="ui-plucked-text-sr">{text}</span>
       <span className="ui-plucked-text-line" aria-hidden="true">
         {words.map((w, wi) => (
-          <span key={wi} className="ui-plucked-text-word">
+          <Fragment key={wi}>
+          <span className="ui-plucked-text-word">
             {w.map(([c, i]) => (
               <span key={i} ref={(el) => { letters.current[i] = el; }} className="ui-plucked-text-ch">{c}</span>
             ))}
-            {wi < words.length - 1 ? ' ' : ''}
           </span>
+            {wi < words.length - 1 ? ' ' : ''}
+          </Fragment>
         ))}
       </span>
       <span className="ui-plucked-text-string">

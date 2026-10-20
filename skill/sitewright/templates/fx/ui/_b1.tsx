@@ -240,7 +240,7 @@ export function Frame(p: FrameProps) {
             <strong className="ui-chart-tip-title">{tip.title}</strong>
             {tip.rows.map((r, i) => (
               <span key={i} className="ui-chart-tip-row">
-                {r.color && <span className="ui-chart-sw" style={{ background: r.color }} aria-hidden="true" />}
+                {tip.rows.some((x) => x.color) && <span className="ui-chart-sw" style={{ background: r.color || 'transparent' }} aria-hidden="true" />}
                 {r.label && <span className="ui-chart-tip-k">{r.label}</span>}
                 <span className="ui-chart-tip-v">{r.value}</span>
               </span>

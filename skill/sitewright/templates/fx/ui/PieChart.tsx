@@ -24,7 +24,7 @@ export default function PieChart({ data = DEF, innerRadius = 0.6, centerLabel = 
   const items = data.filter((d) => d.value > 0);
   const ip = useRoving(items.length, setHov);
   const total = items.reduce((a, d) => a + d.value, 0) || 1;
-  const W = labels ? 320 : 220, H = 220, cx = W / 2, cy = H / 2, ro = labels ? 74 : 100, ri = ro * Math.max(0, Math.min(0.9, innerRadius));
+  const W = labels ? 380 : 220, H = 220, cx = W / 2, cy = H / 2, ro = labels ? 74 : 100, ri = ro * Math.max(0, Math.min(0.9, innerRadius));
   let acc = 0;
   const segs = items.map((d, i) => {
     const a0 = (acc / total) * 360; acc += d.value; const a1 = (acc / total) * 360, mid = (a0 + a1) / 2;
@@ -38,7 +38,7 @@ export default function PieChart({ data = DEF, innerRadius = 0.6, centerLabel = 
   return (
     <figure className="ui-chart2">
       <div className="ui-chart2-row">
-        <Plot vb={[W, H]} label={`${title}: ${items.map((d) => `${d.label} ${fmt(d.value)}${unit}`).join(', ')}`} style={{ flex: `0 1 ${labels ? 300 : 200}px`, minWidth: 140, margin: '0 auto' }}
+        <Plot vb={[W, H]} label={`${title}: ${items.map((d) => `${d.label} ${fmt(d.value)}${unit}`).join(', ')}`} style={{ flex: `0 1 ${labels ? 360 : 200}px`, minWidth: 140, margin: '0 auto' }}
           tip={act && tipAt ? { x: tipAt[0], y: tipAt[1], title: act.d.label, body: `${fmt(act.d.value)}${unit} · ${act.pct}%` } : null}>
           {segs.map((s) => {
             const on = hov === s.i;
