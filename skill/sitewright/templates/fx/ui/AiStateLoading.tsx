@@ -58,5 +58,5 @@ export default function AiStateLoading({ steps = DEFAULT_STEPS, currentStep, aut
 }
 
 export function Demo() {
-  return <div style={{ padding: '10px 16px' }}><AiStateLoading /></div>;
+  return <div style={{ padding: '8px 16px' }}><AiStateLoading /></div>;
 }

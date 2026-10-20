@@ -65,7 +65,7 @@ export default function LiveLineChart({ stream, initial, interval = 1000, window
         legend={
           <div className="ui-chart-bar">
             <span className="ui-chart-live"><span className="ui-chart-pulse" aria-hidden="true" style={paused || !running ? { animation: 'none', opacity: 0.4 } : undefined} />{last === undefined ? '-' : format(last)} <span className="ui-chart-tick" style={{ fontSize: 12 }}>{unit}</span></span>
-            <button type="button" className="ui-chart-btn" style={{ marginLeft: 'auto' }} onClick={() => setPaused((p) => !p)} aria-pressed={paused}>{paused ? 'Resume' : 'Pause'}</button>
+            <button type="button" className="ui-chart-btn" style={{ marginLeft: 'auto' }} onClick={() => setPaused((p) => !p)}>{paused ? 'Resume' : 'Pause'}</button>
           </div>
         }
         pick={(vx, _vy, w) => (n ? clamp(Math.round(((vx - ml) / (w - ml - mr)) * (windowSize - 1)) - off, 0, n - 1) : -1)}

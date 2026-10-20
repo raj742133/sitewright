@@ -42,9 +42,9 @@ export default function TimelineSequence({ steps, total, loop = true, autoplay =
   const len = total ?? Math.max(1, ...list.map((s) => s.at + s.duration)) + (steps ? 0 : 400);
 
   const tl = useTimeline({ duration: len, loop, autoplay: autoplay && !reduced, active: visible, initial: 0 });
-  const { seek, progress } = tl;
+  const { seek, pause, progress } = tl;
 
-  useEffect(() => { if (reduced) seek(1); }, [reduced, seek]);
+  useEffect(() => { if (reduced) { pause(); seek(1); } }, [reduced, seek, pause]);
 
   useEffect(() => {
     const now = progress * len;

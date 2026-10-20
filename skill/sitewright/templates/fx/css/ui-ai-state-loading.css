@@ -1,7 +1,7 @@
 .ui-ai-state-loading { color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); }
-.ui-ai-state-loading-title { margin: 0 0 6px; font-size: 13px; font-weight: 600; }
-.ui-ai-state-loading-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
-.ui-ai-state-loading-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.ui-ai-state-loading-title { margin: 0 0 5px; line-height: 18px; font-size: 13px; font-weight: 600; }
+.ui-ai-state-loading-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.ui-ai-state-loading-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; line-height: 20px; }
 .ui-ai-state-loading-icon { flex: none; }
 .ui-ai-state-loading-list li[data-state="pending"] .ui-ai-state-loading-label { color: var(--muted, #555); }
 .ui-ai-state-loading-list li[data-state="active"] .ui-ai-state-loading-label { font-weight: 600; animation: ui-ai-state-loading-pulse 1.4s ease-in-out infinite; }

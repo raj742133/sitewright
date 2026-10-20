@@ -41,8 +41,8 @@ export default function ComposedChart({ labels = MONTHS.slice(0, 8), bars = BARS
           <>
             <GridY ticks={lt.ticks} y={yl} x0={ml} x1={w - mr} f={barFormat} />
             <g aria-hidden="true">{rt.map((t) => <text key={t} className="ui-chart-tick" x={w - mr + 6} y={yr(t)} dy="0.32em">{lineFormat(t)}</text>)}</g>
-            <text className="ui-chart-axis-title" x={ml - 6} y={10} textAnchor="end" aria-hidden="true">{barName}</text>
-            <text className="ui-chart-axis-title" x={w - mr + 6} y={10} aria-hidden="true">{lineName}</text>
+            <text className="ui-chart-axis-title" x={2} y={10} aria-hidden="true">{barName}</text>
+            <text className="ui-chart-axis-title" x={w - 2} y={10} textAnchor="end" aria-hidden="true">{lineName}</text>
             {bars.slice(0, n).map((v, i) => <path key={i} d={roundedBar(b.x(i), yl(v), b.bw, yl(0) - yl(v), 5)} className="ui-chart-grow" style={{ ['--d' as string]: i }} fill="var(--ui-chart-c1)" opacity={active === null || active === i ? 0.9 : 0.5} />)}
             <path className="ui-chart-draw" pathLength={1} d={curve(pts)} fill="none" stroke="var(--ui-chart-c2)" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
             <g className="ui-chart-fade">{pts.map(([x, y], i) => <circle key={i} cx={x} cy={y} r={active === i ? 5 : 3} fill="var(--ui-chart-c2)" stroke="var(--surface, #fff)" strokeWidth={1.5} />)}</g>

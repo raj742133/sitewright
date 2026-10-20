@@ -110,7 +110,7 @@ export default function GestureCard({ hover = true, press = true, drag = true, t
         onClick={click}
       >
         <span className="ui-gesture-card-title">{title}</span>
-        <span className="ui-gesture-card-hint">{children ?? [hover && 'hover', press && 'press', drag && 'drag'].filter(Boolean).join(' · ') || 'static'}</span>
+        <span className="ui-gesture-card-hint">{children ?? ([hover && 'hover', press && 'press', drag && 'drag'].filter(Boolean).join(' · ') || 'static')}</span>
         <span className="ui-gesture-card-count" aria-live="polite">Pressed {count}×</span>
       </button>
     </div>
