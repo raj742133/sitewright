@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { prefersReducedMotion, useIsoLayoutEffect } from './_m1';
 
 export interface GalleryItem { id: string; title: string; body: string; tag?: string }
@@ -47,9 +47,13 @@ export default function LayoutGallery({ items = DEFAULT_ITEMS, className }: Layo
     p.querySelector('.ui-layout-gallery-content')?.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 240, delay: 140, easing: 'ease-out', fill: 'backwards' });
   }, [openId]);
 
+  const returnTo = useRef<string | null>(null);
+  useEffect(() => {
+    if (openId === null && returnTo.current) { cards.current[returnTo.current]?.focus({ preventScroll: true }); returnTo.current = null; }
+  }, [openId]);
   const finish = (id: string) => {
+    returnTo.current = id;
     setOpenId(null);
-    requestAnimationFrame(() => cards.current[id]?.focus({ preventScroll: true }));
   };
 
   const close = () => {
