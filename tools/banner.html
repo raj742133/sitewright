@@ -1,42 +1,62 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-  :root { --w: 1600px; --h: 640px; }
+  :root { --w: 1600px; --h: 640px; --primary: #7c6cff; --signal: #2dd4ff; --lime: #b6f36a; }
   * { box-sizing: border-box; margin: 0; }
-  html, body { width: var(--w); height: var(--h); overflow: hidden; font-family: Montserrat, system-ui, sans-serif; }
-  body { position: relative; background:
-    radial-gradient(55% 80% at 82% 20%, rgba(30,91,216,.20), transparent 70%),
-    radial-gradient(40% 60% at 5% 90%, rgba(20,166,204,.18), transparent 70%), #f3f5fa; color: #0d1424; }
-  .dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(13,20,36,.12) 1px, transparent 1.4px); background-size: 26px 26px; mask-image: linear-gradient(90deg, #000 0, transparent 70%); }
-  .copy { position: absolute; left: 7%; top: 50%; transform: translateY(-50%); width: 44%; }
-  .brand { display: flex; align-items: center; gap: 14px; font-weight: 800; font-size: 30px; letter-spacing: -.02em; }
-  .brand svg { width: 46px; height: 46px; }
-  h1 { font-size: calc(var(--h) * .088); line-height: 1.08; letter-spacing: -.03em; font-weight: 800; margin: 26px 0 18px; }
-  h1 em { font-style: normal; color: #1e5bd8; }
-  p { font-size: calc(var(--h) * .03); line-height: 1.55; color: #55607a; max-width: 88%; font-weight: 500; }
+  html, body { width: var(--w); height: var(--h); overflow: hidden; font-family: Inter, system-ui, sans-serif; }
+  body { position: relative; background: #070a12; color: #eef1fb; }
+  .glow { position: absolute; border-radius: 50%; filter: blur(80px); }
+  .g1 { width: 46%; aspect-ratio: 1; left: -10%; top: -30%; background: var(--primary); opacity: .55; }
+  .g2 { width: 40%; aspect-ratio: 1; right: -8%; top: 5%; background: var(--signal); opacity: .32; }
+  .g3 { width: 30%; aspect-ratio: 1; left: 30%; bottom: -35%; background: var(--lime); opacity: .14; }
+  .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(140,160,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(140,160,255,.08) 1px, transparent 1px); background-size: 44px 44px; -webkit-mask-image: linear-gradient(90deg, #000 0, transparent 85%); mask-image: linear-gradient(90deg, #000 0, transparent 85%); }
+  .copy { position: absolute; left: 6%; top: 50%; transform: translateY(-50%); width: 46%; }
+  .brand { display: flex; align-items: center; gap: 14px; font: 800 30px 'Bricolage Grotesque', sans-serif; letter-spacing: -.03em; }
+  .brand svg { width: 44px; height: 44px; }
+  h1 { font: 800 calc(var(--h) * .105)/1.0 'Bricolage Grotesque', sans-serif; letter-spacing: -.04em; margin: 26px 0 20px; }
+  h1 em { font-style: normal; background: linear-gradient(100deg, var(--primary), var(--signal) 55%, var(--lime)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  p { font-size: calc(var(--h) * .03); line-height: 1.55; color: #a9b3cf; max-width: 88%; font-weight: 400; }
   .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-  .chips span { font: 500 calc(var(--h) * .024)/1 'JetBrains Mono', monospace; padding: 10px 16px; border-radius: 999px; background: #fff; border: 1px solid #dfe4ee; box-shadow: 0 8px 20px -12px rgba(30,91,216,.4); }
-  .browser { position: absolute; background: #fff; border: 1px solid #dfe4ee; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 80px -30px rgba(30,91,216,.5); }
-  .bar { display: flex; gap: 7px; padding: 12px 16px; background: #f8f9fc; border-bottom: 1px solid #dfe4ee; }
-  .bar i { width: 11px; height: 11px; border-radius: 50%; background: #c9d1e0; }
-  .browser img { display: block; width: 100%; aspect-ratio: 1440/900; object-fit: cover; object-position: top; }
-  .b1 { left: 57%; top: 10%; width: 40%; transform: rotate(-2deg); }
-  .b2 { left: 68%; top: 54%; width: 29%; transform: rotate(2deg); z-index: 2; }
-  .phone { position: absolute; left: 54%; top: 40%; width: 12%; background: #0d1424; border-radius: 30px; padding: 8px; box-shadow: 0 40px 70px -24px rgba(13,20,36,.6); z-index: 3; transform: rotate(-4deg); }
-  .phone img { display: block; width: 100%; border-radius: 23px; aspect-ratio: 390/844; object-fit: cover; object-position: top; }
-  body.og h1 { font-size: 64px; } body.og p { font-size: 22px; } body.og .chips span { font-size: 15px; padding: 8px 13px; }
+  .chips span { font: 500 calc(var(--h) * .024)/1 'JetBrains Mono', monospace; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(160,175,255,.28); color: #eef1fb; }
+  .chips b { color: var(--signal); font-weight: 500; }
+  .term { position: absolute; left: 56%; top: 9%; width: 39%; background: #04070d; border: 1px solid #2e3b5c; border-radius: 16px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.9); z-index: 2; overflow: hidden; }
+  .tbar { display: flex; gap: 7px; padding: 11px 15px; border-bottom: 1px solid rgba(255,255,255,.08); font: 400 12px 'JetBrains Mono', monospace; color: #93a0c2; align-items: center; }
+  .tbar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
+  .tbody { padding: 15px 17px 17px; font-size: calc(var(--h) * .0235); line-height: 1.5; display: grid; gap: 11px; }
+  .tbody .you b { font: 600 .8em 'JetBrains Mono', monospace; color: #fff; margin-right: 10px; }
+  .mods { display: flex; flex-wrap: wrap; gap: 6px; }
+  .mods span { font: 500 calc(var(--h) * .0195)/1 'JetBrains Mono', monospace; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--signal); background: rgba(45,212,255,.18); color: #fff; }
+  .mods span.a { border-color: var(--primary); background: rgba(124,108,255,.26); color: #e7e3ff; }
+  .log { font: 400 calc(var(--h) * .0205)/1.55 'JetBrains Mono', monospace; color: #93a0c2; }
+  .log i { font-style: normal; color: var(--lime); margin-right: 8px; }
+  .bar2 { height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--primary), var(--signal), var(--lime)); }
+  .browser { position: absolute; left: 62%; top: 54%; width: 33%; background: #0d1220; border: 1px solid #2e3b5c; border-radius: 14px; overflow: hidden; box-shadow: 0 40px 80px -24px rgba(0,0,0,.9); z-index: 1; }
+  .bar { display: flex; gap: 7px; padding: 10px 14px; background: #131a2c; border-bottom: 1px solid #1c2540; }
+  .bar i { width: 10px; height: 10px; border-radius: 50%; background: #2e3b5c; }
+  .browser img { display: block; width: 100%; aspect-ratio: 1440/820; object-fit: cover; object-position: top; }
+  .phone { position: absolute; left: 54.5%; top: 45%; width: 11%; background: #0a0f1c; border: 1px solid rgba(255,255,255,.12); border-radius: 28px; padding: 7px; box-shadow: 0 40px 70px -24px rgba(0,0,0,.9); z-index: 3; transform: rotate(-4deg); }
+  .phone img { display: block; width: 100%; border-radius: 21px; aspect-ratio: 390/844; object-fit: cover; object-position: top; }
+  body.og h1 { font-size: 56px; } body.og p { font-size: 20px; max-width: 94%; } body.og .chips span { font-size: 14px; padding: 8px 13px; }
+  body.og .tbody { font-size: 14px; } body.og .mods span { font-size: 11px; } body.og .log { font-size: 12px; }
+  body.og .copy { left: 5%; width: 50%; } body.og .term { left: 56%; width: 40%; top: 8%; } body.og .browser { left: 58%; top: 58%; width: 38%; } body.og .phone { left: 85%; top: 50%; width: 11%; }
 </style></head>
 <body>
-  <div class="dots"></div>
+  <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div><div class="grid"></div>
   <div class="copy">
-    <div class="brand"><svg viewBox="0 0 48 48"><path d="M24 5.5 L40 14.75 V33.25 L24 42.5 L8 33.25 V14.75 Z" fill="none" stroke="#1e5bd8" stroke-width="5" stroke-linejoin="round"/><circle cx="24" cy="24" r="6.5" fill="#14a6cc"/></svg>Sitewright</div>
-    <h1>Your brand in. A <em>working website</em> out.</h1>
-    <p>A Claude Code skill that generates landing page, sign-in, MFA, dashboard, publishing and connect-a-phone, then tests it in a real browser.</p>
-    <div class="chips"><span>landing</span><span>sign-in</span><span>mfa</span><span>dashboard</span><span>publishing</span><span>connect</span></div>
+    <div class="brand"><svg viewBox="0 0 48 48"><path d="M24 5.5 L40 14.75 V33.25 L24 42.5 L8 33.25 V14.75 Z" fill="none" stroke="#7c6cff" stroke-width="5" stroke-linejoin="round"/><circle cx="24" cy="24" r="6.5" fill="#2dd4ff"/></svg>Sitewright</div>
+    <h1>Describe your site. Get the <em>whole thing</em>.</h1>
+    <p>A Claude Code skill that builds a complete Next.js site, backend included, then tests it in a real browser.</p>
+    <div class="chips"><span><b>6</b> modules</span><span><b>22</b> figures</span><span><b>58</b> components</span><span><b>200,000+</b> icons</span></div>
   </div>
-  <div class="browser b1"><div class="bar"><i></i><i></i><i></i></div><img src="../site/assets/shots/coffee/landing-hero.jpg"></div>
-  <div class="browser b2"><div class="bar"><i></i><i></i><i></i></div><img src="../site/assets/shots/coffee/dashboard.jpg"></div>
+  <div class="term"><div class="tbar"><i></i><i></i><i></i><span style="margin-left:8px">claude — Sitewright</span></div>
+    <div class="tbody">
+      <div class="you"><b>you</b>Make a landing page, a dashboard and a connect page for my coffee roastery.</div>
+      <div class="mods"><span>Landing</span><span>Dashboard</span><span>Connect</span><span class="a">+ Sign in</span><span class="a">+ API</span></div>
+      <div class="log"><div><i>✓</i>scaffold 56 files written</div><div><i>✓</i>type-check clean</div><div><i>✓</i>production build ok</div><div><i>✓</i>browser checks pass at 1280, 390, 360 px</div></div>
+      <div class="bar2"></div>
+    </div></div>
+  <div class="browser"><div class="bar"><i></i><i></i><i></i></div><img src="../site/assets/shots/coffee/landing-hero-dark.jpg"></div>
   <div class="phone"><img src="../site/assets/shots/coffee/landing-mobile.jpg"></div>
   <script>if (location.hash === '#og') document.body.classList.add('og');</script>
 </body></html>
