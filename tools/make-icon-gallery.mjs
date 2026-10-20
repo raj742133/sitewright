@@ -56,7 +56,7 @@ const page = `<!doctype html>
 <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
 <link rel="stylesheet" href="../style.css">
 <script>try{var t=localStorage.getItem('sitewright-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
@@ -70,7 +70,7 @@ const page = `<!doctype html>
     </a>
     <nav id="nav" aria-label="Main">
       <a href="../">Home</a>
-      <a href="../#effects">Effects</a>
+      <a href="../#kit">Motion kit</a>
       <a href="./" aria-current="page">Icons</a>
       <a class="btn gh" href="https://github.com/raj742133/sitewright" rel="noopener">GitHub</a>
     </nav>
