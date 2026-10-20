@@ -228,7 +228,7 @@
 
   /* ---- live embeds: real effects from the exported gallery, loaded only when they scroll near ---- */
   var embeds = $$('iframe.emb');
-  function embQuery() { var d = isDark(); return '?theme=' + (d ? 'dark' : 'light') + '&primary=' + encodeURIComponent(d ? '#7c6cff' : '#5b46f0') + '&signal=' + encodeURIComponent(d ? '#2dd4ff' : '#0a8aa8'); }
+  function embQuery() { var d = isDark(); return '?theme=' + (d ? 'dark' : 'light') + '&primary=' + encodeURIComponent(d ? '#ff7a3d' : '#c2410c') + '&signal=' + encodeURIComponent(d ? '#5ccfc7' : '#0f766e'); }
   function loadEmbed(f) { if (f.dataset.src) { f.src = f.dataset.src + embQuery(); f.dataset.live = '1'; } }
   function reloadEmbeds() { embeds.forEach(function (f) { if (f.dataset.live) loadEmbed(f); }); }
   if (hasIO) {
