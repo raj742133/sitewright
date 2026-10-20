@@ -45,7 +45,7 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-    reveals.forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 60 + 'ms'; io.observe(el); });
+    reveals.forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 40 + 'ms'; io.observe(el); });
     // never leave anything hidden if the observer misbehaves
     setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4500);
   }

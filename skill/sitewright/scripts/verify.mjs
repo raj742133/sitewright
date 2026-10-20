@@ -901,6 +901,23 @@ async function checkEffects(browser) {
       await noOverflow(m.page, 'gallery'); await tapTargets(m.page, 'gallery');
     });
     await shot(m.page, 'fx-gallery-mobile');
+    await check('embed routes: a component, a figure and a background render bare (no chrome, no scrollbars, query colours, theme message)', async () => {
+      const e = await newPage(browser, 'desktop', 'fx-embed'); await e.page.setViewportSize({ width: 480, height: 360 });
+      const figId = Object.keys(fxmod.FIGURES)[0], bgId = Object.keys(fxmod.BACKGROUNDS)[0];
+      for (const [kind, id, theme] of [['c', 'line-chart', 'dark'], ['f', figId, 'light'], ['bg', bgId, 'dark']]) {
+        const r = await e.page.goto(`${BASE}/effects/${kind}/${id}/?theme=${theme}&primary=%23e11d48&signal=%2310b981`, { waitUntil: 'networkidle' }); await e.page.waitForTimeout(600);
+        eq(r.status(), 200, `${kind}/${id} status`);
+        const m = await e.page.evaluate(() => ({ sh: document.documentElement.scrollHeight, ih: innerHeight, sw: document.documentElement.scrollWidth, iw: innerWidth, theme: document.documentElement.dataset.theme, primary: getComputedStyle(document.documentElement).getPropertyValue('--primary').trim(), bg: getComputedStyle(document.body).backgroundColor, chrome: document.querySelectorAll('header, footer, .fxg-bar, .theme-toggle').length, drawn: document.querySelectorAll('.fxe svg, .fxe canvas, .fxe .fx-bg, .fxe-demo > *').length }));
+        truthy(m.sh <= m.ih && m.sw <= m.iw, `${kind}/${id}: scrolls (${m.sw}x${m.sh} in ${m.iw}x${m.ih})`);
+        eq(m.theme, theme, `${kind}/${id} theme`); eq(m.primary, '#e11d48', `${kind}/${id} primary`);
+        eq(m.bg, 'rgba(0, 0, 0, 0)', `${kind}/${id} page background`); eq(m.chrome, 0, `${kind}/${id} site chrome`);
+        truthy(m.drawn > 0, `${kind}/${id}: nothing rendered`);
+      }
+      await e.page.evaluate(() => window.postMessage({ type: 'sitewright-theme', theme: 'light' }, '*')); await e.page.waitForTimeout(100);
+      eq(await e.page.evaluate(() => document.documentElement.dataset.theme), 'light', 'theme message');
+      eq((await e.ctx.request.get(`${BASE}/effects/c/not-a-component/`)).status(), 404, 'unknown id');
+      await e.ctx.close();
+    });
     await ctx.close(); await m.ctx.close();
   }
 }

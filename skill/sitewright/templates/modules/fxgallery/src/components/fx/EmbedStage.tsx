@@ -56,7 +56,7 @@ export function EmbedStage({ kind, id }: { kind: EmbedKind; id: string }) {
     return <div className="fxe fxe-bg" data-embed="bg" data-ready={ready ? '1' : '0'}>{Bg ? <Bg /> : null}</div>;
   }
   return (
-    <div className="fxe" data-embed={kind} data-ready={ready ? '1' : '0'}>
+    <div className="fxe" data-embed={kind} data-id={id} data-ready={ready ? '1' : '0'}>
       <div className="fxe-scale" style={{ '--s': scale } as CSSProperties}>
         {kind === 'c' ? <ComponentView id={id} /> : <FigureView id={id} />}
       </div>

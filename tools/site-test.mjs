@@ -64,9 +64,10 @@ async function settle(page) {
 }
 async function scrollAll(page) {
   const h = await page.evaluate(() => document.documentElement.scrollHeight);
-  for (let y = 0; y < h; y += 400) { await page.evaluate((v) => window.scrollTo(0, v), y); await page.waitForTimeout(45); }
-  await page.waitForTimeout(500);
-  await page.evaluate(() => window.scrollTo(0, 0));
+  // behavior 'instant': the page scrolls smoothly, which would swallow most of these 400px jumps and leave the lower sections unrevealed
+  for (let y = 0; y < h; y += 400) { await page.evaluate((v) => window.scrollTo({ top: v, behavior: 'instant' }), y); await page.waitForTimeout(45); }
+  await page.waitForTimeout(700);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
 }
 
 // ---- registry facts the page makes claims about ---------------------------------------------------------------------------

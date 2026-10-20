@@ -8,6 +8,9 @@ html:has(.fxe), html:has(.fxe) body { background: transparent; overflow: hidden;
 .fxe-scale { --s: 1; position: absolute; left: 0; top: 0; width: calc(100vw / var(--s)); height: calc(100vh / var(--s)); transform: scale(var(--s)); transform-origin: 0 0; display: grid; place-items: center; padding: 12px; }
 .fxe-demo { width: min(100%, 460px); min-width: 0; display: grid; justify-items: center; }
 .fxe-demo > * { max-width: 100%; }
+/* demos that are a fixed 150px tile in the gallery and need room to be seen */
+.fxe[data-id='drape-background'] .fxe-demo { width: 100%; }
+.fxe[data-id='drape-background'] .fxe-demo > div { height: calc(100vh / var(--s) - 24px) !important; width: 100%; }
 .fxe-fig { width: 100%; height: 100%; display: grid; place-items: center; }
 .fxe-fig-box { width: min(100%, calc((100vh / var(--s) - 24px) * 1.25)); aspect-ratio: 5 / 4; }
 @media (prefers-reduced-motion: reduce) { .fxe { transition: none; } }
