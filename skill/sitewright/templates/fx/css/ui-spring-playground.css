@@ -14,7 +14,7 @@
 .ui-spring-playground-svg { width: 100%; height: auto; display: block; background: var(--raised, transparent); border: 1px solid var(--line, #ddd); border-radius: 6px; }
 .ui-spring-playground-target { stroke: var(--line-strong, #aaa); stroke-dasharray: 3 3; stroke-width: 1; }
 .ui-spring-playground-curve { stroke: var(--primary, #2563eb); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.ui-spring-playground-track { position: relative; height: 16px; border-radius: 8px; background: var(--raised-2, #eee); }
+.ui-spring-playground-track { position: relative; height: 16px; border-radius: 8px; background: var(--raised-2, #eee); border: 1px solid var(--line, #ddd); box-sizing: border-box; }
 .ui-spring-playground-ball { position: absolute; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--signal, #f59e0b); box-shadow: var(--shadow, 0 1px 3px #0003); }
 .ui-spring-playground-settle { margin: 0; color: var(--muted, #555); font-size: 11px; }
 .ui-spring-playground-settle b { color: var(--ink, #111); font-family: var(--font-mono, monospace); }

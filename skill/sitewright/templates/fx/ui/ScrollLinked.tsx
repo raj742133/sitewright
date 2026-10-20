@@ -26,17 +26,19 @@ export default function ScrollLinked({ height = 150, paragraphs = DEFAULT, class
   const drift = reduced ? 0 : -p * 46;
   return (
     <div className={`ui-scroll-linked-root${className ? ' ' + className : ''}`} style={{ height }}>
-      <div className="ui-scroll-linked-bar" role="progressbar" aria-label="Scroll progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
-        <span className="ui-scroll-linked-fill" style={{ transform: `scaleX(${p})` }} />
+      <div className="ui-scroll-linked-head">
+        <div className="ui-scroll-linked-bar" role="progressbar" aria-label="Scroll progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
+          <span className="ui-scroll-linked-fill" style={{ transform: `scaleX(${p})` }} />
+        </div>
+        <output className="ui-scroll-linked-num" aria-hidden="true">{pct}%</output>
       </div>
-      <output className="ui-scroll-linked-num" aria-hidden="true">{pct}%</output>
       <div ref={ref} className="ui-scroll-linked-scroller" tabIndex={0} role="region" aria-label="Scrollable content">
         <div className="ui-scroll-linked-track">
-          <div className="ui-scroll-linked-layer" aria-hidden="true" style={{ height: Math.max(60, height - 6) }}>
+          <div className="ui-scroll-linked-layer" aria-hidden="true" style={{ height: Math.max(60, height - 30) }}>
             <span className="ui-scroll-linked-shape ui-scroll-linked-s1" style={{ transform: `translateY(${drift * 1.6}px) rotate(${reduced ? 0 : p * 90}deg)` }} />
             <span className="ui-scroll-linked-shape ui-scroll-linked-s2" style={{ transform: `translateY(${drift}px)` }} />
           </div>
-          <div className="ui-scroll-linked-text" style={{ marginTop: -Math.max(60, height - 6) }}>
+          <div className="ui-scroll-linked-text" style={{ marginTop: -Math.max(60, height - 30) }}>
             {paragraphs.map((t, i) => (<p key={i}>{t}</p>))}
           </div>
         </div>
