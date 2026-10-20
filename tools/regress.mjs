@@ -75,7 +75,11 @@ async function devSmoke(dir, port) {
       } catch { /* not listening yet */ }
     }
     return 'did not start in 90s';
-  } finally { if (win) spawn('taskkill', ['/pid', String(p.pid), '/T', '/F']); else { try { process.kill(-p.pid); } catch { p.kill(); } } }
+  } finally {
+    const closed = new Promise((r) => p.once('close', r));
+    if (win) spawn('taskkill', ['/pid', String(p.pid), '/T', '/F']); else { try { process.kill(-p.pid); } catch { p.kill(); } }
+    await Promise.race([closed, new Promise((r) => setTimeout(r, 8000))]); // let it release the folder before the next job touches it
+  }
 }
 
 async function one(site, variant, port, modules) {
