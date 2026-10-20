@@ -73,3 +73,5 @@
 .fxg-ui-item { border: 1px solid var(--line); border-radius: 16px; background: var(--raised-2, var(--raised)); padding: 14px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .fxg-ui-item h3 { font-size: 15px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 .fxg-ui-stage { min-height: 150px; display: grid; place-items: center; border-radius: 12px; background: var(--raised); border: 1px dashed var(--line); padding: 12px; overflow: hidden; }
+.fxg-ui-stage { grid-template-columns: minmax(0, 1fr); }
+.fxg-ui-stage > * { min-width: 0; max-width: 100%; }

@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import { clamp, useSpring, type SpringConfig } from './_m1';
 
 export interface ReorderItem { id: string; label: string }
@@ -36,7 +36,11 @@ function Row(p: { item: ReorderItem; index: number; step: number; height: number
   );
 }
 
-export default function DragReorder({ items = DEFAULT_ITEMS, onReorder, rowHeight = 30, gap = 4, className }: DragReorderProps) {
+export default function DragReorder({ items = DEFAULT_ITEMS, onReorder, rowHeight: rowHeightProp, gap = 4, className }: DragReorderProps) {
+  // rows are finger-sized (44px) on a touch screen, compact (30px) with a mouse
+  const [coarse, setCoarse] = useState(false);
+  useEffect(() => { const m = window.matchMedia('(pointer: coarse)'); const f = () => setCoarse(m.matches); f(); m.addEventListener('change', f); return () => m.removeEventListener('change', f); }, []);
+  const rowHeight = rowHeightProp ?? (coarse ? 44 : 30);
   const [order, setOrder] = useState<ReorderItem[]>(items);
   const [drag, setDrag] = useState<{ id: string; y: number } | null>(null);
   const [grab, setGrab] = useState<string | null>(null);

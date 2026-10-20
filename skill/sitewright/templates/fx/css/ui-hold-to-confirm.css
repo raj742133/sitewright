@@ -23,3 +23,6 @@
 .ui-hold-to-confirm-count { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--critical, #dc2626); transform-origin: left; }
 .ui-hold-to-confirm-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .ui-hold-to-confirm-fill { transition: none; } }
+/* the filling colour is lighter in the dark theme, so its label turns dark to keep 4.5:1 */
+:root[data-theme='dark'] .ui-hold-to-confirm-fill { color: #0b1116; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .ui-hold-to-confirm-fill { color: #0b1116; } }

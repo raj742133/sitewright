@@ -32,7 +32,6 @@
 .ui-chart-legend-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
 .ui-chart-legend li[data-off] .ui-chart-legend-btn { color: var(--muted, #667); text-decoration: line-through; }
 .ui-chart-legend li[data-off] .ui-chart-sw { opacity: .35; }
-@media (pointer: coarse) { .ui-chart-legend-btn, .ui-chart-btn { min-height: 44px; padding-inline: 12px; } }
 
 .ui-chart-tip {
   --tx: -50%; --ty: calc(-100% - 12px);
@@ -76,3 +75,4 @@
   .ui-chart *, .ui-chart-pulse { animation: none !important; transition: none !important; }
   .ui-chart .ui-chart-draw { stroke-dashoffset: 0 !important; } .ui-chart .ui-chart-fade { opacity: 1 !important; } .ui-chart .ui-chart-grow, .ui-chart .ui-chart-growx { transform: none !important; }
 }
+@media (pointer: coarse), (max-width: 700px) { .ui-chart-legend-btn, .ui-chart-btn { min-height: 44px; padding-inline: 12px; } }

@@ -5,3 +5,4 @@
 .ui-pull-cord-grip[data-on='true'] { background: var(--signal, #f59e0b); border-color: var(--signal, #f59e0b); }
 .ui-pull-cord-grip:active { cursor: grabbing; }
 .ui-pull-cord-grip:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
+@media (pointer: coarse) { .ui-pull-cord-grip { min-width: 44px; min-height: 44px; margin-left: -8px; } }

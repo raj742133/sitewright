@@ -5,7 +5,7 @@
 //   node tools/regress.mjs [--examples coffee,legal,quotes-tags-braces] [--variants plain,max] [--parallel 3] [--out ./regress-out] [--no-verify]
 //                          [--modules ./some/node_modules]
 //
-// For each example it: scaffolds the site (the "max" variant adds figures, icons and the aurora-glass effects), type-checks it, runs
+// For each example it: scaffolds the site (the "max" variant adds figures, icons, every component and the aurora-glass effects), type-checks it, runs
 // `npm run build` (which also runs the project's own icon and figure sync), and drives it in Chromium with verify.mjs. The projects share
 // one dependency install: the first run does `npm install` once (or pass --modules to reuse an existing node_modules).
 // Needs Node 20+, and for the browser part `npm i playwright && npx playwright install chromium` somewhere resolvable from the cwd.
@@ -83,7 +83,7 @@ async function one(site, variant, port, modules) {
   const dir = path.join(OUT, `${example}-${variant}`);
   fs.rmSync(dir, { recursive: true, force: true });
   const r = { name: `${example} ${variant}`, scaffold: '-', tsc: '-', build: '-', verify: '-', fails: [] };
-  const extra = variant === 'max' && example !== 'gallery' && !site.fixture ? ['--figures', 'auto', '--icons', 'auto', '--preset', 'aurora-glass', '--offline-icons'] : ['--offline-icons'];
+  const extra = variant === 'max' && example !== 'gallery' && !site.fixture ? ['--figures', 'auto', '--icons', 'auto', '--preset', 'aurora-glass', '--components', 'all', '--offline-icons'] : ['--offline-icons'];
   const sc = await run(process.execPath, [path.join(SKILL, 'scripts', 'scaffold.mjs'), '--config', site.file, '--out', dir, '--quiet', ...extra]);
   if (sc.code) { r.scaffold = 'FAIL'; r.fails.push(sc.out.trim().split('\n').slice(-2).join(' ')); return r; }
   r.scaffold = 'ok';

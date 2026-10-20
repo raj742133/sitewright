@@ -112,7 +112,7 @@ const FX_FLAGS = { preset: 'preset', 'hero-bg': 'heroBackground', 'login-bg': 'l
 const picked = {};
 for (const [flag, key] of Object.entries(FX_FLAGS)) if (a[flag] !== undefined) picked[key] = a[flag];
 if (a.extras !== undefined) picked.extras = csv(a.extras);
-if (a.components !== undefined) picked.components = String(a.components).trim() === 'all' ? 'all' : csv(a.components);
+if (a.components !== undefined) picked.components = ['all', 'none'].includes(String(a.components).trim()) ? String(a.components).trim() : csv(a.components);
 // --figures auto | none | hero=terrain,signin=padlock      --figure-intensity 0..1
 if (a.figures !== undefined) {
   const v = String(a.figures).trim();
@@ -249,7 +249,7 @@ if (a['apply-effects']) {
   site.effects = fx;
   fs.writeFileSync(siteFile, JSON.stringify(site, null, 2) + '\n');
   console.log(`sitewright: effects updated in ${dir}  (${files.size} files)`);
-  console.log(`  hero ${fx.heroBackground}, login ${fx.loginBackground}, headline ${fx.headline}, buttons ${fx.buttons}, cards ${fx.cards}, reveal ${fx.reveal}, extras ${fx.extras.join('+') || 'none'}`);
+  console.log(`  hero ${fx.heroBackground}, login ${fx.loginBackground}, headline ${fx.headline}, buttons ${fx.buttons}, cards ${fx.cards}, reveal ${fx.reveal}, extras ${fx.extras.join('+') || 'none'}${fx.components.length ? `, components ${fx.components.length}` : ''}`);
   console.log(`  figures ${Object.entries(fx.figures).map(([p, id]) => `${p}=${id}`).join(', ') || 'none'}${fx.figuresIgnored ? `   (no such place in this site: ${fx.figuresIgnored.join(', ')})` : ''}`);
   console.log('  run:  npm run dev   (or npm run build)');
   process.exit(0);

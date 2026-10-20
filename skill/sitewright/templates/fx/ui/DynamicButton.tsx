@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 export type DynamicIcon = 'save' | 'spinner' | 'check' | 'error' | 'none';
 export interface DynamicState {
   label: string;
-  icon?: DynamicIcon;
+  glyph?: DynamicIcon;
   /** Move on to the next state by itself after this many ms (the button ignores clicks meanwhile). */
   ms?: number;
 }
@@ -17,12 +17,12 @@ export interface DynamicButtonProps {
 }
 
 const DEFAULT_STATES: DynamicState[] = [
-  { label: 'Save', icon: 'save' },
-  { label: 'Saving…', icon: 'spinner', ms: 1300 },
-  { label: 'Saved', icon: 'check', ms: 1700 },
+  { label: 'Save', glyph: 'save' },
+  { label: 'Saving…', glyph: 'spinner', ms: 1300 },
+  { label: 'Saved', glyph: 'check', ms: 1700 },
 ];
 
-function Icon({ name }: { name: DynamicIcon }) {
+function Glyph({ name }: { name: DynamicIcon }) {
   const p = { viewBox: '0 0 20 20', width: 18, height: 18, 'aria-hidden': true, focusable: false, fill: 'none', stroke: 'currentColor', strokeWidth: 1.9, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
   if (name === 'none') return null;
   if (name === 'spinner') return <svg {...p} className="ui-dynamic-button-spin"><path d="M10 3a7 7 0 1 0 7 7" /></svg>;
@@ -49,7 +49,7 @@ export default function DynamicButton({ states = DEFAULT_STATES, index, onClick,
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [i, st.label, st.icon]);
+  }, [i, st.label, st.glyph]);
 
   useEffect(() => {
     if (controlled || !st.ms) return;
@@ -65,11 +65,11 @@ export default function DynamicButton({ states = DEFAULT_STATES, index, onClick,
       className={`ui-dynamic-button${className ? ` ${className}` : ''}`}
       style={w ? { width: w + 40 } : undefined}
       aria-disabled={busy || undefined}
-      aria-busy={st.icon === 'spinner' || undefined}
+      aria-busy={st.glyph === 'spinner' || undefined}
       onClick={() => { if (busy) return; onClick?.(i); if (!controlled) setOwn((v) => (v + 1) % states.length); }}
     >
       <span className="ui-dynamic-button-inner" ref={inner} key={i}>
-        <Icon name={st.icon ?? 'none'} />
+        <Glyph name={st.glyph ?? 'none'} />
         <span>{st.label}</span>
       </span>
     </button>

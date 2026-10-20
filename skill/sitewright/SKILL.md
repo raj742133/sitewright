@@ -29,6 +29,8 @@ Dependencies are resolved automatically - choosing `publishing` brings `mfa`; `d
 
 **Figures** are the other half of the layer: 22 small interactive isometric line drawings (19 from Hairline, MIT, plus `bars`, `scanner`, `parcel` written for this kit) placed in named *places* of the site, `effects.figures`: `hero`, `releases`, `signin`, `mfa`, `connect`, `empty`, `notfound`. `figures: "auto"` puts the fitting figure in every place the chosen modules have; `{ "signin": "vault" }` chooses one by one. Catalogue, places, how to use them well and how to add your own: `reference/figures.md`. Catalogue, presets and rules: `reference/effects.md`.
 
+**Components** are the third part: 58 small interactive pieces (hold-to-confirm and tactile buttons, a command input, wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers, and 16 SVG charts) imported from `@/components/fx/ui`, chosen with `effects.components` (`"all"` or a list) or `--components`. Catalogue, what each is for and how to choose: `reference/components.md`.
+
 ## Workflow
 
 1. **Ask which modules.** Use AskUserQuestion with a multi-select over: Landing page, Publishing page, Dashboard, Connect to phone, Sign in (shared password), MFA accounts. Say what each adds in one line. If the user already named them, skip the question.
@@ -42,6 +44,7 @@ Dependencies are resolved automatically - choosing `publishing` brings `mfa`; `d
    - for `landing`: headline + accent word, 3-4 story steps, optional proof/features/FAQ.
    **Never invent facts** (customer counts, benchmarks, testimonials). Leave `proof`, `features`, `compat` out unless the user supplies the content. Mark placeholder copy as such.
 3. **Choose the look: effects, figures and icons.** The kit has three optional layers. Claude chooses and wires them; the user steers. Say in one line what you picked and offer to change it. Never switch on a heavy choice the user did not want on a dense page.
+   - **Components** (`reference/components.md`): when the site has a destructive action, a dashboard, an invite flow or a landing section that wants motion, use the fitting component instead of hand-rolling it (`hold-to-confirm`, `dynamic-button`, the charts, `invite-code`, `stagger-grid`, `line-draw`). Switch them on with `effects.components`; changing the set later is `--apply-effects --components ...`.
    - **Effects** (backgrounds, headline animations, button and card styles, reveals, extras; `reference/effects.md`).
      - The user named one ("use aurora", "typewriter headline", "the playful preset"): apply exactly that, without asking. Map it to the ids in `node ~/.claude/skills/sitewright/scripts/scaffold.mjs --list-effects` and write it to `effects` (or pass `--hero-bg aurora` etc.). Everything they did not mention stays as the preset or default gives it.
      - The user said nothing about effects: pick one fitting preset (calm/serious brands: `calm` or `editorial`; playful: `playful`; technical: `tech-grid`; plain data tools: keep the default look).
@@ -90,6 +93,7 @@ New module = a folder under `templates/modules/<id>/` mirroring the output tree,
 
 - `reference/config.md` - every config key, its default, and a minimal vs full example
 - `reference/effects.md` - the effects catalogue, presets, wiring and rules
+- `reference/components.md` - the component library (58 pieces): ids, what each does, where to use it
 - `reference/icons.md` - icons: places, `auto`, finding names, licences, changing them later
 - `reference/figures.md` - the 22 line figures, the places they go, which fits where, and how to add one
 - `reference/design-system.md` - tokens, palette derivation, components, animations, responsive rules

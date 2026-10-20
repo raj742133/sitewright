@@ -149,7 +149,7 @@ export default function WheelPicker({ items = DEFAULT, value, defaultValue, onCh
                 role="option"
                 aria-selected={i === sel}
                 className="ui-wheel-picker-item"
-                style={{ height: itemHeight, lineHeight: `${itemHeight}px`, top: `calc(50% - ${itemHeight / 2}px)`, transform: `rotateX(${-d * STEP}deg) translateZ(${R}px)`, opacity: hide ? 0 : clamp(1 - Math.abs(d) * 0.28, 0.15, 1), fontWeight: i === sel ? 650 : 450, visibility: hide ? 'hidden' : 'visible' }}
+                style={{ height: itemHeight, lineHeight: `${itemHeight}px`, top: `calc(50% - ${itemHeight / 2}px)`, transform: `rotateX(${-d * STEP}deg) translateZ(${R}px)`, opacity: hide ? 0 : clamp(1 - Math.abs(d) * 0.1, 0.78, 1), fontWeight: i === sel ? 650 : 450, visibility: hide ? 'hidden' : 'visible' }}
                 onClick={() => commit(i)}
               >
                 {o.label}

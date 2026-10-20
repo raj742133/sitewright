@@ -208,6 +208,10 @@ Put one anywhere in your own pages by name, nothing to register: `<Figure name="
 
 > The idea comes from animated-component libraries such as [React Bits](https://reactbits.dev). Their licence (MIT with the Commons Clause) does not allow redistributing the components inside another package, so these effects are written from scratch for this kit.
 
+## Components (optional)
+
+Beyond effects, the kit has a library of 58 small interactive components you import by name from `@/components/fx/ui`: tactile and hold-to-confirm buttons, a command input, a wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers (drag, reorder, shared-element expand) and 16 SVG charts (area, bar, line, live, candlestick, pie, radar, funnel, sankey, heatmap, tile map and more). They are original code with no animation or chart library, respect reduced motion, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`; the `/effects` gallery shows every one live. The catalogue, with what each is for, is `skill/sitewright/reference/components.md`. Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion and Bklit (see `THIRD_PARTY_NOTICES.md`).
+
 ## Install
 
 You need [Claude Code](https://claude.com/claude-code) and Node.js 20 or newer. A skill is a folder that Claude Code reads when a session starts, so installing means copying one folder.

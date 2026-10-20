@@ -176,7 +176,7 @@ export function Playground() {
               <p className="fxg-note">{INFO.figures.find((f) => f.id === figure)?.desc}</p>
             </section>
 
-            <section className="fxg-ui card pad" aria-label="Components" id="components" style={css({ '--primary': primary, '--signal': signal })}>
+            <section className="fxg-ui card pad" aria-label="Components" id="components">
               <p className="eyebrow">Components</p>
               <h2 className="card-h">{UI_DEMOS.length} small pieces to import</h2>
               <p className="muted small">Each one is a single file with no extra library. Choose them in site.json (<code>effects.components</code>) and import by name from <code>@/components/fx/ui</code>.</p>
