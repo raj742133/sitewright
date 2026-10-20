@@ -95,6 +95,10 @@ Flags: `--preset`, `--hero-bg`, `--login-bg`, `--headline`, `--rotate-words`, `-
 - Button and card effects are **attribute-scoped** (`<html data-fx-cards="tilt">`) and act through event delegation on the classes in `CARD_SELECTOR` / `BUTTON_SELECTOR`, so every existing card and primary button gets them without editing each component. Add a class to those lists if you add a new card type.
 - Backgrounds sit in `.fx-bg` (absolute, behind content, `aria-hidden`). Headline effects keep the real text: split/typewriter/scramble output a visually-hidden copy for screen readers and hide the animated copy from them.
 
+## Components
+
+Beyond the slots above the kit has a library of 58 importable components (buttons, inputs, cards, loaders, charts...). They are listed in `reference/components.md` and chosen with `effects.components`.
+
 ## Figures
 
 Interactive line drawings in named places of the site (a padlock on the sign-in card, a scanner on the connect page, a bar chart in an empty dashboard...): 22 of them, chosen per place or with `figures: "auto"`. Their own page: [`figures.md`](figures.md).

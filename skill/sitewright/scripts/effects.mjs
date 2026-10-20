@@ -7,6 +7,8 @@
 // PLACES of the generated site: the landing hero, the sign-in cards, the connect page, empty states, the releases list, the 404 page.
 // `files` are copied from templates/fx/ to src/components/fx/; `css` snippets are concatenated into src/components/fx/fx.css.
 
+import { UI, resolveComponents, uiMenu } from './ui.mjs';
+
 export const BACKGROUNDS = {
   aurora:    { label: 'Aurora',        desc: 'Soft blurred colour clouds drifting slowly. Pure CSS.',                         files: ['bg/Aurora.tsx'],    css: ['bg-aurora'] },
   mesh:      { label: 'Gradient mesh', desc: 'A slowly shifting mesh of brand-coloured gradients. Pure CSS.',                 files: ['bg/Mesh.tsx'],      css: ['bg-mesh'] },
@@ -158,6 +160,7 @@ export function resolveEffects(input = {}, { modules } = {}) {
   } else if (!none(figIn)) throw new Error('effects.figures must be "auto" or an object like { "hero": "terrain" }.');
   const figuresIgnored = [];
   if (modules) for (const place of Object.keys(figures)) if (!PLACES[place].needs.every((m) => modules.includes(m))) { figuresIgnored.push(place); delete figures[place]; }
+  const components = resolveComponents(input.components);
   const figureIntensity = input.figureIntensity === undefined ? 0.5 : Math.min(1, Math.max(0, Number(input.figureIntensity)));
   if (!Number.isFinite(figureIntensity)) throw new Error('effects.figureIntensity must be a number from 0 to 1.');
 
@@ -167,10 +170,10 @@ export function resolveEffects(input = {}, { modules } = {}) {
     headline: none(headline) ? 'none' : headline,
     buttons: none(buttons) ? 'none' : buttons,
     cards: none(cards) ? 'none' : cards,
-    reveal, extras, rotateWords, figures, figureIntensity,
+    reveal, extras, rotateWords, figures, figureIntensity, components,
   };
   if (figuresIgnored.length) r.figuresIgnored = figuresIgnored;
-  r.active = r.heroBackground !== 'territory' || r.loginBackground !== 'none' || r.headline !== 'none' || r.buttons !== 'none' || r.cards !== 'none' || r.reveal !== 'rise' || extras.length > 0 || Object.keys(figures).length > 0;
+  r.active = r.heroBackground !== 'territory' || r.loginBackground !== 'none' || r.headline !== 'none' || r.buttons !== 'none' || r.cards !== 'none' || r.reveal !== 'rise' || extras.length > 0 || Object.keys(figures).length > 0 || components.length > 0;
   return r;
 }
 
@@ -181,8 +184,10 @@ export function effectPlan(r, { all = false } = {}) {
   files.add('text/split.tsx'); files.add('text/Plain.tsx');
   const micro = new Set();
   const use = (table, id) => { const e = table[id]; if (!e) return; (e.files ?? []).forEach((f) => files.add(f)); (e.css ?? []).forEach((c) => css.add(c)); (e.micro ?? []).forEach((m) => { micro.add(m); files.add(`micro/${m}.ts`); files.add('micro/selectors.ts'); }); };
+  const useUi = (id) => { const e = UI[id]; if (!e) return; e.files.forEach((f) => files.add(`ui/${f}`)); (e.css ?? []).forEach((c) => css.add(c)); };
   if (all) {
     for (const t of [BACKGROUNDS, HEADLINES, BUTTONS, CARDS, REVEALS, EXTRAS, FIGURES]) for (const id of Object.keys(t)) use(t, id);
+    for (const id of Object.keys(UI)) useUi(id);
     css.add('figures');
   } else {
     if (r.heroBackground !== 'territory' && r.heroBackground !== 'none') use(BACKGROUNDS, r.heroBackground);
@@ -193,6 +198,7 @@ export function effectPlan(r, { all = false } = {}) {
     use(REVEALS, r.reveal);
     r.extras.forEach((x) => use(EXTRAS, x));
     for (const id of new Set(Object.values(r.figures))) use(FIGURES, id);
+    (r.components ?? []).forEach(useUi);
     if (Object.keys(r.figures).length) css.add('figures');
   }
   // the figures' shared engine and its licence travel with whichever figures were chosen; their style is always there, so a figure used by name in your own code is styled too
@@ -219,6 +225,8 @@ export function effectsMenu() {
     ...Object.entries(FIGURES).map(([id, e]) => `    ${id.padEnd(11)} ${e.desc}`),
     '  Places (what `auto` puts there)',
     ...Object.entries(PLACES).map(([id, p]) => `    ${id.padEnd(9)} ${p.suggest.padEnd(9)} ${p.desc}${p.needs.length ? ` Needs: ${p.needs.join(' + ')}.` : ''}`),
+    '',
+    uiMenu(),
     '',
     'Presets (a ready-made bundle of the above; your own picks override it)   --preset <id>',
     ...Object.entries(PRESETS).map(([id, p]) => `  ${id.padEnd(13)} ${p.heroBackground} / ${p.headline} / ${p.buttons} / ${p.cards} / ${p.reveal}${p.extras.length ? ` + ${p.extras.join(', ')}` : ''}`),

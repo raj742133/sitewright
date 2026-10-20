@@ -49,3 +49,11 @@ The icons the kit ships so a site has icons with no network (`skill/sitewright/t
 [Lucide](https://lucide.dev), ISC licensed, with some derived from Feather (MIT, Copyright (c) 2013-present Cole Bemis). The full licence text is
 inside the pack and is written to `src/components/icons/NOTICE.md` of every generated project that uses one of its icons. Icons from other sets
 keep their own licences, which the same file records.
+
+## Component library (ideas only)
+
+The components under `skill/sitewright/templates/fx/ui/` take their *ideas* from the work of others: the experiments in
+[Kitchen](https://www.dqnamo.com/kitchen) by dqnamo, the components of [Kokonut UI](https://kokonutui.com), the animation techniques of
+[Anime.js](https://animejs.com) and [Motion](https://motion.dev), and the chart types of [Bklit UI](https://bklit.com). All of the code is
+written for Sitewright; none of it is copied from those projects, and none of them is a dependency. Ideas are not covered by those
+projects' licences, but credit is due and given here.

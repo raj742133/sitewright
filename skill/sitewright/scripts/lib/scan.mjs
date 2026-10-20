@@ -7,12 +7,15 @@ const SKIP_DIRS = new Set(['node_modules', '.next', '.git']);
 export const SCAN_EXT = /\.(tsx?|jsx?|mjs|cjs|json|mdx?)$/;
 
 /** Every source file under `dir`, skipping node_modules and any folder `skip(fullPath)` says to. */
+const KIT_DIR = /[\\/]components[\\/]fx[\\/]ui$/;
+
 export function* walkSrc(dir, skip = () => false) {
   let entries = [];
   try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return; }
   for (const e of entries) {
     const p = path.join(dir, e.name);
-    if (e.isDirectory()) { if (!SKIP_DIRS.has(e.name) && !skip(p)) yield* walkSrc(p, skip); }
+    // the kit's own components (src/components/fx/ui) are not the project's code: they carry names like icon: 'spinner' that mean something else
+    if (e.isDirectory()) { if (!SKIP_DIRS.has(e.name) && !KIT_DIR.test(p) && !skip(p)) yield* walkSrc(p, skip); }
     else if (SCAN_EXT.test(e.name)) yield p;
   }
 }

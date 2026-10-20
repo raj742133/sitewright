@@ -5,7 +5,7 @@
 //   node tools/regress.mjs [--examples coffee,legal,quotes-tags-braces] [--variants plain,max] [--parallel 3] [--out ./regress-out] [--no-verify]
 //                          [--modules ./some/node_modules]
 //
-// For each example it: scaffolds the site (the "max" variant adds figures, icons and the aurora-glass effects), type-checks it, runs
+// For each example it: scaffolds the site (the "max" variant adds figures, icons, every component and the aurora-glass effects), type-checks it, runs
 // `npm run build` (which also runs the project's own icon and figure sync), and drives it in Chromium with verify.mjs. The projects share
 // one dependency install: the first run does `npm install` once (or pass --modules to reuse an existing node_modules).
 // Needs Node 20+, and for the browser part `npm i playwright && npx playwright install chromium` somewhere resolvable from the cwd.
@@ -75,7 +75,11 @@ async function devSmoke(dir, port) {
       } catch { /* not listening yet */ }
     }
     return 'did not start in 90s';
-  } finally { if (win) spawn('taskkill', ['/pid', String(p.pid), '/T', '/F']); else { try { process.kill(-p.pid); } catch { p.kill(); } } }
+  } finally {
+    const closed = new Promise((r) => p.once('close', r));
+    if (win) spawn('taskkill', ['/pid', String(p.pid), '/T', '/F']); else { try { process.kill(-p.pid); } catch { p.kill(); } }
+    await Promise.race([closed, new Promise((r) => setTimeout(r, 8000))]); // let it release the folder before the next job touches it
+  }
 }
 
 async function one(site, variant, port, modules) {
@@ -83,7 +87,7 @@ async function one(site, variant, port, modules) {
   const dir = path.join(OUT, `${example}-${variant}`);
   fs.rmSync(dir, { recursive: true, force: true });
   const r = { name: `${example} ${variant}`, scaffold: '-', tsc: '-', build: '-', verify: '-', fails: [] };
-  const extra = variant === 'max' && example !== 'gallery' && !site.fixture ? ['--figures', 'auto', '--icons', 'auto', '--preset', 'aurora-glass', '--offline-icons'] : ['--offline-icons'];
+  const extra = variant === 'max' && example !== 'gallery' && !site.fixture ? ['--figures', 'auto', '--icons', 'auto', '--preset', 'aurora-glass', '--components', 'all', '--offline-icons'] : ['--offline-icons'];
   const sc = await run(process.execPath, [path.join(SKILL, 'scripts', 'scaffold.mjs'), '--config', site.file, '--out', dir, '--quiet', ...extra]);
   if (sc.code) { r.scaffold = 'FAIL'; r.fails.push(sc.out.trim().split('\n').slice(-2).join(' ')); return r; }
   r.scaffold = 'ok';
@@ -93,15 +97,16 @@ async function one(site, variant, port, modules) {
   const build = await run('npm', ['run', 'build'], { cwd: dir });
   r.build = build.code ? 'FAIL' : 'ok'; if (build.code) { r.fails.push(build.out.trim().split('\n').slice(-6).join(' ')); return r; }
   // `npm run dev` is what people actually use, and it renders differently from the production build (it once answered every page that
-  // touched the database with a 500 while the build verified clean), so start it and make sure the first page comes back.
-  const dev = await devSmoke(dir, port + 1000);
-  if (dev) { r.build = 'ok'; r.fails.push(`dev server: ${dev}`); }
-  if (flag('no-verify')) { r.verify = 'skipped'; return r; }
+  // touched the database with a 500 while the build verified clean), so start it and make sure the first page comes back. It goes
+  // last: `next dev` overwrites the production build that the browser check drives.
+  const devCheck = async () => { const dev = await devSmoke(dir, port + 1000); if (dev) r.fails.push(`dev server: ${dev}`); };
+  if (flag('no-verify')) { r.verify = 'skipped'; await devCheck(); return r; }
   const v = await run(process.execPath, [path.join(SKILL, 'scripts', 'verify.mjs'), '--site', dir, '--port', String(port), '--out', path.join(dir, '_shots')], { cwd: process.cwd() });
   const m = /(\d+)\/(\d+) checks passed(?:, (\d+) skipped[^,]*)?(?:, (\d+) FAILED)?/.exec(v.out);
   if (!m) { r.verify = 'could not run'; r.fails.push(v.out.trim().split('\n').slice(-3).join(' ')); return r; }
   r.verify = `${m[1]}/${m[2]}${m[3] ? ` (${m[3]} skipped)` : ''}${m[4] ? ` ${m[4]} FAILED` : ''}`;
   r.fails.push(...[...v.out.matchAll(/^ {2}FAIL {2}(.+)\n {8}(.+)$/gm)].map((x) => `${x[1]}: ${x[2]}`));
+  await devCheck();
   return r;
 }
 
