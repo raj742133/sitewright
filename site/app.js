@@ -1,10 +1,14 @@
-/* Sitewright website: theme toggle, mobile menu, reveal-on-scroll, steps, gallery tabs, install tabs, copy buttons. No dependencies. */
+/* Sitewright website: theme, menu, reveal, build theatre, module configurator, live embeds (backgrounds, figures, components), icon demo,
+   colour preview, steps, gallery, install tabs, copy buttons. No dependencies. Every moving part has a still, finished state for
+   reduced-motion and no-script visitors. */
 (function () {
   'use strict';
   var root = document.documentElement;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  var hasIO = 'IntersectionObserver' in window;
 
   /* ---- theme ---- */
   var themeBtn = $('#theme');
@@ -19,7 +23,7 @@
     var next = isDark() ? 'light' : 'dark';
     root.dataset.theme = next;
     try { localStorage.setItem('sitewright-theme', next); } catch (e) { /* private mode */ }
-    paintTheme();
+    paintTheme(); reloadEmbeds();
   });
   paintTheme();
 
@@ -35,7 +39,7 @@
 
   /* ---- reveal on scroll ---- */
   var reveals = $$('.reveal');
-  if (reduced || !('IntersectionObserver' in window)) {
+  if (reduced || !hasIO) {
     reveals.forEach(function (el) { el.classList.add('in'); });
   } else {
     var io = new IntersectionObserver(function (entries) {
@@ -44,6 +48,121 @@
     reveals.forEach(function (el, i) { el.style.transitionDelay = (i % 4) * 60 + 'ms'; io.observe(el); });
     // never leave anything hidden if the observer misbehaves
     setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 4500);
+  }
+
+  /* ---- scroll progress ---- */
+  var bar = $('#progress'), ticking = false;
+  function paintProgress() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')'; ticking = false;
+  }
+  if (!reduced) window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(paintProgress); } }, { passive: true });
+
+  /* ---- magnetic buttons and tilting cards (fine pointers only) ---- */
+  if (fine && !reduced) {
+    $$('.mag').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.16).toFixed(1) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.22).toFixed(1) + 'px)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+    $$('.tilt').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = 'perspective(900px) rotateX(' + (-y * 5).toFixed(2) + 'deg) rotateY(' + (x * 6).toFixed(2) + 'deg) translateY(-4px)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+  }
+
+  /* ---- count-up numbers ---- */
+  var counts = $$('.count');
+  function fmt(n, plus) { return n.toLocaleString('en-GB') + (plus ? '+' : ''); }
+  if (!reduced && hasIO) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return; cio.unobserve(en.target);
+        var el = en.target, to = Number(el.dataset.to), plus = !!el.dataset.plus, t0 = null;
+        function step(t) { if (t0 === null) t0 = t; var p = Math.min(1, (t - t0) / 1100), e = 1 - Math.pow(1 - p, 3); el.textContent = fmt(Math.round(to * e), plus && p === 1); if (p < 1) requestAnimationFrame(step); }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    counts.forEach(function (el) { cio.observe(el); });
+  }
+
+  /* ---- the build theatre ---- */
+  var th = $('#theatre'), typed = $('#th-typed'), thTimers = [];
+  if (th && typed) {
+    var full = typed.textContent;
+    var later = function (fn, ms) { thTimers.push(setTimeout(fn, ms)); };
+    var thStop = function () { thTimers.forEach(clearTimeout); thTimers = []; };
+    var playTheatre = function () {
+      thStop();
+      if (reduced) { typed.textContent = full; th.dataset.step = '5'; return; }
+      th.dataset.step = '0'; typed.textContent = '';
+      var i = 0, t = setInterval(function () {
+        i += 1; typed.textContent = full.slice(0, i);
+        if (i >= full.length) { clearInterval(t); later(function () { th.dataset.step = '1'; }, 300); later(function () { th.dataset.step = '2'; }, 1100); later(function () { th.dataset.step = '3'; }, 1900); later(function () { th.dataset.step = '4'; }, 2700); later(function () { th.dataset.step = '5'; }, 3600); }
+      }, 24);
+      thTimers.push({ clear: function () { clearInterval(t); } });
+    };
+    // timers may be intervals: stop handles both
+    thStop = function () { thTimers.forEach(function (x) { if (x && x.clear) x.clear(); else clearTimeout(x); }); thTimers = []; };
+    var replay = $('#th-replay'); if (replay) replay.addEventListener('click', playTheatre);
+    if (!reduced && hasIO) {
+      var tio = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { tio.disconnect(); playTheatre(); } }, { threshold: 0.3 });
+      tio.observe(th);
+    }
+  }
+
+  /* ---- module configurator ---- */
+  var cfg = $('#cfg');
+  if (cfg) {
+    var data = JSON.parse(cfg.dataset.mods), picks = { landing: true, dashboard: true };
+    var NAMES = { landing: 'a landing page', signin: 'sign-in', mfa: 'MFA accounts', publishing: 'a publishing page', dashboard: 'a dashboard', connect: 'a connect-to-phone page' };
+    var chips = $$('.cfg-chip', cfg);
+    var addedFor = function () {
+      var added = {};
+      var add = function (m) { (data[m].requires || []).forEach(function (r) { if (!picks[r]) added[r] = true; add(r); }); };
+      Object.keys(picks).forEach(function (m) { if (picks[m]) add(m); });
+      return added;
+    };
+    var renderCfg = function () {
+      var added = addedFor(), chosen = Object.keys(picks).filter(function (m) { return picks[m]; });
+      chips.forEach(function (c) {
+        var m = c.dataset.m, auto = !!added[m] && !picks[m];
+        c.setAttribute('aria-pressed', picks[m] || auto ? 'true' : 'false');
+        c.classList.toggle('auto', auto); c.setAttribute('aria-disabled', auto ? 'true' : 'false');
+        c.title = auto ? 'Added automatically: another module needs it' : '';
+      });
+      var say = $('#cfg-say');
+      if (!chosen.length) { say.textContent = 'Pick at least one module.'; }
+      else {
+        var list = chosen.map(function (m) { return '<b>' + NAMES[m] + '</b>'; });
+        say.innerHTML = 'Use Sitewright to make ' + (list.length > 1 ? list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1] : list[0]) + '.';
+      }
+      var needsApi = chosen.concat(Object.keys(added)).some(function (m) { return (data[m].requires || []).indexOf('api') > -1; });
+      var all = chosen.slice(); Object.keys(added).forEach(function (m) { if (all.indexOf(m) < 0) all.push(m); });
+      var pages = [], api = [];
+      all.forEach(function (m) {
+        data[m].pages.forEach(function (p) { pages.push([p, !picks[m]]); });
+        data[m].api.forEach(function (p) { api.push([p, !picks[m]]); });
+      });
+      var fill = function (ul, items, what) {
+        ul.innerHTML = items.length ? items.map(function (x) { return '<li' + (x[1] ? ' class="auto"' : '') + '>' + x[0] + '</li>'; }).join('') : '<li class="none">no ' + what + '</li>';
+      };
+      fill($('#cfg-pages'), pages, 'pages'); fill($('#cfg-api'), api, 'API routes');
+      var extra = Object.keys(added);
+      $('#cfg-sum').textContent = chosen.length ? pages.length + ' pages and ' + api.length + ' API routes' + (extra.length ? ' (' + extra.join(', ') + ' added automatically, in violet)' : '') + '.' : '';
+    };
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        if (c.getAttribute('aria-disabled') === 'true') return;
+        var m = c.dataset.m; picks[m] = !picks[m]; renderCfg();
+      });
+    });
+    renderCfg();
   }
 
   /* ---- steps + terminal ---- */
@@ -55,7 +174,7 @@
   steps.forEach(function (s, i) { s.addEventListener('click', function () { stopAuto(); showStep(i); }); });
   var auto = null, cur = 0;
   function stopAuto() { if (auto) { clearInterval(auto); auto = null; } }
-  if (!reduced && 'IntersectionObserver' in window) {
+  if (!reduced && hasIO && $('.term')) {
     var termIO = new IntersectionObserver(function (en) {
       if (en[0].isIntersecting && !auto) { auto = setInterval(function () { cur = (cur + 1) % steps.length; showStep(cur); }, 4200); }
       else if (!en[0].isIntersecting) { stopAuto(); }
@@ -106,6 +225,67 @@
     $('#g-sw').innerHTML = '<b style="background:' + b.colors[0] + '"></b><b style="background:' + b.colors[1] + '"></b>' + b.colors[0] + ' / ' + b.colors[1];
   }
   show(0);
+
+  /* ---- live embeds: real effects from the exported gallery, loaded only when they scroll near ---- */
+  var embeds = $$('iframe.emb');
+  function embQuery() { var d = isDark(); return '?theme=' + (d ? 'dark' : 'light') + '&primary=' + encodeURIComponent(d ? '#7c6cff' : '#5b46f0') + '&signal=' + encodeURIComponent(d ? '#2dd4ff' : '#0a8aa8'); }
+  function loadEmbed(f) { if (f.dataset.src) { f.src = f.dataset.src + embQuery(); f.dataset.live = '1'; } }
+  function reloadEmbeds() { embeds.forEach(function (f) { if (f.dataset.live) loadEmbed(f); }); }
+  if (hasIO) {
+    var eio = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting) { loadEmbed(en.target); eio.unobserve(en.target); } }); }, { rootMargin: '300px 0px' });
+    embeds.forEach(function (f) { eio.observe(f); });
+  } else { embeds.forEach(loadEmbed); }
+
+  function stagePicker(groupId, stageId, kind, onPick) {
+    var group = $(groupId), stage = $(stageId); if (!group || !stage) return;
+    var frame = $('iframe', stage), btns = $$('.chip', group);
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        btns.forEach(function (x) { x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
+        frame.dataset.src = 'demo/effects/' + kind + '/' + b.dataset.id + '/'; loadEmbed(frame);
+        onPick(b);
+      });
+    });
+    var cur0 = btns.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0]; if (cur0) onPick(cur0);
+  }
+  stagePicker('#bg-chips', '#bg-stage', 'bg', function (b) { $('#bg-name').textContent = b.textContent; });
+  stagePicker('#fig-chips', '#fig-stage', 'f', function (b) { $('#fig-cap').textContent = b.textContent + ': ' + b.dataset.desc; });
+
+  /* ---- icon demo: a few words in, an icon out (a small sample of the kit's real word table) ---- */
+  var icIn = $('#ic-words');
+  if (icIn) {
+    var svgs = {};
+    $$('.ic-strip li').forEach(function (li) { var s = $('svg', li); if (s) svgs[li.getAttribute('title')] = s.outerHTML; });
+    var WORDS = { coffee: 'coffee', roast: 'coffee', ship: 'truck', shipped: 'truck', delivery: 'truck', delivered: 'truck', truck: 'truck', order: 'package', orders: 'package', package: 'package', parcel: 'package',
+      pay: 'credit-card', payment: 'credit-card', payments: 'credit-card', card: 'credit-card', stats: 'chart-line', sales: 'chart-line', revenue: 'chart-line', growth: 'chart-line', chart: 'chart-line',
+      team: 'users', customers: 'users', customer: 'users', users: 'users', people: 'users', security: 'lock', lock: 'lock', password: 'lock', mobile: 'smartphone', phone: 'smartphone', device: 'smartphone',
+      scan: 'qr-code', code: 'qr-code', calendar: 'calendar', date: 'calendar', schedule: 'calendar', email: 'mail', mail: 'mail', message: 'mail', location: 'map-pin', address: 'map-pin', map: 'map-pin',
+      verified: 'shield-check', secure: 'shield-check', launch: 'rocket', release: 'rocket', home: 'house', photo: 'camera', photos: 'camera', camera: 'camera', documents: 'file-text', document: 'file-text', invoice: 'file-text', notes: 'file-text',
+      alerts: 'bell', alert: 'bell', notifications: 'bell', search: 'search', find: 'search', favourite: 'star', favorites: 'star', rating: 'star', love: 'heart', health: 'heart', wifi: 'wifi', connect: 'wifi' };
+    var pick = $('#ic-pick'), echo = $('#ic-echo');
+    var renderIc = function () {
+      var v = icIn.value; echo.textContent = v;
+      var name = null; v.toLowerCase().split(/[^a-z]+/).forEach(function (w) { if (!name && WORDS[w] && svgs[WORDS[w]]) name = WORDS[w]; });
+      pick.innerHTML = name ? svgs[name] : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 9a4 4 0 1 1 6 3.4c-1.2.7-2 1.3-2 2.6M12 19h.01"/></svg>';
+      pick.title = name ? name : 'no match in this small sample';
+      pick.classList.remove('pop'); void pick.offsetWidth; if (!reduced) pick.classList.add('pop');
+    };
+    icIn.addEventListener('input', renderIc); renderIc();
+  }
+
+  /* ---- colour preview ---- */
+  var tw = $('#tw-card');
+  if (tw) {
+    var lum = function (hex) { var c = [1, 3, 5].map(function (i) { var v = parseInt(hex.substr(i, 2), 16) / 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
+    var paintTw = function () {
+      var p = $('#tw-p').value, s = $('#tw-s').value;
+      tw.style.setProperty('--tp', p); tw.style.setProperty('--ts', s);
+      $('.tw-btn', tw).style.color = lum(p) > 0.45 ? '#0b1020' : '#ffffff';
+    };
+    $('#tw-p').addEventListener('input', paintTw); $('#tw-s').addEventListener('input', paintTw);
+    $('#tw-mode').addEventListener('click', function () { var on = tw.classList.toggle('dark'); this.setAttribute('aria-pressed', on ? 'true' : 'false'); this.textContent = on ? 'Light preview' : 'Dark preview'; });
+    paintTw();
+  }
 
   /* ---- install tabs ---- */
   var osBtns = $$('.os-tabs button');

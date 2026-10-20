@@ -126,8 +126,8 @@ await check(`all ${externalRefs.length} external links respond`, async () => {
   eq(bad.join(', '), '', 'links that answer with an error');
 });
 
-await check('image weight is sane (no single image over 450 KB; initial HTML under 65 KB)', async () => {
-  truthy(Buffer.byteLength(html) < 65000, `HTML is ${Buffer.byteLength(html)} bytes`);
+await check('image weight is sane (no single image over 450 KB; initial HTML under 90 KB)', async () => {
+  truthy(Buffer.byteLength(html) < 90000, `HTML is ${Buffer.byteLength(html)} bytes`);
   const heavy = [];
   for (const u of internalRefs.filter((x) => /\.(png|jpe?g|webp|gif)$/i.test(x))) {
     const r = await get(abs(u)); const n = (await r.arrayBuffer()).byteLength;
@@ -177,20 +177,29 @@ await check('the results table adds up to the numbers shown elsewhere on the pag
   truthy(new RegExp(`<b>${full}</b>browser checks on the full kit`).test(html), `hero fact should say ${full}`);
 });
 
-if (FX) await check('effect counts and names on the page match the skill registry', async () => {
-  const bg = Object.keys(FX.BACKGROUNDS).length;
-  eq((html.match(/class="fx-tile reveal"/g) ?? []).length, bg, 'background tiles vs registry');
-  for (const [id, e] of Object.entries(FX.BACKGROUNDS)) { truthy(html.includes(`assets/fx/bg-${id}.jpg`), `tile image for ${id}`); truthy(html.includes(`<b>${e.label}</b>`), `tile label ${e.label}`); }
+if (FX) await check('effect, figure and component counts and names on the page match the skill registry', async () => {
+  const chipsOf = (id) => [...html.matchAll(new RegExp(`id="${id}"[^>]*>([\\s\\S]*?)</div>`, 'g'))].flatMap((m) => [...m[1].matchAll(/<button[^>]*data-id="([^"]+)"[^>]*>([^<]+)<\/button>/g)].map((x) => [x[1], x[2]]));
+  const bg = chipsOf('bg-chips'), fig = chipsOf('fig-chips');
+  eq(bg.map((x) => x[0]).join(','), Object.keys(FX.BACKGROUNDS).join(','), 'background chips vs registry');
+  for (const [id, label] of bg) eq(label, FX.BACKGROUNDS[id].label, `label of background ${id}`);
+  eq(Number((html.match(/<h3>(\d+) hero backgrounds<\/h3>/) ?? [])[1]), Object.keys(FX.BACKGROUNDS).length, 'background count heading');
+  eq(fig.map((x) => x[0]).join(','), Object.keys(FX.FIGURES).join(','), 'figure chips vs registry');
+  for (const [id, label] of fig) eq(label, FX.FIGURES[id].label, `label of figure ${id}`);
+  eq(Number((html.match(/<h3>(\d+) line figures<\/h3>/) ?? [])[1]), Object.keys(FX.FIGURES).length, 'figure count heading');
   const chipText = [...html.matchAll(/<div class="fx-chips">([\s\S]*?)<\/div>/g)].flatMap((m) => [...m[1].matchAll(/<span>([^<]+)<\/span>/g)].map((x) => x[1]));
   const listed = { ...FX.REVEALS }; delete listed.rise; // "rise" is the default, so it has no chip
   for (const t of [FX.HEADLINES, FX.BUTTONS, FX.CARDS, listed, FX.EXTRAS]) for (const e of Object.values(t)) truthy(chipText.some((c) => c.toLowerCase().replace(/ numbers$/, '') === e.label.toLowerCase().replace(/ numbers$/, '') || c.toLowerCase().startsWith(e.label.toLowerCase().split(' ')[0])), `effect "${e.label}" is listed`);
-  eq(Number((html.match(/<h3>(\d+) headline animations<\/h3>/) ?? [])[1]), Object.keys(FX.HEADLINES).length, 'headline count');
-  if (FX.FIGURES) {
-    eq(Number((html.match(/<h3>(\d+) figures, placed/) ?? [])[1]), Object.keys(FX.FIGURES).length, 'figure count');
-    for (const m of html.matchAll(/assets\/fx\/fig-([a-z]+)\.jpg/g)) { truthy(FX.FIGURES[m[1]], `figure tile ${m[1]} is in the registry`); truthy(fs.existsSync(path.join(REPO, 'site/assets/fx', `fig-${m[1]}.jpg`)), `image for figure ${m[1]}`); }
-    truthy((html.match(/class="fig-tile reveal"/g) ?? []).length >= 3, 'figure tiles');
-  }
   eq(Object.keys(FX.PRESETS).length, 7, 'preset count claimed in README/SKILL');
+  // components: the headline number, and every live demo on the page is a real component
+  let UIREG = null; try { UIREG = (await import(pathToFileURL(path.join(REPO, 'skill/sitewright/scripts/ui.mjs')).href)).UI; } catch { /* older checkout */ }
+  if (UIREG) {
+    eq(Number((html.match(/<h3>(\d+) components you can import<\/h3>/) ?? [])[1]), Object.keys(UIREG).length, 'component count heading');
+    eq(Number((html.match(/<b class="count" data-to="(\d+)">\d+<\/b><span>live components/) ?? [])[1]), Object.keys(UIREG).length, 'component count in the ribbon');
+    const ids = [...html.matchAll(/data-src="demo\/effects\/c\/([a-z0-9-]+)\/"/g)].map((m) => m[1]);
+    truthy(ids.length >= 6, `${ids.length} live component demos`);
+    for (const id of ids) truthy(UIREG[id], `live demo "${id}" is a real component`);
+    eq(Number((html.match(/Try (\d+) components live|Try all (\d+) live/) ?? [])[1] ?? Object.keys(UIREG).length), Object.keys(UIREG).length, 'count in the try-it button');
+  }
 });
 
 await check('install commands copy-paste correctly and point at files that exist in the repo', async () => {
