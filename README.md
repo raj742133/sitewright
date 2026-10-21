@@ -369,23 +369,25 @@ Each example was scaffolded from its config, type-checked, built for production 
 
 | Site | What it exercises | Result |
 | --- | --- | --- |
-| Bean & Barrel | all six modules, PDF/ZIP publishing, testers | 87/87 |
-| PulseFit | all six modules, two real Android APKs parsed and published | 77/77 |
-| Halden Legal | landing, sign-in, dashboard, connect; monogram logo, navy and gold | 60/60 |
-| Pixel Studio | landing and MFA only | 34/34 |
-| Sunny Side Bakery | near-white brand colours (contrast adjustment) | 49/49 |
-| Midnight Courier | near-black brand colours, other fonts, PDF/CSV publishing | 45/45 |
-| Quotes, tags, braces | a brand name full of `"`, `<b>`, `{x}`, backticks and a backslash | 57/57 |
-| Orbit Labs | a single module: landing only | 12/12 |
-| Field Notes Press | a single module: publishing only (brings MFA and the API) | 24/24 |
-| Acme Co | just a brand name, everything else defaulted | 75/75 |
-| Bean & Barrel + effects | aurora-glass preset, beams behind the sign-in card, cursor glow, scroll progress, count-up | 102/102 |
+| Bean & Barrel | all six modules, PDF/ZIP publishing, testers | 88/88 |
+| PulseFit | all six modules; its 12 real-APK checks need the APK files and are skipped without them | 65/65 |
+| Halden Legal | landing, sign-in, dashboard, connect; monogram logo, navy and gold | 61/61 |
+| Pixel Studio | landing and MFA only | 35/35 |
+| Sunny Side Bakery | near-white brand colours (contrast adjustment) | 76/76 |
+| Midnight Courier | near-black brand colours, other fonts, PDF/CSV publishing | 76/76 |
+| Quotes, tags, braces | a brand name full of `"`, `<b>`, `{x}`, backticks and a backslash | 76/76 |
+| Orbit Labs | a single module: landing only | 13/13 |
+| Field Notes Press | a single module: publishing only (brings MFA and the API) | 25/25 |
+| Acme Co | just a brand name, everything else defaulted | 76/76 |
+| Bean & Barrel + effects | aurora-glass preset, beams behind the sign-in card, cursor glow, scroll progress, count-up | 113/113 |
 | Play House | particles, split letters, ripple buttons, tilt cards, click sparks, stars on sign-in | 70/70 |
-| Ripple Works | waves, rotating headline word, magnetic buttons, glow-border cards, slide reveal | 36/36 |
-| Grid Labs | tech-grid preset: perspective grid, decode headline, spotlight cards | 60/60 |
-| Effect Lab | the live effects gallery: every background, headline, button, card, reveal and extra | 9/9 |
+| Ripple Works | waves, rotating headline word, magnetic buttons, glow-border cards, slide reveal | 60/60 |
+| Grid Labs | tech-grid preset: perspective grid, decode headline, spotlight cards | 65/65 |
+| Harbour Books | the `classic` design theme | 55/55 |
+| Four single-module sites | sign-in only, MFA only, dashboard only, connect only | 16/16, 15/15, 39/39, 27/27 |
+| Effect Lab | the live effects gallery: every background, headline, button, card, reveal, extra and embed page | 12/12 |
 
-25 site builds (13 example runs, plain and with every layer on, plus 12 stress fixtures), 1,551 checks, all passing on the final templates. The per-site counts in the table above are from an earlier run; `node tools/regress.mjs` prints current ones. The real-Android-APK checks need the APK files and are skipped (and reported as skipped) when they are absent.
+26 site builds (13 example runs, plain and with every layer on, plus 13 stress and single-module fixtures), 1,607 checks, all passing, each followed by a smoke test of `npm run dev`. The table lists the plain run of each site; `node tools/regress.mjs` prints every run. The real-Android-APK checks need the APK files and are skipped, and reported as skipped, when they are absent.
 
 Details of every check are in [`reference/testing.md`](skill/sitewright/reference/testing.md).
 
