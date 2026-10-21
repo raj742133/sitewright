@@ -1,4 +1,19 @@
-# Design system (taken from a production field-capture dashboard)
+# Design system
+
+Two themes share every component, class and token name; they differ in surfaces, shadows, type and radius. Choose with `design.theme` in `site.json` (default `studio`); `scaffold.mjs --check` prints the resolved choice.
+
+| | `studio` (default) | `classic` |
+| --- | --- | --- |
+| Surfaces | warm paper and ink neutrals that do not take the brand's hue (`brand.colors.neutralHue` shifts the undertone) | pale, cool, tinted by the primary |
+| Depth | hairline borders, near-flat; shadow only on the sign-in card | soft brand-tinted shadows |
+| Type | display face for headlines (Bricolage Grotesque), Inter body, JetBrains Mono | Montserrat throughout |
+| Radius | 18 px | 16 px |
+| Logo default | monogram | hex |
+| Colour | the brand's two colours are the only colour on the page | brand colours plus tinted washes |
+
+The studio rules are one block, `templates/design/studio.css`, appended to `globals.css` and scoped by `:root[data-design='studio']`. The palette for both themes is `scripts/lib/color.mjs` (`buildPalette({ ..., theme })`). The notes below describe the classic feel, which the studio theme keeps in structure (same components, same tokens).
+
+## Classic (taken from a production field-capture dashboard)
 
 **Feel:** a pale surface, white cards with a soft, brand-tinted shadow, one action colour (`--primary`) and one signal colour (`--signal`), pill buttons and chips,
 generous radius (16 px), Montserrat + JetBrains Mono. Motion only explains something; `prefers-reduced-motion` switches all of it off.

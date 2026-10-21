@@ -6,7 +6,6 @@
     "description": "PulseFit plans your workouts around your week and tracks how you get on.",
     "logo": { "style": "circle" },
     "colors": { "primary": "#0b7a53", "signal": "#ff5a5f" },
-    "font": { "body": "Inter", "mono": "JetBrains Mono" },
     "footerNote": "Made by a tiny team."
   },
   "vocab": { "device": "phone", "artifact": "app", "record": "workout", "records": "workouts", "area": "Releases" },

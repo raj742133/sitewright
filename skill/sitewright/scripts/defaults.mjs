@@ -12,9 +12,11 @@ export const DEFAULTS = {
     lang: 'en',
     logo: { style: 'hex', letter: '' },
     colors: { primary: '#1e5bd8', signal: '#1fb8e0' },
-    font: { body: 'Montserrat', mono: 'JetBrains Mono' },
+    font: { body: 'Inter', display: 'Bricolage Grotesque', mono: 'JetBrains Mono' },
     footerNote: 'Internal use only.',
   },
+  // design.theme: 'studio' (flat, warm, display headlines - the default) or 'classic' (the original pale surface with soft brand-tinted shadows)
+  design: { theme: 'studio' },
   vocab: { device: 'phone', artifact: 'app', record: 'record', records: 'records', area: 'Publishing' },
   nav: { dashboard: 'Dashboard', connect: 'Connect a {device}', publishing: 'Publishing', team: 'Team', home: 'Home page', suffix: 'dashboard' },
   landing: {

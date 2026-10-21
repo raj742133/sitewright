@@ -3,7 +3,11 @@
 // seed file, then photographs every page the site has, light and dark, desktop and phone.
 //
 //   cd <folder where `npm i playwright` has been run>
-//   node showcase.mjs --site D:/sites/coffee --seed seeds/coffee.json --port 4301 --out ../site/assets/shots/coffee
+//   node showcase.mjs --site D:/sites/coffee --seed seeds/coffee.json --port 4301 --out ../site/assets/shots/coffee [--fonts <folder>]
+//
+// The generated sites load their fonts from Google Fonts. Offline, pass --fonts with a folder holding
+// bricolage-grotesque-latin-wght-normal.woff2, inter-latin-wght-normal.woff2 and jetbrains-mono-latin-{400,500,600}-normal.woff2
+// (from the @fontsource packages) and those are served in their place, so the pictures show the real typefaces.
 //
 // Everything in the seeds is fictional. The "photos" are generated gradients, not real photographs.
 
@@ -20,6 +24,7 @@ const SEED = JSON.parse(fs.readFileSync(path.resolve(arg('seed')), 'utf8'));
 const PORT = Number(arg('port', '4301'));
 const OUT = path.resolve(arg('out'));
 const BASE = `http://localhost:${PORT}`;
+const FONTS = arg('fonts') ? path.resolve(arg('fonts')) : null;
 fs.mkdirSync(OUT, { recursive: true });
 
 const require = createRequire(path.join(process.cwd(), 'noop.js'));
@@ -74,9 +79,21 @@ async function scrollThrough(page) {
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(400);
 }
-const ctxFor = (kind, scheme = 'light') => browser.newContext(kind === 'desktop'
+const newCtx = (kind, scheme = 'light') => browser.newContext(kind === 'desktop'
   ? { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, colorScheme: scheme }
   : { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, colorScheme: scheme });
+// Google Fonts, answered from local files when --fonts is given (a variable face covers every weight the sites ask for)
+const FACES = [['Bricolage Grotesque', 'bricolage-grotesque-latin-wght-normal.woff2', '200 800'], ['Inter', 'inter-latin-wght-normal.woff2', '100 900'],
+  ['JetBrains Mono', 'jetbrains-mono-latin-400-normal.woff2', '400'], ['JetBrains Mono', 'jetbrains-mono-latin-500-normal.woff2', '500'], ['JetBrains Mono', 'jetbrains-mono-latin-600-normal.woff2', '600']];
+const ctxFor = async (kind, scheme = 'light') => {
+  const ctx = await newCtx(kind, scheme);
+  if (FONTS) {
+    const css = FACES.filter(([, f]) => fs.existsSync(path.join(FONTS, f))).map(([fam, f, w]) => `@font-face{font-family:'${fam}';src:url(https://fonts.gstatic.com/local/${f}) format('woff2');font-weight:${w};font-display:block}`).join('\n');
+    await ctx.route(/fonts\.googleapis\.com/, (r) => r.fulfill({ status: 200, contentType: 'text/css', body: css }));
+    await ctx.route(/fonts\.gstatic\.com\/local\//, (r) => r.fulfill({ status: 200, contentType: 'font/woff2', body: fs.readFileSync(path.join(FONTS, r.request().url().split('/local/')[1])) }));
+  }
+  return ctx;
+};
 
 try {
   // ---- demo "photos": generated, brand-coloured, clearly not real ------------------------------------------------------------

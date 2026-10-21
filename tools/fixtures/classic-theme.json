@@ -1,0 +1,7 @@
+{
+  "_comment": "The original look: design.theme \"classic\" (pale, cool, brand-tinted surfaces and soft shadows; Montserrat).",
+  "brand": { "name": "Harbour Books", "tagline": "Second-hand books, shipped fast.", "colors": { "primary": "#1e5bd8", "signal": "#14a6cc" } },
+  "design": { "theme": "classic" },
+  "vocab": { "record": "order", "records": "orders", "device": "tablet" },
+  "modules": ["landing", "signin", "dashboard", "connect"]
+}
