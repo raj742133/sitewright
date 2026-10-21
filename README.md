@@ -12,11 +12,13 @@
 <p align="center">
   <b>A Claude Code skill that builds your website.</b><br>
   Landing page, sign-in, authenticator MFA, records dashboard, release publishing and a connect-your-phone page,<br>
-  restyled with your brand, wired to a real backend, and tested in a real browser.
+  restyled with your brand, wired to a real backend, and tested in a real browser.<br>
+  Two design themes, 10 animated backgrounds, 22 interactive line figures, 58 live components and 200,000+ icons, all optional.
 </p>
 
 <p align="center">
   <a href="https://sitewright-skill.vercel.app"><b>Live site</b></a> &nbsp;·&nbsp;
+  <a href="https://sitewright-skill.vercel.app/demo/effects/"><b>Try it live</b></a> &nbsp;·&nbsp;
   <a href="#install">Install</a> &nbsp;·&nbsp;
   <a href="#what-it-makes">Screenshots</a> &nbsp;·&nbsp;
   <a href="#modules">Modules</a> &nbsp;·&nbsp;
@@ -26,7 +28,7 @@
 
 <p align="center">
   <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue">
-  <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-8A63D2">
+  <img alt="Claude Code skill" src="https://img.shields.io/badge/Claude%20Code-skill-c2410c">
   <img alt="Generates Next.js 15" src="https://img.shields.io/badge/generates-Next.js%2015%20%2B%20React%2019-black">
   <img alt="Tested with Playwright" src="https://img.shields.io/badge/tested%20with-Playwright-2EAD33">
 </p>
@@ -97,6 +99,31 @@ Give it a primary and an accent colour. It derives the washes, the text colours 
     <td width="33%"><img src="site/assets/shots/studio/landing-hero.jpg" alt="Design studio landing page"><br><sub><b>Pixel Studio</b> · landing page + MFA team area</sub></td>
   </tr>
 </table>
+
+## Design themes
+
+Generated sites speak one of two design languages, set with `design.theme` in `site.json`. Colours, words and modules are yours either way.
+
+| | `studio` (the default) | `classic` |
+| --- | --- | --- |
+| Surfaces | warm paper and ink neutrals that do not take your brand's hue, so your two colours are the only colour on the page | pale, cool surfaces tinted by the primary |
+| Depth | hairline borders, nearly flat | soft brand-tinted shadows |
+| Type | a display face for headlines (Bricolage Grotesque), Inter for text, JetBrains Mono | Montserrat throughout |
+| Logo default | a letter mark | a hexagon |
+
+<table>
+  <tr>
+    <td width="50%"><img src="site/assets/shots/coffee/dashboard.jpg" alt="The dashboard in the studio theme"><br><sub><b>studio</b> (default) · flat, warm, display headlines</sub></td>
+    <td width="50%"><img src="site/assets/shots/coffee-classic/dashboard.jpg" alt="The same dashboard in the classic theme"><br><sub><b>classic</b> · the original pale surface and soft shadows</sub></td>
+  </tr>
+</table>
+
+```jsonc
+"design": { "theme": "studio" }          // or "classic"
+"brand": { "font": { "display": "Fraunces" } }   // optional: any Google Font; leave out to take the theme's
+```
+
+The palette for both themes is derived from your two brand colours and every text colour is contrast-checked, in light and dark. The studio rules are one block of CSS (`skill/sitewright/templates/design/studio.css`).
 
 ## Modules
 
@@ -210,7 +237,18 @@ Put one anywhere in your own pages by name, nothing to register: `<Figure name="
 
 ## Components (optional)
 
-Beyond effects, the kit has a library of 58 small interactive components you import by name from `@/components/fx/ui`: tactile and hold-to-confirm buttons, a command input, a wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers (drag, reorder, shared-element expand) and 16 SVG charts (area, bar, line, live, candlestick, pie, radar, funnel, sankey, heatmap, tile map and more). They are original code with no animation or chart library, respect reduced motion, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`; the `/effects` gallery shows every one live. The catalogue, with what each is for, is `skill/sitewright/reference/components.md`. Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion and Bklit (see `THIRD_PARTY_NOTICES.md`).
+A library of 58 small interactive components you import by name from `@/components/fx/ui`. They are original code with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
+
+| Group | Components |
+| --- | --- |
+| Buttons | tactile button, hold-to-confirm, dynamic button, tear-off confirm, bell button, pull cord |
+| Inputs | command input, wheel picker, detent dial, option selector, invite code, drop zone, spring toggle |
+| Cards and layout | perforated ticket, stamp, playing cards, scroll-fade list, shared-element gallery, gesture card, draggable card |
+| Motion | stagger grid, line draw, shape morph, motion path, scroll timeline, timeline sequence, spring playground, presence list, drag to reorder |
+| Loaders and text | step loader, logo-trace loader, animated signature, scramble text, plucked text, receipt printer |
+| Charts (SVG, accessible) | area, bar, line, live line, profit/loss, composed, scatter, candlestick, pie, ring, radar, funnel, gauge, heatmap, sankey, US tile map |
+
+**[Try them live](https://sitewright-skill.vercel.app/demo/effects/#components)** · the catalogue, with what each is for, is [`reference/components.md`](skill/sitewright/reference/components.md). Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion and Bklit; all code is written for this kit (see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).
 
 ## Install
 
@@ -353,7 +391,7 @@ Details of every check are in [`reference/testing.md`](skill/sitewright/referenc
 
 ### Not covered
 
-- `next dev` crashed with PGlite on the Node versions tried (24.18 and 22.23), so only production builds are tested.
+- `npm run dev` is only smoke-tested (the first page must render without a server error); the browser checks run against the production build.
 - Real phones, Safari, Firefox and tablets. Only Chromium at three widths.
 - S3 and Azure storage against a real bucket, and a real Postgres server.
 - Brand names longer than about 24 characters in the phone header.
@@ -363,9 +401,10 @@ Details of every check are in [`reference/testing.md`](skill/sitewright/referenc
 
 ```text
 skill/sitewright/      the skill: SKILL.md, scripts, templates, examples, reference docs
-  scripts/             scaffold.mjs (generator), verify.mjs (browser verifier), effects.mjs, modules.mjs, defaults.mjs
+  scripts/             scaffold.mjs (generator), verify.mjs (browser verifier), effects.mjs, ui.mjs + ui/ (component registry), modules.mjs, defaults.mjs
   templates/           base + one folder per module, mirroring the generated project
-  templates/fx/        the effects: backgrounds, headline animations, micro-interactions, css
+  templates/fx/        the effects: backgrounds, headline animations, micro-interactions, figures, css; fx/ui is the component library
+  templates/design/    the studio theme's stylesheet (classic is the base stylesheet)
   examples/            seven complete configs
   reference/           config keys, modules, design system, effects, testing, gotchas
 site/                  the website (static HTML/CSS/JS) plus demo/, the exported live effects gallery; deployed on Vercel
