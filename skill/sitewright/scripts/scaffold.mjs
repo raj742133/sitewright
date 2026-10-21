@@ -324,6 +324,7 @@ if (has('landing') && cfg.landing.proof) flags.add('proof');
 if (has('landing') && cfg.landing.features) flags.add('features');
 if (has('landing') && cfg.landing.compat) flags.add('compat');
 if (has('landing') && cfg.landing.faq?.length) flags.add('faq');
+if (theme === 'studio') flags.add('studio');
 if (cfg.storage?.provider === 's3') flags.add('s3');
 if (cfg.storage?.provider === 'azure') flags.add('azure');
 
