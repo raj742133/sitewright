@@ -7,6 +7,7 @@
 //
 // The generated sites load their fonts from Google Fonts. Offline, pass --fonts with a folder holding
 // bricolage-grotesque-latin-wght-normal.woff2, inter-latin-wght-normal.woff2 and jetbrains-mono-latin-{400,500,600}-normal.woff2
+// and (for the classic theme) montserrat-latin-wght-normal.woff2
 // (from the @fontsource packages) and those are served in their place, so the pictures show the real typefaces.
 //
 // Everything in the seeds is fictional. The "photos" are generated gradients, not real photographs.
@@ -83,7 +84,7 @@ const newCtx = (kind, scheme = 'light') => browser.newContext(kind === 'desktop'
   ? { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, colorScheme: scheme }
   : { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, colorScheme: scheme });
 // Google Fonts, answered from local files when --fonts is given (a variable face covers every weight the sites ask for)
-const FACES = [['Bricolage Grotesque', 'bricolage-grotesque-latin-wght-normal.woff2', '200 800'], ['Inter', 'inter-latin-wght-normal.woff2', '100 900'],
+const FACES = [['Bricolage Grotesque', 'bricolage-grotesque-latin-wght-normal.woff2', '200 800'], ['Inter', 'inter-latin-wght-normal.woff2', '100 900'], ['Montserrat', 'montserrat-latin-wght-normal.woff2', '100 900'],
   ['JetBrains Mono', 'jetbrains-mono-latin-400-normal.woff2', '400'], ['JetBrains Mono', 'jetbrains-mono-latin-500-normal.woff2', '500'], ['JetBrains Mono', 'jetbrains-mono-latin-600-normal.woff2', '600']];
 const ctxFor = async (kind, scheme = 'light') => {
   const ctx = await newCtx(kind, scheme);
