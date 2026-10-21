@@ -6,7 +6,6 @@
     "description": "Halden Legal is a small property law firm. Clients follow their matter online.",
     "logo": { "style": "monogram", "letter": "H" },
     "colors": { "primary": "#1b2a4a", "signal": "#c9a227" },
-    "font": { "body": "Inter", "mono": "JetBrains Mono" },
     "footerNote": "Regulated in England and Wales."
   },
   "vocab": { "device": "laptop", "artifact": "document", "record": "matter", "records": "matters", "area": "Admin" },

@@ -278,6 +278,20 @@ const cfg = interpolate(merged, vars);
 cfg.brand.slug = slug;
 cfg.brand.cookie = cookie;
 
+// design theme and fonts. A font the config names is respected; otherwise the theme brings its own (the display face falls back to the body face)
+const theme = String(cfg.design?.theme ?? 'studio');
+if (!['studio', 'classic'].includes(theme)) fail(`design.theme must be "studio" or "classic", not "${theme}".`);
+cfg.design = { ...(cfg.design ?? {}), theme };
+if (!userCfg.brand?.logo?.style) cfg.brand.logo.style = theme === 'studio' ? 'monogram' : 'hex'; // the studio default is a letter mark; name a style to choose another
+{
+  const uf = userCfg.brand?.font ?? {};
+  cfg.brand.font = {
+    body: uf.body ?? (theme === 'classic' ? 'Montserrat' : 'Inter'),
+    display: uf.display ?? uf.body ?? (theme === 'classic' ? 'Montserrat' : 'Bricolage Grotesque'),
+    mono: uf.mono ?? 'JetBrains Mono',
+  };
+}
+
 // colours / logo
 for (const k of ['primary', 'signal']) if (!/^#[0-9a-fA-F]{3,6}$/.test(cfg.brand.colors[k])) fail(`brand.colors.${k} must be a hex colour like #1e5bd8`);
 if (!LOGO_STYLES.includes(cfg.brand.logo.style)) fail(`brand.logo.style must be one of ${LOGO_STYLES.join(', ')}`);
@@ -294,7 +308,7 @@ const added = modules.filter((m) => !wanted.includes(m) && m !== 'base');
 
 if (a.check) {
   let effects; try { effects = resolveEffects(cfg.effects ?? {}, { modules }); } catch (e) { fail(e.message); }
-  console.log(JSON.stringify({ brand: brandName, slug, modules, addedAsDependencies: added, effects }, null, 2)); process.exit(0);
+  console.log(JSON.stringify({ brand: brandName, slug, design: cfg.design, modules, addedAsDependencies: added, effects }, null, 2)); process.exit(0);
 }
 
 // output dir
@@ -310,6 +324,7 @@ if (has('landing') && cfg.landing.proof) flags.add('proof');
 if (has('landing') && cfg.landing.features) flags.add('features');
 if (has('landing') && cfg.landing.compat) flags.add('compat');
 if (has('landing') && cfg.landing.faq?.length) flags.add('faq');
+if (theme === 'studio') flags.add('studio');
 if (cfg.storage?.provider === 's3') flags.add('s3');
 if (cfg.storage?.provider === 'azure') flags.add('azure');
 
@@ -326,7 +341,7 @@ flags.add('fx');
 const iconResult = await iconStep(cfg, modules, iconOpts());
 
 // palette
-const palette = buildPalette({ primary: cfg.brand.colors.primary, signal: cfg.brand.colors.signal, neutral: cfg.brand.colors.neutralHue });
+const palette = buildPalette({ primary: cfg.brand.colors.primary, signal: cfg.brand.colors.signal, neutral: cfg.brand.colors.neutralHue, theme });
 
 const loginRedirect = has('dashboard') ? '/dashboard' : has('connect') ? '/connect' : has('mfa') ? '/admin' : has('fxgallery') ? '/effects' : '/';
 // A sign-in with nothing behind it would redirect '/' to '/' forever, so that site gets a small page of its own.
@@ -345,8 +360,10 @@ const tokens = {
   RECORD: cfg.vocab.record, RECORDS: cfg.vocab.records, RECORD_CAP: cap(cfg.vocab.record), RECORDS_CAP: cap(cfg.vocab.records),
   LANG: cfg.brand.lang, DESCRIPTION_JSON: JSON.stringify(cfg.brand.description),
   TITLE_JSON: JSON.stringify(`${brandName} · ${cfg.brand.tagline}`),
-  FONT_BODY: cfg.brand.font.body, FONT_MONO: cfg.brand.font.mono,
-  FONTS_URL: `https://fonts.googleapis.com/css2?${fontQuery(cfg.brand.font.body, '400;500;600;700;800')}&${fontQuery(cfg.brand.font.mono, '400;500;600')}&display=swap`,
+  FONT_BODY: cfg.brand.font.body, FONT_DISPLAY: cfg.brand.font.display, FONT_MONO: cfg.brand.font.mono,
+  FONTS_URL: `https://fonts.googleapis.com/css2?${[...new Set([cfg.brand.font.body, cfg.brand.font.display])].map((f) => fontQuery(f, '400;500;600;700;800')).join('&')}&${fontQuery(cfg.brand.font.mono, '400;500;600')}&display=swap`,
+  DESIGN_ATTR: theme === 'studio' ? ' data-design="studio"' : '',
+  THEME_CSS: theme === 'studio' ? fs.readFileSync(path.join(TEMPLATES, 'design', 'studio.css'), 'utf8') : '',
   LOGIN_REDIRECT: loginRedirect,
   PACKAGE_NAME: cfg.publishing.packageName || '',
   EXTENSIONS_JSON: JSON.stringify(exts), ACCEPT_ATTR: exts.join(','),

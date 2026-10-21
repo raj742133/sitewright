@@ -25,7 +25,7 @@ const FONTS = '__FONTS_URL__';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="__LANG__" suppressHydrationWarning__FX_HTML_ATTRS__>
+    <html lang="__LANG__"__DESIGN_ATTR__ suppressHydrationWarning__FX_HTML_ATTRS__>
       <head>
         {/* The saved light/dark choice, before the first paint - see ThemeToggle. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />

@@ -104,7 +104,7 @@ export default async function Home() {
       <RevealOnScroll />
 
       <main>
-        {/* The hero and the story share one road: it starts as the hero's mark (Route.tsx). */}
+        {/* The hero and the story share one road. In the classic theme it starts as the hero's mark (Route.tsx); in the studio theme the hero shows the brand's own logo shape and the road starts at the story. */}
         <div className="route-host">
           <Route />
           <section className="lp-hero" id="get">
@@ -123,7 +123,11 @@ export default async function Home() {
               </div>
               <div className="lp-art">
                 <Figure place="hero" />
+                {/*#if studio*/}
+                <div className="lp-mark-static" data-hero-mark aria-hidden="true"><LogoMark size={240} animated /></div>
+                {/*#else*/}
                 <div className="lp-mark-box" data-route-logo aria-hidden="true" />
+                {/*#endif*/}
               </div>
             </div>
           </section>

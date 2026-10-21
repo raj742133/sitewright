@@ -968,7 +968,7 @@ async function checkFigures(browser) {
     const { ctx, page } = await desk('fig-hero');
     await page.goto(`${BASE}/`, { waitUntil: 'networkidle' });
     await figureWorks(page, 'hero', { minWidth: 250 });
-    const fig = await rect(page, sel('hero')), logo = await rect(page, '[data-route-logo]'), h1 = await textRect(page, '.lp-h1');
+    const fig = await rect(page, sel('hero')), logo = await rect(page, '[data-route-logo], [data-hero-mark]'), h1 = await textRect(page, '.lp-h1');
     truthy(logo && logo.w >= 80 && logo.h >= 80, `the mark's box is ${logo ? Math.round(logo.w) : 0}px`);
     truthy(overlap(fig, logo) < 0.12, `figure covers the mark (${Math.round(overlap(fig, logo) * 100)}%)`);
     truthy(overlap(fig, h1) < 0.02, 'figure covers the headline');

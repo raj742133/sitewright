@@ -12,7 +12,7 @@ __PALETTE_CSS__
   --radius: 16px;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
   --font-body: '__FONT_BODY__', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: var(--font-body);
+  --font-display: '__FONT_DISPLAY__', var(--font-body);
   --font-mono: '__FONT_MONO__', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
@@ -405,3 +405,4 @@ header.site nav a:has(.nav-ic) { display: inline-flex; align-items: center; gap:
 .tone-added .stat-ic { color: var(--added); }
 .chip-ic { width: 15px; height: 15px; margin-right: 6px; vertical-align: -0.22em; }
 .mode-ic { width: 12px; height: 12px; margin-right: 5px; vertical-align: -0.18em; }
+__THEME_CSS__

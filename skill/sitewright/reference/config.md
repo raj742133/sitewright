@@ -15,11 +15,12 @@ backticks, backslashes, braces, `<`, `>` and `$` are removed) so user copy can n
     "tagline": "Small-batch coffee.",           // page title
     "description": "...",                       // meta description
     "lang": "en",
-    "logo": { "style": "hex|circle|square|drop|monogram", "letter": "" },  // letter: for monogram, default = first letter
+    "logo": { "style": "hex|circle|square|drop|monogram", "letter": "" },  // letter: for monogram, default = first letter. Default: monogram (studio theme), hex (classic)
     "colors": { "primary": "#7a4a21", "signal": "#e8a33d" },               // the whole light + dark palette comes from these two
-    "font": { "body": "Montserrat", "mono": "JetBrains Mono" },            // any Google Font family
+    "font": { "body": "Inter", "display": "Bricolage Grotesque", "mono": "JetBrains Mono" },  // any Google Font family; leave out to take the theme's fonts (display falls back to body)
     "footerNote": "Roasted in Leeds."
   },
+  "design": { "theme": "studio" },              // "studio" (default: flat, warm neutrals, display headlines) or "classic" (the original pale surface with soft brand-tinted shadows)
   "vocab": { "device": "tablet", "artifact": "catalogue", "record": "order", "records": "orders", "area": "Publishing" },
   "storage": { "provider": "s3|azure" },       // optional: includes that storage driver, its packages and env vars (local is always there)
   "nav": { "dashboard": "Dashboard", "connect": "Connect a {device}", "publishing": "Publishing", "team": "Team", "home": "Home page", "suffix": "dashboard" },

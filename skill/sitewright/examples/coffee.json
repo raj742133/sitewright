@@ -6,7 +6,6 @@
     "description": "Bean & Barrel roasts small batches to order and ships them within two days.",
     "logo": { "style": "drop" },
     "colors": { "primary": "#7a4a21", "signal": "#e8a33d" },
-    "font": { "body": "Montserrat", "mono": "JetBrains Mono" },
     "footerNote": "Roasted in Leeds."
   },
   "vocab": { "device": "tablet", "artifact": "catalogue", "record": "order", "records": "orders", "area": "Publishing" },
