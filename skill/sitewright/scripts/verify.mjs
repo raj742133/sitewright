@@ -114,8 +114,9 @@ const overflow = (page) => page.evaluate(() => ({ sw: document.documentElement.s
 /** Scrolls the whole page in steps so every scroll-triggered reveal fires, then returns to the top. */
 async function scrollThrough(page) {
   const h = await page.evaluate(() => document.documentElement.scrollHeight);
-  for (let y = 0; y < h; y += 500) { await page.evaluate((v) => window.scrollTo(0, v), y); await page.waitForTimeout(60); }
-  await page.evaluate(() => window.scrollTo(0, 0));
+  // 'instant': generated pages scroll smoothly, and a smooth scroll that is restarted every 60 ms may never reach the sections the check is about to look at
+  for (let y = 0; y < h; y += 500) { await page.evaluate((v) => window.scrollTo({ top: v, behavior: 'instant' }), y); await page.waitForTimeout(60); }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await page.waitForTimeout(200);
 }
 
