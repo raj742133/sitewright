@@ -161,7 +161,7 @@ export function Demo() {
           { id: 'a', label: 'Overview', panel: 'Visits are up 12% this week.' },
           { id: 'b', label: 'Pages', panel: '14 pages, 2 drafts waiting.' },
           { id: 'c', label: 'Media', panel: '86 files, 41 MB used.' },
-          { id: 'd', label: 'Settings', panel: 'Domain and theme options.' },
+          { id: 'd', label: 'Setup', panel: 'Domain and theme options.' },
         ]}
       />
     </div>
