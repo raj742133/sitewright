@@ -1,6 +1,6 @@
 .ui-magic-tree-qr { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 20px; align-items: center; width: 100%; max-width: 640px; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); }
 .ui-magic-tree-qr-fig { margin: 0; display: grid; gap: 6px; justify-items: center; }
-.ui-magic-tree-qr-svg, .ui-magic-tree-qr-empty { width: 100%; aspect-ratio: 1; display: block; border-radius: var(--radius, 12px); box-shadow: var(--shadow, 0 1px 3px rgba(0, 0, 0, .15)); background: #fff; }
+.ui-magic-tree-qr-svg, .ui-magic-tree-qr-empty { width: 100%; display: block; border-radius: var(--radius, 12px); box-shadow: var(--shadow, 0 1px 3px rgba(0, 0, 0, .15)); background: #fff; }
 .ui-magic-tree-qr-empty { display: grid; place-items: center; font-size: 3rem; border: 1px dashed var(--line-strong, #bbb); box-shadow: none; background: var(--raised, #fff); }
 .ui-magic-tree-qr figcaption { font: 12px var(--font-mono, monospace); color: var(--muted, #555); }
 .ui-magic-tree-qr figcaption b { color: var(--ink, #111); letter-spacing: .08em; }
@@ -25,3 +25,24 @@
 @keyframes ui-magic-tree-qr-grow { from { transform: scale(0); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .ui-magic-tree-qr-dot { animation: none; } }
 .ui-magic-tree-qr.is-compact figcaption { white-space: nowrap; font-size: 11px; }
+
+.ui-magic-tree-qr-fig { perspective: 900px; }
+.ui-magic-tree-qr-stage { position: relative; width: 100%; transition: transform .25s var(--ease, ease-out); transform-style: preserve-3d; }
+.ui-magic-tree-qr-empty { aspect-ratio: 1; }
+.ui-magic-tree-qr-svg { filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .18)); border-radius: 0; box-shadow: none; background: none; overflow: visible; }
+.ui-magic-tree-qr-drift { position: absolute; inset: -12% -10%; pointer-events: none; overflow: hidden; }
+.ui-magic-tree-qr-drift i { position: absolute; top: -6px; left: calc(var(--i) * 8.4%); width: 8px; height: 8px; opacity: 0; animation: ui-magic-tree-qr-drift 6.5s linear calc(var(--i) * -0.55s) infinite; }
+.ui-magic-tree-qr-drift.is-spring i { background: #f1a3bf; border-radius: 60% 0 60% 0; }
+.ui-magic-tree-qr-drift.is-autumn i { background: #d9631f; border-radius: 0 70% 0 70%; width: 10px; height: 10px; }
+.ui-magic-tree-qr-drift.is-autumn i:nth-child(3n) { background: #e0a21f; }
+.ui-magic-tree-qr-drift.is-winter i { background: #fff; border-radius: 50%; width: 6px; height: 6px; box-shadow: 0 0 0 1px rgba(110, 130, 165, .5); }
+.ui-magic-tree-qr-style { display: grid; gap: 10px; }
+.ui-magic-tree-qr-seasons { display: flex; flex-wrap: wrap; gap: 6px; }
+.ui-magic-tree-qr-seasons button, .ui-magic-tree-qr-reset { min-height: 44px; padding: 0 14px; border: 1.5px solid var(--line-strong, #aaa); border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #111); font: 600 13px var(--font-body, system-ui); text-transform: capitalize; cursor: pointer; }
+.ui-magic-tree-qr-seasons button[aria-pressed='true'] { background: var(--ink, #111); color: var(--surface, #fff); border-color: var(--ink, #111); }
+.ui-magic-tree-qr-seasons button:focus-visible, .ui-magic-tree-qr-reset:focus-visible, .ui-magic-tree-qr-swatch input:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-magic-tree-qr-swatch { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; margin-right: 12px; }
+.ui-magic-tree-qr-swatch input { width: 44px; height: 44px; padding: 2px; border: 1.5px solid var(--line-strong, #aaa); border-radius: 10px; background: var(--raised, #fff); cursor: pointer; }
+@keyframes ui-magic-tree-qr-drift { 0% { transform: translate(0, 0) rotate(0); opacity: 0; } 10% { opacity: .9; } 50% { transform: translate(14px, 160px) rotate(160deg); } 90% { opacity: .9; } 100% { transform: translate(-10px, 320px) rotate(320deg); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ui-magic-tree-qr-stage { transition: none; transform: none !important; } .ui-magic-tree-qr-drift { display: none; } }
+.ui-magic-tree-qr-svg { position: relative; z-index: 1; } .ui-magic-tree-qr-drift { z-index: 0; }
