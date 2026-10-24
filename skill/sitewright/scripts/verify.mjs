@@ -1043,7 +1043,8 @@ async function checkFigures(browser) {
   if (F.empty && has('dashboard')) await check('empty: the figure shows when a search finds nothing', async () => {
     const { ctx, page } = await signedIn('fig-empty');
     await page.goto(`${BASE}/dashboard`, { waitUntil: 'networkidle' });
-    if (!(await page.locator(sel('empty')).count())) { await page.locator('.search input').fill('zzzqqq-no-such-thing'); await page.waitForTimeout(400); }
+    // `networkidle` can come before the page has hydrated, and a fill into a not-yet-controlled field is dropped; type it again until the empty state is there
+    for (let i = 0; i < 4 && !(await page.locator(sel('empty')).count()); i++) { await page.locator('.search input').fill(''); await page.locator('.search input').fill('zzzqqq-no-such-thing'); await page.waitForTimeout(700); }
     await figureWorks(page, 'empty', { minWidth: 120 });
     await noOverflow(page, 'dashboard empty state'); await shot(page, 'fig-empty'); await ctx.close();
   });
