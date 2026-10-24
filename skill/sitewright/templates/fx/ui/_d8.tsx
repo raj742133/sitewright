@@ -91,7 +91,7 @@ export function Bars({ data, aName = 'Value', bName = 'Other', fmt = fmtNum, tit
         ))}
         {data.map((p, i) => (
           <g key={p.label} onPointerEnter={() => setTip(i)} onPointerLeave={() => setTip(-1)}>
-            <rect x={cx(i) - (hasB ? bw : bw / 2)} y={y(p.a)} width={bw} height={Math.max(1, padT + ph - y(p.a))} rx={2.5} fill={ca} style={grow(i)} tabIndex={0} aria-label={`${p.label}: ${aName} ${fmt(p.a)}${p.b != null ? `, ${bName} ${fmt(p.b)}` : ''}`} onFocus={() => setTip(i)} onBlur={() => setTip(-1)} />
+            <rect x={cx(i) - (hasB ? bw : bw / 2)} y={y(p.a)} width={bw} height={Math.max(1, padT + ph - y(p.a))} rx={2.5} fill={ca} style={grow(i)} tabIndex={0} role="img" aria-label={`${p.label}: ${aName} ${fmt(p.a)}${p.b != null ? `, ${bName} ${fmt(p.b)}` : ''}`} onFocus={() => setTip(i)} onBlur={() => setTip(-1)} />
             {p.b != null && <rect x={cx(i)} y={y(p.b)} width={bw} height={Math.max(1, padT + ph - y(p.b))} rx={2.5} fill={cb} style={grow(i)} />}
             <rect x={cx(i) - slot / 2} y={0} width={slot} height={height} fill="transparent" />
             <text x={cx(i)} y={height - 4} textAnchor="middle" fontSize={10} fill="var(--muted, #667)">{p.label}</text>

@@ -67,7 +67,7 @@ export function Avatar({ name, size = 28, hue, style }: { name: string; size?: n
   let h = hue;
   if (h === undefined) { h = 0; for (const c of name) h = (h * 31 + c.charCodeAt(0)) % 360; }
   return (
-    <span aria-hidden="true" style={{ width: size, height: size, borderRadius: '50%', display: 'inline-grid', placeItems: 'center', flex: 'none', fontSize: size * 0.4, fontWeight: 700, color: '#fff', background: `hsl(${h} 45% 36%)`, letterSpacing: '.02em', ...style }}>{ini}</span>
+    <span aria-hidden="true" style={{ width: size, height: size, borderRadius: '50%', display: 'inline-grid', placeItems: 'center', flex: 'none', fontSize: Math.max(10, size * 0.4), fontWeight: 700, color: '#fff', background: `hsl(${h} 45% 28%)`, letterSpacing: '.02em', ...style }}>{ini}</span>
   );
 }
 

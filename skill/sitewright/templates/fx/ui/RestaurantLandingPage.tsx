@@ -126,9 +126,9 @@ export default function RestaurantLandingPage({ name = 'Ember & Fig', menu = MEN
         <div role="tablist" aria-label="Menu sections" className="ui-restaurant-landing-page-tabs">
           {tabs.map((t, i) => <button key={t} ref={(el) => { tabRefs.current[i] = el; }} role="tab" id={`rl-tab-${i}`} aria-selected={t === tab} aria-controls="rl-panel" tabIndex={t === tab ? 0 : -1} onClick={() => setTab(t)} onKeyDown={(e) => keyTabs(e, i)}>{t}</button>)}
         </div>
-        <ul role="tabpanel" id="rl-panel" aria-labelledby={`rl-tab-${Math.max(0, tabs.indexOf(tab))}`} key={tab} className="ui-restaurant-landing-page-items">
+        <div role="tabpanel" id="rl-panel" aria-labelledby={`rl-tab-${Math.max(0, tabs.indexOf(tab))}`} key={tab} style={{ display: 'contents' }}><ul className="ui-restaurant-landing-page-items">
           {(menu[tab] ?? []).map((m) => <li key={m.name}><div><b>{m.name}</b><small>{m.desc}</small></div><span>${m.price}</span></li>)}
-        </ul>
+        </ul></div>
       </section>
       <div className="ui-restaurant-landing-page-two">
         <section id="rl-book" className="ui-restaurant-landing-page-sec ui-restaurant-landing-page-book" aria-labelledby="rl-hb">

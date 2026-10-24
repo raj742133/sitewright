@@ -120,7 +120,7 @@ export default function MessagingDashboard({ conversations = SAMPLE, agent = 'Su
           ))}
         </div>
         <input className="ui-messaging-dashboard-search" type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search conversations" aria-label="Search conversations" />
-        <ul role="tabpanel" className="ui-messaging-dashboard-convs" aria-live="polite">
+        <div role="tabpanel" aria-live="polite" style={{ display: 'contents' }}><ul className="ui-messaging-dashboard-convs">
           {list.map((c, i) => {
             const last = c.messages[c.messages.length - 1];
             return (
@@ -137,7 +137,7 @@ export default function MessagingDashboard({ conversations = SAMPLE, agent = 'Su
             );
           })}
           {list.length === 0 && <li className="ui-messaging-dashboard-empty">No {tab} conversations{q ? ' match your search' : ''}.</li>}
-        </ul>
+        </ul></div>
       </aside>
 
       <section className="ui-messaging-dashboard-thread" aria-label={cur ? `Conversation with ${cur.name}` : 'Conversation'}>

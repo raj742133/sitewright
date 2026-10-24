@@ -93,5 +93,5 @@ function SearchIcon() {
 }
 
 export function Demo() {
-  return <div style={{ padding: '14px 16px', minHeight: 150 }}><FlippingSearchBar /></div>;
+  return <div style={{ width: 260, maxWidth: '100%', padding: '14px 0', minHeight: 150 }}><FlippingSearchBar /></div>;
 }
