@@ -65,6 +65,8 @@ export default function MagicTreeQr({ value, defaultValue = 'https://sitewright-
   const [leaf, setLeaf] = useState<string | null>(null);
   const [trunk, setTrunk] = useState('#6b4a33');
   const [view, setView] = useState(firstView);
+  const [turning, setTurning] = useState(false);
+  const turnTimer = useRef(0);
   const { reduced } = usePrefs();
   const flatRef = useRef<SVGSVGElement>(null);
   const text = value ?? debounced;
@@ -98,16 +100,18 @@ export default function MagicTreeQr({ value, defaultValue = 'https://sitewright-
     img.src = url;
   };
   const copy = async () => { try { await navigator.clipboard.writeText(text); setNote('Link copied.'); } catch { setNote('Copy is blocked here; select the field instead.'); } };
+  const turn = () => { setTurning(true); window.clearTimeout(turnTimer.current); turnTimer.current = window.setTimeout(() => setTurning(false), 900); };
+  useEffect(() => () => window.clearTimeout(turnTimer.current), []);
   const flip = () => setView((v) => (v === 'qr' ? 'tree' : 'qr'));
 
   return (
     <div className={`ui-magic-tree-qr${compact ? ' is-compact' : ''}${className ? ' ' + className : ''}`}>
       <figure className="ui-magic-tree-qr-fig">
-        <div className={`ui-magic-tree-qr-stage is-${view}`} onClick={qr ? flip : undefined}>
+        <div className={`ui-magic-tree-qr-stage is-${view}${turning && !reduced ? ' is-turning' : ''}`} onClick={qr ? flip : undefined}>
           {!reduced && view === 'tree' && season !== 'summer' && <div className={`ui-magic-tree-qr-drift is-${season}`} aria-hidden="true">{DRIFT.map((i) => <i key={`${season}-${i}`} style={{ ['--i' as string]: i }} />)}</div>}
           {qr ? (
             <>
-              <svg ref={flatRef} key={text} viewBox={`0 0 ${total} ${total}`} role="img" aria-label={`QR code for ${text}. Scan it to open the link.`} aria-hidden={view === 'tree'} className={`ui-magic-tree-qr-svg${reduced ? ' is-static' : ''}`} shapeRendering="crispEdges">
+              <svg ref={flatRef} key={`${text}-${season}-${leaf}`} viewBox={`0 0 ${total} ${total}`} role="img" aria-label={`QR code for ${text}. Scan it to open the link.`} aria-hidden={view === 'tree'} className={`ui-magic-tree-qr-svg${reduced ? ' is-static' : ''}`} shapeRendering="crispEdges">
                 <rect width={total} height={total} fill={PAPER} />
                 <g transform={`translate(${QUIET} ${QUIET})`}>
                   {cells.map((c) => <rect key={`${c.x}-${c.y}`} className="ui-magic-tree-qr-dot" x={c.x} y={c.y} width={1.02} height={1.02} fill={c.c} style={{ animationDelay: `${(c.d * 0.9).toFixed(2)}s` }} />)}
@@ -135,9 +139,9 @@ export default function MagicTreeQr({ value, defaultValue = 'https://sitewright-
         {!compact && (
           <div className="ui-magic-tree-qr-style">
             <div role="group" aria-label="Season" className="ui-magic-tree-qr-seasons">
-              {SEASONS.map((n) => <button key={n} type="button" aria-pressed={season === n} onClick={() => setSeason(n)}>{n}</button>)}
+              {SEASONS.map((n) => <button key={n} type="button" aria-pressed={season === n} onClick={() => { if (n !== season) { setSeason(n); turn(); } }}>{n}</button>)}
             </div>
-            <label className="ui-magic-tree-qr-swatch">Leaves <input type="color" value={leaf ?? '#2f7d3a'} onChange={(e) => setLeaf(e.target.value)} /></label>
+            <label className="ui-magic-tree-qr-swatch">Leaves <input type="color" value={leaf ?? '#2f7d3a'} onChange={(e) => { setLeaf(e.target.value); turn(); }} /></label>
             <label className="ui-magic-tree-qr-swatch">Trunk <input type="color" value={trunk} onChange={(e) => setTrunk(e.target.value)} /></label>
             {leaf && <button type="button" className="ui-magic-tree-qr-reset" onClick={() => { setLeaf(null); setTrunk('#6b4a33'); }}>Reset colours</button>}
           </div>

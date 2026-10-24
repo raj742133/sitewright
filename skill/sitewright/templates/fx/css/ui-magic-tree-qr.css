@@ -48,3 +48,8 @@
 @keyframes ui-magic-tree-qr-sway { 50% { transform: rotate(.9deg); } }
 @keyframes ui-magic-tree-qr-drift { 0% { transform: translate(0, 0) rotate(0); opacity: 0; } 10% { opacity: .9; } 50% { transform: translate(14px, 150px) rotate(160deg); } 90% { opacity: .9; } 100% { transform: translate(-10px, 300px) rotate(320deg); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .ui-magic-tree-qr-dot, .ui-magic-tree-qr-blob, .ui-magic-tree-qr-sway { animation: none; } .ui-magic-tree-qr-svg, .ui-magic-tree-qr-treewrap { transition: none; } .ui-magic-tree-qr-drift { display: none; } }
+
+.ui-magic-tree-qr-fig { perspective: 900px; }
+.ui-magic-tree-qr-stage.is-turning { animation: ui-magic-tree-qr-turn .8s var(--ease, ease-in-out); }
+@keyframes ui-magic-tree-qr-turn { 0% { transform: none; } 45% { transform: rotateY(38deg) rotateZ(-4deg) scale(.94); } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ui-magic-tree-qr-stage.is-turning { animation: none; } }
