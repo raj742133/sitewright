@@ -242,7 +242,7 @@ A library of 116 small interactive components you import by name from `@/compone
 | Group | Components |
 | --- | --- |
 | Buttons | tactile, glossy, hold-to-confirm, dynamic, tear-off, bell, pull cord, look-at-you pay, folding subscribe, hungry delete, rolling publish, radial share, liquid upload, neon send, neumorphic play, rippling download |
-| Inputs | one-time-code field, command input, wheel picker, detent dial, option selector, invite code, drop zone, spring toggle, upload progress, flipping search bar, ring-to-rope upload, magic tree QR (paste a link, get a scannable QR code on a tree, with seasons and your own colours) |
+| Inputs | one-time-code field, command input, wheel picker, detent dial, option selector, invite code, drop zone, spring toggle, upload progress, flipping search bar, ring-to-rope upload, magic tree QR (paste a link: a scannable code that tap-flips into a 3D tree, with seasons and your own colours) |
 | Cards and layout | payment card, chat thread, glass carousel, perforated ticket, stamp, playing cards, scroll-fade list, shared-element gallery, gesture card, draggable card |
 | Motion | stagger grid, line draw, shape morph, motion path, scroll timeline, timeline sequence, spring playground, presence list, drag to reorder |
 | Navigation | nav tabs, glow sidebar, liquid-glass nav (stretching pill), underline nav |
