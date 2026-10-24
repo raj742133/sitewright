@@ -1,0 +1,83 @@
+.ui-art-marketplace-page { container-type: inline-size; box-sizing: border-box; width: 100%; color: var(--ink, #111); background: var(--surface, #faf8f5); font-family: var(--font-body, system-ui, sans-serif); font-size: 15px; line-height: 1.5; }
+.ui-art-marketplace-page *, .ui-art-marketplace-page *::before, .ui-art-marketplace-page *::after { box-sizing: border-box; }
+.ui-art-marketplace-page h1, .ui-art-marketplace-page h2, .ui-art-marketplace-page p { margin: 0; }
+.ui-art-marketplace-page ul { list-style: none; margin: 0; padding: 0; }
+.ui-art-marketplace-page a { color: inherit; }
+.ui-art-marketplace-page a:focus-visible, .ui-art-marketplace-page button:focus-visible, .ui-art-marketplace-page input:focus-visible, .ui-art-marketplace-page-art:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-art-marketplace-page-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 20px; border-bottom: 1px solid var(--line, #e3e0da); flex-wrap: wrap; }
+.ui-art-marketplace-page-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 18px; text-decoration: none; letter-spacing: -.02em; }
+.ui-art-marketplace-page-brand span { width: 18px; height: 18px; border: 3px solid var(--ink, #111); border-radius: 3px; box-shadow: 3px 3px 0 var(--signal, #f59e0b); }
+.ui-art-marketplace-page-nav nav { display: none; gap: 4px; }
+.ui-art-marketplace-page-nav nav a { text-decoration: none; padding: 10px 12px; border-radius: 8px; font-size: 14px; }
+.ui-art-marketplace-page-nav nav a:hover { background: var(--raised-2, #eee); }
+.ui-art-marketplace-page-cart { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: inherit; cursor: pointer; font: inherit; }
+.ui-art-marketplace-page-hero { display: grid; gap: 28px; padding: 36px 20px 40px; overflow: hidden; }
+.ui-art-marketplace-page-kicker { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted, #5b6472); margin-bottom: 6px !important; }
+.ui-art-marketplace-page h1 { font-size: clamp(32px, 9cqi, 58px); line-height: 1.02; letter-spacing: -.035em; margin-bottom: 14px; }
+.ui-art-marketplace-page-copy > p:not(.ui-art-marketplace-page-kicker) { color: var(--muted, #5b6472); max-width: 46ch; margin-bottom: 20px; }
+.ui-art-marketplace-page-copy > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.ui-art-marketplace-page-btn { display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border-radius: 99px; background: var(--ink, #111); color: var(--surface, #fff) !important; font-weight: 700; text-decoration: none; transition: transform .2s; }
+.ui-art-marketplace-page-btn[data-ghost='true'] { background: transparent; color: var(--ink, #111) !important; border: 1.5px solid var(--ink, #111); }
+.ui-art-marketplace-page-btn:hover { transform: translateY(-2px); }
+.ui-art-marketplace-page-stack { position: relative; height: 300px; }
+.ui-art-marketplace-page-frame { position: absolute; width: 150px; aspect-ratio: 4 / 5; top: 20px; left: calc(50% - 75px + (var(--i) - 1) * 96px); border: 8px solid var(--raised, #fff); border-radius: 3px; box-shadow: var(--shadow-lift, 0 12px 28px rgba(0, 0, 0, .22)); transform: rotate(calc((var(--i) - 1) * 7deg)) translateY(calc(var(--i) * 10px)); animation: ui-art-marketplace-page-float 6s ease-in-out calc(var(--i) * -2s) infinite; }
+.ui-art-marketplace-page-frame:nth-child(2) { z-index: 2; width: 170px; left: calc(50% - 85px + 0px); top: 6px; }
+.ui-art-marketplace-page-sec { padding: 32px 20px; }
+.ui-art-marketplace-page-sh { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.ui-art-marketplace-page h2 { font-size: 26px; letter-spacing: -.02em; }
+.ui-art-marketplace-page-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ui-art-marketplace-page-chips button { min-height: 40px; padding: 0 16px; border-radius: 99px; border: 1px solid var(--line-strong, #bbb); background: transparent; color: inherit; font: inherit; font-size: 14px; cursor: pointer; }
+.ui-art-marketplace-page-chips button[aria-pressed='true'] { background: var(--ink, #111); color: var(--surface, #fff); border-color: var(--ink, #111); }
+.ui-art-marketplace-page-grid { display: grid; gap: 18px 14px; grid-template-columns: repeat(2, 1fr); }
+.ui-art-marketplace-page-card { display: grid; gap: 8px; animation: ui-art-marketplace-page-in .4s ease both; }
+.ui-art-marketplace-page-art { aspect-ratio: 4 / 5; overflow: hidden; border-radius: 6px; background: var(--raised-2, #eee); cursor: zoom-in; box-shadow: var(--shadow, none); }
+.ui-art-marketplace-page-art > div { width: 100%; height: 100%; transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.ui-art-marketplace-page-card:hover .ui-art-marketplace-page-art > div, .ui-art-marketplace-page-art:focus-visible > div, .ui-art-marketplace-page-art:focus > div { transform: scale(1.12); }
+.ui-art-marketplace-page-meta { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+.ui-art-marketplace-page-meta > div { display: grid; min-width: 0; }
+.ui-art-marketplace-page-meta small { color: var(--muted, #5b6472); font-size: 12px; }
+.ui-art-marketplace-page-like { display: inline-flex; align-items: center; gap: 4px; min-width: 44px; min-height: 44px; margin: -8px -8px 0 0; padding: 0 8px; border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; font-size: 13px; border-radius: 99px; }
+.ui-art-marketplace-page-like[aria-pressed='true'] { color: var(--critical, #dc2626); }
+.ui-art-marketplace-page-like[aria-pressed='true'] svg { animation: ui-art-marketplace-page-pop .35s ease; }
+.ui-art-marketplace-page-buy { display: flex; align-items: center; justify-content: space-between; }
+.ui-art-marketplace-page-buy button { min-height: 40px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+.ui-art-marketplace-page-buy button[aria-pressed='true'] { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-art-marketplace-page-spot { display: grid; gap: 20px; align-items: center; background: var(--raised, #fff); border-block: 1px solid var(--line, #e3e0da); }
+.ui-art-marketplace-page-portrait { width: 140px; aspect-ratio: 1; border-radius: 50% 50% 12px 50%; overflow: hidden; }
+.ui-art-marketplace-page-spot p:not(.ui-art-marketplace-page-kicker) { color: var(--muted, #5b6472); max-width: 52ch; margin: 8px 0 14px; }
+.ui-art-marketplace-page-minis { display: flex; gap: 10px; }
+.ui-art-marketplace-page-minis li { width: 72px; aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; border: 3px solid var(--surface, #fff); box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, .2)); }
+.ui-art-marketplace-page-cats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); margin-top: 16px; }
+.ui-art-marketplace-page-cats button { width: 100%; text-align: left; display: grid; gap: 2px; padding: 10px; border-radius: 12px; border: 1px solid var(--line, #e3e0da); background: var(--raised, #fff); color: inherit; font: inherit; cursor: pointer; transition: transform .2s, border-color .2s; }
+.ui-art-marketplace-page-cats button:hover { transform: translateY(-3px); border-color: var(--line-strong, #aaa); }
+.ui-art-marketplace-page-cats span { display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 8px; margin-bottom: 6px; }
+.ui-art-marketplace-page-cats small { color: var(--muted, #5b6472); }
+.ui-art-marketplace-page-news { text-align: center; }
+.ui-art-marketplace-page-news > p { color: var(--muted, #5b6472); margin: 6px auto 16px; max-width: 46ch; }
+.ui-art-marketplace-page-news form { max-width: 440px; margin: 0 auto; text-align: left; display: grid; gap: 6px; }
+.ui-art-marketplace-page-news label { font-size: 13px; font-weight: 600; }
+.ui-art-marketplace-page-news form > div { display: flex; gap: 8px; }
+.ui-art-marketplace-page-news input { flex: 1; min-width: 0; min-height: 46px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line-strong, #aaa); background: var(--raised, #fff); color: inherit; font: inherit; }
+.ui-art-marketplace-page-news input[aria-invalid='true'] { border-color: var(--critical, #dc2626); }
+.ui-art-marketplace-page-news form button { min-height: 46px; padding: 0 20px; border-radius: 99px; border: 0; background: var(--ink, #111); color: var(--surface, #fff); font: inherit; font-weight: 700; cursor: pointer; }
+.ui-art-marketplace-page-err { color: var(--critical, #b91c1c); font-size: 13px; }
+.ui-art-marketplace-page-ok { color: var(--ok, #15803d); font-weight: 600; margin-top: 4px; }
+.ui-art-marketplace-page-foot { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding: 22px 20px 28px; border-top: 1px solid var(--line, #e3e0da); font-size: 13px; color: var(--muted, #5b6472); }
+.ui-art-marketplace-page-foot b { color: var(--ink, #111); font-size: 16px; }
+.ui-art-marketplace-page-foot nav { display: flex; gap: 6px; }
+.ui-art-marketplace-page-foot a { padding: 12px 8px; }
+@keyframes ui-art-marketplace-page-float { 50% { translate: 0 -8px; } }
+@keyframes ui-art-marketplace-page-in { from { opacity: 0; transform: translateY(10px); } }
+@keyframes ui-art-marketplace-page-pop { 40% { transform: scale(1.4); } }
+@container (min-width: 640px) {
+  .ui-art-marketplace-page-nav nav { display: flex; }
+  .ui-art-marketplace-page-grid { grid-template-columns: repeat(3, 1fr); }
+  .ui-art-marketplace-page-hero { grid-template-columns: 1.1fr 1fr; align-items: center; padding: 56px 32px 64px; }
+  .ui-art-marketplace-page-stack { height: 380px; }
+  .ui-art-marketplace-page-frame { width: 190px; left: calc(50% - 95px + (var(--i) - 1) * 120px); }
+  .ui-art-marketplace-page-frame:nth-child(2) { width: 220px; left: calc(50% - 110px); }
+  .ui-art-marketplace-page-sec, .ui-art-marketplace-page-nav, .ui-art-marketplace-page-foot { padding-inline: 32px; }
+  .ui-art-marketplace-page-spot { grid-template-columns: 220px 1fr; gap: 36px; }
+  .ui-art-marketplace-page-portrait { width: 220px; }
+}
+@media (prefers-reduced-motion: reduce) { .ui-art-marketplace-page * { animation: none !important; transition: none !important; } }

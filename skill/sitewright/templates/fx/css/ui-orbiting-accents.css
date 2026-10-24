@@ -7,7 +7,7 @@
 .ui-orbiting-accents-shape { position: absolute; left: 50%; top: 0; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; background: var(--c); }
 .ui-orbiting-accents-dot { border-radius: 50%; }
 .ui-orbiting-accents-diamond { transform: rotate(45deg); border-radius: 2px; }
-.ui-orbiting-accents-shape.ui-orbiting-accents-ring { background: transparent; border: 2.5px solid var(--c); border-radius: 50%; }
+.ui-orbiting-accents-shape.ui-orbiting-accents-hoop { background: transparent; border: 2.5px solid var(--c); border-radius: 50%; }
 .ui-orbiting-accents-bar { width: 4px; height: 13px; margin: -6.5px 0 0 -2px; border-radius: 2px; }
 .ui-orbiting-accents-core {
   position: absolute; left: 50%; top: 50%; width: 46%; height: 46%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;

@@ -80,7 +80,7 @@ export default function OrbitingAccents({ children, size = 150, period = 12, cla
         <div key={ri} ref={(n) => { rings.current[ri] = n; }} className="ui-orbiting-accents-ring" data-ring={ri} aria-hidden="true">
           {SHAPES.filter((s) => s.ring === ri).map((s, i) => (
             <span key={i} className="ui-orbiting-accents-arm" style={{ transform: `rotate(${s.angle}deg)` }}>
-              <span className={`ui-orbiting-accents-shape ui-orbiting-accents-${s.kind}`} style={{ ['--c' as string]: s.color }} />
+              <span className={`ui-orbiting-accents-shape ui-orbiting-accents-${s.kind === 'ring' ? 'hoop' : s.kind}`} style={{ ['--c' as string]: s.color }} />
             </span>
           ))}
         </div>
