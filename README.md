@@ -249,7 +249,7 @@ A library of 115 small interactive components you import by name from `@/compone
 | Hover interactions | rotating, magnetic and rolling-text buttons, expanding fill, arrow relay, spotlight border, waving hand, image list preview, image stack, blinds, image accordion, cursor reveal, peel, caption reveal, layer explorer, jelly text, holographic and parallax cards, orbiting accents, hover marquee, text shadow, squishy labels, repelling dots |
 | Dashboards and pages | bento, messaging, project, ERP, analytics, finance and AI dashboards; art marketplace and restaurant landing pages; wind 404 page; lamp login (each a full responsive block with working interactions) |
 | Feedback | toast (call `toast('Saved')` from anywhere; mount `<Toaster />` once) |
-| Loaders and text | magic tree, step loader, logo-trace loader, animated signature, scramble text, plucked text, receipt printer |
+| Loaders and text | four-season magic tree, step loader, logo-trace loader, animated signature, scramble text, plucked text, receipt printer |
 | Charts (SVG, accessible) | area, bar, line, live line, profit/loss, composed, scatter, candlestick, pie, ring, radar, funnel, gauge, heatmap, sankey, US tile map |
 
 **[Try them live](https://sitewright-skill.vercel.app/demo/effects/#components)** · the catalogue, with what each is for, is [`reference/components.md`](skill/sitewright/reference/components.md). Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion, Bklit, Sileo and @code.xr; all code is written for this kit (see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).

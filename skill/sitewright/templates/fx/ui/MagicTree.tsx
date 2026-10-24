@@ -8,6 +8,8 @@ export interface MagicTreeProps {
   depth?: number;
   /** Show the Regrow button. */
   button?: boolean;
+  /** Starting season; the Season button then cycles spring, summer, autumn, winter. */
+  season?: Season;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -17,6 +19,9 @@ interface Bloom { x: number; y: number; r: number; delay: number; light: boolean
 interface Spark { id: number; x: number; y: number; fall: number; dx: number; s: number; hue: number }
 
 const GROW = 0.32;
+const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const;
+type Season = (typeof SEASONS)[number];
+const DRIFT = Array.from({ length: 14 }, (_, i) => i);
 
 function build(seed: number, depth: number) {
   const rnd = seeded(seed);
@@ -42,9 +47,10 @@ function build(seed: number, depth: number) {
   return { branches, blooms };
 }
 
-/** A tree that grows from a seed: branches draw themselves recursively, leaves and lights bloom, and pointer moves or taps shake sparkles loose. Press Regrow for a new tree. Fully deterministic per seed. */
-export default function MagicTree({ seed = 7, depth = 7, button = true, className, style }: MagicTreeProps) {
+/** A tree that grows from a seed: branches draw themselves recursively, leaves and lights bloom, and the Season button turns spring blossom to summer green, autumn gold with falling leaves, then a bare winter tree with snow and glowing lights; and pointer moves or taps shake sparkles loose. Press Regrow for a new tree. Fully deterministic per seed. */
+export default function MagicTree({ seed = 7, depth = 7, button = true, season: first = 'spring', className, style }: MagicTreeProps) {
   const [round, setRound] = useState(0);
+  const [season, setSeason] = useState<Season>(first);
   const [sparks, setSparks] = useState<Spark[]>([]);
   const root = useRef<HTMLDivElement>(null);
   const timers = useRef<number[]>([]);
@@ -78,8 +84,10 @@ export default function MagicTree({ seed = 7, depth = 7, button = true, classNam
   const regrow = () => { setSparks([]); setRound((n) => n + 1); };
 
   return (
-    <div ref={root} className={`ui-magic-tree${reduced ? ' is-static' : ''}${className ? ' ' + className : ''}`} style={{ position: 'absolute', inset: 0, overflow: 'hidden', ...style }} onPointerMove={onMove} onPointerDown={onDown}>
+    <div ref={root} className={`ui-magic-tree is-${season}${reduced ? ' is-static' : ''}${className ? ' ' + className : ''}`} style={{ position: 'absolute', inset: 0, overflow: 'hidden', ...style }} onPointerMove={onMove} onPointerDown={onDown}>
+      <p className="ui-magic-tree-live" role="status" aria-live="polite">{`It is ${season}.`}</p>
       <svg key={round} className="ui-magic-tree-svg" viewBox="0 0 200 160" preserveAspectRatio="xMidYMax meet" role="img" aria-label="A tree growing from a seed, with glowing lights in its branches">
+        <circle className="ui-magic-tree-sky" cx="30" cy="30" r="11" />
         <ellipse className="ui-magic-tree-ground" cx="100" cy="153" rx="46" ry="4" />
         <circle className="ui-magic-tree-seed" cx="100" cy="150" r="3.2" />
         <g className="ui-magic-tree-branches">
@@ -93,6 +101,9 @@ export default function MagicTree({ seed = 7, depth = 7, button = true, classNam
           ))}
         </g>
       </svg>
+      <div className="ui-magic-tree-drift" aria-hidden="true">
+        {DRIFT.map((i) => <i key={`${season}-${i}`} style={{ ['--i' as string]: i }} />)}
+      </div>
       <div className="ui-magic-tree-sparks" aria-hidden="true">
         {sparks.map((s) => (
           <i key={s.id} className={`ui-magic-tree-spark is-${s.hue}`} style={{ left: `${s.x}%`, top: `${s.y}%`, width: s.s, height: s.s, ['--fall' as string]: `${s.fall}px`, ['--dx' as string]: `${s.dx}px` }} />
@@ -100,7 +111,8 @@ export default function MagicTree({ seed = 7, depth = 7, button = true, classNam
       </div>
       {button && (
         <div className="ui-magic-tree-actions">
-          <button type="button" className="ui-magic-tree-btn" onClick={() => burst(50, 28, 10)}>Sparkle</button>
+          <button type="button" className="ui-magic-tree-btn is-sparkle" onClick={() => burst(50, 28, 10)}>Sparkle</button>
+          <button type="button" className="ui-magic-tree-btn" onClick={() => setSeason((c) => SEASONS[(SEASONS.indexOf(c) + 1) % SEASONS.length] as Season)} aria-label={`Season: ${season}. Change season`}>{season}</button>
           <button type="button" className="ui-magic-tree-btn is-primary" onClick={regrow} aria-label="Regrow the tree"><span aria-hidden="true">↻</span><span className="ui-magic-tree-lbl"> Regrow</span></button>
         </div>
       )}

@@ -149,7 +149,7 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 | id | what it does | use it for | idea from |
 |---|---|---|---|
 | `repelling-dots` | A canvas dot grid whose dots are pushed away from the pointer and spring back; a gentle automatic wave on touch, static with reduced motion, paused offscreen. | Behind a landing hero or sign-in panel (put it first inside a position:relative section). | Hover Interaction Collection |
-| `magic-tree` | A tree that grows from a seed with SVG branches drawing recursively, leaves and lights blooming, sparkles falling on pointer or tap, and a Regrow button. | Empty state, 404 or thank-you page, seasonal landing hero (inside a position:relative section with a set height). | Original |
+| `magic-tree` | A tree that grows from a seed with SVG branches drawing recursively, leaves and lights blooming, a Season button (spring blossom, summer green, autumn gold with falling leaves, bare winter with snow and glowing lights), sparkles on pointer or tap, and a Regrow button. | Empty state, 404 or thank-you page, seasonal landing hero (inside a position:relative section with a set height). | Original |
 | `iridescent-foil` | A holographic foil frame that shifts with scroll and pointer position around an opaque content surface. | Premium plan cards, membership passes, feature callouts on landing pages. | Kitchen |
 | `drape-background` | A cloth-like backdrop of soft folds that the pointer sweeps through or you grab and drag, then springs back; static folds on touch and reduced motion. | Behind a landing hero or sign-in panel (put it first inside a position:relative section). | Kokonut UI |
 
