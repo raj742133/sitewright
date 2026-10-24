@@ -733,7 +733,11 @@ async function checkEffects(browser) {
 
       if (FX.reveal !== 'rise') await check(`${vp}: scroll-reveal style "${FX.reveal}" is applied and everything still appears`, async () => {
         eq(await page.evaluate(() => document.documentElement.dataset.fxReveal), FX.reveal, 'data-fx-reveal');
-        await scrollThrough(page); await page.waitForTimeout(1200);
+        await scrollThrough(page);
+        // The page's smooth-scroll layer can swallow a jump in the sweep above (seen once: the first story heading never came into view). Bring every
+        // section that has not appeared into the middle of the screen, one by one, which is what a reader scrolling to it does.
+        await page.evaluate(async () => { for (const e of document.querySelectorAll('.rv:not(.in)')) { e.scrollIntoView({ block: 'center', behavior: 'instant' }); await new Promise((r) => setTimeout(r, 150)); } window.scrollTo({ top: 0, behavior: 'instant' }); });
+        await page.waitForTimeout(1200);
         const hidden = await page.evaluate(() => [...document.querySelectorAll('.rv')].filter((e) => Number(getComputedStyle(e).opacity) < 0.95).map((e) => `${e.tagName.toLowerCase()}.${String(e.className).slice(0, 40)} opacity ${getComputedStyle(e).opacity} at y=${Math.round(e.getBoundingClientRect().top + scrollY)}`));
         eq(hidden.join('; '), '', 'sections left hidden');
       });
