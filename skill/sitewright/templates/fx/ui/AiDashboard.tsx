@@ -79,6 +79,7 @@ export default function AiDashboard({ title = 'Ask Meridian', intents = INTENTS,
   const typing = busy && msgs[msgs.length - 1]?.role === 'user';
   return (
     <section className={`ui-ai-dashboard ${className ?? ''}`} aria-label={title}>
+     <div className="ui-ai-dashboard-in">
       <div className="ui-ai-dashboard-chat">
         <h2><span className="ui-ai-dashboard-orb" aria-hidden="true" />{title}</h2>
         <div ref={log} className="ui-ai-dashboard-log" role="log" aria-live="polite" aria-label="Conversation" tabIndex={0}>
@@ -101,6 +102,7 @@ export default function AiDashboard({ title = 'Ask Meridian', intents = INTENTS,
           </>
         ) : <p>Ask a question to see data here.</p>}
       </div>
+     </div>
     </section>
   );
 }

@@ -27,7 +27,7 @@ export function useMounted(): boolean {
 
 export const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
 export const SR: CSSProperties = { position: 'absolute', width: 1, height: 1, margin: -1, padding: 0, overflow: 'hidden', clip: 'rect(0 0 0 0)', whiteSpace: 'nowrap', border: 0 };
-export const fmtNum = (n: number) => (Math.abs(n) >= 1000 ? (n / 1000).toFixed(n % 1000 === 0 ? 0 : 1) + 'k' : String(Math.round(n * 10) / 10));
+export const fmtNum = (n: number) => (Math.abs(n) >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(Math.round(n * 10) / 10));
 export const money = (n: number, cur = '$') => cur + Math.round(n).toLocaleString('en-US');
 
 /** Gallery miniature: lays the block out at `w` px wide and scales it down to the container (150px stage). */
@@ -99,7 +99,7 @@ export function Bars({ data, aName = 'Value', bName = 'Other', fmt = fmtNum, tit
         ))}
       </svg>
       {d && <div style={{ ...tipStyle, left: `${(cx(tip) / W) * 100}%`, top: `${(Math.min(y(d.a), d.b != null ? y(d.b) : 999) / height) * 100}%`, marginTop: -4 }} aria-hidden="true"><b>{d.label}</b><br />{aName}: {fmt(d.a)}{d.b != null && <><br />{bName}: {fmt(d.b)}</>}</div>}
-      <table style={SR}><caption>{title}</caption><thead><tr><th>Period</th><th>{aName}</th>{hasB && <th>{bName}</th>}</tr></thead><tbody>{data.map((p) => <tr key={p.label}><td>{p.label}</td><td>{p.a}</td>{hasB && <td>{p.b}</td>}</tr>)}</tbody></table>
+      <div style={SR}><table><caption>{title}</caption><thead><tr><th>Period</th><th>{aName}</th>{hasB && <th>{bName}</th>}</tr></thead><tbody>{data.map((p) => <tr key={p.label}><td>{p.label}</td><td>{p.a}</td>{hasB && <td>{p.b}</td>}</tr>)}</tbody></table></div>
     </div>
   );
 }
@@ -160,7 +160,7 @@ export function Area({ data, title, fmt = fmtNum, height = 200, color = 'var(--p
         <div aria-hidden="true" style={{ position: 'relative', height: 22, fontSize: 11, color: 'var(--muted, #667)' }}>
           {data.map((p, i) => i % step === 0 && <span key={p.label} style={{ position: 'absolute', top: 6, left: `${(px(i) / W) * 100}%`, transform: i === 0 ? 'none' : i === n - 1 ? 'translateX(-100%)' : 'translateX(-50%)', whiteSpace: 'nowrap' }}>{p.label}</span>)}
         </div>
-        <table style={SR}><caption>{title}</caption><thead><tr><th>Period</th><th>{name}</th></tr></thead><tbody>{data.map((p) => <tr key={p.label}><td>{p.label}</td><td>{p.value}</td></tr>)}</tbody></table>
+        <div style={SR}><table><caption>{title}</caption><thead><tr><th>Period</th><th>{name}</th></tr></thead><tbody>{data.map((p) => <tr key={p.label}><td>{p.label}</td><td>{p.value}</td></tr>)}</tbody></table></div>
         <div aria-live="polite" style={SR}>{cur ? `${cur.label}: ${fmt(cur.value)}` : ''}</div>
       </div>
     </div>

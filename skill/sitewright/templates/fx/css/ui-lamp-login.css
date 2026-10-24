@@ -45,3 +45,4 @@
 @keyframes ui-lamp-login-tug { 0% { transform: translateY(18px); } 100% { transform: translateY(0); } }
 @keyframes ui-lamp-login-rot { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .ui-lamp-login *, .ui-lamp-login { animation: none !important; transition: none !important; } .ui-lamp-login-spin { animation: ui-lamp-login-rot 2s linear infinite !important; } }
+[data-on='true'] .ui-lamp-login-hint { color: #f1e6cc; }

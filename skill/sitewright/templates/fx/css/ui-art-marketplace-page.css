@@ -54,7 +54,7 @@
 .ui-art-marketplace-page-cats small { color: var(--muted, #5b6472); }
 .ui-art-marketplace-page-news { text-align: center; }
 .ui-art-marketplace-page-news > p { color: var(--muted, #5b6472); margin: 6px auto 16px; max-width: 46ch; }
-.ui-art-marketplace-page-news form { max-width: 440px; margin: 0 auto; text-align: left; display: grid; gap: 6px; }
+.ui-art-marketplace-page-news form { max-width: 440px; margin: 0 auto; text-align: left; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
 .ui-art-marketplace-page-news label { font-size: 13px; font-weight: 600; }
 .ui-art-marketplace-page-news form > div { display: flex; gap: 8px; }
 .ui-art-marketplace-page-news input { flex: 1; min-width: 0; min-height: 46px; padding: 0 14px; border-radius: 99px; border: 1px solid var(--line-strong, #aaa); background: var(--raised, #fff); color: inherit; font: inherit; }

@@ -1,4 +1,5 @@
-.ui-ai-dashboard { container-type: inline-size; box-sizing: border-box; width: 100%; display: grid; gap: 12px; padding: 16px; grid-template-columns: 1fr; color: var(--ink, #111); background: var(--surface, #f6f7f9); font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; line-height: 1.45; }
+.ui-ai-dashboard-in { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+.ui-ai-dashboard { container-type: inline-size; box-sizing: border-box; width: 100%; padding: 16px; color: var(--ink, #111); background: var(--surface, #f6f7f9); font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; line-height: 1.45; }
 .ui-ai-dashboard *, .ui-ai-dashboard *::before, .ui-ai-dashboard *::after { box-sizing: border-box; }
 .ui-ai-dashboard h2, .ui-ai-dashboard h3, .ui-ai-dashboard p { margin: 0; }
 .ui-ai-dashboard ul { list-style: none; margin: 0; padding: 0; }
@@ -35,6 +36,6 @@
 @keyframes ui-ai-dashboard-spin { to { transform: rotate(360deg); } }
 @keyframes ui-ai-dashboard-bob { 0%, 100% { transform: translateY(0); opacity: .45; } 50% { transform: translateY(-4px); opacity: 1; } }
 @keyframes ui-ai-dashboard-in { from { opacity: 0; transform: translateY(8px); } }
-@container (min-width: 720px) { .ui-ai-dashboard { grid-template-columns: 340px 1fr; } .ui-ai-dashboard-chat { height: 500px; } }
+@container (min-width: 720px) { .ui-ai-dashboard-in { grid-template-columns: 340px 1fr; } .ui-ai-dashboard-chat { height: 500px; } }
 @media (pointer: coarse) { .ui-ai-dashboard-chips button { min-height: 44px; } .ui-ai-dashboard-form input, .ui-ai-dashboard-form button { min-height: 48px; } }
 @media (prefers-reduced-motion: reduce) { .ui-ai-dashboard-orb, .ui-ai-dashboard-dots i, .ui-ai-dashboard-body { animation: none; } }
