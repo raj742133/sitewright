@@ -2,14 +2,6 @@
 
 Small interactive pieces you import by name from `@/components/fx/ui`: buttons, inputs, cards, loaders, text, backgrounds, motion helpers and charts. Like the effects they are original, dependency-free code (React, CSS and inline SVG only - no animation or chart library), they respect `prefers-reduced-motion`, work with touch and keyboard, and are only copied into a project when chosen. Their ideas come from [Kitchen](https://www.dqnamo.com/kitchen), [Kokonut UI](https://kokonutui.com), [Anime.js](https://animejs.com), [Motion](https://motion.dev) and [Bklit](https://bklit.com); the code is written for this kit and none of it is copied from them.
 
-## Choosing
-
-- In `site.json`: `"effects": { "components": "all" }` or `{ "components": ["hold-to-confirm", "ring-chart"] }`.
-- Or on the command line: `--components all` / `--components hold-to-confirm,ring-chart` (with `--apply-effects` to change an existing project in place).
-- Then `import { HoldToConfirm } from '@/components/fx/ui';`. Every component has defaults, so `<HoldToConfirm />` renders; each file also exports a `Demo` you can read as an example. The `/effects` gallery (the fxgallery module) shows all of them live.
-
-When building a site, prefer these over hand-rolling the same thing: `hold-to-confirm` for any destructive button, `dynamic-button` for save/submit, the charts for the dashboard, `invite-code` for invites, `stagger-grid` / `line-draw` for landing sections.
-
 ## Motion
 
 | id | what it does | use it for | idea from |
@@ -112,4 +104,10 @@ When building a site, prefer these over hand-rolling the same thing: `hold-to-co
 |---|---|---|---|
 | `iridescent-foil` | A holographic foil frame that shifts with scroll and pointer position around an opaque content surface. | Premium plan cards, membership passes, feature callouts on landing pages. | Kitchen |
 | `drape-background` | A cloth-like backdrop of soft folds that the pointer sweeps through or you grab and drag, then springs back; static folds on touch and reduced motion. | Behind a landing hero or sign-in panel (put it first inside a position:relative section). | Kokonut UI |
+
+## Feedback
+
+| id | what it does | use it for | idea from |
+|---|---|---|---|
+| `toast` | Spring-in notifications with icons that draw to match the state (success, error, info, loading), pause on hover, stack and collapse. Call toast('Saved') from anywhere; mount <Toaster /> once. | Copied, saved, signed out, upload failed, published: any confirmation or error in the dashboard, publishing and connect pages. | Sileo |
 

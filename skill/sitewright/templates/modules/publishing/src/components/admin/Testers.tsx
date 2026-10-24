@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from '@/components/fx';
 
 export interface TesterItem {
   id: number;
@@ -45,6 +46,7 @@ export function Testers({ testers }: { testers: TesterItem[] }) {
     if (!body) return;
     setShown({ who: `${name} (${email.trim().toLowerCase()})`, code: body.code });
     setCopied(false);
+    toast.success('Tester added', 'Give them the code below.');
     setName(''); setEmail('');
     router.refresh();
   };
@@ -85,7 +87,7 @@ export function Testers({ testers }: { testers: TesterItem[] }) {
           <p className="muted small">Tester code for <b>{shown.who}</b>. It is shown once - send it to them privately.</p>
           <p className="mono linkline code-big">{shown.code}</p>
           <div className="row-gap">
-            <button className="btn" type="button" onClick={async () => { await navigator.clipboard.writeText(shown.code); setCopied(true); }}>{copied ? 'Copied' : 'Copy code'}</button>
+            <button className="btn" type="button" onClick={async () => { await navigator.clipboard.writeText(shown.code); setCopied(true); toast.success('Code copied'); }}>{copied ? 'Copied' : 'Copy code'}</button>
             <button className="btn ghost" type="button" onClick={() => setShown(null)}>Done</button>
           </div>
         </div>

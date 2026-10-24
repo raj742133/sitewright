@@ -114,8 +114,9 @@ const overflow = (page) => page.evaluate(() => ({ sw: document.documentElement.s
 /** Scrolls the whole page in steps so every scroll-triggered reveal fires, then returns to the top. */
 async function scrollThrough(page) {
   const h = await page.evaluate(() => document.documentElement.scrollHeight);
-  for (let y = 0; y < h; y += 500) { await page.evaluate((v) => window.scrollTo(0, v), y); await page.waitForTimeout(60); }
-  await page.evaluate(() => window.scrollTo(0, 0));
+  // 'instant': generated pages scroll smoothly, and a smooth scroll that is restarted every 60 ms may never reach the sections the check is about to look at
+  for (let y = 0; y < h; y += 500) { await page.evaluate((v) => window.scrollTo({ top: v, behavior: 'instant' }), y); await page.waitForTimeout(60); }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await page.waitForTimeout(200);
 }
 
@@ -385,6 +386,13 @@ async function checkConnect(browser) {
       await page.getByRole('button', { name: 'Copy link' }).click();
       await page.getByRole('button', { name: /Copied/ }).waitFor();
       eq(await page.evaluate(() => navigator.clipboard.readText()), link, 'clipboard');
+      const t = page.locator('.ui-toast', { hasText: 'Link copied' });
+      await t.waitFor({ timeout: 4000 });
+      truthy((await t.getAttribute('role')) === 'status', 'the toast is announced politely (role=status)');
+      const box = await t.boundingBox(), vpSize = page.viewportSize();
+      truthy(box && box.x >= 0 && box.x + box.width <= vpSize.width, 'the toast fits the screen');
+      await t.getByRole('button', { name: /Dismiss/ }).click();
+      await t.waitFor({ state: 'detached', timeout: 3000 });
     });
     await check(`${vp}: no horizontal scroll`, async () => { await noOverflow(page, 'connect'); });
     await shot(page, `connect-${vp}`);
@@ -725,8 +733,13 @@ async function checkEffects(browser) {
 
       if (FX.reveal !== 'rise') await check(`${vp}: scroll-reveal style "${FX.reveal}" is applied and everything still appears`, async () => {
         eq(await page.evaluate(() => document.documentElement.dataset.fxReveal), FX.reveal, 'data-fx-reveal');
-        await scrollThrough(page); await page.waitForTimeout(1200);
-        eq(await page.evaluate(() => [...document.querySelectorAll('.rv')].filter((e) => Number(getComputedStyle(e).opacity) < 0.95).length), 0, 'sections left hidden');
+        await scrollThrough(page);
+        // The page's smooth-scroll layer can swallow a jump in the sweep above (seen once: the first story heading never came into view). Bring every
+        // section that has not appeared into the middle of the screen, one by one, which is what a reader scrolling to it does.
+        await page.evaluate(async () => { for (const e of document.querySelectorAll('.rv:not(.in)')) { e.scrollIntoView({ block: 'center', behavior: 'instant' }); await new Promise((r) => setTimeout(r, 150)); } window.scrollTo({ top: 0, behavior: 'instant' }); });
+        await page.waitForTimeout(1200);
+        const hidden = await page.evaluate(() => [...document.querySelectorAll('.rv')].filter((e) => Number(getComputedStyle(e).opacity) < 0.95).map((e) => `${e.tagName.toLowerCase()}.${String(e.className).slice(0, 40)} opacity ${getComputedStyle(e).opacity} at y=${Math.round(e.getBoundingClientRect().top + scrollY)}`));
+        eq(hidden.join('; '), '', 'sections left hidden');
       });
 
       if (vp === 'desktop') {
@@ -1030,7 +1043,8 @@ async function checkFigures(browser) {
   if (F.empty && has('dashboard')) await check('empty: the figure shows when a search finds nothing', async () => {
     const { ctx, page } = await signedIn('fig-empty');
     await page.goto(`${BASE}/dashboard`, { waitUntil: 'networkidle' });
-    if (!(await page.locator(sel('empty')).count())) { await page.locator('.search input').fill('zzzqqq-no-such-thing'); await page.waitForTimeout(400); }
+    // `networkidle` can come before the page has hydrated, and a fill into a not-yet-controlled field is dropped; type it again until the empty state is there
+    for (let i = 0; i < 4 && !(await page.locator(sel('empty')).count()); i++) { await page.locator('.search input').fill(''); await page.locator('.search input').fill('zzzqqq-no-such-thing'); await page.waitForTimeout(700); }
     await figureWorks(page, 'empty', { minWidth: 120 });
     await noOverflow(page, 'dashboard empty state'); await shot(page, 'fig-empty'); await ctx.close();
   });

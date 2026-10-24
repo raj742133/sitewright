@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { THEME_SCRIPT } from '@/lib/theme';
 import '@/components/fx/fx.css';
 import { FxMicro } from '@/components/fx/micro';
+import { Toaster } from '@/components/fx';
 
 export const metadata: Metadata = {
   title: __TITLE_JSON__,
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <FxMicro />
+        <Toaster />
       </body>
     </html>
   );

@@ -29,7 +29,7 @@ Dependencies are resolved automatically - choosing `publishing` brings `mfa`; `d
 
 **Figures** are the other half of the layer: 22 small interactive isometric line drawings (19 from Hairline, MIT, plus `bars`, `scanner`, `parcel` written for this kit) placed in named *places* of the site, `effects.figures`: `hero`, `releases`, `signin`, `mfa`, `connect`, `empty`, `notfound`. `figures: "auto"` puts the fitting figure in every place the chosen modules have; `{ "signin": "vault" }` chooses one by one. Catalogue, places, how to use them well and how to add your own: `reference/figures.md`. Catalogue, presets and rules: `reference/effects.md`.
 
-**Components** are the third part: 58 small interactive pieces (hold-to-confirm and tactile buttons, a command input, wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers, and 16 SVG charts) imported from `@/components/fx/ui`, chosen with `effects.components` (`"all"` or a list) or `--components`. Catalogue, what each is for and how to choose: `reference/components.md`.
+**Components** are the third part: 59 small interactive pieces (hold-to-confirm and tactile buttons, a command input, wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers, and 16 SVG charts) imported from `@/components/fx/ui`, chosen with `effects.components` (`"all"` or a list) or `--components`. Catalogue, what each is for and how to choose: `reference/components.md`.
 
 ## Workflow
 
@@ -93,7 +93,7 @@ New module = a folder under `templates/modules/<id>/` mirroring the output tree,
 
 - `reference/config.md` - every config key, its default, and a minimal vs full example
 - `reference/effects.md` - the effects catalogue, presets, wiring and rules
-- `reference/components.md` - the component library (58 pieces): ids, what each does, where to use it
+- `reference/components.md` - the component library (59 pieces): ids, what each does, where to use it
 - `reference/icons.md` - icons: places, `auto`, finding names, licences, changing them later
 - `reference/figures.md` - the 22 line figures, the places they go, which fits where, and how to add one
 - `reference/design-system.md` - tokens, palette derivation, components, animations, responsive rules

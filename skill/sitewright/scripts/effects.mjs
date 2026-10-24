@@ -182,6 +182,7 @@ export function effectPlan(r, { all = false } = {}) {
   const files = new Set(['useCanvasLoop.ts']);
   const css = new Set(['base']);
   files.add('text/split.tsx'); files.add('text/Plain.tsx');
+  files.add('ui/Toast.tsx'); css.add('ui-toast'); // every site has toasts: the generated pages call toast() for copied, saved and failed
   const micro = new Set();
   const use = (table, id) => { const e = table[id]; if (!e) return; (e.files ?? []).forEach((f) => files.add(f)); (e.css ?? []).forEach((c) => css.add(c)); (e.micro ?? []).forEach((m) => { micro.add(m); files.add(`micro/${m}.ts`); files.add('micro/selectors.ts'); }); };
   const useUi = (id) => { const e = UI[id]; if (!e) return; e.files.forEach((f) => files.add(`ui/${f}`)); (e.css ?? []).forEach((c) => css.add(c)); };
