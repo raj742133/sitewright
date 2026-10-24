@@ -78,11 +78,11 @@ function Spark({ points, labels, rangeKey }: { points: number[]; labels?: string
   return (
     <div className="ui-bento-dashboard-spark">
       <svg viewBox={`0 0 ${W} ${H}`} role="slider" tabIndex={0} aria-label="Revenue by day, use arrow keys" aria-valuemin={0} aria-valuemax={points.length - 1} aria-valuenow={idx ?? points.length - 1} aria-valuetext={`${name(idx ?? points.length - 1)}: ${money(points[idx ?? points.length - 1]!)}`}
-        onPointerMove={move} onPointerLeave={() => setIdx(null)} onKeyDown={key} onBlur={() => setIdx(null)} key={rangeKey} preserveAspectRatio="none">
+        onPointerMove={move} onPointerLeave={() => setIdx(null)} onKeyDown={key} onBlur={() => setIdx(null)} key={rangeKey}>
         <defs><linearGradient id={`ui-bento-g-${rangeKey}`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="var(--primary, #2563eb)" stopOpacity=".32" /><stop offset="1" stopColor="var(--primary, #2563eb)" stopOpacity="0" /></linearGradient></defs>
         <path d={area} fill={`url(#ui-bento-g-${rangeKey})`} className="ui-bento-dashboard-area" />
-        <path d={d} pathLength={1} className="ui-bento-dashboard-line" fill="none" stroke="var(--primary, #2563eb)" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-        {at && <g><line x1={at[0]} x2={at[0]} y1="0" y2={H} stroke="var(--line-strong, #999)" strokeDasharray="3 3" vectorEffect="non-scaling-stroke" /><circle cx={at[0]} cy={at[1]} r="4" fill="var(--surface, #fff)" stroke="var(--primary, #2563eb)" strokeWidth="2" vectorEffect="non-scaling-stroke" /></g>}
+        <path d={d} pathLength={1} className="ui-bento-dashboard-line" fill="none" stroke="var(--primary, #2563eb)" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
+        {at && <g><line x1={at[0]} x2={at[0]} y1="0" y2={H} stroke="var(--line-strong, #999)" strokeDasharray="3 3" /><circle cx={at[0]} cy={at[1]} r="4" fill="var(--surface, #fff)" stroke="var(--primary, #2563eb)" strokeWidth="2" /></g>}
       </svg>
       <p className="ui-bento-dashboard-readout" aria-live="polite">{idx === null ? 'Hover or use arrow keys to inspect' : `${name(idx)}: ${money(points[idx]!)}`}</p>
     </div>
@@ -129,7 +129,7 @@ export default function BentoDashboard({ title = 'Studio overview', ranges = RAN
     <div ref={root} className={'ui-bento-dashboard' + cls}>
       <header className="ui-bento-dashboard-head"><h2>{title}</h2><span className="ui-bento-dashboard-chip">Live</span></header>
       <div className="ui-bento-dashboard-grid">
-        <section className="ui-bento-dashboard-tile ui-bento-dashboard-revenue" style={{ '--i': 0 } as React.CSSProperties} aria-label="Revenue">
+        <section className="ui-bento-dashboard-tile ui-bento-dashboard-t-revenue" style={{ '--i': 0 } as React.CSSProperties} aria-label="Revenue">
           <div className="ui-bento-dashboard-row">
             <div><p className="ui-bento-dashboard-k">Revenue</p><p className="ui-bento-dashboard-big" aria-label={money(total)}>{money(sum)}</p></div>
             <div className="ui-bento-dashboard-seg" role="group" aria-label="Range">
@@ -138,12 +138,12 @@ export default function BentoDashboard({ title = 'Studio overview', ranges = RAN
           </div>
           <Spark points={range.points} labels={range.labels} rangeKey={range.id} />
         </section>
-        <section className="ui-bento-dashboard-tile ui-bento-dashboard-goal" style={{ '--i': 1 } as React.CSSProperties} aria-label={goalIn.label}>
+        <section className="ui-bento-dashboard-tile ui-bento-dashboard-t-goal" style={{ '--i': 1 } as React.CSSProperties} aria-label={goalIn.label}>
           <p className="ui-bento-dashboard-k">{goalIn.label}</p>
           <Gauge value={goalIn.value + bonus} target={goalIn.target} label={goalIn.label} run={shown} />
           <button type="button" className="ui-bento-dashboard-btn" onClick={() => setBonus((b) => b + 1500)} aria-label="Log a $1,500 sale">+ Log $1,500 sale</button>
         </section>
-        <section className="ui-bento-dashboard-tile ui-bento-dashboard-tasks" style={{ '--i': 2 } as React.CSSProperties} aria-label="Tasks">
+        <section className="ui-bento-dashboard-tile ui-bento-dashboard-t-tasks" style={{ '--i': 2 } as React.CSSProperties} aria-label="Tasks">
           <div className="ui-bento-dashboard-row"><p className="ui-bento-dashboard-k">Tasks</p><span className="ui-bento-dashboard-count" aria-live="polite">{done}/{list.length} done</span></div>
           <ul className="ui-bento-dashboard-tasks">
             {list.map((t) => (
@@ -155,7 +155,7 @@ export default function BentoDashboard({ title = 'Studio overview', ranges = RAN
             ))}
           </ul>
         </section>
-        <section className="ui-bento-dashboard-tile ui-bento-dashboard-heat" style={{ '--i': 3 } as React.CSSProperties} aria-label="Order activity heatmap">
+        <section className="ui-bento-dashboard-tile ui-bento-dashboard-t-heat" style={{ '--i': 3 } as React.CSSProperties} aria-label="Order activity heatmap">
           <p className="ui-bento-dashboard-k">Order activity, last 12 weeks</p>
           <div className="ui-bento-dashboard-heat" role="grid" aria-label="Orders by weekday and week">
             {heat.map((row, r) => (
@@ -171,7 +171,7 @@ export default function BentoDashboard({ title = 'Studio overview', ranges = RAN
             ))}
           </div>
         </section>
-        <section className="ui-bento-dashboard-tile ui-bento-dashboard-cal" style={{ '--i': 4 } as React.CSSProperties} aria-label="This week">
+        <section className="ui-bento-dashboard-tile ui-bento-dashboard-t-cal" style={{ '--i': 4 } as React.CSSProperties} aria-label="This week">
           <p className="ui-bento-dashboard-k">This week</p>
           <div className="ui-bento-dashboard-days" role="group" aria-label="Pick a day">
             {week.map((d, i) => (
@@ -184,7 +184,7 @@ export default function BentoDashboard({ title = 'Studio overview', ranges = RAN
             {(week[day]?.events.length ? week[day]!.events : ['Nothing scheduled']).map((e) => <li key={e}>{e}</li>)}
           </ul>
         </section>
-        <section className="ui-bento-dashboard-tile ui-bento-dashboard-top" style={{ '--i': 5 } as React.CSSProperties} aria-label="Top products">
+        <section className="ui-bento-dashboard-tile ui-bento-dashboard-t-top" style={{ '--i': 5 } as React.CSSProperties} aria-label="Top products">
           <p className="ui-bento-dashboard-k">Top products</p>
           <ul className="ui-bento-dashboard-bars">
             {products.map((p, i) => (

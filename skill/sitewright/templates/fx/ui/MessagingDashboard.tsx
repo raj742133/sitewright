@@ -104,7 +104,8 @@ export default function MessagingDashboard({ conversations = SAMPLE, agent = 'Su
   };
 
   return (
-    <div ref={root} className={'ui-messaging-dashboard' + cls} data-view={view}>
+    <div ref={root} className={'ui-messaging-dashboard' + cls}>
+    <div className="ui-messaging-dashboard-in" data-view={view}>
       <aside className="ui-messaging-dashboard-list" aria-label="Conversations">
         <h2 className="ui-messaging-dashboard-h">Inbox</h2>
         <div className="ui-messaging-dashboard-tabs" role="tablist" aria-label="Status" onKeyDown={tabKey}>
@@ -180,6 +181,7 @@ export default function MessagingDashboard({ conversations = SAMPLE, agent = 'Su
           <button type="button" className="ui-messaging-dashboard-close" onClick={() => setInfo(false)}>Close details</button>
         </aside>
       )}
+    </div>
     </div>
   );
 }

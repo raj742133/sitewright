@@ -2,7 +2,7 @@
 .ui-layer-explorer-stage { all: unset; box-sizing: border-box; position: relative; height: 100%; min-width: 0; display: grid; place-items: center; cursor: pointer; border-radius: var(--radius, 12px); perspective: 520px; }
 .ui-layer-explorer-stage:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
 .ui-layer-explorer-stack {
-  position: relative; display: block; width: 112px; height: 70px; transform-style: preserve-3d;
+  position: relative; display: block; width: 128px; height: 80px; transform-style: preserve-3d;
   transition: transform 0.6s var(--ease, ease);
 }
 .ui-layer-explorer-root[data-open='1'] .ui-layer-explorer-stack { transform: rotateX(58deg) rotateZ(-36deg) translateY(10px); }
@@ -10,7 +10,7 @@
   position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; border: 1px solid transparent;
   transform: translateZ(calc(var(--i) * var(--ui-le-gap, 0px))); transition: transform 0.6s var(--ease, ease), opacity 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
-.ui-layer-explorer-root[data-open='1'] .ui-layer-explorer-layer { --ui-le-gap: 15px; border-color: rgba(255, 255, 255, 0.55); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.ui-layer-explorer-root[data-open='1'] .ui-layer-explorer-layer { --ui-le-gap: 14px; border-color: rgba(255, 255, 255, 0.55); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
 .ui-layer-explorer-layer[data-dim='1'] { opacity: 0.22; }
 .ui-layer-explorer-layer[data-on='1'] { border-color: var(--primary, #2563eb) !important; box-shadow: 0 0 0 2px var(--primary, #2563eb) !important; }
 .ui-layer-explorer-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }

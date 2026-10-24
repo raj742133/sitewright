@@ -6,8 +6,8 @@
   position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; padding: 16px 18px;
   border-radius: var(--radius, 12px); font-size: 13px; line-height: 1.35;
 }
-.ui-peel-reveal-under { background: var(--primary-wash, #e0e9ff); border: 1px dashed var(--primary, #2563eb); color: var(--ink, #111); }
-.ui-peel-reveal-face { background: linear-gradient(135deg, var(--primary, #2563eb), var(--signal, #7c3aed)); color: var(--on-primary, #fff); }
+.ui-peel-reveal-under { align-items: flex-end; justify-content: flex-end; text-align: right; padding-bottom: 14px; background: var(--primary-wash, #e0e9ff); border: 1px dashed var(--primary, #2563eb); color: var(--ink, #111); }
+.ui-peel-reveal-face { background: var(--primary, #2563eb); color: var(--on-primary, #fff); }
 .ui-peel-reveal-kicker { font: 600 11px/1.2 var(--font-mono, ui-monospace, monospace); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; }
 .ui-peel-reveal-big { font-size: 20px; line-height: 1.15; max-width: 12em; }
 .ui-peel-reveal-code { font: 700 26px/1.1 var(--font-mono, ui-monospace, monospace); letter-spacing: 0.04em; }

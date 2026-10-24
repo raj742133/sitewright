@@ -119,6 +119,7 @@ export default function ProjectDashboard({ projects = PROJECTS, members = MEMBER
 
   return (
     <div ref={root} className={'ui-project-dashboard' + cls}>
+    <div className="ui-project-dashboard-in">
       <nav className="ui-project-dashboard-side" aria-label="Projects">
         <p className="ui-project-dashboard-k">Projects</p>
         {projects.map((p) => {
@@ -215,6 +216,7 @@ export default function ProjectDashboard({ projects = PROJECTS, members = MEMBER
         </div>
         <p className="ui-project-dashboard-sr" role="status" aria-live="polite">{note}</p>
       </div>
+    </div>
     </div>
   );
 }

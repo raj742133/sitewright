@@ -44,13 +44,13 @@ export default function PeelReveal({ front, back, height = 150, className }: Pee
     const c: Corner = `${y < r.height / 2 ? 't' : 'b'}${x < r.width / 2 ? 'l' : 'r'}` as Corner;
     const dxc = c.endsWith('l') ? x : r.width - x, dyc = c.startsWith('t') ? y : r.height - y;
     const d = Math.hypot(dxc, dyc), m = Math.min(r.width, r.height);
-    setPeel({ c, s: Math.round(Math.min(m * 0.62, Math.max(16, m * 0.85 - d * 0.7))) });
+    setPeel({ c, s: Math.round(Math.min(m * 0.7, Math.max(16, m * 0.85 - d * 0.7))) });
   };
   const leave = () => { if (!pinned) setPeel((p) => ({ c: p.c, s: 16 })); };
   const toggle = () => {
     const next = !pinned; setPinned(next);
     const m = ref.current ? Math.min(ref.current.clientWidth, ref.current.clientHeight) : 120;
-    setPeel({ c: 'br', s: next ? Math.round(m * 0.62) : 16 });
+    setPeel({ c: 'br', s: next ? Math.round(m * 0.7) : 16 });
   };
   const { face, flap } = shapes(peel.c, peel.s);
   const tr = reduced ? 'none' : 'clip-path 0.14s ease-out';

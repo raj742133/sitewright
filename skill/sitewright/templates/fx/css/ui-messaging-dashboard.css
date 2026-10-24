@@ -1,4 +1,5 @@
-.ui-messaging-dashboard { container: ui-msg / inline-size; width: 100%; height: 560px; max-height: 100%; display: grid; grid-template-columns: 300px minmax(0, 1fr) 280px; background: var(--raised, #fff); border: 1px solid var(--line, #ddd); border-radius: calc(var(--radius, 12px) + 4px); overflow: hidden; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; position: relative; box-sizing: border-box; }
+.ui-messaging-dashboard { container: ui-msg / inline-size; width: 100%; }
+.ui-messaging-dashboard-in {  width: 100%; height: 560px; max-height: 100%; display: grid; grid-template-columns: 300px minmax(0, 1fr) 280px; background: var(--raised, #fff); border: 1px solid var(--line, #ddd); border-radius: calc(var(--radius, 12px) + 4px); overflow: hidden; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; position: relative; box-sizing: border-box; }
 .ui-messaging-dashboard *, .ui-messaging-dashboard *::before, .ui-messaging-dashboard *::after { box-sizing: border-box; }
 .ui-messaging-dashboard :is(button, input, textarea):focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
 .ui-messaging-dashboard-list, .ui-messaging-dashboard-panel { display: flex; flex-direction: column; gap: 10px; padding: 14px; min-height: 0; min-width: 0; overflow-y: auto; }
@@ -66,15 +67,15 @@
 @keyframes ui-messaging-dashboard-dot { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(-4px); opacity: 1; } }
 /* medium: details toggled over the thread */
 @container ui-msg (max-width: 899px) {
-  .ui-messaging-dashboard { grid-template-columns: 280px minmax(0, 1fr); }
+  .ui-messaging-dashboard-in { grid-template-columns: 280px minmax(0, 1fr); }
   .ui-messaging-dashboard-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(300px, 100%); z-index: 3; transform: translateX(105%); visibility: hidden; transition: transform .3s var(--ease, ease), visibility .3s; box-shadow: var(--shadow-lift, -8px 0 24px rgba(0,0,0,.2)); background: var(--raised, #fff); }
   .ui-messaging-dashboard-panel[data-open='true'] { transform: none; visibility: visible; }
   .ui-messaging-dashboard-infobtn, .ui-messaging-dashboard-close { display: inline-block; }
 }
 @container ui-msg (max-width: 599px) {
-  .ui-messaging-dashboard { grid-template-columns: minmax(0, 1fr); }
-  .ui-messaging-dashboard[data-view='list'] .ui-messaging-dashboard-thread { display: none; }
-  .ui-messaging-dashboard[data-view='thread'] .ui-messaging-dashboard-list { display: none; }
+  .ui-messaging-dashboard-in { grid-template-columns: minmax(0, 1fr); }
+  .ui-messaging-dashboard-in[data-view='list'] .ui-messaging-dashboard-thread { display: none; }
+  .ui-messaging-dashboard-in[data-view='thread'] .ui-messaging-dashboard-list { display: none; }
   .ui-messaging-dashboard-list { border-right: 0; }
   .ui-messaging-dashboard-back { display: inline-block; }
   .ui-messaging-dashboard-chips { order: 5; width: 100%; }

@@ -17,3 +17,4 @@
   .ui-rolling-publish-btn, .ui-rolling-publish-roll { transition: none; }
   .ui-rolling-publish-spin { animation: none !important; }
 }
+[data-phase='done'] .ui-rolling-publish-fill { opacity: 0; transition: opacity 0.4s; }

@@ -38,7 +38,7 @@ function build(seed: number, depth: number) {
       walk(ex, ey, a + spread, len * (0.7 + rnd() * 0.1), lvl + 1);
     }
   };
-  walk(100, 150, 0, 34, 0);
+  walk(100, 150, 0, 40, 0);
   return { branches, blooms };
 }
 
@@ -101,7 +101,7 @@ export default function MagicTree({ seed = 7, depth = 7, button = true, classNam
       {button && (
         <div className="ui-magic-tree-actions">
           <button type="button" className="ui-magic-tree-btn" onClick={() => burst(50, 28, 10)}>Sparkle</button>
-          <button type="button" className="ui-magic-tree-btn is-primary" onClick={regrow}>Regrow</button>
+          <button type="button" className="ui-magic-tree-btn is-primary" onClick={regrow} aria-label="Regrow the tree"><span aria-hidden="true">↻</span><span className="ui-magic-tree-lbl"> Regrow</span></button>
         </div>
       )}
     </div>

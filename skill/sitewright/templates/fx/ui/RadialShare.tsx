@@ -22,7 +22,7 @@ export const DEFAULT_TARGETS: RadialTarget[] = [
 ];
 
 /** Share button that fans a radial menu of targets around itself: staggered springs, arrow-key roving focus, Escape closes. */
-export default function RadialShare({ targets = DEFAULT_TARGETS, label = 'Share', radius = 70, onSelect }: RadialShareProps) {
+export default function RadialShare({ targets = DEFAULT_TARGETS, label = 'Share', radius = 68, onSelect }: RadialShareProps) {
   const [open, setOpen] = useState(false);
   const [cur, setCur] = useState(0);
   const [said, setSaid] = useState('');
@@ -73,8 +73,8 @@ export default function RadialShare({ targets = DEFAULT_TARGETS, label = 'Share'
       </button>
       <div id={menuId} role="menu" aria-label={`${label} to`} className="ui-radial-share-menu" onKeyDown={key}>
         {targets.map((t, i) => {
-          const a = Math.PI - (n === 1 ? Math.PI / 2 : (i / (n - 1)) * Math.PI);
-          const st = { '--x': `${(Math.cos(a) * radius).toFixed(1)}px`, '--y': `${(-Math.sin(a) * radius).toFixed(1)}px`, '--i': i } as CSSProperties;
+          const a = ((n === 1 ? 90 : 165 - (i / (n - 1)) * 150) * Math.PI) / 180; // fan spans 150 degrees, centred above the button
+          const st = { '--x': `${(Math.cos(a) * radius).toFixed(1)}px`, '--y': `${(-(Math.sin(a) * radius + 26)).toFixed(1)}px`, '--i': i } as CSSProperties;
           return (
             <button
               key={t.id}
@@ -101,7 +101,7 @@ export default function RadialShare({ targets = DEFAULT_TARGETS, label = 'Share'
 export function Demo() {
   return (
     <div style={{ display: 'grid', justifyItems: 'center', gap: 4 }}>
-      <RadialShare radius={60} />
+      <RadialShare />
     </div>
   );
 }

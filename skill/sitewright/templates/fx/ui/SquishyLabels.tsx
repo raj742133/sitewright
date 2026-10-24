@@ -56,5 +56,5 @@ export default function SquishyLabels({ labels = DEFAULTS, defaultSelected = ['F
 }
 
 export function Demo() {
-  return <SquishyLabels labels={['Espresso', 'Filter', 'Cold brew', 'Oat milk', 'Decaf']} />;
+  return <SquishyLabels labels={['Espresso', 'Filter', 'Cold brew', 'Decaf']} />;
 }

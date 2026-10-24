@@ -50,7 +50,7 @@ export default function RepellingDots({ spacing = 22, radius = 90, className, st
       for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
         const k = j * cols + i;
         const d = Math.min(1, Math.hypot(ox[k]!, oy[k]!) / 28);
-        ctx.globalAlpha = 0.35 + d * 0.6;
+        ctx.globalAlpha = 0.45 + d * 0.5;
         ctx.fillStyle = d > 0.25 ? colB : colA;
         ctx.beginPath();
         ctx.arc(x0 + i * spacing + ox[k]!, y0 + j * spacing + oy[k]!, 1.4 + d * 1.6, 0, 6.2832);
