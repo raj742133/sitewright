@@ -1,0 +1,3 @@
+[
+  { "id": "magic-tree-qr", "label": "Magic tree QR", "desc": "A QR code generator: paste a link and it grows its own tree, where every dot is a leaf and every link gets a different tree and shade. A real, scannable QR code (built-in encoder, no dependency) you can download as PNG or SVG.", "source": "Original", "group": "inputs", "files": ["MagicTreeQr.tsx", "_qr.ts", "_d6.ts"], "css": ["ui-magic-tree-qr"], "use": "Share and invite pages, publishing links, the connect page, print and event materials." }
+]
