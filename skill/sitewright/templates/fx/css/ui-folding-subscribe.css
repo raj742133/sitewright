@@ -1,0 +1,31 @@
+.ui-folding-subscribe { position: relative; display: inline-flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--font-body, inherit); }
+.ui-folding-subscribe-btn { position: relative; display: grid; place-items: center; width: 180px; max-width: 100%; height: 48px; padding: 0; border: 0; background: transparent; color: var(--on-primary, #fff); font: 650 1rem var(--font-body, inherit); cursor: pointer; perspective: 500px; }
+.ui-folding-subscribe-btn:disabled { cursor: default; }
+.ui-folding-subscribe-btn:focus-visible, .ui-folding-subscribe-reset:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; border-radius: var(--radius, 12px); }
+.ui-folding-subscribe-stack { position: absolute; inset: 0; transition: transform 0.35s var(--ease, ease), opacity 0.2s; }
+.ui-folding-subscribe-btn:active .ui-folding-subscribe-stack { transform: scale(0.97); }
+.ui-folding-subscribe-panel { position: absolute; inset: 0; display: grid; place-items: center; border-radius: var(--radius, 12px); background: var(--primary, #2563eb); box-shadow: var(--shadow, 0 1px 3px rgb(0 0 0 / 0.2)); transition: transform 0.45s var(--ease, ease), filter 0.45s, opacity 0.2s; backface-visibility: visible; }
+.ui-folding-subscribe-panel.is-top { clip-path: inset(0 0 50% 0); transform-origin: 50% 50%; }
+.ui-folding-subscribe-panel.is-bottom { clip-path: inset(50% 0 0 0); }
+/* fold 1: the top half closes over the bottom half; fold 2: the strip narrows */
+[data-phase='fold'] .is-top { transform: rotateX(180deg); filter: brightness(0.85); }
+[data-phase='fold'] .ui-folding-subscribe-stack { animation: ui-folding-subscribe-narrow 0.4s 0.4s var(--ease, ease) forwards; }
+@keyframes ui-folding-subscribe-narrow { to { transform: scaleX(0.2) scaleY(1.1); opacity: 0; } }
+.ui-folding-subscribe-plane { position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; margin: -17px 0 0 -17px; opacity: 0; fill: var(--primary, #2563eb); stroke: var(--primary, #2563eb); stroke-width: 1.6; stroke-linejoin: round; }
+[data-phase='fold'] .ui-folding-subscribe-plane { opacity: 1; transition: opacity 0.15s 0.55s; }
+[data-phase='fly'] .ui-folding-subscribe-stack { opacity: 1; }
+[data-phase='fly'] .is-top, [data-phase='fly'] .is-bottom { opacity: 0; }
+[data-phase='fly'] .ui-folding-subscribe-plane { animation: ui-folding-subscribe-fly 0.7s cubic-bezier(0.5, 0, 0.9, 0.6) forwards; }
+@keyframes ui-folding-subscribe-fly { 0% { opacity: 1; transform: translate(0, 0) rotate(-8deg); } 30% { transform: translate(14px, 4px) rotate(8deg) scale(1.1); } 100% { opacity: 0; transform: translate(130px, -70px) rotate(-12deg) scale(0.5); } }
+[data-phase='done'] .ui-folding-subscribe-stack, [data-phase='fly'] .ui-folding-subscribe-ok { display: none; }
+.ui-folding-subscribe-ok { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; gap: 8px; border: 2px solid var(--ok, #16a34a); border-radius: var(--radius, 12px); background: var(--raised, #fff); color: var(--ink, #0f172a); }
+[data-phase='done'] .ui-folding-subscribe-ok { display: flex; animation: ui-folding-subscribe-pop 0.4s var(--ease, ease) both; }
+@keyframes ui-folding-subscribe-pop { from { opacity: 0; transform: scale(0.85); } }
+.ui-folding-subscribe-ok svg { width: 20px; height: 20px; fill: none; stroke: var(--ok, #16a34a); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.ui-folding-subscribe-panel > span { color: var(--on-primary, #fff); }
+.ui-folding-subscribe-reset { min-height: 44px; padding: 0 0.75rem; border: 0; background: transparent; color: var(--ink, #0f172a); font: 600 0.9rem var(--font-body, inherit); text-decoration: underline; cursor: pointer; }
+.ui-folding-subscribe-reset[hidden] { display: none; }
+.ui-folding-subscribe-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .ui-folding-subscribe-stack, .ui-folding-subscribe-panel, .ui-folding-subscribe-ok { transition: none; animation: none !important; }
+}

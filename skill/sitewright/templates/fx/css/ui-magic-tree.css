@@ -1,0 +1,29 @@
+.ui-magic-tree { color: var(--ink, #111); touch-action: manipulation; }
+.ui-magic-tree-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ui-magic-tree-ground { fill: var(--line, #d4d4d8); opacity: 0.7; }
+.ui-magic-tree-seed { fill: var(--signal, #f59e0b); transform-box: fill-box; transform-origin: center; animation: ui-magic-tree-seed 0.6s var(--ease, ease) both; }
+.ui-magic-tree-branch { fill: none; stroke: var(--muted, #71717a); stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: ui-magic-tree-draw 0.5s ease-out forwards; }
+.ui-magic-tree-bloom { transform-box: fill-box; transform: scale(0); animation: ui-magic-tree-bloom 0.7s cubic-bezier(0.34, 1.6, 0.5, 1) forwards; }
+.ui-magic-tree-bloom.is-leaf-0 { fill: var(--ok, #16a34a); }
+.ui-magic-tree-bloom.is-leaf-1 { fill: var(--primary, #2563eb); opacity: 0.85; }
+.ui-magic-tree-bloom.is-leaf-2 { fill: var(--primary-wash, #93c5fd); stroke: var(--primary, #2563eb); stroke-width: 0.6; }
+.ui-magic-tree-bloom.is-light { fill: var(--signal, #f59e0b); animation: ui-magic-tree-bloom 0.7s cubic-bezier(0.34, 1.6, 0.5, 1) forwards, ui-magic-tree-twinkle 2.4s ease-in-out 3s infinite; }
+.ui-magic-tree-sparks { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.ui-magic-tree-spark { position: absolute; background: var(--signal, #f59e0b); clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); translate: -50% -50%; animation: ui-magic-tree-fall 1.6s ease-in forwards; }
+.ui-magic-tree-spark.is-1 { background: var(--primary, #2563eb); }
+.ui-magic-tree-spark.is-2 { background: var(--ok, #16a34a); }
+.ui-magic-tree-actions { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 8px; z-index: 2; }
+.ui-magic-tree-btn { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--line-strong, #a1a1aa); background: var(--raised, #fff); color: var(--ink, #111); font: 600 0.9rem var(--font-body, system-ui); cursor: pointer; }
+.ui-magic-tree-btn.is-primary { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-magic-tree-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+@keyframes ui-magic-tree-draw { to { stroke-dashoffset: 0; } }
+@keyframes ui-magic-tree-bloom { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes ui-magic-tree-seed { from { transform: scale(0.2); } to { transform: scale(1); } }
+@keyframes ui-magic-tree-twinkle { 50% { opacity: 0.45; } }
+@keyframes ui-magic-tree-fall { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 100% { transform: translate(var(--dx), var(--fall)) rotate(200deg); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-magic-tree * { animation: none !important; }
+  .ui-magic-tree-branch { stroke-dashoffset: 0; }
+  .ui-magic-tree-bloom { transform: scale(1); }
+}
+@media (pointer: coarse) { .ui-magic-tree-btn { min-height: 48px; } }

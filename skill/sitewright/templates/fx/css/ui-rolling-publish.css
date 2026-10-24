@@ -1,0 +1,19 @@
+.ui-rolling-publish { position: relative; display: inline-block; max-width: 100%; font-family: var(--font-body, inherit); }
+.ui-rolling-publish-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-width: 190px; min-height: 48px; padding: 0 1.25rem; overflow: hidden; border: 0; border-radius: var(--radius, 12px); background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: 650 1rem var(--font-body, inherit); cursor: pointer; box-shadow: var(--shadow, 0 1px 3px rgb(0 0 0 / 0.2)); transition: transform 0.2s var(--ease, ease); }
+.ui-rolling-publish-btn:active { transform: scale(0.97); }
+.ui-rolling-publish-btn[aria-disabled='true'] { cursor: progress; }
+.ui-rolling-publish-btn:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; }
+.ui-rolling-publish-fill { position: absolute; inset: 0; transform-origin: left; transform: scaleX(0); background: var(--on-primary, #fff); opacity: 0.22; }
+.ui-rolling-publish-icon, .ui-rolling-publish-window { position: relative; display: block; height: 24px; overflow: hidden; }
+.ui-rolling-publish-icon { width: 24px; }
+.ui-rolling-publish-window { min-width: 7.2em; text-align: left; line-height: 24px; font-variant-numeric: tabular-nums; }
+.ui-rolling-publish-roll { display: block; transition: transform 0.55s cubic-bezier(0.34, 1.3, 0.5, 1); }
+.ui-rolling-publish-roll > svg { display: block; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.ui-rolling-publish-word { display: block; height: 24px; white-space: nowrap; }
+[data-phase='working'] .ui-rolling-publish-spin { animation: ui-rolling-publish-spin 0.9s linear infinite; }
+@keyframes ui-rolling-publish-spin { to { transform: rotate(360deg); } }
+.ui-rolling-publish-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .ui-rolling-publish-btn, .ui-rolling-publish-roll { transition: none; }
+  .ui-rolling-publish-spin { animation: none !important; }
+}

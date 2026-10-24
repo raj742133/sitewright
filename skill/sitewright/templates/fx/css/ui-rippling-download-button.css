@@ -1,0 +1,30 @@
+.ui-rippling-download-button { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 24px 0 18px; border-radius: 14px; border: 0; background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: inherit; font-family: var(--font-body, system-ui, sans-serif); font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, .2)); transition: transform .12s, filter .2s; }
+.ui-rippling-download-button:hover { filter: brightness(1.08); }
+.ui-rippling-download-button:active { transform: scale(.97); }
+.ui-rippling-download-button:focus-visible { outline: 2px solid var(--ink, #111); outline-offset: 3px; }
+.ui-rippling-download-button[aria-disabled='true'] { cursor: progress; }
+.ui-rippling-download-button-ripples { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.ui-rippling-download-button-ripples i { position: absolute; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; background: currentColor; opacity: .35; animation: ui-rippling-download-button-ripple .7s ease-out forwards; }
+.ui-rippling-download-button-icon { position: relative; flex: none; overflow: visible; }
+.ui-rippling-download-button-text { position: relative; font-variant-numeric: tabular-nums; min-width: 6.5ch; }
+.ui-rippling-download-button-prog, .ui-rippling-download-button-check { opacity: 0; transition: opacity .2s; }
+.ui-rippling-download-button-check { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ui-rippling-download-button-idle { transition: opacity .2s; }
+.ui-rippling-download-button-arrow { transform-box: view-box; }
+.ui-rippling-download-button:not([data-state]) .ui-rippling-download-button-arrow, .ui-rippling-download-button[data-state='idle']:hover .ui-rippling-download-button-arrow { animation: ui-rippling-download-button-nudge .9s ease-in-out infinite; }
+.ui-rippling-download-button[data-state='running'] .ui-rippling-download-button-arrow { animation: ui-rippling-download-button-drop .8s ease-in forwards; }
+.ui-rippling-download-button[data-state='running'] .ui-rippling-download-button-idle { animation: ui-rippling-download-button-fadeidle .9s forwards; }
+.ui-rippling-download-button[data-state='running'] .ui-rippling-download-button-prog { opacity: 1; transition-delay: .6s; }
+.ui-rippling-download-button[data-state='done'] .ui-rippling-download-button-idle, .ui-rippling-download-button[data-state='done'] .ui-rippling-download-button-prog { opacity: 0; }
+.ui-rippling-download-button[data-state='done'] .ui-rippling-download-button-check { opacity: 1; stroke-dashoffset: 0; transition: stroke-dashoffset .4s ease-out, opacity .1s; }
+.ui-rippling-download-button-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@keyframes ui-rippling-download-button-ripple { to { transform: scale(18); opacity: 0; } }
+@keyframes ui-rippling-download-button-nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
+@keyframes ui-rippling-download-button-drop { 0% { transform: translateY(0); opacity: 1; } 55% { transform: translateY(6px); opacity: 1; } 100% { transform: translateY(8px); opacity: 0; } }
+@keyframes ui-rippling-download-button-fadeidle { 0%, 60% { opacity: 1; } 100% { opacity: 0; } }
+@media (pointer: coarse) { .ui-rippling-download-button { min-height: 48px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-rippling-download-button, .ui-rippling-download-button * { animation: none !important; transition: none !important; }
+  .ui-rippling-download-button-ripples { display: none; }
+  .ui-rippling-download-button[data-state='running'] .ui-rippling-download-button-idle { opacity: 0; }
+}

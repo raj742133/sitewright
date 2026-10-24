@@ -1,0 +1,35 @@
+.ui-neumorphic-play-button {
+  --npb-base: var(--raised, #e9edf3); --npb-hi: rgba(255, 255, 255, .9); --npb-lo: rgba(40, 55, 80, .22);
+  --npb-in-hi: rgba(255, 255, 255, .8); --npb-in-lo: rgba(40, 55, 80, .28);
+  position: relative; width: 104px; height: 104px; padding: 0; border: 0; border-radius: 50%; background: var(--npb-base); color: var(--ink, #111); cursor: pointer;
+  box-shadow: 8px 8px 18px var(--npb-lo), -8px -8px 18px var(--npb-hi); transition: box-shadow .2s, transform .15s;
+}
+:root[data-theme='dark'] .ui-neumorphic-play-button { --npb-hi: rgba(255, 255, 255, .07); --npb-lo: rgba(0, 0, 0, .6); --npb-in-hi: rgba(255, 255, 255, .06); --npb-in-lo: rgba(0, 0, 0, .65); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .ui-neumorphic-play-button { --npb-hi: rgba(255, 255, 255, .07); --npb-lo: rgba(0, 0, 0, .6); --npb-in-hi: rgba(255, 255, 255, .06); --npb-in-lo: rgba(0, 0, 0, .65); } }
+.ui-neumorphic-play-button:active, .ui-neumorphic-play-button[data-playing] { box-shadow: inset 6px 6px 12px var(--npb-in-lo), inset -6px -6px 12px var(--npb-in-hi); }
+.ui-neumorphic-play-button:active { transform: scale(.98); }
+.ui-neumorphic-play-button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 5px; }
+.ui-neumorphic-play-button-ring { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.ui-neumorphic-play-button-track { fill: none; stroke: var(--line, rgba(128, 128, 128, .3)); stroke-width: 2.5; }
+.ui-neumorphic-play-button-arc { fill: none; stroke: var(--primary, #2563eb); stroke-width: 3.5; stroke-linecap: round; opacity: 0; transition: stroke-dashoffset .2s linear, opacity .3s; }
+.ui-neumorphic-play-button[data-playing] .ui-neumorphic-play-button-arc { opacity: 1; }
+.ui-neumorphic-play-button-face { position: absolute; inset: 0; display: grid; place-items: center; }
+.ui-neumorphic-play-button-icon { fill: var(--ink, #111); overflow: visible; }
+.ui-neumorphic-play-button-play, .ui-neumorphic-play-button-pause { transform-box: fill-box; transform-origin: center; transition: opacity .25s, transform .3s cubic-bezier(.3, 1.3, .5, 1); }
+.ui-neumorphic-play-button-play { transform: translateX(1px); }
+.ui-neumorphic-play-button-pause { opacity: 0; transform: scale(.6) rotate(-45deg); }
+.ui-neumorphic-play-button[data-playing] .ui-neumorphic-play-button-play { opacity: 0; transform: scale(.5) rotate(60deg); }
+.ui-neumorphic-play-button[data-playing] .ui-neumorphic-play-button-pause { opacity: 1; transform: none; }
+.ui-neumorphic-play-button-eq { position: absolute; left: 50%; bottom: 17px; transform: translateX(-50%); display: flex; align-items: flex-end; gap: 3px; height: 10px; opacity: 0; transition: opacity .3s; }
+.ui-neumorphic-play-button[data-playing] .ui-neumorphic-play-button-eq { opacity: 1; }
+.ui-neumorphic-play-button-eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--primary, #2563eb); transform-origin: bottom; animation: ui-neumorphic-play-button-eq .9s ease-in-out infinite; }
+.ui-neumorphic-play-button-eq i:nth-child(2) { animation-delay: -.3s; animation-duration: .7s; }
+.ui-neumorphic-play-button-eq i:nth-child(3) { animation-delay: -.6s; animation-duration: 1.1s; }
+@keyframes ui-neumorphic-play-button-eq { 0%, 100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
+@media (pointer: coarse) { .ui-neumorphic-play-button { min-width: 64px; min-height: 64px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-neumorphic-play-button, .ui-neumorphic-play-button * { transition: none !important; animation: none !important; }
+  .ui-neumorphic-play-button-eq i { transform: scaleY(.6); }
+  .ui-neumorphic-play-button-eq i:nth-child(2) { transform: scaleY(1); }
+  .ui-neumorphic-play-button-eq i:nth-child(3) { transform: scaleY(.4); }
+}

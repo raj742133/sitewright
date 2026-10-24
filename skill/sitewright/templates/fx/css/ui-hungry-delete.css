@@ -1,0 +1,22 @@
+.ui-hungry-delete { position: relative; display: grid; grid-template-columns: auto auto; align-items: center; justify-content: center; gap: 0 10px; max-width: 100%; font-family: var(--font-body, inherit); color: var(--ink, #0f172a); }
+.ui-hungry-delete-chip { display: inline-flex; align-items: center; gap: 6px; max-width: 112px; min-height: 36px; padding: 0 12px 0 8px; overflow: hidden; border: 1.5px solid var(--line-strong, #94a3b8); border-radius: 10px; background: var(--raised, #fff); font: 500 0.8rem var(--font-mono, monospace); white-space: nowrap; text-overflow: ellipsis; transition: transform 0.7s cubic-bezier(0.5, -0.2, 0.9, 0.6), opacity 0.3s 0.5s; }
+.ui-hungry-delete-chip svg { flex: none; width: 16px; height: 16px; fill: none; stroke: var(--muted, #475569); stroke-width: 1.8; stroke-linejoin: round; }
+[data-phase='eating'] .ui-hungry-delete-chip { transform: translateX(calc(100% + 30px)) scale(0.2); opacity: 0; }
+[data-phase='gone'] .ui-hungry-delete-chip, [data-phase='final'] .ui-hungry-delete-chip { visibility: hidden; opacity: 0; transition: none; }
+.ui-hungry-delete-btn { position: relative; width: 116px; height: 54px; padding: 0; border: 0; background: transparent; cursor: pointer; --ui-hungry-delete-open: 0; }
+.ui-hungry-delete-btn[data-open='true'] { --ui-hungry-delete-open: 1; }
+.ui-hungry-delete-btn:focus-visible, .ui-hungry-delete-undo:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 4px; border-radius: 14px; }
+.ui-hungry-delete-gap { position: absolute; inset: 4px 0; display: grid; place-items: end center; overflow: hidden; border-radius: 18px; background: var(--ink, #0f172a); }
+.ui-hungry-delete-gap i { width: 44px; height: 18px; margin-bottom: -6px; border-radius: 50% 50% 0 0; background: var(--critical, #dc2626); }
+.ui-hungry-delete-lid { position: absolute; left: 0; right: 0; height: 100%; display: grid; place-items: center; border-radius: 18px; background: var(--raised-2, #f1f5f9); box-shadow: inset 0 0 0 2px var(--critical, #dc2626); color: var(--ink, #0f172a); font: 700 0.95rem var(--font-body, inherit); transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.ui-hungry-delete-lid.is-up { top: 0; clip-path: inset(0 0 50% 0); transform-origin: 8% 50%; transform: translateY(calc(var(--ui-hungry-delete-open) * -9px)) rotate(calc(var(--ui-hungry-delete-open) * -7deg)); }
+.ui-hungry-delete-lid.is-down { top: 0; clip-path: inset(50% 0 0 0); transform: translateY(calc(var(--ui-hungry-delete-open) * 8px)); }
+[data-phase='eating'] .is-up { animation: ui-hungry-delete-chomp 0.3s 0.45s 2 ease-in-out; }
+[data-phase='eating'] .is-down { animation: ui-hungry-delete-chomp-low 0.3s 0.45s 2 ease-in-out; }
+@keyframes ui-hungry-delete-chomp { 50% { transform: translateY(2px) rotate(0); } }
+@keyframes ui-hungry-delete-chomp-low { 50% { transform: translateY(-2px); } }
+.ui-hungry-delete-status { grid-column: 1 / -1; min-height: 20px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.82rem; }
+.ui-hungry-delete-undo { min-height: 44px; padding: 0 0.6rem; border: 0; background: transparent; color: var(--ink, #0f172a); font: 700 0.85rem var(--font-body, inherit); text-decoration: underline; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  .ui-hungry-delete-chip, .ui-hungry-delete-lid { transition: none; animation: none !important; }
+}

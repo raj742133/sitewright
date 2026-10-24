@@ -1,0 +1,22 @@
+.ui-radial-share { position: relative; display: block; width: calc(var(--ui-radial-share-r, 70px) * 2 + 52px); max-width: 100%; height: var(--ui-radial-share-h, 144px); margin: 0 auto; font-family: var(--font-body, inherit); }
+.ui-radial-share-btn { position: absolute; left: 50%; bottom: 0; z-index: 2; display: inline-flex; align-items: center; gap: 8px; min-width: 150px; justify-content: center; min-height: 48px; padding: 0 1.25rem; transform: translateX(-50%); border: 0; border-radius: 999px; background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: 650 1rem var(--font-body, inherit); cursor: pointer; box-shadow: var(--shadow, 0 1px 3px rgb(0 0 0 / 0.2)); transition: box-shadow 0.2s; }
+.ui-radial-share-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; transition: transform 0.4s var(--ease, ease); }
+[data-open='true'] .ui-radial-share-btn svg { transform: rotate(90deg); }
+.ui-radial-share-btn:focus-visible, .ui-radial-share-item:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; }
+.ui-radial-share-menu { position: absolute; left: 50%; bottom: 24px; width: 0; height: 0; }
+.ui-radial-share-item {
+  position: absolute; left: -22px; top: -22px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1.5px solid var(--line-strong, #94a3b8); border-radius: 50%;
+  background: var(--raised, #fff); color: var(--ink, #0f172a); cursor: pointer; box-shadow: var(--shadow, 0 1px 3px rgb(0 0 0 / 0.2));
+  visibility: hidden; opacity: 0; transform: translate(0, 0) scale(0.3);
+  transition: transform 0.2s ease-in calc((var(--i) * -1 + 4) * 20ms), opacity 0.15s calc((var(--i) * -1 + 4) * 20ms), visibility 0s 0.45s;
+}
+[data-open='true'] .ui-radial-share-item {
+  visibility: visible; opacity: 1; transform: translate(var(--x), var(--y)) scale(1);
+  transition: transform 0.55s cubic-bezier(0.34, 1.7, 0.5, 1) calc(var(--i) * 45ms), opacity 0.2s calc(var(--i) * 45ms), visibility 0s;
+}
+.ui-radial-share-item:hover, .ui-radial-share-item:focus-visible { background: var(--primary, #2563eb); color: var(--on-primary, #fff); border-color: var(--primary, #2563eb); }
+.ui-radial-share-item svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ui-radial-share-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .ui-radial-share-item, [data-open='true'] .ui-radial-share-item, .ui-radial-share-btn svg { transition: none; }
+}

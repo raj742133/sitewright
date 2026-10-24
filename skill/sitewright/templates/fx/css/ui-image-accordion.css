@@ -1,0 +1,14 @@
+.ui-image-accordion { display: flex; gap: 6px; width: 100%; height: 100%; min-height: 130px; }
+.ui-image-accordion-panel {
+  position: relative; flex: 1 1 0; min-width: 44px; padding: 0; overflow: hidden; border: 0; border-radius: var(--radius, 12px); background: var(--raised, #111); color: #fff;
+  cursor: pointer; text-align: left; transition: flex-grow 0.5s var(--ease, cubic-bezier(.2, .8, .2, 1)); touch-action: manipulation;
+}
+.ui-image-accordion-panel[data-active] { flex-grow: 5; }
+.ui-image-accordion-shade { position: absolute; inset: 0; background: linear-gradient(transparent 35%, rgba(0, 0, 0, 0.78)); }
+.ui-image-accordion-copy { position: absolute; left: 10px; right: 8px; bottom: 8px; display: grid; gap: 2px; overflow: hidden; }
+.ui-image-accordion-title { font: 700 0.9rem var(--font-body, inherit); white-space: nowrap; }
+.ui-image-accordion-text { font: 500 0.75rem var(--font-body, inherit); opacity: 0; transition: opacity 0.3s; white-space: nowrap; }
+.ui-image-accordion-panel:not([data-active]) .ui-image-accordion-title { writing-mode: vertical-rl; transform: rotate(180deg); justify-self: start; max-height: 100%; font-size: 0.8rem; }
+.ui-image-accordion-panel[data-active] .ui-image-accordion-text { opacity: 1; transition-delay: 0.2s; }
+.ui-image-accordion-panel:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 2px; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .ui-image-accordion-panel, .ui-image-accordion-text { transition: none; } }

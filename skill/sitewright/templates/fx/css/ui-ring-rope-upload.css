@@ -1,0 +1,35 @@
+.ui-ring-rope-upload { display: grid; gap: 6px; width: min(100%, 280px); font-family: var(--font-body, system-ui, sans-serif); color: var(--ink, #111); }
+.ui-ring-rope-upload-stage { position: relative; }
+.ui-ring-rope-upload-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ui-ring-rope-upload-hit { position: absolute; left: 0; top: 0; width: 28%; height: 100%; min-width: 48px; border: 0; background: transparent; border-radius: 50%; cursor: pointer; }
+.ui-ring-rope-upload-hit:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
+.ui-ring-rope-upload-hit[aria-disabled='true'] { cursor: progress; }
+.ui-ring-rope-upload-svg line, .ui-ring-rope-upload-ring { fill: none; stroke-width: 6; stroke-linecap: round; }
+.ui-ring-rope-upload-ring { stroke: var(--primary, #2563eb); transition: stroke-dashoffset .6s cubic-bezier(.6, 0, .3, 1), opacity .3s; }
+.ui-ring-rope-upload-track { stroke: var(--line-strong, rgba(128, 128, 128, .35)); transition: stroke-dashoffset .6s cubic-bezier(.6, 0, .3, 1); }
+.ui-ring-rope-upload-fill { stroke: var(--primary, #2563eb); transition: stroke-dashoffset .2s linear, opacity .4s .5s; }
+.ui-ring-rope-upload-arrow { fill: none; stroke: var(--ink, #111); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: opacity .25s; }
+.ui-ring-rope-upload:not([data-phase='idle']) .ui-ring-rope-upload-arrow { opacity: 0; }
+.ui-ring-rope-upload[data-phase='idle']:hover .ui-ring-rope-upload-arrow { animation: ui-ring-rope-upload-bob .9s ease-in-out infinite; }
+.ui-ring-rope-upload-chipx, .ui-ring-rope-upload-chipy { opacity: 0; }
+.ui-ring-rope-upload-chipy rect { fill: var(--primary, #2563eb); }
+.ui-ring-rope-upload-chipy text { fill: var(--on-primary, #fff); font: 600 11px var(--font-mono, ui-monospace, monospace); }
+.ui-ring-rope-upload[data-phase='done'] .ui-ring-rope-upload-chipx { opacity: 1; animation: ui-ring-rope-upload-tossx .7s linear both; }
+.ui-ring-rope-upload[data-phase='done'] .ui-ring-rope-upload-chipy { opacity: 1; animation: ui-ring-rope-upload-tossy .7s cubic-bezier(.3, .7, .6, 1) both; }
+.ui-ring-rope-upload[data-phase='done'] .ui-ring-rope-upload-fill { opacity: .25; }
+.ui-ring-rope-upload-okc { fill: var(--ok, #16a34a); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.4); transition: opacity .2s, transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+.ui-ring-rope-upload-ok { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ui-ring-rope-upload[data-phase='done'] .ui-ring-rope-upload-okc { opacity: 1; transform: none; transition-delay: .6s; }
+.ui-ring-rope-upload[data-phase='done'] .ui-ring-rope-upload-ok { stroke-dashoffset: 0; transition: stroke-dashoffset .35s ease-out .9s; }
+.ui-ring-rope-upload-status { margin: 0; font-size: 12px; color: var(--muted, #555); text-align: center; min-height: 1.4em; }
+.ui-ring-rope-upload-simple { display: grid; gap: 10px; }
+.ui-ring-rope-upload-btn { min-height: 44px; padding: 0 18px; border-radius: 12px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: var(--ink, #111); font: inherit; font-weight: 600; cursor: pointer; }
+.ui-ring-rope-upload-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-ring-rope-upload-simplebar { height: 8px; border-radius: 99px; background: var(--line, rgba(128, 128, 128, .3)); overflow: hidden; }
+.ui-ring-rope-upload-simplebar i { display: block; height: 100%; background: var(--primary, #2563eb); }
+@keyframes ui-ring-rope-upload-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+@keyframes ui-ring-rope-upload-tossx { from { transform: translateX(-62px) scale(.5); opacity: 0; } 15% { opacity: 1; } to { transform: none; } }
+@keyframes ui-ring-rope-upload-tossy { 0% { transform: translateY(0); } 45% { transform: translateY(-34px); } 75% { transform: translateY(2px); } 100% { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-ring-rope-upload * { animation: none !important; transition: none !important; }
+}

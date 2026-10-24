@@ -1,0 +1,27 @@
+.ui-look-pay-button { position: relative; display: inline-flex; align-items: center; gap: 8px; max-width: 100%; font-family: var(--font-body, inherit); }
+.ui-look-pay-button-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; min-width: 190px; padding: 0 1.25rem; border: 2px solid transparent; border-radius: var(--radius, 12px);
+  background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: 650 1rem var(--font-body, inherit); cursor: pointer; box-shadow: var(--shadow, 0 1px 3px rgb(0 0 0 / 0.2));
+  transition: transform 0.2s var(--ease, ease), background 0.3s, color 0.3s, border-color 0.3s;
+}
+.ui-look-pay-button-btn:hover { transform: translateY(-1px); }
+.ui-look-pay-button-btn:active { transform: translateY(1px) scale(0.98); }
+.ui-look-pay-button-btn:focus-visible, .ui-look-pay-button-reset:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; }
+.ui-look-pay-button-btn[aria-disabled='true'] { cursor: default; }
+.ui-look-pay-button[data-phase='paid'] .ui-look-pay-button-btn { background: var(--raised, #fff); color: var(--ink, #0f172a); border-color: var(--ok, #16a34a); }
+.ui-look-pay-button-eyes { display: inline-flex; align-items: center; gap: 5px; height: 22px; min-width: 22px; }
+.ui-look-pay-button-eye {
+  position: relative; display: grid; place-items: center; width: 17px; height: 22px; border-radius: 50%; background: var(--on-primary, #fff);
+  transition: transform 0.12s ease-in; animation: ui-look-pay-button-blink 5.5s infinite;
+}
+.ui-look-pay-button-eye:nth-child(2) { animation-delay: 0.04s; }
+.ui-look-pay-button-pupil { width: 8px; height: 8px; border-radius: 50%; background: var(--primary, #1e3a8a); transition: transform 0.12s ease-out; }
+.ui-look-pay-button[data-phase='paying'] .ui-look-pay-button-eye { animation: none; transform: scaleY(0.08); }
+@keyframes ui-look-pay-button-blink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(0.08); } }
+.ui-look-pay-button-check { width: 24px; height: 24px; fill: none; stroke: var(--ok, #16a34a); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 26; animation: ui-look-pay-button-draw 0.4s var(--ease, ease) both; }
+@keyframes ui-look-pay-button-draw { from { stroke-dashoffset: 26; } to { stroke-dashoffset: 0; } }
+.ui-look-pay-button-reset { min-height: 44px; padding: 0 0.75rem; border: 0; border-radius: 8px; background: transparent; color: var(--ink, #0f172a); font: 600 0.9rem var(--font-body, inherit); text-decoration: underline; cursor: pointer; }
+.ui-look-pay-button-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .ui-look-pay-button-btn, .ui-look-pay-button-eye, .ui-look-pay-button-pupil, .ui-look-pay-button-check { transition: none; animation: none; }
+}

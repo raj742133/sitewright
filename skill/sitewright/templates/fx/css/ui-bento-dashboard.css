@@ -1,0 +1,93 @@
+.ui-bento-dashboard { container: ui-bento / inline-size; width: 100%; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; box-sizing: border-box; }
+.ui-bento-dashboard *, .ui-bento-dashboard *::before, .ui-bento-dashboard *::after { box-sizing: border-box; }
+.ui-bento-dashboard-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.ui-bento-dashboard-head h2 { margin: 0; font-size: 1.25rem; }
+.ui-bento-dashboard-chip { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--signal-wash, #e6f7ee); color: var(--ink, #111); border: 1px solid var(--line, #ddd); }
+.ui-bento-dashboard-chip::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok, #16a34a); margin-right: 6px; animation: ui-bento-dashboard-pulse 2s ease-in-out infinite; }
+.ui-bento-dashboard-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+.ui-bento-dashboard-tile { background: var(--raised, #fff); border: 1px solid var(--line, #ddd); border-radius: calc(var(--radius, 12px) + 4px); padding: 16px; min-width: 0; display: flex; flex-direction: column; gap: 10px; transition: transform .25s var(--ease, ease), box-shadow .25s var(--ease, ease), border-color .25s; }
+.ui-bento-dashboard-tile:hover, .ui-bento-dashboard-tile:focus-within { transform: translateY(-4px); box-shadow: var(--shadow-lift, 0 12px 28px rgba(0,0,0,.18)); border-color: var(--line-strong, #bbb); }
+@container ui-bento (min-width: 520px) {
+  .ui-bento-dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .ui-bento-dashboard-revenue, .ui-bento-dashboard-heat { grid-column: span 2; }
+}
+@container ui-bento (min-width: 860px) {
+  .ui-bento-dashboard-grid { grid-template-columns: repeat(4, 1fr); }
+  .ui-bento-dashboard .ui-bento-dashboard-revenue { grid-column: span 2; grid-row: span 2; }
+  .ui-bento-dashboard .ui-bento-dashboard-goal { grid-column: span 1; grid-row: span 2; }
+  .ui-bento-dashboard .ui-bento-dashboard-tasks { grid-column: span 1; grid-row: span 2; }
+  .ui-bento-dashboard .ui-bento-dashboard-heat { grid-column: span 2; }
+  .ui-bento-dashboard .ui-bento-dashboard-cal { grid-column: span 1; }
+  .ui-bento-dashboard .ui-bento-dashboard-top { grid-column: span 1; }
+}
+.ui-bento-dashboard-k { margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted, #555); font-weight: 600; }
+.ui-bento-dashboard-big { margin: 2px 0 0; font-size: 2rem; font-weight: 700; font-family: var(--font-mono, ui-monospace, monospace); letter-spacing: -.02em; }
+.ui-bento-dashboard-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.ui-bento-dashboard-seg { display: inline-flex; border: 1px solid var(--line-strong, #bbb); border-radius: 999px; padding: 2px; }
+.ui-bento-dashboard-seg button, .ui-bento-dashboard-btn { font: inherit; font-size: 13px; cursor: pointer; color: var(--ink, #111); background: transparent; border: 0; border-radius: 999px; padding: 6px 12px; min-height: 32px; }
+.ui-bento-dashboard-seg button[aria-pressed='true'] { background: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-bento-dashboard-btn { border: 1px solid var(--line-strong, #bbb); background: var(--raised-2, #f3f3f3); margin-top: auto; }
+.ui-bento-dashboard-btn:hover, .ui-bento-dashboard-seg button:not([aria-pressed='true']):hover { background: var(--primary-wash, #e8efff); }
+.ui-bento-dashboard :is(button, svg[tabindex], input):focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-bento-dashboard-spark { flex: 1; display: flex; flex-direction: column; min-height: 120px; }
+.ui-bento-dashboard-spark svg { width: 100%; height: 100%; min-height: 96px; flex: 1; overflow: visible; touch-action: pan-y; cursor: crosshair; }
+.ui-bento-dashboard-readout { margin: 4px 0 0; font-size: 12px; color: var(--muted, #555); min-height: 18px; font-family: var(--font-mono, monospace); }
+.ui-bento-dashboard-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.ui-bento-dashboard-gauge svg { width: 100%; max-width: 190px; display: block; margin: 0 auto; }
+.ui-bento-dashboard-track, .ui-bento-dashboard-arc { fill: none; stroke-width: 11; stroke-linecap: round; }
+.ui-bento-dashboard-track { stroke: var(--raised-2, #e5e5e5); }
+.ui-bento-dashboard-arc { stroke: var(--signal, #0d9488); transition: stroke-dasharray 1s var(--ease, ease); }
+.ui-bento-dashboard-gnum { font-size: 24px; font-weight: 700; fill: var(--ink, #111); font-family: var(--font-mono, monospace); }
+.ui-bento-dashboard-gsub { font-size: 9.5px; fill: var(--muted, #555); }
+.ui-bento-dashboard-count { font-size: 12px; color: var(--muted, #555); }
+.ui-bento-dashboard-tasks, .ui-bento-dashboard-events, .ui-bento-dashboard-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.ui-bento-dashboard-tasks label { display: flex; gap: 10px; align-items: center; min-height: 36px; cursor: pointer; padding: 2px 4px; border-radius: 8px; }
+.ui-bento-dashboard-tasks label:hover { background: var(--raised-2, #f3f3f3); }
+.ui-bento-dashboard-tasks input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.ui-bento-dashboard-box { width: 20px; height: 20px; flex: none; border-radius: 6px; border: 1.5px solid var(--line-strong, #999); display: grid; place-items: center; transition: background .2s, border-color .2s; }
+.ui-bento-dashboard-box svg { width: 12px; height: 12px; fill: none; stroke: var(--on-primary, #fff); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .25s ease .05s; }
+.ui-bento-dashboard-tasks input:checked + .ui-bento-dashboard-box { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); }
+.ui-bento-dashboard-tasks input:checked + .ui-bento-dashboard-box svg { stroke-dashoffset: 0; }
+.ui-bento-dashboard-tasks input:focus-visible + .ui-bento-dashboard-box { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-bento-dashboard-tasks .is-done .ui-bento-dashboard-ttext { text-decoration: line-through; color: var(--muted, #555); }
+.ui-bento-dashboard-heat { display: grid; gap: 3px; overflow-x: auto; padding: 2px; }
+.ui-bento-dashboard-hrow { display: grid; grid-template-columns: 30px repeat(12, minmax(14px, 1fr)); gap: 3px; align-items: center; }
+.ui-bento-dashboard-dname { font-size: 11px; color: var(--muted, #555); }
+.ui-bento-dashboard-cell { aspect-ratio: 1; min-height: 14px; border-radius: 4px; border: 0; padding: 0; cursor: pointer; background: color-mix(in srgb, var(--primary, #2563eb) calc(var(--lv, 0) * 24% + 6%), var(--raised-2, #eee)); transition: transform .15s; }
+.ui-bento-dashboard-cell.l0 { --lv: 0; } .ui-bento-dashboard-cell.l1 { --lv: 1; } .ui-bento-dashboard-cell.l2 { --lv: 2; } .ui-bento-dashboard-cell.l3 { --lv: 3; } .ui-bento-dashboard-cell.l4 { --lv: 4; }
+.ui-bento-dashboard-cell:hover { transform: scale(1.25); }
+.ui-bento-dashboard-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.ui-bento-dashboard-days button { font: inherit; color: var(--ink, #111); background: transparent; border: 1px solid var(--line, #ddd); border-radius: 10px; padding: 6px 0; min-height: 44px; cursor: pointer; display: grid; justify-items: center; gap: 1px; }
+.ui-bento-dashboard-days small { font-size: 10px; color: var(--muted, #555); }
+.ui-bento-dashboard-days b { font-size: 13px; }
+.ui-bento-dashboard-days i { width: 5px; height: 5px; border-radius: 50%; background: transparent; }
+.ui-bento-dashboard-days i.has { background: var(--signal, #0d9488); }
+.ui-bento-dashboard-days button[aria-pressed='true'] { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-bento-dashboard-days button[aria-pressed='true'] small { color: inherit; }
+.ui-bento-dashboard-days button[aria-pressed='true'] i.has { background: var(--on-primary, #fff); }
+.ui-bento-dashboard-events li { font-size: 13px; padding: 5px 8px; border-left: 3px solid var(--signal, #0d9488); background: var(--raised-2, #f3f3f3); border-radius: 0 6px 6px 0; }
+.ui-bento-dashboard-brow { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 3px; }
+.ui-bento-dashboard-brow b { font-family: var(--font-mono, monospace); }
+.ui-bento-dashboard-bars { gap: 10px; }
+.ui-bento-dashboard-bar { height: 8px; border-radius: 99px; background: var(--raised-2, #eee); overflow: hidden; }
+.ui-bento-dashboard-bar i { display: block; height: 100%; border-radius: inherit; background: var(--primary, #2563eb); transform-origin: left; }
+/* entry */
+.ui-bento-dashboard.is-armed:not(.is-in) .ui-bento-dashboard-tile { opacity: 0; }
+.ui-bento-dashboard.is-armed.is-in .ui-bento-dashboard-tile { opacity: 1; animation: ui-bento-dashboard-in .7s var(--ease, cubic-bezier(.2,.8,.2,1)) backwards; animation-delay: calc(var(--i, 0) * 90ms); }
+.ui-bento-dashboard.is-armed:not(.is-in) .ui-bento-dashboard-line { stroke-dashoffset: 1; }
+.ui-bento-dashboard.is-armed.is-in .ui-bento-dashboard-line { animation: ui-bento-dashboard-draw 1.3s var(--ease, ease) .3s backwards; }
+@keyframes ui-bento-dashboard-draw { from { stroke-dashoffset: 1; } }
+.ui-bento-dashboard.is-armed:not(.is-in) .ui-bento-dashboard-area { opacity: 0; }
+.ui-bento-dashboard.is-armed.is-in .ui-bento-dashboard-area { opacity: 1; transition: opacity 1s ease 1s; }
+.ui-bento-dashboard.is-armed:not(.is-in) .ui-bento-dashboard-arc { stroke-dasharray: 0 100 !important; }
+.ui-bento-dashboard.is-armed:not(.is-in) .ui-bento-dashboard-bar i { transform: scaleX(0); }
+.ui-bento-dashboard.is-armed.is-in .ui-bento-dashboard-bar i { transform: none; transition: transform .8s var(--ease, ease); transition-delay: var(--d, 0ms); }
+.ui-bento-dashboard.is-armed:not(.is-in) .ui-bento-dashboard-cell { opacity: 0; }
+.ui-bento-dashboard.is-armed.is-in .ui-bento-dashboard-cell { opacity: 1; transition: opacity .3s ease var(--d, 0ms), transform .15s; }
+@keyframes ui-bento-dashboard-in { from { opacity: 0; transform: translateY(18px) scale(.97); } }
+@keyframes ui-bento-dashboard-pulse { 50% { opacity: .35; } }
+@media (pointer: coarse) { .ui-bento-dashboard-seg button, .ui-bento-dashboard-btn { min-height: 44px; } .ui-bento-dashboard-cell { min-height: 22px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-bento-dashboard *, .ui-bento-dashboard *::before { animation: none !important; transition: none !important; }
+  .ui-bento-dashboard-tile:hover, .ui-bento-dashboard-tile:focus-within { transform: none; }
+}

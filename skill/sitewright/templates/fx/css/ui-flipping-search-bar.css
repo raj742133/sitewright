@@ -1,0 +1,24 @@
+.ui-flipping-search-bar { position: relative; width: 100%; max-width: 280px; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; }
+.ui-flipping-search-bar-flip { position: relative; height: 44px; perspective: 700px; }
+.ui-flipping-search-bar-face { position: absolute; inset: 0; display: flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid var(--line-strong, #bbb); border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #111); box-sizing: border-box; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform .5s var(--ease, cubic-bezier(.2,.7,.2,1)); font: inherit; }
+.ui-flipping-search-bar-front { cursor: pointer; text-align: left; transform: rotateX(0); }
+.ui-flipping-search-bar-front span { color: var(--muted, #555); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ui-flipping-search-bar-front:hover { background: var(--raised-2, #f3f3f3); }
+.ui-flipping-search-bar-back { transform: rotateX(180deg); box-shadow: 0 0 0 2px var(--primary-wash, rgba(37,99,235,.18)); border-color: var(--primary, #2563eb); }
+.ui-flipping-search-bar.is-open .ui-flipping-search-bar-front { transform: rotateX(-180deg); }
+.ui-flipping-search-bar.is-open .ui-flipping-search-bar-back { transform: rotateX(0); }
+.ui-flipping-search-bar-icon { flex: none; color: var(--muted, #555); }
+.ui-flipping-search-bar-input { flex: 1; min-width: 0; height: 100%; border: 0; background: transparent; color: inherit; font: inherit; outline: none; }
+.ui-flipping-search-bar-input::placeholder { color: var(--muted, #555); opacity: 1; }
+.ui-flipping-search-bar-close { flex: none; width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--muted, #555); cursor: pointer; }
+.ui-flipping-search-bar-close:hover { background: var(--raised-2, #f3f3f3); color: var(--ink, #111); }
+.ui-flipping-search-bar-front:focus-visible, .ui-flipping-search-bar-close:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-flipping-search-bar-list { position: absolute; z-index: 5; left: 6px; right: 6px; top: 50px; margin: 0; padding: 4px; list-style: none; border: 1px solid var(--line, #ddd); border-radius: 12px; background: var(--raised, #fff); box-shadow: var(--shadow-lift, 0 8px 24px rgba(0,0,0,.15)); animation: ui-flipping-search-bar-in .25s var(--ease, ease) both; }
+.ui-flipping-search-bar-list[hidden] { display: none; }
+.ui-flipping-search-bar-list li { padding: 7px 10px; border-radius: 8px; cursor: pointer; color: var(--ink, #111); }
+.ui-flipping-search-bar-list li.is-active { background: var(--primary-wash, rgba(37,99,235,.14)); }
+.ui-flipping-search-bar-list .ui-flipping-search-bar-empty { color: var(--muted, #555); cursor: default; }
+.ui-flipping-search-bar-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@keyframes ui-flipping-search-bar-in { from { opacity: 0; transform: translateY(-4px); } }
+@media (pointer: coarse) { .ui-flipping-search-bar-list li { padding: 12px 10px; } .ui-flipping-search-bar-close { width: 44px; height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-flipping-search-bar-face { transition: none; } .ui-flipping-search-bar-list { animation: none; } }

@@ -1,0 +1,12 @@
+.ui-expanding-fill-button {
+  position: relative; display: inline-grid; place-items: center; min-width: 168px; min-height: 48px; padding: 0 1.4rem; overflow: hidden; isolation: isolate;
+  border: 1.5px solid var(--primary, #2563eb); border-radius: var(--radius, 12px); background: var(--raised, transparent); color: var(--ink, #0f172a);
+  font: 600 0.95rem var(--font-body, inherit); cursor: pointer; touch-action: manipulation;
+}
+.ui-expanding-fill-button > span { grid-area: 1 / 1; white-space: nowrap; }
+.ui-expanding-fill-button-over {
+  position: absolute !important; inset: 0; display: grid; place-items: center; background: var(--primary, #2563eb); color: var(--on-primary, #fff);
+  pointer-events: none; transition: clip-path 0.55s var(--ease, cubic-bezier(.2, .8, .2, 1));
+}
+.ui-expanding-fill-button:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .ui-expanding-fill-button-over { transition: none; } }

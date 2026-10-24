@@ -1,0 +1,10 @@
+.ui-rotating-button { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 5px 5px 5px 20px; border: 1px solid var(--line-strong, #bbb); border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #111); font: 600 14px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; transition: background .3s var(--ease, ease), border-color .3s; }
+.ui-rotating-button-label { display: inline-block; transition: transform .45s var(--ease, cubic-bezier(.2,.7,.2,1)); }
+.ui-rotating-button-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--primary, #2563eb); color: var(--on-primary, #fff); transform: rotate(0); transition: transform .45s var(--ease, cubic-bezier(.2,.7,.2,1)); }
+.ui-rotating-button:is(:hover, :focus-visible):not(:disabled) { background: var(--primary-wash, rgba(37,99,235,.12)); border-color: var(--primary, #2563eb); }
+.ui-rotating-button:is(:hover, :focus-visible):not(:disabled) .ui-rotating-button-icon { transform: rotate(-45deg); }
+.ui-rotating-button:is(:hover, :focus-visible):not(:disabled) .ui-rotating-button-label { transform: translateX(4px); }
+.ui-rotating-button:active:not(:disabled) .ui-rotating-button-icon { transform: rotate(-45deg) scale(.92); }
+.ui-rotating-button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
+.ui-rotating-button:disabled { opacity: .5; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { .ui-rotating-button, .ui-rotating-button-label, .ui-rotating-button-icon { transition: none; } .ui-rotating-button:is(:hover, :focus-visible):not(:disabled) .ui-rotating-button-label { transform: none; } }
