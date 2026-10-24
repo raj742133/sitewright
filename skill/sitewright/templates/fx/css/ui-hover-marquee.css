@@ -8,6 +8,6 @@
 .ui-hover-marquee[data-mode='paused'] { border-color: var(--primary, #2563eb); }
 .ui-hover-marquee-state { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .ui-hover-marquee.is-static { -webkit-mask-image: none; mask-image: none; }
-.ui-hover-marquee.is-static .ui-hover-marquee-track { width: auto; }
-.ui-hover-marquee.is-static .ui-hover-marquee-group { flex-wrap: wrap; justify-content: center; }
+.ui-hover-marquee.is-static .ui-hover-marquee-track { width: 100%; }
+.ui-hover-marquee.is-static .ui-hover-marquee-group { flex: 1 1 auto; min-width: 0; flex-wrap: wrap; justify-content: center; }
 @media (pointer: coarse) { .ui-hover-marquee-item { padding-block: 14px; } }

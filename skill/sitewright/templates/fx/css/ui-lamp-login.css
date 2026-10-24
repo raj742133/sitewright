@@ -1,0 +1,47 @@
+.ui-lamp-login { --ll-bg: #0f1320; --ll-card: #1a2033; --ll-ink: #eef1f8; --ll-mut: #b4bccf; --ll-line: #3a4360; --ll-acc: #ffc857; --ll-accink: #231a05;
+  position: relative; container-type: inline-size; box-sizing: border-box; width: 100%; min-height: 600px; overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 0 16px 36px; background: var(--ll-bg); color: var(--ll-ink); font-family: var(--font-body, system-ui, sans-serif); line-height: 1.45; transition: background .6s; }
+.ui-lamp-login[data-on='true'] { --ll-bg: #231d2c; --ll-card: #fff8e8; --ll-ink: #2a2012; --ll-mut: #5e4f36; --ll-line: #d9c9a2; --ll-accink: #231a05; background: radial-gradient(70% 60% at 50% 20%, #3b3040, #231d2c); }
+.ui-lamp-login *, .ui-lamp-login *::before, .ui-lamp-login *::after { box-sizing: border-box; }
+.ui-lamp-login h2, .ui-lamp-login p { margin: 0; }
+.ui-lamp-login-stage { position: relative; width: 100%; max-width: 420px; height: 270px; display: grid; justify-items: center; }
+.ui-lamp-login-lamp { position: absolute; top: 0; width: 200px; height: 240px; transform-origin: 50% 0; z-index: 2; }
+.ui-lamp-login-lamp[data-pull='true'] { animation: ui-lamp-login-swing 1.1s ease-out; }
+.ui-lamp-login-halo { opacity: 0; transition: opacity .5s; }
+.ui-lamp-login-bulb { fill: #55596a; transition: fill .3s; }
+.ui-lamp-login-rim { fill: #2a1710; }
+[data-on='true'] .ui-lamp-login-halo { opacity: 1; }
+[data-on='true'] .ui-lamp-login-bulb { fill: #fff2c2; filter: drop-shadow(0 0 6px #ffd27a); }
+.ui-lamp-login-cone { position: absolute; top: 134px; left: 50%; width: min(560px, 140%); height: 430px; transform: translateX(-50%); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); background: linear-gradient(rgba(255, 220, 140, .55), rgba(255, 220, 140, .04) 85%); opacity: 0; transition: opacity .6s; pointer-events: none; }
+[data-on='true'] .ui-lamp-login-cone { opacity: 1; }
+.ui-lamp-login-cord { position: absolute; left: 63%; top: 50%; width: 44px; margin-left: -22px; height: 112px; z-index: 3; }
+.ui-lamp-login-cord::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 20px; width: 2px; margin-left: -1px; background: #b9bfce; }
+.ui-lamp-login-cord button { position: absolute; left: 0; bottom: 0; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: grab; border-radius: 50%; transition: transform .15s; }
+.ui-lamp-login-cord button i { position: absolute; left: 50%; top: 50%; width: 16px; height: 22px; margin: -11px 0 0 -8px; border-radius: 8px 8px 10px 10px; background: var(--ll-acc); box-shadow: 0 0 0 2px #0f1320; }
+.ui-lamp-login-cord button:active { transform: translateY(14px); }
+.ui-lamp-login-lamp[data-pull='true'] .ui-lamp-login-cord button { animation: ui-lamp-login-tug .5s ease-out; }
+.ui-lamp-login-cord button:focus-visible { outline: 3px solid var(--ll-acc); outline-offset: 0; }
+.ui-lamp-login-hint { position: absolute; left: 0; right: 0; bottom: 6px; text-align: center; font-size: 13px; color: var(--ll-mut); z-index: 3; }
+.ui-lamp-login-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.ui-lamp-login-card { position: relative; z-index: 2; width: 100%; max-width: 380px; display: grid; gap: 14px; padding: 24px; border-radius: 18px; background: var(--ll-card); color: var(--ll-ink); border: 1px solid var(--ll-line); box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 18px 40px rgba(0, 0, 0, .4); transition: background .6s, color .6s, box-shadow .6s; }
+[data-on='true'] .ui-lamp-login-card { box-shadow: 0 0 60px rgba(255, 210, 120, .45), 0 18px 40px rgba(0, 0, 0, .35); }
+.ui-lamp-login-card h2 { font-size: 24px; letter-spacing: -.02em; }
+.ui-lamp-login-fld { display: grid; gap: 5px; }
+.ui-lamp-login-fld label { font-size: 13px; font-weight: 600; }
+.ui-lamp-login-fld input { width: 100%; min-height: 46px; padding: 0 12px; border-radius: 10px; border: 1.5px solid var(--ll-line); background: transparent; color: inherit; font: inherit; }
+.ui-lamp-login-fld input::placeholder { color: var(--ll-mut); opacity: .8; }
+.ui-lamp-login-fld[data-bad='true'] input { border-color: #ef6b6b; }
+.ui-lamp-login-fld small, .ui-lamp-login-srv { color: #ff9b9b; font-size: 13px; }
+[data-on='true'] .ui-lamp-login-fld small, [data-on='true'] .ui-lamp-login-srv { color: #b42323; }
+.ui-lamp-login-pw { display: flex; gap: 6px; }
+.ui-lamp-login-pw button { min-width: 64px; min-height: 46px; border-radius: 10px; border: 1.5px solid var(--ll-line); background: transparent; color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+.ui-lamp-login-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border: 0; border-radius: 12px; background: var(--ll-acc); color: var(--ll-accink); font: inherit; font-weight: 800; cursor: pointer; }
+.ui-lamp-login-submit:disabled { cursor: progress; opacity: .85; }
+.ui-lamp-login-spin { width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid rgba(35, 26, 5, .3); border-top-color: var(--ll-accink); animation: ui-lamp-login-rot .7s linear infinite; }
+.ui-lamp-login-forgot { justify-self: center; color: inherit; font-size: 14px; padding: 12px 8px; }
+.ui-lamp-login-ok { padding: 16px 0; font-weight: 600; }
+.ui-lamp-login :is(a, input, button):focus-visible { outline: 3px solid var(--ll-acc); outline-offset: 2px; }
+[data-on='true'].ui-lamp-login :is(a, input, .ui-lamp-login-pw button, .ui-lamp-login-submit):focus-visible { outline-color: #8a5a00; }
+@keyframes ui-lamp-login-swing { 0% { transform: rotate(0); } 15% { transform: rotate(5deg); } 40% { transform: rotate(-3.5deg); } 65% { transform: rotate(2deg); } 85% { transform: rotate(-1deg); } 100% { transform: rotate(0); } }
+@keyframes ui-lamp-login-tug { 0% { transform: translateY(18px); } 100% { transform: translateY(0); } }
+@keyframes ui-lamp-login-rot { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ui-lamp-login *, .ui-lamp-login { animation: none !important; transition: none !important; } .ui-lamp-login-spin { animation: ui-lamp-login-rot 2s linear infinite !important; } }
