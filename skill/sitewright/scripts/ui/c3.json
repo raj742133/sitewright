@@ -1,0 +1,4 @@
+[
+  {"id":"glass-carousel","label":"Glass carousel","desc":"A 3D-ish carousel of frosted-glass cards with a larger centre card, drag with momentum snap, arrows, arrow keys, dots and optional autoplay.","source":"code.xr","group":"media","files":["GlassCarousel.tsx"],"css":["ui-glass-carousel"],"use":"landing feature highlights, publishing templates picker, onboarding tips, connect page integrations"},
+  {"id":"chat-thread","label":"Chat thread","desc":"A messaging UI with grouped mine/theirs bubbles, timestamps, delivery ticks, typing indicator, smart auto-scroll with a New messages pill and an Enter-to-send input.","source":"code.xr","group":"cards","files":["ChatThread.tsx"],"css":["ui-chat-thread"],"use":"dashboard support chat, client feedback thread, comments on a publishing item"}
+]

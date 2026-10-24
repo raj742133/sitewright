@@ -23,6 +23,7 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 | id | what it does | use it for | idea from |
 |---|---|---|---|
 | `line-draw` | Draws SVG paths with a stroke-dashoffset animation when scrolled into view, with replay. | landing illustrations, onboarding, empty states | Anime.js |
+| `glass-carousel` | A 3D-ish carousel of frosted-glass cards with a larger centre card, drag with momentum snap, arrows, arrow keys, dots and optional autoplay. | landing feature highlights, publishing templates picker, onboarding tips, connect page integrations | code.xr |
 | `cassette-player` | A compact cassette with turning reels, play/pause, a seek bar and title/artist; visual only, no audio. | Podcast or music teasers on landing pages, a playful media card on a dashboard. | Kitchen |
 
 ## Cards
@@ -30,6 +31,8 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 | id | what it does | use it for | idea from |
 |---|---|---|---|
 | `draggable-spring` | Drag, flick and throw a card with momentum, edge bounce and optional snap grid; arrow keys nudge. | playful dashboard widgets, landing page toys, kanban-style pickers | Anime.js |
+| `payment-card` | A card-payment form whose card face updates live, flips to the back on CVC focus, formats and Luhn-checks the number, and plays a fake processing then success sequence (no network). | checkout, billing settings, upgrade plan dialog on a dashboard or landing page | code.xr |
+| `chat-thread` | A messaging UI with grouped mine/theirs bubbles, timestamps, delivery ticks, typing indicator, smart auto-scroll with a New messages pill and an Enter-to-send input. | dashboard support chat, client feedback thread, comments on a publishing item | code.xr |
 | `playing-cards` | A composable playing card (rank, suit, face-down) and a fanned hand you thumb through with hover or arrow keys and play with a click. | Playful feature cards, game or loyalty-card landing sections, card-style selection. | Kitchen |
 | `perforated-ticket` | A ticket silhouette with notched sides and a perforated divider; header, body and stub sections, with a subtle pointer parallax. | Release notes, invites, order confirmations, event passes. | Kitchen |
 | `stamp` | A scalloped postage-stamp frame around any content, with an optional postmark overlay. | Framing an avatar, badge or image; sent/verified states; landing decoration. | Kitchen |
@@ -61,10 +64,32 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 | `activity-terrain` | A small isometric terrain of bars (like a contribution grid) that you drag sideways or arrow-key to rotate, with a tooltip on hover and focus. | Dashboard activity overview, a profile page, or a publishing-frequency panel. | Kokonut UI |
 | `liquid-gauge` | A circle or tank gauge filled with two animated waves at the value; drag sideways to slosh the liquid. Exposed as role=meter. | Storage, quota or progress on a dashboard or connect page. | Kokonut UI |
 
+## Inputs
+
+| id | what it does | use it for | idea from |
+|---|---|---|---|
+| `otp-input` | A one-time-code field with N visual boxes over one real input (SMS autofill friendly): auto-advance, backspace, arrows, paste, pop on fill, shake on error and a check seal on success. | sign-in two-step verification, email confirmation, connect page pairing codes | code.xr |
+| `upload-progress` | A file picker and drop target that shows upload progress as a ball arcing into a hoop, with percentage, cancel, retry, error and success states. | asset or document upload on a dashboard, connect page or publishing form | code.xr |
+| `magnetic-drop-zone` | A file drop target that leans toward an incoming drag, lists the dropped file names, and falls back to a browse input. | Upload areas on a dashboard, connect page or publishing list (no upload is performed by the component). | Kitchen |
+| `model-selector` | A keyboard-navigable grouped listbox with metric bars; the selected item reveals a segmented configuration row. | Plan or tier pickers, settings pages, any choice that carries extra options. | Kitchen |
+| `invite-code` | An invite or token field with a scrambling Regenerate button and a Copy button with confirmation. | Team invites, API tokens, share links on dashboard and connect pages. | Kitchen |
+| `spring-toggle` | A role=switch whose thumb moves and squishes with spring physics, plus a spring-driven checkbox variant. | dashboard settings, sign-in remember-me, connect page options | Motion |
+| `ai-input` | A text field with a slash-command menu (listbox), file drop and attach chips, submitting text, files and command together. | dashboard composer, support or feedback box, publishing notes, search with commands | Kokonut UI |
+| `detent-dial` | A rotary dial with detents you can drag, flick (it coasts and snaps with a small overshoot), or set with arrow keys and the wheel. | settings page, level or quality picker, dashboard control | Kokonut UI |
+| `wheel-picker` | An iOS-style 3D wheel for choosing one value: drag or flick with inertia, mouse wheel, arrow keys and typeahead, snaps to a row. | Pick a time, day, plan or quantity in a booking form, settings page or dashboard filter. | Kokonut UI |
+
+## Navigation
+
+| id | what it does | use it for | idea from |
+|---|---|---|---|
+| `nav-tabs` | A tab bar whose pill or underline indicator springs and stretches between tabs, previews on hover, and scrolls with edge fades when crowded. | dashboard sections, settings pages, product detail views, publishing list filters | code.xr |
+| `glow-sidebar` | A collapsible icon and label sidebar with a gliding active bar, tooltips in rail mode and a subtle brand glow that follows the pointer. | dashboard shell, admin area, connect page side navigation | code.xr |
+
 ## Buttons
 
 | id | what it does | use it for | idea from |
 |---|---|---|---|
+| `gloss-button` | A glossy dark button with a pointer-following specular band, a slow liquid sheen on hover, a squashed pressed state and a loading spinner; dark and accent variants. | primary call to action on landing pages, sign-in, checkout or publish actions | code.xr |
 | `tactile-button` | A physical-feeling button with a shaped face on a firm edge that presses down on pointer or Space/Enter and springs back. | Primary and secondary calls to action on landing pages, sign-in and checkout. | Kitchen |
 | `hold-to-confirm` | A button that fills while held (pointer or Space/Enter), confirms at 100%, then offers a timed Undo before finalising. | Destructive or irreversible actions: delete a project, revoke a key, unpublish a page. | Kitchen |
 | `dynamic-button` | A button whose width animates as its label moves through states (Save, Saving…, Saved) with an inline icon swap. | Save and submit buttons in settings forms, sign-in and publishing flows. | Kitchen |
@@ -78,18 +103,6 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 |---|---|---|---|
 | `scramble-text` | Text whose changed characters scramble through random glyphs and settle left to right; screen readers get the real text. | Hero taglines, rotating status lines, dashboard headings that change. | Kitchen |
 | `plucked-text` | Text with a string under it: hover, drag or press Enter on the string and it vibrates while the letters ripple along. | A playful headline on a landing page, an empty state or a 404 page. | Kokonut UI |
-
-## Inputs
-
-| id | what it does | use it for | idea from |
-|---|---|---|---|
-| `magnetic-drop-zone` | A file drop target that leans toward an incoming drag, lists the dropped file names, and falls back to a browse input. | Upload areas on a dashboard, connect page or publishing list (no upload is performed by the component). | Kitchen |
-| `model-selector` | A keyboard-navigable grouped listbox with metric bars; the selected item reveals a segmented configuration row. | Plan or tier pickers, settings pages, any choice that carries extra options. | Kitchen |
-| `invite-code` | An invite or token field with a scrambling Regenerate button and a Copy button with confirmation. | Team invites, API tokens, share links on dashboard and connect pages. | Kitchen |
-| `spring-toggle` | A role=switch whose thumb moves and squishes with spring physics, plus a spring-driven checkbox variant. | dashboard settings, sign-in remember-me, connect page options | Motion |
-| `ai-input` | A text field with a slash-command menu (listbox), file drop and attach chips, submitting text, files and command together. | dashboard composer, support or feedback box, publishing notes, search with commands | Kokonut UI |
-| `detent-dial` | A rotary dial with detents you can drag, flick (it coasts and snaps with a small overshoot), or set with arrow keys and the wheel. | settings page, level or quality picker, dashboard control | Kokonut UI |
-| `wheel-picker` | An iOS-style 3D wheel for choosing one value: drag or flick with inertia, mouse wheel, arrow keys and typeahead, snaps to a row. | Pick a time, day, plan or quantity in a booking form, settings page or dashboard filter. | Kokonut UI |
 
 ## Loaders
 

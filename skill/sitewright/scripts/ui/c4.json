@@ -1,0 +1,4 @@
+[
+  {"id":"gloss-button","label":"Gloss button","desc":"A glossy dark button with a pointer-following specular band, a slow liquid sheen on hover, a squashed pressed state and a loading spinner; dark and accent variants.","source":"code.xr","group":"buttons","files":["GlossButton.tsx"],"css":["ui-gloss-button"],"use":"primary call to action on landing pages, sign-in, checkout or publish actions"},
+  {"id":"upload-progress","label":"Upload progress","desc":"A file picker and drop target that shows upload progress as a ball arcing into a hoop, with percentage, cancel, retry, error and success states.","source":"code.xr","group":"inputs","files":["UploadProgress.tsx"],"css":["ui-upload-progress"],"use":"asset or document upload on a dashboard, connect page or publishing form"}
+]
