@@ -1,0 +1,25 @@
+.ui-layer-explorer-root { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; width: 100%; height: 150px; font-family: var(--font-body, system-ui); color: var(--ink, #111); }
+.ui-layer-explorer-stage { all: unset; box-sizing: border-box; position: relative; height: 100%; min-width: 0; display: grid; place-items: center; cursor: pointer; border-radius: var(--radius, 12px); perspective: 520px; }
+.ui-layer-explorer-stage:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-layer-explorer-stack {
+  position: relative; display: block; width: 128px; height: 80px; transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease, ease);
+}
+.ui-layer-explorer-root[data-open='1'] .ui-layer-explorer-stack { transform: rotateX(58deg) rotateZ(-36deg) translateY(10px); }
+.ui-layer-explorer-layer {
+  position: absolute; inset: 0; display: block; border-radius: 6px; overflow: hidden; border: 1px solid transparent;
+  transform: translateZ(calc(var(--i) * var(--ui-le-gap, 0px))); transition: transform 0.6s var(--ease, ease), opacity 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.ui-layer-explorer-root[data-open='1'] .ui-layer-explorer-layer { --ui-le-gap: 14px; border-color: rgba(255, 255, 255, 0.55); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); }
+.ui-layer-explorer-layer[data-dim='1'] { opacity: 0.22; }
+.ui-layer-explorer-layer[data-on='1'] { border-color: var(--primary, #2563eb) !important; box-shadow: 0 0 0 2px var(--primary, #2563eb) !important; }
+.ui-layer-explorer-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ui-layer-explorer-legend button {
+  display: flex; align-items: center; gap: 6px; width: 100%; min-height: 24px; padding: 0 6px; border: 0; border-radius: 6px; background: transparent; color: var(--ink, #111);
+  font: 500 12px/1.2 var(--font-body, system-ui); cursor: pointer; text-align: left; white-space: nowrap;
+}
+.ui-layer-explorer-legend button:hover, .ui-layer-explorer-legend button[aria-pressed='true'] { background: var(--primary-wash, #e0e9ff); }
+.ui-layer-explorer-legend button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 1px; }
+.ui-layer-explorer-dot { width: 10px; height: 10px; border-radius: 3px; flex: none; border: 1px solid var(--line-strong, #a1a1aa); }
+@media (pointer: coarse) { .ui-layer-explorer-legend button { min-height: 44px; } .ui-layer-explorer-root { height: auto; min-height: 150px; } .ui-layer-explorer-stage { min-height: 150px; } }
+@media (prefers-reduced-motion: reduce) { .ui-layer-explorer-stack, .ui-layer-explorer-layer { transition: none; } }

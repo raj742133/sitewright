@@ -1,0 +1,13 @@
+.ui-rolling-text-button { display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; border: 1px solid var(--ink, #111); border-radius: 999px; background: var(--ink, #111); color: var(--surface, #fff); font: 600 15px/1.2 var(--font-body, system-ui, sans-serif); cursor: pointer; overflow: hidden; transition: background .3s, color .3s; }
+.ui-rolling-text-button-text { display: inline-flex; white-space: pre; }
+.ui-rolling-text-button-ch { display: inline-block; position: relative; overflow: hidden; height: 1.2em; }
+.ui-rolling-text-button-ch > span { display: block; height: 1.2em; transition: transform .45s var(--ease, cubic-bezier(.2,.7,.2,1)); transition-delay: inherit; color: inherit; }
+.ui-rolling-text-button-ch > span::after { content: attr(data-c); display: block; height: 1.2em; }
+.ui-rolling-text-button:is(:hover, :focus-visible):not(:disabled) .ui-rolling-text-button-ch > span { transform: translateY(-100%); }
+.ui-rolling-text-button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
+.ui-rolling-text-button:disabled { opacity: .5; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) {
+  .ui-rolling-text-button-ch > span { transition: none; }
+  .ui-rolling-text-button:is(:hover, :focus-visible):not(:disabled) .ui-rolling-text-button-ch > span { transform: none; }
+  .ui-rolling-text-button:is(:hover, :focus-visible):not(:disabled) { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+}

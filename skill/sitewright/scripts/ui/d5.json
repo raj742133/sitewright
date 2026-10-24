@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cursor-reveal",
+    "label": "Cursor reveal",
+    "desc": "A circular mask follows the pointer and uncovers a second layer under the first; arrow keys and taps move it too.",
+    "source": "Hover Interaction Collection",
+    "group": "media",
+    "files": [
+      "CursorReveal.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-cursor-reveal"
+    ],
+    "use": "Before/after or day/night image sections on landing pages, product theme previews."
+  },
+  {
+    "id": "peel-reveal",
+    "label": "Peel reveal",
+    "desc": "A sticker corner peels back toward the pointer's nearest corner to reveal content underneath; a corner button toggles it.",
+    "source": "Hover Interaction Collection",
+    "group": "media",
+    "files": [
+      "PeelReveal.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-peel-reveal"
+    ],
+    "use": "Promo codes, coupons, spoiler or reward reveals in cards on landing and dashboard pages."
+  },
+  {
+    "id": "caption-reveal",
+    "label": "Caption reveal",
+    "desc": "Pictures whose caption slides or wipes in on hover or focus, and stays visible on touch screens.",
+    "source": "Hover Interaction Collection",
+    "group": "cards",
+    "files": [
+      "CaptionReveal.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-caption-reveal"
+    ],
+    "use": "Gallery, destinations, team or portfolio grids on landing pages."
+  },
+  {
+    "id": "layer-explorer",
+    "label": "Layer explorer",
+    "desc": "An illustration of stacked layers that separate in 3D (exploded view) on hover, focus or tap, with a legend that highlights each layer.",
+    "source": "Hover Interaction Collection",
+    "group": "media",
+    "files": [
+      "LayerExplorer.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-layer-explorer"
+    ],
+    "use": "Explaining product anatomy or architecture layers on landing and docs pages."
+  },
+  {
+    "id": "jelly-text",
+    "label": "Jelly text",
+    "desc": "Headline letters wobble like jelly as the pointer passes over them, each letter a spring; tap or Enter sends a wave.",
+    "source": "Hover Interaction Collection",
+    "group": "text",
+    "files": [
+      "JellyText.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-jelly-text"
+    ],
+    "use": "Playful hero headlines and 404 or empty-state titles."
+  },
+  {
+    "id": "holographic-card",
+    "label": "Holographic card",
+    "desc": "A card with a rainbow foil sheen and glare that follow the pointer, plus a 3D tilt; safe in light mode, with arrow-key and idle-sweep fallbacks.",
+    "source": "Hover Interaction Collection",
+    "group": "cards",
+    "files": [
+      "HolographicCard.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-holographic-card"
+    ],
+    "use": "Membership, plan or achievement cards on dashboards and landing pages."
+  },
+  {
+    "id": "parallax-card",
+    "label": "Parallax card",
+    "desc": "A layered landscape whose layers shift by depth with the pointer; arrow keys nudge it and touch screens get a slow drift.",
+    "source": "Hover Interaction Collection",
+    "group": "cards",
+    "files": [
+      "ParallaxCard.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-parallax-card"
+    ],
+    "use": "Feature cards, destination teasers and hero tiles on landing pages."
+  },
+  {
+    "id": "orbiting-accents",
+    "label": "Orbiting accents",
+    "desc": "Small shapes orbit a badge on two rings and smoothly speed up on hover, focus or tap.",
+    "source": "Hover Interaction Collection",
+    "group": "cards",
+    "files": [
+      "OrbitingAccents.tsx",
+      "_d5.tsx"
+    ],
+    "css": [
+      "ui-orbiting-accents"
+    ],
+    "use": "Highlighting a pro/plan badge, integration hub or status badge on landing and dashboard pages."
+  }
+]

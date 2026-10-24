@@ -1,0 +1,13 @@
+.ui-waving-hand-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-width: 170px; min-height: 48px; padding: 0 1.3rem; border: 1.5px solid var(--line-strong, #94a3b8);
+  border-radius: 999px; background: var(--raised, transparent); color: var(--ink, #0f172a); font: 600 0.95rem var(--font-body, inherit); cursor: pointer; touch-action: manipulation;
+  transition: background 0.25s, border-color 0.25s;
+}
+.ui-waving-hand-button[data-on] { background: var(--primary-wash, rgba(37, 99, 235, 0.12)); border-color: var(--primary, #2563eb); }
+.ui-waving-hand-button-hand { transform-origin: 70% 90%; flex: none; }
+.ui-waving-hand-button[data-on] .ui-waving-hand-button-hand { animation: ui-waving-hand-button-wave 1.1s ease-in-out infinite; }
+.ui-waving-hand-button:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; }
+@keyframes ui-waving-hand-button-wave {
+  0%, 100% { transform: rotate(0); } 15% { transform: rotate(16deg); } 30% { transform: rotate(-10deg); } 45% { transform: rotate(16deg); } 60% { transform: rotate(-6deg); } 75% { transform: rotate(10deg); }
+}
+@media (prefers-reduced-motion: reduce) { .ui-waving-hand-button[data-on] .ui-waving-hand-button-hand { animation: none; transform: rotate(12deg); } .ui-waving-hand-button { transition: none; } }

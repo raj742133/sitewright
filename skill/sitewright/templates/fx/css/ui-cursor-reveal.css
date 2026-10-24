@@ -1,0 +1,18 @@
+.ui-cursor-reveal-root {
+  --ui-cr-x: 50%; --ui-cr-y: 50%; --ui-cr-r: 20px;
+  position: relative; width: 100%; height: 150px; overflow: hidden; border-radius: var(--radius, 12px); isolation: isolate;
+  border: 1px solid var(--line, #d4d4d8); background: var(--surface, #f4f4f5); cursor: none; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.ui-cursor-reveal-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; cursor: default; }
+@media (pointer: coarse) { .ui-cursor-reveal-root { cursor: default; } }
+.ui-cursor-reveal-layer { position: absolute; inset: 0; }
+.ui-cursor-reveal-back { clip-path: circle(var(--ui-cr-r) at var(--ui-cr-x) var(--ui-cr-y)); }
+.ui-cursor-reveal-tag {
+  position: absolute; left: 10px; bottom: 8px; padding: 3px 8px; border-radius: 99px; font: 600 11px/1.2 var(--font-body, system-ui);
+  background: rgba(10, 12, 24, 0.78); color: #fff; letter-spacing: 0.02em;
+}
+.ui-cursor-reveal-ring {
+  position: absolute; left: 0; top: 0; width: calc(var(--ui-cr-r) * 2); height: calc(var(--ui-cr-r) * 2); border-radius: 50%; pointer-events: none;
+  transform: translate(calc(var(--ui-cr-x) - var(--ui-cr-r)), calc(var(--ui-cr-y) - var(--ui-cr-r)));
+  border: 2px solid rgba(255, 255, 255, 0.9); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 4px 14px rgba(0, 0, 0, 0.3);
+}

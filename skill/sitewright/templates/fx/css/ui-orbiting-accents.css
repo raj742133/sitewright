@@ -1,0 +1,15 @@
+.ui-orbiting-accents-root { position: relative; display: block; max-width: 100%; margin-inline: auto; border-radius: 50%; cursor: pointer; outline: none; font-family: var(--font-body, system-ui); }
+.ui-orbiting-accents-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
+.ui-orbiting-accents-ring { position: absolute; border-radius: 50%; border: 1px dashed var(--line-strong, #a1a1aa); }
+.ui-orbiting-accents-ring[data-ring='0'] { inset: 2%; }
+.ui-orbiting-accents-ring[data-ring='1'] { inset: 18%; }
+.ui-orbiting-accents-arm { position: absolute; inset: 0; display: block; }
+.ui-orbiting-accents-shape { position: absolute; left: 50%; top: 0; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; background: var(--c); }
+.ui-orbiting-accents-dot { border-radius: 50%; }
+.ui-orbiting-accents-diamond { transform: rotate(45deg); border-radius: 2px; }
+.ui-orbiting-accents-shape.ui-orbiting-accents-hoop { background: transparent; border: 2.5px solid var(--c); border-radius: 50%; }
+.ui-orbiting-accents-bar { width: 4px; height: 13px; margin: -6.5px 0 0 -2px; border-radius: 2px; }
+.ui-orbiting-accents-core {
+  position: absolute; left: 50%; top: 50%; width: 46%; height: 46%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+  border-radius: 28%; background: var(--primary, #2563eb); color: var(--on-primary, #fff); box-shadow: var(--shadow-lift, 0 6px 16px rgba(0, 0, 0, 0.25)); font-size: 13px;
+}

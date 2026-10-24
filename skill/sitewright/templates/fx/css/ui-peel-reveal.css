@@ -1,0 +1,21 @@
+.ui-peel-reveal-root {
+  position: relative; width: 100%; border-radius: var(--radius, 12px); isolation: isolate; color: var(--ink, #111);
+  font-family: var(--font-body, system-ui); box-shadow: var(--shadow, 0 4px 14px rgba(0, 0, 0, 0.12));
+}
+.ui-peel-reveal-under, .ui-peel-reveal-face {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; padding: 16px 18px;
+  border-radius: var(--radius, 12px); font-size: 13px; line-height: 1.35;
+}
+.ui-peel-reveal-under { align-items: flex-end; justify-content: flex-end; text-align: right; padding-bottom: 14px; background: var(--primary-wash, #e0e9ff); border: 1px dashed var(--primary, #2563eb); color: var(--ink, #111); }
+.ui-peel-reveal-face { background: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-peel-reveal-kicker { font: 600 11px/1.2 var(--font-mono, ui-monospace, monospace); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; }
+.ui-peel-reveal-big { font-size: 20px; line-height: 1.15; max-width: 12em; }
+.ui-peel-reveal-code { font: 700 20px/1.1 var(--font-mono, ui-monospace, monospace); letter-spacing: 0.04em; }
+.ui-peel-reveal-flap-wrap { position: absolute; inset: 0; pointer-events: none; filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35)); }
+.ui-peel-reveal-flap { position: absolute; inset: 0; border-radius: var(--radius, 12px); }
+.ui-peel-reveal-btn {
+  position: absolute; right: 0; bottom: 0; z-index: 2; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; cursor: pointer;
+  background: transparent; border: 0; border-radius: 0 0 var(--radius, 12px) 0; color: var(--ink, #111);
+}
+.ui-peel-reveal-btn svg { box-sizing: content-box; padding: 6px; border-radius: 50%; background: var(--raised, #fff); border: 1px solid var(--line-strong, #a1a1aa); margin: 10px 0 0 10px; }
+.ui-peel-reveal-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -4px; background: rgba(0, 0, 0, 0.35); }

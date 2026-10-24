@@ -1,0 +1,13 @@
+.ui-hover-marquee { position: relative; overflow: hidden; border-block: 1px solid var(--line, #d4d4d8); background: var(--raised, transparent); color: var(--ink, #111); font-family: var(--font-body, system-ui); border-radius: var(--radius, 8px); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); cursor: default; }
+.ui-hover-marquee:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; -webkit-mask-image: none; mask-image: none; }
+.ui-hover-marquee-track { display: flex; width: max-content; will-change: transform; }
+.ui-hover-marquee-group { display: flex; flex: none; margin: 0; padding: 0; list-style: none; }
+.ui-hover-marquee-item { display: flex; align-items: center; gap: 18px; padding: 12px 0 12px 18px; font-size: 1.05rem; font-weight: 650; letter-spacing: 0.01em; white-space: nowrap; }
+.ui-hover-marquee-item i { font-style: normal; color: var(--signal, #f59e0b); transition: transform 0.4s var(--ease, ease); }
+.ui-hover-marquee[data-mode='fast'] .ui-hover-marquee-item i { transform: rotate(180deg); }
+.ui-hover-marquee[data-mode='paused'] { border-color: var(--primary, #2563eb); }
+.ui-hover-marquee-state { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.ui-hover-marquee.is-static { -webkit-mask-image: none; mask-image: none; }
+.ui-hover-marquee.is-static .ui-hover-marquee-track { width: 100%; }
+.ui-hover-marquee.is-static .ui-hover-marquee-group { flex: 1 1 auto; min-width: 0; flex-wrap: wrap; justify-content: center; }
+@media (pointer: coarse) { .ui-hover-marquee-item { padding-block: 14px; } }

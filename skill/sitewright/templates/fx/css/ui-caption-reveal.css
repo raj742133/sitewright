@@ -1,0 +1,21 @@
+.ui-caption-reveal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; width: 100%; font-family: var(--font-body, system-ui); }
+.ui-caption-reveal-card { position: relative; margin: 0; height: 150px; overflow: hidden; border-radius: var(--radius, 12px); border: 1px solid var(--line, #d4d4d8); cursor: default; isolation: isolate; }
+.ui-caption-reveal-card:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-caption-reveal-pic { position: absolute; inset: 0; transition: transform 0.5s var(--ease, ease); }
+.ui-caption-reveal-card:hover .ui-caption-reveal-pic, .ui-caption-reveal-card:focus-visible .ui-caption-reveal-pic { transform: scale(1.07); }
+.ui-caption-reveal-tag { position: absolute; top: 8px; left: 8px; padding: 2px 8px; border-radius: 99px; background: rgba(10, 12, 24, 0.78); color: #fff; font: 600 11px/1.5 var(--font-body, system-ui); }
+.ui-caption-reveal-cap {
+  position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 2px; padding: 26px 12px 11px;
+  background: linear-gradient(to top, rgba(8, 10, 22, 0.92) 55%, rgba(8, 10, 22, 0.6) 80%, transparent); color: #fff; font-size: 12px; line-height: 1.35;
+  transition: transform 0.38s var(--ease, ease), clip-path 0.42s var(--ease, ease), opacity 0.3s;
+}
+.ui-caption-reveal-cap strong { font-size: 14px; }
+.ui-caption-reveal-cap span { color: #e6e8f5; }
+.ui-caption-reveal-card[data-variant='slide'] .ui-caption-reveal-cap { transform: translateY(101%); }
+.ui-caption-reveal-card[data-variant='wipe'] .ui-caption-reveal-cap { clip-path: inset(0 100% 0 0); }
+.ui-caption-reveal-card:hover .ui-caption-reveal-cap, .ui-caption-reveal-card:focus-visible .ui-caption-reveal-cap, .ui-caption-reveal-card:focus-within .ui-caption-reveal-cap { transform: none !important; clip-path: inset(0 0 0 0) !important; }
+@media (hover: none) { .ui-caption-reveal-card .ui-caption-reveal-cap { transform: none !important; clip-path: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-caption-reveal-pic, .ui-caption-reveal-cap { transition: none; }
+  .ui-caption-reveal-card:hover .ui-caption-reveal-pic, .ui-caption-reveal-card:focus-visible .ui-caption-reveal-pic { transform: none; }
+}

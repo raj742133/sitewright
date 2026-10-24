@@ -1,0 +1,4 @@
+[
+  {"id":"nav-tabs","label":"Fluid tabs","desc":"A tab bar whose pill or underline indicator springs and stretches between tabs, previews on hover, and scrolls with edge fades when crowded.","source":"code.xr","group":"navigation","files":["NavTabs.tsx","_c2.ts"],"css":["ui-nav-tabs"],"use":"dashboard sections, settings pages, product detail views, publishing list filters"},
+  {"id":"glow-sidebar","label":"Glow sidebar","desc":"A collapsible icon and label sidebar with a gliding active bar, tooltips in rail mode and a subtle brand glow that follows the pointer.","source":"code.xr","group":"navigation","files":["GlowSidebar.tsx","_c2.ts"],"css":["ui-glow-sidebar"],"use":"dashboard shell, admin area, connect page side navigation"}
+]

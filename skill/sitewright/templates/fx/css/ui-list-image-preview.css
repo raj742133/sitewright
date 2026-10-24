@@ -1,0 +1,19 @@
+.ui-list-image-preview { position: relative; width: 100%; color: var(--ink, #0f172a); font-family: var(--font-body, inherit); }
+.ui-list-image-preview-list { margin: 0; padding: 0; list-style: none; }
+.ui-list-image-preview-item { border-bottom: 1px solid var(--line, #cbd5e1); }
+.ui-list-image-preview-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px; padding: 0 0.5rem; border: 0; background: transparent;
+  color: var(--muted, #475569); font: 600 1.05rem var(--font-body, inherit); text-align: left; cursor: pointer; transition: color 0.2s, padding 0.3s var(--ease, ease);
+}
+.ui-list-image-preview-row:hover, .ui-list-image-preview-row[aria-expanded='true'] { color: var(--ink, #0f172a); padding-left: 1rem; }
+.ui-list-image-preview-row:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: -3px; border-radius: 6px; color: var(--ink, #0f172a); }
+.ui-list-image-preview-meta { font: 500 0.78rem var(--font-mono, monospace); color: var(--muted, #475569); }
+.ui-list-image-preview-pic { position: relative; overflow: hidden; border-radius: calc(var(--radius, 12px) - 2px); aspect-ratio: 4 / 3; box-shadow: var(--shadow-lift, 0 10px 30px rgba(0, 0, 0, 0.25)); }
+.ui-list-image-preview-inline { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s var(--ease, ease); }
+.ui-list-image-preview-inline > div { overflow: hidden; }
+.ui-list-image-preview-inline .ui-list-image-preview-pic { width: min(100%, 200px); margin: 4px 0 10px 1rem; aspect-ratio: 16 / 7; }
+.ui-list-image-preview-item[data-open] .ui-list-image-preview-inline { grid-template-rows: 1fr; }
+.ui-list-image-preview-float { position: absolute; left: 0; top: 0; z-index: 2; width: min(180px, 50%); pointer-events: none; opacity: 0; transition: opacity 0.2s; will-change: transform; }
+.ui-list-image-preview-float[data-show] { opacity: 1; }
+@media (pointer: coarse) { .ui-list-image-preview-float { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ui-list-image-preview-inline, .ui-list-image-preview-float, .ui-list-image-preview-row { transition: none; } }

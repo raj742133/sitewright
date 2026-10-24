@@ -1,0 +1,4 @@
+[
+  {"id":"otp-input","label":"OTP input","desc":"A one-time-code field with N visual boxes over one real input (SMS autofill friendly): auto-advance, backspace, arrows, paste, pop on fill, shake on error and a check seal on success.","source":"code.xr","group":"inputs","files":["OtpInput.tsx"],"css":["ui-otp-input"],"use":"sign-in two-step verification, email confirmation, connect page pairing codes"},
+  {"id":"payment-card","label":"Payment card","desc":"A card-payment form whose card face updates live, flips to the back on CVC focus, formats and Luhn-checks the number, and plays a fake processing then success sequence (no network).","source":"code.xr","group":"cards","files":["PaymentCard.tsx"],"css":["ui-payment-card"],"use":"checkout, billing settings, upgrade plan dialog on a dashboard or landing page"}
+]

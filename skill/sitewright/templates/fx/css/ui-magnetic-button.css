@@ -1,0 +1,7 @@
+.ui-magnetic-button { display: inline-grid; place-items: center; min-height: 48px; padding: 0 28px; border: 0; border-radius: 999px; background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: 600 15px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; will-change: transform; box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,.18)); transition: box-shadow .25s var(--ease, ease); }
+.ui-magnetic-button-inner { display: inline-block; will-change: transform; }
+.ui-magnetic-button:hover:not(:disabled) { box-shadow: var(--shadow-lift, 0 8px 22px rgba(0,0,0,.25)); }
+.ui-magnetic-button:active:not(:disabled) { filter: brightness(.94); }
+.ui-magnetic-button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 4px; }
+.ui-magnetic-button:disabled { opacity: .5; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { .ui-magnetic-button { transition: none; } }

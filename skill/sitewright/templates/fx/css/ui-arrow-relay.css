@@ -1,0 +1,14 @@
+.ui-arrow-relay {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 48px; padding: 0 1.3rem; border: 0; border-radius: var(--radius, 12px);
+  background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: 600 0.95rem var(--font-body, inherit); cursor: pointer; touch-action: manipulation;
+}
+.ui-arrow-relay-box { position: relative; display: block; width: 18px; height: 18px; overflow: hidden; }
+.ui-arrow-relay-a, .ui-arrow-relay-b { position: absolute; inset: 0; display: grid; place-items: center; transition: transform 0.4s var(--ease, cubic-bezier(.2, .8, .2, 1)); }
+.ui-arrow-relay-b { transform: translateX(-160%); }
+.ui-arrow-relay[data-dir='left'] .ui-arrow-relay-b { transform: translateX(160%); }
+.ui-arrow-relay:hover .ui-arrow-relay-a, .ui-arrow-relay:focus-visible .ui-arrow-relay-a { transform: translateX(160%); }
+.ui-arrow-relay[data-dir='left']:hover .ui-arrow-relay-a, .ui-arrow-relay[data-dir='left']:focus-visible .ui-arrow-relay-a { transform: translateX(-160%); }
+.ui-arrow-relay:hover .ui-arrow-relay-b, .ui-arrow-relay:focus-visible .ui-arrow-relay-b { transform: none; transition-delay: 0.08s; }
+.ui-arrow-relay:active { transform: translateY(1px); }
+.ui-arrow-relay:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .ui-arrow-relay-a, .ui-arrow-relay-b { transition: none; } }

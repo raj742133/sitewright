@@ -1,0 +1,24 @@
+.ui-liquid-upload-button { position: relative; overflow: hidden; isolation: isolate; display: inline-grid; place-items: center; min-width: 170px; min-height: 52px; padding: 0 28px; border-radius: 16px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: var(--ink, #111); font: inherit; font-family: var(--font-body, system-ui, sans-serif); font-size: 15px; font-weight: 600; cursor: pointer; transition: transform .12s, border-color .2s; }
+.ui-liquid-upload-button:hover { border-color: var(--primary, #2563eb); }
+.ui-liquid-upload-button:active { transform: scale(.97); }
+.ui-liquid-upload-button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
+.ui-liquid-upload-button[aria-disabled='true'] { cursor: progress; }
+.ui-liquid-upload-button-label { grid-area: 1 / 1; position: relative; z-index: 1; }
+.ui-liquid-upload-button-label-on { z-index: 3; color: var(--on-primary, #fff); width: 100%; display: grid; place-items: center; height: 100%; }
+.ui-liquid-upload-button-label { display: grid; place-items: center; width: 100%; height: 100%; }
+.ui-liquid-upload-button-row { display: inline-flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+.ui-liquid-upload-button-liquid { position: absolute; inset: 0; z-index: 2; pointer-events: none; transition: transform .25s linear, opacity .2s; }
+.ui-liquid-upload-button-wave { position: absolute; left: 0; top: -17px; width: 200%; height: 18px; animation: ui-liquid-upload-button-slide 2.4s linear infinite; }
+.ui-liquid-upload-button-wave path { fill: var(--primary, #2563eb); }
+.ui-liquid-upload-button-wave-a { opacity: 1; }
+.ui-liquid-upload-button-wave-b { opacity: .45; top: -20px; animation-duration: 3.6s; animation-direction: reverse; }
+.ui-liquid-upload-button-body { position: absolute; left: 0; right: 0; top: 0; bottom: -2px; background: var(--primary, #2563eb); }
+.ui-liquid-upload-button[data-state='done'] .ui-liquid-upload-button-wave { animation-play-state: paused; }
+.ui-liquid-upload-button[data-state='done'] { border-color: var(--primary, #2563eb); }
+.ui-liquid-upload-button-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@keyframes ui-liquid-upload-button-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (pointer: coarse) { .ui-liquid-upload-button { min-height: 48px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-liquid-upload-button-wave { animation: none; }
+  .ui-liquid-upload-button, .ui-liquid-upload-button-liquid { transition: none; }
+}

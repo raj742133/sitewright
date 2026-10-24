@@ -1,0 +1,45 @@
+.ui-glass-carousel { position: relative; display: flex; flex-direction: column; width: 100%; min-height: 0; overflow: hidden; border-radius: var(--radius, 14px); font-family: var(--font-body, system-ui, sans-serif); color: var(--ink, #111); }
+.ui-glass-carousel-blobs i { position: absolute; border-radius: 50%; filter: blur(22px); opacity: .55; pointer-events: none; }
+.ui-glass-carousel-blobs i:nth-child(1) { width: 45%; aspect-ratio: 1; left: 8%; top: -10%; background: var(--primary, #2563eb); }
+.ui-glass-carousel-blobs i:nth-child(2) { width: 40%; aspect-ratio: 1; right: 6%; bottom: 8%; background: var(--signal, #f59e0b); }
+.ui-glass-carousel-stage { position: relative; flex: 1; min-height: 0; perspective: 700px; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.ui-glass-carousel-stage.is-dragging { cursor: grabbing; }
+.ui-glass-carousel-slide {
+  position: absolute; left: 21%; top: 6%; width: 58%; height: 88%; display: flex; flex-direction: column; overflow: hidden;
+  border: 1px solid var(--line-strong, rgba(128,128,128,.35)); border-radius: calc(var(--radius, 14px) - 2px);
+  background: var(--raised, #fff); box-shadow: var(--shadow, 0 6px 20px rgba(0,0,0,.15));
+  transition: transform .5s var(--ease, cubic-bezier(.2,.8,.2,1)), opacity .4s var(--ease, ease);
+  will-change: transform; outline: none;
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .ui-glass-carousel-slide { background: color-mix(in srgb, var(--raised, #fff) 74%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4); }
+}
+.ui-glass-carousel-slide.is-centre { box-shadow: var(--shadow-lift, 0 12px 32px rgba(0,0,0,.25)); }
+.ui-glass-carousel-slide:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-glass-carousel-stage.is-dragging .ui-glass-carousel-slide { transition: none; }
+.ui-glass-carousel-art { position: relative; flex: 1 1 45%; min-height: 0; overflow: hidden; --tone: var(--primary, #2563eb); background: linear-gradient(135deg, color-mix(in srgb, var(--tone) 55%, transparent), color-mix(in srgb, var(--tone) 12%, transparent)); }
+[data-tone="signal"] .ui-glass-carousel-art { --tone: var(--signal, #f59e0b); }
+[data-tone="ok"] .ui-glass-carousel-art { --tone: var(--ok, #16a34a); }
+[data-tone="critical"] .ui-glass-carousel-art { --tone: var(--critical, #dc2626); }
+.ui-glass-carousel-art i { position: absolute; display: block; }
+.ui-glass-carousel-art i:nth-child(1) { width: 46%; aspect-ratio: 1; border-radius: 50%; left: var(--x); top: var(--y); transform: translate(-50%,-50%); background: color-mix(in srgb, var(--tone) 80%, #fff); opacity: .8; }
+.ui-glass-carousel-art i:nth-child(2) { width: 60%; height: 28%; border-radius: 99px; right: -10%; bottom: 14%; background: color-mix(in srgb, var(--tone) 50%, transparent); transform: rotate(var(--r)); }
+.ui-glass-carousel-art i:nth-child(3) { width: 24%; aspect-ratio: 1; left: 12%; bottom: 10%; border: 2px solid color-mix(in srgb, var(--ink, #111) 45%, transparent); border-radius: 6px; transform: rotate(calc(var(--r) * -1)); }
+.ui-glass-carousel-text { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px 9px; min-width: 0; }
+.ui-glass-carousel-text strong { font-size: 13px; line-height: 1.2; color: var(--ink, #111); }
+.ui-glass-carousel-text span { font-size: 11px; line-height: 1.3; color: var(--ink, #111); opacity: .78; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.ui-glass-carousel-bar { position: relative; z-index: 30; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 2px 8px 6px; }
+.ui-glass-carousel-arrow { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 1px solid var(--line, rgba(128,128,128,.3)); border-radius: 50%; background: var(--raised, #fff); color: var(--ink, #111); cursor: pointer; }
+.ui-glass-carousel-arrow:disabled { opacity: .4; cursor: default; }
+.ui-glass-carousel-arrow:focus-visible, .ui-glass-carousel-dot:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-glass-carousel-dots { display: flex; gap: 0; }
+.ui-glass-carousel-dot { display: grid; place-items: center; width: 20px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+.ui-glass-carousel-dot span { display: block; width: 7px; height: 7px; border-radius: 99px; background: var(--muted, #6b7280); opacity: .55; transition: width .3s var(--ease, ease), opacity .3s; }
+.ui-glass-carousel-dot.is-on span { width: 18px; background: var(--primary, #2563eb); opacity: 1; }
+@media (pointer: coarse) {
+  .ui-glass-carousel-arrow { width: 44px; height: 44px; }
+  .ui-glass-carousel-dot { width: 32px; height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ui-glass-carousel-slide, .ui-glass-carousel-dot span { transition: none; }
+}

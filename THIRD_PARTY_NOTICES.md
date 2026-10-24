@@ -54,6 +54,6 @@ keep their own licences, which the same file records.
 
 The components under `skill/sitewright/templates/fx/ui/` take their *ideas* from the work of others: the experiments in
 [Kitchen](https://www.dqnamo.com/kitchen) by dqnamo, the components of [Kokonut UI](https://kokonutui.com), the animation techniques of
-[Anime.js](https://animejs.com) and [Motion](https://motion.dev), the chart types of [Bklit UI](https://bklit.com), and the toast of [Sileo](https://sileo.aaryan.design). All of the code is
+[Anime.js](https://animejs.com) and [Motion](https://motion.dev), the chart types of [Bklit UI](https://bklit.com), the toast of [Sileo](https://sileo.aaryan.design), and the kinds of interface shown in the public posts of @code.xr on Instagram (one-time-code fields, payment cards, tabs, sidebar, carousel, chat, buttons, a stretching nav, dashboards, landing pages; known only from the post captions), and the hover ideas listed on components.janustiu.com. All of the code is
 written for Sitewright; none of it is copied from those projects, and none of them is a dependency. Ideas are not covered by those
 projects' licences, but credit is due and given here.

@@ -1,0 +1,3 @@
+.ui-dynamic-text-shadow { display: flex; align-items: center; justify-content: center; padding: 24px 28px; border-radius: var(--radius, 8px); font-family: var(--font-body, system-ui); overflow: hidden; container-type: inline-size; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.ui-dynamic-text-shadow:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-dynamic-text-shadow-text { display: block; font-size: clamp(1.6rem, 17cqi, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink, #111); text-align: center; text-wrap: balance; }

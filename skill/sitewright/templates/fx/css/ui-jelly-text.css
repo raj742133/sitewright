@@ -1,0 +1,6 @@
+.ui-jelly-text-root { display: inline-block; margin: 0; font: 800 clamp(30px, 11vw, 52px)/1.1 var(--font-body, system-ui); letter-spacing: -0.02em; color: var(--ink, #111); cursor: default; border-radius: 8px; }
+.ui-jelly-text-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 6px; }
+.ui-jelly-text-word { display: inline-block; white-space: nowrap; }
+.ui-jelly-text-ch { display: inline-block; will-change: transform; transform-origin: 50% 80%; }
+.ui-jelly-text-ch:nth-child(3n) { color: var(--primary, #2563eb); }
+.ui-jelly-text-ch:nth-child(3n + 1) { color: var(--ink, #111); }

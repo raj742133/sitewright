@@ -1,0 +1,12 @@
+.ui-blinds-reveal { position: relative; display: block; width: 100%; height: 100%; min-height: 120px; aspect-ratio: 16 / 9; padding: 0; overflow: hidden; border: 0; border-radius: var(--radius, 12px); background: var(--raised, #111); cursor: pointer; touch-action: manipulation; }
+.ui-blinds-reveal-under, .ui-blinds-reveal-slats { position: absolute; inset: 0; display: block; }
+.ui-blinds-reveal-slats { display: flex; }
+.ui-blinds-reveal-slat { position: relative; flex: 1; overflow: hidden; transition: transform 0.55s var(--ease, ease); transform-origin: center; }
+.ui-blinds-reveal-slice { position: absolute; top: 0; bottom: 0; display: block; }
+.ui-blinds-reveal-slat::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0, 0, 0, 0.28), transparent 40%, rgba(0, 0, 0, 0.18)); }
+.ui-blinds-reveal-label { position: absolute; left: 8px; bottom: 8px; z-index: 2; padding: 4px 10px; border-radius: 999px; background: rgba(8, 10, 14, 0.78); color: #fff; font: 600 0.78rem var(--font-body, inherit); }
+.ui-blinds-reveal[data-open] .ui-blinds-reveal-slat { transform: scaleX(0.02); }
+@media (hover: hover) { .ui-blinds-reveal:hover .ui-blinds-reveal-slat { transform: scaleX(0.02); } }
+.ui-blinds-reveal:focus-visible { outline: 3px solid var(--signal, #f59e0b); outline-offset: 3px; }
+.ui-blinds-reveal:focus-visible .ui-blinds-reveal-slat { transform: scaleX(0.02); }
+@media (prefers-reduced-motion: reduce) { .ui-blinds-reveal-slat { transition: none; } }

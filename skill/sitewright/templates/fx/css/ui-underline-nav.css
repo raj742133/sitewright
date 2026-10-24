@@ -1,0 +1,8 @@
+.ui-underline-nav { max-width: 100%; font-family: var(--font-body, system-ui, sans-serif); }
+.ui-underline-nav-wrap { position: relative; border-bottom: 1px solid var(--line, #ddd); overflow-x: auto; scrollbar-width: none; }
+.ui-underline-nav-list { display: flex; margin: 0; padding: 0; list-style: none; }
+.ui-underline-nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 9px; color: var(--muted, #555); font-size: 14px; font-weight: 500; text-decoration: none; transition: color .2s; }
+.ui-underline-nav-link:hover, .ui-underline-nav-link:focus-visible, .ui-underline-nav-link.is-active { color: var(--ink, #111); }
+.ui-underline-nav-link:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; border-radius: 6px; }
+.ui-underline-nav-bar { position: absolute; left: 0; bottom: -1px; height: 3px; width: 0; border-radius: 3px; background: var(--primary, #2563eb); pointer-events: none; will-change: transform, width; }
+@media (prefers-reduced-motion: reduce) { .ui-underline-nav-link { transition: none; } }

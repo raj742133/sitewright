@@ -1,0 +1,118 @@
+[
+ {
+  "id": "expanding-fill-button",
+  "label": "Expanding fill button",
+  "desc": "A button whose fill circle grows from the point where the pointer entered and recedes toward where it left; keyboard focus fills from the centre.",
+  "source": "Hover Interaction Collection",
+  "group": "buttons",
+  "files": [
+   "ExpandingFillButton.tsx"
+  ],
+  "css": [
+   "ui-expanding-fill-button"
+  ],
+  "use": "Primary and secondary calls to action on landing pages and sign-in."
+ },
+ {
+  "id": "arrow-relay",
+  "label": "Arrow relay",
+  "desc": "A button where the arrow exits one side as a second arrow enters from the other on hover or focus.",
+  "source": "Hover Interaction Collection",
+  "group": "buttons",
+  "files": [
+   "ArrowRelay.tsx"
+  ],
+  "css": [
+   "ui-arrow-relay"
+  ],
+  "use": "Next, continue and view-more links in landing pages and connect flows."
+ },
+ {
+  "id": "spotlight-border",
+  "label": "Spotlight border",
+  "desc": "A card whose border is lit by a radial gradient following the pointer; focus and touch get a steady glow.",
+  "source": "Hover Interaction Collection",
+  "group": "cards",
+  "files": [
+   "SpotlightBorder.tsx"
+  ],
+  "css": [
+   "ui-spotlight-border"
+  ],
+  "use": "Feature cards and pricing tiles on landing pages, dashboard summary cards."
+ },
+ {
+  "id": "waving-hand-button",
+  "label": "Waving hand button",
+  "desc": "A pill button with a hand glyph that waves on hover, focus or tap while the label changes to a greeting.",
+  "source": "Hover Interaction Collection",
+  "group": "buttons",
+  "files": [
+   "WavingHandButton.tsx"
+  ],
+  "css": [
+   "ui-waving-hand-button"
+  ],
+  "use": "Contact, chat and welcome calls to action."
+ },
+ {
+  "id": "list-image-preview",
+  "label": "List image preview",
+  "desc": "A list of rows where hovering shows a floating picture that trails the pointer; touch and keyboard open the picture inline.",
+  "source": "Hover Interaction Collection",
+  "group": "hover",
+  "files": [
+   "ListImagePreview.tsx",
+   "_d4.tsx"
+  ],
+  "css": [
+   "ui-list-image-preview"
+  ],
+  "use": "Portfolio or project indexes, publishing lists, menus and case-study lists."
+ },
+ {
+  "id": "image-stack",
+  "label": "Image stack",
+  "desc": "A pile of pictures that fans out on hover, keyboard focus or tap, showing a label on each.",
+  "source": "Hover Interaction Collection",
+  "group": "cards",
+  "files": [
+   "ImageStack.tsx",
+   "_d4.tsx"
+  ],
+  "css": [
+   "ui-image-stack"
+  ],
+  "use": "Gallery and album teasers, collection cards, trip or project galleries."
+ },
+ {
+  "id": "blinds-reveal",
+  "label": "Blinds reveal",
+  "desc": "A picture revealed through vertical blind slats that turn edge-on one after another on hover, focus or tap.",
+  "source": "Hover Interaction Collection",
+  "group": "media",
+  "files": [
+   "BlindsReveal.tsx",
+   "_d4.tsx"
+  ],
+  "css": [
+   "ui-blinds-reveal"
+  ],
+  "use": "Before/after teasers, hero images, product reveal cards."
+ },
+ {
+  "id": "image-accordion",
+  "label": "Image accordion",
+  "desc": "A horizontal accordion of pictures where the hovered, focused or tapped panel expands and the others shrink; arrow keys move between panels.",
+  "source": "Hover Interaction Collection",
+  "group": "media",
+  "files": [
+   "ImageAccordion.tsx",
+   "_d4.tsx"
+  ],
+  "css": [
+   "ui-image-accordion"
+  ],
+  "use": "Feature showcases, destination or category pickers on landing pages."
+ }
+]

@@ -1,0 +1,2 @@
+.ui-repelling-dots { color: var(--primary, #2563eb); }
+.ui-repelling-dots canvas { pointer-events: none; }
