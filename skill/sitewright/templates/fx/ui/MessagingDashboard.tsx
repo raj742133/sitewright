@@ -71,7 +71,11 @@ export default function MessagingDashboard({ conversations = SAMPLE, agent = 'Su
   const list = useMemo(() => convs.filter((c) => c.status === tab && (c.name + ' ' + (c.messages[c.messages.length - 1]?.text ?? '')).toLowerCase().includes(q.trim().toLowerCase())), [convs, tab, q]);
   const cur = convs.find((c) => c.id === sel) ?? null;
   const curLen = cur?.messages.length ?? 0;
-  useEffect(() => { bottom.current?.scrollIntoView?.({ block: 'end', behavior: 'smooth' }); }, [curLen, typing, sel]);
+  useEffect(() => {
+    // Scroll only the thread itself: scrollIntoView would also scroll the page (and a parent page when this is embedded in an iframe).
+    const end = bottom.current; const box = end?.parentElement;
+    if (box) box.scrollTo({ top: box.scrollHeight, behavior: 'smooth' });
+  }, [curLen, typing, sel]);
 
   const open = (id: string) => {
     setSel(id); setView('thread'); setInfo(false);

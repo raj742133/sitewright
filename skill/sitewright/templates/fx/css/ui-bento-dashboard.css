@@ -91,3 +91,4 @@
   .ui-bento-dashboard *, .ui-bento-dashboard *::before { animation: none !important; transition: none !important; }
   .ui-bento-dashboard-tile:hover, .ui-bento-dashboard-tile:focus-within { transform: none; }
 }
+@media (pointer: coarse) { .ui-bento-dashboard-cell { min-height: 24px; min-width: 24px; } }

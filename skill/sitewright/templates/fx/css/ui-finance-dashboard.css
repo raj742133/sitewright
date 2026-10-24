@@ -56,3 +56,4 @@
 }
 @media (pointer: coarse) { .ui-finance-dashboard-chips button, .ui-finance-dashboard-cardbtns button, .ui-finance-dashboard-quick button { min-height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .ui-finance-dashboard-track i, .ui-finance-dashboard-plastic { transition: none; } }
+@media (pointer: coarse) { .ui-finance-dashboard button { min-width: 44px; min-height: 44px; } }

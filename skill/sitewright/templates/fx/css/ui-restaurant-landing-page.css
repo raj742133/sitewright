@@ -67,3 +67,4 @@
 }
 @media (prefers-reduced-motion: reduce) { .ui-restaurant-landing-page * { animation: none !important; transition: none !important; } .ui-restaurant-landing-page-steam path { opacity: .35; } }
 .ui-restaurant-landing-page-hours th { text-transform: none; letter-spacing: normal; font-family: inherit; font-size: 15px; color: inherit; }
+@media (pointer: coarse) { .ui-restaurant-landing-page button, .ui-restaurant-landing-page a, .ui-restaurant-landing-page input, .ui-restaurant-landing-page select { min-height: 44px; } }

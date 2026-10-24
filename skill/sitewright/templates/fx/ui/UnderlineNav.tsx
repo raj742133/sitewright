@@ -55,5 +55,5 @@ export default function UnderlineNav({ items = DEFAULT_ITEMS, value, onChange, l
 }
 
 export function Demo() {
-  return <div style={{ display: 'grid', placeItems: 'center', minHeight: 150, padding: 0 4px' }}><UnderlineNav items={[{ label: 'Overview' }, { label: 'Pages' }, { label: 'Media' }, { label: 'Setup' }]} /></div>;
+  return <div style={{ display: 'grid', placeItems: 'center', minHeight: 150, padding: '0 4px' }}><UnderlineNav items={[{ label: 'Overview' }, { label: 'Pages' }, { label: 'Media' }, { label: 'Setup' }]} /></div>;
 }

@@ -1,5 +1,5 @@
 .ui-flipping-search-bar { position: relative; width: 100%; max-width: 280px; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); font-size: 14px; }
-.ui-flipping-search-bar-flip { position: relative; height: 44px; perspective: 700px; }
+.ui-flipping-search-bar-flip { position: relative; height: 44px; min-width: 44px; perspective: 700px; }
 .ui-flipping-search-bar-face { position: absolute; inset: 0; display: flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid var(--line-strong, #bbb); border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #111); box-sizing: border-box; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform .5s var(--ease, cubic-bezier(.2,.7,.2,1)); font: inherit; }
 .ui-flipping-search-bar-front { cursor: pointer; text-align: left; transform: rotateX(0); }
 .ui-flipping-search-bar-front span { color: var(--muted, #555); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

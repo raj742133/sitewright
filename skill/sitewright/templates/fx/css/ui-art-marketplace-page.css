@@ -81,3 +81,4 @@
   .ui-art-marketplace-page-portrait { width: 220px; }
 }
 @media (prefers-reduced-motion: reduce) { .ui-art-marketplace-page * { animation: none !important; transition: none !important; } }
+@media (pointer: coarse) { .ui-art-marketplace-page button, .ui-art-marketplace-page a, .ui-art-marketplace-page input { min-height: 44px; } .ui-art-marketplace-page a, .ui-art-marketplace-page-brand { display: inline-flex; align-items: center; min-width: 44px; } }
