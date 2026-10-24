@@ -734,7 +734,8 @@ async function checkEffects(browser) {
       if (FX.reveal !== 'rise') await check(`${vp}: scroll-reveal style "${FX.reveal}" is applied and everything still appears`, async () => {
         eq(await page.evaluate(() => document.documentElement.dataset.fxReveal), FX.reveal, 'data-fx-reveal');
         await scrollThrough(page); await page.waitForTimeout(1200);
-        eq(await page.evaluate(() => [...document.querySelectorAll('.rv')].filter((e) => Number(getComputedStyle(e).opacity) < 0.95).length), 0, 'sections left hidden');
+        const hidden = await page.evaluate(() => [...document.querySelectorAll('.rv')].filter((e) => Number(getComputedStyle(e).opacity) < 0.95).map((e) => `${e.tagName.toLowerCase()}.${String(e.className).slice(0, 40)} opacity ${getComputedStyle(e).opacity} at y=${Math.round(e.getBoundingClientRect().top + scrollY)}`));
+        eq(hidden.join('; '), '', 'sections left hidden');
       });
 
       if (vp === 'desktop') {
