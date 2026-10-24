@@ -44,3 +44,5 @@
   .ui-chat-thread-row.is-new { animation: none; }
   .ui-chat-thread-typing i { animation: none; opacity: .7; }
 }
+/* touch: the compact layout keeps its send button finger-sized too (it comes later than the rule above, so it must restate it) */
+@media (pointer: coarse) { .is-compact .ui-chat-thread-send { width: 44px; height: 44px; } .is-compact .ui-chat-thread-input { min-height: 44px; } }

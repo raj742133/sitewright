@@ -68,3 +68,5 @@
   .ui-payment-card-tick, .ui-payment-card-spin { animation: none; }
   .ui-payment-card-root[data-phase='done'] .ui-payment-card-ring, .ui-payment-card-root[data-phase='done'] .ui-payment-card-check { animation: none; stroke-dashoffset: 0; }
 }
+/* touch: the compact fields grow to a finger-sized height (the card keeps its place beside them) */
+@media (pointer: coarse) { .ui-payment-card-root[data-compact] .ui-payment-card-field input { min-height: 44px; font-size: 16px; } }
