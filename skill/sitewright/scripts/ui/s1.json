@@ -1,0 +1,19 @@
+[
+ {
+  "id": "toast",
+  "label": "Toast",
+  "desc": "Spring-in notifications with icons that draw to match the state (success, error, info, loading), pause on hover, stack and collapse. Call toast('Saved') from anywhere; mount <Toaster /> once.",
+  "source": "Sileo",
+  "group": "feedback",
+  "files": [
+   "Toast.tsx"
+  ],
+  "css": [
+   "ui-toast"
+  ],
+  "named": [
+   "toast"
+  ],
+  "use": "Copied, saved, signed out, upload failed, published: any confirmation or error in the dashboard, publishing and connect pages."
+ }
+]

@@ -13,7 +13,7 @@
   <b>A Claude Code skill that builds your website.</b><br>
   Landing page, sign-in, authenticator MFA, records dashboard, release publishing and a connect-your-phone page,<br>
   restyled with your brand, wired to a real backend, and tested in a real browser.<br>
-  Two design themes, 10 animated backgrounds, 22 interactive line figures, 58 live components and 200,000+ icons, all optional.
+  Two design themes, 10 animated backgrounds, 22 interactive line figures, 59 live components and 200,000+ icons, all optional.
 </p>
 
 <p align="center">
@@ -237,7 +237,7 @@ Put one anywhere in your own pages by name, nothing to register: `<Figure name="
 
 ## Components (optional)
 
-A library of 58 small interactive components you import by name from `@/components/fx/ui`. They are original code with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
+A library of 59 small interactive components you import by name from `@/components/fx/ui`. They are original code with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
 
 | Group | Components |
 | --- | --- |
@@ -245,10 +245,11 @@ A library of 58 small interactive components you import by name from `@/componen
 | Inputs | command input, wheel picker, detent dial, option selector, invite code, drop zone, spring toggle |
 | Cards and layout | perforated ticket, stamp, playing cards, scroll-fade list, shared-element gallery, gesture card, draggable card |
 | Motion | stagger grid, line draw, shape morph, motion path, scroll timeline, timeline sequence, spring playground, presence list, drag to reorder |
+| Feedback | toast (call `toast('Saved')` from anywhere; mount `<Toaster />` once) |
 | Loaders and text | step loader, logo-trace loader, animated signature, scramble text, plucked text, receipt printer |
 | Charts (SVG, accessible) | area, bar, line, live line, profit/loss, composed, scatter, candlestick, pie, ring, radar, funnel, gauge, heatmap, sankey, US tile map |
 
-**[Try them live](https://sitewright-skill.vercel.app/demo/effects/#components)** · the catalogue, with what each is for, is [`reference/components.md`](skill/sitewright/reference/components.md). Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion and Bklit; all code is written for this kit (see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).
+**[Try them live](https://sitewright-skill.vercel.app/demo/effects/#components)** · the catalogue, with what each is for, is [`reference/components.md`](skill/sitewright/reference/components.md). Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion, Bklit and Sileo; all code is written for this kit (see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).
 
 ## Install
 
