@@ -10,7 +10,7 @@
 .ui-peel-reveal-face { background: var(--primary, #2563eb); color: var(--on-primary, #fff); }
 .ui-peel-reveal-kicker { font: 600 11px/1.2 var(--font-mono, ui-monospace, monospace); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; }
 .ui-peel-reveal-big { font-size: 20px; line-height: 1.15; max-width: 12em; }
-.ui-peel-reveal-code { font: 700 26px/1.1 var(--font-mono, ui-monospace, monospace); letter-spacing: 0.04em; }
+.ui-peel-reveal-code { font: 700 20px/1.1 var(--font-mono, ui-monospace, monospace); letter-spacing: 0.04em; }
 .ui-peel-reveal-flap-wrap { position: absolute; inset: 0; pointer-events: none; filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35)); }
 .ui-peel-reveal-flap { position: absolute; inset: 0; border-radius: var(--radius, 12px); }
 .ui-peel-reveal-btn {
