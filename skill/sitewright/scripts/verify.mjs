@@ -386,6 +386,13 @@ async function checkConnect(browser) {
       await page.getByRole('button', { name: 'Copy link' }).click();
       await page.getByRole('button', { name: /Copied/ }).waitFor();
       eq(await page.evaluate(() => navigator.clipboard.readText()), link, 'clipboard');
+      const t = page.locator('.ui-toast', { hasText: 'Link copied' });
+      await t.waitFor({ timeout: 4000 });
+      truthy((await t.getAttribute('role')) === 'status', 'the toast is announced politely (role=status)');
+      const box = await t.boundingBox(), vpSize = page.viewportSize();
+      truthy(box && box.x >= 0 && box.x + box.width <= vpSize.width, 'the toast fits the screen');
+      await t.getByRole('button', { name: /Dismiss/ }).click();
+      await t.waitFor({ state: 'detached', timeout: 3000 });
     });
     await check(`${vp}: no horizontal scroll`, async () => { await noOverflow(page, 'connect'); });
     await shot(page, `connect-${vp}`);

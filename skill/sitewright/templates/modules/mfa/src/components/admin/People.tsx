@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from '@/components/fx';
 
 export interface Person {
   username: string;
@@ -28,6 +29,7 @@ export function People({ people }: { people: Person[] }) {
     if (!res.ok) { setError(body.error ?? `Failed (${res.status})`); return; }
     setInvite(body.url);
     setCopied(false);
+    toast.success('Invite created', 'The link works once, for 48 hours.');
     router.refresh();
   };
 
@@ -51,7 +53,7 @@ export function People({ people }: { people: Person[] }) {
         <div className="invite">
           <p className="muted small">Send this link to the person. It works once, for 48 hours; they choose a password and add an authenticator app.</p>
           <p className="mono linkline">{invite}</p>
-          <button className="btn" type="button" onClick={async () => { await navigator.clipboard.writeText(invite); setCopied(true); }}>
+          <button className="btn" type="button" onClick={async () => { await navigator.clipboard.writeText(invite); setCopied(true); toast.success('Invite link copied'); }}>
             {copied ? 'Copied' : 'Copy link'}
           </button>
         </div>

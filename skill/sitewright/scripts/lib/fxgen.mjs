@@ -69,6 +69,7 @@ export function generateFx({ fx, landing, all, templates, tokens, put, fill }) {
   if (fx.extras.includes('count-up')) lines.push("export { default as CountUp } from './CountUp';");
   else lines.push("export function CountUp({ value }: { value: number }) {\n  return <>{value.toLocaleString('en-GB')}</>;\n}");
   lines.push("export { Figure } from './figures/Slots';");
+  lines.push("export { default as Toaster, toast } from './ui/Toast';");
   put('src/components/fx/index.tsx', lines.join('\n') + '\n');
   // <Figure place=... /> and <Figure name=... />: the component, and the settings the project's own figure sync reads to keep it in line with the code
   const places = Object.keys(PLACES);

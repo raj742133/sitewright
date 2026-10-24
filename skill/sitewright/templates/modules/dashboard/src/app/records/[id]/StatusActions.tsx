@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from '@/components/fx';
 
 /** One click to change a __RECORD__'s status, and a confirmed delete. Both go through /api/records/[id]. */
 export function StatusActions({ id, current, statuses }: { id: string; current: string; statuses: { id: string; label: string; tone: string }[] }) {
@@ -16,7 +17,7 @@ export function StatusActions({ id, current, statuses }: { id: string; current: 
       method, headers: body ? { 'Content-Type': 'application/json' } : undefined, body: body ? JSON.stringify(body) : undefined,
     });
     setBusy(false);
-    if (!res.ok) { setError((await res.json().catch(() => ({}))).error ?? `Failed (${res.status})`); return false; }
+    if (!res.ok) { const msg = (await res.json().catch(() => ({}))).error ?? `Failed (${res.status})`; setError(msg); toast.error('Could not update', msg); return false; }
     return true;
   }
 
@@ -30,7 +31,7 @@ export function StatusActions({ id, current, statuses }: { id: string; current: 
             className={`btn sm${s.id === current ? ' primary' : ''}`}
             disabled={busy || s.id === current}
             aria-pressed={s.id === current}
-            onClick={async () => { if (await call('PATCH', { status: s.id })) router.refresh(); }}
+            onClick={async () => { if (await call('PATCH', { status: s.id })) { toast.success('Status updated', s.label); router.refresh(); } }}
           >
             {s.label}
           </button>

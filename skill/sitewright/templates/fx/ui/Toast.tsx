@@ -1,6 +1,11 @@
 'use client';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { useReducedMotion } from './_m1';
+
+function useReducedMotion(): boolean {
+  const [r, setR] = useState(false);
+  useEffect(() => { const m = window.matchMedia('(prefers-reduced-motion: reduce)'); const f = () => setR(m.matches); f(); m.addEventListener('change', f); return () => m.removeEventListener('change', f); }, []);
+  return r;
+}
 
 export type ToastKind = 'success' | 'error' | 'info' | 'loading';
 export interface ToastOptions {

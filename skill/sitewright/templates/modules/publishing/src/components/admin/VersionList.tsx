@@ -3,6 +3,7 @@
 import { NotesEditor } from './NotesEditor';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from '@/components/fx';
 
 export interface VersionItem {
   versionCode: number;
@@ -54,9 +55,12 @@ function Version({ v }: { v: VersionItem }) {
     });
     setBusy(false);
     if (!res.ok) {
-      setError((await res.json().catch(() => ({}))).error ?? `Failed (${res.status})`);
+      const msg = (await res.json().catch(() => ({}))).error ?? `Failed (${res.status})`;
+      setError(msg);
+      toast.error('Could not update', msg);
       return false;
     }
+    toast.success(method === 'DELETE' ? 'Version deleted' : 'Version updated');
     router.refresh();
     return true;
   };
