@@ -1,8 +1,8 @@
-.ui-magic-tree-qr { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 20px; align-items: center; width: 100%; max-width: 680px; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); }
+.ui-magic-tree-qr { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 20px; align-items: center; width: 100%; max-width: 680px; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); }
 .ui-magic-tree-qr-fig { margin: 0; display: grid; gap: 8px; justify-items: center; }
 .ui-magic-tree-qr figcaption { font: 12px var(--font-mono, monospace); color: var(--muted, #555); }
 .ui-magic-tree-qr figcaption b { color: var(--ink, #111); letter-spacing: .08em; }
-.ui-magic-tree-qr-stage { position: relative; width: 100%; aspect-ratio: 1 / 1.08; cursor: pointer; }
+.ui-magic-tree-qr-stage { position: relative; width: 100%; aspect-ratio: 1 / 1.22; cursor: pointer; }
 .ui-magic-tree-qr-svg, .ui-magic-tree-qr-treewrap { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .45s var(--ease, ease), transform .55s var(--ease, ease); }
 .ui-magic-tree-qr-svg { display: block; border-radius: 6px; box-shadow: var(--shadow, 0 1px 3px rgba(0, 0, 0, .15)); height: auto; aspect-ratio: 1; top: 50%; translate: 0 -50%; }
 .ui-magic-tree-qr-treewrap { display: grid; place-items: center; opacity: 0; transform: scale(.9); pointer-events: none; }
