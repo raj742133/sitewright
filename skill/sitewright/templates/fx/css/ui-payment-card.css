@@ -1,0 +1,70 @@
+.ui-payment-card-root { width: 100%; max-width: 360px; margin-inline: auto; display: grid; gap: 14px; font-family: var(--font-body, system-ui, sans-serif); color: var(--ink, #111); }
+.ui-payment-card-scene { container-type: inline-size; position: relative; width: 100%; aspect-ratio: 1.586; perspective: 900px; }
+.ui-payment-card-card { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .7s var(--ease, cubic-bezier(.2,.8,.2,1)), filter .5s, opacity .5s; }
+.ui-payment-card-scene[data-flip] .ui-payment-card-card { transform: rotateY(180deg); }
+.ui-payment-card-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 6cqw; padding: 6cqw 7cqw; box-sizing: border-box; color: #fff; overflow: hidden; background: linear-gradient(135deg, color-mix(in srgb, var(--primary, #2563eb) 72%, #0b1020), color-mix(in srgb, var(--signal, #f59e0b) 40%, #0b1020)); box-shadow: var(--shadow-lift, 0 12px 28px rgba(0,0,0,.28)); font-family: var(--font-mono, ui-monospace, monospace); }
+.ui-payment-card-face::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 80% at 90% -10%, rgba(255,255,255,.22), transparent 55%); pointer-events: none; }
+.ui-payment-card-front { display: flex; flex-direction: column; justify-content: space-between; }
+.ui-payment-card-top { display: flex; justify-content: space-between; align-items: center; }
+.ui-payment-card-chip { width: 14cqw; }
+.ui-payment-card-wave { width: 8cqw; opacity: .85; }
+.ui-payment-card-num { display: flex; justify-content: space-between; font-size: 7.4cqw; font-weight: 600; letter-spacing: .02em; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
+.ui-payment-card-meta { display: flex; justify-content: space-between; gap: 4cqw; font-size: 4.4cqw; text-transform: uppercase; }
+.ui-payment-card-meta small { display: block; font-size: 2.8cqw; opacity: .8; letter-spacing: .08em; }
+.ui-payment-card-holder { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ui-payment-card-back { transform: rotateY(180deg); padding: 0; }
+.ui-payment-card-strip { height: 17%; margin-top: 9%; background: #0b0d12; }
+.ui-payment-card-sig { margin: 7cqw 7cqw 0; height: 15%; background: repeating-linear-gradient(90deg, #f1f1f1 0 6px, #dcdcdc 6px 12px); display: flex; justify-content: flex-end; align-items: center; padding-inline: 3cqw; }
+.ui-payment-card-cvc { font-size: 5cqw; font-weight: 700; color: #111; font-style: italic; }
+.ui-payment-card-fine { position: absolute; right: 7cqw; bottom: 6cqw; font-size: 3cqw; opacity: .85; letter-spacing: .06em; text-transform: uppercase; }
+.ui-payment-card-done { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ok, #16a34a); opacity: 0; pointer-events: none; transition: opacity .3s; }
+.ui-payment-card-done svg { background: var(--surface, #fff); border-radius: 50%; padding: 4%; box-sizing: content-box; width: 32%; }
+.ui-payment-card-ring, .ui-payment-card-check { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ui-payment-card-root[data-phase='done'] .ui-payment-card-done { opacity: 1; }
+.ui-payment-card-root[data-phase='done'] .ui-payment-card-card { filter: saturate(.5) brightness(.6); opacity: .85; }
+.ui-payment-card-root[data-phase='done'] .ui-payment-card-ring { animation: ui-payment-card-draw .5s ease-out forwards; }
+.ui-payment-card-root[data-phase='done'] .ui-payment-card-check { animation: ui-payment-card-draw .4s ease-out .4s forwards; }
+.ui-payment-card-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ui-payment-card-f-num, .ui-payment-card-f-name, .ui-payment-card-pay { grid-column: 1 / -1; }
+.ui-payment-card-field { position: relative; display: grid; gap: 3px; min-width: 0; }
+.ui-payment-card-lab { font-size: 11px; color: var(--muted, #5b6270); font-weight: 600; }
+.ui-payment-card-field input { width: 100%; box-sizing: border-box; min-height: 40px; padding: 0 30px 0 10px; border: 1px solid var(--line-strong, #b5b9c2); border-radius: calc(var(--radius, 10px) * .7); background: var(--raised-2, #f3f4f6); color: var(--ink, #111); font: 500 14px var(--font-mono, ui-monospace, monospace); }
+.ui-payment-card-field input::placeholder { color: var(--muted, #6b7280); opacity: .8; }
+.ui-payment-card-field input:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 1px; }
+.ui-payment-card-field input[aria-invalid='true'] { border-color: var(--critical, #dc2626); }
+.ui-payment-card-field input:disabled { opacity: .6; }
+.ui-payment-card-tick { position: absolute; right: 9px; bottom: 13px; color: var(--ok, #16a34a); animation: ui-payment-card-pop .25s var(--ease, ease) both; }
+.ui-payment-card-pay { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: var(--radius, 10px); background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: 700 14px var(--font-body, system-ui, sans-serif); cursor: pointer; }
+.ui-payment-card-pay:focus-visible { outline: 2px solid var(--ink, #111); outline-offset: 2px; }
+.ui-payment-card-pay:disabled { cursor: not-allowed; background: var(--raised-2, #e5e7eb); color: var(--muted, #5b6270); border: 1px solid var(--line, #d1d5db); }
+.ui-payment-card-root[data-phase='done'] .ui-payment-card-pay { background: var(--ok, #15803d); color: #fff; }
+.ui-payment-card-spin { width: 14px; height: 14px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: ui-payment-card-rot .7s linear infinite; }
+.ui-payment-card-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+
+/* compact: card left, tiny fields right */
+.ui-payment-card-root[data-compact] { max-width: 280px; grid-template-columns: 112px 1fr; align-items: center; gap: 10px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-fields { gap: 4px; grid-template-columns: 1fr 44px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-lab { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.ui-payment-card-root[data-compact] .ui-payment-card-field input { min-height: 26px; padding: 0 20px 0 6px; font-size: 11px; border-radius: 6px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-tick { width: 10px; height: 10px; right: 6px; bottom: 8px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-f-name { grid-column: 1 / -1; }
+.ui-payment-card-root[data-compact] .ui-payment-card-f-exp { grid-column: 1; }
+.ui-payment-card-root[data-compact] .ui-payment-card-f-cvc { grid-column: 2; }
+.ui-payment-card-root[data-compact] .ui-payment-card-f-cvc input { padding: 0 4px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-f-cvc .ui-payment-card-tick { display: none; }
+.ui-payment-card-root[data-compact] .ui-payment-card-pay { min-height: 28px; font-size: 11px; border-radius: 6px; gap: 5px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-spin { width: 10px; height: 10px; }
+@media (pointer: coarse) { .ui-payment-card-root[data-compact] .ui-payment-card-pay { min-height: 44px; } }
+.ui-payment-card-demo { width: 100%; padding: 4px 0; }
+
+@keyframes ui-payment-card-draw { to { stroke-dashoffset: 0; } }
+@keyframes ui-payment-card-rot { to { transform: rotate(360deg); } }
+@keyframes ui-payment-card-pop { 0% { transform: scale(.3); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-payment-card-card, .ui-payment-card-done { transition: none; }
+  .ui-payment-card-scene[data-flip] .ui-payment-card-card { transform: none; }
+  .ui-payment-card-scene[data-flip] .ui-payment-card-front { visibility: hidden; }
+  .ui-payment-card-scene[data-flip] .ui-payment-card-back { transform: none; }
+  .ui-payment-card-tick, .ui-payment-card-spin { animation: none; }
+  .ui-payment-card-root[data-phase='done'] .ui-payment-card-ring, .ui-payment-card-root[data-phase='done'] .ui-payment-card-check { animation: none; stroke-dashoffset: 0; }
+}
