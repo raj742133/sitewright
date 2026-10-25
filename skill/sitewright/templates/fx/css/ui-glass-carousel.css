@@ -33,7 +33,7 @@
 .ui-glass-carousel-arrow:disabled { opacity: .4; cursor: default; }
 .ui-glass-carousel-arrow:focus-visible, .ui-glass-carousel-dot:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
 .ui-glass-carousel-dots { display: flex; gap: 0; }
-.ui-glass-carousel-dot { display: grid; place-items: center; width: 20px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+.ui-glass-carousel-dot { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
 .ui-glass-carousel-dot span { display: block; width: 7px; height: 7px; border-radius: 99px; background: var(--muted, #6b7280); opacity: .55; transition: width .3s var(--ease, ease), opacity .3s; }
 .ui-glass-carousel-dot.is-on span { width: 18px; background: var(--primary, #2563eb); opacity: 1; }
 @media (pointer: coarse) {

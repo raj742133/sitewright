@@ -29,7 +29,7 @@ Dependencies are resolved automatically - choosing `publishing` brings `mfa`; `d
 
 **Figures** are the other half of the layer: 22 small interactive isometric line drawings (19 from Hairline, MIT, plus `bars`, `scanner`, `parcel` written for this kit) placed in named *places* of the site, `effects.figures`: `hero`, `releases`, `signin`, `mfa`, `connect`, `empty`, `notfound`. `figures: "auto"` puts the fitting figure in every place the chosen modules have; `{ "signin": "vault" }` chooses one by one. Catalogue, places, how to use them well and how to add your own: `reference/figures.md`. Catalogue, presets and rules: `reference/effects.md`.
 
-**Components** are the third part: 116 small interactive pieces (hold-to-confirm and tactile buttons, a command input, wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers, and 16 SVG charts) imported from `@/components/fx/ui`, chosen with `effects.components` (`"all"` or a list) or `--components`. Catalogue, what each is for and how to choose: `reference/components.md`.
+**Components** are the third part: 117 small interactive pieces (hold-to-confirm and tactile buttons, a command input, wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers, and 16 SVG charts) imported from `@/components/fx/ui`, chosen with `effects.components` (`"all"` or a list) or `--components`. Catalogue, what each is for and how to choose: `reference/components.md`.
 
 ## Workflow
 
@@ -71,6 +71,11 @@ Dependencies are resolved automatically - choosing `publishing` brings `mfa`; `d
    node ~/.claude/skills/sitewright/scripts/verify.mjs --site ./my-site --port 4010 --out ./verify-shots
    ```
    It needs Playwright (`npm i playwright` somewhere resolvable from the cwd, and a Chromium - `npx playwright install chromium`). It starts the built site on a throwaway database and storage, then drives every chosen module at 1280, 390 and 360 px: renders, forms, sign-in, the full MFA enrolment with its own TOTP, publishing (fake files, or real APKs with `--apk <file> --apk-name <v> --apk-code <n> [--apk2 ...]`), API auth and idempotency, no horizontal scroll on phones, repeated warm-cache loads for hydration errors, and no console errors. Screenshots and `report.json` land in `--out`; read a couple of the screenshots before telling the user it looks right.
+7b. **Audit** (after the verifier; it is the review a designer would do, with the numbers):
+   ```bash
+   node ~/.claude/skills/sitewright/scripts/audit.mjs --url http://localhost:3000 --out ./audit-out
+   ```
+   Run it against `npm start`. It measures contrast in light and dark, checks names, headings, tap targets and keyboard focus, critiques type and spacing, and squeezes every page to phone width. Read `audit-out/report.md`: each finding has WHAT / WHY / FIX, and `fixes.css` holds the concrete colour and size fixes. **Fix everything marked blocking** (or tell the user why not), mention what is important, and never claim the site is accessible on the strength of it: it is not a screen-reader test (`reference/audits.md`). `reference/better-interface.md` is the checklist behind it.
 8. **Hand over:** the folder, the dev password and `.env.local` location (generated with random secrets - never print secrets into committed files), how to run (`npm run build && npm start`), the list of checks that passed, and the caveats below. Offer a Playwright screenshot of the landing page at desktop and phone width.
 
 ## Rules the generated code keeps - do not edit them away
@@ -93,10 +98,12 @@ New module = a folder under `templates/modules/<id>/` mirroring the output tree,
 
 - `reference/config.md` - every config key, its default, and a minimal vs full example
 - `reference/effects.md` - the effects catalogue, presets, wiring and rules
-- `reference/components.md` - the component library (116 pieces): ids, what each does, where to use it
+- `reference/components.md` - the component library (117 pieces): ids, what each does, where to use it
 - `reference/icons.md` - icons: places, `auto`, finding names, licences, changing them later
 - `reference/figures.md` - the 22 line figures, the places they go, which fits where, and how to add one
 - `reference/design-system.md` - tokens, palette derivation, components, animations, responsive rules
 - `reference/modules.md` - routes, tables, env vars and flags per module
 - `reference/testing.md` - what the verifier checks, how to run it, how to read failures
+- `reference/audits.md` - the accessibility, design-critique and responsive audits (`audit.mjs`): flags, what each finds, how to read a finding
+- `reference/better-interface.md` - the interface fundamentals checklist (accessibility, layout, type, writing, interaction), with the items the audit measures marked
 - `reference/gotchas.md` - things that cost real time: hydration, Node versions, disk, Windows shells

@@ -2,7 +2,7 @@
 // Builds and drives every example config, plain and with every optional layer switched on, and prints one table. Run it after any change
 // to the generator, the templates or the verifier: it is the "did I break any site type" check.
 //
-//   node tools/regress.mjs [--examples coffee,legal,quotes-tags-braces] [--variants plain,max] [--parallel 3] [--out ./regress-out] [--no-verify]
+//   node tools/regress.mjs [--examples coffee,legal,quotes-tags-braces] [--variants plain,max] [--parallel 3] [--out ./regress-out] [--no-verify] [--no-audit]
 //                          [--modules ./some/node_modules]
 //
 // For each example it: scaffolds the site (the "max" variant adds figures, icons, every component and the aurora-glass effects), type-checks it, runs
@@ -82,11 +82,31 @@ async function devSmoke(dir, port) {
   }
 }
 
+// The audit (accessibility and responsive, light and dark, phone to desktop) against the production build's public pages: anything
+// BLOCKING fails the run. Its own server on its own port, stopped before the next step touches the folder.
+async function auditCheck(dir, port) {
+  const p = spawn('npx', ['next', 'start', '-p', String(port)], { cwd: dir, shell: win, detached: !win, env: { ...process.env, NEXT_TELEMETRY_DISABLED: '1' } });
+  try {
+    let up = false;
+    for (let i = 0; i < 60 && !up; i++) { await new Promise((r) => setTimeout(r, 1000)); try { await fetch(`http://localhost:${port}/`, { redirect: 'manual' }); up = true; } catch { /* not yet */ } }
+    if (!up) return { text: 'server did not start', fails: ['audit: server did not start'] };
+    const a = await run(process.execPath, [path.join(SKILL, 'scripts', 'audit.mjs'), '--url', `http://localhost:${port}`, '--mode', 'a11y,responsive', '--themes', 'light,dark', '--max-pages', '4', '--out', path.join(dir, '_audit')], { cwd: process.cwd() });
+    const m = /(\d+) blocking, (\d+) important, (\d+) polish/.exec(a.out);
+    if (!m) return { text: 'could not run', fails: ['audit: ' + a.out.trim().split('\n').slice(-2).join(' ')] };
+    const blocking = [...a.out.matchAll(/^ {2}\[blocking\] (.+)$/gm)].map((x) => `audit: ${x[1]}`);
+    return { text: `${m[1]} blocking, ${m[2]} important`, fails: Number(m[1]) ? blocking : [] };
+  } finally {
+    const closed = new Promise((r) => p.once('close', r));
+    if (win) spawn('taskkill', ['/pid', String(p.pid), '/T', '/F']); else { try { process.kill(-p.pid); } catch { p.kill(); } }
+    await Promise.race([closed, new Promise((r) => setTimeout(r, 8000))]);
+  }
+}
+
 async function one(site, variant, port, modules) {
   const example = site.name;
   const dir = path.join(OUT, `${example}-${variant}`);
   fs.rmSync(dir, { recursive: true, force: true });
-  const r = { name: `${example} ${variant}`, scaffold: '-', tsc: '-', build: '-', verify: '-', fails: [] };
+  const r = { name: `${example} ${variant}`, scaffold: '-', tsc: '-', build: '-', verify: '-', audit: '-', fails: [] };
   const extra = variant === 'max' && example !== 'gallery' && !site.fixture ? ['--figures', 'auto', '--icons', 'auto', '--preset', 'aurora-glass', '--components', 'all', '--offline-icons'] : ['--offline-icons'];
   const sc = await run(process.execPath, [path.join(SKILL, 'scripts', 'scaffold.mjs'), '--config', site.file, '--out', dir, '--quiet', ...extra]);
   if (sc.code) { r.scaffold = 'FAIL'; r.fails.push(sc.out.trim().split('\n').slice(-2).join(' ')); return r; }
@@ -106,6 +126,7 @@ async function one(site, variant, port, modules) {
   if (!m) { r.verify = 'could not run'; r.fails.push(v.out.trim().split('\n').slice(-3).join(' ')); return r; }
   r.verify = `${m[1]}/${m[2]}${m[3] ? ` (${m[3]} skipped)` : ''}${m[4] ? ` ${m[4]} FAILED` : ''}`;
   r.fails.push(...[...v.out.matchAll(/^ {2}FAIL {2}(.+)\n {8}(.+)$/gm)].map((x) => `${x[1]}: ${x[2]}`));
+  if (!flag('no-audit')) { const a = await auditCheck(dir, port + 2000); r.audit = a.text; r.fails.push(...a.fails); }
   await devCheck();
   return r;
 }
@@ -117,13 +138,13 @@ await Promise.all(Array.from({ length: Math.min(parallel, jobs.length) }, async 
   while (next < jobs.length) {
     const [s, v] = jobs[next++]; const p = port++;
     const r = await one(s, v, p, modules); results.push(r);
-    console.log(`${r.name.padEnd(22)} scaffold ${r.scaffold}  tsc ${r.tsc}  build ${r.build}  verify ${r.verify}`);
+    console.log(`${r.name.padEnd(22)} scaffold ${r.scaffold}  tsc ${r.tsc}  build ${r.build}  verify ${r.verify}  audit ${r.audit}`);
   }
 }));
 
-console.log('\n' + 'site'.padEnd(22) + 'scaffold  tsc   build  verify');
-for (const r of results.sort((a, b) => a.name.localeCompare(b.name))) console.log(`${r.name.padEnd(22)}${r.scaffold.padEnd(10)}${r.tsc.padEnd(6)}${r.build.padEnd(7)}${r.verify}`);
-const failing = results.filter((r) => r.fails.length || [r.scaffold, r.tsc, r.build].includes('FAIL') || /FAILED|could not/.test(r.verify));
+console.log('\n' + 'site'.padEnd(22) + 'scaffold  tsc   build  verify          audit');
+for (const r of results.sort((a, b) => a.name.localeCompare(b.name))) console.log(`${r.name.padEnd(22)}${r.scaffold.padEnd(10)}${r.tsc.padEnd(6)}${r.build.padEnd(7)}${r.verify.padEnd(16)}${r.audit}`);
+const failing = results.filter((r) => r.fails.length || [r.scaffold, r.tsc, r.build].includes('FAIL') || /FAILED|could not/.test(r.verify) || /could not|did not/.test(r.audit));
 if (failing.length) { console.log('\nWhat failed:'); for (const r of failing) for (const f of r.fails) console.log(`  ${r.name}: ${f}`.slice(0, 300)); }
 console.log(failing.length ? `\n${failing.length} of ${results.length} sites have failures.` : `\nAll ${results.length} sites pass.`);
 process.exit(failing.length ? 1 : 0);

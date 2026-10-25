@@ -29,7 +29,7 @@ export default async function AdminEnroll({ searchParams }: { searchParams: Prom
       <img className="qr" src={qr} alt="Authenticator QR code" width={220} height={220} />
       <p className="muted small">Cannot scan? Enter this key: <span className="mono secret">{row.pending_totp.replace(/(.{4})/g, '$1 ').trim()}</span></p>
       <form method="post" action="/api/admin/enroll" className="login-form">
-        <input name="code" inputMode="numeric" pattern="[0-9 ]{6,7}" maxLength={7} placeholder="Code from the app"
+        <input name="code" aria-label="Code from the authenticator app" inputMode="numeric" pattern="[0-9 ]{6,7}" maxLength={7} placeholder="Code from the app"
           autoComplete="one-time-code" autoFocus required className="code-input" />
         <button className="btn primary block" type="submit">Confirm and finish</button>
       </form>

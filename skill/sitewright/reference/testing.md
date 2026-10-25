@@ -43,3 +43,7 @@ Behaviour worth knowing:
 ## What the verifier does NOT cover
 
 Real Android install of a published APK, real email/SMS, S3/Azure drivers against a real bucket, Postgres (only PGlite), `next dev`, Safari/Firefox, tablets, and OS font scaling.
+
+## Audits
+
+The verifier answers "does it work". `scripts/audit.mjs` answers "is it good": measured contrast, names, tap targets, focus, type and spacing critique, and a phone-width pass, each finding with its fix. See `reference/audits.md`. `node tools/regress.mjs` runs its accessibility and responsive parts on every site it builds (`--no-audit` skips it) and fails on anything blocking; `node tools/audit-test.mjs` tests the audit itself.

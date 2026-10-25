@@ -57,3 +57,10 @@ The components under `skill/sitewright/templates/fx/ui/` take their *ideas* from
 [Anime.js](https://animejs.com) and [Motion](https://motion.dev), the chart types of [Bklit UI](https://bklit.com), the toast of [Sileo](https://sileo.aaryan.design), and the kinds of interface shown in the public posts of @code.xr on Instagram (one-time-code fields, payment cards, tabs, sidebar, carousel, chat, buttons, a stretching nav, dashboards, landing pages; known only from the post captions), and the hover ideas listed on components.janustiu.com. All of the code is
 written for Sitewright; none of it is copied from those projects, and none of them is a dependency. Ideas are not covered by those
 projects' licences, but credit is due and given here.
+
+## Audits (ideas only)
+
+`scripts/audit.mjs`, `reference/audits.md`, `reference/better-interface.md` and the bento board component take their *ideas* from the public descriptions
+of five Figma community skills (accessibility-review, desktop-to-mobile, bento-board-ui, superfuture-design-review and better-interface; known only from
+their titles and one-line descriptions in a social post). Nothing of those skills was seen or used. The audits are written for Sitewright, work on running
+websites and not on Figma files, and share no code with them. WCAG is a W3C standard and is cited, not copied.

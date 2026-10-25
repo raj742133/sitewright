@@ -169,6 +169,7 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 | `restaurant-landing-page` | Hero with a rotating plate and steam, working menu tabs, validated reservation form with confirmation, opening hours and a reviews carousel. | restaurant, cafe or venue landing page | code.xr |
 | `wind-404-page` | An illustrated landscape 404 where the headline letters bend away from the pointer on springs, with gentle automatic gusts on touch, a home button and search suggestions. | 404 / not found page | Original |
 | `lamp-login` | A login form under a hanging lamp: pull the cord button to switch the light on and reveal a light cone; the form with validation and submit state works either way. | sign-in page, connect page | code.xr |
+| `bento-board` | A share-ready brand board in a bento grid: statement, key number, logo, type sample, colour swatches, an abstract picture drawn from the brand colours, tone words, a slice of UI and a quote; reflows from four columns to one with its container. | Pitch decks, case studies and portfolio shots for the brand the site was generated for; an About or Brand page; a launch post image. | Original |
 
 ## Loaders
 

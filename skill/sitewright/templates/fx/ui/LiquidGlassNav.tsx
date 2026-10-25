@@ -13,7 +13,7 @@ export interface LiquidGlassNavProps {
 }
 const DEFAULT_ITEMS = ['Home', 'Menu', 'Journal', 'Visit', 'Shop'];
 
-export default function LiquidGlassNav({ items = DEFAULT_ITEMS, value, onChange, accent = '#5ef2c0', label = 'Primary', className = '' }: LiquidGlassNavProps) {
+export default function LiquidGlassNav({ items = DEFAULT_ITEMS, value, onChange, accent = '#5ef2c0', label = 'Section navigation', className = '' }: LiquidGlassNavProps) {
   const [inner, setInner] = useState(0);
   const active = Math.min(value ?? inner, items.length - 1);
   const [focusIdx, setFocusIdx] = useState(active);
