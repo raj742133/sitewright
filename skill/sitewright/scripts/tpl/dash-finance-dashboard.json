@@ -1,0 +1,18 @@
+[
+  {
+    "id": "finance-dashboard",
+    "label": "Finance",
+    "desc": "Money in and out: balance with sparkline, cash-flow chart, accounts, a filterable transactions table, upcoming bills and spend by category.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "FinanceDashboard.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-finance-dashboard"
+    ],
+    "use": "Banking, bookkeeping, budgeting, subscription revenue."
+  }
+]

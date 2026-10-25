@@ -1,0 +1,20 @@
+[
+  {
+    "id": "sales-dashboard",
+    "label": "Sales pipeline",
+    "desc": "A CRM view: pipeline value by stage, a deals board with drag and keyboard moves, forecast against target, a leaderboard and recent activity.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "SalesDashboard.tsx",
+      "_sales.tsx",
+      "_salesboard.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-sales-dashboard"
+    ],
+    "use": "CRM, account management, lead tracking."
+  }
+]

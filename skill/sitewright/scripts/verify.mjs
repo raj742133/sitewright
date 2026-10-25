@@ -914,6 +914,31 @@ async function checkEffects(browser) {
       await noOverflow(m.page, 'gallery'); await tapTargets(m.page, 'gallery');
     });
     await shot(m.page, 'fx-gallery-mobile');
+    const uimod = await import('./ui.mjs');
+    await check('components catalogue: groups filter it, search narrows it, a tile opens its inspector with the import line', async () => {
+      const total = Object.keys(uimod.UI).length;
+      await page.goto(`${BASE}/effects/components/`, { waitUntil: 'networkidle' });
+      eq(await page.locator('.fxc-tile').count(), total, 'tiles');
+      const g = uimod.UI_GROUPS[0]; const inGroup = Object.values(uimod.UI).filter((e) => e.group === g).length;
+      await page.locator('.fxc-side button', { hasText: new RegExp(`^${g}`, 'i') }).click();
+      eq(await page.locator('.fxc-tile').count(), inGroup, `${g} tiles`);
+      await page.locator('.fxc-side button', { hasText: /^All components/ }).click();
+      await page.getByPlaceholder(/^Search \d+ components/).fill('zzzzqq'); eq(await page.locator('.fxc-tile').count(), 0, 'no match'); truthy(await page.locator('.fxc-none').isVisible(), 'empty state');
+      await page.getByPlaceholder(/^Search \d+ components/).fill('toast'); truthy((await page.locator('.fxc-tile').count()) >= 1, 'toast found');
+      await page.locator('.fxc-tile').first().click();
+      const code = await page.locator('.fxc-insp pre').first().innerText(); truthy(code.includes("from '@/components/fx/ui'"), 'import line'); truthy(await page.locator('.fxc-insp a', { hasText: 'Open full screen' }).isVisible(), 'full screen link');
+    });
+    await check('templates gallery and the full-screen viewer: every template listed, device switch squeezes the frame, nothing scrolls sideways', async () => {
+      const ids = Object.keys(uimod.TPL);
+      await page.goto(`${BASE}/effects/templates/`, { waitUntil: 'networkidle' });
+      eq(await page.locator('.fxt-card').count(), ids.length, 'template cards');
+      await page.goto(`${BASE}/effects/b/${ids[0]}/`, { waitUntil: 'networkidle' }); await page.waitForTimeout(500);
+      truthy(await page.locator('.fxe-tpl-bar').isVisible(), 'bar on its own page');
+      const box = await page.locator('.fxe-tpl-frame').boundingBox(); truthy(box.width > 900 && box.height > 500, `full size ${box.width}x${box.height}`);
+      await page.getByRole('button', { name: 'phone', exact: true }).click(); await page.waitForTimeout(400);
+      const pb = await page.locator('.fxe-tpl-frame').boundingBox(); truthy(pb.width <= 392 && pb.width >= 380, `phone width ${pb.width}`);
+      await noOverflow(page, 'template viewer');
+    });
     await check('embed routes: a component, a figure and a background render bare (no chrome, no scrollbars, query colours, theme message)', async () => {
       const e = await newPage(browser, 'desktop', 'fx-embed'); await e.page.setViewportSize({ width: 480, height: 360 });
       const figId = Object.keys(fxmod.FIGURES)[0], bgId = Object.keys(fxmod.BACKGROUNDS)[0];

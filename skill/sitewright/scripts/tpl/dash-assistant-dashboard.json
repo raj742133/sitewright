@@ -1,0 +1,18 @@
+[
+  {
+    "id": "assistant-dashboard",
+    "label": "AI assistant",
+    "desc": "A conversation next to the answer: ask in plain words and the panel on the right builds a chart or table with its sources and a short summary.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "AssistantDashboard.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-assistant-dashboard"
+    ],
+    "use": "Analytics copilots, internal data tools, reporting assistants."
+  }
+]

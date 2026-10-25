@@ -1,0 +1,20 @@
+[
+  {
+    "id": "operations-dashboard",
+    "label": "Operations",
+    "desc": "A workshop operations console: KPI strip, a six-station production line with live throughput, a sortable inventory table that builds purchase orders, orders against capacity, supplier lead times and late shipments.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "OperationsDashboard.tsx",
+      "_ops.tsx",
+      "_opsinv.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-operations-dashboard"
+    ],
+    "use": "Manufacturing, warehouses, logistics, ERP back offices."
+  }
+]

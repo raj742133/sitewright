@@ -1,0 +1,62 @@
+[
+  {
+    "id": "art-marketplace-page",
+    "label": "Art marketplace page",
+    "desc": "Landing page with nav and cart, layered art-frame hero, filterable artwork grid with likes and hover zoom, artist spotlight, categories, newsletter and footer.",
+    "source": "code.xr",
+    "group": "page",
+    "files": [
+      "ArtMarketplacePage.tsx",
+      "_shared.tsx"
+    ],
+    "css": [
+      "ui-art-marketplace-page"
+    ],
+    "use": "shop or portfolio landing page"
+  },
+  {
+    "id": "restaurant-landing-page",
+    "label": "Restaurant landing page",
+    "desc": "Hero with a rotating plate and steam, working menu tabs, validated reservation form with confirmation, opening hours and a reviews carousel.",
+    "source": "code.xr",
+    "group": "page",
+    "files": [
+      "RestaurantLandingPage.tsx",
+      "_shared.tsx"
+    ],
+    "css": [
+      "ui-restaurant-landing-page"
+    ],
+    "use": "restaurant, cafe or venue landing page"
+  },
+  {
+    "id": "wind-404-page",
+    "label": "Wind 404 page",
+    "desc": "An illustrated landscape 404 where the headline letters bend away from the pointer on springs, with gentle automatic gusts on touch, a home button and search suggestions.",
+    "source": "Original",
+    "group": "page",
+    "files": [
+      "Wind404Page.tsx",
+      "_shared.tsx"
+    ],
+    "css": [
+      "ui-wind-404-page"
+    ],
+    "use": "404 / not found page"
+  },
+  {
+    "id": "lamp-login",
+    "label": "Lamp login",
+    "desc": "A login form under a hanging lamp: pull the cord button to switch the light on and reveal a light cone; the form with validation and submit state works either way.",
+    "source": "code.xr",
+    "group": "page",
+    "files": [
+      "LampLogin.tsx",
+      "_shared.tsx"
+    ],
+    "css": [
+      "ui-lamp-login"
+    ],
+    "use": "sign-in page, connect page"
+  }
+]

@@ -14,3 +14,19 @@ html:has(.fxe), html:has(.fxe) body { background: transparent; overflow: hidden;
 .fxe-fig { width: 100%; height: 100%; display: grid; place-items: center; }
 .fxe-fig-box { width: min(100%, calc((100vh / var(--s) - 24px) * 1.25)); aspect-ratio: 5 / 4; }
 @media (prefers-reduced-motion: reduce) { .fxe { transition: none; } }
+
+/* /effects/b/<id>/: a whole template, filling the frame. On its own page it gets a slim bar and a device switch. */
+.fxe-tpl { display: flex; flex-direction: column; height: 100dvh; background: var(--surface); }
+.fxe-tpl[data-embed], .fxe-tpl-stage { min-height: 0; }
+.fxe-tpl-stage { flex: 1; display: flex; justify-content: center; overflow: auto; }
+.fxe-tpl-frame { max-width: 100%; height: 100%; min-height: 0; transition: width .25s var(--ease, ease); }
+.fxe-tpl-stage[data-device='tablet'] .fxe-tpl-frame, .fxe-tpl-stage[data-device='phone'] .fxe-tpl-frame { margin: 16px 0; height: calc(100% - 32px); border: 1px solid var(--line-strong); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lift); }
+.fxe-tpl-bar { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-bottom: 1px solid var(--line); background: var(--raised); flex: none; flex-wrap: wrap; }
+.fxe-tpl-bar b { font-size: 14px; }
+.fxe-tpl-sp { flex: 1; }
+.fxe-tpl-seg { display: inline-flex; padding: 2px; gap: 2px; border-radius: 9px; background: var(--raised-2); }
+.fxe-tpl-seg button { min-height: 32px; padding: 0 12px; border: 0; border-radius: 7px; background: none; color: var(--muted); font: inherit; font-weight: 600; font-size: 13px; text-transform: capitalize; cursor: pointer; }
+.fxe-tpl-seg button[aria-pressed='true'] { background: var(--raised); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .15); }
+@media (max-width: 700px) { .fxe-tpl-seg { display: none; } }
+@media (prefers-reduced-motion: reduce) { .fxe-tpl-frame { transition: none; } }
+html:has(.fxe-tpl), html:has(.fxe-tpl) body { overflow: hidden; height: 100dvh; min-height: 0; }

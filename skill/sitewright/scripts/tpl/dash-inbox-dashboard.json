@@ -1,0 +1,18 @@
+[
+  {
+    "id": "inbox-dashboard",
+    "label": "Support inbox",
+    "desc": "A three-pane inbox: conversation list with filters and search, the thread with a composer and canned replies, and a customer panel with history.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "InboxDashboard.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-inbox-dashboard"
+    ],
+    "use": "Customer support, messaging, shared mailboxes."
+  }
+]
