@@ -128,7 +128,7 @@ async function noOverflow(page, where) {
 /** On a touch device every visible button, link-button, select and text input should be at least 44px tall (3px of slack for rounding). */
 async function tapTargets(page, where) {
   const small = await page.evaluate(() => [...document.querySelectorAll('button, select, input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=file]), header.site nav a')]
-    .filter((e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.position !== 'fixed'; })
+    .filter((e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.position !== 'fixed' && !e.closest('[inert], [aria-hidden="true"]'); }) // scaled-down previews are pictures, not controls
     .map((e) => ({ t: (e.textContent || e.getAttribute('aria-label') || e.name || e.tagName).trim().slice(0, 24), h: Math.round(e.getBoundingClientRect().height) }))
     .filter((x) => x.h < 41));
   if (small.length) throw new Error(`${where}: ${small.length} control(s) under 44px tall on a touch screen: ${small.slice(0, 4).map((x) => `"${x.t}" ${x.h}px`).join(', ')}`);
@@ -887,7 +887,7 @@ async function checkEffects(browser) {
       eq(await page.locator('.fx-cursor, .fx-progress, .fx-spark').count(), 0, 'leftover extra elements');
     });
     await check('colour pickers recolour the preview', async () => {
-      await page.getByLabel('Primary').fill('#ff0066'); await page.waitForTimeout(200);
+      await page.getByLabel('Primary', { exact: true }).fill('#ff0066'); await page.waitForTimeout(200);
       eq(await page.locator('.fxg-hero').evaluate((e) => getComputedStyle(e).getPropertyValue('--primary').trim()), '#ff0066', 'primary');
     });
     await check(`figures: all ${Object.keys(fxmod.FIGURES).length} draw in the gallery, answer the pointer, and can be given a place`, async () => {

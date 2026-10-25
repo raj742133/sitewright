@@ -103,7 +103,7 @@ export function Timeline() {
       {T.facts?.length ? (
         <ul className="dev-facts">
           {T.facts.map((f) => (
-            <li key={f.title} className="dev-fact rv"><h4 className={f.mono ? 'mono' : ''}>{f.title}</h4><p>{f.text}</p></li>
+            <li key={f.title} className="dev-fact rv"><h3 className={f.mono ? 'mono' : ''}>{f.title}</h3><p>{f.text}</p></li>
           ))}
         </ul>
       ) : null}

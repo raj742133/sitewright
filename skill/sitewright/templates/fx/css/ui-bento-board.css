@@ -1,0 +1,32 @@
+.ui-bento-board { container-type: inline-size; width: 100%; color: var(--ink, #15130e); font-family: var(--font-body, system-ui, sans-serif); }
+.ui-bento-board-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(132px, auto); gap: 12px; }
+.ui-bento-board-t { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; padding: 18px; border-radius: calc(var(--radius, 12px) + 4px); background: var(--raised, #fff); border: 1px solid var(--line, #ddd); overflow: hidden; min-width: 0; }
+.ui-bento-board-t small { font: 600 12px var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--muted, #555); }
+.ui-bento-board-t p { margin: 0; }
+.ui-bento-board-t.is-statement { grid-column: span 2; }
+.ui-bento-board-t.is-statement p { font-size: clamp(17px, 3.2cqw, 24px); font-weight: 600; line-height: 1.25; letter-spacing: -.01em; }
+.ui-bento-board-t.is-metric { background: var(--signal-wash, #ddeceb); border-color: transparent; }
+.ui-bento-board-t.is-metric b { font: 700 clamp(38px, 7cqw, 58px)/1 var(--font-body, system-ui); letter-spacing: -.03em; }
+.ui-bento-board-t.is-art { grid-column: 4; grid-row: span 4; padding: 0; border: 0; background: var(--primary, #c2410c); }
+.ui-bento-board-t.is-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ui-bento-board-t.is-art span { position: absolute; left: 14px; bottom: 14px; right: 14px; padding: 8px 10px; border-radius: 10px; background: rgba(0, 0, 0, .62); color: #fff; font-size: 13px; font-weight: 600; }
+.ui-bento-board-t.is-logo { background: var(--primary-wash, #f8e8e2); border-color: transparent; }
+.ui-bento-board-t.is-logo div { align-self: center; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 18px; background: var(--primary, #c2410c); color: var(--on-primary, #fff); font: 800 34px/1 var(--font-display, var(--font-body, system-ui)); }
+.ui-bento-board-t.is-logo strong { text-align: center; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; }
+.ui-bento-board-t.is-type { background: var(--ink, #15130e); border-color: transparent; color: var(--surface, #f4f2ef); }
+.ui-bento-board-t.is-type small, .ui-bento-board-t.is-type span { color: color-mix(in srgb, var(--surface, #f4f2ef) 78%, transparent); font-size: 12px; }
+.ui-bento-board-t.is-type p { font: 700 clamp(26px, 5cqw, 38px)/1.05 var(--font-display, var(--font-body, system-ui)); }
+.ui-bento-board-t.is-colors ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; }
+.ui-bento-board-t.is-colors li { flex: 1; aspect-ratio: 1; max-width: 44px; border-radius: 50%; border: 1px solid var(--line-strong, #bbb); }
+.ui-bento-board-t.is-tone ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.ui-bento-board-t.is-tone li { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-strong, #bbb); font-size: 13px; font-weight: 600; }
+.ui-bento-board-t.is-system { grid-column: span 2; }
+.ui-bento-board-t.is-system div { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 14px; background: var(--surface, #f4f2ef); border: 1px solid var(--line, #ddd); }
+.ui-bento-board-t.is-system i { width: 28px; height: 28px; border-radius: 50%; background: var(--signal, #0f766e); flex: none; }
+.ui-bento-board-t.is-system span { flex: 1; font-size: 14px; font-weight: 600; }
+.ui-bento-board-t.is-system em { font-style: normal; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 999px; background: var(--primary, #c2410c); color: var(--on-primary, #fff); }
+.ui-bento-board-t.is-quote { grid-column: span 3; }
+.ui-bento-board-t.is-quote blockquote { margin: 0; font-size: clamp(16px, 2.6cqw, 20px); font-weight: 600; line-height: 1.3; }
+.ui-bento-board-t.is-quote footer { margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--muted, #555); }
+@container (max-width: 720px) { .ui-bento-board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ui-bento-board-t.is-art { grid-column: auto; grid-row: span 2; min-height: 220px; } .ui-bento-board-t.is-system, .ui-bento-board-t.is-quote { grid-column: 1 / -1; } }
+@container (max-width: 420px) { .ui-bento-board-grid { grid-template-columns: 1fr; } .ui-bento-board-t.is-statement, .ui-bento-board-t.is-art { grid-column: auto; } }

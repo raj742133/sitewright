@@ -19,10 +19,10 @@ export default async function AdminSetup({ searchParams }: { searchParams: Promi
         set, its <span className="mono">SESSION_SECRET</span>.
       </p>
       <form method="post" action="/api/admin/setup" className="login-form">
-        <input name="code" type="password" placeholder="Setup code" autoComplete="off" required />
-        <input name="name" placeholder="Your name" autoComplete="name" required />
-        <input name="username" placeholder="Username" autoComplete="username" autoCapitalize="none" required />
-        <input name="password" type="password" placeholder="Password (10+ characters)" autoComplete="new-password" minLength={10} required />
+        <input name="code" aria-label="Setup code" type="password" placeholder="Setup code" autoComplete="off" required />
+        <input name="name" aria-label="Your name" placeholder="Your name" autoComplete="name" required />
+        <input name="username" aria-label="Username" placeholder="Username" autoComplete="username" autoCapitalize="none" required />
+        <input name="password" aria-label="Password" type="password" placeholder="Password (10+ characters)" autoComplete="new-password" minLength={10} required />
         <button className="btn primary block" type="submit">Next: authenticator app</button>
       </form>
     </AuthCard>

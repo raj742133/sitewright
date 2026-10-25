@@ -26,9 +26,9 @@ export default async function AdminJoin({ searchParams }: { searchParams: Promis
       <p className="muted small">{invite.created_by} invited you to __AREA__ for __BRAND__. Choose your sign-in; the authenticator app comes next.</p>
       <form method="post" action="/api/admin/join" className="login-form">
         <input type="hidden" name="t" value={t} />
-        <input name="name" placeholder="Your name" autoComplete="name" required />
-        <input name="username" placeholder="Username" autoComplete="username" autoCapitalize="none" required />
-        <input name="password" type="password" placeholder="Password (10+ characters)" autoComplete="new-password" minLength={10} required />
+        <input name="name" aria-label="Your name" placeholder="Your name" autoComplete="name" required />
+        <input name="username" aria-label="Username" placeholder="Username" autoComplete="username" autoCapitalize="none" required />
+        <input name="password" aria-label="Password" type="password" placeholder="Password (10+ characters)" autoComplete="new-password" minLength={10} required />
         <button className="btn primary block" type="submit">Next: authenticator app</button>
       </form>
     </AuthCard>

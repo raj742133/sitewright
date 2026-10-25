@@ -13,7 +13,7 @@
   <b>A Claude Code skill that builds your website.</b><br>
   Landing page, sign-in, authenticator MFA, records dashboard, release publishing and a connect-your-phone page,<br>
   restyled with your brand, wired to a real backend, and tested in a real browser.<br>
-  Two design themes, 10 animated backgrounds, 22 interactive line figures, 116 live components and 200,000+ icons, all optional.
+  Two design themes, 10 animated backgrounds, 22 interactive line figures, 117 live components and 200,000+ icons, all optional.
 </p>
 
 <p align="center">
@@ -237,7 +237,7 @@ Put one anywhere in your own pages by name, nothing to register: `<Figure name="
 
 ## Components (optional)
 
-A library of 116 small interactive components you import by name from `@/components/fx/ui`. They are original code with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
+A library of 117 small interactive components you import by name from `@/components/fx/ui`. They are original code with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
 
 | Group | Components |
 | --- | --- |
@@ -247,12 +247,26 @@ A library of 116 small interactive components you import by name from `@/compone
 | Motion | stagger grid, line draw, shape morph, motion path, scroll timeline, timeline sequence, spring playground, presence list, drag to reorder |
 | Navigation | nav tabs, glow sidebar, liquid-glass nav (stretching pill), underline nav |
 | Hover interactions | rotating, magnetic and rolling-text buttons, expanding fill, arrow relay, spotlight border, waving hand, image list preview, image stack, blinds, image accordion, cursor reveal, peel, caption reveal, layer explorer, jelly text, holographic and parallax cards, orbiting accents, hover marquee, text shadow, squishy labels, repelling dots |
-| Dashboards and pages | bento, messaging, project, ERP, analytics, finance and AI dashboards; art marketplace and restaurant landing pages; wind 404 page; lamp login (each a full responsive block with working interactions) |
+| Dashboards and pages | bento, messaging, project, ERP, analytics, finance and AI dashboards; a brand bento board; art marketplace and restaurant landing pages; wind 404 page; lamp login (each a full responsive block with working interactions) |
 | Feedback | toast (call `toast('Saved')` from anywhere; mount `<Toaster />` once) |
 | Loaders and text | seasons tree, step loader, logo-trace loader, animated signature, scramble text, plucked text, receipt printer |
 | Charts (SVG, accessible) | area, bar, line, live line, profit/loss, composed, scatter, candlestick, pie, ring, radar, funnel, gauge, heatmap, sankey, US tile map |
 
 **[Try them live](https://sitewright-skill.vercel.app/demo/effects/#components)** · the catalogue, with what each is for, is [`reference/components.md`](skill/sitewright/reference/components.md). Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion, Bklit, Sileo and @code.xr; all code is written for this kit (see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).
+
+## Audits
+
+The verifier answers "does it work". `scripts/audit.mjs` answers "is it good": it opens a running site in a real browser, in light and dark, at phone, tablet and desktop width, and reports what a careful reviewer would, **each finding with the exact fix**.
+
+```bash
+node skill/sitewright/scripts/audit.mjs --url http://localhost:3000 --out ./audit-out
+```
+
+- **Accessibility** (WCAG 2.2 AA): every text run's contrast is measured against its real background and the nearest passing colour is suggested (`Text #a3a9b8 on #006fe6 is 2.02:1 ... set it to #f9fafb (4.55:1)`); names, alt text, headings, language, viewport, tap targets and keyboard focus.
+- **Design critique**, ranked blocking / important / polish: text and body size, hierarchy, line length and leading, spacing rhythm, inconsistent buttons.
+- **Responsive**: sideways scroll with the element to blame, clipped text, columns that never stack, input zoom on iPhones, plus a picture of each page at phone width next to desktop.
+
+You get `report.md`, `report.json`, `fixes.css` (suggestions, never applied) and the pictures; the exit code is 1 when anything blocking is found. `tools/regress.mjs` runs it on every site it builds, and `tools/audit-test.mjs` tests it against a page that is wrong in known ways. It is not a screen-reader test and cannot score text over a photo. See [`reference/audits.md`](skill/sitewright/reference/audits.md), and [`reference/better-interface.md`](skill/sitewright/reference/better-interface.md) for the checklist behind it.
 
 ## Install
 
@@ -391,7 +405,7 @@ Each example was scaffolded from its config, type-checked, built for production 
 | Four single-module sites | sign-in only, MFA only, dashboard only, connect only | 16/16, 15/15, 39/39, 27/27 |
 | Effect Lab | the live effects gallery: every background, headline, button, card, reveal, extra and embed page | 12/12 |
 
-26 site builds (13 example runs, plain and with every layer on, plus 13 stress and single-module fixtures), 1,607 checks, all passing, each followed by a smoke test of `npm run dev`. The table lists the plain run of each site; `node tools/regress.mjs` prints every run. The real-Android-APK checks need the APK files and are skipped, and reported as skipped, when they are absent.
+26 site builds (13 example runs, plain and with every layer on, plus 13 stress and single-module fixtures), 1,607 checks, all passing, each audited for accessibility and responsive problems (none blocking) and followed by a smoke test of `npm run dev`. The table lists the plain run of each site; `node tools/regress.mjs` prints every run. The real-Android-APK checks need the APK files and are skipped, and reported as skipped, when they are absent.
 
 Details of every check are in [`reference/testing.md`](skill/sitewright/reference/testing.md).
 

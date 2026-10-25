@@ -97,7 +97,7 @@ Flags: `--preset`, `--hero-bg`, `--login-bg`, `--headline`, `--rotate-words`, `-
 
 ## Components
 
-Beyond the slots above the kit has a library of 116 importable components (buttons, inputs, cards, loaders, charts...). They are listed in `reference/components.md` and chosen with `effects.components`.
+Beyond the slots above the kit has a library of 117 importable components (buttons, inputs, cards, loaders, charts...). They are listed in `reference/components.md` and chosen with `effects.components`.
 
 ## Figures
 

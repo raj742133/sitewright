@@ -55,6 +55,14 @@ function FigureStage({ id, intensity }: { id: string; intensity: number }) {
     </div>
   );
 }
+/** Text colour for a chosen primary: whichever of white and near-black reads better on it. The page's own --on-primary belongs to the theme's palette, not to the colour picked here. */
+function onColour(hex: string): string {
+  const n = parseInt(hex.replace('#', '').padEnd(6, '0').slice(0, 6), 16);
+  const lin = (v: number) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+  const L = 0.2126 * lin((n >> 16) & 255) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255);
+  return (L + 0.05) / 0.05611 > 1.05 / (L + 0.05) ? '#0b1116' : '#ffffff';
+}
+
 
 export function Playground() {
   const [c, setC] = useState<Choice>(START);
@@ -129,7 +137,7 @@ export function Playground() {
 
         <div className="fxg-layout">
           <section className="fxg-stage" aria-label="Live preview">
-            <div className="fxg-hero" key={`${c.background}-${primary}-${signal}`} style={css({ '--primary': primary, '--signal': signal })} {...attrs}>
+            <div className="fxg-hero" key={`${c.background}-${primary}-${signal}`} style={css({ '--primary': primary, '--on-primary': onColour(primary), '--signal': signal })} {...attrs}>
               {Bg ? <Bg /> : null}
               <div className="fxg-hero-in">
                 <p className="eyebrow">Live preview</p>
@@ -142,7 +150,7 @@ export function Playground() {
               </div>
             </div>
 
-            <div className="fxg-below" style={css({ '--primary': primary, '--signal': signal })} {...attrs}>
+            <div className="fxg-below" style={css({ '--primary': primary, '--on-primary': onColour(primary), '--signal': signal })} {...attrs}>
               <div className="fxg-stats">
                 {stats.map((s, i) => (
                   <div key={`${s.l}-${run}-${c.extras.includes('count-up')}`} className={`stat-card rv${shown ? ' in' : ''}`} style={css({ transitionDelay: `${i * 90}ms` })}>
@@ -162,7 +170,7 @@ export function Playground() {
               <button type="button" className="btn" onClick={() => setRun((n) => n + 1)}>Replay entrance</button>
             </div>
 
-            <section className="fxg-figures card pad" aria-label="Figures" style={css({ '--primary': primary, '--signal': signal })}>
+            <section className="fxg-figures card pad" aria-label="Figures" style={css({ '--primary': primary, '--on-primary': onColour(primary), '--signal': signal })}>
               <p className="eyebrow">Figures</p>
               <h2 className="card-h">Line figures that answer the pointer</h2>
               <p className="muted small">Move over the drawing. Pick one below, then give it a place on the right (or let the suggestions fill them all).</p>

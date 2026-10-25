@@ -14,7 +14,7 @@ export default async function AdminGate({ searchParams }: { searchParams: Promis
         <>
           <p className="muted small">Enter the __AREA__ access code. The shared password is not enough to open this area.</p>
           <form method="post" action="/api/admin/gate" className="login-form">
-            <input name="code" type="password" placeholder="Access code" autoComplete="off" autoFocus required />
+            <input name="code" aria-label="Access code" type="password" placeholder="Access code" autoComplete="off" autoFocus required />
             <button className="btn primary block" type="submit">Continue</button>
           </form>
         </>
