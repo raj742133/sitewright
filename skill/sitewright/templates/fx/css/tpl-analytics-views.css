@@ -109,3 +109,8 @@
 .td-shell .ta-sec-b { grid-template-columns: minmax(0, 1fr); } .td-shell .ta-code, .td-shell .ta-sec-b > * { min-width: 0; }
 .td-shell .ta-heat tfoot td { text-align: center; }
 @container td (max-width: 520px) { .td-shell .ta-rowbtn small { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }
+.td-shell .ta-h3 small { font-size: 12px; }
+.td-shell .ta-goal .td-pill.is-ok, .td-shell .ta-domains .td-pill.is-info { color: color-mix(in srgb, var(--ink, #15130e) 55%, var(--ok, #1c7a5b)); }
+.td-shell .ta-domains .td-pill.is-info { color: color-mix(in srgb, var(--ink, #15130e) 55%, var(--signal, #0f766e)); }
+.td-shell .ta-sec .td-btn:disabled { opacity: 1; background: var(--raised-2, #edebe7); border-color: var(--line, #ddd); color: var(--muted, #5c5851); }
+@container td (max-width: 760px) { .td-shell .ta-goal-a .td-btn, .td-shell .ta-domains .td-btn, .td-shell .ta-team .td-btn, .td-shell .ta-code .td-btn, .td-shell .ta-status .td-btn, .td-shell .ta-ret .td-btn, .td-shell .ta-rowbtn, .td-shell .ta-switch, .td-shell .ta-legend2 button, .td-shell .ta-toast button, .td-shell .ta-search, .td-shell .ta-input, .td-shell .td-tabs button { min-height: 44px; } .td-shell .ta-goal-a .td-btn.is-sm, .td-shell .ta-team .td-btn.is-icon, .td-shell .ta-domains .td-btn.is-icon { min-width: 44px; } }

@@ -8,7 +8,7 @@
 .tv-root .tv-sub { margin: 18px 0 8px; font-size: 12px; font-weight: 600; color: var(--muted, #5c5851); }
 .tv-foot { margin: 0; padding: 12px 16px; border-top: 1px solid var(--line, #ddd); color: var(--muted, #5c5851); font-size: 12px; }
 .tv-amt { font-weight: 600; }
-.tv-link { padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--ink, #15130e); text-decoration: underline; text-decoration-color: var(--line-strong, #c2bdb2); text-underline-offset: 3px; cursor: pointer; text-align: left; }
+.tv-link { display: inline-block; min-height: 24px; line-height: 22px; vertical-align: middle; padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--ink, #15130e); text-decoration: underline; text-decoration-color: var(--line-strong, #c2bdb2); text-underline-offset: 3px; cursor: pointer; text-align: left; }
 .tv-link:hover { color: var(--primary, #c2410c); text-decoration-color: currentColor; }
 .tv-own { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
 .tv-stage { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
@@ -36,7 +36,7 @@
 .tv-table th.is-r, .tv-table td.is-r { text-align: right; }
 .tv-table th.is-r button { flex-direction: row-reverse; }
 .tv-ck { width: 40px; padding-right: 0 !important; }
-.tv-ck input { width: 16px; height: 16px; margin: 0; accent-color: var(--primary, #c2410c); cursor: pointer; vertical-align: middle; }
+.tv-ck input { width: 24px; height: 24px; margin: 0; accent-color: var(--primary, #c2410c); cursor: pointer; vertical-align: middle; }
 .tv-open { display: grid; gap: 0; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; min-height: 28px; }
 .tv-open b { font-weight: 600; } .tv-open small { color: var(--muted, #5c5851); font-size: 12px; }
 .tv-open:hover b { text-decoration: underline; text-underline-offset: 3px; }
@@ -122,7 +122,7 @@
 .tv-logform { position: sticky; top: 0; } .tv-logform form { display: grid; gap: 12px; } .tv-logform .td-seg { justify-self: start; } .tv-logform .td-btn { justify-self: start; }
 .tv-logtoggle { display: none; }
 .tv-day h3 { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: 7px 16px; border-bottom: 1px solid var(--line, #ddd); background: color-mix(in srgb, var(--raised-2, #edebe7) 92%, var(--raised, #fff)); font-size: 12px; font-weight: 600; color: var(--muted, #5c5851); }
-.tv-day h3 small { font-weight: 550; }
+.tv-day h3 small { font-weight: 550; font-size: 12px; }
 .tv-day ol { list-style: none; padding: 0; margin: 0; }
 .tv-day li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 10px 16px; border-bottom: 1px solid var(--line, #ddd); }
 .tv-day li:last-child { border-bottom: 0; }
@@ -187,3 +187,13 @@
 }
 @media (prefers-reduced-motion: reduce) { .tv-drawer, .tv-scrim, .tv-toast, .tv-day li.is-new { animation: none; } }
 .tv-tools .ts-search, .tv-tools .ts-select { min-height: 32px; }
+
+.tv-root .td-pill.is-ok { color: color-mix(in srgb, var(--ok, #1c7a5b) 62%, var(--ink, #000)); }
+.tv-root .td-pill.is-info { color: color-mix(in srgb, var(--signal, #0f766e) 55%, var(--ink, #000)); }
+.tv-root .td-pill.is-warn { color: color-mix(in srgb, var(--primary, #c2410c) 55%, var(--ink, #000)); }
+.tv-large { color: color-mix(in srgb, var(--primary, #c2410c) 55%, var(--ink, #000)); }
+@container td (max-width: 520px) {
+  .tv-root .td-btn, .tv-root .td-btn.is-sm, .tv-drawer .td-btn { min-height: 44px; } .tv-root .td-seg button { min-height: 40px; } .tv-mini select, .tv-tools .ts-select, .tv-tools .ts-search, .tv-actools .ts-search { min-height: 44px; }
+  .tv-acitem { grid-template-columns: 28px minmax(0, 1fr); } .tv-acv { grid-column: 2; text-align: left; } .tv-handle, .tv-x { min-width: 44px; min-height: 44px; }
+  .tv-tabs button, .tv-root .td-tabs button { min-height: 44px; } .tv-ck { width: 48px; } .tv-open { min-height: 44px; }
+}

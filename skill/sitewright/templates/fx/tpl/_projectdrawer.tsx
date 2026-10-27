@@ -1,6 +1,6 @@
 'use client';
 // The task detail drawer: edit status, assignee, estimate and dates; check off subtasks; discuss in comments.
-import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { Avatar, Button, Glyph, Progress, cx } from './_dash';
 import { CommentIcon, ESTIMATES, EPICS, LabelChip, PEOPLE, PRIS, STATUSES, StatusIcon, type Cmt, type Pri, type Status, type Sub, type Task } from './_project';
@@ -14,6 +14,7 @@ export function TaskDrawer({ s, host, opener }: { s: Store; host: HTMLElement | 
   const t = s.data.all.find((x) => x.id === s.openId); const ref = useRef<HTMLDivElement>(null); const title = useRef<HTMLInputElement>(null);
   const [draft, setDraft] = useState(''); const [sub, setSub] = useState(''); const [cm, setCm] = useState(''); const [errs, setErrs] = useState<{ sub?: string; cm?: string; title?: string; date?: string }>({});
   const id = t?.id;
+  useLayoutEffect(() => { const a = document.activeElement as HTMLElement | null; if (id && a && !ref.current?.contains(a)) opener.current = a; }, [id, opener]);
   useEffect(() => { setDraft(t?.title ?? ''); setSub(''); setCm(''); setErrs({}); if (id) title.current?.focus(); }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
   if (!t || !host) return null;
   const close = () => { s.setOpenId(null); setTimeout(() => opener.current?.focus(), 0); };

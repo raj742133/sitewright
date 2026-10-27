@@ -39,7 +39,7 @@ export function useProject() {
     const base = t.status === status && nw === t.who ? `${id} reordered in ${stLabel(status)}` : `${id} moved to ${stLabel(status)}${nw !== t.who ? `, assigned to ${nw ?? 'nobody'}` : ''}`;
     focusId.current = id; sprint(next, over ? `${base}. Over the WIP limit of ${lim}` : base);
   };
-  const patch = (id: string, p: Partial<Task>, text: string, quiet = false) => { focusId.current = id; commit({ all: data.all.map((t) => (t.id === id ? { ...t, ...p } : t)) }, text, quiet); };
+  const patch = (id: string, p: Partial<Task>, text: string, quiet = false) => { if (!quiet) focusId.current = id; commit({ all: data.all.map((t) => (t.id === id ? { ...t, ...p } : t)) }, text, quiet); };
   const add = (d: Draft, opts: { keepFocus?: boolean } = {}) => {
     const epic = filters.epic || EPIC_OF[d.label] || 'ca';
     const t: Task = { id: nextId, title: d.title, status: d.status, pri: d.pri, who: d.who, labels: [d.label], est: d.est, epic, sprint: 14, from: '2026-10-26', to: addDays('2026-10-26', Math.min(4, d.est)), fresh: true };

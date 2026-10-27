@@ -26,9 +26,8 @@ export default function ProjectDashboard({ brand = 'Northwind' }: { brand?: stri
     s.setOpenId(null);
     body.current?.closest('.td-content')?.scrollTo({ top: 0 }); heading.current?.focus({ preventScroll: true }); s.setLive(`${TITLES[nav] === 'Storefront relaunch' ? 'Overview' : TITLES[nav]} view`);
   }, [nav]); // eslint-disable-line react-hooks/exhaustive-deps
-  useEffect(() => { if (s.openId) opener.current = document.activeElement as HTMLElement; }, [s.openId]);
 
-  const openTask = (id: string) => { opener.current = document.activeElement as HTMLElement; s.setOpenId(id); };
+  const openTask = (id: string) => s.setOpenId(id);
   const showEpic = (epic: string) => { s.setFilters({ ...NOFILTER, epic }); setNav('board'); };
   const pct = Math.round((stats.total ? stats.doneP / stats.total : 0) * 100);
   const nav2 = NAV.map((n) => (n.id === 'board' ? { ...n, badge: stats.open.length } : n.id === 'wl' ? { ...n, badge: undefined } : n));

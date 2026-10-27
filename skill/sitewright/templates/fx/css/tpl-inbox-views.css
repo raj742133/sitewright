@@ -145,3 +145,4 @@
 .td-main:has(.tv-head) .td-pill.is-warn { color: color-mix(in srgb, var(--primary, #c2410c) 58%, var(--ink, #000)); }
 .td-main:has(.tv-head) .td-pill.is-bad { color: color-mix(in srgb, var(--critical, #b32d18) 82%, var(--ink, #000)); }
 .tv-head .td-btn.is-primary:disabled { opacity: 1; background: var(--raised-2, #edebe7); color: var(--muted, #5c5851); border-color: var(--line-strong, #c2bdb2); }
+.tv-head p { max-width: 68ch; }

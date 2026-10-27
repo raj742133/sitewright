@@ -81,8 +81,8 @@ export function SettingsView({ headRef, onSave, announce }: { headRef: React.Ref
         <span className="tv-savest" role="status" aria-live="polite">{tried && nErr ? <span className="tv-err">{nErr} {nErr === 1 ? 'field needs' : 'fields need'} attention</span> : dirty ? <><i className="tv-unsaved" aria-hidden="true" />Unsaved changes</> : 'All changes saved'}</span>
         <span className="tv-grow" />
         {confirm ? <span className="tv-confirm" role="alertdialog" aria-label="Reset settings"><span>Reset every setting to its default?</span><Button small variant="primary" onClick={() => { set(toDraft(DEFAULT_CFG)); setConfirm(false); setTouched(new Set()); announce('Settings reset to defaults. Save to apply.'); }}>Reset</Button><Button small variant="ghost" onClick={() => setConfirm(false)}>Keep</Button></span> : <Button variant="ghost" onClick={() => setConfirm(true)}>Reset to defaults</Button>}
-        <Button disabled={!dirty} onClick={() => { setDraft(toDraft(cfg)); setTried(false); setTouched(new Set()); announce('Changes discarded'); }}>Discard</Button>
-        <Button variant="primary" disabled={!dirty} onClick={save}>Save changes</Button>
+        {dirty && <Button onClick={() => { setDraft(toDraft(cfg)); setTried(false); setTouched(new Set()); announce('Changes discarded'); }}>Discard</Button>}
+        {dirty && <Button variant="primary" onClick={save}>Save changes</Button>}
       </div>
     </>
   );
