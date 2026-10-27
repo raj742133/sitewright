@@ -39,7 +39,7 @@ export default function CannedEditor({ items, onChange }: { items: Canned[]; onC
           <Field label="Name" error={err.label}>{(a) => <input {...a} ref={first} value={label} maxLength={80} onChange={(e) => { setLabel(e.target.value); if (err.label) setErr({ ...err, label: undefined }); }} placeholder="e.g. Refund issued" />}</Field>
           <Field label="Message" error={err.text} hint={`${text.trim().length} / 800`}>{(a) => <textarea {...a} rows={6} value={text} onChange={(e) => { setText(e.target.value); if (err.text) setErr({ ...err, text: undefined }); }} placeholder="Hi {first}, …" />}</Field>
           <div className="tv-preview"><span><Ico name="bolt" size={12} />Preview for Maya</span><p>{text.trim() ? text.replace(/\{first\}/g, 'Maya') : 'Your message appears here.'}</p></div>
-          <div className="tv-form-a"><Button type="submit" variant="primary" disabled={!!cur && !dirty}>{cur ? 'Save changes' : 'Create reply'}</Button>{cur && dirty && <Button variant="ghost" onClick={() => { setLabel(cur.label); setText(cur.text); setErr({}); }}>Revert</Button>}</div>
+          <div className="tv-form-a"><Button type="submit" variant="primary">{cur ? 'Save changes' : 'Create reply'}</Button>{cur && dirty && <Button variant="ghost" onClick={() => { setLabel(cur.label); setText(cur.text); setErr({}); }}>Revert</Button>}</div>
         </form>
       </Panel>
     </div>

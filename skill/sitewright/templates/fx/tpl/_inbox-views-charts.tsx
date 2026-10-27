@@ -46,7 +46,7 @@ export function Heatmap({ cells }: { cells: number[][] }) {
         {cells.map((row, d) => (
           <div key={d} role="row" className="tv-heat-r"><span className="tv-heat-d" role="rowheader">{DOW[d]}</span>
             <div className="tv-heat-cells">{row.map((n, h) => (
-              <button key={h} type="button" role="gridcell" data-c={`${d}-${h}`} tabIndex={cur[0] === d && cur[1] === h ? 0 : -1} aria-label={`${DOW[d]} ${String(h).padStart(2, '0')}:00, ${n} conversations`}
+              <div key={h} role="gridcell" data-c={`${d}-${h}`} tabIndex={cur[0] === d && cur[1] === h ? 0 : -1} aria-label={`${DOW[d]} ${String(h).padStart(2, '0')}:00, ${n} conversations`}
                 className="tv-hc" style={{ background: n ? `color-mix(in srgb, var(--primary, #c2410c) ${Math.round(8 + (n / max) * 82)}%, var(--raised, #fff))` : undefined }}
                 onFocus={() => { setCur([d, h]); }} onPointerEnter={() => setShow([d, h])} onClick={() => setShow([d, h])} />))}</div>
           </div>))}

@@ -5,7 +5,7 @@
 .tv-quiet, .tv-hint { color: var(--muted, #5c5851); font-size: 12px; padding: 0; }
 .tv-panel-pad, .tv-convs + .tv-quiet { padding: 0 16px 14px; }
 .tv-bad { color: var(--critical, #b32d18); font-weight: 600; }
-.tv-link { padding: 0; border: 0; background: none; font-weight: 600; cursor: pointer; text-align: left; }
+.tv-link { display: inline-flex; align-items: center; min-height: 24px; padding: 0; border: 0; background: none; font-weight: 600; cursor: pointer; text-align: left; }
 .tv-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .tv-x { display: grid; place-items: center; flex: none; width: 28px; height: 28px; border: 0; border-radius: 6px; background: none; color: var(--muted, #5c5851); cursor: pointer; font-size: 16px; line-height: 1; }
 .tv-x:hover { background: var(--raised-2, #edebe7); color: var(--critical, #b32d18); }
@@ -138,3 +138,10 @@
 /* the kit resets list margins on .td-shell ul; these need to win */
 .td-shell .tv-convs { margin: 10px 0 0; } .td-shell .tv-notes { margin: 14px 0 0; } .td-shell .tv-cl { margin: 10px 0 0; } .td-shell .tv-agents { margin: 12px 0 0; } .td-shell .tv-rules { margin: 0 0 12px; }
 .tv-art { scroll-margin-top: 40px; }
+
+/* pills on a tinted ground need more ink than the kit gives them to reach 4.5:1 */
+.td-main:has(.tv-head) .td-pill.is-info { color: color-mix(in srgb, var(--signal, #0f766e) 55%, var(--ink, #000)); }
+.td-main:has(.tv-head) .td-pill.is-ok { color: color-mix(in srgb, var(--ok, #1c7a5b) 72%, var(--ink, #000)); }
+.td-main:has(.tv-head) .td-pill.is-warn { color: color-mix(in srgb, var(--primary, #c2410c) 58%, var(--ink, #000)); }
+.td-main:has(.tv-head) .td-pill.is-bad { color: color-mix(in srgb, var(--critical, #b32d18) 82%, var(--ink, #000)); }
+.tv-head .td-btn.is-primary:disabled { opacity: 1; background: var(--raised-2, #edebe7); color: var(--muted, #5c5851); border-color: var(--line-strong, #c2bdb2); }

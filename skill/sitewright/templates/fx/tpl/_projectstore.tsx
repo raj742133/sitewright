@@ -2,7 +2,7 @@
 // One source of truth for every view: tasks (with dates, subtasks, comments), epics, WIP limits, filters, undo and the live announcement.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { STATUSES, type Pri, type Status, type Task } from './_project';
-import { addDays, dn, seedAll, seedEpics, type Epic } from './_projectdata';
+import { addDays, dn, range, seedAll, seedEpics, type Epic } from './_projectdata';
 
 export interface Filters { q: string; who: string; lab: string; epic: string }
 export const NOFILTER: Filters = { q: '', who: 'all', lab: '', epic: '' };
@@ -54,7 +54,7 @@ export function useProject() {
   const shiftTask = (id: string, df: number, dt: number) => {
     const t = data.all.find((x) => x.id === id); if (!t || (!df && !dt)) return;
     let from = addDays(t.from!, df), to = addDays(t.to!, dt); if (dn(to) < dn(from)) { if (df) from = to; else to = from; }
-    patch(id, { from, to }, `${id} now ${from} to ${to}`);
+    patch(id, { from, to }, `${id} now ${range({ from, to })}`);
   };
   const shiftEpic = (id: string, d: number) => {
     if (!d) return;

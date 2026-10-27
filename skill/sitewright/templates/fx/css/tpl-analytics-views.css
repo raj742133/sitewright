@@ -106,3 +106,6 @@
 .td-shell .ta-row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .td-shell .ta-heat thead th:first-child, .td-shell .ta-heat tbody th { width: 84px; } .td-shell .ta-heat thead th:nth-child(2), .td-shell .ta-heat tbody td:nth-child(2) { width: 64px; }
 @container td (max-width: 1000px) { .td-shell .ta-row2 { grid-template-columns: 1fr; } }
+.td-shell .ta-sec-b { grid-template-columns: minmax(0, 1fr); } .td-shell .ta-code, .td-shell .ta-sec-b > * { min-width: 0; }
+.td-shell .ta-heat tfoot td { text-align: center; }
+@container td (max-width: 520px) { .td-shell .ta-rowbtn small { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } }
