@@ -1,7 +1,7 @@
 'use client';
 // The read-only views of the project dashboard: burndown, sprint summary, timeline and workload. They all derive from the live task list.
 import { useState } from 'react';
-import { AreaChart, Avatar, Icon, Panel, Progress, cx, useWidth } from './_dash';
+import { AreaChart, Avatar, Glyph, Panel, Progress, cx, useWidth } from './_dash';
 import { COMMIT, DAY_LABELS, EPICS, MILESTONES, PEOPLE, SPRINTS, TODAY_IDX, TODAY_PCT, WEEKS, burndown, pctOf, pts, short, sprintStats, type Task } from './_project';
 
 const pt = (v: number) => `${Math.round(v * 10) / 10} pts`;
@@ -83,7 +83,7 @@ export function Workload({ tasks }: { tasks: Task[] }) {
       <ul className="tp-wlist">
         {rows.map((r) => (
           <li key={r.name} className={cx(r.over > 0 && 'is-over')} aria-label={`${r.name}: ${r.all} of ${r.cap} points${r.over > 0 ? `, ${r.over} over capacity` : ''}`}>
-            {r.name === 'Unassigned' ? <span className="tp-unas" aria-hidden="true"><Icon name="users" size={13} /></span> : <Avatar name={r.name} size={24} />}
+            {r.name === 'Unassigned' ? <span className="tp-unas" aria-hidden="true"><Glyph name="users" size={13} /></span> : <Avatar name={r.name} size={24} />}
             <div className="tp-wn"><b>{r.name}</b><small>{r.role}</small></div>
             <div className="tp-wtrack" aria-hidden="true"><i className="tp-wd" style={{ width: `${(r.done / scale) * 100}%` }} /><i className="tp-wr" style={{ left: `${(r.done / scale) * 100}%`, width: `${(r.rest / scale) * 100}%` }} />{r.cap > 0 && <i className="tp-wc" style={{ left: `${(r.cap / scale) * 100}%` }} />}</div>
             <div className="tp-wv"><b>{r.all}{r.cap > 0 && <span> / {r.cap}</span>}</b><small>{r.name === 'Unassigned' ? 'pts' : r.over > 0 ? `${r.over} over` : `${-r.over} free`}</small></div>

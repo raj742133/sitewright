@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
-import { Button, Icon, Kpi, PageHeader, Panel, Pill, Preview, RankList, Segmented, Shell, fmt, series, useReducedMotion, type NavEntry } from './_dash';
+import { Button, Glyph, Kpi, PageHeader, Panel, Pill, Preview, RankList, Segmented, Shell, fmt, series, useReducedMotion, type NavEntry } from './_dash';
 import { CAP, CapacityChart, LATE, ORDERS, PARTS, STATIONS, StationTile, SUPPLIERS, dateLabel, isLow, money, type LiveStation, type StationId } from './_ops';
 import { InventoryTable, PoDialog, type PoResult } from './_opsinv';
 
@@ -64,9 +64,9 @@ export default function OperationsDashboard({ brand = 'Spokeworks' }: { brand?: 
       <Panel id="to-inv" title="Inventory" sub={`${rows.length} parts · ${lowCount} at or below reorder point`} flush
         actions={<Button variant="primary" icon="plus" disabled={picked.length === 0} onClick={() => setPo(true)}>Create purchase order{picked.length ? ` (${picked.length})` : ''}</Button>}>
         <div className="to-bar-t">
-          <label className="to-find"><Icon name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search SKU, part or supplier" aria-label="Search inventory" /></label>
+          <label className="to-find"><Glyph name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search SKU, part or supplier" aria-label="Search inventory" /></label>
           <button type="button" role="switch" aria-checked={lowOnly} className="to-sw" onClick={() => setLowOnly((v) => !v)}><i aria-hidden="true" />Low stock only<span>{lowCount}</span></button>
-          {station && <button type="button" className="to-chip" onClick={() => setStation(null)} aria-label={`Clear ${stLabel} filter`}>{stLabel}<Icon name="x" size={11} /></button>}
+          {station && <button type="button" className="to-chip" onClick={() => setStation(null)} aria-label={`Clear ${stLabel} filter`}>{stLabel}<Glyph name="x" size={11} /></button>}
           <span className="to-sel" role="status">{picked.length ? `${picked.length} selected · ${money(pickedValue)} on hand` : 'Select parts to build a purchase order'}</span>
           {picked.length > 0 && <Button variant="ghost" small onClick={() => setSelected(new Set())}>Clear</Button>}
         </div>
@@ -76,7 +76,7 @@ export default function OperationsDashboard({ brand = 'Spokeworks' }: { brand?: 
       <div className="to-row">
         <Panel id="to-cap" title="Orders vs capacity" sub="Units due per day, next 10 days" className="to-cap-p" actions={<span className="to-legend"><i />Within<i className="is-over" />Over<i className="is-cap" />Capacity</span>}>
           <CapacityChart />
-          <p className="to-note"><Icon name="clock" size={13} />Wed 28 peaks at {ORDERS[4]} units against {CAP[4]}. Move 28 units to Sunday or approve overtime.</p>
+          <p className="to-note"><Glyph name="clock" size={13} />Wed 28 peaks at {ORDERS[4]} units against {CAP[4]}. Move 28 units to Sunday or approve overtime.</p>
         </Panel>
         <Panel id="to-sup" title="Suppliers" sub="Ranked, slowest first" actions={<Segmented label="Rank suppliers by" value={supView} onChange={setSupView} options={[{ id: 'lead', label: 'Lead time' }, { id: 'spend', label: 'Spend' }]} />}>
           <RankList rows={sup} tone="signal" format={(v) => (supView === 'lead' ? `${v} d` : money(v))} />
@@ -92,7 +92,7 @@ export default function OperationsDashboard({ brand = 'Spokeworks' }: { brand?: 
       </div>
       {po && <PoDialog parts={picked} firstPo={2310 + poCount} onClose={() => setPo(false)} onPlace={place} />}
       <div className="td-sr" role="status" aria-live="polite">{msg}</div>
-      {msg && <div className="to-toast" aria-hidden="true"><Icon name="check" size={14} />{msg}<button type="button" tabIndex={-1} onClick={() => setMsg('')} aria-label="Dismiss"><Icon name="x" size={12} /></button></div>}
+      {msg && <div className="to-toast" aria-hidden="true"><Glyph name="check" size={14} />{msg}<button type="button" tabIndex={-1} onClick={() => setMsg('')} aria-label="Dismiss"><Glyph name="x" size={12} /></button></div>}
     </Shell>
   );
 }

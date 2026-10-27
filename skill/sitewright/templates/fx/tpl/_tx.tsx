@@ -1,7 +1,7 @@
 'use client';
 // Pieces of the assistant workspace: the result panel (chart, table, summary, sources, query, export) and its empty state.
 import { useEffect, useRef, useState } from 'react';
-import { AreaChart, BarChart, Button, Donut, Icon, Table, cx, fmt } from './_dash';
+import { AreaChart, BarChart, Button, Donut, Glyph, Table, cx, fmt } from './_dash';
 import { RESULTS, RESULT_ROWS, TABLES, type Result } from './_txdata';
 
 const SQL_RE = /(--[^\n]*|'[^']*'|\b(?:SELECT|FROM|JOIN|ON|WHERE|AND|GROUP BY|ORDER BY|LIMIT|AS|COUNT|SUM|AVG|MAX|DISTINCT|FILTER|OVER|DESC|IN|UNION ALL)\b|\b\d[\d.]*\b)/g;
@@ -49,7 +49,7 @@ export function ResultView({ res }: { res: Result }) {
         <Button icon="file" small onClick={() => { download(res); flashExp(); }}>{exported ? 'Exported' : 'Export CSV'}</Button>
       </header>
       <div className="tx-band">
-        <div className="tx-head"><span>{h.label}</span><b>{h.value}</b>{h.delta !== undefined && <small className={cx('tx-d', (h.delta >= 0) === ((h.good ?? 'up') === 'up') ? 'is-good' : 'is-bad')}><Icon name={h.delta >= 0 ? 'up' : 'arrowdown'} size={11} />{Math.abs(h.delta).toFixed(1)}%</small>}</div>
+        <div className="tx-head"><span>{h.label}</span><b>{h.value}</b>{h.delta !== undefined && <small className={cx('tx-d', (h.delta >= 0) === ((h.good ?? 'up') === 'up') ? 'is-good' : 'is-bad')}><Glyph name={h.delta >= 0 ? 'up' : 'arrowdown'} size={11} />{Math.abs(h.delta).toFixed(1)}%</small>}</div>
         <div className="tx-sum"><h3 className="td-sr">Summary</h3><p>{res.summary}</p><ul>{res.insights.map((t) => <li key={t}>{t}</li>)}</ul></div>
       </div>
       <ChartBlock c={res.chart} />
@@ -58,12 +58,12 @@ export function ResultView({ res }: { res: Result }) {
         <Table caption={`${res.title}: ${res.tableTitle}`} cols={res.cols} rows={rows} rowKey={(r) => String(r[res.rowKey])} />
       </section>
       <section className="tx-sec tx-foot" aria-label="Sources and query">
-        <div className="tx-src"><span className="tx-lab">Sources</span>{res.sources.map((s) => <span key={s.t} className="tx-tag"><Icon name="layers" size={12} /><code>{s.t}</code><em>{fmt.n(s.rows)} rows</em></span>)}</div>
-        <button type="button" className="tx-qt" aria-expanded={open} aria-controls={`tx-q-${res.id}`} onClick={() => setOpen((o) => !o)}><Icon name="chevron" size={13} className={cx('tx-chev', open && 'is-open')} />Query<span>SQL, {res.sql.split('\n').length} lines</span></button>
+        <div className="tx-src"><span className="tx-lab">Sources</span>{res.sources.map((s) => <span key={s.t} className="tx-tag"><Glyph name="layers" size={12} /><code>{s.t}</code><em>{fmt.n(s.rows)} rows</em></span>)}</div>
+        <button type="button" className="tx-qt" aria-expanded={open} aria-controls={`tx-q-${res.id}`} onClick={() => setOpen((o) => !o)}><Glyph name="chevron" size={13} className={cx('tx-chev', open && 'is-open')} />Query<span>SQL, {res.sql.split('\n').length} lines</span></button>
         {open && (
           <div className="tx-code" id={`tx-q-${res.id}`}>
             <div className="tx-code-h"><span>read-only · demo warehouse</span>
-              <button type="button" className="td-btn is-sm is-ghost" onClick={async () => { if (await copyText(res.sql)) flashCopy(); }}><Icon name={copied ? 'check' : 'file'} size={13} />{copied ? 'Copied' : 'Copy'}</button></div>
+              <button type="button" className="td-btn is-sm is-ghost" onClick={async () => { if (await copyText(res.sql)) flashCopy(); }}><Glyph name={copied ? 'check' : 'file'} size={13} />{copied ? 'Copied' : 'Copy'}</button></div>
             <pre tabIndex={0} aria-label="SQL query"><Sql code={res.sql} /></pre>
           </div>
         )}
@@ -89,7 +89,7 @@ export function Catalog({ onAsk, busy, hasResults }: { onAsk: (q: string) => voi
     <div className="tx-rv tx-cat">
       <header className="tx-rh"><div><h2>{hasResults ? 'Tables and ideas' : 'Your results will appear here'}</h2><p>Ask in plain words. The answer gets a chart, a table, a summary and the query behind it.</p></div></header>
       <section className="tx-sec"><div className="tx-sh"><h3>Try asking</h3><span>{RESULTS.length} analyses</span></div>
-        <ul className="tx-ideas">{RESULTS.map((r) => <li key={r.id}><button type="button" disabled={busy} onClick={() => onAsk(r.q)}><Icon name={r.icon} size={15} /><span><b>{r.q}</b><small>{r.period.split(',')[0]}</small></span><Icon name="chevron" size={13} /></button></li>)}</ul>
+        <ul className="tx-ideas">{RESULTS.map((r) => <li key={r.id}><button type="button" disabled={busy} onClick={() => onAsk(r.q)}><Glyph name={r.icon} size={15} /><span><b>{r.q}</b><small>{r.period.split(',')[0]}</small></span><Glyph name="chevron" size={13} /></button></li>)}</ul>
       </section>
       <section className="tx-sec"><div className="tx-sh"><h3>Connected tables</h3><span>Meridian Goods, demo warehouse</span></div>
         <ul className="tx-tables">{TABLES.map((t) => <li key={t.t}><code>{t.t}</code><span>{t.d}</span><em>{fmt.n(t.rows)} rows</em></li>)}</ul>

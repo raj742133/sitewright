@@ -1,7 +1,7 @@
 'use client';
 // Types, time helpers, a few extra icons and a keyboard-operable popover menu for the support inbox.
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Icon, cx } from './_dash';
+import { Glyph, cx } from './_dash';
 
 export type Status = 'open' | 'pending' | 'resolved';
 export type Priority = 'urgent' | 'high' | 'normal' | 'low';
@@ -45,7 +45,7 @@ const X: Record<string, string> = {
   arrowup: 'M12 19V5M6 11l6-6 6 6',
 };
 export function Ico({ name, size = 15, className }: { name: string; size?: number; className?: string }) {
-  return X[name] ? <svg className={cx('td-icon', className)} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={X[name]} /></svg> : <Icon name={name} size={size} className={className} />;
+  return X[name] ? <svg className={cx('td-icon', className)} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={X[name]} /></svg> : <Glyph name={name} size={size} className={className} />;
 }
 export const channelName: Record<Channel, string> = { email: 'Email', chat: 'Live chat', web: 'Web form' };
 export const channelIcon: Record<Channel, string> = { email: 'mail', chat: 'chat', web: 'globe' };

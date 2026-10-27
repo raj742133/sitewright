@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
-import { Avatar, Button, Empty, Icon, Pill, Preview, Shell, Tabs, cx, type NavEntry } from './_dash';
+import { Avatar, Button, Empty, Glyph, Pill, Preview, Shell, Tabs, cx, type NavEntry } from './_dash';
 import { CONVERSATIONS } from './_inbox-data';
 import { Composer, CustomerPanel, Message, dayBreaks } from './_inbox-parts';
 import { Ico, Menu, ME, TEAM, channelIcon, channelName, clock, frtOf, fmtDur, lastAgo, shortAgo, type Conv, type Priority, type Status } from './_inbox';
@@ -87,10 +87,10 @@ export default function InboxDashboard({ brand = 'Quillbase' }: { brand?: string
                 <label className="ti-sel"><span className="td-sr">Filter by assignee</span><Ico name="user" size={13} />
                   <select value={who} onChange={(e) => setWho(e.target.value)} aria-label="Filter by assignee">
                     <option value="all">All assignees</option><option value="me">Assigned to me</option>{TEAM.filter((t) => t !== ME).map((t) => <option key={t} value={t}>{t}</option>)}<option value="none">Unassigned</option>
-                  </select><Icon name="down" size={12} />
+                  </select><Glyph name="down" size={12} />
                 </label>
               </div>
-              <label className="ti-search"><Icon name="search" size={14} /><span className="td-sr">Search conversations</span>
+              <label className="ti-search"><Glyph name="search" size={14} /><span className="td-sr">Search conversations</span>
                 <input type="search" value={q} placeholder="Search name, subject or message" onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => { if (e.key === 'Escape') setQ(''); if (e.key === 'ArrowDown') { e.preventDefault(); (listEl.current?.querySelector('[role="option"][tabindex="0"]') as HTMLElement | null)?.focus(); } }} />
                 {q && <button type="button" aria-label="Clear search" onClick={() => setQ('')}><Ico name="x" size={13} /></button>}
               </label>

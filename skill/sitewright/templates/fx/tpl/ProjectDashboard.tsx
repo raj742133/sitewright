@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useMemo, useRef, useState, type DragEvent, type KeyboardEvent } from 'react';
-import { AvatarStack, Button, Icon, Pill, Preview, Shell, useReducedMotion, type NavEntry } from './_dash';
+import { AvatarStack, Button, Glyph, Pill, Preview, Shell, useReducedMotion, type NavEntry } from './_dash';
 import { COMMIT, EPICS, INITIAL, LABELS, PEOPLE, STATUSES, StatusIcon, pts, sprintStats, type Status, type Task } from './_project';
 import { Card, NewTask, Share, type Draft } from './_projectboard';
 import { Burndown, Summary, Timeline, Workload } from './_projectviews';
@@ -69,7 +69,7 @@ export default function ProjectDashboard({ brand = 'Northwind' }: { brand?: stri
         <div className="tp-head">
           <div className="td-ph">
             <div className="tp-ph"><h1><span className="tp-key">WEB</span>Storefront relaunch</h1>
-              <div className="tp-meta"><Pill tone={stats.tone}>{stats.label}</Pill><span><Icon name="calendar" size={14} />Due Fri 4 Dec 2026</span><span className="tp-sep" aria-hidden="true" /><AvatarStack names={PEOPLE.map((p) => p.name)} max={5} /><span className="hide-sm">{PEOPLE.length} members</span></div></div>
+              <div className="tp-meta"><Pill tone={stats.tone}>{stats.label}</Pill><span><Glyph name="calendar" size={14} />Due Fri 4 Dec 2026</span><span className="tp-sep" aria-hidden="true" /><AvatarStack names={PEOPLE.map((p) => p.name)} max={5} /><span className="hide-sm">{PEOPLE.length} members</span></div></div>
             <div className="td-ph-a"><Share onCopied={(ok) => { setLive(ok ? 'Project link copied' : 'Select the link and copy it'); }} /><Button variant="primary" icon="plus" onClick={() => { setForm('todo'); }}>New task</Button></div>
           </div>
           <div className="tp-sprint"><span className="tp-spl"><b>Sprint 14</b><span className="hide-sm">19 to 30 Oct</span></span>
@@ -83,10 +83,10 @@ export default function ProjectDashboard({ brand = 'Northwind' }: { brand?: stri
             <span className="tp-keys hide-md"><kbd>↑↓←→</kbd> focus <kbd>Alt</kbd>+<kbd>↑↓</kbd> reorder <kbd>Alt</kbd>+<kbd>←→</kbd> or <kbd>1</kbd>–<kbd>4</kbd> move <kbd>Enter</kbd> menu</span></div>
           <p id="tp-kbd" className="td-sr">Task card. Arrow keys move focus between cards. Alt with arrow keys moves or reorders the card. Keys 1 to 4 set the status. Enter opens the card menu.</p>
           <div className="tp-tools" role="search">
-            <label className="tp-search"><Icon name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search tasks or IDs" aria-label="Search tasks" /></label>
+            <label className="tp-search"><Glyph name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search tasks or IDs" aria-label="Search tasks" /></label>
             <select className="tp-sel" value={who} onChange={(e) => setWho(e.target.value)} aria-label="Filter by assignee"><option value="all">All assignees</option>{PEOPLE.map((p) => <option key={p.name}>{p.name}</option>)}<option value="none">Unassigned</option></select>
             <select className="tp-sel" value={lab} onChange={(e) => setLab(e.target.value)} aria-label="Filter by label"><option value="">All labels</option>{LABELS.map((l) => <option key={l}>{l}</option>)}</select>
-            {epic && <button type="button" className="tp-chip" onClick={() => setEpic('')} aria-label="Clear epic filter">Epic: {EPICS.find((x) => x.id === epic)?.name}<Icon name="x" size={12} /></button>}
+            {epic && <button type="button" className="tp-chip" onClick={() => setEpic('')} aria-label="Clear epic filter">Epic: {EPICS.find((x) => x.id === epic)?.name}<Glyph name="x" size={12} /></button>}
             <button type="button" className="td-btn is-ghost is-sm" disabled={!filtered} onClick={() => { setQ(''); setWho('all'); setLab(''); setEpic(''); }}>Clear filters</button>
           </div>
           {form && <NewTask initial={form} nextId={nextId} onAdd={add} onCancel={() => setForm(null)} />}
@@ -94,7 +94,7 @@ export default function ProjectDashboard({ brand = 'Northwind' }: { brand?: stri
             {lanes.map((l) => (
               <section key={l.id} className={`tp-lane${over?.s === l.id ? ' is-over' : ''}`} aria-label={`${l.label}, ${l.vis.length} tasks`} onDragOver={(e) => onOver(e, l.id)} onDrop={(e) => { e.preventDefault(); if (drag && over) move(drag, over.s, over.before); setDrag(null); setOver(null); }}>
                 <header className="tp-lh"><StatusIcon s={l.id} /><h3>{l.label}</h3><span className="tp-n">{filtered ? `${l.vis.length}/${l.all.length}` : l.all.length}</span><span className="tp-p">{pts(l.vis)} pts</span>
-                  <button type="button" className="tp-add" aria-label={`Add a task to ${l.label}`} onClick={() => setForm(l.id)}><Icon name="plus" size={15} /></button></header>
+                  <button type="button" className="tp-add" aria-label={`Add a task to ${l.label}`} onClick={() => setForm(l.id)}><Glyph name="plus" size={15} /></button></header>
                 <ul className={`tp-cards${over?.s === l.id && over.before === null ? ' is-end' : ''}`}>
                   {l.vis.map((t) => <Card key={t.id} t={t} active={t.id === actId} dragging={drag === t.id} dropBefore={over?.s === l.id && over.before === t.id && drag !== t.id} menuOpen={menu === t.id} onFocus={() => setAct(t.id)} onKey={(e) => onKey(e, t)}
                     onMenu={(o, back) => { setMenu(o ? t.id : null); if (back) focusId.current = t.id; }} onStatus={(s) => move(t.id, s, null)} onAssign={(w) => patch(t.id, { who: w }, `${t.id} assigned to ${w ?? 'nobody'}`)} onBlock={() => patch(t.id, t.blocked ? { blocked: undefined } : { blocked: 'Flagged as blocked' }, t.blocked ? `${t.id} unblocked` : `${t.id} flagged as blocked`)}

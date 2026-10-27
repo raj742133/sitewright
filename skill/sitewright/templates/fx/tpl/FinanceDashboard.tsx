@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { BarChart, Button, Delta, Donut, Icon, PageHeader, Panel, Pill, Preview, Progress, Segmented, Shell, Sparkline, Tabs, PALETTE, cx, useWidth, type NavEntry } from './_dash';
+import { BarChart, Button, Delta, Donut, Glyph, PageHeader, Panel, Pill, Preview, Progress, Segmented, Shell, Sparkline, Tabs, PALETTE, cx, useWidth, type NavEntry } from './_dash';
 import { ACCTS, CATS, MONTHS, SEED, TODAY, acctOf, addDays, balances, dShort, dailyTotal, dueLabel, inOut, money, moneyWhole, monthly, spendBy, type Bill, type Tx } from './_fin';
 import { ActionDialog, Drawer, TxTable, type Draft, type Mode, type SortKey } from './_fin-ui';
 
@@ -122,9 +122,9 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
           <header className="td-panel-h"><div><h2 id="tf-tx-t">Transactions</h2><p>{rows.length} shown{filtered ? ' (filtered)' : ''} · click a row for details</p></div></header>
           <Tabs label="Transaction type" value={tab} tabs={tabs} onChange={setTab} />
           <div className="tf-bar">
-            <label className="tf-search"><Icon name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name, memo, amount" aria-label="Search transactions" /></label>
-            <label className="tf-select"><span className="td-sr">Category</span><select value={cat} onChange={(e) => setCat(e.target.value)} aria-label="Filter by category"><option value="all">All categories</option>{CATS.map((c) => <option key={c} value={c}>{c}</option>)}</select><Icon name="down" size={12} /></label>
-            {acct && <button type="button" className="tf-chip" onClick={() => setAcct(null)} aria-label={`Remove account filter ${acctOf(acct).name}`}>{acctOf(acct).name} ••{acctOf(acct).mask}<Icon name="x" size={11} /></button>}
+            <label className="tf-search"><Glyph name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name, memo, amount" aria-label="Search transactions" /></label>
+            <label className="tf-select"><span className="td-sr">Category</span><select value={cat} onChange={(e) => setCat(e.target.value)} aria-label="Filter by category"><option value="all">All categories</option>{CATS.map((c) => <option key={c} value={c}>{c}</option>)}</select><Glyph name="down" size={12} /></label>
+            {acct && <button type="button" className="tf-chip" onClick={() => setAcct(null)} aria-label={`Remove account filter ${acctOf(acct).name}`}>{acctOf(acct).name} ••{acctOf(acct).mask}<Glyph name="x" size={11} /></button>}
             {filtered && <Button variant="ghost" small onClick={() => { setQ(''); setCat('all'); setAcct(null); }}>Clear filters</Button>}
           </div>
           <div className={cx('tf-body', (cur || wide) && 'has-drawer')}>

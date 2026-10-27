@@ -1,6 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
-import { AreaChart, Avatar, Button, Delta, Empty, Icon, Kpi, PageHeader, Panel, Pill, Preview, Progress, Shell, Table, cx, fmt, type Col, type NavEntry } from './_dash';
+import { AreaChart, Avatar, Button, Delta, Empty, Glyph, Kpi, PageHeader, Panel, Pill, Preview, Progress, Shell, Table, cx, fmt, type Col, type NavEntry } from './_dash';
 import { Board } from './_salesboard';
 import { DEALS, EVENTS, INBOUND, REPS, TEAM_LOST, TEAM_QUOTA, TODAY_WEEK, WEEK_LABELS, csv, inOctober, money, prob, stageLabel, sum, summarize, weekly, type Deal, type Event, type StageId } from './_sales';
 
@@ -76,9 +76,9 @@ export default function SalesDashboard({ brand = 'Ferrum' }: { brand?: string })
 
       <div className="ts-bar">
         <div className="ts-filters" role="search" aria-label="Filter deals">
-          <label className="ts-select"><span className="td-sr">Owner</span><Icon name="users" size={14} /><select value={owner} onChange={(e) => setOwner(e.target.value)}><option value="all">All owners</option>{REPS.map((r) => <option key={r.name}>{r.name}</option>)}</select><Icon name="down" size={12} /></label>
-          <label className="ts-search"><span className="td-sr">Search deals</span><Icon name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search company or deal" /></label>
-          <button type="button" className="ts-toggle" aria-pressed={month} onClick={() => setMonth(!month)}><Icon name="calendar" size={14} />Closing this month</button>
+          <label className="ts-select"><span className="td-sr">Owner</span><Glyph name="users" size={14} /><select value={owner} onChange={(e) => setOwner(e.target.value)}><option value="all">All owners</option>{REPS.map((r) => <option key={r.name}>{r.name}</option>)}</select><Glyph name="down" size={12} /></label>
+          <label className="ts-search"><span className="td-sr">Search deals</span><Glyph name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search company or deal" /></label>
+          <button type="button" className="ts-toggle" aria-pressed={month} onClick={() => setMonth(!month)}><Glyph name="calendar" size={14} />Closing this month</button>
           {filtered && <Button variant="ghost" small icon="x" onClick={clear}>Clear</Button>}
         </div>
         <p className="ts-count">{shown.length} of {deals.length} deals · {money(now.pipeline)} open</p>

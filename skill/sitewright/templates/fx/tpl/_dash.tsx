@@ -46,7 +46,7 @@ const P: Record<string, string> = {
   tag: 'M3 12V4h8l10 10-8 8zM7.5 8.5h.01',
 };
 export type IconName = keyof typeof P;
-export function Icon({ name, size = 16, className }: { name: IconName | string; size?: number; className?: string }) {
+export function Glyph({ name, size = 16, className }: { name: IconName | string; size?: number; className?: string }) {
   return <svg className={cx('td-icon', className)} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><path d={P[name] ?? P.more} /></svg>;
 }
 
@@ -90,7 +90,7 @@ export function Shell({ brand = 'Acme', nav, active, onNav, title, crumbs, child
         <nav>
           {nav.map((n) => (
             <button key={n.id} type="button" className={cx('td-nav', n.id === active && 'is-on')} aria-current={n.id === active ? 'page' : undefined} onClick={() => onNav?.(n.id)} title={n.label}>
-              <Icon name={n.icon} /><span className="td-nav-l">{n.label}</span>{n.badge !== undefined && <span className="td-nav-b">{n.badge}</span>}
+              <Glyph name={n.icon} /><span className="td-nav-l">{n.label}</span>{n.badge !== undefined && <span className="td-nav-b">{n.badge}</span>}
             </button>
           ))}
         </nav>
@@ -98,10 +98,10 @@ export function Shell({ brand = 'Acme', nav, active, onNav, title, crumbs, child
       </aside>
       <div className="td-main">
         <header className="td-top">
-          <div className="td-crumbs">{(crumbs ?? [brand, title ?? '']).filter(Boolean).map((c, i, a) => <span key={i} className={i === a.length - 1 ? 'is-last' : undefined}>{c}{i < a.length - 1 && <Icon name="chevron" size={12} />}</span>)}</div>
-          <button type="button" className="td-search" aria-label={searchHint}><Icon name="search" size={14} /><span>{searchHint}</span><kbd>⌘K</kbd></button>
+          <div className="td-crumbs">{(crumbs ?? [brand, title ?? '']).filter(Boolean).map((c, i, a) => <span key={i} className={i === a.length - 1 ? 'is-last' : undefined}>{c}{i < a.length - 1 && <Glyph name="chevron" size={12} />}</span>)}</div>
+          <button type="button" className="td-search" aria-label={searchHint}><Glyph name="search" size={14} /><span>{searchHint}</span><kbd>⌘K</kbd></button>
           {actions}
-          <button type="button" className="td-iconbtn" aria-label="Notifications"><Icon name="bell" /><i className="td-dot" /></button>
+          <button type="button" className="td-iconbtn" aria-label="Notifications"><Glyph name="bell" /><i className="td-dot" /></button>
         </header>
         <div className="td-content">{children}</div>
       </div>
@@ -122,7 +122,7 @@ export function Panel({ title, sub, actions, children, className, flush, id }: {
   );
 }
 export function Button({ children, variant = 'default', icon, onClick, type = 'button', disabled, small, label }: { children?: ReactNode; variant?: 'default' | 'primary' | 'ghost'; icon?: IconName; onClick?: () => void; type?: 'button' | 'submit'; disabled?: boolean; small?: boolean; label?: string }) {
-  return <button type={type} className={cx('td-btn', `is-${variant}`, small && 'is-sm', !children && 'is-icon')} onClick={onClick} disabled={disabled} aria-label={label}>{icon && <Icon name={icon} size={small ? 13 : 15} />}{children}</button>;
+  return <button type={type} className={cx('td-btn', `is-${variant}`, small && 'is-sm', !children && 'is-icon')} onClick={onClick} disabled={disabled} aria-label={label}>{icon && <Glyph name={icon} size={small ? 13 : 15} />}{children}</button>;
 }
 export function Segmented<T extends string>({ value, options, onChange, label }: { value: T; options: Array<{ id: T; label: string }>; onChange: (v: T) => void; label: string }) {
   return <div className="td-seg" role="group" aria-label={label}>{options.map((o) => <button key={o.id} type="button" aria-pressed={o.id === value} onClick={() => onChange(o.id)}>{o.label}</button>)}</div>;
@@ -136,7 +136,7 @@ export function Pill({ tone = 'neutral', children, dot = true }: { tone?: 'neutr
 }
 export function Delta({ value, good = 'up', suffix = '%' }: { value: number; good?: 'up' | 'down'; suffix?: string }) {
   const up = value >= 0; const ok = good === 'up' ? up : !up;
-  return <span className={cx('td-delta', ok ? 'is-good' : 'is-bad')}><Icon name={up ? 'up' : 'arrowdown'} size={11} />{Math.abs(value).toFixed(1)}{suffix}<span className="td-sr"> {up ? 'up' : 'down'}</span></span>;
+  return <span className={cx('td-delta', ok ? 'is-good' : 'is-bad')}><Glyph name={up ? 'up' : 'arrowdown'} size={11} />{Math.abs(value).toFixed(1)}{suffix}<span className="td-sr"> {up ? 'up' : 'down'}</span></span>;
 }
 export function Avatar({ name, size = 24 }: { name: string; size?: number }) {
   const ini = name.split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
@@ -150,7 +150,7 @@ export function Progress({ value, tone = 'primary', label }: { value: number; to
   return <div className={cx('td-progress', `is-${tone}`)} role="progressbar" aria-label={label} aria-valuenow={Math.round(value * 100)} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${Math.max(0, Math.min(1, value)) * 100}%` }} /></div>;
 }
 export function Empty({ title, text }: { title: string; text: string }) {
-  return <div className="td-empty"><Icon name="inbox" size={22} /><b>{title}</b><p>{text}</p></div>;
+  return <div className="td-empty"><Glyph name="inbox" size={22} /><b>{title}</b><p>{text}</p></div>;
 }
 
 /* ------------------------------------------------------------------ KPI + sparkline */
@@ -274,7 +274,7 @@ export function Table<T>({ cols, rows, rowKey, onRow, caption, empty = 'Nothing 
     <div className="td-tablewrap">
       <table className="td-table">
         <caption className="td-sr">{caption}</caption>
-        <thead><tr>{cols.map((c) => <th key={c.id} scope="col" style={{ width: c.w, textAlign: c.align }} className={cx(c.hideBelow && `hide-${c.hideBelow}`)} aria-sort={sort?.id === c.id ? (sort.dir === 1 ? 'ascending' : 'descending') : c.sort ? 'none' : undefined}>{c.sort ? <button type="button" onClick={() => setSort((s) => (s?.id === c.id ? (s.dir === 1 ? { id: c.id, dir: -1 } : null) : { id: c.id, dir: 1 }))}>{c.label}<Icon name="down" size={11} className={cx('td-sortic', sort?.id === c.id && 'is-on', sort?.id === c.id && sort.dir === 1 && 'is-asc')} /></button> : c.label}</th>)}</tr></thead>
+        <thead><tr>{cols.map((c) => <th key={c.id} scope="col" style={{ width: c.w, textAlign: c.align }} className={cx(c.hideBelow && `hide-${c.hideBelow}`)} aria-sort={sort?.id === c.id ? (sort.dir === 1 ? 'ascending' : 'descending') : c.sort ? 'none' : undefined}>{c.sort ? <button type="button" onClick={() => setSort((s) => (s?.id === c.id ? (s.dir === 1 ? { id: c.id, dir: -1 } : null) : { id: c.id, dir: 1 }))}>{c.label}<Glyph name="down" size={11} className={cx('td-sortic', sort?.id === c.id && 'is-on', sort?.id === c.id && sort.dir === 1 && 'is-asc')} /></button> : c.label}</th>)}</tr></thead>
         <tbody>
           {sorted.length === 0 && <tr><td colSpan={cols.length} className="td-none">{empty}</td></tr>}
           {sorted.map((r) => <tr key={rowKey(r)} className={cx(onRow && 'is-click', selected === rowKey(r) && 'is-sel')} onClick={onRow ? () => onRow(r) : undefined}>{cols.map((c) => <td key={c.id} style={{ textAlign: c.align }} className={cx(c.hideBelow && `hide-${c.hideBelow}`)}>{c.cell(r)}</td>)}</tr>)}

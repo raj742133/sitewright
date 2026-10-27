@@ -3,7 +3,7 @@
 // Enter opens the move menu) and a menu. Every move goes through onMove, which the page announces in its live region.
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState, type KeyboardEvent as RKE, type PointerEvent as RPE } from 'react';
-import { Avatar, Icon, cx, fmt } from './_dash';
+import { Avatar, Glyph, cx, fmt } from './_dash';
 import { STAGES, closeNote, health, prob, stageLabel, sum, type Deal, type StageId } from './_sales';
 
 interface Drag { id: string; x: number; y: number; ox: number; oy: number; w: number; over: StageId | null }
@@ -16,12 +16,12 @@ function Card({ d, drag, lift, onMenu, grip, ...rest }: { d: Deal; drag?: boolea
       <div className="ts-c1">
         <b title={d.company}>{d.company}</b>
         <span className={cx('ts-health', `is-${h.level}`)} title={h.why} aria-hidden="true" />
-        {grip && <span className="ts-grip" aria-hidden="true"><Icon name="list" size={14} /></span>}
-        {onMenu && <button type="button" className="ts-more" data-nodrag="" aria-haspopup="menu" aria-label={`Move ${d.company}`} onClick={(e) => onMenu(e.currentTarget)}><Icon name="more" size={16} /></button>}
+        {grip && <span className="ts-grip" aria-hidden="true"><Glyph name="list" size={14} /></span>}
+        {onMenu && <button type="button" className="ts-more" data-nodrag="" aria-haspopup="menu" aria-label={`Move ${d.company}`} onClick={(e) => onMenu(e.currentTarget)}><Glyph name="more" size={16} /></button>}
       </div>
       <span className="ts-title">{d.title}</span>
-      <div className="ts-c3"><b>{fmt.c(d.amount)}</b>{won ? <span className="ts-prob is-won"><Icon name="check" size={12} />Won</span> : <span className="ts-prob" title="Win probability"><i style={{ width: `${p}%` }} />{p}%</span>}</div>
-      <div className="ts-c4"><Avatar name={d.owner} size={20} /><span>{d.owner.split(' ')[0]}</span><span className={cx('ts-date', h.level === 'bad' && !won && 'is-late')}><Icon name="calendar" size={12} />{closeNote(d)}</span></div>
+      <div className="ts-c3"><b>{fmt.c(d.amount)}</b>{won ? <span className="ts-prob is-won"><Glyph name="check" size={12} />Won</span> : <span className="ts-prob" title="Win probability"><i style={{ width: `${p}%` }} />{p}%</span>}</div>
+      <div className="ts-c4"><Avatar name={d.owner} size={20} /><span>{d.owner.split(' ')[0]}</span><span className={cx('ts-date', h.level === 'bad' && !won && 'is-late')}><Glyph name="calendar" size={12} />{closeNote(d)}</span></div>
     </div>
   );
 }
@@ -98,7 +98,7 @@ export function Board({ deals, onMove }: { deals: Deal[]; onMove: (id: string, t
       {menu && menuDeal && createPortal(
         <div className="ts-menu" ref={menuRef} role="menu" aria-label={`Move ${menuDeal.company} to`} style={{ left: menu.x, top: menu.y }} onKeyDown={menuKey}>
           <p>Move to stage</p>
-          {STAGES.map((s) => <button key={s.id} type="button" role="menuitem" disabled={s.id === menuDeal.stage} onClick={() => move(menuDeal.id, s.id)}><i className={`ts-sd is-${s.id}`} aria-hidden="true" />{s.label}{s.id === menuDeal.stage && <Icon name="check" size={13} />}</button>)}
+          {STAGES.map((s) => <button key={s.id} type="button" role="menuitem" disabled={s.id === menuDeal.stage} onClick={() => move(menuDeal.id, s.id)}><i className={`ts-sd is-${s.id}`} aria-hidden="true" />{s.label}{s.id === menuDeal.stage && <Glyph name="check" size={13} />}</button>)}
         </div>, document.body)}
     </>
   );

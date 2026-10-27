@@ -1,6 +1,6 @@
 'use client';
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import { Button, Icon, Preview, Segmented, Shell, Tabs, cx, useReducedMotion, type NavEntry } from './_dash';
+import { Button, Glyph, Preview, Segmented, Shell, Tabs, cx, useReducedMotion, type NavEntry } from './_dash';
 import { Catalog, ResultView, Skeleton } from './_tx';
 import { RESULTS, match, related, type Result } from './_txdata';
 
@@ -13,10 +13,10 @@ const HELLO = `Hi, I'm the Meridian data assistant. Pick a question below or typ
 
 function Steps({ steps, step, live }: { steps: string[]; step: number; live: boolean }) {
   const done = step >= steps.length;
-  if (!live) return <details className="tx-ran"><summary><Icon name="check" size={12} />Ran {steps.length} step{steps.length === 1 ? '' : 's'}</summary><ol className="tx-steps">{steps.map((s) => <li key={s} className="is-done"><Icon name="check" size={12} />{s}</li>)}</ol></details>;
+  if (!live) return <details className="tx-ran"><summary><Glyph name="check" size={12} />Ran {steps.length} step{steps.length === 1 ? '' : 's'}</summary><ol className="tx-steps">{steps.map((s) => <li key={s} className="is-done"><Glyph name="check" size={12} />{s}</li>)}</ol></details>;
   return (
     <ol className="tx-steps" aria-label="What the assistant is doing">
-      {steps.map((s, i) => <li key={s} className={i < step ? 'is-done' : i === step ? 'is-run' : ''}>{i < step ? <Icon name="check" size={12} /> : i === step ? <i className="tx-spin" /> : <i className="tx-pend" />}{s}{i === step && !done && <span className="tx-dots" aria-hidden="true"><b /><b /><b /></span>}</li>)}
+      {steps.map((s, i) => <li key={s} className={i < step ? 'is-done' : i === step ? 'is-run' : ''}>{i < step ? <Glyph name="check" size={12} /> : i === step ? <i className="tx-spin" /> : <i className="tx-pend" />}{s}{i === step && !done && <span className="tx-dots" aria-hidden="true"><b /><b /><b /></span>}</li>)}
     </ol>
   );
 }
@@ -89,9 +89,9 @@ export default function AssistantDashboard() {
             <div className="tx-log" ref={log} tabIndex={0} role="log" aria-label="Messages" aria-live="off">
               {!msgs.length && (
                 <div className="tx-hello">
-                  <span className="tx-mark is-lg"><Icon name="sparkle" size={18} /></span>
+                  <span className="tx-mark is-lg"><Glyph name="sparkle" size={18} /></span>
                   <h2>What do you want to know?</h2><p>Ask about revenue, users, customers, churn, conversion or shipping. I will show the answer, the numbers and the query.</p>
-                  <ul className="tx-sug">{RESULTS.slice(0, 4).map((r) => <li key={r.id}><button type="button" onClick={() => send(r.q)}><Icon name={r.icon} size={15} /><span>{r.q}</span></button></li>)}</ul>
+                  <ul className="tx-sug">{RESULTS.slice(0, 4).map((r) => <li key={r.id}><button type="button" onClick={() => send(r.q)}><Glyph name={r.icon} size={15} /><span>{r.q}</span></button></li>)}</ul>
                 </div>
               )}
               {msgs.map((m) => {
@@ -100,11 +100,11 @@ export default function AssistantDashboard() {
                 const txt = active ? (job.phase === 'stream' ? job.text.split(' ').slice(0, reduced ? undefined : job.n).join(' ') : '') : m.text;
                 return (
                   <div key={m.id} className="tx-msg is-ai">
-                    <span className="tx-mark"><Icon name="sparkle" size={13} /></span>
+                    <span className="tx-mark"><Glyph name="sparkle" size={13} /></span>
                     <div className="tx-ai">
                       <Steps steps={m.steps} step={active ? job.step : m.steps.length} live={active} />
                       {txt && <p className="tx-txt">{txt}{active && job.phase === 'stream' && <i className="tx-caret" aria-hidden="true" />}</p>}
-                      {m.res && !active && <button type="button" className={cx('tx-card', sel === m.res.id && 'is-on')} onClick={() => showResult(m.res!.id)}><Icon name={m.res.icon} size={15} /><span><b>{m.res.title}</b><small>{m.res.period.split(',')[0]}</small></span><em>{sel === m.res.id ? 'Showing' : 'Open'}</em><Icon name="chevron" size={13} /></button>}
+                      {m.res && !active && <button type="button" className={cx('tx-card', sel === m.res.id && 'is-on')} onClick={() => showResult(m.res!.id)}><Glyph name={m.res.icon} size={15} /><span><b>{m.res.title}</b><small>{m.res.period.split(',')[0]}</small></span><em>{sel === m.res.id ? 'Showing' : 'Open'}</em><Glyph name="chevron" size={13} /></button>}
                       {!active && m === lastAi && !busy && (
                         <div className="tx-chips" role="group" aria-label="Suggested follow-ups">{m.chips.map((c) => <button key={c} type="button" className="tx-chip" onClick={() => send(c)}>{c}</button>)}</div>
                       )}
@@ -117,7 +117,7 @@ export default function AssistantDashboard() {
               <div className="tx-comp">
                 <textarea ref={ta} rows={1} value={draft} onChange={(e) => setDraft(e.target.value)} onKeyDown={onKey} placeholder="Ask a question about your data" aria-label="Ask a question about your data" />
                 {busy ? <button type="button" className="tx-send is-stop" aria-label="Stop" onClick={() => job && finish({ ...job, step: job.steps.length })}><i /></button>
-                  : <button type="submit" className="tx-send" aria-label="Send" disabled={!draft.trim()}><Icon name="send" size={15} /></button>}
+                  : <button type="submit" className="tx-send" aria-label="Send" disabled={!draft.trim()}><Glyph name="send" size={15} /></button>}
               </div>
               <div className="tx-hint"><span>Enter to send, Shift+Enter for a new line</span><span>Demo data, answers are scripted</span></div>
             </form>

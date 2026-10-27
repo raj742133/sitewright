@@ -2,7 +2,7 @@
 // Pieces of the finance dashboard that are not in the kit: a keyboard-friendly transactions table, the detail drawer and the
 // Send / Request / Transfer dialog.
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import { Button, Icon, Pill, cx } from './_dash';
+import { Button, Glyph, Pill, cx } from './_dash';
 import { ACCTS, OUT_CATS, acctOf, dLong, dShort, isPosted, money, type Tx } from './_fin';
 
 export type SortKey = 'date' | 'amt';
@@ -23,7 +23,7 @@ export function TxTable({ rows, sel, onSel, sort, onSort, empty }: { rows: Tx[];
   };
   const head = (k: SortKey, label: string, right?: boolean) => (
     <th scope="col" className={cx(right && 'is-r')} aria-sort={sort.key === k ? (sort.dir === 1 ? 'ascending' : 'descending') : 'none'}>
-      <button type="button" onClick={() => onSort(k)} aria-label={`Sort by ${label.toLowerCase()}`}>{label}<Icon name="down" size={11} className={cx('td-sortic', sort.key === k && 'is-on', sort.key === k && sort.dir === 1 && 'is-asc')} /></button>
+      <button type="button" onClick={() => onSort(k)} aria-label={`Sort by ${label.toLowerCase()}`}>{label}<Glyph name="down" size={11} className={cx('td-sortic', sort.key === k && 'is-on', sort.key === k && sort.dir === 1 && 'is-asc')} /></button>
     </th>
   );
   return (
@@ -50,7 +50,7 @@ export function TxTable({ rows, sel, onSel, sort, onSort, empty }: { rows: Tx[];
 }
 
 export function Drawer({ t, onClose, onApprove, onFlag, bodyRef }: { t: Tx | null; onClose: () => void; onApprove: (id: string) => void; onFlag: (id: string) => void; bodyRef: React.RefObject<HTMLElement | null> }) {
-  if (!t) return <aside className="tf-drawer is-empty" ref={bodyRef} aria-label="Transaction details"><div className="td-empty"><Icon name="file" size={22} /><b>No transaction selected</b><p>Pick a row to see its details and approve or flag it.</p></div></aside>;
+  if (!t) return <aside className="tf-drawer is-empty" ref={bodyRef} aria-label="Transaction details"><div className="td-empty"><Glyph name="file" size={22} /><b>No transaction selected</b><p>Pick a row to see its details and approve or flag it.</p></div></aside>;
   const a = acctOf(t.acct);
   const effect = t.status === 'posted' ? `Moved ${money(t.amt, true)} ${t.amt > 0 ? 'into' : 'out of'} ${a.name}.` : t.status === 'flagged' ? (isPosted(t) ? 'Already counted in the balance. Clear the flag to mark it reviewed.' : 'Held. Not counted in the balance until you approve it.') : `Approving moves ${money(t.amt, true)} ${t.amt > 0 ? 'into' : 'out of'} ${a.name}.`;
   const rowsD: Array<[string, string]> = [['Date', dLong(t.date)], ['Account', `${a.name} ••${a.mask}`], ['Category', t.cat], ['Method', t.method], ['Reference', t.ref], ['Memo', t.memo]];

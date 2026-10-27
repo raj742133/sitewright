@@ -1,7 +1,7 @@
 'use client';
 // The inventory work area: a sortable table with row selection, and the purchase-order summary dialog.
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
-import { Button, Empty, Icon, Pill, cx, fmt } from './_dash';
+import { Button, Empty, Glyph, Pill, cx, fmt } from './_dash';
 import { cover, dateLabel, isLow, lead, money, suggest, type Part } from './_ops';
 
 export type Status = { key: 'critical' | 'low' | 'ok' | 'order'; label: string; tone: 'bad' | 'warn' | 'ok' | 'info' };
@@ -29,7 +29,7 @@ export function InventoryTable({ rows, selected, ordered, onSelect, onSelectAll 
   useEffect(() => { if (allRef.current) allRef.current.indeterminate = nSel > 0 && !all; }, [nSel, all]);
   const th = (id: SortId, label: string, cls?: string, right?: boolean) => (
     <th scope="col" className={cx(cls, right && 'is-r')} aria-sort={sort.id === id ? (sort.dir === 1 ? 'ascending' : 'descending') : 'none'}>
-      <button type="button" onClick={() => setSort((s) => ({ id, dir: s.id === id && s.dir === 1 ? -1 : 1 }))}>{label}<Icon name="down" size={11} className={cx('td-sortic', sort.id === id && 'is-on', sort.id === id && sort.dir === 1 && 'is-asc')} /></button>
+      <button type="button" onClick={() => setSort((s) => ({ id, dir: s.id === id && s.dir === 1 ? -1 : 1 }))}>{label}<Glyph name="down" size={11} className={cx('td-sortic', sort.id === id && 'is-on', sort.id === id && sort.dir === 1 && 'is-asc')} /></button>
     </th>
   );
   return (

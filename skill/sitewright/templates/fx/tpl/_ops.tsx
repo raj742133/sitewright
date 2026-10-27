@@ -1,6 +1,6 @@
 'use client';
 // Data and small pieces for the operations dashboard: the bicycle workshop's parts, stations, suppliers, late POs, the capacity chart and a station tile.
-import { BarChart, Icon, Pill, Progress, fmt, useWidth } from './_dash';
+import { BarChart, Glyph, Pill, Progress, fmt, useWidth } from './_dash';
 
 export type StationId = 'frames' | 'wheels' | 'drivetrain' | 'assembly' | 'qa' | 'packing';
 export interface Part { sku: string; name: string; cat: string; station: StationId; onHand: number; reorder: number; perDay: number; cost: number; supplier: string }
@@ -99,9 +99,9 @@ export function StationTile({ s, on, onToggle }: { s: LiveStation; on: boolean; 
         <span className="to-st-h"><span className="to-st-n">{s.name}</span><Pill tone={TONE[s.status]}>{LABEL[s.status]}</Pill></span>
         <span className="to-st-v"><b>{s.thr.toFixed(1)}</b><small>/ {s.target} per hr</small></span>
         <Progress value={s.thr / s.target} tone={s.status === 'blocked' ? 'bad' : 'signal'} label={`${s.name} throughput against target`} />
-        <span className="to-st-f"><span>Queue <b>{s.q}</b></span><span className={s.status === 'blocked' ? 'is-bad' : undefined}>{s.status === 'blocked' && <Icon name="x" size={11} />}{s.note}</span></span>
+        <span className="to-st-f"><span>Queue <b>{s.q}</b></span><span className={s.status === 'blocked' ? 'is-bad' : undefined}>{s.status === 'blocked' && <Glyph name="x" size={11} />}{s.note}</span></span>
       </button>
-      <span className="to-flow" aria-hidden="true"><Icon name="chevron" size={12} /></span>
+      <span className="to-flow" aria-hidden="true"><Glyph name="chevron" size={12} /></span>
     </li>
   );
 }

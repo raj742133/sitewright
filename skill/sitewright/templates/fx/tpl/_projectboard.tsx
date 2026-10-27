@@ -1,7 +1,7 @@
 'use client';
 // Board pieces: the task card, its status/assignee menu, the new-task form and the share popover.
 import { useEffect, useRef, useState, type DragEvent, type KeyboardEvent as RKey, type ReactNode } from 'react';
-import { Avatar, Button, Icon, cx } from './_dash';
+import { Avatar, Button, Glyph, cx } from './_dash';
 import { ESTIMATES, LABELS, LabelChip, PEOPLE, PRIS, PriIcon, STATUSES, StatusIcon, type Pri, type Status, type Task } from './_project';
 
 /** Closes on outside pointer-down. */
@@ -23,10 +23,10 @@ function CardMenu({ t, close, onStatus, onAssign, onBlock }: { t: Task; close: (
   return (
     <div className="tp-menu" role="menu" aria-label={`Actions for ${t.id}`} ref={ref} onKeyDown={(e) => menuKeys(e, close)}>
       <div className="tp-mh" role="presentation">Move to</div>
-      {STATUSES.map((s) => <button key={s.id} type="button" role="menuitemradio" aria-checked={t.status === s.id} tabIndex={-1} onClick={pick(() => onStatus(s.id))}><StatusIcon s={s.id} />{s.label}{t.status === s.id && <Icon name="check" size={13} />}</button>)}
-      {t.status !== 'done' && <><div className="tp-msep" role="separator" /><button type="button" role="menuitem" tabIndex={-1} onClick={pick(onBlock)}><Icon name="x" size={14} />{t.blocked ? 'Clear blocked flag' : 'Flag as blocked'}</button></>}
+      {STATUSES.map((s) => <button key={s.id} type="button" role="menuitemradio" aria-checked={t.status === s.id} tabIndex={-1} onClick={pick(() => onStatus(s.id))}><StatusIcon s={s.id} />{s.label}{t.status === s.id && <Glyph name="check" size={13} />}</button>)}
+      {t.status !== 'done' && <><div className="tp-msep" role="separator" /><button type="button" role="menuitem" tabIndex={-1} onClick={pick(onBlock)}><Glyph name="x" size={14} />{t.blocked ? 'Clear blocked flag' : 'Flag as blocked'}</button></>}
       <div className="tp-msep" role="separator" /><div className="tp-mh" role="presentation">Assignee</div>
-      {[...PEOPLE.map((p) => p.name), null].map((n) => <button key={n ?? 'none'} type="button" role="menuitemradio" aria-checked={t.who === n} tabIndex={-1} onClick={pick(() => onAssign(n))}>{n ? <Avatar name={n} size={18} /> : <span className="tp-unas is-sm"><Icon name="users" size={11} /></span>}{n ?? 'Unassigned'}{t.who === n && <Icon name="check" size={13} />}</button>)}
+      {[...PEOPLE.map((p) => p.name), null].map((n) => <button key={n ?? 'none'} type="button" role="menuitemradio" aria-checked={t.who === n} tabIndex={-1} onClick={pick(() => onAssign(n))}>{n ? <Avatar name={n} size={18} /> : <span className="tp-unas is-sm"><Glyph name="users" size={11} /></span>}{n ?? 'Unassigned'}{t.who === n && <Glyph name="check" size={13} />}</button>)}
     </div>
   );
 }
@@ -40,11 +40,11 @@ export function Card(p: CardProps) {
     <li ref={wrap} className={cx('tp-li', p.dropBefore && 'is-drop', p.dragging && 'is-drag', p.menuOpen && 'is-menu')} draggable onDragStart={p.onDragStart} onDragEnd={p.onDragEnd}>
       <div className={cx('tp-card', t.status === 'done' && 'is-done', t.blocked && 'is-blocked', t.fresh && 'is-new')} data-tid={t.id} role="group" tabIndex={p.active ? 0 : -1} aria-describedby="tp-kbd"
         aria-label={`${t.id}, ${t.title}. ${st}. ${PRIS.find((x) => x.id === t.pri)!.label} priority. ${t.who ?? 'Unassigned'}. ${t.est} points.${t.blocked ? ` Blocked: ${t.blocked}.` : ''}`} onFocus={p.onFocus} onKeyDown={p.onKey}>
-        <div className="tp-c1"><span className="tp-id">{t.id}</span>{t.blocked && <span className="tp-blk" title={t.blocked}><Icon name="x" size={10} />Blocked</span>}
-          <button type="button" className="tp-dots" tabIndex={-1} aria-label={`Actions for ${t.id}`} aria-haspopup="menu" aria-expanded={p.menuOpen} onClick={() => p.onMenu(!p.menuOpen)}><Icon name="more" size={16} /></button></div>
+        <div className="tp-c1"><span className="tp-id">{t.id}</span>{t.blocked && <span className="tp-blk" title={t.blocked}><Glyph name="x" size={10} />Blocked</span>}
+          <button type="button" className="tp-dots" tabIndex={-1} aria-label={`Actions for ${t.id}`} aria-haspopup="menu" aria-expanded={p.menuOpen} onClick={() => p.onMenu(!p.menuOpen)}><Glyph name="more" size={16} /></button></div>
         <div className="tp-title">{t.title}</div>
         {t.blocked && <div className="tp-why">{t.blocked}</div>}
-        <div className="tp-c3"><span className="tp-labs">{t.labels.map((l) => <LabelChip key={l} name={l} />)}</span><PriIcon pri={t.pri} /><span className="tp-est" title={`${t.est} story points`}>{t.est}</span>{t.who ? <span title={t.who}><Avatar name={t.who} size={22} /></span> : <span className="tp-unas" title="Unassigned"><Icon name="users" size={12} /></span>}</div>
+        <div className="tp-c3"><span className="tp-labs">{t.labels.map((l) => <LabelChip key={l} name={l} />)}</span><PriIcon pri={t.pri} /><span className="tp-est" title={`${t.est} story points`}>{t.est}</span>{t.who ? <span title={t.who}><Avatar name={t.who} size={22} /></span> : <span className="tp-unas" title="Unassigned"><Glyph name="users" size={12} /></span>}</div>
       </div>
       {p.menuOpen && <CardMenu t={t} close={(back) => p.onMenu(false, back)} onStatus={p.onStatus} onAssign={p.onAssign} onBlock={p.onBlock} />}
     </li>
@@ -59,7 +59,7 @@ export function NewTask({ initial, nextId, onAdd, onCancel }: { initial: Status;
   const sel = (label: string, el: ReactNode) => <label className="tp-f"><span>{label}</span>{el}</label>;
   return (
     <form className="td-panel tp-form" aria-label="New task" noValidate onKeyDown={(e) => { if (e.key === 'Escape') onCancel(); }} onSubmit={(e) => { e.preventDefault(); setTouched(true); if (!bad) onAdd({ ...d, title: d.title.trim() }); }}>
-      <div className="tp-fh"><b>New task</b><span className="tp-id">{nextId}</span><button type="button" className="td-iconbtn" aria-label="Close form" onClick={onCancel}><Icon name="x" size={15} /></button></div>
+      <div className="tp-fh"><b>New task</b><span className="tp-id">{nextId}</span><button type="button" className="td-iconbtn" aria-label="Close form" onClick={onCancel}><Glyph name="x" size={15} /></button></div>
       <label className="tp-f is-wide"><span>Title</span><input autoFocus value={d.title} onChange={(e) => set('title', e.target.value)} placeholder="What needs to happen?" aria-invalid={touched && bad} aria-describedby="tp-ferr" maxLength={90} />
         <em id="tp-ferr" className="tp-ferr" role={touched && bad ? 'alert' : undefined}>{touched && bad ? 'Give the task a title first.' : ''}</em></label>
       <div className="tp-fgrid">
@@ -81,7 +81,7 @@ export function Share({ onCopied }: { onCopied: (ok: boolean) => void }) {
   const copy = async () => { let ok = true; try { await navigator.clipboard.writeText(url); } catch { ok = false; } setCopied(true); onCopied(ok); setTimeout(() => setCopied(false), 2000); };
   return (
     <div className="tp-share" ref={ref} onKeyDown={(e) => { if (e.key === 'Escape' && open) { setOpen(false); btn.current?.focus(); } }}>
-      <button ref={btn} type="button" className="td-btn" aria-expanded={open} aria-haspopup="dialog" onClick={() => setOpen(!open)}><Icon name="link" size={15} />Share</button>
+      <button ref={btn} type="button" className="td-btn" aria-expanded={open} aria-haspopup="dialog" onClick={() => setOpen(!open)}><Glyph name="link" size={15} />Share</button>
       {open && <div className="tp-pop" role="dialog" aria-label="Share project"><b>Share Storefront relaunch</b><p>Anyone at Northwind with the link can view the board. Only members can edit.</p>
         <div className="tp-copy"><input readOnly value={url} aria-label="Project link" onFocus={(e) => e.currentTarget.select()} /><Button variant="primary" small icon={copied ? 'check' : 'link'} onClick={copy}>{copied ? 'Copied' : 'Copy link'}</Button></div></div>}
     </div>
