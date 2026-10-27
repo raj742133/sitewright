@@ -1,6 +1,6 @@
 // Goals: definitions, per-period stats and funnels, all derived from the shared site model so numbers agree with Pages and Sources.
 import { seeded, series } from './_dash';
-import { RATE_DRIFT, TRIAL_BASE, distribute, eventConv, getPages, getSite, hash, type Range } from './_an-data';
+import { TRIAL_BASE, distribute, eventConv, getPages, getSite, hash, type Range } from './_an-data';
 
 export type GoalType = 'page' | 'event' | 'time';
 export interface Goal { id: string; name: string; type: GoalType; target: string; targetRate: number; value: number; base?: number; steps?: string[] }
@@ -38,4 +38,3 @@ export function goalStats(goals: Goal[], range: Range): GoalStat[] {
     };
   });
 }
-export { RATE_DRIFT };

@@ -1,8 +1,9 @@
 'use client';
 // The read-only views of the project dashboard: burndown, sprint summary, timeline and workload. They all derive from the live task list.
 import { useState } from 'react';
-import { AreaChart, Avatar, Glyph, Panel, Progress, cx, useWidth } from './_dash';
-import { COMMIT, DAY_LABELS, EPICS, MILESTONES, PEOPLE, SPRINTS, TODAY_IDX, TODAY_PCT, WEEKS, burndown, pctOf, pts, short, sprintStats, type Task } from './_project';
+import { AreaChart, Avatar, Button, Glyph, Panel, Progress, cx, useWidth } from './_dash';
+import { COMMIT, DAY_LABELS, MILESTONES, PEOPLE, SPRINTS, STATUSES, StatusIcon, TODAY_IDX, TODAY_PCT, WEEKS, burndown, pctOf, pts, short, sprintStats, type Status, type Task } from './_project';
+import { epicStat, type Epic } from './_projectdata';
 
 const pt = (v: number) => `${Math.round(v * 10) / 10} pts`;
 
@@ -41,12 +42,12 @@ export function Summary({ tasks }: { tasks: Task[] }) {
   );
 }
 
-export function Timeline({ tasks, epic, onEpic }: { tasks: Task[]; epic: string; onEpic: (id: string) => void }) {
+export function Timeline({ tasks, epics, epic, onEpic, onOpen }: { tasks: Task[]; epics: Epic[]; epic: string; onEpic: (id: string) => void; onOpen: () => void }) {
   const [tip, setTip] = useState<{ key: string; c: number; below?: boolean; lines: string[] } | null>(null);
   const tipEl = (key: string) => tip?.key === key && <div className={cx('tp-tip', tip.below && 'is-below')} style={{ left: `${Math.max(14, Math.min(86, tip.c))}%` }} aria-hidden="true"><b>{tip.lines[0]}</b>{tip.lines.slice(1).map((l) => <span key={l}>{l}</span>)}</div>;
   const hov = (key: string, c: number, lines: string[], below?: boolean) => ({ onPointerEnter: () => setTip({ key, c, lines, below }), onPointerLeave: () => setTip(null), onFocus: () => setTip({ key, c, lines, below }), onBlur: () => setTip(null) });
   return (
-    <Panel id="tp-tl" title="Timeline" sub="8 weeks, 12 Oct to 6 Dec · select an epic to filter the board" flush actions={<span className="tp-legend"><i className="is-dia" />Milestone<i className="is-sprint" />This sprint</span>}>
+    <Panel id="tp-tl" title="Timeline" sub="8 weeks, 12 Oct to 6 Dec · select an epic to show it on the board" flush actions={<><span className="tp-legend hide-sm"><i className="is-dia" />Milestone<i className="is-sprint" />This sprint</span><Button small onClick={onOpen}>Open timeline</Button></>}>
       <div className="tp-tlscroll"><div className="tp-tl">
         <div className="tp-tlplane" aria-hidden="true">
           {WEEKS.map((_, i) => <i key={i} className="tp-wk" style={{ left: `${(i / 8) * 100}%` }} />)}
@@ -58,13 +59,12 @@ export function Timeline({ tasks, epic, onEpic }: { tasks: Task[]; epic: string;
         <div className="tp-tlrow is-ms"><div className="tp-tlname">Milestones</div><div className="tp-tltrack">
           {MILESTONES.map((m) => <button key={m.id} type="button" className={'tp-ms'} style={{ left: `${pctOf(m.d, true) - 0.9}%` }} aria-label={`${m.label}, ${short(m.d)}`} {...hov(m.id, pctOf(m.d), [m.label, short(m.d)], true)}><i /><span>{m.label}</span></button>)}
           {MILESTONES.map((m) => tipEl(m.id))}</div></div>
-        {EPICS.map((e) => {
-          const mine = tasks.filter((t) => t.epic === e.id); const done = pts(mine.filter((t) => t.status === 'done'));
-          const p = Math.round(((e.pre[0]! + done) / (e.pre[1]! + pts(mine))) * 100); const l = pctOf(e.from), r = pctOf(e.to, true);
-          const lines = [e.name, `${short(e.from)} to ${short(e.to)} · ${p}% done`, `Sprint 14: ${mine.filter((t) => t.status === 'done').length} of ${mine.length} tasks done`, `Owner: ${e.who}`];
+        {epics.map((e) => {
+          const st = epicStat(e, tasks); const p = st.p; const l = pctOf(st.from), r = pctOf(st.to, true);
+          const lines = [e.name, `${short(st.from)} to ${short(st.to)} · ${p}% done`, `${st.done} of ${st.mine.length} tasks done`, `Owner: ${e.who}`];
           return (
             <div key={e.id} className={cx('tp-tlrow', epic === e.id && 'is-on')}><div className="tp-tlname"><Avatar name={e.who} size={20} /><span>{e.name}</span></div>
-              <div className="tp-tltrack"><button type="button" className="tp-bar" style={{ left: `${l}%`, width: `${r - l}%` }} aria-pressed={epic === e.id} aria-label={`${lines.join('. ')}. ${epic === e.id ? 'Showing on board' : 'Filter board by this epic'}`} onClick={() => onEpic(epic === e.id ? '' : e.id)} {...hov(e.id, (l + r) / 2, lines)}><i style={{ width: `${p}%` }} /><span>{p}%</span></button>{tipEl(e.id)}</div></div>
+              <div className="tp-tltrack"><button type="button" className="tp-bar" style={{ left: `${l}%`, width: `${r - l}%` }} aria-pressed={epic === e.id} aria-label={`${lines.join('. ')}. ${epic === e.id ? 'Showing on board' : 'Show this epic on the board'}`} onClick={() => onEpic(epic === e.id ? '' : e.id)} {...hov(e.id, (l + r) / 2, lines)}><i style={{ width: `${p}%` }} /><span>{p}%</span></button>{tipEl(e.id)}</div></div>
           );
         })}
       </div></div>
@@ -72,14 +72,14 @@ export function Timeline({ tasks, epic, onEpic }: { tasks: Task[]; epic: string;
   );
 }
 
-export function Workload({ tasks }: { tasks: Task[] }) {
+export function Workload({ tasks, onOpen }: { tasks: Task[]; onOpen: () => void }) {
   const rows = [...PEOPLE.map((p) => ({ name: p.name, role: p.role, cap: p.cap })), ...(tasks.some((t) => !t.who) ? [{ name: 'Unassigned', role: 'Needs an owner', cap: 0 }] : [])].map((p) => {
     const mine = tasks.filter((t) => (t.who ?? 'Unassigned') === p.name); const done = pts(mine.filter((t) => t.status === 'done')), all = pts(mine);
     return { ...p, done, rest: all - done, all, over: p.cap > 0 ? all - p.cap : all };
   });
   const scale = Math.max(...rows.map((r) => Math.max(r.cap, r.all)), 1) * 1.08; const overN = rows.filter((r) => r.over > 0 && r.name !== 'Unassigned').length;
   return (
-    <Panel id="tp-wl" title="Workload" sub={`Assigned points against sprint capacity · ${overN} over`} actions={<span className="tp-legend"><i className="is-done" />Done<i className="is-rest" />To go<i className="is-cap" />Capacity</span>}>
+    <Panel id="tp-wl" title="Workload" sub={`Assigned points against sprint capacity · ${overN} over`} actions={<><span className="tp-legend hide-sm"><i className="is-done" />Done<i className="is-rest" />To go<i className="is-cap" />Capacity</span><Button small onClick={onOpen}>Open workload</Button></>}>
       <ul className="tp-wlist">
         {rows.map((r) => (
           <li key={r.name} className={cx(r.over > 0 && 'is-over')} aria-label={`${r.name}: ${r.all} of ${r.cap} points${r.over > 0 ? `, ${r.over} over capacity` : ''}`}>
@@ -90,7 +90,25 @@ export function Workload({ tasks }: { tasks: Task[] }) {
           </li>
         ))}
       </ul>
-      <p className="tp-wfoot">Commitment at sprint start was {COMMIT} pts. Reassign a card from its menu to rebalance.</p>
+      <p className="tp-wfoot">Commitment at sprint start was {COMMIT} pts. Open the workload view to rebalance.</p>
+    </Panel>
+  );
+}
+
+const wipTone = (n: number, lim: number) => (!lim ? '' : n > lim ? 'is-over' : n === lim ? 'is-at' : '');
+/** A compact board: one column per status with its count against the WIP limit and the first few cards. */
+export function BoardGlance({ tasks, wip, onOpen, onTask }: { tasks: Task[]; wip: Record<Status, number>; onOpen: () => void; onTask: (id: string) => void }) {
+  return (
+    <Panel id="tp-bg" title="Board" sub={`${tasks.length} tasks · ${pts(tasks)} pts in Sprint 14`} actions={<Button small variant="primary" onClick={onOpen}>Open board</Button>}>
+      <div className="tp-glance">
+        {STATUSES.map((st) => { const col = tasks.filter((t) => t.status === st.id); const lim = wip[st.id]; return (
+          <div key={st.id} className={cx('tp-gcol', wipTone(col.length, lim))}>
+            <div className="tp-gct"><StatusIcon s={st.id} /><b>{st.label}</b><span>{col.length}{lim ? ` / ${lim}` : ''}</span><small>{pts(col)} pts</small></div>
+            {lim > 0 && <Progress value={Math.min(1, col.length / lim)} tone={col.length > lim ? 'bad' : col.length === lim ? 'primary' : 'signal'} label={`${st.label} against its WIP limit of ${lim}`} />}
+            <ul>{col.slice(0, 3).map((t) => <li key={t.id}><button type="button" onClick={() => onTask(t.id)}><span className="tp-id">{t.id.slice(4)}</span><span>{t.title}</span></button></li>)}</ul>
+            {col.length > 3 && <button type="button" className="tp-more" onClick={onOpen}>+{col.length - 3} more</button>}
+          </div>); })}
+      </div>
     </Panel>
   );
 }

@@ -33,12 +33,12 @@ export function AskEmpty({ onAsk, onTables }: { onAsk: (q: string) => void; onTa
         <h3><Glyph name="clock" size={13} />Recent</h3>
         <ul>{RECENT.map((r) => <li key={r.rid}><button type="button" onClick={() => onAsk(resOf(r.rid).q)}><span>{resOf(r.rid).q}</span><small>{r.when}</small><Glyph name="chevron" size={13} /></button></li>)}</ul>
       </section>
-      <p className="tx-tip"><Ic name="table" size={13} />You can also ask about the data itself, like “Tell me about the orders table”, or <button type="button" onClick={onTables}>browse all tables</button>.</p>
+      <p className="tx-tip"><Ic name="table" size={13} /><span>You can also ask about the data itself, like “Tell me about the orders table”, or <button type="button" onClick={onTables}>browse all tables</button>.</span></p>
     </div>
   );
 }
 
-const INCLUDES: Array<[string, string, string]> = [['file', 'Summary', 'Plain-language readout with the three things to notice'], ['chart', 'Chart', 'Hover or use arrow keys for exact values'], ['table', 'Table', 'Sortable rows that add up to the chart, export as CSV'], ['layers', 'Query', 'The SQL that ran, ready to copy']];
+const INCLUDES: Array<[string, string, string]> = [['file', 'Summary', 'Plain-language readout with the three things to notice'], ['chart', 'Chart', 'Hover or use arrow keys for exact values'], ['grid', 'Table', 'Sortable rows that add up to the chart, export as CSV'], ['layers', 'Query', 'The SQL that ran, ready to copy']];
 export function Workspace({ saved, busy, onOpenResult, onOpenTable, onAll }: { saved: Saved[]; busy: boolean; onOpenResult: (rid: string) => void; onOpenTable: (t: string) => void; onAll: (v: 'results' | 'tables') => void }) {
   const tbl = [...SCHEMA].sort((a, b) => b.rows - a.rows).slice(0, 5);
   const list = [...saved].sort((a, b) => Number(b.pinned) - Number(a.pinned) || b.at.localeCompare(a.at)).slice(0, 4);
@@ -50,7 +50,7 @@ export function Workspace({ saved, busy, onOpenResult, onOpenTable, onAll }: { s
         {list.length ? <ul className="tx-rows">{list.map((s) => { const r = resOf(s.rid); return <li key={s.rid}><button type="button" disabled={busy} onClick={() => onOpenResult(s.rid)}><Glyph name={r.icon} size={14} /><span>{s.name}</span><em>{r.headline.value}</em><small>{dateLabel(s.at)}</small></button></li>; })}</ul> : <p className="tx-none">Nothing saved yet. Use “Save to Results” under any answer.</p>}
       </section>
       <section className="tx-sec"><div className="tx-sh"><h3>Connected tables</h3><button type="button" className="tx-more" onClick={() => onAll('tables')}>All {SCHEMA.length}</button></div>
-        <ul className="tx-rows">{tbl.map((t) => <li key={t.name}><button type="button" onClick={() => onOpenTable(t.name)}><Ic name="table" size={14} /><code>{t.name}</code><span>{t.desc.split(',')[0]!.replace(/\.$/, '')}</span><em>{fmt.n(t.rows)}</em></button></li>)}</ul>
+        <ul className="tx-rows">{tbl.map((t) => <li key={t.name}><button type="button" onClick={() => onOpenTable(t.name)}><Ic name="table" size={14} /><code>{t.name}</code><span>{t.desc.split('.')[0]}</span><em>{fmt.n(t.rows)}</em></button></li>)}</ul>
       </section>
     </div>
   );

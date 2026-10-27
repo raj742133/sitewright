@@ -5,25 +5,25 @@ import { Button, Empty, Glyph, Pill, cx, fmt } from './_dash';
 import { cover, dateLabel, isLow, lead, money, suggest, type Part } from './_ops';
 
 export type Status = { key: 'critical' | 'low' | 'ok' | 'order'; label: string; tone: 'bad' | 'warn' | 'ok' | 'info' };
-export function statusOf(p: Part, ordered?: number): Status {
+export function statusOf(p: Part, ordered?: number, crit = 4): Status {
   if (ordered) return { key: 'order', label: `On order · ${fmt.n(ordered)}`, tone: 'info' };
-  if (cover(p) < 4) return { key: 'critical', label: 'Critical', tone: 'bad' };
+  if (cover(p) < crit) return { key: 'critical', label: 'Critical', tone: 'bad' };
   if (isLow(p)) return { key: 'low', label: 'Low', tone: 'warn' };
   return { key: 'ok', label: 'In stock', tone: 'ok' };
 }
 type SortId = 'sku' | 'name' | 'onHand' | 'reorder' | 'cover' | 'value' | 'supplier' | 'status';
 const RANK = { critical: 0, low: 1, order: 2, ok: 3 };
 
-export function InventoryTable({ rows, selected, ordered, onSelect, onSelectAll }: { rows: Part[]; selected: Set<string>; ordered: Record<string, number>; onSelect: (sku: string) => void; onSelectAll: (skus: string[], on: boolean) => void }) {
+export function InventoryTable({ rows, selected, ordered, onSelect, onSelectAll, crit = 4 }: { crit?: number; rows: Part[]; selected: Set<string>; ordered: Record<string, number>; onSelect: (sku: string) => void; onSelectAll: (skus: string[], on: boolean) => void }) {
   const [sort, setSort] = useState<{ id: SortId; dir: 1 | -1 }>({ id: 'status', dir: 1 });
   const sorted = useMemo(() => {
     const f: Record<SortId, (a: Part, b: Part) => number> = {
       sku: (a, b) => a.sku.localeCompare(b.sku), name: (a, b) => a.name.localeCompare(b.name), onHand: (a, b) => a.onHand - b.onHand, reorder: (a, b) => a.reorder - b.reorder,
       cover: (a, b) => cover(a) - cover(b), value: (a, b) => a.onHand * a.cost - b.onHand * b.cost, supplier: (a, b) => a.supplier.localeCompare(b.supplier),
-      status: (a, b) => RANK[statusOf(a, ordered[a.sku]).key] - RANK[statusOf(b, ordered[b.sku]).key] || cover(a) - cover(b),
+      status: (a, b) => RANK[statusOf(a, ordered[a.sku], crit).key] - RANK[statusOf(b, ordered[b.sku], crit).key] || cover(a) - cover(b),
     };
     return [...rows].sort((a, b) => f[sort.id](a, b) * sort.dir);
-  }, [rows, sort, ordered]);
+  }, [rows, sort, ordered, crit]);
   const nSel = rows.filter((r) => selected.has(r.sku)).length, all = rows.length > 0 && nSel === rows.length;
   const allRef = useRef<HTMLInputElement>(null);
   useEffect(() => { if (allRef.current) allRef.current.indeterminate = nSel > 0 && !all; }, [nSel, all]);
@@ -43,7 +43,7 @@ export function InventoryTable({ rows, selected, ordered, onSelect, onSelectAll 
         <tbody>
           {sorted.length === 0 && <tr><td colSpan={9} className="to-noneCell"><Empty title="No parts match" text="Clear the search, the station filter or the low stock switch." /></td></tr>}
           {sorted.map((p) => {
-            const st = statusOf(p, ordered[p.sku]), c = cover(p), on = selected.has(p.sku);
+            const st = statusOf(p, ordered[p.sku], crit), c = cover(p), on = selected.has(p.sku);
             return (
               <tr key={p.sku} className={cx('is-click', on && 'is-sel')} onClick={() => onSelect(p.sku)}>
                 <td className="to-chk" onClick={(e) => e.stopPropagation()}><input type="checkbox" checked={on} onChange={() => onSelect(p.sku)} aria-label={`Select ${p.name}`} /></td>

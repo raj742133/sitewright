@@ -2,18 +2,28 @@
   {
     "id": "operations-dashboard",
     "label": "Operations",
-    "desc": "A workshop operations console: KPI strip, a six-station production line with live throughput, a sortable inventory table that builds purchase orders, orders against capacity, supplier lead times and late shipments.",
+    "desc": "A workshop operations console with seven working views: overview, orders with a detail drawer and start/ready/ship actions, a production station board with block and crew actions, inventory with a purchase order builder, suppliers with price history, reports with a period selector, and validated settings.",
     "source": "Original",
     "group": "dashboard",
     "files": [
       "OperationsDashboard.tsx",
       "_ops.tsx",
       "_opsinv.tsx",
+      "_opsstate.tsx",
+      "_opsui.tsx",
+      "_ops-charts.tsx",
+      "_ops-views-orders.tsx",
+      "_ops-views-prod.tsx",
+      "_ops-views-inv.tsx",
+      "_ops-views-sup.tsx",
+      "_ops-views-rep.tsx",
+      "_ops-views-set.tsx",
       "_dash.tsx"
     ],
     "css": [
       "tpl-dash",
-      "tpl-operations-dashboard"
+      "tpl-operations-dashboard",
+      "tpl-operations-views"
     ],
     "use": "Manufacturing, warehouses, logistics, ERP back offices."
   }

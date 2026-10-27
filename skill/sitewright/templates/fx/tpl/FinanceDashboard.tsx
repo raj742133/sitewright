@@ -1,164 +1,123 @@
 'use client';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { BarChart, Button, Delta, Donut, Glyph, PageHeader, Panel, Pill, Preview, Progress, Segmented, Shell, Sparkline, Tabs, PALETTE, cx, useWidth, type NavEntry } from './_dash';
-import { ACCTS, CATS, MONTHS, SEED, TODAY, acctOf, addDays, balances, dShort, dailyTotal, dueLabel, inOut, money, moneyWhole, monthly, spendBy, type Bill, type Tx } from './_fin';
-import { ActionDialog, Drawer, TxTable, type Draft, type Mode, type SortKey } from './_fin-ui';
+// Finance: one screen, five views (Overview, Accounts, Transactions, Bills, Insights) over one set of transactions, bills and goals.
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Preview, Shell, useWidth, type NavEntry } from './_dash';
+import { ACCTS, IN_CATS, OUT_CATS, SEED, TODAY, acctOf, balances, dShort, money, type Bill, type Tx } from './_fin';
+import { GOALS, alerts as findAlerts, detectSubs, paidHistory, type Goal } from './_fin-more';
+import { ActionDialog, type Draft, type Mode } from './_fin-ui';
+import { Toast, csvCell, download } from './_fin-kit';
+import { OverviewView } from './_fin-over';
+import { TX_UI0, TransactionsView, type TxUi } from './_fin-tx';
+import { AccountsView } from './_fin-acct';
+import { BillsView } from './_fin-bills';
+import { InsightsView } from './_fin-ins';
 
-type TabId = 'all' | 'in' | 'out' | 'pending';
-const OTHER = 'color-mix(in srgb, var(--ink, #15130e) 24%, transparent)';
-const idNum = (t: Tx) => +t.id.slice(1);
+const VIEWS = { overview: 'Overview', accounts: 'Accounts', tx: 'Transactions', bills: 'Bills', insights: 'Insights' } as const;
+type ViewId = keyof typeof VIEWS;
+const isView = (v: string | null): v is ViewId => !!v && v in VIEWS;
+interface Toasted { m: string; undo?: () => void; k: number }
 
 export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string }) {
-  const [txs, setTxs] = useState<Tx[]>(SEED.txs);
-  const [bills, setBills] = useState<Bill[]>(SEED.bills);
-  const [tab, setTab] = useState<TabId>('all');
-  const [q, setQ] = useState(''); const [cat, setCat] = useState('all'); const [acct, setAcct] = useState<string | null>(null);
-  const [sort, setSort] = useState<{ key: SortKey; dir: 1 | -1 }>({ key: 'date', dir: -1 });
-  const [sel, setSel] = useState<string | null>(null); const [mode, setMode] = useState<Mode | null>(null);
-  const [months, setMonths] = useState<'6' | '8'>('8'); const [span, setSpan] = useState<'1' | '3' | '8'>('1');
-  const [msg, setMsg] = useState(''); const [active, setActive] = useState('overview');
-  const [root, rw] = useWidth<HTMLDivElement>(); const spk = useRef<HTMLDivElement>(null); const [box, setBox] = useState({ w: 0, h: 64 });
-  useEffect(() => { const el = spk.current; if (!el) return; const f = () => setBox({ w: Math.round(el.clientWidth), h: Math.max(64, Math.min(150, Math.round(el.clientHeight))) }); f(); const ro = new ResizeObserver(f); ro.observe(el); return () => ro.disconnect(); }, []);
-  const drawer = useRef<HTMLElement | null>(null); const inited = useRef(false);
-  const wide = rw >= 897;
-
-  useEffect(() => { if (!inited.current && rw > 0) { inited.current = true; if (wide) setSel(SEED.txs.find((t) => t.status === 'pending')?.id ?? null); } }, [rw, wide]);
+  const [txs, setTxs] = useState<Tx[]>(SEED.txs); const [bills, setBills] = useState<Bill[]>(SEED.bills); const [goals, setGoals] = useState<Goal[]>(GOALS);
+  const [dismissed, setDismissed] = useState<string[]>([]); const [reminders, setReminders] = useState<Record<string, number>>({});
+  const [active, setActive] = useState<ViewId>('overview'); const [ui, setUiState] = useState<TxUi>(TX_UI0); const [acctSel, setAcctSel] = useState('ops');
+  const [dlg, setDlg] = useState<{ mode: Mode; preset?: { from?: string; to?: string } } | null>(null);
+  const [toast, setToast] = useState<Toasted | null>(null); const [live, setLive] = useState('');
+  const [root, rw] = useWidth<HTMLDivElement>(); const wide = rw >= 897;
+  const txRef = useRef(txs); txRef.current = txs;
+  const first = useRef(true); const skip = useRef(false); const seq = useRef(0);
 
   const bal = useMemo(() => balances(txs, SEED.opening), [txs]);
   const total = ACCTS.reduce((a, x) => a + bal[x.id]!, 0);
-  const daily = useMemo(() => dailyTotal(txs, total, 31), [txs, total]);
-  const change = total - daily[0]!; const pct = (change / daily[0]!) * 100;
-  const pend = useMemo(() => { let i = 0, o = 0; for (const t of txs) if (t.status === 'pending') { if (t.amt > 0) i += t.amt; else o += t.amt; } return { i, o, n: txs.filter((t) => t.status === 'pending').length }; }, [txs]);
-  const { inn, out } = useMemo(() => monthly(txs), [txs]);
-  const k = months === '6' ? 6 : 8; const mi = inn.slice(8 - k), mo = out.slice(8 - k);
-  const cfIn = mi.reduce((a, b) => a + b, 0), cfOut = mo.reduce((a, b) => a + b, 0), cfNet = cfIn - cfOut;
-  const spend = useMemo(() => spendBy(txs, +span), [txs, span]);
-  const spendTotal = spend.reduce((a, s) => a + s.value, 0);
-  const parts = useMemo(() => { const top = spend.slice(0, 5); const rest = spend.slice(5).reduce((a, s) => a + s.value, 0); return [...top.map((s, i) => ({ ...s, color: PALETTE[i]! })), ...(rest ? [{ label: 'Other', value: rest, color: OTHER }] : [])]; }, [spend]);
+  const subs = useMemo(() => detectSubs(txs), [txs]);
+  const alertsAll = useMemo(() => findAlerts(txs, subs, money), [txs, subs]);
+  const alertsLive = alertsAll.filter((a) => !dismissed.includes(a.id));
+  const hist = useMemo(() => paidHistory(txs), [txs]);
+  const pendN = txs.filter((t) => t.status === 'pending').length, unpaid = bills.filter((b) => !b.paid).length;
 
-  /* transactions: filters -> tab counts -> tab -> sort */
-  const base = useMemo(() => {
-    const s = q.trim().toLowerCase();
-    return txs.filter((t) => (!acct || t.acct === acct) && (cat === 'all' || t.cat === cat) && (!s || `${t.name} ${t.memo} ${t.cat} ${t.ref} ${acctOf(t.acct).name} ${money(t.amt)}`.toLowerCase().includes(s)));
-  }, [txs, q, cat, acct]);
-  const tabs = [{ id: 'all' as const, label: 'All', count: base.length }, { id: 'in' as const, label: 'Income', count: base.filter((t) => t.kind === 'in').length }, { id: 'out' as const, label: 'Expenses', count: base.filter((t) => t.kind === 'out').length }, { id: 'pending' as const, label: 'Pending', count: base.filter((t) => t.status === 'pending').length }];
-  const rows = useMemo(() => {
-    const r = base.filter((t) => tab === 'all' || (tab === 'in' ? t.kind === 'in' : tab === 'out' ? t.kind === 'out' : t.status === 'pending'));
-    return r.sort((a, b) => sort.dir * (sort.key === 'amt' ? a.amt - b.amt || idNum(a) - idNum(b) : a.date.localeCompare(b.date) || idNum(a) - idNum(b)));
-  }, [base, tab, sort]);
-  const sum = inOut(rows); const cur = sel ? txs.find((t) => t.id === sel) ?? null : null;
-  const filtered = q || cat !== 'all' || acct;
+  const say = useCallback((m: string, undo?: () => void) => { setLive(m); setToast({ m, undo, k: ++seq.current }); }, []);
+  const setUi = (p: Partial<TxUi>) => setUiState((u) => ({ ...u, ...p }));
+  const mutate = (f: (a: Tx[]) => Tx[], m: string) => { const before = txRef.current; setTxs(f(before)); say(m, () => { setTxs(before); say('Undone.'); }); };
+  const patch = (a: Tx[], ids: string[], f: (t: Tx) => Tx) => a.map((t) => (ids.includes(t.id) ? f(t) : t));
 
-  const say = (m: string) => setMsg(m);
-  const patch = (id: string, f: (t: Tx) => Tx) => setTxs((a) => a.map((t) => (t.id === id ? f(t) : t)));
-  const approve = (id: string) => { const t = txs.find((x) => x.id === id)!; patch(id, (x) => ({ ...x, status: 'posted', was: undefined, log: [...x.log, `Approved on ${dShort(TODAY)}`] })); say(`${t.name} approved. ${acctOf(t.acct).name} balance ${t.amt > 0 ? 'increased' : 'decreased'} by ${money(Math.abs(t.amt))}.`); };
-  const flag = (id: string) => { const t = txs.find((x) => x.id === id)!; if (t.status === 'flagged') { patch(id, (x) => ({ ...x, status: x.was ?? 'pending', was: undefined, log: [...x.log, 'Flag cleared'] })); say(`Flag cleared on ${t.name}.`); } else { patch(id, (x) => ({ ...x, was: x.status, status: 'flagged', log: [...x.log, `Flagged for review on ${dShort(TODAY)}`] })); say(`${t.name} flagged for review.`); } };
+  /* views */
+  useEffect(() => { const v = new URLSearchParams(window.location.search).get('view'); if (isView(v) && v !== 'overview') { skip.current = true; setActive(v); } }, []);
+  useEffect(() => {
+    if (first.current) { first.current = false; return; }
+    const el = root.current; (el?.closest('.td-content') as HTMLElement | null)?.scrollTo({ top: 0 });
+    if (skip.current) { skip.current = false; return; }
+    const h = el?.querySelector('h1') as HTMLElement | null; if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } setLive(`${VIEWS[active]} view`);
+  }, [active, root]);
+  const nav = (id: string) => { if (isView(id)) setActive(id); };
+  const goTx = (p: Partial<TxUi> = {}) => { setUiState({ ...TX_UI0, ...p }); setActive('tx'); };
+  useEffect(() => { if (active === 'tx' && wide && !ui.sel) { const t = txs.find((x) => x.status === 'pending'); if (t) setUi({ sel: t.id }); } }, [active]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /* transactions */
   const mk = (n: number, o: Partial<Tx> & Pick<Tx, 'name' | 'amt' | 'acct'>): Tx => ({ id: `t${n}`, date: TODAY, cat: 'Transfer', status: 'posted', kind: o.amt > 0 ? 'in' : 'out', method: 'ACH', ref: `ACH-${70000 + n * 37}`, memo: '', log: [`Created on ${dShort(TODAY)}`], ...o });
-  const pay = (b: Bill) => { const n = txs.length + 1; setTxs((a) => [...a, mk(n, { name: b.name, cat: b.cat, acct: 'ops', amt: -b.amt, memo: 'Bill payment', log: [`Paid on ${dShort(TODAY)}`] })]); setBills((a) => a.map((x) => (x.id === b.id ? { ...x, paid: TODAY } : x))); say(`${b.name} paid, ${money(b.amt)} from Operating.`); };
+  const approve = (ids: string[]) => {
+    const l = txRef.current.filter((t) => ids.includes(t.id) && t.status !== 'posted'); if (!l.length) return;
+    mutate((a) => patch(a, l.map((t) => t.id), (x) => ({ ...x, status: 'posted', was: undefined, log: [...x.log, `Approved on ${dShort(TODAY)}`] })), l.length === 1 ? `${l[0]!.name} approved. ${acctOf(l[0]!.acct).name} balance ${l[0]!.amt > 0 ? 'increased' : 'decreased'} by ${money(Math.abs(l[0]!.amt))}.` : `${l.length} transactions approved and posted to your balances.`);
+  };
+  const flag = (id: string) => {
+    const t = txRef.current.find((x) => x.id === id)!;
+    if (t.status === 'flagged') mutate((a) => patch(a, [id], (x) => ({ ...x, status: x.was ?? 'pending', was: undefined, log: [...x.log, 'Flag cleared'] })), `Flag cleared on ${t.name}.`);
+    else mutate((a) => patch(a, [id], (x) => ({ ...x, was: x.status, status: 'flagged', log: [...x.log, `Flagged for review on ${dShort(TODAY)}`] })), `${t.name} flagged for review.`);
+  };
+  const setCat = (ids: string[], cat: string) => {
+    const ok = txRef.current.filter((t) => ids.includes(t.id) && t.cat !== cat && ((t.kind === 'in' && IN_CATS.includes(cat)) || (t.kind === 'out' && OUT_CATS.includes(cat))));
+    const skipped = ids.length - ok.length - txRef.current.filter((t) => ids.includes(t.id) && t.cat === cat).length;
+    if (!ok.length) return say(skipped ? `Nothing changed: income and expenses cannot move to ${cat}, and transfers keep their category.` : `Already in ${cat}.`);
+    mutate((a) => patch(a, ok.map((t) => t.id), (x) => ({ ...x, cat, log: [...x.log, `Category set to ${cat}`] })), `${ok.length} ${ok.length === 1 ? 'transaction' : 'transactions'} moved to ${cat}${skipped ? `, ${skipped} skipped` : ''}.`);
+  };
+  const exportRows = (rows: Tx[], name: string) => {
+    const body = ['Date,Description,Category,Account,Status,Amount', ...rows.map((t) => [t.date, csvCell(t.name), csvCell(t.cat), csvCell(acctOf(t.acct).name), t.status, (t.amt / 100).toFixed(2)].join(','))].join('\n');
+    say(download(name, body) ? `Exported ${rows.length} transactions.` : 'Export is not available in this view.');
+  };
   const submit = (d: Draft) => {
     const c = +d.amt, n = txs.length + 1; let made: Tx[];
     if (d.mode === 'transfer') made = [mk(n, { name: `Transfer to ${acctOf(d.to).name}`, amt: -c, acct: d.from, kind: 'xfer', method: 'Transfer', memo: `To ${acctOf(d.to).name} ••${acctOf(d.to).mask}` }), mk(n + 1, { name: `Transfer from ${acctOf(d.from).name}`, amt: c, acct: d.to, kind: 'xfer', method: 'Transfer', memo: `From ${acctOf(d.from).name} ••${acctOf(d.from).mask}` })];
     else if (d.mode === 'send') made = [mk(n, { name: d.party.trim(), cat: d.cat, amt: -c, acct: d.from, status: 'pending', memo: d.memo || 'Outgoing payment', log: ['Submitted, waiting for approval'] })];
     else made = [mk(n, { name: d.party.trim(), cat: 'Customer payments', amt: c, acct: d.from, status: 'pending', memo: d.memo || 'Payment request', log: ['Request sent, waiting for payment'] })];
-    setTxs((a) => [...a, ...made]); setMode(null); setTab('all'); setQ(''); setCat('all'); setAcct(null); setSort({ key: 'date', dir: -1 }); setSel(made[0]!.id);
+    setTxs((a) => [...a, ...made]); setDlg(null);
     say(d.mode === 'transfer' ? `${money(c)} moved to ${acctOf(d.to).name}.` : d.mode === 'send' ? `Payment of ${money(c)} to ${d.party.trim()} is pending approval.` : `Request for ${money(c)} sent to ${d.party.trim()}.`);
   };
-  const open = (id: string) => { setSel(id); if (!wide) setTimeout(() => { drawer.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); drawer.current?.focus({ preventScroll: true }); }, 30); };
-  const close = () => { const id = sel; setSel(null); setTimeout(() => (root.current?.querySelector(`[data-row="${id}"]`) as HTMLElement | null)?.focus(), 0); };
-  const goto = (id: string) => { setActive(id); const el = root.current?.querySelector(`#tf-${id}`) as HTMLElement | null; const r = window.matchMedia('(prefers-reduced-motion: reduce)').matches; el?.scrollIntoView({ block: 'start', behavior: r ? 'auto' : 'smooth' }); };
-  const byCategory = (label: string) => { if (label === 'Other') return; setCat(label); setTab('all'); goto('tx'); say(`Showing ${label} transactions.`); };
-  const exportCsv = () => {
-    try {
-      const esc = (s: string) => `"${s.replace(/"/g, '""')}"`;
-      const body = ['Date,Description,Category,Account,Status,Amount', ...rows.map((t) => [t.date, esc(t.name), esc(t.cat), esc(acctOf(t.acct).name), t.status, (t.amt / 100).toFixed(2)].join(','))].join('\n');
-      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([body], { type: 'text/csv' })); a.download = 'transactions.csv'; a.click(); URL.revokeObjectURL(a.href); say(`Exported ${rows.length} transactions.`);
-    } catch { say('Export is not available in this view.'); }
+
+  /* bills */
+  const upBill = (id: string, f: (b: Bill) => Bill) => setBills((a) => a.map((b) => (b.id === id ? f(b) : b)));
+  const pay = (b: Bill, acct = 'ops') => {
+    const n = txs.length + 1; setTxs((a) => [...a, mk(n, { name: b.name, cat: b.cat, acct, amt: -b.amt, memo: 'Bill payment', log: [`Paid on ${dShort(TODAY)}`] })]);
+    upBill(b.id, (x) => ({ ...x, paid: TODAY, tx: `t${n}`, auto: false, sched: undefined, acct })); say(`${b.name} paid, ${money(b.amt)} from ${acctOf(acct).name}. Balance is now ${money(bal[acct]! - b.amt)}.`);
+  };
+  const billAct = {
+    pay,
+    schedule: (id: string, date: string, acct: string) => { const b = bills.find((x) => x.id === id)!; upBill(id, (x) => ({ ...x, sched: date, auto: false, acct })); say(`${b.name} will be paid on ${dShort(date)} from ${acctOf(acct).name}.`); },
+    unschedule: (id: string) => { const b = bills.find((x) => x.id === id)!; upBill(id, (x) => ({ ...x, sched: undefined })); say(`Scheduled payment for ${b.name} cancelled.`, () => { upBill(id, () => b); say('Undone.'); }); },
+    auto: (id: string, on: boolean, acct: string) => { const b = bills.find((x) => x.id === id)!; upBill(id, (x) => ({ ...x, auto: on, sched: on ? undefined : x.sched, acct })); say(on ? `Autopay on for ${b.name}. ${money(b.amt)} leaves ${acctOf(acct).name} on ${dShort(b.due)}.` : `Autopay off for ${b.name}.`, on ? undefined : () => { upBill(id, () => b); say('Undone.'); }); },
+    add: (b: Omit<Bill, 'id'>) => { setBills((a) => [...a, { ...b, id: `b${a.length + 20}` }].sort((x, y) => x.due.localeCompare(y.due))); say(`${b.name} added, ${money(b.amt)} due ${dShort(b.due)}.`); },
   };
 
-  const unpaid = bills.filter((b) => !b.paid); const dueSum = unpaid.reduce((a, b) => a + b.amt, 0);
-  const NAV: NavEntry[] = [{ id: 'overview', label: 'Overview', icon: 'home' }, { id: 'accounts', label: 'Accounts', icon: 'dollar' }, { id: 'tx', label: 'Transactions', icon: 'list', badge: pend.n || undefined }, { id: 'bills', label: 'Bills', icon: 'calendar', badge: unpaid.length || undefined }, { id: 'insights', label: 'Insights', icon: 'chart' }];
-  const [dollars, cents] = money(total).split('.');
-  const sorted = [...bills].sort((a, b) => (a.paid ? 1 : 0) - (b.paid ? 1 : 0) || a.due.localeCompare(b.due));
-  const spkTone = change >= 0 ? 'signal' : 'bad';
+  /* insights */
+  const goalAct = {
+    save: (g: Goal) => { setGoals((a) => (a.some((x) => x.id === g.id) ? a.map((x) => (x.id === g.id ? g : x)) : [...a, g])); say(`Goal ${g.name} saved.`); },
+    remove: (g: Goal) => { const before = goals; setGoals((a) => a.filter((x) => x.id !== g.id)); say(`Goal ${g.name} deleted.`, () => { setGoals(before); say('Undone.'); }); },
+    fundManual: (id: string, c: number) => { const g = goals.find((x) => x.id === id)!; setGoals((a) => a.map((x) => (x.id === id ? { ...x, saved: x.saved + c } : x))); say(`${money(c)} added to ${g.name}.`); },
+    transfer: (acct: string) => setDlg({ mode: 'transfer', preset: { from: acct === 'ops' ? 'sav' : 'ops', to: acct } }),
+  };
+  const exportAll = () => exportRows(txs, 'transactions.csv');
+  const NAV: NavEntry[] = [{ id: 'overview', label: 'Overview', icon: 'home' }, { id: 'accounts', label: 'Accounts', icon: 'dollar' }, { id: 'tx', label: 'Transactions', icon: 'list', badge: pendN || undefined }, { id: 'bills', label: 'Bills', icon: 'calendar', badge: unpaid || undefined }, { id: 'insights', label: 'Insights', icon: 'chart', badge: alertsLive.length || undefined }];
 
   return (
-    <Shell brand={brand} nav={NAV} active={active} onNav={goto} title="Overview" crumbs={[brand, 'Wren & Pike Studio', 'Overview']} searchHint="Search" user={{ name: 'Mara Okafor', role: 'Owner' }}>
-      <div className="tf-wrap" ref={root} id="tf-overview">
-        <PageHeader title="Overview" sub={`Wren & Pike Studio · USD · as of ${dShort(TODAY)}, 2026`}><Button icon="file" onClick={exportCsv}>Export CSV</Button></PageHeader>
-
-        <section className="td-panel tf-hero" aria-label="Balance and cash flow">
-          <div className="tf-bal">
-            <span className="tf-lbl">Total balance <i>·</i> {ACCTS.length} accounts</span>
-            <b className="tf-fig" aria-label={money(total)}>{dollars}<span>.{cents}</span></b>
-            <div className="tf-chg"><Delta value={pct} /><span>{moneyWhole(change, true)} since {dShort(addDays(TODAY, -30))}</span></div>
-            <div className="tf-spk" ref={spk}>{box.w > 0 && <Sparkline data={daily} width={box.w} height={box.h} tone={spkTone} />}</div>
-            <div className="tf-spk-x"><span>{dShort(addDays(TODAY, -30))}</span><span>Low {moneyWhole(Math.min(...daily))} · High {moneyWhole(Math.max(...daily))}</span><span>Today</span></div>
-            <div className="tf-pend"><span>Pending</span><b className="is-in">{moneyWhole(pend.i, true)}</b> in<i>·</i><b>{moneyWhole(pend.o)}</b> out<small>{pend.n} waiting</small></div>
-            <div className="tf-acts"><Button variant="primary" icon="send" onClick={() => setMode('send')}>Send</Button><Button icon="arrowdown" onClick={() => setMode('request')}>Request</Button><Button icon="plus" onClick={() => setMode('transfer')}>Transfer</Button></div>
-          </div>
-          <div className="tf-cf" id="tf-insights">
-            <div className="tf-cf-h">
-              <div><h2>Cash flow</h2><p>Money in vs out per month, posted</p></div>
-              <Segmented label="Months shown" value={months} onChange={setMonths} options={[{ id: '6', label: '6 mo' }, { id: '8', label: '8 mo' }]} />
-            </div>
-            <div className="tf-net"><div><small>Net, {MONTHS[8 - k]}–{MONTHS[7]}</small><b className={cfNet >= 0 ? 'is-in' : undefined}>{moneyWhole(cfNet, true)}</b></div><div><small>In</small><b>{moneyWhole(cfIn)}</b></div><div><small>Out</small><b>{moneyWhole(cfOut)}</b></div><div className="hide-md"><small>Avg monthly net</small><b>{moneyWhole(cfNet / k, true)}</b></div></div>
-            <div className="tf-legend"><span><i className="is-in" />Money in</span><span><i className="is-out" />Money out</span><em>{MONTHS[7]} is month to date</em></div>
-            <BarChart ariaLabel={`Money in and out by month, ${MONTHS[8 - k]} to ${MONTHS[7]} 2026`} labels={MONTHS.slice(8 - k)} height={176} format={(v) => `$${v >= 1000 ? Math.round(v / 1000) + 'k' : Math.round(v)}`} series={[{ id: 'in', label: 'Money in', data: mi.map((v) => Math.round(v / 100)), color: 'var(--signal, #0f766e)' }, { id: 'out', label: 'Money out', data: mo.map((v) => Math.round(v / 100)), color: 'color-mix(in srgb, var(--ink, #15130e) 50%, transparent)' }]} />
-          </div>
-        </section>
-
-        <div className="tf-accts" id="tf-accounts" role="group" aria-label="Accounts, select one to filter transactions">
-          {ACCTS.map((a) => (
-            <button key={a.id} type="button" className="tf-acct" aria-pressed={acct === a.id} onClick={() => { setAcct(acct === a.id ? null : a.id); say(acct === a.id ? 'Showing all accounts.' : `Showing ${a.name} transactions.`); }}>
-              <span className="tf-acct-t"><b>{a.name}</b>{a.primary && <Pill tone="accent" dot={false}>Primary</Pill>}</span>
-              <small>{a.type} <span className="td-mono">••{a.mask}</span></small>
-              <strong>{money(bal[a.id]!)}</strong>
-              <span className="tf-acct-s"><Progress value={bal[a.id]! / total} tone="signal" label={`${a.name} share of total`} /><em>{Math.round((bal[a.id]! / total) * 100)}%</em></span>
-            </button>
-          ))}
-        </div>
-
-        <section className="td-panel tf-tx" id="tf-tx" aria-labelledby="tf-tx-t">
-          <header className="td-panel-h"><div><h2 id="tf-tx-t">Transactions</h2><p>{rows.length} shown{filtered ? ' (filtered)' : ''} · click a row for details</p></div></header>
-          <Tabs label="Transaction type" value={tab} tabs={tabs} onChange={setTab} />
-          <div className="tf-bar">
-            <label className="tf-search"><Glyph name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name, memo, amount" aria-label="Search transactions" /></label>
-            <label className="tf-select"><span className="td-sr">Category</span><select value={cat} onChange={(e) => setCat(e.target.value)} aria-label="Filter by category"><option value="all">All categories</option>{CATS.map((c) => <option key={c} value={c}>{c}</option>)}</select><Glyph name="down" size={12} /></label>
-            {acct && <button type="button" className="tf-chip" onClick={() => setAcct(null)} aria-label={`Remove account filter ${acctOf(acct).name}`}>{acctOf(acct).name} ••{acctOf(acct).mask}<Glyph name="x" size={11} /></button>}
-            {filtered && <Button variant="ghost" small onClick={() => { setQ(''); setCat('all'); setAcct(null); }}>Clear filters</Button>}
-          </div>
-          <div className={cx('tf-body', (cur || wide) && 'has-drawer')}>
-            <div className="tf-main">
-              <TxTable rows={rows} sel={sel} onSel={open} sort={sort} onSort={(key) => setSort((s) => (s.key === key ? { key, dir: s.dir === 1 ? -1 : 1 } : { key, dir: -1 }))} empty={filtered || tab !== 'all' ? 'No transactions match these filters.' : 'No transactions yet.'} />
-              <div className="tf-sum"><span>{rows.length} transactions</span><span>In <b className="is-in">{money(sum.i, true)}</b></span><span>Out <b>{money(sum.o)}</b></span><span>Net <b>{money(sum.net, true)}</b></span><small className="hide-sm">Transfers between accounts are not counted</small></div>
-            </div>
-            {(cur || wide) && <Drawer t={cur} onClose={close} onApprove={approve} onFlag={flag} bodyRef={drawer} />}
-          </div>
-        </section>
-
-        <div className="tf-row">
-          <Panel id="tf-b" title="Upcoming bills" sub={unpaid.length ? `${unpaid.length} due · ${money(dueSum)} from Operating` : 'All caught up'} actions={<span className="tf-avail">Available <b>{money(bal.ops!)}</b></span>}>
-            <ul className="tf-bills" id="tf-bills">
-              {sorted.map((b) => (
-                <li key={b.id} className={cx(b.paid && 'is-paid')}>
-                  <span className="tf-bm" aria-hidden="true"><b>{dShort(b.due).split(' ')[0]}</b>{dShort(b.due).split(' ')[1]}</span>
-                  <span className="tf-bn"><b>{b.name}</b><small>{b.paid ? `Paid ${dShort(b.paid)}` : dueLabel(b.due)} · {b.cat}</small></span>
-                  <span className="tf-ba">{money(b.amt)}</span>
-                  {b.paid ? <Pill tone="ok">Paid</Pill> : <Button small disabled={b.amt > bal.ops!} label={`Pay ${b.name}, ${money(b.amt)}`} onClick={() => pay(b)}>Pay</Button>}
-                </li>
-              ))}
-            </ul>
-          </Panel>
-          <Panel id="tf-c" title="Spend by category" sub={`${span === '1' ? 'October to date' : `Last ${span} months`} · ${moneyWhole(spendTotal)} out`} actions={<Segmented label="Period" value={span} onChange={setSpan} options={[{ id: '1', label: 'Oct' }, { id: '3', label: '3 mo' }, { id: '8', label: '8 mo' }]} />}>
-            <div className="tf-spend">
-              <Donut ariaLabel={`Spend by category, ${moneyWhole(spendTotal)} total`} size={140} parts={parts.map((p) => ({ ...p, value: Math.round(p.value / 100) }))} center={<><b className="tf-dc">{moneyWhole(spendTotal)}</b><small className="td-muted">spent</small></>} />
-              <ul className="tf-legendl">{parts.map((p) => <li key={p.label}><button type="button" disabled={p.label === 'Other'} aria-pressed={cat === p.label} onClick={() => byCategory(p.label)} aria-label={`${p.label}, ${moneyWhole(p.value)}, ${Math.round((p.value / spendTotal) * 100)}%. Show transactions`}><i style={{ background: p.color }} /><span>{p.label}</span><b>{moneyWhole(p.value)}</b><em>{Math.round((p.value / spendTotal) * 100)}%</em></button></li>)}</ul>
-            </div>
-          </Panel>
-        </div>
-      </div>
-      {mode && <ActionDialog mode={mode} balances={bal} onClose={() => setMode(null)} onSubmit={submit} />}
-      <div className="td-sr" role="status" aria-live="polite">{msg}</div>
+    <Shell brand={brand} nav={NAV} active={active} onNav={nav} title={VIEWS[active]} crumbs={[brand, 'Wren & Pike Studio', VIEWS[active]]} searchHint="Search" user={{ name: 'Mara Okafor', role: 'Owner' }}>
+      <div className="tf-host" ref={root}><div className="tf-view" key={active}>
+        {active === 'overview' && <OverviewView txs={txs} bills={bills} bal={bal} total={total} compose={(m) => setDlg({ mode: m })} goAcct={(id) => { setAcctSel(id); setActive('accounts'); }} goTx={(id, tab) => goTx({ sel: id, tab: tab ?? 'all' })} goBills={() => setActive('bills')} goCat={(c) => c !== 'Other' && goTx({ cat: c })} pay={(b) => pay(b)} exportCsv={exportAll} />}
+        {active === 'accounts' && <AccountsView txs={txs} bal={bal} total={total} sel={acctSel} setSel={setAcctSel} onTransfer={(from) => setDlg({ mode: 'transfer', preset: { from } })} onOpenTx={(id) => goTx({ sel: id })} onAll={(a) => goTx({ acct: a })} say={say} />}
+        {active === 'tx' && <TransactionsView txs={txs} ui={ui} setUi={setUi} wide={wide} act={{ approve, flag, setCat, exportRows, send: () => setDlg({ mode: 'send' }) }} />}
+        {active === 'bills' && <BillsView bills={bills} hist={hist} bal={bal} act={billAct} onOpenTx={(id) => goTx({ sel: id })} />}
+        {active === 'insights' && <InsightsView txs={txs} subs={subs} alerts={alertsLive} dismissed={alertsAll.length - alertsLive.length} onDismiss={(id) => { setDismissed((d) => [...d, id]); say('Alert dismissed.', () => { setDismissed((d) => d.filter((x) => x !== id)); say('Undone.'); }); }} onRestore={() => setDismissed([])} reminders={reminders} onRemind={(name, d) => { setReminders((r) => { const n = { ...r }; if (d === null) delete n[name]; else n[name] = d; return n; }); say(d === null ? `Reminder for ${name} removed.` : `We will remind you ${d} days before ${name} renews.`); }} onReview={(a) => goTx({ q: a.q ?? '', cat: a.cat ?? 'all' })} onMerchant={(q) => goTx({ q })} onBills={() => setActive('bills')} goals={{ goals, txs, bal, ...goalAct }} />}
+      </div></div>
+      {dlg && <ActionDialog mode={dlg.mode} preset={dlg.preset} balances={bal} onClose={() => setDlg(null)} onSubmit={submit} />}
+      {toast && <Toast key={toast.k} msg={toast.m} onUndo={toast.undo && (() => { toast.undo!(); })} onClose={() => setToast(null)} />}
+      <div className="td-sr" role="status" aria-live="polite">{live}</div>
     </Shell>
   );
 }

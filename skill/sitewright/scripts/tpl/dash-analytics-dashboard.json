@@ -2,16 +2,27 @@
   {
     "id": "analytics-dashboard",
     "label": "Analytics",
-    "desc": "Web analytics: visitors with period comparison, a live traffic chart with crosshair tooltip, sources, top pages, countries and devices, and a realtime strip.",
+    "desc": "Web analytics with six real views: overview, sortable pages with per-page trend and referrers, channels and UTM campaigns with compare, audience with cohort retention, goals with funnels and a validated goal form, and site settings.",
     "source": "Original",
     "group": "dashboard",
     "files": [
       "AnalyticsDashboard.tsx",
-      "_dash.tsx"
+      "_dash.tsx",
+      "_an-data.tsx",
+      "_an-goals-data.tsx",
+      "_an-ui.tsx",
+      "_an-views-pages.tsx",
+      "_an-views-sources.tsx",
+      "_an-views-aud.tsx",
+      "_an-views-goals.tsx",
+      "_an-goal-form.tsx",
+      "_an-views-settings.tsx",
+      "_an-settings-team.tsx"
     ],
     "css": [
       "tpl-dash",
-      "tpl-analytics-dashboard"
+      "tpl-analytics-dashboard",
+      "tpl-analytics-views"
     ],
     "use": "Site or product analytics, marketing reports, any traffic or usage overview."
   }

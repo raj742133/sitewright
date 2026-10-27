@@ -1,8 +1,17 @@
 'use client';
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { Avatar, Button, Empty, Glyph, Pill, Preview, Shell, Tabs, cx, type NavEntry } from './_dash';
-import { CONVERSATIONS } from './_inbox-data';
-import { Composer, CustomerPanel, Message, dayBreaks } from './_inbox-parts';
+import { ARTICLES, articleLink } from './_inbox-help-data';
+import { DEFAULT_SETTINGS, EXTRA_CONTACTS, SEED_NOTES, buildRows, type Contact, type Note, type Settings } from './_inbox-store';
+import { Toast, ViewCtx, type ToastMsg } from './_inbox-views-ui';
+import type { Canned } from './_inbox-views-canned';
+import type { Votes } from './_inbox-views-help';
+import Customers from './_inbox-views-customers';
+import Reports from './_inbox-views-reports';
+import Help from './_inbox-views-help';
+import SettingsView from './_inbox-views-settings';
+import { CANNED, CONVERSATIONS } from './_inbox-data';
+import { Composer, CustomerPanel, Message, dayBreaks, type Inject } from './_inbox-parts';
 import { Ico, Menu, ME, TEAM, channelIcon, channelName, clock, frtOf, fmtDur, lastAgo, shortAgo, type Conv, type Priority, type Status } from './_inbox';
 
 const TONE: Record<Status, 'info' | 'warn' | 'ok'> = { open: 'info', pending: 'warn', resolved: 'ok' };
@@ -23,10 +32,29 @@ export default function InboxDashboard({ brand = 'Quillbase' }: { brand?: string
   const [sel, setSel] = useState<string | null>('c1');
   const [pane, setPane] = useState<'list' | 'thread' | 'info'>('list');
   const [nav, setNav] = useState('inbox');
+  const [custSel, setCustSel] = useState<string | null>(null);
+  const [extras, setExtras] = useState<Contact[]>(EXTRA_CONTACTS);
+  const [notes, setNotes] = useState<Record<string, Note[]>>(SEED_NOTES);
+  const [canned, setCanned] = useState<Canned[]>(CANNED);
+  const [saved, setSaved] = useState<Settings>(DEFAULT_SETTINGS);
+  const [draft, setDraft] = useState<Settings>(DEFAULT_SETTINGS);
+  const [votes, setVotes] = useState<Votes>({});
+  const [inject, setInject] = useState<Inject | null>(null);
+  const [toast, setToast] = useState<ToastMsg | null>(null);
+  const [touched, setTouched] = useState(false);
+  const after = useRef<'thread' | 'composer' | null>(null);
   const [flash, setFlash] = useState('');
   const [live, setLive] = useState('');
   const body = useRef<HTMLDivElement>(null), timers = useRef<number[]>([]), seq = useRef(100), listEl = useRef<HTMLDivElement>(null);
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
+  useEffect(() => { const v = new URLSearchParams(window.location.search).get('view'); if (v && ['customers', 'reports', 'help', 'settings'].includes(v)) setNav(v); }, []);
+  useEffect(() => {
+    if (!touched || nav !== 'inbox') return;
+    const el = after.current === 'composer' ? null : document.querySelector<HTMLElement>(after.current === 'thread' ? '.ti-th-t h2' : '.ti-lt h1');
+    el?.focus({ preventScroll: true }); setLive(after.current === 'composer' ? 'Inbox. Article added to your reply.' : after.current === 'thread' ? `Inbox. ${cur?.subject ?? ''}` : 'Inbox'); after.current = null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nav, touched]);
+  const say = (msg: string, undo?: () => void) => { setLive(msg); setToast({ id: ++seq.current, text: msg, undo }); timers.current.push(window.setTimeout(() => setToast((t) => (t && t.text === msg ? null : t)), 6000)); };
 
   const scoped = useMemo(() => {
     const s = q.trim().toLowerCase();
@@ -63,27 +91,51 @@ export default function InboxDashboard({ brand = 'Quillbase' }: { brand?: string
     patch(id, (c) => ({ ...c, assignee: c.assignee ?? ME, unread: false, ...(mode === 'reply' ? { status: 'pending' as const, slaLeft: null, snooze: undefined } : {}), msgs: [...c.msgs, { id: mid, kind: mode === 'note' ? 'note' : 'agent', who: ME, ago: 0, text, delivery: mode === 'reply' ? 'sending' : undefined }] }));
     if (mode === 'reply') { timers.current.push(window.setTimeout(() => patch(id, (c) => ({ ...c, msgs: c.msgs.map((m) => (m.id === mid ? { ...m, delivery: 'delivered' as const } : m)) })), 900)); note(cur.status === 'pending' ? 'Reply sent' : 'Reply sent. Moved to Pending'); } else note('Note added for your team', false);
   };
+  const custRows = useMemo(() => buildRows(convs, extras), [convs, extras]);
+  const goNav = (id: string) => { setTouched(true); if (id === 'customers') setCustSel(null); after.current = null; setNav(id); };
+  const openConv = (id: string) => { const c = convs.find((x) => x.id === id); if (!c) return; setQ(''); setWho('all'); setTab(c.status); setSel(id); setPane('thread'); patch(id, (x) => ({ ...x, unread: false })); after.current = 'thread'; setTouched(true); setNav('inbox'); };
+  const setTags = (email: string, tags: string[]) => { setConvs((cs) => cs.map((c) => (c.cust.email === email ? { ...c, cust: { ...c.cust, tags } } : c))); setExtras((xs) => xs.map((x) => (x.email === email ? { ...x, tags } : x))); };
+  const addNote = (email: string, text: string) => { setNotes((n) => ({ ...n, [email]: [{ id: `n${++seq.current}`, by: ME, ago: 0, text }, ...(n[email] ?? [])] })); say('Note saved'); };
+  const delNote = (email: string, id: string) => { const prev = notes[email] ?? []; setNotes((n) => ({ ...n, [email]: prev.filter((x) => x.id !== id) })); say('Note deleted', () => setNotes((n) => ({ ...n, [email]: prev }))); };
+  const saveCanned = (next: Canned[], msg: string, undo?: Canned[]) => { setCanned(next); say(msg, undo ? () => setCanned(undo) : undefined); };
+  const applyRules = () => {
+    let n = 0; const rules = saved.rules;
+    setConvs((cs) => cs.map((c) => { const r = c.status !== 'resolved' && !c.assignee ? rules.find((x) => c.cust.tags.includes(x.tag)) : undefined; if (!r) return c; n++; return { ...c, assignee: r.agent, msgs: [...c.msgs, event(`Rule “${r.tag}” assigned this to ${r.agent}`)] }; }));
+    say(n ? `Assigned ${n} ${n === 1 ? 'conversation' : 'conversations'} by your rules` : 'No unassigned conversation matches a rule'); return n;
+  };
+  const insertArticle = (aid: string, cid: string) => {
+    const c = convs.find((x) => x.id === cid), a = ARTICLES.find((x) => x.id === aid); if (!c || !a) return;
+    setInject({ n: ++seq.current, conv: cid, text: `Hi ${c.cust.name.split(' ')[0]}, this guide should help: “${a.title}”, ${articleLink(a)}\n\n${a.summary}` });
+    setQ(''); setWho('all'); setTab(c.status); setSel(cid); setPane('thread'); patch(cid, (x) => ({ ...x, unread: false })); after.current = 'composer'; setTouched(true); setNav('inbox'); note(`Added “${a.title}” to your reply`);
+  };
+  const dirtyN = [JSON.stringify([draft.sla, draft.bizHours]) !== JSON.stringify([saved.sla, saved.bizHours]), JSON.stringify([draft.method, draft.agents, draft.rules]) !== JSON.stringify([saved.method, saved.agents, saved.rules]), JSON.stringify([draft.notif, draft.quiet]) !== JSON.stringify([saved.notif, saved.quiet])].filter(Boolean).length;
+  const overdue = convs.filter((c) => c.status === 'open' && c.slaLeft !== null && c.slaLeft <= 0).length;
+  const custOpen = custRows.filter((r) => r.open > 0).length;
+  const custCur = custSel ? custRows.find((r) => r.key === custSel) : null;
   const listKey = (e: KeyboardEvent) => {
     const els = Array.from(listEl.current?.querySelectorAll<HTMLElement>('[role="option"]') ?? []); const i = els.indexOf(document.activeElement as HTMLElement);
     const n = e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowUp' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? els.length - 1 : null;
     if (n === null || !els.length) return; e.preventDefault(); els[Math.max(0, Math.min(els.length - 1, n))]?.focus();
   };
 
-  const NAV: NavEntry[] = [{ id: 'inbox', label: 'Inbox', icon: 'inbox', badge: allOpen }, { id: 'customers', label: 'Customers', icon: 'users' }, { id: 'reports', label: 'Reports', icon: 'chart' }, { id: 'help', label: 'Help center', icon: 'file' }, { id: 'settings', label: 'Settings', icon: 'settings' }];
+  const NAV: NavEntry[] = [{ id: 'inbox', label: 'Inbox', icon: 'inbox', badge: allOpen }, { id: 'customers', label: 'Customers', icon: 'users', badge: custOpen || undefined }, { id: 'reports', label: 'Reports', icon: 'chart', badge: overdue || undefined }, { id: 'help', label: 'Help center', icon: 'file' }, { id: 'settings', label: 'Settings', icon: 'settings', badge: dirtyN || undefined }];
   const tabs = [{ id: 'open' as const, label: 'Open', count: counts.open }, { id: 'pending' as const, label: 'Pending', count: counts.pending }, { id: 'resolved' as const, label: 'Resolved', count: counts.resolved }];
   const focusId = rows.some((r) => r.id === sel) ? sel : rows[0]?.id;
 
   return (
-    <Shell brand={brand} nav={NAV} active={nav} onNav={setNav} title="Inbox" crumbs={[brand, 'Support', nav === 'inbox' ? 'Inbox' : NAV.find((n) => n.id === nav)!.label]} searchHint="Search" user={{ name: ME, role: 'Support lead' }}>
-      {nav !== 'inbox' ? (
-        <div className="ti-away"><Empty title={`${NAV.find((n) => n.id === nav)!.label} is not part of this template`} text="The inbox is the working screen here." /><Button variant="primary" onClick={() => setNav('inbox')}>Back to inbox</Button></div>
-      ) : (
+    <ViewCtx.Provider value={{ focus: touched, announce: setLive }}>
+    <Shell brand={brand} nav={NAV} active={nav} onNav={goNav} title={NAV.find((n) => n.id === nav)!.label} crumbs={[brand, 'Support', NAV.find((n) => n.id === nav)!.label, ...(nav === 'customers' && custCur ? [custCur.cust.name] : [])]} searchHint="Search" user={{ name: ME, role: 'Support lead' }}>
+      <div className="td-sr" role="status" aria-live="polite">{live}</div>
+      {nav === 'customers' ? <Customers rows={custRows} sel={custSel} onSel={setCustSel} notes={notes} onAddNote={addNote} onDelNote={delNote} onTags={setTags} onOpenConv={openConv} />
+      : nav === 'reports' ? <Reports convs={convs} settings={saved} onOpenConv={openConv} />
+      : nav === 'help' ? <Help convs={convs} current={sel} votes={votes} onVote={(id, v) => setVotes((x) => { const n = { ...x }; if (v) n[id] = v; else delete n[id]; return n; })} onInsert={insertArticle} />
+      : nav === 'settings' ? <SettingsView canned={canned} onCanned={saveCanned} draft={draft} saved={saved} setDraft={setDraft} onSave={() => { setSaved(draft); say('Settings saved'); }} onDiscard={() => { setDraft(saved); say('Changes discarded'); }} convs={convs} onApplyRules={applyRules} />
+      : (
         <div className="ti" data-pane={pane}>
-          <div className="td-sr" role="status" aria-live="polite">{live}</div>
           {/* ------------------------------------------------ left: conversations */}
           <section className="ti-list" aria-label="Conversations">
             <div className="ti-lh">
-              <div className="ti-lt"><h1>Inbox</h1>
+              <div className="ti-lt"><h1 tabIndex={-1}>Inbox</h1>
                 <label className="ti-sel"><span className="td-sr">Filter by assignee</span><Ico name="user" size={13} />
                   <select value={who} onChange={(e) => setWho(e.target.value)} aria-label="Filter by assignee">
                     <option value="all">All assignees</option><option value="me">Assigned to me</option>{TEAM.filter((t) => t !== ME).map((t) => <option key={t} value={t}>{t}</option>)}<option value="none">Unassigned</option>
@@ -126,7 +178,7 @@ export default function InboxDashboard({ brand = 'Quillbase' }: { brand?: string
               <header className="ti-th">
                 <button type="button" className="td-btn is-ghost is-icon ti-back" onClick={() => setPane('list')} aria-label="Back to conversations"><Ico name="back" size={18} /></button>
                 <div className="ti-th-t">
-                  <h2>{cur.subject}</h2>
+                  <h2 tabIndex={-1}>{cur.subject}</h2>
                   <div className="ti-th-m"><Pill tone={TONE[cur.status]}>{LABEL[cur.status]}</Pill><span>#{cur.num}</span><span className="ti-dotsep">{channelName[cur.channel]}</span>
                     {cur.priority !== 'normal' && <span className="ti-dotsep">{PRI[cur.priority]} priority</span>}
                     <span className="ti-dotsep">{cur.assignee ? (cur.assignee === ME ? 'Assigned to you' : `Assigned to ${cur.assignee}`) : 'Unassigned'}</span>
@@ -148,7 +200,7 @@ export default function InboxDashboard({ brand = 'Quillbase' }: { brand?: string
                 </ol>
               </div>
               {flash && <div className="ti-flash" aria-hidden="true"><Ico name="check" size={13} />{flash}</div>}
-              <Composer conv={cur} onSend={send} />
+              <Composer conv={cur} onSend={send} canned={canned} inject={inject} />
             </> : <div className="ti-none"><button type="button" className="td-btn is-ghost is-icon ti-back" onClick={() => setPane('list')} aria-label="Back to conversations"><Ico name="back" size={18} /></button><Empty title={tab === 'open' && !rows.length ? 'You’re all caught up' : 'Select a conversation'} text={tab === 'open' && !rows.length ? 'No open conversations. New messages will appear here.' : 'Pick one from the list to read the thread and reply.'} /></div>}
           </section>
           {/* ------------------------------------------------ right: customer */}
@@ -158,7 +210,9 @@ export default function InboxDashboard({ brand = 'Quillbase' }: { brand?: string
           {pane === 'info' && <button type="button" className="ti-scrim" aria-label="Close customer panel" tabIndex={-1} onClick={() => setPane('thread')} />}
         </div>
       )}
+      {nav !== 'inbox' && <Toast t={toast} onClose={() => setToast(null)} />}
     </Shell>
+    </ViewCtx.Provider>
   );
 }
 

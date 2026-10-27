@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { Avatar, Button, Pill, Progress, cx } from './_dash';
-import { CANNED } from './_inbox-data';
 import { Ico, Menu, clock, dayLabel, localTime, money, type Conv, type Customer, type Msg } from './_inbox';
 
 /* ---------------------------------------------------------------- one message in the thread */
@@ -31,12 +30,18 @@ export function dayBreaks(msgs: Msg[]) {
 }
 
 /* ---------------------------------------------------------------- composer: Reply / Internal note */
-export function Composer({ conv, onSend }: { conv: Conv; onSend: (mode: 'reply' | 'note', text: string) => void }) {
+export interface Inject { n: number; conv: string; text: string }
+export function Composer({ conv, onSend, canned, inject }: { conv: Conv; onSend: (mode: 'reply' | 'note', text: string) => void; canned: Array<{ id: string; label: string; text: string }>; inject?: Inject | null }) {
   const [mode, setMode] = useState<'reply' | 'note'>('reply');
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const area = useRef<HTMLTextAreaElement>(null);
   const [mac, setMac] = useState(false);
   useEffect(() => setMac(/Mac|iPhone|iPad/.test(navigator.platform)), []);
+  const done = useRef(0);
+  useEffect(() => {
+    if (!inject || inject.conv !== conv.id || done.current === inject.n) return; done.current = inject.n; setMode('reply');
+    const k = `${conv.id}:reply`; setDrafts((d) => ({ ...d, [k]: (d[k] ? `${d[k]}\n\n` : '') + inject.text })); setTimeout(() => area.current?.focus(), 0);
+  }, [inject, conv.id]);
   const key = `${conv.id}:${mode}`, text = drafts[key] ?? '';
   const set = (v: string) => setDrafts((d) => ({ ...d, [key]: v }));
   const first = conv.cust.name.split(' ')[0]!;
@@ -54,8 +59,8 @@ export function Composer({ conv, onSend }: { conv: Conv; onSend: (mode: 'reply' 
         placeholder={mode === 'reply' ? `Write a reply to ${first}…` : 'Leave a note for your team. Use @ to mention someone.'}
         onKeyDown={(e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); send(); } }} />
       <div className="ti-comp-b">
-        {mode === 'reply' && <Menu label="Canned replies" icon="bolt" text="Canned replies" up items={CANNED.map((c) => ({ id: c.id, label: c.label, hint: c.text.replace('{first}', first) }))}
-          onPick={(id) => { const c = CANNED.find((x) => x.id === id); if (c) { set((text ? `${text}\n\n` : '') + c.text.replace('{first}', first)); setTimeout(() => area.current?.focus(), 0); } }} />}
+        {mode === 'reply' && <Menu label="Canned replies" icon="bolt" text="Canned replies" up items={canned.length ? canned.map((c) => ({ id: c.id, label: c.label, hint: c.text.replace('{first}', first) })) : [{ id: 'none', label: 'No canned replies yet', hint: 'Create them in Settings', disabled: true }]}
+          onPick={(id) => { const c = canned.find((x) => x.id === id); if (c) { set((text ? `${text}\n\n` : '') + c.text.replace('{first}', first)); setTimeout(() => area.current?.focus(), 0); } }} />}
         <span className="ti-comp-h"><kbd>{mac ? '⌘' : 'Ctrl'}</kbd><kbd>{'↵'}</kbd> to send</span>
         <Button variant="primary" icon={mode === 'reply' ? 'send' : 'lock'} onClick={send} disabled={!text.trim()}>{mode === 'reply' ? 'Send reply' : 'Add note'}</Button>
       </div>

@@ -3,14 +3,15 @@
 // Enter opens the move menu) and a menu. Every move goes through onMove, which the page announces in its live region.
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState, type KeyboardEvent as RKE, type PointerEvent as RPE } from 'react';
-import { Avatar, Glyph, cx, fmt } from './_dash';
-import { STAGES, closeNote, health, prob, stageLabel, sum, type Deal, type StageId } from './_sales';
+import { Avatar, Glyph, cx } from './_dash';
+import { closeNote, health, prob, stageLabel, sum, type Deal, type StageId } from './_sales';
+import { useCfg } from './_sales-store';
 
 interface Drag { id: string; x: number; y: number; ox: number; oy: number; w: number; over: StageId | null }
 
 function Card({ d, drag, lift, onMenu, grip, ...rest }: { d: Deal; drag?: boolean; lift?: boolean; onMenu?: (el: HTMLElement) => void; grip?: boolean } & React.HTMLAttributes<HTMLDivElement> & { tabIndex?: number }) {
-  const h = health(d), p = prob(d), won = d.stage === 'won';
-  const label = `${d.company}, ${d.title}, ${fmt.c(d.amount)}, ${stageLabel(d.stage)}, ${won ? 'won' : `${p}% probability`}, owner ${d.owner}, ${won ? 'closed' : 'closes'} ${closeNote(d)}, health: ${h.why}`;
+  const { cfg, fm } = useCfg(); const STAGES = cfg.stages; const h = health(d), p = prob(d, STAGES), won = d.stage === 'won';
+  const label = `${d.company}, ${d.title}, ${fm.m(d.amount)}, ${stageLabel(d.stage, STAGES)}, ${won ? 'won' : `${p}% probability`}, owner ${d.owner}, ${won ? 'closed' : 'closes'} ${closeNote(d)}, health: ${h.why}`;
   return (
     <div {...rest} className={cx('ts-card', drag && 'is-float', lift && 'is-lift')} data-deal={d.id} role="group" aria-roledescription="deal card" aria-label={label} aria-keyshortcuts="Shift+ArrowLeft Shift+ArrowRight Enter">
       <div className="ts-c1">
@@ -20,13 +21,14 @@ function Card({ d, drag, lift, onMenu, grip, ...rest }: { d: Deal; drag?: boolea
         {onMenu && <button type="button" className="ts-more" data-nodrag="" aria-haspopup="menu" aria-label={`Move ${d.company}`} onClick={(e) => onMenu(e.currentTarget)}><Glyph name="more" size={16} /></button>}
       </div>
       <span className="ts-title">{d.title}</span>
-      <div className="ts-c3"><b>{fmt.c(d.amount)}</b>{won ? <span className="ts-prob is-won"><Glyph name="check" size={12} />Won</span> : <span className="ts-prob" title="Win probability"><i style={{ width: `${p}%` }} />{p}%</span>}</div>
+      <div className="ts-c3"><b>{fm.m(d.amount)}</b>{won ? <span className="ts-prob is-won"><Glyph name="check" size={12} />Won</span> : <span className="ts-prob" title="Win probability"><i style={{ width: `${p}%` }} />{p}%</span>}</div>
       <div className="ts-c4"><Avatar name={d.owner} size={20} /><span>{d.owner.split(' ')[0]}</span><span className={cx('ts-date', h.level === 'bad' && !won && 'is-late')}><Glyph name="calendar" size={12} />{closeNote(d)}</span></div>
     </div>
   );
 }
 
 export function Board({ deals, onMove }: { deals: Deal[]; onMove: (id: string, to: StageId) => void }) {
+  const { cfg, fm } = useCfg(); const STAGES = cfg.stages;
   const [active, setActive] = useState(''); const [drag, setDrag] = useState<Drag | null>(null); const [menu, setMenu] = useState<{ id: string; x: number; y: number } | null>(null);
   const boardRef = useRef<HTMLDivElement>(null); const cols = useRef<Partial<Record<StageId, HTMLElement | null>>>({}); const menuRef = useRef<HTMLDivElement>(null); const refocus = useRef<string | null>(null);
   const by = (s: StageId) => deals.filter((d) => d.stage === s);
@@ -83,10 +85,10 @@ export function Board({ deals, onMove }: { deals: Deal[]; onMove: (id: string, t
     <>
       <div className={cx('ts-board', drag && 'is-drag')} ref={boardRef} role="group" aria-label="Deals by stage">
         {STAGES.map((s) => { const ds = by(s.id); return (
-          <div key={s.id} ref={(el) => { cols.current[s.id] = el; }} role="group" aria-label={`${s.label}: ${ds.length} ${ds.length === 1 ? 'deal' : 'deals'}, ${fmt.c(sum(ds))}`} className={cx('ts-col', drag && 'is-target', drag?.over === s.id && 'is-over')}>
+          <div key={s.id} ref={(el) => { cols.current[s.id] = el; }} role="group" aria-label={`${s.label}: ${ds.length} ${ds.length === 1 ? 'deal' : 'deals'}, ${fm.m(sum(ds))}`} className={cx('ts-col', drag && 'is-target', drag?.over === s.id && 'is-over')}>
             <header className="ts-colh">
               <div><i className={`ts-sd is-${s.id}`} aria-hidden="true" /><h2>{s.label}</h2><span className="ts-n">{ds.length}</span></div>
-              <p><b>{fmt.c(sum(ds))}</b><small>{s.id === 'won' ? 'closed' : `${s.p}% stage`}</small></p>
+              <p><b>{fm.m(sum(ds))}</b><small>{s.id === 'won' ? 'closed' : `${s.p}% stage`}</small></p>
             </header>
             <ul className="ts-list">
               {ds.map((d) => <li key={d.id}><Card d={d} grip lift={drag?.id === d.id} tabIndex={d.id === tabId ? 0 : -1} onFocus={() => setActive(d.id)} onPointerDown={(e) => begin(e, d)} onKeyDown={(e) => key(e, d)} onMenu={(el) => openMenu(d.id, el)} /></li>)}
