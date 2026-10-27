@@ -42,7 +42,7 @@ function torus() {
   }
   return { verts: new Float32Array(pos), idx: new Uint16Array(idx) };
 }
-const HOME = { rx: 0.9, ry: 0.4, dist: 3.7 };
+const HOME = { rx: 0.95, ry: 0.4, dist: 3.7 };
 
 /** A spinning WebGL torus lit with Blinn-Phong and a moving light. Drag to rotate, wheel (focused or Ctrl) or +/- to zoom, arrows rotate, Home resets. Fills its parent. */
 export default function LitTorus({ label = 'Spinning lit 3D torus', className }: LitTorusProps) {
@@ -83,7 +83,7 @@ export default function LitTorus({ label = 'Spinning lit 3D torus', className }:
     };
     const draw = (t: number) => {
       if (!gl || !prog || lost || !pal) return;
-      const model = mul(rotY(s.ry), rotX(s.rx));
+      const model = mul(rotX(s.rx), rotY(s.ry));
       const mvp = mul(perspective(0.8, w / h, 0.5, 20), mul(translate(0, 0, -s.dist), model));
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

@@ -17,7 +17,8 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
   const [sel, setSel] = useState<string | null>(null); const [mode, setMode] = useState<Mode | null>(null);
   const [months, setMonths] = useState<'6' | '8'>('8'); const [span, setSpan] = useState<'1' | '3' | '8'>('1');
   const [msg, setMsg] = useState(''); const [active, setActive] = useState('overview');
-  const [root, rw] = useWidth<HTMLDivElement>(); const [spk, sw] = useWidth<HTMLDivElement>();
+  const [root, rw] = useWidth<HTMLDivElement>(); const spk = useRef<HTMLDivElement>(null); const [box, setBox] = useState({ w: 0, h: 64 });
+  useEffect(() => { const el = spk.current; if (!el) return; const f = () => setBox({ w: Math.round(el.clientWidth), h: Math.max(64, Math.min(150, Math.round(el.clientHeight))) }); f(); const ro = new ResizeObserver(f); ro.observe(el); return () => ro.disconnect(); }, []);
   const drawer = useRef<HTMLElement | null>(null); const inited = useRef(false);
   const wide = rw >= 897;
 
@@ -90,7 +91,7 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
             <span className="tf-lbl">Total balance <i>·</i> {ACCTS.length} accounts</span>
             <b className="tf-fig" aria-label={money(total)}>{dollars}<span>.{cents}</span></b>
             <div className="tf-chg"><Delta value={pct} /><span>{moneyWhole(change, true)} since {dShort(addDays(TODAY, -30))}</span></div>
-            <div className="tf-spk" ref={spk}>{sw > 0 && <Sparkline data={daily} width={sw} height={64} tone={spkTone} />}</div>
+            <div className="tf-spk" ref={spk}>{box.w > 0 && <Sparkline data={daily} width={box.w} height={box.h} tone={spkTone} />}</div>
             <div className="tf-spk-x"><span>{dShort(addDays(TODAY, -30))}</span><span>Low {moneyWhole(Math.min(...daily))} · High {moneyWhole(Math.max(...daily))}</span><span>Today</span></div>
             <div className="tf-pend"><span>Pending</span><b className="is-in">{moneyWhole(pend.i, true)}</b> in<i>·</i><b>{moneyWhole(pend.o)}</b> out<small>{pend.n} waiting</small></div>
             <div className="tf-acts"><Button variant="primary" icon="send" onClick={() => setMode('send')}>Send</Button><Button icon="arrowdown" onClick={() => setMode('request')}>Request</Button><Button icon="plus" onClick={() => setMode('transfer')}>Transfer</Button></div>
@@ -150,7 +151,7 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
           </Panel>
           <Panel id="tf-c" title="Spend by category" sub={`${span === '1' ? 'October to date' : `Last ${span} months`} · ${moneyWhole(spendTotal)} out`} actions={<Segmented label="Period" value={span} onChange={setSpan} options={[{ id: '1', label: 'Oct' }, { id: '3', label: '3 mo' }, { id: '8', label: '8 mo' }]} />}>
             <div className="tf-spend">
-              <Donut ariaLabel={`Spend by category, ${moneyWhole(spendTotal)} total`} size={164} parts={parts.map((p) => ({ ...p, value: Math.round(p.value / 100) }))} center={<><b className="tf-dc">{moneyWhole(spendTotal)}</b><small className="td-muted">spent</small></>} />
+              <Donut ariaLabel={`Spend by category, ${moneyWhole(spendTotal)} total`} size={140} parts={parts.map((p) => ({ ...p, value: Math.round(p.value / 100) }))} center={<><b className="tf-dc">{moneyWhole(spendTotal)}</b><small className="td-muted">spent</small></>} />
               <ul className="tf-legendl">{parts.map((p) => <li key={p.label}><button type="button" disabled={p.label === 'Other'} aria-pressed={cat === p.label} onClick={() => byCategory(p.label)} aria-label={`${p.label}, ${moneyWhole(p.value)}, ${Math.round((p.value / spendTotal) * 100)}%. Show transactions`}><i style={{ background: p.color }} /><span>{p.label}</span><b>{moneyWhole(p.value)}</b><em>{Math.round((p.value / spendTotal) * 100)}%</em></button></li>)}</ul>
             </div>
           </Panel>
