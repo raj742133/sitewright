@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { UI_DEMOS } from './ui/demos';
 import { GalleryNav } from './GalleryNav';
 
-const GROUP_LABEL: Record<string, string> = { motion: 'Motion', media: 'Media', cards: 'Cards', charts: 'Charts', inputs: 'Inputs', navigation: 'Navigation', buttons: 'Buttons', hover: 'Hover', text: 'Text', backgrounds: 'Backgrounds', loaders: 'Loaders', feedback: 'Feedback' };
+const GROUP_LABEL: Record<string, string> = { motion: 'Motion', media: 'Media', cards: 'Cards', charts: 'Charts', inputs: 'Inputs', navigation: 'Navigation', buttons: 'Buttons', hover: 'Hover', text: 'Text', backgrounds: 'Backgrounds', loaders: 'Loaders', feedback: 'Feedback', glass: 'Glass' };
 const label = (g: string) => GROUP_LABEL[g] ?? g[0]!.toUpperCase() + g.slice(1);
 
 /** Renders its children only once it has scrolled near the screen: a catalogue of a hundred live demos must not run a hundred at once. */

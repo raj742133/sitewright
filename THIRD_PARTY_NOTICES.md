@@ -34,6 +34,47 @@ SOFTWARE.
 
 Every generated project that uses a figure carries this notice in `src/components/fx/figures/LICENSE-hairline.txt`.
 
+## Tactile Glass UI
+
+Sitewright's ten glass components (`skill/sitewright/templates/fx/ui/Glass*.tsx`, the engine `_tg-engine.ts`, the synth `_tg-audio.ts`) are ported from
+[Tactile Glass UI](https://github.com/uixninja/tactile-glass-ui) by uixNinja (red/blue theme edition). The WebGL2 shader, optical presets,
+text-distance-field code and the procedural audio synth are upstream's; what changed:
+
+- renamed (`TactileButton` -> `GlassButton`, ...), TypeScript strict, no `window`/`document` at module scope;
+- the engine class is rewritten: lazy singleton, theme colours read from host tokens (`--primary`, `--signal`, `--ink`, `--surface`) instead of the hard-coded red/blue, light-theme shading, WebGL-missing / context-lost reporting with a CSS fallback, reduced-motion still frames, one IntersectionObserver, loop paused when hidden or off screen;
+- the unused full-screen "stage" renderer is not included;
+- `tokens.css` / `components.css` are replaced by `.ui-glass`-scoped `--tg-*` tokens; the optics props are grouped into one `optics` object;
+- accessibility: labelled prompt box, native switch semantics, live region and slider values on the audio player, no autoplay, 44px touch targets;
+- demos are new.
+
+Tactile Glass UI is released under the MIT licence:
+
+```
+MIT License
+
+Copyright (c) 2026 uixNinja
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+Every generated project that uses a glass component carries this notice in `src/components/fx/ui/LICENSE-tactile-glass.txt`.
+
 ## Better Icons and Iconify
 
 Sitewright's icon support (`skill/sitewright/scripts/lib/icons.mjs`) follows the approach of

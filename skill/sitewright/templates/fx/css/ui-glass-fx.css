@@ -1,0 +1,3 @@
+.ui-glass-fx { position: relative; display: inline-flex; max-width: 100%; overflow: hidden; border-radius: 28px; }
+.ui-glass-fx > .ui-glass-canvas { z-index: 2; }
+.ui-glass-fx-in { position: relative; z-index: 3; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }

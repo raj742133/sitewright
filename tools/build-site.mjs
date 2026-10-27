@@ -32,7 +32,7 @@ const N_BG = countDirs(path.join(SITE_DIR, 'demo/effects/bg'));
 const iconsHtml = fs.existsSync(path.join(SITE_DIR, 'icons/index.html')) ? fs.readFileSync(path.join(SITE_DIR, 'icons/index.html'), 'utf8') : '';
 const N_ICONS = (iconsHtml.match(/data-name="/g) || []).length;
 
-const GROUP_ORDER = ['buttons', 'inputs', 'cards', 'charts', 'navigation', 'text', 'motion', 'media', 'backgrounds', 'hover', 'loaders', 'feedback'];
+const GROUP_ORDER = ['buttons', 'inputs', 'cards', 'charts', 'navigation', 'text', 'motion', 'media', 'backgrounds', 'hover', 'glass', 'loaders', 'feedback'];
 const groups = [...new Set(Object.values(UI).map((e) => e.group))].sort((a, b) => (GROUP_ORDER.indexOf(a) + 100) % 100 - (GROUP_ORDER.indexOf(b) + 100) % 100);
 const groupLabel = (g) => cap(g);
 const byGroup = (g) => Object.values(UI).filter((e) => e.group === g);

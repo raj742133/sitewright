@@ -1,0 +1,7 @@
+.ui-glass-bg { position: relative; width: 100%; min-height: 220px; padding: 32px; border-radius: 16px; display: flex; align-items: center; justify-content: center; overflow: hidden; user-select: none; -webkit-user-select: none;
+  background:
+    radial-gradient(70% 90% at 12% 10%, color-mix(in srgb, var(--tg-accent) 46%, transparent), transparent 70%),
+    radial-gradient(60% 80% at 90% 90%, color-mix(in srgb, var(--tg-accent-2) 40%, transparent), transparent 72%),
+    linear-gradient(160deg, color-mix(in srgb, var(--tg-raised) 80%, transparent), color-mix(in srgb, var(--tg-surface) 90%, transparent)); }
+.ui-glass-bg > .ui-glass-canvas { z-index: 0; }
+.ui-glass-bg-in { position: relative; z-index: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
