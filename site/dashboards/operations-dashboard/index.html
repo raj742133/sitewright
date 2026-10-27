@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Operations · Dashboard template · Sitewright</title>
-<meta name="description" content="A workshop operations console: KPI strip, a six-station production line with live throughput, a sortable inventory table that builds purchase orders, orders…">
+<meta name="description" content="A workshop operations console with seven working views: overview, orders with a detail drawer and start/ready/ship actions, a production station board with…">
 <meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0c0c0b" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Operations: a Sitewright template">
-<meta property="og:description" content="A workshop operations console: KPI strip, a six-station production line with live throughput, a sortable inventory table that builds purchase orders, orders…">
+<meta property="og:description" content="A workshop operations console with seven working views: overview, orders with a detail drawer and start/ready/ship actions, a production station board with…">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://sitewright-skill.vercel.app/assets/og.png">
 <meta property="og:url" content="https://sitewright-skill.vercel.app/dashboards/operations-dashboard/">
@@ -46,7 +46,7 @@
   <div class="det-main">
     <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/dashboards/">Dashboards &amp; pages</a></li><li><a href="/dashboards/#g-dashboard">Dashboards</a></li><li aria-current="page">Operations</li></ol></nav>
     <h1>Operations</h1>
-    <p class="det-sub">A workshop operations console: KPI strip, a six-station production line with live throughput, a sortable inventory table that builds purchase orders, orders against capacity, supplier lead times and late shipments.</p>
+    <p class="det-sub">A workshop operations console with seven working views: overview, orders with a detail drawer and start/ready/ship actions, a production station board with block and crew actions, inventory with a purchase order builder, suppliers with price history, reports with a period selector, and validated settings.</p>
     
     <section class="stage-wrap tstage-wrap" aria-label="Live preview" id="tstage-wrap" data-id="operations-dashboard">
       <div class="toolbar" role="toolbar" aria-label="Preview controls">
@@ -66,7 +66,7 @@
       </div>
     </section>
     <section class="blk two">
-      <div><h2>Files</h2><ul class="files"><li><code>components/fx/tpl/OperationsDashboard.tsx</code></li><li><code>components/fx/tpl/_ops.tsx</code></li><li><code>components/fx/tpl/_opsinv.tsx</code></li><li><code>components/fx/tpl/_dash.tsx</code></li><li><code>tpl-dash.css</code> <span class="muted">styles</span></li><li><code>tpl-operations-dashboard.css</code> <span class="muted">styles</span></li></ul></div>
+      <div><h2>Files</h2><ul class="files"><li><code>components/fx/tpl/OperationsDashboard.tsx</code></li><li><code>components/fx/tpl/_ops.tsx</code></li><li><code>components/fx/tpl/_opsinv.tsx</code></li><li><code>components/fx/tpl/_opsstate.tsx</code></li><li><code>components/fx/tpl/_opsui.tsx</code></li><li><code>components/fx/tpl/_ops-charts.tsx</code></li><li><code>components/fx/tpl/_ops-views-orders.tsx</code></li><li><code>components/fx/tpl/_ops-views-prod.tsx</code></li><li><code>components/fx/tpl/_ops-views-inv.tsx</code></li><li><code>components/fx/tpl/_ops-views-sup.tsx</code></li><li><code>components/fx/tpl/_ops-views-rep.tsx</code></li><li><code>components/fx/tpl/_ops-views-set.tsx</code></li><li><code>components/fx/tpl/_dash.tsx</code></li><li><code>tpl-dash.css</code> <span class="muted">styles</span></li><li><code>tpl-operations-dashboard.css</code> <span class="muted">styles</span></li><li><code>tpl-operations-views.css</code> <span class="muted">styles</span></li></ul></div>
       <div><h2>About it</h2><p>Original to Sitewright. MIT licensed. Demo data is fictional and deterministic. Every control on the page works, so try it before you take it.</p><p class="muted small">It answers its own width rather than the screen's, so the tablet and phone buttons show the real responsive behaviour. Templates are not components: they are chosen with <code>templates</code>, not <code>components</code>.</p></div>
     </section>
     <div class="pn"><a rel="prev" href="/dashboards/inbox-dashboard/"><small>&larr; Previous</small><b>Support inbox</b></a><a rel="next" href="/dashboards/project-dashboard/"><small>Next &rarr;</small><b>Projects</b></a></div>
