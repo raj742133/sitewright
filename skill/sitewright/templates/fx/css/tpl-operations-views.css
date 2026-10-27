@@ -137,7 +137,7 @@
 
 /* contrast: status pills a step darker (lighter in dark theme) than the kit's, so text is >= 4.5:1 on its tinted background */
 .td-shell .td-pill.is-ok { color: color-mix(in srgb, var(--ok, #1c7a5b) 65%, var(--ink, #000)); }
-.td-shell .td-pill.is-info { color: color-mix(in srgb, var(--signal, #0f766e) 62%, var(--ink, #000)); }
+.td-shell .td-pill.is-info { color: color-mix(in srgb, var(--signal, #0f766e) 45%, var(--ink, #000)); }
 .td-shell .td-pill.is-warn { color: color-mix(in srgb, var(--primary, #c2410c) 62%, var(--ink, #000)); }
 .td-shell .td-pill.is-bad { color: color-mix(in srgb, var(--critical, #b32d18) 68%, var(--ink, #000)); }
 @media (pointer: coarse) { .td-shell .td-btn.is-sm, .to-tbl th button { min-height: 44px; } .to-sw, .to-chip { min-height: 44px; } }
