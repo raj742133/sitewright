@@ -109,7 +109,7 @@ export function makeBuffer(gl: WebGLRenderingContext, data: BufferSource, target
 export function fullscreenScene(
   gl: WebGLRenderingContext, frag: string, bind: (prog: Prog) => (t: number, dt: number, env: GLEnv, prog: Prog) => void,
 ): Scene {
-  const prog = makeProgram(gl, VS_FULL, FS_PRE + frag, ['p']);
+  const prog = makeProgram(gl, VS_FULL, FS_PRE + 'uniform vec2 uRes;uniform float uT;' + frag, ['p']);
   const buf = makeBuffer(gl, new Float32Array([-1, -1, 3, -1, -1, 3]));
   const upd = bind(prog);
   return {

@@ -17,18 +17,18 @@ varying vec2 vUv;
 ${GLSL_NOISE2}
 void main(){
   float asp=uRes.x/uRes.y;
-  vec2 p=(vUv-.5)*vec2(asp,1.)*1.7;
+  vec2 p=(vUv-.5)*vec2(asp,1.)*1.15;
   vec2 m=(uPtr-.5)*vec2(asp,1.)*1.7;
   vec2 d=p-m;
   p-=d*exp(-dot(d,d)*1.8)*uAmt*.55;
   float t=uT*.045;
   vec2 q=vec2(fbm(p+vec2(0.,t)),fbm(p+vec2(5.2,1.3)-t));
-  vec2 r=vec2(fbm(p+3.*q+vec2(1.7,9.2)+t*1.3),fbm(p+3.*q+vec2(8.3,2.8)-t*1.1));
-  float f=fbm(p+3.*r);
+  vec2 r=vec2(fbm(p+2.*q+vec2(1.7,9.2)+t*1.3),fbm(p+2.*q+vec2(8.3,2.8)-t*1.1));
+  float f=fbm(p+2.*r);
   vec3 col=uC2;
-  col=mix(col,uC0,smoothstep(.2,.72,f)*.92);
+  col=mix(col,uC0,smoothstep(.2,.72,f)*.8);
   col=mix(col,uC1,smoothstep(.3,.8,length(q)*.9)*smoothstep(.35,.8,r.x)*.88);
-  col=mix(col,uC3,smoothstep(.5,.95,f*f*2.4)*.2);
+  col=mix(col,uC3,smoothstep(.5,.95,f*f*2.4)*.1);
   col+=(hash(gl_FragCoord.xy+fract(uT))-.5)/200.;
   gl_FragColor=vec4(col,1.);
 }`;

@@ -1,0 +1,30 @@
+.ui-phone-3d-root { --rx: 8deg; --ry: -16deg; --gl: 30; position: relative; width: 100%; height: 100%; min-height: 150px; container-type: size; display: grid; place-items: center; perspective: 900px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; outline: none; border-radius: var(--radius, 12px); }
+.ui-phone-3d-root:active { cursor: grabbing; }
+.ui-phone-3d-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-phone-3d-phone { grid-area: 1 / 1; position: relative; font-size: min(5.2cqh, 9cqw); width: 8em; height: 17em; transform-style: preserve-3d; transform: rotateX(var(--rx)) rotateY(var(--ry)); }
+.ui-phone-3d-floor { grid-area: 1 / 1; width: 7em; height: 1.4em; font-size: min(5.2cqh, 9cqw); align-self: end; margin-bottom: 0.2em; border-radius: 50%; background: rgba(0, 0, 0, 0.5); filter: blur(0.6em); opacity: 0.5; }
+.ui-phone-3d-slice, .ui-phone-3d-front, .ui-phone-3d-back { position: absolute; inset: 0; border-radius: 1.4em; }
+.ui-phone-3d-slice { background: linear-gradient(135deg, #cfd4de, #7a8191 55%, #b6bcc9); }
+.ui-phone-3d-front { transform: translateZ(0.46em); background: #05060a; padding: 0.4em; box-sizing: border-box; }
+.ui-phone-3d-back { transform: translateZ(-0.46em) rotateY(180deg); background: linear-gradient(135deg, #c3c8d3, #858c9b); }
+.ui-phone-3d-back span { position: absolute; top: 0.7em; left: 0.7em; width: 3.2em; height: 3.2em; border-radius: 0.9em; background: #1b1e27; }
+.ui-phone-3d-back i { position: absolute; left: 1.05em; width: 1.1em; height: 1.1em; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #4a5570, #07080c 70%); }
+.ui-phone-3d-back i:nth-of-type(1) { top: 1em; } .ui-phone-3d-back i:nth-of-type(2) { top: 2.5em; }
+.ui-phone-3d-screen { position: relative; width: 100%; height: 100%; border-radius: 1.05em; overflow: hidden; background: var(--surface, #fafafa); color: var(--ink, #18181b); font-size: 1em; }
+.ui-phone-3d-island { position: absolute; top: 0.5em; left: 50%; width: 2.4em; height: 0.7em; margin-left: -1.2em; border-radius: 1em; background: #05060a; }
+.ui-phone-3d-glass { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(112deg, transparent calc(var(--gl) * 1% - 22%), rgba(255, 255, 255, 0.3) calc(var(--gl) * 1%), transparent calc(var(--gl) * 1% + 22%)); }
+.ui-phone-3d-btn { position: absolute; left: 50%; width: 0.4em; margin-left: -0.2em; background: #8a91a1; border-radius: 0.1em; }
+.ui-phone-3d-btn-r { transform: translateX(4.05em) rotateY(90deg); }
+.ui-phone-3d-btn-l { transform: translateX(-4.05em) rotateY(-90deg); }
+.ui-phone-3d-ui { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 0.55em; padding: 0.6em 0.7em 0.7em; font: 400 0.75em/1.2 var(--font-body, system-ui); }
+.ui-phone-3d-status { display: flex; justify-content: space-between; font-size: 0.95em; margin-bottom: 0.8em; }
+.ui-phone-3d-status i { width: 1.5em; height: 0.7em; border-radius: 0.2em; background: var(--ink, #18181b); opacity: 0.7; }
+.ui-phone-3d-hello { display: flex; flex-direction: column; } .ui-phone-3d-hello small { color: var(--muted, #52525b); } .ui-phone-3d-hello strong { font-size: 1.9em; line-height: 1.1; }
+.ui-phone-3d-card { display: flex; align-items: center; gap: 0.6em; padding: 0.6em; border-radius: 0.9em; background: var(--primary-wash, #dbeafe); }
+.ui-phone-3d-card svg { width: 3.2em; height: 3.2em; transform: rotate(-90deg); fill: none; stroke-width: 4; }
+.ui-phone-3d-card .t { stroke: var(--line, #d4d4d8); } .ui-phone-3d-card .v { stroke: var(--primary, #2563eb); stroke-linecap: round; stroke-dasharray: 63 88; }
+.ui-phone-3d-card div { display: flex; flex-direction: column; } .ui-phone-3d-card strong { font-size: 1.4em; } .ui-phone-3d-card small { color: var(--muted, #52525b); }
+.ui-phone-3d-tiles { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; min-height: 0; }
+.ui-phone-3d-tiles i { border-radius: 0.8em; background: var(--raised-2, #f4f4f5); border: 1px solid var(--line, #d4d4d8); }
+.ui-phone-3d-tiles i:nth-child(2) { background: var(--signal-wash, #fef3c7); }
+.ui-phone-3d-tabs { display: flex; justify-content: space-around; padding-top: 0.4em; } .ui-phone-3d-tabs i { width: 1.4em; height: 0.35em; border-radius: 1em; background: var(--muted, #52525b); opacity: 0.5; } .ui-phone-3d-tabs i:first-child { background: var(--primary, #2563eb); opacity: 1; }

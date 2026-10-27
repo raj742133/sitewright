@@ -19,7 +19,7 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
   const [msg, setMsg] = useState(''); const [active, setActive] = useState('overview');
   const [root, rw] = useWidth<HTMLDivElement>(); const [spk, sw] = useWidth<HTMLDivElement>();
   const drawer = useRef<HTMLElement | null>(null); const inited = useRef(false);
-  const wide = rw >= 890;
+  const wide = rw >= 897;
 
   useEffect(() => { if (!inited.current && rw > 0) { inited.current = true; if (wide) setSel(SEED.txs.find((t) => t.status === 'pending')?.id ?? null); } }, [rw, wide]);
 
@@ -30,7 +30,7 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
   const pend = useMemo(() => { let i = 0, o = 0; for (const t of txs) if (t.status === 'pending') { if (t.amt > 0) i += t.amt; else o += t.amt; } return { i, o, n: txs.filter((t) => t.status === 'pending').length }; }, [txs]);
   const { inn, out } = useMemo(() => monthly(txs), [txs]);
   const k = months === '6' ? 6 : 8; const mi = inn.slice(8 - k), mo = out.slice(8 - k);
-  const cfIn = mi.reduce((a, b) => a + b, 0), cfOut = mo.reduce((a, b) => a + b, 0);
+  const cfIn = mi.reduce((a, b) => a + b, 0), cfOut = mo.reduce((a, b) => a + b, 0), cfNet = cfIn - cfOut;
   const spend = useMemo(() => spendBy(txs, +span), [txs, span]);
   const spendTotal = spend.reduce((a, s) => a + s.value, 0);
   const parts = useMemo(() => { const top = spend.slice(0, 5); const rest = spend.slice(5).reduce((a, s) => a + s.value, 0); return [...top.map((s, i) => ({ ...s, color: PALETTE[i]! })), ...(rest ? [{ label: 'Other', value: rest, color: OTHER }] : [])]; }, [spend]);
@@ -81,7 +81,7 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
   const spkTone = change >= 0 ? 'signal' : 'bad';
 
   return (
-    <Shell brand={brand} nav={NAV} active={active} onNav={goto} title="Overview" crumbs={[brand, 'Wren & Pike Studio', 'Overview']} searchHint="Search transactions" user={{ name: 'Mara Okafor', role: 'Owner' }}>
+    <Shell brand={brand} nav={NAV} active={active} onNav={goto} title="Overview" crumbs={[brand, 'Wren & Pike Studio', 'Overview']} searchHint="Search" user={{ name: 'Mara Okafor', role: 'Owner' }}>
       <div className="tf-wrap" ref={root} id="tf-overview">
         <PageHeader title="Overview" sub={`Wren & Pike Studio · USD · as of ${dShort(TODAY)}, 2026`}><Button icon="file" onClick={exportCsv}>Export CSV</Button></PageHeader>
 
@@ -100,7 +100,7 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
               <div><h2>Cash flow</h2><p>Money in vs out per month, posted</p></div>
               <Segmented label="Months shown" value={months} onChange={setMonths} options={[{ id: '6', label: '6 mo' }, { id: '8', label: '8 mo' }]} />
             </div>
-            <div className="tf-net"><div><small>Net, {MONTHS[8 - k]}–{MONTHS[7]}</small><b className={cfIn + cfOut >= 0 ? 'is-in' : undefined}>{moneyWhole(cfIn + cfOut, true)}</b></div><div><small>In</small><b>{moneyWhole(cfIn)}</b></div><div><small>Out</small><b>{moneyWhole(-cfOut)}</b></div><div className="hide-sm"><small>Avg monthly net</small><b>{moneyWhole((cfIn + cfOut) / k, true)}</b></div></div>
+            <div className="tf-net"><div><small>Net, {MONTHS[8 - k]}–{MONTHS[7]}</small><b className={cfNet >= 0 ? 'is-in' : undefined}>{moneyWhole(cfNet, true)}</b></div><div><small>In</small><b>{moneyWhole(cfIn)}</b></div><div><small>Out</small><b>{moneyWhole(cfOut)}</b></div><div className="hide-md"><small>Avg monthly net</small><b>{moneyWhole(cfNet / k, true)}</b></div></div>
             <div className="tf-legend"><span><i className="is-in" />Money in</span><span><i className="is-out" />Money out</span><em>{MONTHS[7]} is month to date</em></div>
             <BarChart ariaLabel={`Money in and out by month, ${MONTHS[8 - k]} to ${MONTHS[7]} 2026`} labels={MONTHS.slice(8 - k)} height={176} format={(v) => `$${v >= 1000 ? Math.round(v / 1000) + 'k' : Math.round(v)}`} series={[{ id: 'in', label: 'Money in', data: mi.map((v) => Math.round(v / 100)), color: 'var(--signal, #0f766e)' }, { id: 'out', label: 'Money out', data: mo.map((v) => Math.round(v / 100)), color: 'color-mix(in srgb, var(--ink, #15130e) 50%, transparent)' }]} />
           </div>
@@ -150,7 +150,7 @@ export default function FinanceDashboard({ brand = 'Tarn' }: { brand?: string })
           </Panel>
           <Panel id="tf-c" title="Spend by category" sub={`${span === '1' ? 'October to date' : `Last ${span} months`} · ${moneyWhole(spendTotal)} out`} actions={<Segmented label="Period" value={span} onChange={setSpan} options={[{ id: '1', label: 'Oct' }, { id: '3', label: '3 mo' }, { id: '8', label: '8 mo' }]} />}>
             <div className="tf-spend">
-              <Donut ariaLabel={`Spend by category, ${moneyWhole(spendTotal)} total`} size={140} parts={parts.map((p) => ({ ...p, value: Math.round(p.value / 100) }))} center={<><b className="tf-dc">{moneyWhole(spendTotal)}</b><small className="td-muted">spent</small></>} />
+              <Donut ariaLabel={`Spend by category, ${moneyWhole(spendTotal)} total`} size={164} parts={parts.map((p) => ({ ...p, value: Math.round(p.value / 100) }))} center={<><b className="tf-dc">{moneyWhole(spendTotal)}</b><small className="td-muted">spent</small></>} />
               <ul className="tf-legendl">{parts.map((p) => <li key={p.label}><button type="button" disabled={p.label === 'Other'} aria-pressed={cat === p.label} onClick={() => byCategory(p.label)} aria-label={`${p.label}, ${moneyWhole(p.value)}, ${Math.round((p.value / spendTotal) * 100)}%. Show transactions`}><i style={{ background: p.color }} /><span>{p.label}</span><b>{moneyWhole(p.value)}</b><em>{Math.round((p.value / spendTotal) * 100)}%</em></button></li>)}</ul>
             </div>
           </Panel>

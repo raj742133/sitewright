@@ -5,8 +5,8 @@ import { fmt } from './_dash';
 export type StageId = 'lead' | 'qualified' | 'proposal' | 'negotiation' | 'won';
 export interface Stage { id: StageId; label: string; p: number }
 export const STAGES: Stage[] = [
-  { id: 'lead', label: 'Lead', p: 10 }, { id: 'qualified', label: 'Qualified', p: 25 }, { id: 'proposal', label: 'Proposal', p: 45 },
-  { id: 'negotiation', label: 'Negotiation', p: 65 }, { id: 'won', label: 'Won', p: 100 },
+  { id: 'lead', label: 'Lead', p: 10 }, { id: 'qualified', label: 'Qualified', p: 22 }, { id: 'proposal', label: 'Proposal', p: 45 },
+  { id: 'negotiation', label: 'Negotiation', p: 58 }, { id: 'won', label: 'Won', p: 100 },
 ];
 export const stageLabel = (id: StageId) => STAGES.find((s) => s.id === id)!.label;
 

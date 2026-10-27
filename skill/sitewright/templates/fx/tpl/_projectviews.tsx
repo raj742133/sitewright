@@ -13,7 +13,7 @@ export function Burndown({ tasks }: { tasks: Task[] }) {
   return (
     <Panel id="tp-bd" title="Burndown" sub="Story points remaining, 10 working days (19 to 30 Oct)" actions={<span className="tp-legend"><i />Remaining<i className="is-ideal" />Ideal</span>}>
       <div className="tp-bd" ref={ref}>
-        <AreaChart ariaLabel={`Burndown: ${pt(s.remaining)} remaining today against an ideal of ${pt(s.ideal)}`} labels={DAY_LABELS.map((l, i) => (i === TODAY_IDX ? 'Today, Sat 24' : l))} height={188} format={(v) => String(Math.round(v))} tipFormat={pt}
+        <AreaChart ariaLabel={`Burndown: ${pt(s.remaining)} remaining today against an ideal of ${pt(s.ideal)}`} labels={DAY_LABELS.map((l, i) => (i === TODAY_IDX ? 'Today, Sat 24' : l))} height={252} format={(v) => String(Math.round(v))} tipFormat={pt}
           series={[{ id: 'actual', label: 'Remaining', data: actual }, { id: 'ideal', label: 'Ideal', data: ideal, color: 'color-mix(in srgb, var(--ink, #15130e) 38%, transparent)' }]} />
         {w > 0 && <><div className="tp-future" style={{ left: tx }} aria-hidden="true" /><div className="tp-today" style={{ left: tx }} aria-hidden="true"><span>Today</span></div>
           <div className="tp-ann" aria-hidden="true">{s.carry === 0 ? 'Projected to finish by Fri 30' : <>Projected <b>{pt(s.carry)}</b> left on Fri 30</>}</div></>}
@@ -56,7 +56,7 @@ export function Timeline({ tasks, epic, onEpic }: { tasks: Task[]; epic: string;
         <div className="tp-tlrow is-head"><div className="tp-tlname">Sprint</div><div className="tp-tltrack">{SPRINTS.map((sp) => <span key={sp.n} className={cx('tp-sp', sp.n === 14 && 'is-now')} style={{ left: `${pctOf(sp.a)}%`, width: `${pctOf(sp.b) - pctOf(sp.a)}%` }}>S{sp.n}</span>)}</div></div>
         <div className="tp-tlrow is-head"><div className="tp-tlname">Week of</div><div className="tp-tltrack">{WEEKS.map((l, i) => <span key={l} className="tp-wl" style={{ left: `${(i / 8) * 100}%` }}>{l}</span>)}<span className="tp-todaylab" style={{ left: `${TODAY_PCT}%` }}>Today</span></div></div>
         <div className="tp-tlrow is-ms"><div className="tp-tlname">Milestones</div><div className="tp-tltrack">
-          {MILESTONES.map((m) => <button key={m.id} type="button" className={cx('tp-ms', pctOf(m.d) > 80 && 'is-flip')} style={{ left: `${pctOf(m.d, true) - 0.9}%` }} aria-label={`${m.label}, ${short(m.d)}`} {...hov(m.id, pctOf(m.d), [m.label, short(m.d)], true)}><i /><span>{m.label}</span></button>)}
+          {MILESTONES.map((m) => <button key={m.id} type="button" className={cx('tp-ms', pctOf(m.d) > 60 && 'is-flip')} style={pctOf(m.d) > 60 ? { right: `${100 - pctOf(m.d, true) - 0.9}%` } : { left: `${pctOf(m.d, true) - 0.9}%` }} aria-label={`${m.label}, ${short(m.d)}`} {...hov(m.id, pctOf(m.d), [m.label, short(m.d)], true)}><i /><span>{m.label}</span></button>)}
           {MILESTONES.map((m) => tipEl(m.id))}</div></div>
         {EPICS.map((e) => {
           const mine = tasks.filter((t) => t.epic === e.id); const done = pts(mine.filter((t) => t.status === 'done'));

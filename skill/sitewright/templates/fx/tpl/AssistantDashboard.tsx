@@ -13,7 +13,7 @@ const HELLO = `Hi, I'm the Meridian data assistant. Pick a question below or typ
 
 function Steps({ steps, step, live }: { steps: string[]; step: number; live: boolean }) {
   const done = step >= steps.length;
-  if (!live) return <details className="tx-ran"><summary><Icon name="check" size={12} />Ran {steps.length} steps</summary><ol className="tx-steps">{steps.map((s) => <li key={s} className="is-done"><Icon name="check" size={12} />{s}</li>)}</ol></details>;
+  if (!live) return <details className="tx-ran"><summary><Icon name="check" size={12} />Ran {steps.length} step{steps.length === 1 ? '' : 's'}</summary><ol className="tx-steps">{steps.map((s) => <li key={s} className="is-done"><Icon name="check" size={12} />{s}</li>)}</ol></details>;
   return (
     <ol className="tx-steps" aria-label="What the assistant is doing">
       {steps.map((s, i) => <li key={s} className={i < step ? 'is-done' : i === step ? 'is-run' : ''}>{i < step ? <Icon name="check" size={12} /> : i === step ? <i className="tx-spin" /> : <i className="tx-pend" />}{s}{i === step && !done && <span className="tx-dots" aria-hidden="true"><b /><b /><b /></span>}</li>)}
@@ -26,7 +26,7 @@ export default function AssistantDashboard() {
   const [msgs, setMsgs] = useState<Msg[]>([]); const [results, setResults] = useState<Result[]>([]); const [sel, setSel] = useState<string | null>(null);
   const [job, setJob] = useState<Job | null>(null); const [draft, setDraft] = useState(''); const [view, setView] = useState<'chat' | 'result'>('chat');
   const [unseen, setUnseen] = useState(false); const [live, setLive] = useState(''); const [nav, setNav] = useState('ask');
-  const log = useRef<HTMLDivElement>(null); const ta = useRef<HTMLTextAreaElement>(null); const body = useRef<HTMLDivElement>(null);
+  const log = useRef<HTMLDivElement>(null); const ta = useRef<HTMLTextAreaElement>(null); const body = useRef<HTMLDivElement>(null); const bar = useRef<HTMLDivElement>(null);
   const nid = useRef(1); const committed = useRef(0); const busy = job !== null;
 
   const commit = useCallback((res: Result) => {
@@ -64,7 +64,7 @@ export default function AssistantDashboard() {
   }, [job, reduced, commit, finish]);
 
   useEffect(() => { const el = log.current; if (el) el.scrollTop = el.scrollHeight; }, [msgs, job]);
-  useEffect(() => { body.current?.scrollTo({ top: 0 }); }, [sel]);
+  useEffect(() => { body.current?.scrollTo({ top: 0 }); const t = bar.current?.querySelector('[aria-selected=true]') as HTMLElement | null; const w = bar.current?.firstElementChild as HTMLElement | null; if (t && w) w.scrollTo({ left: t.offsetLeft - 12, behavior: reduced ? 'auto' : 'smooth' }); }, [sel, results.length, reduced]);
   useEffect(() => { const el = ta.current; if (el) { el.style.height = 'auto'; el.style.height = `${Math.min(120, el.scrollHeight)}px`; } }, [draft]);
 
   const onKey = (e: KeyboardEvent<HTMLTextAreaElement>) => { if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send(draft); } };
@@ -122,7 +122,7 @@ export default function AssistantDashboard() {
             </form>
           </section>
           <section className="tx-res" aria-label="Result">
-            {results.length > 0 && <div className="tx-tabbar"><Tabs label="Result history" value={sel ?? results[results.length - 1]!.id} onChange={(id) => { setSel(id); setUnseen(false); }} tabs={[...results.map((r) => ({ id: r.id, label: r.short })), { id: '_t', label: 'Tables' }]} /></div>}
+            {results.length > 0 && <div className="tx-tabbar" ref={bar}><Tabs label="Result history" value={sel ?? results[results.length - 1]!.id} onChange={(id) => { setSel(id); setUnseen(false); }} tabs={[...results.map((r) => ({ id: r.id, label: r.short })), { id: '_t', label: 'Tables' }]} /></div>}
             <div className="tx-res-b" ref={body} tabIndex={0} aria-label="Result details" aria-busy={!!thinking}>
               {thinking && job?.res ? <Skeleton step={job.steps[job.step] ?? 'Finishing'} /> : current ? <ResultView key={current.id} res={current} /> : <Catalog onAsk={send} busy={busy} hasResults={results.length > 0} />}
             </div>

@@ -16,8 +16,9 @@ const FRAG = `
 uniform vec4 uRing[${RINGS}]; uniform vec3 uDeep,uShallow,uHi; uniform float uAsp;
 varying vec2 vUv;
 float height(vec2 p){
-  float h=sin(dot(p,vec2(1.3,.8))*5.+uT*.9)*.5+sin(dot(p,vec2(-.7,1.5))*7.+uT*1.15+1.7)*.32
-         +sin(dot(p,vec2(2.1,-.4))*11.+uT*1.5+4.)*.16+sin(dot(p,vec2(.3,2.3))*17.-uT*1.9)*.08;
+  p+=.06*vec2(sin(p.y*3.1+uT*.5),cos(p.x*2.7-uT*.4));
+  float h=sin(dot(p,vec2(1.,.45))*4.+uT*.7)*.5+sin(dot(p,vec2(-.62,.95))*6.3+uT*.9+1.7)*.34
+         +sin(dot(p,vec2(.9,-1.3))*8.7+uT*1.1+4.)*.2+sin(dot(p,vec2(-1.7,-.5))*12.1-uT*1.3)*.1;
   for(int i=0;i<${RINGS};i++){
     vec4 r=uRing[i];
     if(r.w>0.){
@@ -33,13 +34,13 @@ void main(){
   float e=.004;
   float h0=height(p);
   vec2 g=vec2(height(p+vec2(e,0.))-h0,height(p+vec2(0.,e))-h0)/e;
-  vec3 n=normalize(vec3(-g*.055,1.));
+  vec3 n=normalize(vec3(-g*.04,1.));
   vec3 L=normalize(vec3(-.5,.6,.65));
   float diff=dot(n,L)*.5+.5;
-  float spec=pow(max(dot(n,normalize(L+vec3(0.,0.,1.))),0.),70.);
+  float spec=pow(max(dot(n,normalize(L+vec3(0.,0.,1.))),0.),40.);
   float fres=1.-n.z;
   vec3 col=mix(uDeep,uShallow,clamp(diff*diff*1.2+fres*2.,0.,1.));
-  col=mix(col,uHi,spec*.7);
+  col=mix(col,uHi,spec*.45);
   gl_FragColor=vec4(col,1.);
 }`;
 

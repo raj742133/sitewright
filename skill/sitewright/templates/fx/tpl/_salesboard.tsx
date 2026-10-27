@@ -35,8 +35,8 @@ export function Board({ deals, onMove }: { deals: Deal[]; onMove: (id: string, t
     if (!refocus.current) return; const el = boardRef.current?.querySelector<HTMLElement>(`[data-deal="${refocus.current}"]`); refocus.current = null; el?.focus();
   }, [deals]);
   useEffect(() => {
-    if (!menu) return; menuRef.current?.querySelector<HTMLElement>('button:not(:disabled)')?.focus();
-    const away = (e: PointerEvent) => { if (!menuRef.current?.contains(e.target as Node)) setMenu(null); }; const close = () => setMenu(null);
+    if (!menu) return; menuRef.current?.querySelector<HTMLElement>('button:not(:disabled)')?.focus({ preventScroll: true });
+    const away = (e: PointerEvent) => { if (!menuRef.current?.contains(e.target as Node)) setMenu(null); }; const close = (e?: Event) => { if (e?.target instanceof Node && menuRef.current?.contains(e.target)) return; setMenu(null); };
     window.addEventListener('pointerdown', away); window.addEventListener('resize', close); window.addEventListener('scroll', close, true);
     return () => { window.removeEventListener('pointerdown', away); window.removeEventListener('resize', close); window.removeEventListener('scroll', close, true); };
   }, [menu]);

@@ -38,7 +38,7 @@ export function InventoryTable({ rows, selected, ordered, onSelect, onSelectAll 
         <caption className="td-sr">Inventory, {rows.length} parts. Column headers sort the table.</caption>
         <thead><tr>
           <th scope="col" className="to-chk"><input ref={allRef} type="checkbox" checked={all} onChange={(e) => onSelectAll(rows.map((r) => r.sku), e.target.checked)} aria-label="Select all shown parts" /></th>
-          {th('sku', 'SKU', 'hide-sm')}{th('name', 'Part')}{th('onHand', 'On hand', undefined, true)}{th('reorder', 'Reorder pt', 'hide-sm', true)}{th('cover', 'Days of cover', undefined, true)}{th('value', 'Value', 'hide-md', true)}{th('supplier', 'Supplier', 'hide-md')}{th('status', 'Status')}
+          {th('sku', 'SKU', 'hide-md')}{th('name', 'Part')}{th('onHand', 'On hand', undefined, true)}{th('reorder', 'Reorder pt', 'hide-md', true)}{th('cover', 'Days of cover', 'hide-sm', true)}{th('value', 'Value', 'hide-md', true)}{th('supplier', 'Supplier', 'hide-md')}{th('status', 'Status')}
         </tr></thead>
         <tbody>
           {sorted.length === 0 && <tr><td colSpan={9} className="to-noneCell"><Empty title="No parts match" text="Clear the search, the station filter or the low stock switch." /></td></tr>}
@@ -47,11 +47,11 @@ export function InventoryTable({ rows, selected, ordered, onSelect, onSelectAll 
             return (
               <tr key={p.sku} className={cx('is-click', on && 'is-sel')} onClick={() => onSelect(p.sku)}>
                 <td className="to-chk" onClick={(e) => e.stopPropagation()}><input type="checkbox" checked={on} onChange={() => onSelect(p.sku)} aria-label={`Select ${p.name}`} /></td>
-                <td className="hide-sm td-mono to-sku">{p.sku}</td>
-                <td><div className="td-cellmain"><div><b>{p.name}</b><small>{p.cat}</small></div></div></td>
+                <td className="hide-md td-mono to-sku">{p.sku}</td>
+                <td><div className="td-cellmain"><div><b>{p.name}</b><small><span className="to-skui td-mono">{p.sku} · </span>{p.cat}</small></div></div></td>
                 <td className="is-r"><b className={cx('to-n', isLow(p) && 'is-low')}>{fmt.n(p.onHand)}</b></td>
-                <td className="is-r hide-sm td-muted">{fmt.n(p.reorder)}</td>
-                <td className="is-r"><span className="to-cover"><span className={cx('to-bar', st.key === 'critical' && 'is-bad', st.key === 'low' && 'is-warn')}><i style={{ width: `${Math.min(1, c / 21) * 100}%` }} /></span><b>{c.toFixed(1)}</b></span></td>
+                <td className="is-r hide-md td-muted">{fmt.n(p.reorder)}</td>
+                <td className="is-r hide-sm"><span className="to-cover"><span className={cx('to-bar', st.key === 'critical' && 'is-bad', st.key === 'low' && 'is-warn')}><i style={{ width: `${Math.min(1, c / 21) * 100}%` }} /></span><b>{c.toFixed(1)}</b></span></td>
                 <td className="is-r hide-md">{money(p.onHand * p.cost)}</td>
                 <td className="hide-md td-muted">{p.supplier}</td>
                 <td><Pill tone={st.tone}>{st.label}</Pill></td>

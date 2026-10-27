@@ -38,7 +38,7 @@ export function TxTable({ rows, sel, onSel, sort, onSort, empty }: { rows: Tx[];
               <td className="tf-date">{dShort(t.date)}</td>
               <td><div className="tf-desc"><b>{t.name}</b><small>{t.memo}<span className="tf-st"> · <StatusPill s={t.status} /></span></small></div></td>
               <td className="hide-sm"><span className="tf-cat">{t.cat}</span></td>
-              <td className="hide-md tf-acct">{acctOf(t.acct).name} <i>••{acctOf(t.acct).mask}</i></td>
+              <td className="hide-md tf-ac">{acctOf(t.acct).name} <i>••{acctOf(t.acct).mask}</i></td>
               <td className="hide-sm"><StatusPill s={t.status} /></td>
               <td className="is-r"><Amt t={t} /></td>
             </tr>
