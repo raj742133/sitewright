@@ -1,6 +1,6 @@
 /* Analytics views (Pages, Sources, Audience, Goals, Settings). Host tokens only. */
 .td-shell .ta-h1:focus { outline: none; } .td-shell .ta-h1:focus-visible { outline: 2px solid var(--primary, #c2410c); outline-offset: 4px; border-radius: 4px; }
-.td-shell .ta-split2 { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+.td-shell .ta-split2 { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 16px; align-items: start; }
 .td-shell .ta-split2.is-goals { grid-template-columns: minmax(0, 1fr) 400px; }
 .td-shell .ta-sticky { display: grid; gap: 16px; position: sticky; top: 0; min-width: 0; }
 .td-shell .ta-h3 { display: flex; align-items: baseline; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--muted, #5c5851); margin: 16px 0 6px; }
@@ -93,7 +93,7 @@
 .td-shell .ta-add, .td-shell .ta-invite, .td-shell .ta-ret { display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap; } .td-shell .ta-add .ta-field, .td-shell .ta-ret .ta-field { flex: 1; min-width: 200px; } .td-shell .ta-add .td-btn, .td-shell .ta-ret .td-btn, .td-shell .ta-invite .td-btn { margin-top: 22px; }
 .td-shell .ta-ret .ta-field { max-width: 320px; } .td-shell .ta-invite .ta-field:first-child { flex: 1; min-width: 200px; } .td-shell .ta-invite .ta-field:nth-child(2) { width: 120px; }
 .td-shell .ta-who { display: grid; flex: 1; min-width: 0; line-height: 1.3; } .td-shell .ta-who b { font-weight: 600; } .td-shell .ta-who small { color: var(--muted, #5c5851); overflow: hidden; text-overflow: ellipsis; }
-.td-shell .ta-role { width: 112px; } .td-shell .ta-role-fixed { width: 112px; padding: 0 10px; color: var(--muted, #5c5851); } .td-shell .ta-rm-gap { width: 26px; flex: none; }
+.td-shell .ta-role { width: 112px; } .td-shell .ta-role-fixed { width: 112px; padding: 0 10px; color: var(--muted, #5c5851); } .td-shell .ta-rm-gap { width: 32px; flex: none; }
 .td-shell .ta-danger { border-color: color-mix(in srgb, var(--critical, #b32d18) 40%, var(--line, #ddd)); } .td-shell .ta-danger li { justify-content: space-between; padding: 14px; } .td-shell .ta-danger p { color: var(--muted, #5c5851); margin: 0; }
 .td-shell .ta-toast { position: sticky; bottom: 12px; justify-self: center; z-index: 5; display: flex; align-items: center; gap: 12px; max-width: min(520px, 100%); padding: 10px 14px; border-radius: 10px; background: var(--ink, #15130e); color: var(--surface, #fff); box-shadow: 0 8px 24px rgba(0, 0, 0, .25); }
 .td-shell .ta-toast button { border: 0; background: none; color: inherit; font-weight: 650; cursor: pointer; padding: 4px 6px; border-radius: 6px; min-height: 28px; text-decoration: underline; text-underline-offset: 3px; } .td-shell .ta-toast button[aria-label] { text-decoration: none; font-size: 16px; opacity: .8; }
@@ -102,3 +102,7 @@
 @container td (max-width: 520px) { .td-shell .ta-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .td-shell .ta-stats div:nth-child(3) { border-left: 0; } .td-shell .ta-stats div:nth-child(n+3) { border-top: 1px solid var(--line, #ddd); } .td-shell .ta-who small { display: none; } .td-shell .ta-role, .td-shell .ta-role-fixed { width: 96px; } .td-shell .ta-danger li { flex-direction: column; align-items: flex-start; } .td-shell .ta-invite .ta-field:nth-child(2) { width: 100%; } .td-shell .ta-nr { gap: 20px; } }
 @media (pointer: coarse) { .td-shell .ta-search, .td-shell .ta-input, .td-shell .ta-switch, .td-shell .ta-legend2 button, .td-shell .ta-rowbtn, .td-shell .ta-toast button { min-height: 44px; } .td-shell .ta-heat td button { min-height: 44px; } .td-shell .ta-search button { width: 32px; height: 32px; } .td-shell .ta-goal-main { min-height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .td-shell .ta-switch i, .td-shell .ta-switch i::after { transition: none; } }
+
+.td-shell .ta-row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.td-shell .ta-heat thead th:first-child, .td-shell .ta-heat tbody th { width: 84px; } .td-shell .ta-heat thead th:nth-child(2), .td-shell .ta-heat tbody td:nth-child(2) { width: 64px; }
+@container td (max-width: 1000px) { .td-shell .ta-row2 { grid-template-columns: 1fr; } }

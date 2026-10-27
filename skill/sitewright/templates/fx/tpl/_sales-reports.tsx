@@ -19,17 +19,18 @@ export function ReportsView({ deals, headRef, initTab, announce }: { deals: Deal
   const mine = useMemo(() => deals.filter((d) => scope === 'all' || d.owner === scope), [deals, scope]); const lost = LOST.filter((l) => scope === 'all' || l.owner === scope);
   const quota = scope === 'all' ? teamQuota(cfg) : cfg.quotas[scope] ?? 0; const open = mine.filter((d) => d.stage !== 'won'); const won = mine.filter((d) => d.stage === 'won');
   const w = (d: Deal) => (d.amount * prob(d, cfg.stages)) / 100;
-  const months = MONTHS.map((m, i) => { const wonV = sum(won.filter((d) => monthOf(d) === i)), wt = sum(open.filter((d) => monthOf(d) === i), w), target = (quota * cfg.phasing[i]!) / 100; return { m, wonV, wt, target, fc: wonV + wt }; });
+  type MRow = { m: string; wonV: number; wt: number; target: number; fc: number };
+  const months: MRow[] = MONTHS.map((m, i) => { const wonV = sum(won.filter((d) => monthOf(d) === i)), wt = sum(open.filter((d) => monthOf(d) === i), w), target = (quota * cfg.phasing[i]!) / 100; return { m, wonV, wt, target, fc: wonV + wt }; });
   const fc = add(months, (x) => x.fc), gap = quota - fc; const winRate = won.length + lost.length ? won.length / (won.length + lost.length) : 0;
   const worst = months.reduce((a, b) => (b.fc - b.target < a.fc - a.target ? b : a)); const cyc = won.map(cycleDays);
   const scopeNote = scope === 'all' ? 'whole team' : scope;
   // funnel: who reached each stage = deals now at or past it + lost deals that got that far
-  const order = cfg.stages.map((s) => s.id); const reached = cfg.stages.map((s, i) => { const a = mine.filter((d) => order.indexOf(d.stage) >= i), b = lost.filter((l) => order.indexOf(l.at) >= i); return { s, n: a.length + b.length, v: sum(a) + sum(b) }; });
+  const order = cfg.stages.map((s) => s.id); const reached = cfg.stages.map((s, i) => { const a = mine.filter((d) => order.indexOf(d.stage) >= i), b = lost.filter((l) => order.indexOf(l.at) >= i); return { s, n: a.length + b.length, v: sum(a) + add(b, (x) => x.amount) }; });
   const bands = [{ l: 'Under $40k', f: (d: Deal) => d.amount < 40000 }, { l: '$40k to $80k', f: (d: Deal) => d.amount >= 40000 && d.amount < 80000 }, { l: '$80k and over', f: (d: Deal) => d.amount >= 80000 }].map((b) => ({ ...b, ds: won.filter(b.f) }));
   const reps = REPS.map((r) => { const ds = deals.filter((d) => d.owner === r.name), wn = ds.filter((d) => d.stage === 'won'), op = ds.filter((d) => d.stage !== 'won'), ls = LOST.filter((l) => l.owner === r.name).length, q = cfg.quotas[r.name] ?? r.quota;
     const f = sum(wn) + sum(op, w); return { name: r.name, role: r.role, q, won: sum(wn), fc: f, cov: (q - sum(wn)) > 0 ? sum(op) / (q - sum(wn)) : 0, rate: wn.length + ls ? wn.length / (wn.length + ls) : 0, cycle: avg(wn.map(cycleDays)) }; }).sort((a, b) => b.won / b.q - a.won / a.q);
 
-  const mcols: Array<Col<(typeof months)[0]>> = [
+  const mcols: Array<Col<MRow>> = [
     { id: 'm', label: 'Month', cell: (r) => <b>{r.m === 'Quarter' ? 'Q4 total' : `${r.m} 2026`}</b> }, { id: 't', label: 'Target', align: 'right', cell: (r) => fm.m(r.target) }, { id: 'w', label: 'Closed won', align: 'right', hideBelow: 'sm', cell: (r) => fm.m(r.wonV) },
     { id: 'o', label: 'Weighted open', align: 'right', hideBelow: 'sm', cell: (r) => fm.m(r.wt) }, { id: 'f', label: 'Forecast', align: 'right', cell: (r) => <b>{fm.m(r.fc)}</b> },
     { id: 'd', label: 'vs target', align: 'right', cell: (r) => <Pill tone={r.fc >= r.target ? 'ok' : r.fc >= r.target * 0.85 ? 'info' : 'warn'}>{fmt.p(r.target ? r.fc / r.target : 0, 0)}</Pill> },
@@ -64,14 +65,14 @@ export function ReportsView({ deals, headRef, initTab, announce }: { deals: Deal
       {tab === 'forecast' && <>
         <div className="td-kpis">
           <Kpi label="Q4 forecast" value={fm.m(fc)} hint={`${fmt.p(quota ? fc / quota : 0, 0)} of target`} tone="signal" /><Kpi label="Q4 target" value={fm.m(quota)} hint={cfg.phasing.join(' / ') + '% by month'} />
-          <Kpi label={gap > 0 ? 'Gap to target' : 'Ahead of target'} value={fm.m(Math.abs(gap))} hint={gap > 0 ? `${(sum(open) / gap).toFixed(1)}× covered by open pipeline` : 'target covered'} /><Kpi label="Win rate" value={fmt.p(winRate, 0)} hint={`${won.length} won, ${lost.length} lost`} tone="signal" />
+          <Kpi label={gap > 0 ? 'Gap to target' : 'Ahead of target'} value={fm.m(Math.abs(gap))} hint={gap > 0 ? `${open.length} deals still open` : 'target covered'} /><Kpi label="Win rate" value={fmt.p(winRate, 0)} hint={`${won.length} won, ${lost.length} lost`} tone="signal" />
         </div>
-        <Panel id="tv-rf" title="Forecast by month" sub="Closed won plus open deals weighted by win probability, grouped by close date" actions={<span className="ts-legend"><i />Won<i className="is-w" />Weighted open<i className="is-t" />Target</span>}>
-          <BarChart ariaLabel="Forecast by month against target, in US dollars" labels={[...MONTHS]} height={240} format={fm.k}
-            series={[{ id: 'w', label: 'Closed won', data: months.map((m) => m.wonV) }, { id: 'o', label: 'Weighted open', data: months.map((m) => Math.round(m.wt)), color: 'var(--signal, #0f766e)' }, { id: 't', label: 'Target', data: months.map((m) => Math.round(m.target)), color: 'color-mix(in srgb, var(--ink, #15130e) 42%, transparent)' }]} />
+        <Panel id="tv-rf" title="Forecast by month" sub="Closed won plus open deals weighted by win probability, grouped by close date" actions={<span className="ts-legend"><i />Closed won<i className="is-w" />Weighted open</span>}>
+          <BarChart ariaLabel="Forecast by month, closed won plus weighted open, with each month's target in the label" stacked labels={months.map((m) => `${m.m} · target ${fm.k(m.target)}`)} height={240} format={fm.k}
+            series={[{ id: 'w', label: 'Closed won', data: months.map((m) => m.wonV) }, { id: 'o', label: 'Weighted open', data: months.map((m) => Math.round(m.wt)), color: 'var(--signal, #0f766e)' }]} />
           <p className="ts-chartnote"><b>{worst.fc < worst.target ? `${worst.m} is the gap` : 'Every month is on target'}</b>{worst.fc < worst.target && <span>{fm.m(worst.target - worst.fc)} short in {worst.m}: add pipeline that closes then</span>}<span>{open.length} open deals, {fm.m(sum(open))} unweighted</span></p>
         </Panel>
-        <Panel id="tv-rm" title="Month by month" flush><Table caption="Forecast by month" cols={mcols} rows={[...months, { m: 'Quarter' as (typeof MONTHS)[number], wonV: sum(won), wt: sum(open, w), target: quota, fc }]} rowKey={(r) => r.m} /></Panel>
+        <Panel id="tv-rm" title="Month by month" flush><Table caption="Forecast by month" cols={mcols} rows={[...months, { m: 'Quarter', wonV: sum(won), wt: sum(open, w), target: quota, fc }]} rowKey={(r) => r.m} /></Panel>
       </>}
       {tab === 'leaderboard' && <Panel id="tv-rl" title="Rep leaderboard" sub="Quota attainment is closed won against Q4 quota. Coverage is open pipeline against the quota left to win." flush>
         <Table caption="Rep leaderboard, sortable" cols={rcols} rows={reps} rowKey={(r) => r.name} selected={scope} />
@@ -90,7 +91,7 @@ export function ReportsView({ deals, headRef, initTab, announce }: { deals: Deal
           {won.length === 0 && <Empty title="No won deals" text="Nothing has closed in this scope yet." />}
         </Panel>
       </div>}
-      {tab === 'winloss' && <div className="tv-two-col">
+      {tab === 'winloss' && <div className="tv-two-col is-wl">
         <Panel id="tv-rw" title={wl === 'lost' ? 'Why we lose' : 'Why we win'} sub={`${wl === 'lost' ? lost.length : won.length} deals, ${fm.m(add(reasons, (x) => x.v))}`} actions={<Segmented label="Outcome" value={wl} onChange={setWl} options={[{ id: 'lost', label: 'Lost' }, { id: 'won', label: 'Won' }]} />}>
           {rank.length ? <RankList tone={wl === 'won' ? 'signal' : 'primary'} rows={rank} format={(v) => `${v} ${v === 1 ? 'deal' : 'deals'}`} /> : <Empty title="Nothing to show" text="No deals in this scope." />}
         </Panel>

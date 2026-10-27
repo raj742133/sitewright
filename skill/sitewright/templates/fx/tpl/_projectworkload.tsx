@@ -38,7 +38,7 @@ export function WorkloadView({ s, heading }: { s: Store; heading: React.RefObjec
   const cellTxt = (c: Cell) => (pct ? (c.cap ? `${Math.round((c.load / c.cap) * 100)}%` : c.load ? `${c.load}` : '–') : `${c.load}`);
 
   return (
-    <div className="tp-root tp-wv">
+    <div className="tp-root tp-wlv">
       <div className="tp-vh"><div><h1 ref={heading} tabIndex={-1}>Workload</h1><p>Planned points per person per week against capacity · 19 Oct to 6 Dec</p></div>
         <div className="td-ph-a"><Segmented label="Show" value={scope} onChange={setScope} options={[{ id: 'all', label: 'All work' }, { id: 'open', label: 'Open work' }]} /><Segmented label="Cell value" value={pct ? 'pct' : 'pts'} onChange={(v) => setPct(v === 'pct')} options={[{ id: 'pts', label: 'Points' }, { id: 'pct', label: '% of capacity' }]} /><Segmented label="Chart style" value={mode} onChange={setMode} options={[{ id: 'heat', label: 'Heatmap' }, { id: 'bars', label: 'Bars' }]} /></div></div>
       <div className="td-kpis tp-kp">

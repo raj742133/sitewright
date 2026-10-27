@@ -95,7 +95,7 @@ export function alerts(txs: Tx[], subs: Sub[], fmt: (c: number) => string): Aler
   const byM = catByMonth(txs), day = +TODAY.slice(8, 10), frac = day / daysIn(2026, 10);
   for (const [cat, a] of byM) {
     const avg = a.slice(1, 7).reduce((x, y) => x + y, 0) / 6 * frac, now = a[7]!;
-    if (now > avg * 1.35 && now - avg >= 50000) out.push({ id: `spike:${cat}`, tone: 'info', title: `${cat} is ${Math.round((now / avg - 1) * 100)}% above its usual pace`, detail: `${fmt(now)} so far in October against about ${fmt(avg)} for the same days in a typical month.`, cat });
+    if (now > avg * 1.35 && now - avg >= 50000) out.push({ id: `spike:${cat}`, tone: 'info', title: `${cat} is ${Math.round((now / avg - 1) * 100)}% above its usual pace`, detail: `${fmt(now)} so far in October against about ${fmt(Math.round(avg))} for the same days in a typical month.`, cat });
   }
   return out;
 }

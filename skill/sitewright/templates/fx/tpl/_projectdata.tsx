@@ -51,7 +51,7 @@ const LATER: Task[] = [
   L(168, 'Monitoring dashboards and alerts', 'Sam Delgado', 5, 'lr', ['Infra'], '2026-11-02', '2026-11-10', 15, 'high'),
   L(166, 'Launch announcement and press page', 'Priya Raman', 5, 'lr', ['Content'], '2026-11-09', '2026-11-20', 16),
   L(167, 'Staff beta feedback triage', 'Sam Delgado', 3, 'lr', ['Infra'], '2026-11-16', '2026-11-18', 16),
-  L(169, 'Rollback runbook rehearsal', 'Sam Delgado', 3, 'lr', ['Infra'], '2026-11-23', '2026-11-25', 16, 'high'),
+  L(169, 'Rollback runbook rehearsal', 'Sam Delgado', 3, 'lr', ['Infra'], '2026-11-23', '2026-11-24', 16, 'high'),
   L(170, 'Gift card redemption at checkout', 'Jonas Weber', 5, 'co', ['Backend', 'Frontend'], '2026-11-09', '2026-11-17', 16),
   L(171, 'Visual QA pass on checkout', 'Maya Okafor', 3, 'co', ['Design'], '2026-11-12', '2026-11-17', 16),
   L(172, 'Performance budget and image audit', 'Leo Martins', 3, 'ca', ['Frontend', 'Infra'], '2026-11-16', '2026-11-19', 16),

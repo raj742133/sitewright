@@ -30,7 +30,7 @@ export function AccountsView({ ops, headRef, initial }: { ops: Ops; headRef: Rea
           <div className="tv-actools">
             <label className="ts-search"><span className="td-sr">Search accounts</span><Glyph name="search" size={14} /><input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search companies" /></label>
             <div className="tv-acrow"><Segmented<Kind> label="Account type" value={kind} onChange={setKind} options={[{ id: 'all', label: 'All' }, { id: 'customer', label: 'Customers' }, { id: 'prospect', label: 'Prospects' }]} />
-              <label className="tv-mini"><span className="td-sr">Sort accounts</span><select value={sort} onChange={(e) => setSort(e.target.value as SortId)}><option value="arr">Sort: ARR</option><option value="pipeline">Sort: Open pipeline</option><option value="name">Sort: Name</option></select></label></div>
+              <label className="tv-mini"><span className="td-sr">Sort accounts</span><select aria-label="Sort accounts" value={sort} onChange={(e) => setSort(e.target.value as SortId)}><option value="arr">By ARR</option><option value="pipeline">By pipeline</option><option value="name">By name</option></select></label></div>
           </div>
           {rows.length === 0 ? <Empty title="No accounts match" text="Try another search or type." /> : (
             <ul className="tv-aclistul" ref={list} role="listbox" aria-label="Accounts">

@@ -78,7 +78,7 @@ export function TimelineView({ s, heading, onBoard }: { s: Store; heading: React
           <label className="tp-chk"><input type="checkbox" checked={deps} onChange={(e) => setDeps(e.target.checked)} />Dependencies</label>
         </div>
       </div>
-      <div className="tp-gantt" style={{ ['--lw' as string]: undefined }}>
+      <div className="tp-gantt">
         <div className="tp-gl" aria-hidden={false}>
           <div className="tp-gl-h" style={{ height: 96 }}><span>Epic / task</span></div>
           {rows.map((r) => r.kind === 'epic' ? (() => { const e = s.data.epics.find((x) => x.id === r.id)!; const st = stats[e.id]!; const on = open.includes(e.id); return (
@@ -88,19 +88,19 @@ export function TimelineView({ s, heading, onBoard }: { s: Store; heading: React
         </div>
         <div className="tp-gs" ref={scroller} onScroll={() => setTip(null)}>
           <div className="tp-gc" style={{ width: W }}>
-            <div className="tp-gh" style={{ height: 96 }}>
-              <div className="tp-gh-r" style={{ top: 0 }}>{MON.map((m, i) => { const a = [0, 20, 51][i]!, b = [20, 51, DAYS][i]!; return <span key={m} style={{ left: a * pxd, width: (b - a) * pxd }}>{m} 2026</span>; })}</div>
-              <div className="tp-gh-r" style={{ top: 24 }}>{SPRINTS.map((sp) => <span key={sp.n} className={cx('tp-sp', sp.n === 14 && 'is-now')} style={{ left: px(sp.a), width: (dn(sp.b) - dn(sp.a)) * pxd }}>Sprint {sp.n}</span>)}</div>
-              <div className="tp-gh-r" style={{ top: 48 }}>{weeks.map((d) => <span key={d} className="tp-wkl" style={{ left: d * pxd, width: 7 * pxd }}>{zoom === 'week' ? short(addDays('2026-10-12', d)) : d % 14 === 0 ? short(addDays('2026-10-12', d)).replace(/ .*/, '') && short(addDays('2026-10-12', d)) : ''}</span>)}</div>
-              <div className="tp-gh-r tp-ms-r" style={{ top: 70 }}>{MILESTONES.map((m) => <button key={m.id} type="button" className="tp-ms" style={{ left: px(dn(m.d) + 0.5) }} aria-label={`Milestone ${m.label}, ${short(m.d)}`} onFocus={(e) => showTip(e, [m.label, short(m.d)])} onBlur={() => setTip(null)} onPointerEnter={(e) => showTip(e, [m.label, short(m.d)])} onPointerLeave={() => setTip(null)}><i />{zoom === 'week' && <span>{m.label}</span>}</button>)}</div>
+            <div className="tp-gth" style={{ height: 96 }}>
+              <div className="tp-gth-r" style={{ top: 0 }}>{MON.map((m, i) => { const a = [0, 20, 51][i]!, b = [20, 51, DAYS][i]!; return <span key={m} style={{ left: a * pxd, width: (b - a) * pxd }}>{m} 2026</span>; })}</div>
+              <div className="tp-gth-r" style={{ top: 24 }}>{SPRINTS.map((sp) => <span key={sp.n} className={cx('tp-sp', sp.n === 14 && 'is-now')} style={{ left: px(sp.a), width: (dn(sp.b) - dn(sp.a)) * pxd }}>Sprint {sp.n}</span>)}</div>
+              <div className="tp-gth-r" style={{ top: 48 }}>{weeks.map((d) => <span key={d} className="tp-wkl" style={{ left: d * pxd, width: 7 * pxd }}>{zoom === 'week' ? short(addDays('2026-10-12', d)) : d % 14 === 0 ? short(addDays('2026-10-12', d)).replace(/ .*/, '') && short(addDays('2026-10-12', d)) : ''}</span>)}</div>
+              <div className="tp-gth-r tp-gms-r" style={{ top: 70 }}>{MILESTONES.map((m) => <button key={m.id} type="button" className="tp-gms" style={{ left: px(dn(m.d) + 0.5) }} aria-label={`Milestone ${m.label}, ${short(m.d)}`} onFocus={(e) => showTip(e, [m.label, short(m.d)])} onBlur={() => setTip(null)} onPointerEnter={(e) => showTip(e, [m.label, short(m.d)])} onPointerLeave={() => setTip(null)}><i />{zoom === 'week' && <span>{m.label}</span>}</button>)}</div>
             </div>
             <div className="tp-gb" style={{ height: H }}>
               {weeks.map((d) => <i key={d} className="tp-vl" style={{ left: d * pxd }} />)}
               {weeks.map((d) => <i key={`w${d}`} className="tp-we" style={{ left: (d + 5) * pxd, width: 2 * pxd }} />)}
-              <i className="tp-band" style={{ left: px('2026-10-19'), width: 14 * pxd }} />
+              <i className="tp-gband" style={{ left: px('2026-10-19'), width: 14 * pxd }} />
               {MILESTONES.map((m) => <i key={m.id} className="tp-mline" style={{ left: px(dn(m.d) + 0.5) }} />)}
               {rows.map((r, i) => <i key={`r${r.kind}${r.id}`} className={cx('tp-rl', r.kind === 'epic' && 'is-epic')} style={{ top: ys[i], height: r.h }} />)}
-              <i className="tp-today" style={{ left: px(dn(TODAY) + 0.5) }}><span>Today</span></i>
+              <i className="tp-gtoday" style={{ left: px(dn(TODAY) + 0.5) }}><span>Today</span></i>
               <svg className="tp-deps" width={W} height={H} aria-hidden="true"><defs><marker id="tp-ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="currentColor" /></marker></defs>
                 {arrows.map((a) => <path key={a.k} d={a.d} className={cx('tp-dep', a.bad && 'is-bad', a.on && 'is-on')} markerEnd="url(#tp-ar)" />)}</svg>
               {rows.map((r, i) => {
@@ -113,7 +113,7 @@ export function TimelineView({ s, heading, onBoard }: { s: Store; heading: React
                     onFocus={(e) => { setHl(r.id); showTip(e, lines); }} onBlur={() => { setHl(null); setTip(null); }} onPointerEnter={(e) => { setHl(r.id); if (!drag) showTip(e, lines); }} onPointerLeave={() => { if (!drag) { setHl(null); setTip(null); } }}>
                     {isE && <i className="tp-fill2" style={{ width: `${e!.p}%` }} />}
                     {!isE && <b data-h="start" className="tp-hd is-l" onPointerDown={(ev) => { ev.stopPropagation(); down(ev, r.id, 'start'); }} aria-hidden="true" />}
-                    <span>{isE ? `${e!.p}%` : t!.title}</span>
+                    <span className={cx(!isE && w < 130 && 'is-out')}>{isE ? `${e!.p}%` : t!.title}</span>
                     {!isE && <b data-h="end" className="tp-hd is-r" onPointerDown={(ev) => { ev.stopPropagation(); down(ev, r.id, 'end'); }} aria-hidden="true" />}
                   </div>);
               })}

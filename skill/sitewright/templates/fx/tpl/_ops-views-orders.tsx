@@ -6,7 +6,7 @@ import { NEXT, dateLabel, money, stationName } from './_ops';
 import { CUSTOMERS, STATUS_LABEL, isLate, units, value, type D, type Ops, type Order } from './_opsstate';
 import { Grid, Modal, SearchBox, Select, StatusPill, ViewHeader, dueInfo, type GCol } from './_opsui';
 
-type Tab = 'all' | 'new' | 'production' | 'ready' | 'shipped' | 'late';
+type Tab = 'open' | 'new' | 'production' | 'ready' | 'shipped' | 'late';
 const kind = (o: Order) => (isLate(o) ? 'late' : o.status);
 export const nextAction = (o: Order) => (o.status === 'new' ? 'Start' : o.status === 'production' ? 'Mark ready' : o.status === 'ready' ? 'Ship' : null);
 export function runAction(o: Order, ops: Ops) { if (o.status === 'new') ops.A.start(o.id); else if (o.status === 'production') ops.A.ready(o.id); else if (o.status === 'ready') ops.A.ship(o.id); }
@@ -41,16 +41,16 @@ export function OrderDrawer({ id, ops, onClose }: { id: string; ops: Ops; onClos
 }
 
 export function OrdersView({ ops, d, hRef, open, setOpen }: { ops: Ops; d: D; hRef: RefObject<HTMLHeadingElement | null>; open: string | null; setOpen: (id: string) => void }) {
-  const [tab, setTab] = useState<Tab>('all'); const [q, setQ] = useState(''); const [cust, setCust] = useState('all'); const [win, setWin] = useState<'any' | 'late' | 'today' | '3' | '7'>('any');
+  const [tab, setTab] = useState<Tab>('open'); const [q, setQ] = useState(''); const [cust, setCust] = useState('all'); const [win, setWin] = useState<'any' | 'late' | 'today' | '3' | '7'>('any');
   const all = ops.s.orders;
   const tabs: Array<{ id: Tab; label: string; count: number }> = [
-    { id: 'all', label: 'All', count: all.length }, { id: 'new', label: 'New', count: all.filter((o) => o.status === 'new').length }, { id: 'production', label: 'In production', count: all.filter((o) => o.status === 'production').length },
+    { id: 'open', label: 'Open', count: d.open.length }, { id: 'new', label: 'New', count: all.filter((o) => o.status === 'new').length }, { id: 'production', label: 'In production', count: all.filter((o) => o.status === 'production').length },
     { id: 'ready', label: 'Ready', count: all.filter((o) => o.status === 'ready').length }, { id: 'shipped', label: 'Shipped', count: all.filter((o) => o.status === 'shipped').length }, { id: 'late', label: 'Late', count: d.late.length },
   ];
-  const rows = useMemo(() => all.filter((o) => (tab === 'all' || (tab === 'late' ? isLate(o) : o.status === tab)) && (cust === 'all' || o.customer === cust)
+  const rows = useMemo(() => all.filter((o) => (tab === 'open' ? o.status !== 'shipped' : tab === 'late' ? isLate(o) : o.status === tab) && (cust === 'all' || o.customer === cust)
     && (win === 'any' || (o.status !== 'shipped' && (win === 'late' ? o.due < 0 : win === 'today' ? o.due === 0 : o.due >= 0 && o.due <= Number(win))))
     && (!q.trim() || `${o.id} ${o.customer} ${o.lines.map((l) => l.model).join(' ')}`.toLowerCase().includes(q.trim().toLowerCase()))), [all, tab, cust, win, q]);
-  const filtered = tab !== 'all' || q || cust !== 'all' || win !== 'any';
+  const filtered = tab !== 'open' || q || cust !== 'all' || win !== 'any';
   const cols: Array<GCol<Order>> = [
     { id: 'id', label: 'Order', sort: (a, b) => a.id.localeCompare(b.id), cell: (o) => <div className="td-cellmain"><div><button type="button" className="to-link" onClick={() => setOpen(o.id)} aria-label={`Open order ${o.id}, ${o.customer}`}><b>{o.id}</b></button><small>{o.customer}</small></div></div> },
     { id: 'items', label: 'Items', hide: 'md', cell: (o) => <span className="td-muted">{o.lines.map((l) => `${l.qty} ${l.model}`).join(', ').slice(0, 44)}</span> },
@@ -74,10 +74,10 @@ export function OrdersView({ ops, d, hRef, open, setOpen }: { ops: Ops; d: D; hR
       <section className="td-panel" aria-label="Order list">
         <div className="to-tabbar"><Tabs label="Order status" value={tab} tabs={tabs} onChange={setTab} /></div>
         <div className="to-bar-t to-bar-f">
-          <SearchBox value={q} onChange={setQ} label="Search orders" placeholder="Search order, customer or model" />
+          <SearchBox value={q} onChange={setQ} label="Search orders" placeholder="Search orders" />
           <Select label="Customer" value={cust} onChange={setCust} options={[{ id: 'all', label: 'All customers' }, ...[...CUSTOMERS].sort().map((c) => ({ id: c, label: c }))]} />
           <Select label="Due window" value={win} onChange={setWin} options={[{ id: 'any', label: 'Any due date' }, { id: 'late', label: 'Overdue' }, { id: 'today', label: 'Due today' }, { id: '3', label: 'Next 3 days' }, { id: '7', label: 'Next 7 days' }]} />
-          {filtered && <Button variant="ghost" small onClick={() => { setTab('all'); setQ(''); setCust('all'); setWin('any'); }}>Clear filters</Button>}
+          {filtered && <Button variant="ghost" small onClick={() => { setTab('open'); setQ(''); setCust('all'); setWin('any'); }}>Clear filters</Button>}
           <span className="to-sel" role="status">{rows.length} of {all.length} orders · {fmt.n(rows.reduce((a, o) => a + units(o), 0))} units</span>
         </div>
         <Grid cols={cols} rows={rows} rowKey={(o) => o.id} selected={open} caption={`Orders, ${rows.length} shown. Column headers sort the table.`} initial={{ id: 'due', dir: 1 }}

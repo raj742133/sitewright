@@ -53,7 +53,7 @@ export default function SettingsView(p: SettingsProps) {
         <Panel title="Response targets by priority" sub="The clock on each conversation counts down to the first-response target. Reports measure breaches against these." id="sl" flush>
           <div className="tv-tablewrap"><table className="tv-grid">
             <caption className="td-sr">SLA targets by priority</caption>
-            <thead><tr><th scope="col">Priority</th><th scope="col">First response (minutes)</th><th scope="col">Resolution (hours)</th></tr></thead>
+            <thead><tr><th scope="col">Priority</th><th scope="col">First response (min)</th><th scope="col">Resolution (hours)</th></tr></thead>
             <tbody>{PRIORITIES.map((pr) => (
               <tr key={pr}><th scope="row">{cap(pr)}</th>
                 <td><Field label={`${cap(pr)} first response, minutes`} error={se[pr]?.frt}>{(a) => <input {...a} inputMode="numeric" value={d.sla[pr].frt} onChange={(e) => set((s) => ({ ...s, sla: { ...s.sla, [pr]: { ...s.sla[pr], frt: e.target.value } } }))} />}</Field></td>
@@ -73,7 +73,7 @@ export default function SettingsView(p: SettingsProps) {
                 <Switch label={`${a} is available for new conversations`} checked={d.agents[a]!.on} onChange={(v) => set((s) => ({ ...s, agents: { ...s.agents, [a]: { ...s.agents[a]!, on: v } } }))} /></li>))}</ul>
           </Panel>
           <Panel title="Rules by tag" sub="The first rule whose tag matches the customer wins." id="au"
-            actions={<Button small icon="bolt" disabled={!waiting || dirtyAs} onClick={() => p.onApplyRules()} label="Apply rules to unassigned conversations">{`Apply to ${waiting} waiting`}</Button>}>
+            actions={<Button small icon="check" disabled={!waiting || dirtyAs} onClick={() => p.onApplyRules()} label="Apply rules to unassigned conversations">{`Apply to ${waiting} waiting`}</Button>}>
             <ul className="tv-rules">{d.rules.map((r) => (
               <li key={r.id}><span className="ti-chip">{r.tag}</span><span className="td-muted">assign to</span>
                 <SelectField value={r.agent} label={`Agent for tag ${r.tag}`} onChange={(v) => set((s) => ({ ...s, rules: s.rules.map((x) => (x.id === r.id ? { ...x, agent: v } : x)) }))} options={TEAM.map((a) => ({ id: a, label: a }))} />

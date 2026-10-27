@@ -43,7 +43,7 @@ export function InsightsView(p: InsProps) {
             <tbody>{groups.map((g) => { const r = row(g.cats), off = hide.includes(g.id), d = r.was ? ((r.now - r.was) / r.was) * 100 : null; return (
               <tr key={g.id} className={cx(off && 'is-off')}>
                 <th scope="row"><button type="button" aria-pressed={!off} onClick={() => setHide((h) => (off ? h.filter((x) => x !== g.id) : [...h, g.id]))} aria-label={`${g.label}, ${off ? 'hidden' : 'shown'} in the chart`}><i style={{ background: g.color }} />{g.label}</button></th>
-                <td className="is-r">{moneyWhole(r.now)}</td><td className="is-r hide-sm td-muted">{moneyWhole(r.was)}</td><td className="is-r">{d === null ? <span className="td-muted">new</span> : <Delta value={d} good="down" />}</td>
+                <td className="is-r">{moneyWhole(r.now)}</td><td className="is-r hide-sm td-muted">{moneyWhole(r.was)}</td><td className="is-r">{d === null || Math.abs(d) < 0.05 ? <span className="td-muted">{d === null ? 'new' : 'flat'}</span> : <Delta value={d} good="down" />}</td>
               </tr>); })}</tbody>
           </table>
         </Panel>

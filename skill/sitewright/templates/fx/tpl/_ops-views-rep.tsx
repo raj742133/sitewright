@@ -22,7 +22,7 @@ export function ReportsView({ ops, d, hRef }: { ops: Ops; d: D; hRef: RefObject<
     const shipped = series(41 + n, n, { base: 108, trend: 0.08, wave: 0.14, noise: 0.07 }); shipped[n - 1] = shipped[n - 1]! + ops.s.ship.units;
     const plan = shipped.map(() => 118);
     const endRate = Math.min(99.5, d.onTime * 100 + (period === '7d' ? 1.1 : period === '90d' ? -1.2 : 0)); const r = seeded(500 + n);
-    const rate = Array.from({ length: n }, (_, i) => { const t = i / Math.max(1, n - 1); return Math.round((endRate - (1 - t) * 1.6 + (r() - 0.5) * 2.2 * (1 - t * 0.4)) * 10) / 10; }); rate[n - 1] = Math.round(endRate * 10) / 10;
+    const rate = Array.from({ length: n }, (_, i) => { const t = i / Math.max(1, n - 1); return Math.round((endRate - (1 - t) * 1.6 + (r() - 0.5) * 1.1 * (1 - t * 0.4)) * 10) / 10; }); rate[n - 1] = Math.round(endRate * 10) / 10;
     const pts = Math.round(n / b), bl = Array.from({ length: pts }, (_, i) => dateLabel(-(n - 1 - (i + 1) * b + 1)));
     const made = Array.from({ length: pts }, (_, i) => shipped.slice(i * b, (i + 1) * b).reduce((a, v) => a + v, 0));
     const scrap = made.map((m, i) => Math.round(m * (0.011 + 0.003 * Math.sin(i * 1.3 + n)))), rework = made.map((m, i) => Math.round(m * (0.028 + 0.006 * Math.cos(i * 0.9 + n))));
@@ -69,7 +69,7 @@ export function ReportsView({ ops, d, hRef }: { ops: Ops; d: D; hRef: RefObject<
       <div className="to-r3">
         <Panel id="to-r-ut" title="Utilisation by station" sub="Average throughput against capacity"><RankList tone="signal" rows={util} format={(v) => fmt.p(v, 0)} /></Panel>
         <Panel id="to-r-sr" title="Scrap and rework" sub={`Units per ${b === 1 ? 'day' : `${b} days`}`}>
-          <BarChart ariaLabel={`Scrap and rework units per ${b} days`} labels={R.bl} height={200} stacked format={fmt.n} series={[{ id: 'rw', label: 'Rework', data: R.rework }, { id: 'sc', label: 'Scrap', data: R.scrap, color: 'var(--critical, #b32d18)' }]} />
+          <BarChart ariaLabel={`Scrap and rework units per ${b} days`} labels={R.bl} height={200} stacked format={fmt.n} series={[{ id: 'rw', label: 'Rework', data: R.rework, color: 'var(--signal, #0f766e)' }, { id: 'sc', label: 'Scrap', data: R.scrap, color: 'var(--critical, #b32d18)' }]} />
         </Panel>
         <Panel id="to-r-rs" title="Top causes" sub={`${fmt.n(sc + rw)} units in the period`}><RankList rows={reasons} format={fmt.n} /></Panel>
       </div>

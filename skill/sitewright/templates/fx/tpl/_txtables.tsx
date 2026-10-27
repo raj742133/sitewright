@@ -2,7 +2,7 @@
 // Tables: a schema browser. A list of tables with row counts, and for the selected one its columns, sample rows, relationships,
 // the analyses that read it, and a way into Ask with a question already typed.
 import { useMemo, useState, type KeyboardEvent } from 'react';
-import { Button, Glyph, Pill, Segmented, Table, cx, fmt, type Col } from './_dash';
+import { Button, Glyph, Segmented, Table, cx, fmt, type Col } from './_dash';
 import { SCHEMA, byName, incoming, outgoing, usedBy, type Column } from './_txschema';
 import { Ic, SearchBox, copyText } from './_txui';
 import type { Notify } from './_txresults';
@@ -22,7 +22,7 @@ export function TablesView({ sel, onSel, onAsk, onResult, notify }: { sel: strin
     if (n < 0 || !list.length) return; e.preventDefault(); const nx = list[Math.max(0, Math.min(list.length - 1, n))]!; onSel(nx.name); (e.currentTarget.querySelector(`[data-t="${nx.name}"]`) as HTMLElement | null)?.focus();
   };
   const colDefs: Array<Col<Column>> = [
-    { id: 'n', label: 'Column', sort: (a, b) => a.n.localeCompare(b.n), cell: (c) => <span className="tt-cn"><code>{c.n}</code>{c.pk && <Pill tone="accent" dot={false}>PK</Pill>}{c.ref && <Pill tone="info" dot={false}>FK</Pill>}</span> },
+    { id: 'n', label: 'Column', sort: (a, b) => a.n.localeCompare(b.n), cell: (c) => <span className="tt-cn"><code>{c.n}</code>{c.pk && <abbr className="tt-k" title="Primary key">PK</abbr>}{c.ref && <abbr className="tt-k is-fk" title="Foreign key">FK</abbr>}</span> },
     { id: 't', label: 'Type', sort: (a, b) => a.t.localeCompare(b.t), cell: (c) => <code className="tt-ty">{c.t}{c.nul ? ' null' : ''}</code>, hideBelow: 'sm' },
     { id: 'd', label: 'Description', cell: (c) => <span>{c.d}{c.ref && <small className="tt-ref"> References {c.ref}</small>}</span> },
   ];

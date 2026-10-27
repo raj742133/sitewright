@@ -20,11 +20,12 @@ export default function OperationsDashboard({ brand = 'Spokeworks' }: { brand?: 
   const [tick, setTick] = useState(0); const [live, setLive] = useState(true); const [visible, setVisible] = useState(true); const reduced = useReducedMotion();
   const [station, setStation] = useState<StationId | null>(null); const [po, setPo] = useState(false); const [supView, setSupView] = useState<SupView>('lead'); const [open, setOpen] = useState<string | null>(null);
   const ops = useOps(); const { s, A, selected, setSelected } = ops; const d = derive(s, tick);
-  const hRef = useRef<HTMLHeadingElement>(null); const first = useRef(true);
+  const hRef = useRef<HTMLHeadingElement>(null); const first = useRef(true); const fromUrl = useRef(false);
 
-  useEffect(() => { const v = new URLSearchParams(window.location.search).get('view'); if (v && TITLES[v]) setActive(v); }, []);
+  useEffect(() => { const v = new URLSearchParams(window.location.search).get('view'); if (v && TITLES[v]) { fromUrl.current = true; setActive(v); } }, []);
   useEffect(() => {
     if (first.current) { first.current = false; return; }
+    if (fromUrl.current) { fromUrl.current = false; return; }
     hRef.current?.closest('.td-content')?.scrollTo(0, 0); hRef.current?.focus({ preventScroll: true }); setAnnounce(`${TITLES[active]} view`);
   }, [active]);
   const running = live && !reduced && visible;
@@ -68,7 +69,7 @@ export default function OperationsDashboard({ brand = 'Spokeworks' }: { brand?: 
         {lowShown.length === 0 ? <p className="to-lowe"><Glyph name="check" size={14} />Nothing is below its reorder point{station ? ` at ${stLabel}` : ''}.</p> : (
           <ul className="to-low">{lowShown.slice(0, 6).map((p) => { const st = statusOf(p, s.ordered[p.sku], s.thr.critDays); return (
             <li key={p.sku}><label><input type="checkbox" checked={selected.has(p.sku)} onChange={() => toggle(p.sku)} aria-label={`Select ${p.name}`} /><span className="to-low-n"><b>{p.name}</b><small className="td-mono">{p.sku} · {p.supplier}</small></span></label>
-              <span className="to-low-c"><b>{p.onHand}</b> / {p.reorder}<small>{(p.onHand / p.perDay).toFixed(1)} d cover</small></span><Pill tone={st.tone}>{st.label}</Pill></li>); })}
+              <span className="to-low-c"><span><b>{p.onHand}</b> / {p.reorder}</span><small>{(p.onHand / p.perDay).toFixed(1)} d cover</small></span><Pill tone={st.tone}>{st.label}</Pill></li>); })}
           </ul>)}
         {lowShown.length > 6 && <p className="to-more"><button type="button" className="to-link" onClick={() => setActive('inventory')}>and {lowShown.length - 6} more in Inventory</button></p>}
       </Panel>

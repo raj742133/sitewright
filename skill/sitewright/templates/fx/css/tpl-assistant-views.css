@@ -124,7 +124,7 @@
 /* Tables */
 .tt { display: grid; grid-template-columns: clamp(260px, 30%, 340px) minmax(0, 1fr); gap: 0; border: 1px solid var(--line, #ddd); border-radius: 10px; background: var(--raised, #fff); overflow: hidden; }
 .tt-list { display: flex; flex-direction: column; min-height: 0; border-right: 1px solid var(--line, #ddd); background: var(--surface, #f4f2ef); }
-.tt-lh { padding: 14px 14px 8px; } .tt-lh h1 { font-size: 18px; font-weight: 650; letter-spacing: -0.02em; } .tt-lh p { color: var(--muted, #5c5851); font-size: 12px; margin-top: 2px; }
+.tt-lh { padding: 14px 14px 8px; } .tt-lh h1 { font-size: 20px; font-weight: 650; letter-spacing: -0.02em; } .tt-lh p { color: var(--muted, #5c5851); font-size: 12px; margin-top: 2px; }
 .tt-lc { display: grid; gap: 8px; padding: 0 14px 10px; } .tt-lc .td-seg { width: fit-content; }
 .tt-list ul { list-style: none; padding: 0 6px 10px; margin: 0; overflow: auto; flex: 1; min-height: 0; }
 .tt-list li[role='option'] { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; align-items: center; gap: 10px; min-height: 48px; padding: 6px 8px; border-radius: 8px; cursor: pointer; }
@@ -144,8 +144,8 @@
 .tt-stats dt { color: var(--muted, #5c5851); font-size: 12px; } .tt-stats dd { margin: 2px 0 0; font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }
 .tt-dh h2 code { font-size: 18px; }
 .tt code, .tt-sample code { font-family: var(--font-mono, monospace); font-size: 12px; }
-.tt-cn { display: inline-flex; align-items: center; gap: 6px; } .tt-cn .td-pill { height: 18px; font-size: 10.5px; padding: 0 6px; }
-.tt-ty { color: var(--muted, #5c5851); } .tt-ref { color: var(--muted, #5c5851); }
+.tt-cn { display: inline-flex; align-items: center; gap: 6px; } .tt-k { text-decoration: none; display: inline-grid; place-items: center; height: 18px; padding: 0 6px; border-radius: 5px; font-size: 12px; font-weight: 600; line-height: 1; background: color-mix(in srgb, var(--primary, #c2410c) 14%, transparent); color: color-mix(in srgb, var(--primary, #c2410c) 60%, var(--ink, #15130e)); } .tt-k.is-fk { background: var(--raised-2, #edebe7); color: var(--ink, #15130e); }
+.tt-ty { color: var(--muted, #5c5851); } .tt-ref { color: var(--muted, #5c5851); font-size: 12px; }
 .tt .td-table th, .tt .td-table td { padding: 0 12px; } .tt .td-table th:first-child, .tt .td-table td:first-child { padding-left: 0; } .tt .td-table td { height: 38px; }
 .tt-sample td { white-space: nowrap; } .tt-sample th { white-space: nowrap; font-family: var(--font-mono, monospace); }
 .tt-rel { list-style: none; padding: 0; display: grid; gap: 0; }
@@ -166,3 +166,14 @@
 @media (hover: none) { .tv-g .tv-ra { opacity: 1; } }
 @media (pointer: coarse) { .tx-ib { width: 44px; height: 44px; } .tx-sv, .tv-search, .tv-search.is-sm, .tv-ta input, .tv-ta .td-btn, .tx-chip.is-sm, .tx-ctx, .tv-back, .tx-more, .tv-tags button, .tv-toast button { min-height: 44px; } .tv-tags button, .tv-tags.is-edit li { height: 44px; } .tx-rows button, .tt-list li[role='option'], .tx-grp button, .tx-tip button { min-height: 44px; } .tx-ctx button { width: 44px; height: 44px; } .tv-link { padding: 12px 0; } .tv-rn input { height: 44px; } .tx-card em { } }
 @media (prefers-reduced-motion: reduce) { .tv-toast, .tv-g, .tv-g .tv-ra { animation: none !important; transition: none !important; } }
+
+/* hit areas: inline text buttons are at least 24px tall */
+.tx-more, .tx-tip button, .tv-open, .tv-link, .tt-rel button { display: inline-flex; align-items: center; min-height: 24px; }
+.tv-open { display: inline-block; padding: 3px 0; min-height: 24px; }
+.tv-tags button, .tv-tags.is-edit li { height: 24px; }
+.tv-search input { align-self: stretch; min-height: 24px; }
+.tx-ib { min-width: 28px; }
+@container td (max-width: 520px) { .tx-root input, .tx-root textarea { font-size: 16px; } .tx-comp textarea { line-height: 22px; } }
+@media (pointer: coarse) { .tx-root input, .tx-root textarea { font-size: 16px; } .tx-more, .tx-tip button, .tt-rel button, .tv-open { min-height: 44px; } }
+@container td (max-width: 520px) { .tt-lc .td-seg button, .tv-bar .td-seg button { min-height: 44px; } }
+@media (pointer: coarse) { .tt-lc .td-seg button, .tv-bar .td-seg button { min-height: 44px; } }

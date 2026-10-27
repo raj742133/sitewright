@@ -50,7 +50,7 @@ export function SettingsView({ headRef, onSave, announce }: { headRef: React.Ref
                   <Field label="Stage name" error={show(`n-${id}`)}>{(a) => <input {...a} value={draft.names[id]} onBlur={() => blur(`n-${id}`)} onChange={(e) => set({ names: { ...draft.names, [id]: e.target.value } })} autoComplete="off" />}</Field>
                   <Field label="Win probability" error={show(`p-${id}`)}>{(a) => won ? <input {...a} value="100" disabled aria-label="Win probability, fixed at 100 percent" /> : <span className="tv-pct"><input {...a} inputMode="numeric" value={draft.probs[id]} onBlur={() => blur(`p-${id}`)} onChange={(e) => set({ probs: { ...draft.probs, [id]: e.target.value } })} /><em>%</em></span>}</Field>
                   <span className="tv-stn">{nd} {nd === 1 ? 'deal' : 'deals'}</span>
-                  {!won && <span className="tv-mv"><Button small variant="ghost" icon="up" label={`Move ${draft.names[id]} up`} disabled={i === 0} onClick={() => move(i, -1)} /><Button small variant="ghost" icon="down" label={`Move ${draft.names[id]} down`} disabled={i === draft.order.length - 1} onClick={() => move(i, 1)} /></span>}
+                  {won ? <span className="tv-mv" aria-hidden="true" /> : <span className="tv-mv"><Button small variant="ghost" icon="up" label={`Move ${draft.names[id]} up`} disabled={i === 0} onClick={() => move(i, -1)} /><Button small variant="ghost" icon="down" label={`Move ${draft.names[id]} down`} disabled={i === draft.order.length - 1} onClick={() => move(i, 1)} /></span>}
                 </li>); })}
             </ol>
           </Panel>

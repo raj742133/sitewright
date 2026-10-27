@@ -20,8 +20,8 @@ const Section = ({ title, text, children, danger }: { title: string; text: strin
 
 function Snippet({ s, set, notify }: { s: SiteSettings; set: (f: (s: SiteSettings) => SiteSettings) => void; notify: Notify }) {
   const [copied, setCopied] = useState(false); const [busy, setBusy] = useState(false);
-  const attrs = [`data-domain="${SITE}"`, s.opts.outbound && 'data-outbound="true"', s.opts.dnt && 'data-dnt="true"', s.opts.hash && 'data-hash="true"'].filter(Boolean).join(' ');
-  const code = `<script defer ${attrs}\n  src="https://cdn.fieldnote.dev/v2/track.js"></script>`;
+  const attrs = [`data-domain="${SITE}"`, s.opts.outbound && 'data-outbound="true"', s.opts.dnt && 'data-dnt="true"', s.opts.hash && 'data-hash="true"'].filter(Boolean).map((a) => `\n  ${a}`).join('');
+  const code = `<script defer${attrs}\n  src="https://cdn.fieldnote.dev/v2/track.js"></script>`;
   const copy = async () => {
     try { await navigator.clipboard.writeText(code); } catch { const t = document.createElement('textarea'); t.value = code; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch { /* ignore */ } t.remove(); }
     setCopied(true); notify('Tracking snippet copied to the clipboard.'); setTimeout(() => setCopied(false), 2000);

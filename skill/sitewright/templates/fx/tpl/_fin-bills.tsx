@@ -76,7 +76,7 @@ export function BillsView({ bills, hist, bal, act, onOpenTx }: { bills: Bill[]; 
               const l = by.get(d) ?? [], out = +d.slice(5, 7) !== ym[1], tot = sumOf(l);
               return <button key={d} type="button" role="gridcell" disabled={!l.length} aria-pressed={day === d} aria-label={`${dShort(d)}${l.length ? `, ${l.length} ${l.length === 1 ? 'bill' : 'bills'}, ${money(tot)}` : ', no bills'}`} className={cx('tf-cd', out && 'is-out', d === TODAY && 'is-today', l.length > 0 && 'has')} onClick={() => setDay(day === d ? null : d)}>
                 <i>{+d.slice(8, 10)}</i>
-                {l.length > 0 && <span className="tf-cd-m">{moneyWhole(tot)}</span>}
+                {l.length > 0 && <span className="tf-cd-m">{tot >= 100000 ? `$${(tot / 100000).toFixed(1).replace(/\.0$/, '')}k` : moneyWhole(tot)}</span>}
                 {l.length > 0 && <span className="tf-cd-d" aria-hidden="true">{l.slice(0, 3).map((b) => <u key={b.id} className={cx(b.paid ? 'is-paid' : b.auto || b.sched ? 'is-plan' : 'is-open')} />)}</span>}
               </button>; })}</div>)}
           </div>

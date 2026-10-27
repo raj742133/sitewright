@@ -33,7 +33,7 @@ function Cohorts({ set, range }: { set: CohortSet; range: string }) {
   const move = (e: KeyboardEvent<HTMLTableElement>) => {
     const d = { ArrowRight: [0, 1], ArrowLeft: [0, -1], ArrowDown: [1, 0], ArrowUp: [-1, 0] }[e.key]; if (!d) return; e.preventDefault();
     const r = Math.max(0, Math.min(rows.length - 1, cell.r + d[0]!)); const c = Math.max(0, Math.min(rows[r]!.ret.length - 1, cell.c + d[1]!));
-    setCell({ r, c }); requestAnimationFrame(() => (e.currentTarget.querySelector(`[data-cell="${r}-${c}"]`) as HTMLElement | null)?.focus());
+    const tbl = e.currentTarget; setCell({ r, c }); requestAnimationFrame(() => (tbl.querySelector(`[data-cell="${r}-${c}"]`) as HTMLElement | null)?.focus());
   };
   const cr = rows[Math.min(cell.r, rows.length - 1)]!; const cv = cr.ret[Math.min(cell.c, cr.ret.length - 1)]!;
   return (
@@ -63,7 +63,7 @@ export default function AudienceView({ range, setRange, focus }: ViewProps) {
   return (
     <>
       <Head title="Audience" sub={`Who visits fieldnote.dev · last ${site.n} days`} focus={focus}><RangeSeg value={range} onChange={setRange} /></Head>
-      <div className="ta-row">
+      <div className="ta-row2">
         <Countries rows={a.countries} />
         <Panel id="tau-n" title="New vs returning" sub="Unique visitors per day">
           <div className="ta-nr"><div><small>New</small><b>{fmt.n(a.newTotal)}</b><em>{fmt.p(1 - share, 0)}</em></div><div><small>Returning</small><b>{fmt.n(a.retTotal)}</b><em>{fmt.p(share, 0)}</em></div></div>

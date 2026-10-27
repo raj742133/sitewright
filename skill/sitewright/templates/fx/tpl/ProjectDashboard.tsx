@@ -16,12 +16,14 @@ const TITLES: Record<string, string> = { top: 'Storefront relaunch', board: 'Boa
 
 export default function ProjectDashboard({ brand = 'Northwind' }: { brand?: string }) {
   const s = useProject(); const [nav, setNav] = useState('top'); const heading = useRef<HTMLHeadingElement>(null); const body = useRef<HTMLDivElement>(null);
-  const [host, setHost] = useState<HTMLElement | null>(null); const opener = useRef<HTMLElement | null>(null); const first = useRef(true);
+  const [host, setHost] = useState<HTMLElement | null>(null); const opener = useRef<HTMLElement | null>(null); const first = useRef(true); const skip = useRef(false);
   const stats = sprintStats(s.tasks);
 
-  useEffect(() => { const v = VIEW_OF[new URLSearchParams(window.location.search).get('view') ?? '']; if (v) setNav(v); setHost(body.current?.closest<HTMLElement>('.td-main') ?? null); }, []);
+  useEffect(() => { const v = VIEW_OF[new URLSearchParams(window.location.search).get('view') ?? '']; if (v && v !== 'top') { skip.current = true; setNav(v); } setHost(body.current?.closest<HTMLElement>('.td-main') ?? null); }, []);
   useEffect(() => {
     if (first.current) { first.current = false; return; }
+    if (skip.current) { skip.current = false; return; }
+    s.setOpenId(null);
     body.current?.closest('.td-content')?.scrollTo({ top: 0 }); heading.current?.focus({ preventScroll: true }); s.setLive(`${TITLES[nav] === 'Storefront relaunch' ? 'Overview' : TITLES[nav]} view`);
   }, [nav]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (s.openId) opener.current = document.activeElement as HTMLElement; }, [s.openId]);

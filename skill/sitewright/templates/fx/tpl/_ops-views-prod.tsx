@@ -2,9 +2,10 @@
 // Production: a station board (one column per station with its queue), then the selected station in detail: cycle time chart, blocked reason with
 // unblock / report-block actions, crew roster with reassign, and a shift selector.
 import { useState, type RefObject } from 'react';
-import { AreaChart, Avatar, Button, Glyph, Pill, Progress, Segmented, cx, fmt, seeded } from './_dash';
+import { Avatar, Button, Glyph, Pill, Progress, Segmented, cx, fmt, seeded } from './_dash';
 import { LABEL, NEXT, SHIFT_CREWS, STATION_DEFS, STATUS_TONE, dateLabel, stationName, type LiveStation, type StationId } from './_ops';
 import { BLOCK_REASONS, isLate, units, type D, type Ops } from './_opsstate';
+import { LineChart } from './_ops-charts';
 import { Field, Modal, Select, ViewHeader, dueInfo } from './_opsui';
 
 type Shift = 'day' | 'evening' | 'night';
@@ -79,8 +80,7 @@ export function ProductionView({ ops, d, hRef, setOpen }: { ops: Ops; d: D; hRef
         <section className="td-panel" aria-labelledby="to-cyc-t">
           <header className="td-panel-h"><div><h2 id="to-cyc-t">{st.name}: cycle time per hour</h2><p>{SHIFTS.find((x) => x.id === shift)!.label} shift · minutes per unit, target {target} min</p></div></header>
           <div className="td-panel-b">
-            <AreaChart ariaLabel={`${st.name} cycle time per hour, ${shift} shift, in minutes`} labels={hours.slice(0, stopAt)} height={220} format={(v) => String(Math.round(v * 10) / 10)} area={false}
-              series={[{ id: 'a', label: 'Cycle time', data: actual }, { id: 't', label: 'Target', data: actual.map(() => target), color: 'color-mix(in srgb, var(--ink, #15130e) 45%, transparent)' }]} />
+            <LineChart label={`${st.name} cycle time per hour, ${shift} shift, in minutes`} labels={hours.slice(0, stopAt)} data={actual} target={target} name="Cycle time" targetName="Target" height={240} format={(v) => `${v.toFixed(1)} min`} />
             <p className="to-note">{shift === 'day' && blk ? <><Glyph name="clock" size={13} />No readings since {blk.since}: the station is blocked.</> : <><Glyph name="clock" size={13} />{fmt.n(done)} units completed in {stopAt} h{shift === 'day' ? ' so far' : ''}, average cycle {(actual.reduce((a, b) => a + b, 0) / actual.length).toFixed(1)} min.</>}</p>
           </div>
         </section>
@@ -97,7 +97,7 @@ export function ProductionView({ ops, d, hRef, setOpen }: { ops: Ops; d: D; hRef
             <ul className="to-crew">
               {crew.length === 0 && <li className="td-muted">Nobody assigned.</li>}
               {crew.map((n) => (
-                <li key={n}><Avatar name={n} size={24} /><span>{n}</span>
+                <li key={n}><Avatar name={n} size={24} /><span className="to-crew-n">{n}</span>
                   {shift === 'day' ? <Select label={`Reassign ${n}`} value={'' as StationId | ''} onChange={(v) => v && ops.A.moveCrew(n, sel, v)} options={[{ id: '', label: 'Reassign…' }, ...STATION_DEFS.filter((x) => x.id !== sel).map((x) => ({ id: x.id, label: x.name }))] as Array<{ id: StationId | ''; label: string }>} /> : <span className="td-muted">{dateLabel(shift === 'evening' ? -1 : 0)}</span>}
                 </li>))}
             </ul>

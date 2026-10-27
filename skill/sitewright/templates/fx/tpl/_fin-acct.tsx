@@ -59,7 +59,7 @@ export function AccountsView({ txs, bal, total, sel, setSel, onTransfer, onOpenT
         <div className="tf-acdet">
           <Panel id="tf-hist" title={`${a.name} balance`} sub={`${a.type} ••${a.mask} · end of day`} actions={<Segmented label="Range" value={days} onChange={setDays} options={[{ id: '30', label: '30 days' }, { id: '90', label: '90 days' }, { id: '180', label: '6 months' }]} />}>
             <div className="tf-hist-h"><b>{money(bal[sel]!)}</b><Delta value={pct} /><span>{moneyWhole(chg, true)} in {days} days</span></div>
-            <AreaChart ariaLabel={`${a.name} balance, last ${days} days`} labels={labels} height={210} format={(v) => (v >= 1e5 ? `$${Math.round(v / 1e3)}k` : `$${(v / 1e3).toFixed(1)}k`)} tipFormat={(v) => moneyWhole(v * 100)} series={[{ id: 'b', label: 'Balance', data: hist.map((v) => Math.round(v / 100)), color: 'var(--signal, #0f766e)' }]} />
+            <AreaChart ariaLabel={`${a.name} balance, last ${days} days`} labels={labels} height={210} format={(v) => (v === 0 ? '$0' : v >= 1e5 ? `$${Math.round(v / 1e3)}k` : `$${(v / 1e3).toFixed(1)}k`)} tipFormat={(v) => moneyWhole(v * 100)} series={[{ id: 'b', label: 'Balance', data: hist.map((v) => Math.round(v / 100)), color: 'var(--signal, #0f766e)' }]} />
             <p className="tf-hist-x"><span>Low <b>{moneyWhole(lo)}</b></span><span>Average <b>{moneyWhole(avg)}</b></span><span>High <b>{moneyWhole(hi)}</b></span></p>
           </Panel>
 

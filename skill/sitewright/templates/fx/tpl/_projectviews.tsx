@@ -79,7 +79,7 @@ export function Workload({ tasks, onOpen }: { tasks: Task[]; onOpen: () => void 
   });
   const scale = Math.max(...rows.map((r) => Math.max(r.cap, r.all)), 1) * 1.08; const overN = rows.filter((r) => r.over > 0 && r.name !== 'Unassigned').length;
   return (
-    <Panel id="tp-wl" title="Workload" sub={`Assigned points against sprint capacity · ${overN} over`} actions={<><span className="tp-legend hide-sm"><i className="is-done" />Done<i className="is-rest" />To go<i className="is-cap" />Capacity</span><Button small onClick={onOpen}>Open workload</Button></>}>
+    <Panel id="tp-wl" title="Workload" sub={`Assigned points against sprint capacity · ${overN} over`} actions={<Button small onClick={onOpen}>Open workload</Button>}>
       <ul className="tp-wlist">
         {rows.map((r) => (
           <li key={r.name} className={cx(r.over > 0 && 'is-over')} aria-label={`${r.name}: ${r.all} of ${r.cap} points${r.over > 0 ? `, ${r.over} over capacity` : ''}`}>

@@ -26,12 +26,13 @@ export default function SourcesView({ range, setRange, focus }: ViewProps) {
     return { title, series, stacked: !cur };
   }, [sel, compare, ch, camps, site]);
 
+  const setCh = (id: string) => setSel({ kind: 'channel', id });
   const pickChannel = (id: string) => setSel((s) => (s.kind === 'channel' && s.id === id ? { kind: 'all' } : { kind: 'channel', id }));
   const pickCamp = (id: string) => { setSel({ kind: 'campaign', id }); chartRef.current?.scrollIntoView({ block: 'nearest' }); };
   const isSel = (kind: string, id: string) => sel.kind === kind && (sel as { id?: string }).id === id;
 
   const chCols: Array<Col<ChannelRow>> = [
-    { id: 'ch', label: 'Channel', cell: (c) => <button type="button" className="ta-rowbtn is-row" aria-pressed={isSel('channel', c.id)} onClick={() => pickChannel(c.id)}>{dot(PALETTE[chIdx(c.id) % 5]!)}<b>{c.label}</b></button>, sort: (a, b) => a.label.localeCompare(b.label) },
+    { id: 'ch', label: 'Channel', cell: (c) => <button type="button" className="ta-rowbtn is-row" aria-pressed={isSel('channel', c.id)} onClick={() => setCh(c.id)}>{dot(PALETTE[chIdx(c.id) % 5]!)}<b>{c.label}</b></button>, sort: (a, b) => a.label.localeCompare(b.label) },
     { id: 'v', label: 'Visitors', align: 'right', cell: (c) => fmt.n(c.visitors), sort: (a, b) => a.visitors - b.visitors },
     ...(compare ? [{ id: 'pv', label: 'Previous', align: 'right' as const, hideBelow: 'sm' as const, cell: (c: ChannelRow) => <span className="td-muted">{fmt.n(c.prevVisitors)}</span>, sort: (a: ChannelRow, b: ChannelRow) => a.prevVisitors - b.prevVisitors }, { id: 'd', label: 'Change', align: 'right' as const, cell: (c: ChannelRow) => <Delta value={c.delta} />, sort: (a: ChannelRow, b: ChannelRow) => a.delta - b.delta }] : []),
     { id: 'sh', label: 'Share', align: 'right', hideBelow: 'sm', cell: (c) => <span className="ta-share"><i style={{ width: `${c.share * 100 * 2}%` }} />{fmt.p(c.share, 1)}</span>, sort: (a, b) => a.share - b.share },
@@ -68,7 +69,7 @@ export default function SourcesView({ range, setRange, focus }: ViewProps) {
         </Panel>
       </div>
       <Panel id="ts-ch" title="Channels" sub={`${fmt.n(site.visitors)} visitors · ${fmt.n(signups)} signups · select a row to chart it`} flush>
-        <Table caption="Channels with visitors, signups and trend" cols={chCols} rows={ch} rowKey={(c) => c.id} selected={sel.kind === 'channel' ? sel.id : undefined} onRow={(c) => pickChannel(c.id)} />
+        <Table caption="Channels with visitors, signups and trend" cols={chCols} rows={ch} rowKey={(c) => c.id} selected={sel.kind === 'channel' ? sel.id : undefined} onRow={(c) => setCh(c.id)} />
       </Panel>
       <Panel id="ts-cp" title="Campaigns" sub={`UTM-tagged traffic · ${fmt.n(camps.tagged)} visitors (${fmt.p(camps.tagged / site.visitors, 0)} of all) · ${fmt.n(camps.taggedSignups)} signups`} flush>
         <Table caption="UTM campaigns with visitors, signups and trend" cols={cpCols} rows={camps.rows} rowKey={(c) => c.id} selected={sel.kind === 'campaign' ? sel.id : undefined} onRow={(c) => pickCamp(c.id)} />

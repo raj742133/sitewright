@@ -41,7 +41,7 @@ export function Ledger({ rows, sel, onOpen, empty, sort, onSort, checked, onChec
             <tr key={t.id} data-row={t.id} tabIndex={t.id === tab ? 0 : -1} className={cx(sel === t.id && 'is-sel', checked?.has(t.id) && 'is-chk')} aria-current={sel === t.id ? 'true' : undefined} onClick={() => onOpen(t.id)} onKeyDown={(e) => onKey(e, t.id)}>
               {sels && <td className="tf-ck" onClick={(e) => e.stopPropagation()}><input type="checkbox" tabIndex={t.id === tab ? 0 : -1} aria-label={`Select ${t.name}, ${dShort(t.date)}`} checked={!!checked?.has(t.id)} onChange={(e) => onCheck?.(t.id, e.target.checked)} /></td>}
               <td className="tf-date">{dShort(t.date)}</td>
-              <td><div className="tf-desc"><b>{t.name}</b><small>{t.memo}<span className="tf-st"> · <StatusPill s={t.status} /></span></small></div></td>
+              <td><div className="tf-desc"><b>{t.name}</b><small>{t.memo}<span className={cx('tf-st', t.status === 'posted' && 'is-posted')}> · <StatusPill s={t.status} /></span></small></div></td>
               <td className="hide-sm"><span className="tf-cat">{t.cat}</span></td>
               <td className="hide-md tf-ac">{acctOf(t.acct).name} <i>••{acctOf(t.acct).mask}</i></td>
               <td className="hide-sm"><StatusPill s={t.status} /></td>

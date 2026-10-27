@@ -10,8 +10,9 @@
 .tv-x { display: grid; place-items: center; flex: none; width: 28px; height: 28px; border: 0; border-radius: 6px; background: none; color: var(--muted, #5c5851); cursor: pointer; font-size: 16px; line-height: 1; }
 .tv-x:hover { background: var(--raised-2, #edebe7); color: var(--critical, #b32d18); }
 
-/* toast: sticks to the bottom of the scrolling content */
-.tv-toastwrap { position: sticky; bottom: 16px; height: 0; z-index: 30; display: flex; justify-content: center; pointer-events: none; animation: none !important; }
+/* toast: floats at the bottom of the main column */
+.td-main:has(.tv-toastwrap) { position: relative; }
+.tv-toastwrap { position: absolute; left: 0; right: 0; bottom: 16px; height: 0; z-index: 30; display: flex; justify-content: center; pointer-events: none; animation: none !important; }
 .tv-toast { position: absolute; bottom: 0; display: inline-flex; align-items: center; gap: 8px; max-width: calc(100% - 8px); padding: 8px 8px 8px 14px; border-radius: 10px; background: var(--ink, #15130e); color: var(--raised, #fff); font-weight: 550; box-shadow: 0 8px 28px rgba(0, 0, 0, .25); pointer-events: auto; animation: td-in .2s ease-out both; }
 .tv-toast button { height: 28px; padding: 0 10px; border: 0; border-radius: 6px; background: color-mix(in srgb, var(--raised, #fff) 18%, transparent); color: inherit; font-weight: 600; cursor: pointer; }
 .tv-toast button:hover { background: color-mix(in srgb, var(--raised, #fff) 30%, transparent); }
@@ -125,7 +126,7 @@
 @container td (max-width: 520px) {
   .tv-heat-cells, .tv-heat-g { gap: 2px; } .tv-hc { height: 18px; border-radius: 3px; } .tv-heat-hrs { margin-left: 34px; font-size: 10px; } .tv-heat-hrs span:nth-child(even) { visibility: hidden; }
   .tv-agents li { grid-template-columns: minmax(0, 1fr) 90px 40px; } .tv-rule-f { grid-template-columns: minmax(0, 1fr); } .tv-rule-f .td-btn { justify-self: start; } .tv-art-r { padding: 14px 14px 20px; } .tv-legend { justify-content: flex-start; }
-  .tv-convs li { flex-wrap: wrap; } .tv-convs li .tv-conv-m { flex-basis: 100%; } .tv-toast { font-size: 12px; } .tv-grid .tv-field input { max-width: 100px; } .tv-ins .tv-select { max-width: 100%; flex: 1; }
+  .tv-convs li { flex-wrap: wrap; } .tv-convs li .tv-conv-m { flex-basis: 100%; } .tv-toast { font-size: 12px; } .tv-grid .tv-field input { max-width: 80px; } .tv-grid th, .tv-grid td { padding: 8px 10px; } .tv-grid tbody th { width: auto; } .tv-notif td, .tv-notif thead th:not(:first-child) { width: 52px; padding-left: 4px; padding-right: 4px; } .tv-ins .tv-select { max-width: 100%; flex: 1; }
 }
 @media (pointer: coarse) {
   .tv-search, .tv-select, .tv-check, .tv-hc, .tv-link { min-height: 44px; } .tv-switch { width: 44px; height: 26px; border-radius: 13px; } .tv-switch i { width: 20px; height: 20px; } .tv-switch[aria-checked='true'] i { transform: translateX(18px); }
@@ -133,3 +134,7 @@
   .tv-hc { min-height: 0; height: 24px; } .tv-check input { width: 20px; height: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .tv-toast, .tv-switch, .tv-switch i { animation: none !important; transition: none !important; } }
+
+/* the kit resets list margins on .td-shell ul; these need to win */
+.td-shell .tv-convs { margin: 10px 0 0; } .td-shell .tv-notes { margin: 14px 0 0; } .td-shell .tv-cl { margin: 10px 0 0; } .td-shell .tv-agents { margin: 12px 0 0; } .td-shell .tv-rules { margin: 0 0 12px; }
+.tv-art { scroll-margin-top: 40px; }
