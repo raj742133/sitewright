@@ -2,18 +2,28 @@
   {
     "id": "finance-dashboard",
     "label": "Finance",
-    "desc": "A business banking home: total balance with a 30-day line and Send / Request / Transfer, cash in vs out, accounts, a searchable transactions table with a detail drawer and approvals, upcoming bills you can pay, and spend by category.",
+    "desc": "A business banking app with five working views: an overview, accounts with balance history and statements, a full transactions ledger (filters, date range, bulk categorise and export, detail drawer, approvals), bills with a calendar, pay now, schedule and autopay, and insights (stacked spend by category, top merchants, detected subscriptions, unusual-spend alerts, savings goals).",
     "source": "Original",
     "group": "dashboard",
     "files": [
       "FinanceDashboard.tsx",
       "_fin.tsx",
       "_fin-ui.tsx",
+      "_fin-more.tsx",
+      "_fin-kit.tsx",
+      "_fin-ledger.tsx",
+      "_fin-over.tsx",
+      "_fin-tx.tsx",
+      "_fin-acct.tsx",
+      "_fin-bills.tsx",
+      "_fin-ins.tsx",
+      "_fin-goals.tsx",
       "_dash.tsx"
     ],
     "css": [
       "tpl-dash",
-      "tpl-finance-dashboard"
+      "tpl-finance-dashboard",
+      "tpl-finance-views"
     ],
     "use": "Banking, bookkeeping, budgeting, subscription revenue."
   }

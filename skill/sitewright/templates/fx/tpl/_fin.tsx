@@ -6,7 +6,7 @@ export type Status = 'posted' | 'pending' | 'flagged';
 export type Kind = 'in' | 'out' | 'xfer';
 export interface Acct { id: string; name: string; type: string; mask: string; primary?: boolean; target: number }
 export interface Tx { id: string; date: string; name: string; cat: string; acct: string; amt: number; status: Status; was?: Status; kind: Kind; method: string; ref: string; memo: string; log: string[] }
-export interface Bill { id: string; name: string; due: string; amt: number; cat: string; paid?: string }
+export interface Bill { id: string; name: string; due: string; amt: number; cat: string; paid?: string; auto?: boolean; sched?: string; acct?: string; tx?: string }
 
 export const TODAY = '2026-10-24';
 export const MONTHS = ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'];
@@ -58,6 +58,13 @@ function build(): { txs: Tx[]; opening: Record<string, number>; bills: Bill[] } 
     add(m, 4, 'Stripe payout', 'Stripe payouts', 'ops', cents(21000, 27000, g), 'ACH', 'Card sales, 3 days');
     add(m, 5, 'Linear', 'Software', 'ops', -64000, 'Card', 'Team plan');
     add(m, 6, 'Meta Ads', 'Marketing', 'ops', -cents(3200, 6400), 'Card', 'Campaign spend');
+    add(m, 8, 'Figma', 'Software', 'ops', -18000, 'Card', '12 editor seats');
+    add(m, 10, 'Notion', 'Software', 'ops', -9600, 'Card', 'Plus plan, 12 seats');
+    add(m, 14, 'Slack', 'Software', 'ops', m >= 7 ? -38400 : -33600, 'Card', 'Pro plan, 32 seats');
+    add(m, 16, 'Zoom', 'Software', 'ops', -14990, 'Card', 'Workplace Pro');
+    add(m, 19, '1Password', 'Software', 'ops', -8994, 'Card', 'Business, 18 seats');
+    add(m, 23, 'Adobe Creative Cloud', 'Software', 'ops', -65988, 'Card', 'Teams, 6 licenses');
+    if (m === 7) add(m, 15, 'SummitPass Events', 'Travel & meals', 'ops', -188000, 'Card', 'Config conference, 4 passes');
     add(m, 9, 'Northwind Design Studio', 'Contractors', 'ops', -cents(4200, 5200), 'ACH', 'Brand and web design');
     add(m, 11, 'Brightline Logistics', 'Customer payments', 'ops', cents(17500, 19500), 'Wire', `Invoice INV-${1040 + m}`);
     add(m, 11, 'Transfer to Payroll', 'Transfer', 'ops', -base * 2 * 100 - 25000, 'Transfer', 'Covers the month\'s runs', 'xfer');
@@ -95,9 +102,14 @@ function build(): { txs: Tx[]; opening: Record<string, number>; bills: Bill[] } 
   const bills: Bill[] = [
     { id: 'b1', name: 'Comcast Business', due: '2026-10-26', amt: 28900, cat: 'Rent & office' },
     { id: 'b2', name: 'Chubb, liability insurance', due: '2026-10-29', amt: 124000, cat: 'Rent & office' },
-    { id: 'b3', name: 'Hollis & Park Properties', due: '2026-11-01', amt: 680000, cat: 'Rent & office' },
+    { id: 'b3', name: 'Hollis & Park Properties', due: '2026-11-01', amt: 680000, cat: 'Rent & office', auto: true, acct: 'ops' },
     { id: 'b4', name: 'Amazon Web Services', due: '2026-11-02', amt: 462318, cat: 'Software' },
-    { id: 'b5', name: 'Linear', due: '2026-11-05', amt: 64000, cat: 'Software' },
+    { id: 'b6', name: 'Google Workspace', due: '2026-11-03', amt: 96840, cat: 'Software', sched: '2026-11-02', acct: 'ops' },
+    { id: 'b5', name: 'Linear', due: '2026-11-05', amt: 64000, cat: 'Software', auto: true, acct: 'ops' },
+    { id: 'b7', name: 'Ridgeline Dev Collective', due: '2026-11-20', amt: 612000, cat: 'Contractors' },
+    { id: 'b8', name: 'Comcast Business', due: '2026-11-26', amt: 28900, cat: 'Rent & office' },
+    { id: 'b9', name: 'Chubb, liability insurance', due: '2026-11-29', amt: 124000, cat: 'Rent & office' },
+    { id: 'b10', name: 'Hollis & Park Properties', due: '2026-12-01', amt: 680000, cat: 'Rent & office' },
   ];
   return { txs: rows, opening, bills };
 }

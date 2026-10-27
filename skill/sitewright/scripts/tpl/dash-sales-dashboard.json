@@ -2,18 +2,26 @@
   {
     "id": "sales-dashboard",
     "label": "Sales pipeline",
-    "desc": "A CRM view: pipeline value by stage, a deals board with drag and keyboard moves, forecast against target, a leaderboard and recent activity.",
+    "desc": "A CRM with six real views: the pipeline board (drag and keyboard moves), a deals table with bulk actions and a detail drawer, accounts with contacts and timeline, an activity feed with a log form, reports (forecast by month, leaderboard, funnel, win and loss) and validated pipeline settings.",
     "source": "Original",
     "group": "dashboard",
     "files": [
       "SalesDashboard.tsx",
       "_sales.tsx",
       "_salesboard.tsx",
+      "_sales-store.tsx",
+      "_sales-ui.tsx",
+      "_sales-deals.tsx",
+      "_sales-accounts.tsx",
+      "_sales-activity.tsx",
+      "_sales-reports.tsx",
+      "_sales-settings.tsx",
       "_dash.tsx"
     ],
     "css": [
       "tpl-dash",
-      "tpl-sales-dashboard"
+      "tpl-sales-dashboard",
+      "tpl-sales-views"
     ],
     "use": "CRM, account management, lead tracking."
   }

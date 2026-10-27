@@ -4,7 +4,9 @@ import { cx } from './_dash';
 
 export type Status = 'todo' | 'progress' | 'review' | 'done';
 export type Pri = 'urgent' | 'high' | 'med' | 'low';
-export interface Task { id: string; title: string; status: Status; pri: Pri; who: string | null; labels: string[]; est: number; epic: string; blocked?: string; fresh?: boolean }
+export interface Sub { id: string; text: string; done: boolean }
+export interface Cmt { id: string; who: string; at: string; text: string }
+export interface Task { id: string; title: string; status: Status; pri: Pri; who: string | null; labels: string[]; est: number; epic: string; blocked?: string; fresh?: boolean; sprint?: number; from?: string; to?: string; subs?: Sub[]; cmts?: Cmt[] }
 
 export const STATUSES: Array<{ id: Status; label: string }> = [{ id: 'todo', label: 'To do' }, { id: 'progress', label: 'In progress' }, { id: 'review', label: 'In review' }, { id: 'done', label: 'Done' }];
 export const PRIS: Array<{ id: Pri; label: string }> = [{ id: 'urgent', label: 'Urgent' }, { id: 'high', label: 'High' }, { id: 'med', label: 'Medium' }, { id: 'low', label: 'Low' }];
@@ -93,3 +95,4 @@ export function StatusIcon({ s }: { s: Status }) {
   return <svg className={cx('tp-st', `is-${s}`)} width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{c}</svg>;
 }
 export function LabelChip({ name }: { name: string }) { return <span className="tp-lab" data-l={name}><i />{name}</span>; }
+export function CommentIcon() { return <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" aria-hidden="true"><path d="M2.5 3.5h11v7h-6l-3 2.5v-2.5h-2z" /></svg>; }

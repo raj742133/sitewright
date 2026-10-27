@@ -1,64 +1,25 @@
 'use client';
-// Pieces of the finance dashboard that are not in the kit: a keyboard-friendly transactions table, the detail drawer and the
-// Send / Request / Transfer dialog.
+// Pieces of the finance dashboard that are not in the kit: the transaction detail drawer and the Send / Request / Transfer dialog.
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Button, Glyph, Pill, cx } from './_dash';
-import { ACCTS, OUT_CATS, acctOf, dLong, dShort, isPosted, money, type Tx } from './_fin';
+import { ACCTS, IN_CATS, OUT_CATS, acctOf, dLong, dShort, isPosted, money, type Tx } from './_fin';
 
-export type SortKey = 'date' | 'amt';
 const TONE = { posted: 'ok', pending: 'warn', flagged: 'bad' } as const;
 const LABEL = { posted: 'Posted', pending: 'Pending', flagged: 'Flagged' } as const;
 export const StatusPill = ({ s }: { s: Tx['status'] }) => <Pill tone={TONE[s]}>{LABEL[s]}</Pill>;
-const Amt = ({ t }: { t: Tx }) => <span className={cx('tf-amt', t.kind === 'in' && 'is-in', t.status !== 'posted' && t.status !== 'flagged' && 'is-soft')}>{money(t.amt, t.kind === 'in')}</span>;
+export const Amt = ({ t }: { t: Tx }) => <span className={cx('tf-amt', t.kind === 'in' && 'is-in', t.status !== 'posted' && t.status !== 'flagged' && 'is-soft')}>{money(t.amt, t.kind === 'in')}</span>;
 
-export function TxTable({ rows, sel, onSel, sort, onSort, empty }: { rows: Tx[]; sel: string | null; onSel: (id: string) => void; sort: { key: SortKey; dir: 1 | -1 }; onSort: (k: SortKey) => void; empty: string }) {
-  const body = useRef<HTMLTableSectionElement>(null);
-  const tab = sel && rows.some((r) => r.id === sel) ? sel : rows[0]?.id;
-  const onKey = (e: KeyboardEvent<HTMLTableRowElement>, id: string) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSel(id); return; }
-    const d = e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : e.key === 'Home' ? -99999 : e.key === 'End' ? 99999 : 0;
-    if (!d) return; e.preventDefault();
-    const i = rows.findIndex((r) => r.id === id), n = Math.max(0, Math.min(rows.length - 1, i + d));
-    (body.current?.querySelector(`[data-row="${rows[n]!.id}"]`) as HTMLElement | null)?.focus();
-  };
-  const head = (k: SortKey, label: string, right?: boolean) => (
-    <th scope="col" className={cx(right && 'is-r')} aria-sort={sort.key === k ? (sort.dir === 1 ? 'ascending' : 'descending') : 'none'}>
-      <button type="button" onClick={() => onSort(k)} aria-label={`Sort by ${label.toLowerCase()}`}>{label}<Glyph name="down" size={11} className={cx('td-sortic', sort.key === k && 'is-on', sort.key === k && sort.dir === 1 && 'is-asc')} /></button>
-    </th>
-  );
-  return (
-    <div className="tf-tablewrap">
-      <table className="tf-table">
-        <caption className="td-sr">Transactions, press Enter on a row to open its details</caption>
-        <thead><tr>{head('date', 'Date')}<th scope="col">Description</th><th scope="col" className="hide-sm">Category</th><th scope="col" className="hide-md">Account</th><th scope="col" className="hide-sm">Status</th>{head('amt', 'Amount', true)}</tr></thead>
-        <tbody ref={body}>
-          {rows.length === 0 && <tr><td colSpan={6} className="tf-none">{empty}</td></tr>}
-          {rows.map((t) => (
-            <tr key={t.id} data-row={t.id} tabIndex={t.id === tab ? 0 : -1} className={cx(sel === t.id && 'is-sel')} aria-current={sel === t.id ? 'true' : undefined} onClick={() => onSel(t.id)} onKeyDown={(e) => onKey(e, t.id)}>
-              <td className="tf-date">{dShort(t.date)}</td>
-              <td><div className="tf-desc"><b>{t.name}</b><small>{t.memo}<span className="tf-st"> · <StatusPill s={t.status} /></span></small></div></td>
-              <td className="hide-sm"><span className="tf-cat">{t.cat}</span></td>
-              <td className="hide-md tf-ac">{acctOf(t.acct).name} <i>••{acctOf(t.acct).mask}</i></td>
-              <td className="hide-sm"><StatusPill s={t.status} /></td>
-              <td className="is-r"><Amt t={t} /></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-export function Drawer({ t, onClose, onApprove, onFlag, bodyRef }: { t: Tx | null; onClose: () => void; onApprove: (id: string) => void; onFlag: (id: string) => void; bodyRef: React.RefObject<HTMLElement | null> }) {
+export function Drawer({ t, onClose, onApprove, onFlag, onCat, bodyRef, sheet }: { t: Tx | null; onClose: () => void; onApprove: (id: string) => void; onFlag: (id: string) => void; onCat: (id: string, cat: string) => void; bodyRef: React.RefObject<HTMLElement | null>; sheet?: boolean }) {
   if (!t) return <aside className="tf-drawer is-empty" ref={bodyRef} aria-label="Transaction details"><div className="td-empty"><Glyph name="file" size={22} /><b>No transaction selected</b><p>Pick a row to see its details and approve or flag it.</p></div></aside>;
   const a = acctOf(t.acct);
   const effect = t.status === 'posted' ? `Moved ${money(t.amt, true)} ${t.amt > 0 ? 'into' : 'out of'} ${a.name}.` : t.status === 'flagged' ? (isPosted(t) ? 'Already counted in the balance. Clear the flag to mark it reviewed.' : 'Held. Not counted in the balance until you approve it.') : `Approving moves ${money(t.amt, true)} ${t.amt > 0 ? 'into' : 'out of'} ${a.name}.`;
-  const rowsD: Array<[string, string]> = [['Date', dLong(t.date)], ['Account', `${a.name} ••${a.mask}`], ['Category', t.cat], ['Method', t.method], ['Reference', t.ref], ['Memo', t.memo]];
+  const rowsD: Array<[string, string]> = [['Date', dLong(t.date)], ['Account', `${a.name} ••${a.mask}`], ['Method', t.method], ['Reference', t.ref], ['Memo', t.memo]];
   return (
-    <aside className="tf-drawer" ref={bodyRef} tabIndex={-1} aria-label={`Details for ${t.name}`} onKeyDown={(e) => { if (e.key === 'Escape') onClose(); }}>
+    <aside className={cx('tf-drawer', sheet && 'is-sheet')} ref={bodyRef} tabIndex={-1} aria-label={`Details for ${t.name}`} onKeyDown={(e) => { if (e.key === 'Escape') onClose(); }}>
       <div className="tf-dh"><span className="td-muted">Transaction</span><Button variant="ghost" small icon="x" label="Close details" onClick={onClose} /></div>
       <div className="tf-dtop"><b className={cx('tf-big', t.kind === 'in' && 'is-in')}>{money(t.amt, t.kind === 'in')}</b><span>{t.name}</span><StatusPill s={t.status} /></div>
       <dl className="tf-dl">{rowsD.map(([k, v]) => <div key={k}><dt>{k}</dt><dd className={k === 'Reference' ? 'td-mono' : undefined}>{v}</dd></div>)}</dl>
+      {t.kind !== 'xfer' && <label className="tf-dcat"><span>Category</span><span className="tf-select"><select value={t.cat} onChange={(e) => onCat(t.id, e.target.value)} aria-label="Category">{(t.kind === 'in' ? IN_CATS : OUT_CATS).map((c) => <option key={c}>{c}</option>)}</select><Glyph name="down" size={12} /></span></label>}
       <p className="tf-effect">{effect}</p>
       <ol className="tf-log" aria-label="Activity">{t.log.map((l, i) => <li key={i}>{l}</li>)}</ol>
       <div className="tf-da">
@@ -73,8 +34,8 @@ export type Mode = 'send' | 'request' | 'transfer';
 export interface Draft { mode: Mode; party: string; amt: string; from: string; to: string; cat: string; memo: string }
 const COPY = { send: ['Send money', 'To', 'From account', 'Send payment'], request: ['Request money', 'From', 'Deposit into', 'Send request'], transfer: ['Transfer between accounts', '', 'From', 'Move money'] } as const;
 
-export function ActionDialog({ mode, balances, onClose, onSubmit }: { mode: Mode; balances: Record<string, number>; onClose: () => void; onSubmit: (d: Draft) => void }) {
-  const [d, setD] = useState<Draft>({ mode, party: '', amt: '', from: 'ops', to: 'sav', cat: 'Contractors', memo: '' });
+export function ActionDialog({ mode, balances, onClose, onSubmit, preset }: { mode: Mode; balances: Record<string, number>; onClose: () => void; onSubmit: (d: Draft) => void; preset?: { from?: string; to?: string } }) {
+  const [d, setD] = useState<Draft>({ mode, party: '', amt: '', from: preset?.from ?? 'ops', to: preset?.to ?? (preset?.from === 'sav' ? 'ops' : 'sav'), cat: 'Contractors', memo: '' });
   const [err, setErr] = useState('');
   const ref = useRef<HTMLDivElement>(null);
   const set = <K extends keyof Draft>(k: K, v: Draft[K]) => { setD((x) => ({ ...x, [k]: v })); setErr(''); };

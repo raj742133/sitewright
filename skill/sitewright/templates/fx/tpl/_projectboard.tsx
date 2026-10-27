@@ -2,10 +2,11 @@
 // Board pieces: the task card, its status/assignee menu, the new-task form and the share popover.
 import { useEffect, useRef, useState, type DragEvent, type KeyboardEvent as RKey, type ReactNode } from 'react';
 import { Avatar, Button, Glyph, cx } from './_dash';
-import { ESTIMATES, LABELS, LabelChip, PEOPLE, PRIS, PriIcon, STATUSES, StatusIcon, type Pri, type Status, type Task } from './_project';
+import type { Draft } from './_projectstore';
+import { CommentIcon, ESTIMATES, LABELS, LabelChip, PEOPLE, PRIS, PriIcon, STATUSES, StatusIcon, type Pri, type Status, type Task } from './_project';
 
 /** Closes on outside pointer-down. */
-function useOutside(ref: React.RefObject<HTMLElement | null>, on: boolean, close: () => void) {
+export function useOutside(ref: React.RefObject<HTMLElement | null>, on: boolean, close: () => void) {
   useEffect(() => { if (!on) return; const f = (e: PointerEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) close(); }; document.addEventListener('pointerdown', f); return () => document.removeEventListener('pointerdown', f); }, [on, ref, close]);
 }
 const menuKeys = (e: RKey<HTMLElement>, close: (back: boolean) => void) => {
@@ -31,7 +32,7 @@ function CardMenu({ t, close, onStatus, onAssign, onBlock }: { t: Task; close: (
   );
 }
 
-export interface CardProps { t: Task; active: boolean; dragging: boolean; dropBefore: boolean; menuOpen: boolean; onFocus: () => void; onKey: (e: RKey<HTMLElement>) => void; onMenu: (open: boolean, back?: boolean) => void; onStatus: (s: Status) => void; onAssign: (w: string | null) => void; onBlock: () => void; onDragStart: (e: DragEvent) => void; onDragEnd: () => void }
+export interface CardProps { t: Task; active: boolean; dragging: boolean; dropBefore: boolean; menuOpen: boolean; onFocus: () => void; onKey: (e: RKey<HTMLElement>) => void; onMenu: (open: boolean, back?: boolean) => void; onStatus: (s: Status) => void; onAssign: (w: string | null) => void; onBlock: () => void; onOpen: () => void; onDragStart: (e: DragEvent) => void; onDragEnd: () => void }
 export function Card(p: CardProps) {
   const { t } = p; const wrap = useRef<HTMLLIElement>(null);
   useOutside(wrap, p.menuOpen, () => p.onMenu(false));
@@ -39,19 +40,18 @@ export function Card(p: CardProps) {
   return (
     <li ref={wrap} className={cx('tp-li', p.dropBefore && 'is-drop', p.dragging && 'is-drag', p.menuOpen && 'is-menu')} draggable onDragStart={p.onDragStart} onDragEnd={p.onDragEnd}>
       <div className={cx('tp-card', t.status === 'done' && 'is-done', t.blocked && 'is-blocked', t.fresh && 'is-new')} data-tid={t.id} role="group" tabIndex={p.active ? 0 : -1} aria-describedby="tp-kbd"
-        aria-label={`${t.id}, ${t.title}. ${st}. ${PRIS.find((x) => x.id === t.pri)!.label} priority. ${t.who ?? 'Unassigned'}. ${t.est} points.${t.blocked ? ` Blocked: ${t.blocked}.` : ''}`} onFocus={p.onFocus} onKeyDown={p.onKey}>
+        aria-label={`${t.id}, ${t.title}. ${st}. ${PRIS.find((x) => x.id === t.pri)!.label} priority. ${t.who ?? 'Unassigned'}. ${t.est} points.${t.blocked ? ` Blocked: ${t.blocked}.` : ''}`} onFocus={p.onFocus} onKeyDown={p.onKey} onClick={p.onOpen}>
         <div className="tp-c1"><span className="tp-id">{t.id}</span>{t.blocked && <span className="tp-blk" title={t.blocked}><Glyph name="x" size={10} />Blocked</span>}
-          <button type="button" className="tp-dots" tabIndex={-1} aria-label={`Actions for ${t.id}`} aria-haspopup="menu" aria-expanded={p.menuOpen} onClick={() => p.onMenu(!p.menuOpen)}><Glyph name="more" size={16} /></button></div>
+          <button type="button" className="tp-dots" tabIndex={-1} aria-label={`Actions for ${t.id}`} aria-haspopup="menu" aria-expanded={p.menuOpen} onClick={(e) => { e.stopPropagation(); p.onMenu(!p.menuOpen); }}><Glyph name="more" size={16} /></button></div>
         <div className="tp-title">{t.title}</div>
         {t.blocked && <div className="tp-why">{t.blocked}</div>}
-        <div className="tp-c3"><span className="tp-labs">{t.labels.map((l) => <LabelChip key={l} name={l} />)}</span><PriIcon pri={t.pri} /><span className="tp-est" title={`${t.est} story points`}>{t.est}</span>{t.who ? <span title={t.who}><Avatar name={t.who} size={22} /></span> : <span className="tp-unas" title="Unassigned"><Glyph name="users" size={12} /></span>}</div>
+        <div className="tp-c3"><span className="tp-labs">{t.labels.map((l) => <LabelChip key={l} name={l} />)}</span>{t.subs && t.subs.length > 0 && <span className="tp-ind" title="Subtasks done"><Glyph name="check" size={12} />{t.subs.filter((x) => x.done).length}/{t.subs.length}</span>}{t.cmts && t.cmts.length > 0 && <span className="tp-ind" title="Comments"><CommentIcon />{t.cmts.length}</span>}<PriIcon pri={t.pri} /><span className="tp-est" title={`${t.est} story points`}>{t.est}</span>{t.who ? <span title={t.who}><Avatar name={t.who} size={22} /></span> : <span className="tp-unas" title="Unassigned"><Glyph name="users" size={12} /></span>}</div>
       </div>
       {p.menuOpen && <CardMenu t={t} close={(back) => p.onMenu(false, back)} onStatus={p.onStatus} onAssign={p.onAssign} onBlock={p.onBlock} />}
     </li>
   );
 }
 
-export interface Draft { title: string; status: Status; who: string | null; pri: Pri; label: string; est: number }
 export function NewTask({ initial, nextId, onAdd, onCancel }: { initial: Status; nextId: string; onAdd: (d: Draft) => void; onCancel: () => void }) {
   const [d, setD] = useState<Draft>({ title: '', status: initial, who: null, pri: 'med', label: 'Frontend', est: 3 }); const [touched, setTouched] = useState(false);
   useEffect(() => setD((x) => ({ ...x, status: initial })), [initial]);

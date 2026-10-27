@@ -2,7 +2,7 @@
   {
     "id": "inbox-dashboard",
     "label": "Support inbox",
-    "desc": "A three-pane inbox: conversation list with filters and search, the thread with a composer and canned replies, and a customer panel with history.",
+    "desc": "A support workspace: a three-pane inbox, a searchable customer table with customer pages, reports (response times, volume, heatmap, CSAT, SLA breaches), a help center with an article reader, and settings for canned replies, SLA, routing and alerts.",
     "source": "Original",
     "group": "dashboard",
     "files": [
@@ -10,11 +10,21 @@
       "_inbox.tsx",
       "_inbox-data.tsx",
       "_inbox-parts.tsx",
+      "_inbox-store.tsx",
+      "_inbox-views-ui.tsx",
+      "_inbox-views-customers.tsx",
+      "_inbox-views-reports.tsx",
+      "_inbox-views-charts.tsx",
+      "_inbox-views-help.tsx",
+      "_inbox-help-data.tsx",
+      "_inbox-views-settings.tsx",
+      "_inbox-views-canned.tsx",
       "_dash.tsx"
     ],
     "css": [
       "tpl-dash",
-      "tpl-inbox-dashboard"
+      "tpl-inbox-dashboard",
+      "tpl-inbox-views"
     ],
     "use": "Customer support, messaging, shared mailboxes."
   }

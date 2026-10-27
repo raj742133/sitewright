@@ -59,7 +59,7 @@ const mauR: Result = {
   chart: { kind: 'area', title: 'Monthly active users', unit: 'users', labels: MON, series: [{ id: 'mau', label: 'Active users', data: MAU }], format: fmt.k, aria: 'Monthly active users, November 2025 to October 2026' },
   tableTitle: 'By month', rowKey: 'month', file: 'monthly-active-users',
   cols: [txt('month', 'Month'), num('mau', 'Active users'), num('adds', 'Net adds', (v) => `+${fmt.n(v)}`, { hideBelow: 'sm' }), dlt('mom', 'MoM')],
-  sources: [{ t: 'events', rows: 3204118 }, { t: 'users', rows: 12904 }],
+  sources: [{ t: 'events', rows: 3204118 }, { t: 'customers', rows: 12904 }],
   sql: `-- Distinct users with at least one event, per calendar month\nSELECT date_trunc('month', e.occurred_at) AS month,\n       COUNT(DISTINCT e.user_id) AS mau\nFROM events e\nWHERE e.occurred_at >= '2025-11-01'\n  AND e.occurred_at <  '2026-11-01'\n  AND e.type IN ('session_start', 'order_placed')\nGROUP BY 1\nORDER BY 1;`,
 };
 
@@ -141,7 +141,6 @@ const delayed: Result = {
 };
 export const RESULTS: Result[] = [revenue, mauR, customers, churn, funnel, delayed];
 export const RESULT_ROWS: Record<string, Row[]> = { revenue: revRows, mau: mauRows, customers: cusRows, churn: chRows, funnel: fRows, delayed: dRows };
-export const TABLES = [{ t: 'orders', rows: 48210, d: 'One row per order, USD totals' }, { t: 'customers', rows: 12904, d: 'Accounts and their region' }, { t: 'events', rows: 3204118, d: 'Product and storefront events' }, { t: 'subscriptions', rows: 9206, d: 'Plan, start and cancel dates' }, { t: 'shipments', rows: 47980, d: 'Carrier, promised and delivered' }, { t: 'regions', rows: 5, d: 'Sales regions' }];
 
 /** Keyword score: longer phrases weigh more, so "top customers" beats a stray "customers". */
 export function match(q: string): { kind: 'result'; res: Result } | { kind: 'hello' } | { kind: 'fallback' } {

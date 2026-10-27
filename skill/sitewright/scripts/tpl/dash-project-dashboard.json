@@ -2,7 +2,7 @@
   {
     "id": "project-dashboard",
     "label": "Projects",
-    "desc": "Team work in one place: sprint progress, a kanban board that moves cards by drag or keyboard, a timeline of milestones and workload per person.",
+    "desc": "Team work in one place: an overview with burndown, a full-height kanban with swimlanes, WIP limits and a task drawer, a Gantt timeline with dependencies, and a per-person weekly workload heatmap you can rebalance.",
     "source": "Original",
     "group": "dashboard",
     "files": [
@@ -10,11 +10,18 @@
       "_projectviews.tsx",
       "_projectboard.tsx",
       "_project.tsx",
+      "_projectdata.tsx",
+      "_projectstore.tsx",
+      "_projectboardview.tsx",
+      "_projectdrawer.tsx",
+      "_projecttimeline.tsx",
+      "_projectworkload.tsx",
       "_dash.tsx"
     ],
     "css": [
       "tpl-dash",
-      "tpl-project-dashboard"
+      "tpl-project-dashboard",
+      "tpl-project-views"
     ],
     "use": "Project and sprint management, agency and team tools."
   }

@@ -8,7 +8,7 @@ export const STAGES: Stage[] = [
   { id: 'lead', label: 'Lead', p: 10 }, { id: 'qualified', label: 'Qualified', p: 22 }, { id: 'proposal', label: 'Proposal', p: 45 },
   { id: 'negotiation', label: 'Negotiation', p: 58 }, { id: 'won', label: 'Won', p: 100 },
 ];
-export const stageLabel = (id: StageId) => STAGES.find((s) => s.id === id)!.label;
+export const stageLabel = (id: StageId, st: Stage[] = STAGES) => (st.find((s) => s.id === id) ?? STAGES.find((s) => s.id === id)!).label;
 
 export interface Deal { id: string; company: string; title: string; amount: number; owner: string; stage: StageId; close: string; adj: number; touch: number }
 export interface Rep { name: string; role: string; quota: number; lost: number }
@@ -59,7 +59,7 @@ const at = (s: string) => Date.parse(`${s}T00:00:00Z`);
 export const daysTo = (s: string) => Math.round((at(s) - TODAY) / DAY);
 export const dateLabel = (s: string) => new Date(at(s)).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 export const inOctober = (d: Deal) => d.close.startsWith('2026-10');
-export const prob = (d: Deal) => (d.stage === 'won' ? 100 : Math.max(5, Math.min(95, STAGES.find((s) => s.id === d.stage)!.p + d.adj)));
+export const prob = (d: Deal, st: Stage[] = STAGES) => (d.stage === 'won' ? 100 : Math.max(1, Math.min(99, (st.find((s) => s.id === d.stage) ?? STAGES.find((s) => s.id === d.stage)!).p + d.adj)));
 export const sum = (ds: Deal[], f: (d: Deal) => number = (d) => d.amount) => ds.reduce((a, d) => a + f(d), 0);
 export const money = fmt.c;
 
@@ -76,9 +76,9 @@ export function health(d: Deal): { level: Level; why: string } {
 }
 export const closeNote = (d: Deal) => { if (d.stage === 'won') return dateLabel(d.close); const dt = daysTo(d.close); return dt < 0 ? `${dateLabel(d.close)} · overdue` : dt === 0 ? 'Today' : dt <= 14 ? `${dateLabel(d.close)} · ${dt}d` : dateLabel(d.close); };
 
-export function summarize(ds: Deal[], lost: number) {
+export function summarize(ds: Deal[], lost: number, st: Stage[] = STAGES) {
   const open = ds.filter((d) => d.stage !== 'won'), won = ds.filter((d) => d.stage === 'won');
-  const weighted = sum(open, (d) => (d.amount * prob(d)) / 100), wonV = sum(won);
+  const weighted = sum(open, (d) => (d.amount * prob(d, st)) / 100), wonV = sum(won);
   return { pipeline: sum(open), openCount: open.length, weighted, wonV, wonCount: won.length, forecast: wonV + weighted, winRate: won.length + lost ? won.length / (won.length + lost) : 0, avg: won.length ? wonV / won.length : 0 };
 }
 
@@ -86,21 +86,16 @@ export function summarize(ds: Deal[], lost: number) {
 const ENDS = [...Array.from({ length: 13 }, (_, k) => Date.UTC(2026, 9, 4 + 7 * k)), Date.UTC(2026, 11, 31)];
 export const WEEK_LABELS = ENDS.map((t) => new Date(t).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }));
 export const TODAY_WEEK = ENDS.findIndex((t) => t >= TODAY);
-export function weekly(ds: Deal[], quota: number) {
-  const q0 = Date.UTC(2026, 9, 1), qd = (Date.UTC(2026, 11, 31) - q0) / DAY + 1;
-  const committed = ENDS.map((t) => Math.round(sum(ds.filter((d) => at(d.close) <= t), (d) => (d.stage === 'won' ? d.amount : t <= TODAY ? 0 : (d.amount * prob(d)) / 100))));
-  const target = ENDS.map((t) => Math.round(quota * Math.min(1, ((t - q0) / DAY + 1) / qd)));
+/** Cumulative share of the quarterly target due by time t: each month is linear, the months carry the phasing. */
+export function targetShare(t: number, phasing: number[]) {
+  const m = [Date.UTC(2026, 9, 1), Date.UTC(2026, 10, 1), Date.UTC(2026, 11, 1), Date.UTC(2027, 0, 1)]; let acc = 0;
+  for (let i = 0; i < 3; i++) { const f = Math.max(0, Math.min(1, (t + DAY - m[i]!) / (m[i + 1]! - m[i]!))); acc += f * (phasing[i]! / 100); }
+  return acc;
+}
+export function weekly(ds: Deal[], quota: number, st: Stage[] = STAGES, phasing: number[] = [40, 32, 28]) {
+  const committed = ENDS.map((t) => Math.round(sum(ds.filter((d) => at(d.close) <= t), (d) => (d.stage === 'won' ? d.amount : t <= TODAY ? 0 : (d.amount * prob(d, st)) / 100))));
+  const target = ENDS.map((t) => Math.round(quota * targetShare(t, phasing)));
   return { committed, target };
 }
 
-export interface Event { id: string; who: string; verb: string; company: string; detail?: string; t: string }
-export const EVENTS: Event[] = [
-  { id: 'e1', who: 'Priya Nair', verb: 'logged a call with', company: 'Kestrel Aero', detail: 'Legal review done, waiting on procurement.', t: '12m' },
-  { id: 'e2', who: 'Tomás Reyes', verb: 'sent a proposal to', company: 'Tidewater Logistics', t: '48m' },
-  { id: 'e3', who: 'Maya Chen', verb: 'moved', company: 'Pinecrest Health', detail: 'from Qualified to Proposal.', t: '2h' },
-  { id: 'e4', who: 'Jonas Weber', verb: 'emailed', company: 'Ironbridge Capital', detail: 'They asked for revised payment terms.', t: '5h' },
-  { id: 'e5', who: 'Amara Okafor', verb: 'added', company: 'Saltmarsh Brewing', detail: 'as a new lead from the website.', t: 'Fri' },
-  { id: 'e6', who: 'Tomás Reyes', verb: 'won', company: 'Fairlane Auto Group', detail: 'for $93,000.', t: 'Wed' },
-  { id: 'e7', who: 'Maya Chen', verb: 'booked a demo with', company: 'Meridian Schools Trust', t: 'Tue' },
-];
-export const csv = (ds: Deal[]) => ['Company,Deal,Stage,Owner,Amount (USD),Close date,Probability', ...ds.map((d) => [d.company, d.title, stageLabel(d.stage), d.owner, d.amount, d.close, `${prob(d)}%`].map((v) => `"${String(v).replace(/"/g, '""')}"`).join(','))].join('\n');
+export const csv = (ds: Deal[], st: Stage[] = STAGES) => ['Company,Deal,Stage,Owner,Amount (USD),Close date,Probability', ...ds.map((d) => [d.company, d.title, stageLabel(d.stage, st), d.owner, d.amount, d.close, `${prob(d, st)}%`].map((v) => `"${String(v).replace(/"/g, '""')}"`).join(','))].join('\n');

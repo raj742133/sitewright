@@ -1,16 +1,13 @@
 'use client';
 // Pieces of the assistant workspace: the result panel (chart, table, summary, sources, query, export) and its empty state.
-import { useEffect, useRef, useState } from 'react';
-import { AreaChart, BarChart, Button, Donut, Glyph, Table, cx, fmt } from './_dash';
-import { RESULTS, RESULT_ROWS, TABLES, type Result } from './_txdata';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { AreaChart, BarChart, Button, Donut, Glyph, Table, cx, fmt, useReducedMotion } from './_dash';
+import { RESULT_ROWS, type Result } from './_txdata';
+import { Ic, copyText, useTyped } from './_txui';
 
 const SQL_RE = /(--[^\n]*|'[^']*'|\b(?:SELECT|FROM|JOIN|ON|WHERE|AND|GROUP BY|ORDER BY|LIMIT|AS|COUNT|SUM|AVG|MAX|DISTINCT|FILTER|OVER|DESC|IN|UNION ALL)\b|\b\d[\d.]*\b)/g;
 function Sql({ code }: { code: string }) {
   return <code>{code.split(SQL_RE).map((p, i) => (i % 2 === 0 ? p : <span key={i} className={p.startsWith('--') ? 'tx-c' : p.startsWith("'") ? 'tx-s' : /^\d/.test(p) ? 'tx-n' : 'tx-k'}>{p}</span>))}</code>;
-}
-async function copyText(t: string) {
-  try { await navigator.clipboard.writeText(t); return true; } catch { /* fall through to the legacy path */ }
-  try { const ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0;top:0'; document.body.appendChild(ta); ta.select(); const ok = document.execCommand('copy'); ta.remove(); return ok; } catch { return false; }
 }
 const q = (v: string | number) => (typeof v === 'number' ? String(v) : /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
 export function toCsv(res: Result) {
@@ -39,18 +36,31 @@ function ChartBlock({ c }: { c: Result['chart'] }) {
   );
 }
 
-export function ResultView({ res }: { res: Result }) {
-  const [open, setOpen] = useState(false); const [copied, flashCopy] = useFlash(); const [exported, flashExp] = useFlash();
+export function ResultView({ res, seen, bare, actions, saved, onSave }: { res: Result; seen?: Set<string>; bare?: boolean; actions?: ReactNode; saved?: boolean; onSave?: () => void }) {
+  const reduced = useReducedMotion();
+  const [open, setOpen] = useState(true); const [copied, flashCopy] = useFlash(); const [exported, flashExp] = useFlash();
+  const [fresh] = useState(() => !!seen && !seen.has(res.id));
+  useEffect(() => { seen?.add(res.id); }, [seen, res.id]);
+  const ty = useTyped(res.summary, fresh, reduced, 14);
   const rows = RESULT_ROWS[res.id]!; const h = res.headline;
+  const acts = (
+    <div className="tx-ra">
+      {actions}
+      {onSave && <button type="button" className={cx('td-btn is-sm', saved && 'tx-saved')} aria-pressed={saved} onClick={onSave}><Ic name="bookmark" size={14} fill={saved} />{saved ? 'Saved to Results' : 'Save to Results'}</button>}
+      <Button icon="file" small onClick={() => { download(res); flashExp(); }}>{exported ? 'Exported' : 'Export CSV'}</Button>
+    </div>
+  );
   return (
     <div className="tx-rv">
-      <header className="tx-rh">
-        <div><h2>{res.title}</h2><p>{res.period}</p></div>
-        <Button icon="file" small onClick={() => { download(res); flashExp(); }}>{exported ? 'Exported' : 'Export CSV'}</Button>
+      <header className={cx('tx-rh', bare && 'is-bare')}>
+        {bare ? <p>{res.period}</p> : <div><h2>{res.title}</h2><p>{res.period}</p></div>}
+        {acts}
       </header>
       <div className="tx-band">
         <div className="tx-head"><span>{h.label}</span><b>{h.value}</b>{h.delta !== undefined && <small className={cx('tx-d', (h.delta >= 0) === ((h.good ?? 'up') === 'up') ? 'is-good' : 'is-bad')}><Glyph name={h.delta >= 0 ? 'up' : 'arrowdown'} size={11} />{Math.abs(h.delta).toFixed(1)}%</small>}</div>
-        <div className="tx-sum"><h3 className="td-sr">Summary</h3><p>{res.summary}</p><ul>{res.insights.map((t) => <li key={t}>{t}</li>)}</ul></div>
+        <div className="tx-sum"><h3 className="td-sr">Summary</h3>
+          <p aria-busy={!ty.done}>{ty.text}{!ty.done && <i className="tx-caret" aria-hidden="true" />}</p>
+          <ul className={cx(!ty.done && 'is-wait')}>{res.insights.map((t) => <li key={t}>{t}</li>)}</ul></div>
       </div>
       <ChartBlock c={res.chart} />
       <section className="tx-sec" aria-label={`${res.tableTitle} table`}>
@@ -59,11 +69,13 @@ export function ResultView({ res }: { res: Result }) {
       </section>
       <section className="tx-sec tx-foot" aria-label="Sources and query">
         <div className="tx-src"><span className="tx-lab">Sources</span>{res.sources.map((s) => <span key={s.t} className="tx-tag"><Glyph name="layers" size={12} /><code>{s.t}</code><em>{fmt.n(s.rows)} rows</em></span>)}</div>
-        <button type="button" className="tx-qt" aria-expanded={open} aria-controls={`tx-q-${res.id}`} onClick={() => setOpen((o) => !o)}><Glyph name="chevron" size={13} className={cx('tx-chev', open && 'is-open')} />Query<span>SQL, {res.sql.split('\n').length} lines</span></button>
+        <div className="tx-qrow">
+          <button type="button" className="tx-qt" aria-expanded={open} aria-controls={`tx-q-${res.id}`} onClick={() => setOpen((o) => !o)}><Glyph name="chevron" size={13} className={cx('tx-chev', open && 'is-open')} />Query<span>SQL, {res.sql.split('\n').length} lines</span></button>
+          <button type="button" className="td-btn is-sm is-ghost" onClick={async () => { if (await copyText(res.sql)) flashCopy(); }}><Ic name={copied ? 'check' : 'copy'} size={13} />{copied ? 'Copied' : 'Copy query'}</button>
+        </div>
         {open && (
           <div className="tx-code" id={`tx-q-${res.id}`}>
-            <div className="tx-code-h"><span>read-only · demo warehouse</span>
-              <button type="button" className="td-btn is-sm is-ghost" onClick={async () => { if (await copyText(res.sql)) flashCopy(); }}><Glyph name={copied ? 'check' : 'file'} size={13} />{copied ? 'Copied' : 'Copy'}</button></div>
+            <div className="tx-code-h"><span>read-only · demo warehouse</span></div>
             <pre tabIndex={0} aria-label="SQL query"><Sql code={res.sql} /></pre>
           </div>
         )}
@@ -80,20 +92,6 @@ export function Skeleton({ step }: { step: string }) {
       <div className="tx-sk-b"><div className="tx-sk-l" style={{ width: 120, height: 32 }} /><div style={{ flex: 1, display: 'grid', gap: 8 }}><div className="tx-sk-l" /><div className="tx-sk-l" style={{ width: '88%' }} /><div className="tx-sk-l" style={{ width: '70%' }} /></div></div>
       <div className="tx-sk-l" style={{ height: 180 }} /><div className="tx-sk-l" /><div className="tx-sk-l" /><div className="tx-sk-l" />
       <p className="tx-sk-s"><i />{step}…</p>
-    </div>
-  );
-}
-
-export function Catalog({ onAsk, busy, hasResults }: { onAsk: (q: string) => void; busy: boolean; hasResults: boolean }) {
-  return (
-    <div className="tx-rv tx-cat">
-      <header className="tx-rh"><div><h2>{hasResults ? 'Tables and ideas' : 'Your results will appear here'}</h2><p>Ask in plain words. The answer gets a chart, a table, a summary and the query behind it.</p></div></header>
-      <section className="tx-sec"><div className="tx-sh"><h3>Try asking</h3><span>{RESULTS.length} analyses</span></div>
-        <ul className="tx-ideas">{RESULTS.map((r) => <li key={r.id}><button type="button" disabled={busy} onClick={() => onAsk(r.q)}><Glyph name={r.icon} size={15} /><span><b>{r.q}</b><small>{r.period.split(',')[0]}</small></span><Glyph name="chevron" size={13} /></button></li>)}</ul>
-      </section>
-      <section className="tx-sec"><div className="tx-sh"><h3>Connected tables</h3><span>Meridian Goods, demo warehouse</span></div>
-        <ul className="tx-tables">{TABLES.map((t) => <li key={t.t}><code>{t.t}</code><span>{t.d}</span><em>{fmt.n(t.rows)} rows</em></li>)}</ul>
-      </section>
     </div>
   );
 }
