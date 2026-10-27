@@ -1,7 +1,7 @@
 .tf-wrap { display: grid; gap: 16px; min-width: 0; scroll-margin-top: 0; }
 .tf-wrap > * { min-width: 0; }
 .tf-wrap h2 { margin: 0; }
-.tf-wrap { --tf-ok: color-mix(in srgb, var(--ok, #1c7a5b) 78%, var(--ink, #15130e)); }
+.tf-wrap { --tf-ok: color-mix(in srgb, var(--ok, #1c7a5b) 62%, var(--ink, #15130e)); }
 .is-in, .td-shell b.is-in, .td-shell strong.is-in { color: var(--tf-ok); }
 .tf-wrap .td-pill.is-ok { color: var(--tf-ok); }
 

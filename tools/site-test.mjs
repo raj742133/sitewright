@@ -187,19 +187,19 @@ section = 'catalogue';
   await check('search: typing finds Area chart first, writes ?q=, "/" focuses the field, empty state and clear work', async () => {
     await page.keyboard.press('/'); eq(await page.evaluate(() => document.activeElement.id), 'cat-q', '/ focuses');
     await page.keyboard.type('area'); await page.waitForTimeout(250);
-    eq(await page.textContent('.tile:not([hidden]) h3'), 'Area chart', 'first result'); eq(new URL(page.url()).searchParams.get('q'), 'area', 'url q');
+    eq(await page.textContent('.tile:not([hidden]) h2'), 'Area chart', 'first result'); eq(new URL(page.url()).searchParams.get('q'), 'area', 'url q');
     truthy(/results? for/.test(await page.textContent('#cat-count')), 'count text');
     await page.fill('#cat-q', 'zzzzqq'); await page.waitForTimeout(200); truthy(await page.locator('#cat-empty').isVisible(), 'empty state'); eq(await page.locator('.tile:visible').count(), 0, 'no tiles');
     await page.click('#cat-reset'); await page.waitForTimeout(200); eq(await page.locator('.tile:visible').count(), 24, 'back to 24'); eq(await page.inputValue('#cat-q'), '', 'field cleared');
   });
   await check('the URL state is restored on load (?g=charts&q=area)', async () => {
-    const { ctx: c2, page: p2 } = await openAt('wide', '/components/?g=charts&q=area'); eq(await p2.inputValue('#cat-q'), 'area', 'q'); eq(await p2.textContent('.tile:not([hidden]) h3'), 'Area chart', 'first');
+    const { ctx: c2, page: p2 } = await openAt('wide', '/components/?g=charts&q=area'); eq(await p2.inputValue('#cat-q'), 'area', 'q'); eq(await p2.textContent('.tile:not([hidden]) h2'), 'Area chart', 'first');
     truthy(await p2.locator('.tile:visible').count() <= GROUPS.charts, 'only charts'); await c2.close();
   });
   await check('a tile is one link to its detail page (keyboard and click)', async () => {
     await page.goto(abs('/components/')); await page.waitForTimeout(300);
-    const href = await page.getAttribute('.tile h3 a', 'href'); truthy(/^\/components\/[a-z0-9-]+\/$/.test(href), href);
-    await page.focus('.tile h3 a'); await page.keyboard.press('Enter'); await page.waitForURL('**' + href); eq(await page.locator('h1').count(), 1, 'h1');
+    const href = await page.getAttribute('.tile h2 a', 'href'); truthy(/^\/components\/[a-z0-9-]+\/$/.test(href), href);
+    await page.focus('.tile h2 a'); await page.keyboard.press('Enter'); await page.waitForURL('**' + href); eq(await page.locator('h1').count(), 1, 'h1');
   });
   await check('page length: no group needs more than ~3 desktop screens', async () => {
     const { ctx: c2, page: p2 } = await openAt('wide', '/components/?g=buttons'); const h = await p2.evaluate(() => document.documentElement.scrollHeight); truthy(h <= 3.2 * 900, `${h}px tall`); await c2.close();
@@ -340,7 +340,7 @@ for (const p of PAGES.concat(['/components/?g=charts'])) for (const vp of ['phon
     eq(clipped.join(','), '', 'clipped'); const hb = await page.locator('header.top').boundingBox(); truthy(hb.height <= 72, `header ${hb.height}`);
   });
   if (vp === 'phone') await check(`${p} on a phone: touch targets are 44px`, async () => {
-    const small = await page.$$eval('header button, header a.brand, header .icon-btn, .btn, .btn-s, .seg button, .groups a, .mod-tabs button, .os-tabs button, .copy, .rail-list a, .kit-tile, .tile h3 a', (els) => els.filter((e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return r.width > 0 && cs.visibility !== 'hidden' && (r.height < 43.5 && !e.matches('.tile h3 a, .brand')); }).map((e) => `${e.tagName}.${e.className} ${Math.round(e.getBoundingClientRect().height)}px "${e.textContent.trim().slice(0, 20)}"`));
+    const small = await page.$$eval('header button, header a.brand, header .icon-btn, .btn, .btn-s, .seg button, .groups a, .mod-tabs button, .os-tabs button, .copy, .rail-list a, .kit-tile, .tile h2 a', (els) => els.filter((e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return r.width > 0 && cs.visibility !== 'hidden' && (r.height < 43.5 && !e.matches('.tile h2 a, .brand')); }).map((e) => `${e.tagName}.${e.className} ${Math.round(e.getBoundingClientRect().height)}px "${e.textContent.trim().slice(0, 20)}"`));
     eq(small.slice(0, 4).join(' | '), '', 'too small');
   });
   await ctx.close();

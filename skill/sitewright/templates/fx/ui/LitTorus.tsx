@@ -131,9 +131,9 @@ export default function LitTorus({ label = 'Spinning lit 3D torus', className }:
       ro.disconnect(); offP(); offL(); s.redraw = () => {};
       canvas.removeEventListener('webglcontextlost', onLost); canvas.removeEventListener('webglcontextrestored', onRestored);
       el.removeEventListener('wheel', onWheel);
-      if (gl) { if (vb) gl.deleteBuffer(vb); if (ib) gl.deleteBuffer(ib); if (prog) gl.deleteProgram(prog); gl.getExtension('WEBGL_lose_context')?.loseContext(); }
+      if (gl) { if (vb) gl.deleteBuffer(vb); if (ib) gl.deleteBuffer(ib); if (prog) gl.deleteProgram(prog) }
     };
-  }, [reduced]);
+  }, []);
 
   const down = (e: PointerEvent<HTMLDivElement>) => {
     if (e.button !== 0) return;

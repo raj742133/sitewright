@@ -141,7 +141,7 @@ function tile(e) {
   const k = `${e.id} ${e.group} ${e.source} ${e.use}`.toLowerCase();
   return `<li class="tile" data-id="${e.id}" data-g="${e.group}" data-k="${esc(k)}">
 ${previewBox(e.id)}
-<div class="tile-b"><div class="tile-t"><h3><a href="/components/${e.id}/">${esc(e.label)}</a></h3><span class="tag">${groupLabel(e.group)}</span></div>
+<div class="tile-b"><div class="tile-t"><h2><a href="/components/${e.id}/">${esc(e.label)}</a></h2><span class="tag">${groupLabel(e.group)}</span></div>
 <p class="tile-d">${esc(firstSentence(e.desc))}</p><p class="tile-s">${esc(e.source)}</p></div>
 </li>`;
 }
