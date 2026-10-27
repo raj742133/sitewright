@@ -21,7 +21,7 @@ export const EPICS = [
   { id: 'ca', name: 'Catalog & search', who: 'Leo Martins', from: '2026-10-14', to: '2026-11-27', pre: [6, 24] },
   { id: 'lr', name: 'Launch readiness', who: 'Sam Delgado', from: '2026-10-26', to: '2026-12-03', pre: [0, 18] },
 ];
-export const MILESTONES = [{ id: 'm1', d: '2026-10-30', label: 'Sprint 14 review' }, { id: 'm2', d: '2026-11-13', label: 'Staff beta' }, { id: 'm3', d: '2026-11-27', label: 'Content freeze' }, { id: 'm4', d: '2026-12-04', label: 'Launch' }];
+export const MILESTONES = [{ id: 'm1', d: '2026-10-30', label: 'Sprint 14 review' }, { id: 'm2', d: '2026-11-13', label: 'Staff beta' }, { id: 'm3', d: '2026-11-27', label: 'Freeze' }, { id: 'm4', d: '2026-12-04', label: 'Launch' }];
 export const SPRINTS = [{ n: 13, a: '2026-10-05', b: '2026-10-19' }, { n: 14, a: '2026-10-19', b: '2026-11-02' }, { n: 15, a: '2026-11-02', b: '2026-11-16' }, { n: 16, a: '2026-11-16', b: '2026-11-30' }, { n: 17, a: '2026-11-30', b: '2026-12-14' }];
 
 const T = (id: number, title: string, status: Status, pri: Pri, who: string, est: number, epic: string, labels: string[], blocked?: string): Task => ({ id: `WEB-${id}`, title, status, pri, who, est, epic, labels, blocked });
