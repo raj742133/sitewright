@@ -2,9 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import site from '@/content/site.json';
-import { LogoMark } from '@/components/brand/Logo';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { UI_DEMOS } from './ui/demos';
+import { GalleryNav } from './GalleryNav';
 import { BACKGROUND_COMPONENTS, CountUp, EXTRA_ATTACH, FIGURE_FACTORIES, HEADLINE_COMPONENTS, INFO } from './catalog';
 
 type Choice = { background: string; headline: string; buttons: string; cards: string; reveal: string; extras: string[] };
@@ -73,7 +71,6 @@ export function Playground() {
   const [copied, setCopied] = useState(false);
   const [figure, setFigure] = useState('terrain');
   const [figIntensity, setFigIntensity] = useState(0.5);
-  const [uiGroup, setUiGroup] = useState('all');
   const [places, setPlaces] = useState<Record<string, string>>({});
 
   const set = <K extends keyof Choice>(k: K, v: Choice[K]) => { setC((o) => ({ ...o, [k]: v })); setRun((n) => n + 1); };
@@ -119,10 +116,7 @@ export function Playground() {
 
   return (
     <div className="fxg">
-      <header className="fxg-bar">
-        <a className="fxg-brand" href="/" aria-label="__BRAND__ home"><span className="brand-mark"><LogoMark size={26} /></span><b>__BRAND__</b><span className="muted"> / effects</span></a>
-        <ThemeToggle />
-      </header>
+      <GalleryNav active="effects" />
 
       <div className="fxg-wrap">
         <div className="fxg-intro">
@@ -184,27 +178,7 @@ export function Playground() {
               <p className="fxg-note">{INFO.figures.find((f) => f.id === figure)?.desc}</p>
             </section>
 
-            <section className="fxg-ui card pad" aria-label="Components" id="components">
-              <p className="eyebrow">Components</p>
-              <h2 className="card-h">{UI_DEMOS.length} small pieces to import</h2>
-              <p className="muted small">Each one is a single file with no extra library. Choose them in site.json (<code>effects.components</code>) and import by name from <code>@/components/fx/ui</code>.</p>
-              <div className="fxg-chips" role="radiogroup" aria-label="Component group">
-                {['all', ...Array.from(new Set(UI_DEMOS.map((d) => d.group)))].map((g) => (
-                  <button key={g} type="button" role="radio" aria-checked={uiGroup === g} className={`fxg-chip${uiGroup === g ? ' on' : ''}`} onClick={() => setUiGroup(g)}>{g}</button>
-                ))}
-              </div>
-              <div className="fxg-ui-grid">
-                {UI_DEMOS.filter((d) => uiGroup === 'all' || d.group === uiGroup).map((d) => (
-                  <article key={d.id} className="fxg-ui-item" aria-label={d.label}>
-                    <div className="fxg-ui-stage"><d.Demo /></div>
-                    <h3>{d.label} <span className="mono small muted">{d.source}</span></h3>
-                    <p className="muted small">{d.desc}</p>
-                    {d.use ? <p className="small"><b>Use it for:</b> {d.use}</p> : null}
-                    <code className="small">{`<${d.id.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join('')} />`}</code>
-                  </article>
-                ))}
-              </div>
-            </section>
+
           </section>
 
           <aside className="fxg-controls" aria-label="Choose effects">

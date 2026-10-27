@@ -1,0 +1,21 @@
+[
+  {
+    "id": "project-dashboard",
+    "label": "Projects",
+    "desc": "Team work in one place: sprint progress, a kanban board that moves cards by drag or keyboard, a timeline of milestones and workload per person.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "ProjectDashboard.tsx",
+      "_projectviews.tsx",
+      "_projectboard.tsx",
+      "_project.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-project-dashboard"
+    ],
+    "use": "Project and sprint management, agency and team tools."
+  }
+]

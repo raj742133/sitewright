@@ -1,0 +1,20 @@
+[
+  {
+    "id": "finance-dashboard",
+    "label": "Finance",
+    "desc": "A business banking home: total balance with a 30-day line and Send / Request / Transfer, cash in vs out, accounts, a searchable transactions table with a detail drawer and approvals, upcoming bills you can pay, and spend by category.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "FinanceDashboard.tsx",
+      "_fin.tsx",
+      "_fin-ui.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-finance-dashboard"
+    ],
+    "use": "Banking, bookkeeping, budgeting, subscription revenue."
+  }
+]

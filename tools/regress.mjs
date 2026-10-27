@@ -107,7 +107,7 @@ async function one(site, variant, port, modules) {
   const dir = path.join(OUT, `${example}-${variant}`);
   fs.rmSync(dir, { recursive: true, force: true });
   const r = { name: `${example} ${variant}`, scaffold: '-', tsc: '-', build: '-', verify: '-', audit: '-', fails: [] };
-  const extra = variant === 'max' && example !== 'gallery' && !site.fixture ? ['--figures', 'auto', '--icons', 'auto', '--preset', 'aurora-glass', '--components', 'all', '--offline-icons'] : ['--offline-icons'];
+  const extra = variant === 'max' && example !== 'gallery' && !site.fixture ? ['--figures', 'auto', '--icons', 'auto', '--preset', 'aurora-glass', '--components', 'all', '--templates', 'all', '--offline-icons'] : ['--offline-icons'];
   const sc = await run(process.execPath, [path.join(SKILL, 'scripts', 'scaffold.mjs'), '--config', site.file, '--out', dir, '--quiet', ...extra]);
   if (sc.code) { r.scaffold = 'FAIL'; r.fails.push(sc.out.trim().split('\n').slice(-2).join(' ')); return r; }
   r.scaffold = 'ok';

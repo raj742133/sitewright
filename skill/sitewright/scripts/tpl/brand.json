@@ -1,0 +1,17 @@
+[
+  {
+    "id": "bento-board",
+    "label": "Bento board",
+    "desc": "A share-ready brand board in a bento grid: statement, key number, logo, type sample, colour swatches, an abstract picture drawn from the brand colours, tone words, a slice of UI and a quote; reflows from four columns to one with its container.",
+    "source": "Original",
+    "group": "brand",
+    "files": [
+      "BentoBoard.tsx",
+      "_shared.tsx"
+    ],
+    "css": [
+      "ui-bento-board"
+    ],
+    "use": "Pitch decks, case studies and portfolio shots for the brand the site was generated for; an About or Brand page; a launch post image."
+  }
+]

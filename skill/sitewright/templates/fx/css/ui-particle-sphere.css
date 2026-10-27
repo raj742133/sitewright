@@ -1,0 +1,9 @@
+.ui-particle-sphere{position:absolute;inset:0;overflow:hidden;cursor:grab;touch-action:pan-y;outline:none;border-radius:var(--radius,12px)}
+.ui-particle-sphere:active{cursor:grabbing}
+.ui-particle-sphere:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:-2px}
+.ui-particle-sphere::before{content:'';position:absolute;left:50%;top:50%;width:min(74%,74vh);aspect-ratio:1;max-height:74%;transform:translate(-50%,-50%);border-radius:50%;transition:opacity .6s var(--ease,ease);
+  background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--signal,#f59e0b) 40%,transparent),color-mix(in srgb,var(--primary,#2563eb) 35%,transparent) 55%,transparent 72%)}
+.ui-particle-sphere[data-gl='on']::before{opacity:0}
+.ui-particle-sphere-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-particle-sphere-canvas[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.ui-particle-sphere::before{transition:none}}

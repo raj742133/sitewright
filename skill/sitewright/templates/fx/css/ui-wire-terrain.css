@@ -1,0 +1,8 @@
+.ui-wire-terrain{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ui-wire-terrain::before{content:'';position:absolute;inset:0;transition:opacity .6s var(--ease,ease);
+  background:radial-gradient(70% 28% at 50% 40%,color-mix(in srgb,var(--signal,#f59e0b) 30%,transparent),transparent 70%),
+    repeating-linear-gradient(180deg,transparent 0 17px,color-mix(in srgb,var(--signal,#f59e0b) 22%,transparent) 18px 19px) 0 62%/100% 38% no-repeat}
+.ui-wire-terrain[data-gl='on']::before{opacity:0}
+.ui-wire-terrain-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-wire-terrain-canvas[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.ui-wire-terrain::before{transition:none}}

@@ -6,6 +6,7 @@
 //   node scaffold.mjs --list-effects                       the effects menu (ids and what each does)
 //   ... --preset calm --hero-bg aurora --headline split-words --buttons shine --cards lift --reveal blur --extras cursor-glow,count-up
 //   ... --components all | hold-to-confirm,ring-chart      small interactive components to import from '@/components/fx/ui'
+//   ... --templates all | analytics-dashboard,lamp-login   whole screens (dashboards, pages) to import from '@/components/fx/tpl'
 //                                                          effect choices passed directly; they override the config file
 //   ... --figures auto | hero=terrain,signin=padlock   --figure-intensity 0.7     interactive line figures in named places
 //   ... --icons auto | none   --icon nav.dashboard=layout-dashboard,stats.0=package   --icon-set lucide   --offline-icons
@@ -112,6 +113,7 @@ const FX_FLAGS = { preset: 'preset', 'hero-bg': 'heroBackground', 'login-bg': 'l
 const picked = {};
 for (const [flag, key] of Object.entries(FX_FLAGS)) if (a[flag] !== undefined) picked[key] = a[flag];
 if (a.extras !== undefined) picked.extras = csv(a.extras);
+if (a.templates !== undefined) picked.templates = ['all', 'none'].includes(String(a.templates).trim()) ? String(a.templates).trim() : csv(a.templates);
 if (a.components !== undefined) picked.components = ['all', 'none'].includes(String(a.components).trim()) ? String(a.components).trim() : csv(a.components);
 // --figures auto | none | hero=terrain,signin=padlock      --figure-intensity 0..1
 if (a.figures !== undefined) {

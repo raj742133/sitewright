@@ -1,0 +1,18 @@
+[
+  {
+    "id": "analytics-dashboard",
+    "label": "Analytics",
+    "desc": "Web analytics: visitors with period comparison, a live traffic chart with crosshair tooltip, sources, top pages, countries and devices, and a realtime strip.",
+    "source": "Original",
+    "group": "dashboard",
+    "files": [
+      "AnalyticsDashboard.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-dash",
+      "tpl-analytics-dashboard"
+    ],
+    "use": "Site or product analytics, marketing reports, any traffic or usage overview."
+  }
+]
