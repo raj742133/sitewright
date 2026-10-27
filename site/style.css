@@ -382,3 +382,5 @@ body.pal-open { overflow: hidden; }
   .code pre, .copyline code { white-space: pre-wrap; overflow-wrap: anywhere; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+.foot nav a { display: inline-flex; align-items: center; min-height: 32px; }
+.copyline code b { color: #5ccfc7; }

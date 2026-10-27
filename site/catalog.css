@@ -88,7 +88,7 @@
 .pn b { font: 600 14px var(--font); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pn a[rel='next'] { text-align: right; }
 .rail h2 { font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-.rail h2 span { margin-left: 6px; opacity: .8; }
+.rail h2 span { margin-left: 6px; }
 .rail-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
 .rail-list a { display: flex; align-items: center; min-height: 36px; padding: 0 12px; border-radius: 8px; color: var(--muted); text-decoration: none; font-size: 14.5px; }
 .rail-list a:hover { background: var(--raised-2); color: var(--ink); }
