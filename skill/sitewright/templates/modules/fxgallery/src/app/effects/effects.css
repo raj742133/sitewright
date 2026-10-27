@@ -83,7 +83,7 @@
 .fxc-search input { width: 100%; min-height: 40px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--raised); color: var(--ink); font: inherit; }
 .fxc-side ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .fxc-side button { display: flex; width: 100%; align-items: center; justify-content: space-between; min-height: 36px; padding: 0 12px; border: 0; border-radius: 8px; background: none; color: var(--muted); font: inherit; font-weight: 550; cursor: pointer; text-align: left; }
-.fxc-side button span { font-size: 12px; opacity: .8; }
+.fxc-side button span { font-size: 12px; }
 .fxc-side button:hover { background: var(--raised-2); color: var(--ink); }
 .fxc-side button[aria-pressed='true'] { background: var(--raised-2); color: var(--ink); font-weight: 650; }
 .fxc-head h1, .fxt .fxc-head h1 { font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.025em; margin: 0 0 6px; }

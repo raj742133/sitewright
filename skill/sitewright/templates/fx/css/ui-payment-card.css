@@ -45,12 +45,13 @@
 .ui-payment-card-root[data-compact] { max-width: 280px; grid-template-columns: 112px 1fr; align-items: center; gap: 10px; }
 .ui-payment-card-root[data-compact] .ui-payment-card-fields { gap: 4px; grid-template-columns: 1fr 44px; }
 .ui-payment-card-root[data-compact] .ui-payment-card-lab { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.ui-payment-card-root[data-compact] .ui-payment-card-field input { min-height: 26px; padding: 0 20px 0 6px; font-size: 11px; border-radius: 6px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-field input { min-height: 30px; padding: 0 20px 0 6px; font-size: 11px; border-radius: 6px; }
 .ui-payment-card-root[data-compact] .ui-payment-card-tick { width: 10px; height: 10px; right: 6px; bottom: 8px; }
 .ui-payment-card-root[data-compact] .ui-payment-card-f-name { grid-column: 1 / -1; }
 .ui-payment-card-root[data-compact] .ui-payment-card-f-exp { grid-column: 1; }
 .ui-payment-card-root[data-compact] .ui-payment-card-f-cvc { grid-column: 2; }
 .ui-payment-card-root[data-compact] .ui-payment-card-f-cvc input { padding: 0 4px; }
+.ui-payment-card-root[data-compact] .ui-payment-card-f-exp input { min-width: 36px; }
 .ui-payment-card-root[data-compact] .ui-payment-card-f-cvc .ui-payment-card-tick { display: none; }
 .ui-payment-card-root[data-compact] .ui-payment-card-pay { min-height: 28px; font-size: 11px; border-radius: 6px; gap: 5px; }
 .ui-payment-card-root[data-compact] .ui-payment-card-spin { width: 10px; height: 10px; }
