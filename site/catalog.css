@@ -144,3 +144,6 @@
   .rail-list a { flex: none; min-height: 44px; padding: 0 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--raised); white-space: nowrap; }
   .rail-list a[aria-current='page'] { border-color: var(--primary); }
 }
+.prev-none { display: grid; place-items: center; text-align: center; padding: 16px; font: 500 12px var(--mono); color: var(--muted); }
+.nodemo { padding: 14px 18px; border: 1px dashed var(--line-strong); border-radius: 12px; color: var(--muted); font-size: 14px; }
+.tpl-g { padding: 0; }

@@ -1,6 +1,7 @@
 'use client';
 // The deals Kanban: pointer drag (mouse, pen, and a grip for touch), keyboard (arrows move focus, Shift + left/right moves the deal,
 // Enter opens the move menu) and a menu. Every move goes through onMove, which the page announces in its live region.
+import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState, type KeyboardEvent as RKE, type PointerEvent as RPE } from 'react';
 import { Avatar, Icon, cx, fmt } from './_dash';
 import { STAGES, closeNote, health, prob, stageLabel, sum, type Deal, type StageId } from './_sales';
@@ -84,7 +85,7 @@ export function Board({ deals, onMove }: { deals: Deal[]; onMove: (id: string, t
         {STAGES.map((s) => { const ds = by(s.id); return (
           <div key={s.id} ref={(el) => { cols.current[s.id] = el; }} role="group" aria-label={`${s.label}: ${ds.length} ${ds.length === 1 ? 'deal' : 'deals'}, ${fmt.c(sum(ds))}`} className={cx('ts-col', drag && 'is-target', drag?.over === s.id && 'is-over')}>
             <header className="ts-colh">
-              <div><i className={`ts-sd is-${s.id}`} aria-hidden="true" /><h3>{s.label}</h3><span className="ts-n">{ds.length}</span></div>
+              <div><i className={`ts-sd is-${s.id}`} aria-hidden="true" /><h2>{s.label}</h2><span className="ts-n">{ds.length}</span></div>
               <p><b>{fmt.c(sum(ds))}</b><small>{s.id === 'won' ? 'closed' : `${s.p}% stage`}</small></p>
             </header>
             <ul className="ts-list">
@@ -93,13 +94,12 @@ export function Board({ deals, onMove }: { deals: Deal[]; onMove: (id: string, t
             </ul>
           </div>); })}
       </div>
-      {drag && dragged && <div className="ts-ghost" style={{ left: drag.x - drag.ox, top: drag.y - drag.oy, width: drag.w }} aria-hidden="true"><Card d={dragged} drag /></div>}
-      {menu && menuDeal && (
+      {drag && dragged && createPortal(<div className="ts-ghost" style={{ left: drag.x - drag.ox, top: drag.y - drag.oy, width: drag.w }} aria-hidden="true"><Card d={dragged} drag /></div>, document.body)}
+      {menu && menuDeal && createPortal(
         <div className="ts-menu" ref={menuRef} role="menu" aria-label={`Move ${menuDeal.company} to`} style={{ left: menu.x, top: menu.y }} onKeyDown={menuKey}>
           <p>Move to stage</p>
           {STAGES.map((s) => <button key={s.id} type="button" role="menuitem" disabled={s.id === menuDeal.stage} onClick={() => move(menuDeal.id, s.id)}><i className={`ts-sd is-${s.id}`} aria-hidden="true" />{s.label}{s.id === menuDeal.stage && <Icon name="check" size={13} />}</button>)}
-        </div>
-      )}
+        </div>, document.body)}
     </>
   );
 }

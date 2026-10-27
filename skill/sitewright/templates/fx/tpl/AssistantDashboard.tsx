@@ -83,6 +83,7 @@ export default function AssistantDashboard() {
       <Shell brand="Meridian" nav={NAV.map((n) => (n.id === 'results' && results.length ? { ...n, badge: results.length } : n))} active={nav} onNav={onNav} title="Ask data" crumbs={['Meridian', 'Ask data', current?.title ?? 'New chat']} user={{ name: 'Dana Ortiz', role: 'Analyst' }}
         actions={<Button icon="plus" small onClick={reset} disabled={!msgs.length || busy}>New chat</Button>}>
         <div className="tx-ws" data-view={view}>
+          <h1 className="td-sr">Ask your data</h1>
           <div className="tx-switch"><Segmented label="Show" value={view} onChange={(v) => { setView(v); if (v === 'result') setUnseen(false); }} options={[{ id: 'chat', label: 'Chat' }, { id: 'result', label: unseen ? 'Result ●' : 'Result' }]} /></div>
           <section className="tx-chat" aria-label="Conversation">
             <div className="tx-log" ref={log} tabIndex={0} role="log" aria-label="Messages" aria-live="off">

@@ -80,7 +80,7 @@ export function footer() {
 }
 
 /** A whole page: head tags, header, <main> body, footer and scripts. `p` is the URL path ('/components/'). */
-export function page({ title, desc, p, current = '', main, css = [], js = ['/catalog.js'], mainClass = '', ogTitle }) {
+export function page({ title, desc, p, current = '', main, css = [], js = ['/catalog.js'], mainClass = '', ogTitle, after = '' }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -113,6 +113,7 @@ ${main}
 </main>
 ${footer()}
 ${js.map((j) => `<script src="${j}" defer></script>`).join('\n')}
+${after}
 </body>
 </html>
 `;
@@ -125,8 +126,10 @@ const codeBlock = (label, code, lang = '') => `<div class="code"><span class="lb
 // =============================================================================================================================
 // /components/  (the catalogue)
 // =============================================================================================================================
+const hasDemo = (id) => fs.existsSync(path.join(SITE_DIR, 'demo/effects/c', id, 'index.html'));
 function previewBox(id) {
   const e = UI[id];
+  if (!hasDemo(id)) return `<div class="prev prev-none" aria-hidden="true"><span>Live preview after the next demo export</span></div>`;
   return `<div class="prev" aria-hidden="true" data-prev="/demo/effects/c/${id}/" data-title="Live preview: ${esc(e.label)}"><span class="prev-sk"></span></div>`;
 }
 function interleaved() {
@@ -196,7 +199,8 @@ function detail(e) {
     <h1>${esc(e.label)}</h1>
     <p class="det-sub">${esc(first)}</p>
 
-    <section class="stage-wrap" aria-label="Live preview" id="stage-wrap" data-id="${e.id}">
+    ${hasDemo(e.id) ? '' : '<p class="nodemo">The live preview for this component is added with the next demo export.</p>'}
+    <section class="stage-wrap" aria-label="Live preview" id="stage-wrap" data-id="${e.id}"${hasDemo(e.id) ? '' : ' hidden'}>
       <div class="toolbar" role="toolbar" aria-label="Preview controls">
         <div class="seg" role="group" aria-label="Preview theme"><button type="button" data-theme="light" aria-pressed="true">Light</button><button type="button" data-theme="dark" aria-pressed="false">Dark</button></div>
         <div class="seg" role="group" aria-label="Stage width"><button type="button" data-w="320" aria-pressed="false">Compact<small>320</small></button><button type="button" data-w="480" aria-pressed="true">Default<small>480</small></button><button type="button" data-w="760" aria-pressed="false">Wide<small>760</small></button></div>

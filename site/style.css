@@ -172,7 +172,7 @@ footer { border-top: 1px solid var(--line); padding: 38px 0 54px; color: var(--m
 .ic-strip li { display: grid; place-items: center; height: 52px; border-radius: 14px; background: var(--raised-2); border: 1px solid var(--line); color: var(--ink); transition: color .18s, border-color .18s, transform .18s var(--ease); }
 .ic-strip li:hover { color: var(--primary); border-color: var(--primary); transform: translateY(-2px); }
 
-.ic-page { padding-block: 112px 90px; }
+.ic-page { padding-block: 56px 90px; }
 .ic-page h1 { font-size: clamp(30px, 4.4vw, 50px); font-weight: 800; margin: 14px 0; }
 .ic-page .sec-head p { color: var(--muted); }
 .ic-page .sec-head code, .ic-note code, .ic-empty code, .ic-how code { font-size: .88em; background: var(--primary-wash); color: var(--primary); padding: 2px 7px; border-radius: 8px; }

@@ -99,7 +99,7 @@ export default function SalesDashboard({ brand = 'Ferrum' }: { brand?: string })
           <ol className="ts-feed">{events.slice(0, 6).map((e) => <li key={e.id} className={e.t === 'now' ? 'is-new' : undefined}><Avatar name={e.who} size={24} /><p><b>{e.who}</b> {e.verb} <b>{e.company}</b> {e.detail}</p><time>{e.t}</time></li>)}</ol>
         </Panel>
       </div>
-      <Panel id="ts-l" title="Leaderboard" sub="Quota attainment is closed-won against Q4 quota. Click a rep to filter the board." flush>
+      <Panel id="ts-l" className="ts-lb" title="Leaderboard" sub="Quota attainment is closed-won against Q4 quota. Click a rep to filter the board." flush>
         <Table caption="Rep leaderboard, sortable" cols={cols} rows={rows} rowKey={(r) => r.name} selected={owner} />
       </Panel>
     </Shell>

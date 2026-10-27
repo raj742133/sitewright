@@ -114,5 +114,16 @@
   .to-inv th, .to-inv td { padding: 0 8px; } .to-inv th:first-child, .to-inv td:first-child { padding-left: 12px; } .to-bar-t { padding: 0 12px 12px; }
 }
 @container td (max-width: 520px) { .to-st-h { flex-wrap: wrap; } .to-st { padding: 12px; } .to-line { grid-template-columns: minmax(0, 1fr) 64px 64px 26px; gap: 6px; } .to-bar { display: none; } }
-@media (pointer: coarse) { .to-live, .to-sw, .to-find, .to-chip { min-height: 44px; } .to-inv input[type='checkbox'] { width: 22px; height: 22px; } .to-line input { height: 44px; } .to-st { min-height: 44px; } .to-toast button { width: 44px; height: 44px; } }
+@media (pointer: coarse) { .to-live, .to-sw, .to-find, .to-chip { min-height: 44px; } .to-line input { height: 44px; } .to-st { min-height: 44px; } .to-toast button { width: 44px; height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .to-live i, .to-scrim, .to-toast, .to-sw i, .to-sw i::after { animation: none !important; transition: none !important; } }
+
+/* a11y refinements */
+.to-inv th button { min-height: 28px; padding: 0 2px; margin-left: -2px; }
+.to-inv .to-chk { width: 44px; }
+.to-inv input[type='checkbox'] { width: 24px; height: 24px; }
+.to-find { align-self: stretch; height: auto; min-height: 32px; }
+.to-find input { min-height: 28px; }
+.td-shell .td-btn.is-primary:disabled { opacity: 1; background: var(--raised-2, #edebe7); color: var(--muted, #5c5851); border: 1px solid var(--line-strong, #c2bdb2); }
+.td-shell .td-btn:disabled:not(.is-primary) { opacity: 1; color: var(--muted, #5c5851); background: var(--raised-2, #edebe7); }
+.td-shell .to-st .td-pill.is-ok, .td-shell .to-inv .td-pill.is-ok { color: color-mix(in srgb, var(--ok, #1c7a5b) 78%, var(--ink, #000)); }
+@media (pointer: coarse) { .to-late .td-btn, .to-line .td-btn { min-height: 44px; min-width: 44px; } .to-find input, .to-line input { font-size: 16px; } .to-inv th button { min-height: 44px; } }

@@ -216,7 +216,7 @@
 
   /* ---- component detail ---- */
   var wrap = $('#stage-wrap');
-  if (wrap) (function () {
+  if (wrap && !wrap.hidden) (function () {
     var id = wrap.dataset.id, stage = $('#stage'), frame = $('#pv'), full = $('#full'), label = $('#stage-w');
     var themeBtns = $$('.seg [data-theme]', wrap), wBtns = $$('[data-w]', wrap), base = frame.dataset.src, theme = curTheme(), w = 480, loaded = false;
     function setTheme(t, fromSite) {
