@@ -58,6 +58,10 @@ The components under `skill/sitewright/templates/fx/ui/` take their *ideas* from
 written for Sitewright; none of it is copied from those projects, and none of them is a dependency. Ideas are not covered by those
 projects' licences, but credit is due and given here.
 
+## 3D components and templates (original)
+
+The 3D and shader components (`shader-gradient`, `shader-waves`, `particle-sphere`, `wire-terrain`, `plasma-orb`, `tilt-card-3d`, `cube-carousel`, `globe-arcs`, `phone-3d`, `lit-torus`) are written from scratch with raw WebGL and CSS 3D. They are inspired by the general category of 3D UI component libraries (for example threeui.com); no source, asset or text from any of them was seen, copied or used, and none is a dependency. The dashboard and page templates under `templates/fx/tpl/` are original code and original sample data.
+
 ## Audits (ideas only)
 
 `scripts/audit.mjs`, `reference/audits.md`, `reference/better-interface.md` and the bento board component take their *ideas* from the public descriptions

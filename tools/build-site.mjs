@@ -36,8 +36,7 @@ const GROUP_ORDER = ['buttons', 'inputs', 'cards', 'charts', 'navigation', 'text
 const groups = [...new Set(Object.values(UI).map((e) => e.group))].sort((a, b) => (GROUP_ORDER.indexOf(a) + 100) % 100 - (GROUP_ORDER.indexOf(b) + 100) % 100);
 const groupLabel = (g) => cap(g);
 const byGroup = (g) => Object.values(UI).filter((e) => e.group === g);
-// phase 2 replaces this with `/dashboards/${id}/` once the detail pages exist
-export const tplUrl = (id) => `/dashboards/#${id}`;
+export const tplUrl = (id) => `/dashboards/${id}/`;
 
 // ---- shared chrome ---------------------------------------------------------------------------------------------------------
 const LOGO = '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="var(--primary)"/><g fill="var(--primary-ink)"><rect x="11" y="10" width="26" height="7" rx="3.5"/><rect x="11" y="10" width="7" height="14" rx="3.5"/><rect x="11" y="20.5" width="26" height="7" rx="3.5"/><rect x="30" y="20.5" width="7" height="17.5" rx="3.5"/><rect x="11" y="31" width="26" height="7" rx="3.5"/></g></svg>';
@@ -248,20 +247,80 @@ function detail(e) {
 }
 
 // =============================================================================================================================
-// /dashboards/  (phase 1 stub: the list is wired to the registry; phase 2 adds previews and the detail pages)
+// /dashboards/ (gallery of whole screens at real size) and /dashboards/<id>/ (full-size live preview with a device switch)
 // =============================================================================================================================
+const TPL_LABEL = { dashboard: 'Dashboards', page: 'Pages', brand: 'Brand boards' };
+const tplGroups = ['dashboard', 'page', 'brand'].filter((g) => Object.values(TPL).some((t) => t.group === g));
+const hasTplDemo = (id) => fs.existsSync(path.join(SITE_DIR, 'demo/effects/b', id, 'index.html'));
+const tplComp = (e) => e.component;
+function tplCard(e) {
+  const prev = hasTplDemo(e.id)
+    ? `<div class="prev tprev" aria-hidden="true" data-prev="/demo/effects/b/${e.id}/" data-w="1280" data-title="Live preview: ${esc(e.label)}"><span class="prev-sk"></span></div>`
+    : `<div class="prev tprev prev-none" aria-hidden="true"><span>Live preview after the next demo export</span></div>`;
+  return `<li class="tcard" data-g="${e.group}"><a class="tcard-a" href="/dashboards/${e.id}/" aria-label="${esc(e.label)}: open the live preview">${prev}</a>
+<div class="tcard-b"><div class="tcard-t"><h3><a href="/dashboards/${e.id}/">${esc(e.label)}</a></h3><span class="tag">${esc(TPL_LABEL[e.group] ? TPL_LABEL[e.group].replace(/s$/, '') : cap(e.group))}</span></div>
+<p>${esc(firstSentence(e.desc))}</p></div></li>`;
+}
 function dashboards() {
-  const tgroups = [...new Set(Object.values(TPL).map((t) => t.group))];
-  const label = { dashboard: 'Dashboards', page: 'Pages', brand: 'Brand' };
-  const sections = tgroups.map((g) => `<section class="tpl-g" aria-labelledby="g-${g}"><h2 id="g-${g}">${label[g] || cap(g)} <span>${Object.values(TPL).filter((t) => t.group === g).length}</span></h2><ul class="tpl-list">
-${Object.values(TPL).filter((t) => t.group === g).map((t) => `<li id="${t.id}"><div><h3>${esc(t.label)}</h3><p>${esc(firstSentence(t.desc))}</p><p class="tile-s">${esc(t.source)}</p></div><code>--templates ${t.id}</code></li>`).join('\n')}
-</ul></section>`).join('\n');
+  const sections = tplGroups.map((g) => `<section class="tpl-g" aria-labelledby="g-${g}"><h2 id="g-${g}">${TPL_LABEL[g] || cap(g)} <span>${Object.values(TPL).filter((t) => t.group === g).length}</span></h2>
+<ul class="tgrid">${Object.values(TPL).filter((t) => t.group === g).map(tplCard).join('\n')}</ul></section>`).join('\n');
   const main = `<div class="wrap cat">
-  <div class="cat-head"><span class="eyebrow">Dashboards &amp; pages</span><h1>${N_TPL} whole screens, ready to import</h1>
-  <p>Dashboards, landing and 404 pages and a brand board. They are chosen with <code>effects.templates</code> or <code>--templates</code>, not with <code>--components</code>. Live previews are coming to this page.</p></div>
+  <div class="cat-head"><span class="eyebrow">Dashboards &amp; pages</span><h1>${N_TPL} whole screens to start from</h1>
+  <p>Not components: complete, working screens with their own data and interactions. Open one to try it at full size, squeeze it to a tablet or a phone, and copy the line that adds it to your site.</p>
+  <nav class="tpl-jump" aria-label="Jump to">${tplGroups.map((g) => `<a href="#g-${g}">${TPL_LABEL[g] || cap(g)}</a>`).join('')}</nav></div>
   ${sections}
 </div>`;
-  return page({ title: 'Dashboards & pages · Sitewright', p: '/dashboards/', current: 'dashboards', main, css: ['/catalog.css'], desc: `${N_TPL} whole-screen templates for generated sites: dashboards, landing and 404 pages and a brand board, each picked with one line.` });
+  return page({ title: 'Dashboards & pages · Sitewright', p: '/dashboards/', current: 'dashboards', main, css: ['/catalog.css'], desc: `${N_TPL} whole-screen templates for generated sites: analytics, finance, sales, project, inbox, operations and AI-assistant dashboards, landing and 404 pages and a brand board.` });
+}
+function tplDetail(e) {
+  const list = Object.values(TPL).filter((t) => t.group === e.group), i = list.findIndex((x) => x.id === e.id);
+  const prev = list[(i - 1 + list.length) % list.length], next = list[(i + 1) % list.length];
+  const gl = TPL_LABEL[e.group] || cap(e.group);
+  const first = firstSentence(e.desc), rest = e.desc.slice(first.length).trim();
+  const siteJson = `"effects": { "templates": ["${e.id}"] }`;
+  const cli = `node ~/.claude/skills/sitewright/scripts/scaffold.mjs --config site.json --out ./my-site --templates ${e.id}`;
+  const imp = `import ${tplComp(e)} from '@/components/fx/tpl/${tplComp(e)}';`;
+  const files = e.files.map((f) => `<li><code>components/fx/tpl/${esc(f)}</code></li>`).join('') + e.css.map((c) => `<li><code>${esc(c)}.css</code> <span class="muted">styles</span></li>`).join('');
+  const rail = list.map((x) => `<li><a href="/dashboards/${x.id}/"${x.id === e.id ? ' aria-current="page"' : ''}>${esc(x.label)}</a></li>`).join('');
+  const pn = list.length > 1 ? `<div class="pn"><a rel="prev" href="/dashboards/${prev.id}/"><small>&larr; Previous</small><b>${esc(prev.label)}</b></a><a rel="next" href="/dashboards/${next.id}/"><small>Next &rarr;</small><b>${esc(next.label)}</b></a></div>` : '';
+  const live = hasTplDemo(e.id);
+  const main = `<div class="wrap det tdet">
+  <div class="det-main">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/dashboards/">Dashboards &amp; pages</a></li><li><a href="/dashboards/#g-${e.group}">${gl}</a></li><li aria-current="page">${esc(e.label)}</li></ol></nav>
+    <h1>${esc(e.label)}</h1>
+    <p class="det-sub">${esc(first)}</p>
+    ${live ? '' : '<p class="nodemo">The live preview for this template is added with the next demo export.</p>'}
+    <section class="stage-wrap tstage-wrap" aria-label="Live preview" id="tstage-wrap" data-id="${e.id}"${live ? '' : ' hidden'}>
+      <div class="toolbar" role="toolbar" aria-label="Preview controls">
+        <div class="seg" role="group" aria-label="Preview theme"><button type="button" data-theme="light" aria-pressed="true">Light</button><button type="button" data-theme="dark" aria-pressed="false">Dark</button></div>
+        <div class="seg" role="group" aria-label="Device width"><button type="button" data-d="desktop" aria-pressed="true">Desktop</button><button type="button" data-d="tablet" aria-pressed="false">Tablet<small>820</small></button><button type="button" data-d="phone" aria-pressed="false">Phone<small>390</small></button></div>
+        <div class="tb-end"><button type="button" class="btn-s" id="treplay">Replay</button><a class="btn-s" id="tfull" href="/demo/effects/b/${e.id}/${PREVIEW_QS}">Full screen</a></div>
+      </div>
+      <div class="tstage" id="tstage" data-d="desktop"><div class="tframe" id="tframe"><iframe id="tpv" title="Live preview of ${esc(e.label)}" data-src="/demo/effects/b/${e.id}/"></iframe></div></div>
+      <noscript><p class="muted">Turn on JavaScript to run the live preview, or <a href="/demo/effects/b/${e.id}/">open it full screen</a>.</p></noscript>
+    </section>
+    <section class="blk"><h2>What it is for</h2><p>${esc(e.use || first)}</p>${rest ? `<p class="muted">${esc(rest)}</p>` : ''}</section>
+    <section class="blk"><h2>Add it to a site</h2>
+      <div class="codes">
+        ${codeBlock('1 &middot; site.json', siteJson)}
+        ${codeBlock('or on the command line', cli)}
+        ${codeBlock('2 &middot; import it', imp)}
+      </div>
+    </section>
+    <section class="blk two">
+      <div><h2>Files</h2><ul class="files">${files}</ul></div>
+      <div><h2>About it</h2><p>${e.source === 'Original' ? 'Original to Sitewright. MIT licensed.' : `Idea from <b>${esc(e.source)}</b>; the code is written for this kit.`} Demo data is fictional and deterministic. Every control on the page works, so try it before you take it.</p><p class="muted small">It answers its own width rather than the screen's, so the tablet and phone buttons show the real responsive behaviour. Templates are not components: they are chosen with <code>templates</code>, not <code>components</code>.</p></div>
+    </section>
+    ${pn}
+  </div>
+  <aside class="rail" aria-label="More in ${gl}">
+    ${pn}
+    <h2>More in ${gl} <span>${list.length}</span></h2>
+    <ul class="rail-list">${rail}</ul>
+    <a class="rail-all" href="/dashboards/#g-${e.group}">All ${gl.toLowerCase()} &rarr;</a>
+  </aside>
+</div>`;
+  return page({ title: `${e.label} · ${gl.replace(/s$/, '')} template · Sitewright`, ogTitle: `${e.label}: a Sitewright template`, desc: trunc(`${e.desc} ${e.use || ''}`.trim(), 158), p: `/dashboards/${e.id}/`, current: 'dashboards', main, css: ['/catalog.css'], js: ['/catalog.js', '/dashboards.js'] });
 }
 
 // =============================================================================================================================
@@ -270,7 +329,7 @@ ${Object.values(TPL).filter((t) => t.group === g).map((t) => `<li id="${t.id}"><
 function searchIndex() {
   const out = [];
   for (const e of Object.values(UI)) out.push({ t: 'component', id: e.id, title: e.label, url: `/components/${e.id}/`, group: groupLabel(e.group), desc: firstSentence(e.desc), k: `${e.id} ${e.source} ${e.use}`.toLowerCase() });
-  for (const e of Object.values(TPL)) out.push({ t: 'template', id: e.id, title: e.label, url: tplUrl(e.id), group: label2(e.group), desc: firstSentence(e.desc), k: `${e.id} ${e.source} ${e.use}`.toLowerCase() });
+  for (const e of Object.values(TPL)) out.push({ t: 'template', id: e.id, title: e.label, url: tplUrl(e.id), group: (TPL_LABEL[e.group] || cap(e.group)), desc: firstSentence(e.desc), k: `${e.id} ${e.source} ${e.use}`.toLowerCase() });
   const pages = [['Components', '/components/', `Browse all ${N_UI} components`], ['Dashboards & pages', '/dashboards/', `${N_TPL} whole screens`], ['Effects lab', '/demo/effects/', 'Backgrounds, headlines, buttons and cards, live'], ['Icons', '/icons/', `${N_ICONS} icons that work offline`], ['Install', '/#install', 'Two minutes, then ask Claude'], ['FAQ', '/#faq', 'Questions people ask'], ['GitHub', GH, 'Source, issues and docs']];
   for (const [title, url, desc] of pages) out.push({ t: 'page', id: url, title, url, group: 'Page', desc, k: '' });
   return out;
@@ -504,9 +563,10 @@ function main() {
   write('components/index.html', catalogue());
   for (const e of Object.values(UI)) write(`components/${e.id}/index.html`, detail(e));
   write('dashboards/index.html', dashboards());
+  for (const e of Object.values(TPL)) write(`dashboards/${e.id}/index.html`, tplDetail(e));
   write('search.json', JSON.stringify(searchIndex()));
-  const urls = ['/', '/components/', '/dashboards/', '/icons/', ...Object.keys(UI).map((id) => `/components/${id}/`)];
+  const urls = ['/', '/components/', '/dashboards/', '/icons/', ...Object.keys(UI).map((id) => `/components/${id}/`), ...Object.keys(TPL).map((id) => `/dashboards/${id}/`)];
   write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${ORIGIN}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
-  console.log(`build-site: home, catalogue, ${N_UI} component pages, dashboards stub (${N_TPL} templates), search.json (${searchIndex().length} entries), sitemap.xml`);
+  console.log(`build-site: home, catalogue, ${N_UI} component pages, dashboards gallery + ${N_TPL} template pages, search.json (${searchIndex().length} entries), sitemap.xml`);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) main();

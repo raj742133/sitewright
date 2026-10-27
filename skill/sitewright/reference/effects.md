@@ -97,7 +97,7 @@ Flags: `--preset`, `--hero-bg`, `--login-bg`, `--headline`, `--rotate-words`, `-
 
 ## Components
 
-Beyond the slots above the kit has a library of 117 importable components (buttons, inputs, cards, loaders, charts...). They are listed in `reference/components.md` and chosen with `effects.components`.
+Beyond the slots above the kit has a library of 115 importable components (buttons, inputs, cards, loaders, charts...). They are listed in `reference/components.md` and chosen with `effects.components`.
 
 ## Figures
 
@@ -118,3 +118,5 @@ Interactive line drawings in named places of the site (a padlock on the sign-in 
 2. Register it in `scripts/effects.mjs` (label, description, `files`, `css`, `micro`).
 3. For a background or headline, add its component file name to the maps at the top of `scripts/lib/fxgen.mjs`.
 4. Run `scaffold.mjs --config` for `examples/effects.json` and the gallery site, then `verify.mjs` on both. The gallery check mounts every registered effect.
+
+Full dashboards and pages are separate: see `reference/templates.md` (`effects.templates`).
