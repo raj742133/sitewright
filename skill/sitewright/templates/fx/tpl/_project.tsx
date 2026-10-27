@@ -1,6 +1,6 @@
 'use client';
 // Data and small pure helpers for the project dashboard: people, epics, the sprint's tasks, and the numbers derived from them.
-import { cx, Icon } from './_dash';
+import { cx } from './_dash';
 
 export type Status = 'todo' | 'progress' | 'review' | 'done';
 export type Pri = 'urgent' | 'high' | 'med' | 'low';
@@ -93,4 +93,3 @@ export function StatusIcon({ s }: { s: Status }) {
   return <svg className={cx('tp-st', `is-${s}`)} width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{c}</svg>;
 }
 export function LabelChip({ name }: { name: string }) { return <span className="tp-lab" data-l={name}><i />{name}</span>; }
-export { Icon };

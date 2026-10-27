@@ -1,0 +1,8 @@
+.ui-shader-waves{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:var(--surface,#fff)}
+.ui-shader-waves::before{content:'';position:absolute;inset:0;transition:opacity .6s var(--ease,ease);
+  background:repeating-radial-gradient(circle at 50% 55%,transparent 0 22px,color-mix(in srgb,var(--primary,#2563eb) 14%,transparent) 23px 24px),
+    linear-gradient(180deg,color-mix(in srgb,var(--primary,#2563eb) 14%,var(--surface,#fff)),color-mix(in srgb,var(--primary,#2563eb) 34%,var(--surface,#fff)))}
+.ui-shader-waves[data-gl='on']::before{opacity:0}
+.ui-shader-waves-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-shader-waves-canvas[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.ui-shader-waves::before{transition:none}}

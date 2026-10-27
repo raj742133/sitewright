@@ -5,17 +5,17 @@ import { fmt } from './_dash';
 export type StageId = 'lead' | 'qualified' | 'proposal' | 'negotiation' | 'won';
 export interface Stage { id: StageId; label: string; p: number }
 export const STAGES: Stage[] = [
-  { id: 'lead', label: 'Lead', p: 10 }, { id: 'qualified', label: 'Qualified', p: 30 }, { id: 'proposal', label: 'Proposal', p: 55 },
-  { id: 'negotiation', label: 'Negotiation', p: 75 }, { id: 'won', label: 'Won', p: 100 },
+  { id: 'lead', label: 'Lead', p: 10 }, { id: 'qualified', label: 'Qualified', p: 25 }, { id: 'proposal', label: 'Proposal', p: 45 },
+  { id: 'negotiation', label: 'Negotiation', p: 65 }, { id: 'won', label: 'Won', p: 100 },
 ];
 export const stageLabel = (id: StageId) => STAGES.find((s) => s.id === id)!.label;
 
 export interface Deal { id: string; company: string; title: string; amount: number; owner: string; stage: StageId; close: string; adj: number; touch: number }
 export interface Rep { name: string; role: string; quota: number; lost: number }
 export const REPS: Rep[] = [
-  { name: 'Maya Chen', role: 'Enterprise AE', quota: 320000, lost: 2 }, { name: 'Priya Nair', role: 'Enterprise AE', quota: 270000, lost: 1 },
-  { name: 'Tomás Reyes', role: 'Mid-market AE', quota: 250000, lost: 3 }, { name: 'Jonas Weber', role: 'Mid-market AE', quota: 220000, lost: 2 },
-  { name: 'Amara Okafor', role: 'SMB AE', quota: 140000, lost: 1 },
+  { name: 'Maya Chen', role: 'Enterprise AE', quota: 270000, lost: 2 }, { name: 'Priya Nair', role: 'Enterprise AE', quota: 230000, lost: 1 },
+  { name: 'Tomás Reyes', role: 'Mid-market AE', quota: 200000, lost: 3 }, { name: 'Jonas Weber', role: 'Mid-market AE', quota: 180000, lost: 2 },
+  { name: 'Amara Okafor', role: 'SMB AE', quota: 120000, lost: 1 },
 ];
 export const TEAM_QUOTA = REPS.reduce((a, r) => a + r.quota, 0);
 export const TEAM_LOST = REPS.reduce((a, r) => a + r.lost, 0);

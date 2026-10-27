@@ -43,7 +43,7 @@ export const PARTS: Part[] = [
 export const cover = (p: Part) => p.onHand / p.perDay;
 export const isLow = (p: Part) => p.onHand <= p.reorder;
 export const suggest = (p: Part) => Math.max(5, Math.ceil((p.reorder * 2 - p.onHand) / 5) * 5);
-export const money = (v: number) => `$${v.toLocaleString('en-US', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 })}`;
+export const money = (v: number) => (v >= 100 ? `$${Math.round(v).toLocaleString('en-US')}` : `$${v.toLocaleString('en-US', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 })}`);
 
 export const STATIONS: Station[] = [
   { id: 'frames', name: 'Frames', status: 'running', target: 7, base: 6.2, queue: 14, note: 'Cycle 9.4 min' },
@@ -68,7 +68,7 @@ export const LATE = [
 /* ------------------------------------------------------------------ orders vs capacity */
 const niceMax = (v: number) => { const p = Math.pow(10, Math.floor(Math.log10(v || 1))); const f = v / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; };
 /** The kit's stacked bars (within / over capacity) with a stepped capacity line drawn over the same geometry. */
-export function CapacityChart({ height = 232 }: { height?: number }) {
+export function CapacityChart({ height = 280 }: { height?: number }) {
   const [ref, w] = useWidth<HTMLDivElement>();
   const n = DAYS.length, padL = 40, padR = 6, padT = 10, padB = 22, iw = Math.max(10, w - padL - padR), ih = height - padT - padB, slot = iw / n;
   const max = niceMax(Math.max(...ORDERS)), y = (v: number) => padT + ih - (v / max) * ih;
@@ -92,11 +92,11 @@ export function CapacityChart({ height = 232 }: { height?: number }) {
 export interface LiveStation extends Station { thr: number; q: number }
 const TONE = { running: 'ok', idle: 'neutral', blocked: 'bad' } as const;
 const LABEL = { running: 'Running', idle: 'Idle', blocked: 'Blocked' } as const;
-export function StationTile({ s, index, on, onToggle }: { s: LiveStation; index: number; on: boolean; onToggle: () => void }) {
+export function StationTile({ s, on, onToggle }: { s: LiveStation; on: boolean; onToggle: () => void }) {
   return (
     <li className="to-stli">
       <button type="button" className={`to-st is-${s.status}`} aria-pressed={on} onClick={onToggle} aria-label={`${s.name}, ${LABEL[s.status]}, ${s.thr.toFixed(1)} of ${s.target} per hour, queue ${s.q}. Show its parts in inventory`}>
-        <span className="to-st-h"><span className="to-st-n"><em>{index + 1}</em>{s.name}</span><Pill tone={TONE[s.status]}>{LABEL[s.status]}</Pill></span>
+        <span className="to-st-h"><span className="to-st-n">{s.name}</span><Pill tone={TONE[s.status]}>{LABEL[s.status]}</Pill></span>
         <span className="to-st-v"><b>{s.thr.toFixed(1)}</b><small>/ {s.target} per hr</small></span>
         <Progress value={s.thr / s.target} tone={s.status === 'blocked' ? 'bad' : 'signal'} label={`${s.name} throughput against target`} />
         <span className="to-st-f"><span>Queue <b>{s.q}</b></span><span className={s.status === 'blocked' ? 'is-bad' : undefined}>{s.status === 'blocked' && <Icon name="x" size={11} />}{s.note}</span></span>

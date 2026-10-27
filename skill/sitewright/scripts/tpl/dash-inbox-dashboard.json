@@ -7,6 +7,9 @@
     "group": "dashboard",
     "files": [
       "InboxDashboard.tsx",
+      "_inbox.tsx",
+      "_inbox-data.tsx",
+      "_inbox-parts.tsx",
       "_dash.tsx"
     ],
     "css": [

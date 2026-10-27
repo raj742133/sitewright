@@ -3,7 +3,7 @@
 // Send / Request / Transfer dialog.
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Button, Icon, Pill, cx } from './_dash';
-import { ACCTS, CATS, OUT_CATS, acctOf, dLong, dShort, isPosted, money, type Tx } from './_fin';
+import { ACCTS, OUT_CATS, acctOf, dLong, dShort, isPosted, money, type Tx } from './_fin';
 
 export type SortKey = 'date' | 'amt';
 const TONE = { posted: 'ok', pending: 'warn', flagged: 'bad' } as const;
@@ -51,7 +51,7 @@ export function TxTable({ rows, sel, onSel, sort, onSort, empty }: { rows: Tx[];
 
 export function Drawer({ t, onClose, onApprove, onFlag, bodyRef }: { t: Tx | null; onClose: () => void; onApprove: (id: string) => void; onFlag: (id: string) => void; bodyRef: React.RefObject<HTMLElement | null> }) {
   if (!t) return <aside className="tf-drawer is-empty" ref={bodyRef} aria-label="Transaction details"><div className="td-empty"><Icon name="file" size={22} /><b>No transaction selected</b><p>Pick a row to see its details and approve or flag it.</p></div></aside>;
-  const a = acctOf(t.acct), moves = t.kind !== 'xfer' || true;
+  const a = acctOf(t.acct);
   const effect = t.status === 'posted' ? `Moved ${money(t.amt, true)} ${t.amt > 0 ? 'into' : 'out of'} ${a.name}.` : t.status === 'flagged' ? (isPosted(t) ? 'Already counted in the balance. Clear the flag to mark it reviewed.' : 'Held. Not counted in the balance until you approve it.') : `Approving moves ${money(t.amt, true)} ${t.amt > 0 ? 'into' : 'out of'} ${a.name}.`;
   const rowsD: Array<[string, string]> = [['Date', dLong(t.date)], ['Account', `${a.name} ••${a.mask}`], ['Category', t.cat], ['Method', t.method], ['Reference', t.ref], ['Memo', t.memo]];
   return (
@@ -59,7 +59,7 @@ export function Drawer({ t, onClose, onApprove, onFlag, bodyRef }: { t: Tx | nul
       <div className="tf-dh"><span className="td-muted">Transaction</span><Button variant="ghost" small icon="x" label="Close details" onClick={onClose} /></div>
       <div className="tf-dtop"><b className={cx('tf-big', t.kind === 'in' && 'is-in')}>{money(t.amt, t.kind === 'in')}</b><span>{t.name}</span><StatusPill s={t.status} /></div>
       <dl className="tf-dl">{rowsD.map(([k, v]) => <div key={k}><dt>{k}</dt><dd className={k === 'Reference' ? 'td-mono' : undefined}>{v}</dd></div>)}</dl>
-      <p className="tf-effect" aria-hidden={!moves}>{effect}</p>
+      <p className="tf-effect">{effect}</p>
       <ol className="tf-log" aria-label="Activity">{t.log.map((l, i) => <li key={i}>{l}</li>)}</ol>
       <div className="tf-da">
         <Button variant="primary" icon="check" disabled={t.status === 'posted'} onClick={() => onApprove(t.id)}>{t.status === 'posted' ? 'Approved' : 'Approve'}</Button>
@@ -116,4 +116,3 @@ export function ActionDialog({ mode, balances, onClose, onSubmit }: { mode: Mode
     </div>
   );
 }
-export { CATS };

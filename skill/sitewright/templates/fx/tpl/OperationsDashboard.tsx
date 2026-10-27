@@ -58,7 +58,7 @@ export default function OperationsDashboard({ brand = 'Spokeworks' }: { brand?: 
       </div>
 
       <Panel id="to-line" title="Production line" sub="Parts flow left to right. Select a station to see only its parts below." actions={<span className="to-sub">{blocked.length} blocked · {stations.filter((s) => s.status === 'running').length} running</span>} flush>
-        <ol className="to-line-flow">{stations.map((s, i) => <StationTile key={s.id} s={s} index={i} on={station === s.id} onToggle={() => setStation((c) => (c === s.id ? null : s.id))} />)}</ol>
+        <ol className="to-line-flow">{stations.map((s) => <StationTile key={s.id} s={s} on={station === s.id} onToggle={() => setStation((c) => (c === s.id ? null : s.id))} />)}</ol>
       </Panel>
 
       <Panel id="to-inv" title="Inventory" sub={`${rows.length} parts · ${lowCount} at or below reorder point`} flush

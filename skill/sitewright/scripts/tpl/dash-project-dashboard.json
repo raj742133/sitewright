@@ -7,6 +7,9 @@
     "group": "dashboard",
     "files": [
       "ProjectDashboard.tsx",
+      "_projectviews.tsx",
+      "_projectboard.tsx",
+      "_project.tsx",
       "_dash.tsx"
     ],
     "css": [

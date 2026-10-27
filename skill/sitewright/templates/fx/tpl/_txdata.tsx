@@ -11,7 +11,7 @@ export type ChartSpec =
 export interface Result {
   id: string; short: string; title: string; period: string; q: string; icon: IconName; keywords: string[]; steps: string[]; reply: string;
   headline: { value: string; label: string; delta?: number; good?: 'up' | 'down' }; summary: string; insights: string[];
-  chart: ChartSpec; tableTitle: string; cols: TCol[]; rows: Row[]; rowKey: string; sources: Array<{ t: string; rows: number }>; sql: string; file: string;
+  chart: ChartSpec; tableTitle: string; cols: TCol[]; rowKey: string; sources: Array<{ t: string; rows: number }>; sql: string; file: string;
 }
 
 const sum = (a: number[]) => a.reduce((x, y) => x + y, 0);
@@ -139,8 +139,6 @@ const delayed: Result = {
   sources: [{ t: 'shipments', rows: 47980 }, { t: 'orders', rows: 48210 }],
   sql: `-- Orders delivered after the promised date, last 14 days\nSELECT s.carrier,\n       COUNT(*) AS shipped,\n       COUNT(*) FILTER (WHERE s.delivered_at > o.promised_at) AS delayed,\n       AVG(s.delivered_at - o.promised_at) FILTER (WHERE s.delivered_at > o.promised_at) AS avg_days_late\nFROM shipments s\nJOIN orders o ON o.id = s.order_id\nWHERE s.shipped_at >= '2026-10-11'\nGROUP BY s.carrier\nORDER BY delayed DESC;`,
 };
-// the daily chart and the carrier table are the same 143 orders
-void [mauRows[0], cusRows[0], chRows[0], fRows[0]];
 export const RESULTS: Result[] = [revenue, mauR, customers, churn, funnel, delayed];
 export const RESULT_ROWS: Record<string, Row[]> = { revenue: revRows, mau: mauRows, customers: cusRows, churn: chRows, funnel: fRows, delayed: dRows };
 export const TABLES = [{ t: 'orders', rows: 48210, d: 'One row per order, USD totals' }, { t: 'customers', rows: 12904, d: 'Accounts and their region' }, { t: 'events', rows: 3204118, d: 'Product and storefront events' }, { t: 'subscriptions', rows: 9206, d: 'Plan, start and cancel dates' }, { t: 'shipments', rows: 47980, d: 'Carrier, promised and delivered' }, { t: 'regions', rows: 5, d: 'Sales regions' }];

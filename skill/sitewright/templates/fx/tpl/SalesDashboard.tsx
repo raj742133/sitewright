@@ -91,12 +91,12 @@ export default function SalesDashboard({ brand = 'Ferrum' }: { brand?: string })
 
       <div className="ts-row">
         <Panel id="ts-f" title="Forecast vs target" sub="Cumulative closed-won plus weighted open deals, by week of Q4" actions={<span className="ts-legend"><i />Committed<i className="is-t" />Target</span>}>
-          <AreaChart ariaLabel="Committed forecast against target by week, cumulative, in US dollars" labels={WEEK_LABELS} height={228} format={k$} tipFormat={money}
+          <AreaChart ariaLabel="Committed forecast against target by week, cumulative, in US dollars" labels={WEEK_LABELS} height={272} format={k$} tipFormat={money}
             series={[{ id: 'c', label: 'Committed', data: weeks.committed }, { id: 't', label: 'Target', data: weeks.target, color: 'color-mix(in srgb, var(--ink, #15130e) 42%, transparent)' }]} />
           <p className="ts-chartnote"><b>Today · week ending {WEEK_LABELS[TODAY_WEEK]}</b><span>Won so far {money(now.wonV)}</span><span>Projected {money(weeks.committed[weeks.committed.length - 1]!)} by Dec 31</span><span className={gap > 0 ? 'is-gap' : 'is-ahead'}>{gap > 0 ? `${money(gap)} short of target` : 'Target covered'}</span></p>
         </Panel>
         <Panel id="ts-a" title="Recent activity" sub="Across the team">
-          <ol className="ts-feed">{events.slice(0, 7).map((e) => <li key={e.id} className={e.t === 'now' ? 'is-new' : undefined}><Avatar name={e.who} size={24} /><p><b>{e.who}</b> {e.verb} <b>{e.company}</b> {e.detail}</p><time>{e.t}</time></li>)}</ol>
+          <ol className="ts-feed">{events.slice(0, 6).map((e) => <li key={e.id} className={e.t === 'now' ? 'is-new' : undefined}><Avatar name={e.who} size={24} /><p><b>{e.who}</b> {e.verb} <b>{e.company}</b> {e.detail}</p><time>{e.t}</time></li>)}</ol>
         </Panel>
       </div>
       <Panel id="ts-l" title="Leaderboard" sub="Quota attainment is closed-won against Q4 quota. Click a rep to filter the board." flush>
