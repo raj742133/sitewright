@@ -56,7 +56,7 @@ export function Timeline({ tasks, epic, onEpic }: { tasks: Task[]; epic: string;
         <div className="tp-tlrow is-head"><div className="tp-tlname">Sprint</div><div className="tp-tltrack">{SPRINTS.map((sp) => <span key={sp.n} className={cx('tp-sp', sp.n === 14 && 'is-now')} style={{ left: `${pctOf(sp.a)}%`, width: `${pctOf(sp.b) - pctOf(sp.a)}%` }}>S{sp.n}</span>)}</div></div>
         <div className="tp-tlrow is-head"><div className="tp-tlname">Week of</div><div className="tp-tltrack">{WEEKS.map((l, i) => <span key={l} className="tp-wl" style={{ left: `${(i / 8) * 100}%` }}>{l}</span>)}<span className="tp-todaylab" style={{ left: `${TODAY_PCT}%` }}>Today</span></div></div>
         <div className="tp-tlrow is-ms"><div className="tp-tlname">Milestones</div><div className="tp-tltrack">
-          {MILESTONES.map((m) => <button key={m.id} type="button" className={cx('tp-ms', pctOf(m.d) > 60 && 'is-flip')} style={pctOf(m.d) > 60 ? { right: `${100 - pctOf(m.d, true) - 0.9}%` } : { left: `${pctOf(m.d, true) - 0.9}%` }} aria-label={`${m.label}, ${short(m.d)}`} {...hov(m.id, pctOf(m.d), [m.label, short(m.d)], true)}><i /><span>{m.label}</span></button>)}
+          {MILESTONES.map((m) => <button key={m.id} type="button" className={'tp-ms'} style={{ left: `${pctOf(m.d, true) - 0.9}%` }} aria-label={`${m.label}, ${short(m.d)}`} {...hov(m.id, pctOf(m.d), [m.label, short(m.d)], true)}><i /><span>{m.label}</span></button>)}
           {MILESTONES.map((m) => tipEl(m.id))}</div></div>
         {EPICS.map((e) => {
           const mine = tasks.filter((t) => t.epic === e.id); const done = pts(mine.filter((t) => t.status === 'done'));

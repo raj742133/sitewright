@@ -179,3 +179,7 @@
 .tp-tools .td-btn:disabled { opacity: 1; color: color-mix(in srgb, var(--muted, #5c5851) 82%, var(--ink, #000)); cursor: default; }
 @container td (max-width: 640px) { .tp-tools .td-btn { min-height: 40px; } .tp-bar { height: 34px; top: 6px; } .tp-bar span { line-height: 32px; } }
 @media (pointer: coarse) { .tp-bar { height: 40px; top: 3px; } .tp-bar span { line-height: 38px; } }
+.tp-tlrow.is-ms { height: 56px; }
+.tp-ms { flex-direction: column; gap: 3px; height: auto; padding: 2px 4px; transform: translate(-50%, -50%); font-size: 11.5px; }
+.tp-ms i { margin-top: 2px; }
+.tp-ms.is-flip { flex-direction: column; }
