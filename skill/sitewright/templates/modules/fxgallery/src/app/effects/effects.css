@@ -113,6 +113,7 @@
 .fxc-code pre { margin: 0; padding: 10px 12px; border-radius: 8px; background: var(--ink); color: var(--surface); font: 12px/1.5 var(--font-mono); overflow: auto; }
 @media (max-width: 1180px) { .fxc:has(.fxc-insp) { grid-template-columns: 200px minmax(0, 1fr); } .fxc-insp { position: fixed; z-index: 30; inset: auto 0 0 0; max-height: 72vh; border-radius: 16px 16px 0 0; box-shadow: 0 -12px 40px rgba(0, 0, 0, .25); } }
 @media (max-width: 760px) { .fxc, .fxc:has(.fxc-insp) { grid-template-columns: minmax(0, 1fr); gap: 16px; } .fxc-side { position: static; } .fxc-side ul { display: flex; overflow-x: auto; gap: 6px; padding-bottom: 4px; } .fxc-side li { flex: none; } .fxc-side button { white-space: nowrap; border: 1px solid var(--line); gap: 8px; } .fxc-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } .fxc-stage { height: 130px; } .fxg-nav { margin-left: 8px; } .fxg-nav a { padding: 6px 8px; } }
+@media (max-width: 560px) { .fxg-bar { gap: 8px; } .fxg-brand b { display: none; } .fxg-nav { min-width: 0; flex: 1 1 auto; margin-left: 0; overflow-x: auto; scrollbar-width: none; } .fxg-nav a { white-space: nowrap; } }
 
 /* /effects/templates/ */
 .fxt { width: min(1320px, 100% - 32px); margin: 0 auto; padding: 28px 0 80px; display: grid; gap: 14px; }
