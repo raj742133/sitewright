@@ -38,7 +38,7 @@
 .to-steps li i { position: absolute; top: 0; left: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--raised, #fff); border: 2px solid var(--line-strong, #c2bdb2); z-index: 1; }
 .to-steps li.is-done { color: var(--ink, #15130e); } .to-steps li.is-done::before { background: var(--primary, #c2410c); } .to-steps li.is-done i { background: var(--primary, #c2410c); border-color: var(--primary, #c2410c); }
 .to-steps b { font-weight: 600; font-size: 12.5px; }
-.to-h3 { font-size: 12px; font-weight: 600; color: var(--muted, #5c5851); margin: 12px 0 4px !important; } .to-pad { padding: 0 16px; margin-top: 20px !important; }
+.to-h3 { font-size: 12px; font-weight: 600; line-height: 1.4; color: var(--muted, #5c5851); margin: 12px 0 4px !important; } .to-pad { padding: 0 16px; margin-top: 20px !important; }
 .to-lines th, .to-lines td { padding: 0 8px; height: 38px; } .to-lines th:first-child, .to-lines td:first-child { padding-left: 0; } .to-lines th:last-child, .to-lines td:last-child { padding-right: 0; } .to-lines .is-r { text-align: right; }
 .to-lines tfoot td { font-weight: 600; border-top: 1px solid var(--line-strong, #c2bdb2); border-bottom: 0; }
 .to-note-l { display: grid; gap: 2px; margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: var(--raised-2, #edebe7); } .to-note-l b { font-size: 12px; color: var(--muted, #5c5851); }
@@ -129,8 +129,15 @@
   .to-board { grid-template-columns: repeat(2, minmax(0, 1fr)); } .to-col:nth-child(n) { border-left: 1px solid var(--line, #ddd); border-top: 1px solid var(--line, #ddd); } .to-col:nth-child(odd) { border-left: 0; } .to-col:nth-child(-n+2) { border-top: 0; }
   .to-r3 { grid-template-columns: 1fr; } .to-tabbar { padding: 4px 12px 0; } .to-bar-f { padding: 12px; } .to-tbl th, .to-tbl td { padding: 0 8px; } .to-tbl th:first-child, .to-tbl td:first-child { padding-left: 12px; } .to-tbl th:last-child, .to-tbl td:last-child { padding-right: 12px; }
   .to-row3 { grid-template-columns: 1fr; } .to-low li { padding: 0 12px; gap: 10px; grid-template-columns: minmax(0, 1fr) auto; } .to-low .td-pill { display: none; }
-  .to-due .td-pill { display: none; } .to-meta { grid-template-columns: 1fr 1fr; } .to-alerts > .to-field { grid-template-columns: 1fr; } .to-alerts .to-unit { grid-column: 1; grid-row: auto; }
+  .to-meta { grid-template-columns: 1fr 1fr; } .to-alerts > .to-field { grid-template-columns: 1fr; } .to-alerts .to-unit { grid-column: 1; grid-row: auto; }
 }
-@container td (max-width: 520px) { .to-board { grid-template-columns: 1fr; } .to-col:nth-child(n) { border-left: 0; border-top: 1px solid var(--line, #ddd); } .to-col:first-child { border-top: 0; } .to-facts { grid-template-columns: 1fr 1fr; } .to-savebar { flex-wrap: wrap; } .to-bl { grid-template-columns: minmax(0, 1fr) 64px 56px 26px; gap: 6px; } .to-steps { grid-template-columns: 1fr 1fr; row-gap: 12px; } }
+@container td (max-width: 520px) { .to-due > span:first-child { display: none; } .to-board { grid-template-columns: 1fr; } .to-col:nth-child(n) { border-left: 0; border-top: 1px solid var(--line, #ddd); } .to-col:first-child { border-top: 0; } .to-facts { grid-template-columns: 1fr 1fr; } .to-savebar { flex-wrap: wrap; } .to-bl { grid-template-columns: minmax(0, 1fr) 64px 56px 26px; gap: 6px; } .to-steps { grid-template-columns: 1fr 1fr; row-gap: 12px; } }
 @media (pointer: coarse) { .to-sel-w select { min-height: 44px; font-size: 16px; } .to-in { min-height: 44px; font-size: 16px; } .to-link { min-height: 44px; } .to-bl input { height: 44px; font-size: 16px; } .to-col-h { min-height: 44px; } .to-radios label { min-height: 44px; } .to-undo { min-height: 44px; } .to-card-f .td-btn, .to-bl .td-btn { min-height: 44px; min-width: 44px; } .to-low input { width: 24px; height: 24px; } }
 @media (prefers-reduced-motion: reduce) { .to-dialog.is-drawer { animation: none !important; } }
+
+/* contrast: status pills a step darker (lighter in dark theme) than the kit's, so text is >= 4.5:1 on its tinted background */
+.td-shell .td-pill.is-ok { color: color-mix(in srgb, var(--ok, #1c7a5b) 65%, var(--ink, #000)); }
+.td-shell .td-pill.is-info { color: color-mix(in srgb, var(--signal, #0f766e) 62%, var(--ink, #000)); }
+.td-shell .td-pill.is-warn { color: color-mix(in srgb, var(--primary, #c2410c) 62%, var(--ink, #000)); }
+.td-shell .td-pill.is-bad { color: color-mix(in srgb, var(--critical, #b32d18) 68%, var(--ink, #000)); }
+@media (pointer: coarse) { .td-shell .td-btn.is-sm, .to-tbl th button { min-height: 44px; } .to-sw, .to-chip { min-height: 44px; } }

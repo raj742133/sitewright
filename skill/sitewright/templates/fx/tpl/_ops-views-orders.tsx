@@ -57,7 +57,7 @@ export function OrdersView({ ops, d, hRef, open, setOpen }: { ops: Ops; d: D; hR
     { id: 'units', label: 'Units', right: true, hide: 'sm', sort: (a, b) => units(a) - units(b), cell: (o) => units(o) },
     { id: 'value', label: 'Value', right: true, hide: 'md', sort: (a, b) => value(a) - value(b), cell: (o) => money(value(o)) },
     { id: 'due', label: 'Due', sort: (a, b) => a.due - b.due, cell: (o) => { const i = dueInfo(o.due, o.status === 'shipped'); return <span className="to-due"><span>{dateLabel(o.due)}</span><Pill tone={i.tone} dot={false}>{o.status === 'shipped' ? (o.shippedOn! > o.due ? 'Shipped late' : 'On time') : i.label}</Pill></span>; } },
-    { id: 'status', label: 'Status', sort: (a, b) => a.status.localeCompare(b.status), cell: (o) => <StatusPill status={kind(o)} /> },
+    { id: 'status', label: 'Status', hide: 'sm', sort: (a, b) => a.status.localeCompare(b.status), cell: (o) => <StatusPill status={kind(o)} /> },
     { id: 'stage', label: 'Station', hide: 'sm', cell: (o) => <span className="td-muted">{o.stage ? stationName(o.stage) : '–'}</span> },
     { id: 'act', label: 'Action', right: true, cell: (o) => { const a = nextAction(o); return a ? <Button small variant={o.status === 'ready' ? 'primary' : 'default'} label={`${a} ${o.id}`} onClick={() => runAction(o, ops)}>{a}</Button> : <span className="td-muted">Done</span>; } },
   ];

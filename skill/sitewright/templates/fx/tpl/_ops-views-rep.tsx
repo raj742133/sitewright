@@ -58,7 +58,7 @@ export function ReportsView({ ops, d, hRef }: { ops: Ops; d: D; hRef: RefObject<
         <Kpi label="Scrap + rework" value={fmt.p((sc + rw) / made)} hint={`${fmt.n(sc)} scrap · ${fmt.n(rw)} rework`} tone="signal" spark={R.rework.slice(-14)} />
       </div>
       <div className="to-r2">
-        <Panel id="to-r-th" title="Throughput" sub="Units shipped per day against plan">
+        <Panel id="to-r-th" title="Throughput" sub="Units shipped per day (brown) against the plan of 118 (grey)">
           <AreaChart ariaLabel={`Units shipped per day over ${n} days against a plan of 118`} labels={R.labels} height={240} format={fmt.n} area={false}
             series={[{ id: 's', label: 'Shipped', data: R.shipped }, { id: 'p', label: 'Plan', data: R.plan, color: 'color-mix(in srgb, var(--ink, #15130e) 45%, transparent)' }]} />
         </Panel>

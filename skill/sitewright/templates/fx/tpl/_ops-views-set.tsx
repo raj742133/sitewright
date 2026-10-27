@@ -70,7 +70,7 @@ export function SettingsView({ ops, d, hRef }: { ops: Ops; d: D; hRef: RefObject
                   <td><span className="to-cellf"><input id={`to-en-${s.id}`} type="time" className="to-in" value={cfg[s.id].end} aria-label={`${s.name} shift end`} aria-invalid={errs[`end-${s.id}`] ? true : undefined} aria-describedby={errs[`end-${s.id}`] ? `to-en-${s.id}-e` : undefined} onChange={(e) => tf(s.id, 'end', e.target.value)} />{errs[`end-${s.id}`] && <small id={`to-en-${s.id}-e`} className="to-err">{errs[`end-${s.id}`]}</small>}</span></td>
                   <td className="hide-sm td-muted">{ops.s.crew[s.id].length} on day shift</td></tr>))}</tbody>
             </table></div>
-            <h3 className="to-h3 to-pad">Plant capacity (units shipped per day)</h3>
+            <h2 className="to-h3 to-pad">Plant capacity (units shipped per day)</h2>
             <div className="to-row3">{([['weekday', 'Monday to Friday'], ['sat', 'Saturday'], ['sun', 'Sunday']] as const).map(([k, l]) => <label key={k} className="to-field"><span>{l}</span><Num id={`to-plant-${k}`} v={plant[k]} set={(v) => setPlant((p) => ({ ...p, [k]: v }))} err={errs[`plant-${k}`]} label={`${l} capacity`} w={96} /></label>)}</div>
             <div className="to-savebar"><Button variant="primary" onClick={saveStations}>Save stations</Button></div>
           </div>)}
