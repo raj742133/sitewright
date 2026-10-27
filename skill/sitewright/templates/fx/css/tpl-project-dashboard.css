@@ -175,3 +175,7 @@
 @media (prefers-reduced-motion: reduce) { .tp-card, .tp-toast, .tp-lane { transition: none; animation: none; } .tp-card.is-new { animation: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, #c2410c) 35%, transparent); } }
 @container td (max-width: 1100px) { .tp-keys { display: none; } }
 @container td (max-width: 760px) { .tp-meta > .hide-sm, .tp-spl > .hide-sm, .tp-spt.hide-sm { display: none; } }
+.tp-bar { height: 26px; top: 10px; } .tp-bar span { line-height: 24px; }
+.tp-tools .td-btn:disabled { opacity: 1; color: color-mix(in srgb, var(--muted, #5c5851) 82%, var(--ink, #000)); cursor: default; }
+@container td (max-width: 640px) { .tp-tools .td-btn { min-height: 40px; } .tp-bar { height: 34px; top: 6px; } .tp-bar span { line-height: 32px; } }
+@media (pointer: coarse) { .tp-bar { height: 40px; top: 3px; } .tp-bar span { line-height: 38px; } }

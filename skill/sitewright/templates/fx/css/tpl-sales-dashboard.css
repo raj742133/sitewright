@@ -142,3 +142,4 @@
 .ts-tt .td-pill, .ts-tt .td-pill.is-info, .ts-tt .td-pill.is-warn { color: var(--ink, #15130e); }
 .ts-prob.is-won { color: color-mix(in srgb, var(--ok, #1c7a5b) 80%, var(--ink, #000)); }
 @container td (max-width: 520px) { .ts-select select, .ts-search input { font-size: 16px; } .ts-feed li { grid-template-columns: 24px minmax(0, 1fr); } .ts-feed time { grid-column: 2; grid-row: 2; padding: 0; } }
+@container td (max-width: 520px) { .ts-select, .ts-search, .ts-toggle { min-height: 44px; } .ts-lb .td-table th button { min-height: 44px; } }
