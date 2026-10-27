@@ -1423,14 +1423,22 @@ export class GlassEngine {
     this.raf = requestAnimationFrame(this.tick);
   }
   private stopLoop() {
-    if (this.raf !== null) { cancelAnimationFrame(this.raf); this.raf = null; }
+    if (this.raf !== null) { if (this.raf >= 0) cancelAnimationFrame(this.raf); this.raf = null; }
   }
   private tick = () => {
     this.raf = null;
     if (!this.ok || document.hidden) return;
+    const t0 = performance.now();
     const drawn = this.renderFrame();
-    // animated: keep going while something is on screen; reduced motion: one still frame per invalidate()
-    if (!this.reduced && drawn > 0) this.invalidate();
+    const cost = performance.now() - t0;
+    // animated: keep going while something is on screen; reduced motion: one still frame per invalidate().
+    // A slow GPU (or a software renderer) gets a pause after a costly frame, so the page stays responsive.
+    if (!this.reduced && drawn > 0) {
+      if (cost > 24) {
+        if (this.raf === null) this.raf = -1;
+        window.setTimeout(() => { this.raf = null; this.invalidate(); }, Math.min(250, cost * 1.5));
+      } else this.invalidate();
+    }
   };
 
   /* ---------- drawing ---------- */

@@ -1,0 +1,18 @@
+.ui-glass-prompt { width: min(100%, 580px); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.ui-glass-prompt-body, .ui-glass-prompt-bar { position: relative; z-index: 1; }
+.ui-glass-prompt-text { display: block; width: 100%; min-height: 48px; max-height: 160px; border: 0; outline: 0; background: transparent; resize: none; padding: 0; margin: 0; color: var(--tg-ink); caret-color: var(--tg-accent);
+  font: 400 16px/1.5 var(--tg-font); }
+.ui-glass-prompt-text::placeholder { color: var(--tg-muted); opacity: 1; }
+.ui-glass-prompt:focus-within { border-color: color-mix(in srgb, var(--tg-accent) 60%, transparent); }
+.ui-glass-prompt-bar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 4px; }
+.ui-glass-prompt-pills { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.ui-glass-chip { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-width: 44px; height: 44px; padding: 0; border: 0; border-radius: 999px; background: var(--tg-chip); appearance: none; cursor: pointer;
+  color: var(--tg-ink); font: 500 13px/1 var(--tg-font); transition: background 0.2s ease, transform 0.15s ease, opacity 0.2s ease; }
+.ui-glass-chip[data-pill] { padding: 0 16px; }
+.ui-glass-chip:hover { background: var(--tg-chip-hover); }
+.ui-glass-chip:active { background: var(--tg-chip-active); transform: scale(0.96); }
+.ui-glass-chip:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.ui-glass-chip svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ui-glass-chip[data-send] { background: color-mix(in srgb, var(--tg-accent) 78%, var(--tg-surface)); color: var(--on-primary, #ffffff); }
+.ui-glass-chip[data-send]:hover { background: var(--tg-accent); }
+.ui-glass-chip[data-send]:disabled { background: var(--tg-chip); color: var(--tg-muted); }

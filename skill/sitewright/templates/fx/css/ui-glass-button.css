@@ -1,0 +1,11 @@
+.ui-glass-btn { --h: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; height: var(--h); padding: 0 32px; border-radius: 999px; cursor: pointer; flex-shrink: 0;
+  color: var(--tg-ink); font: 600 16px/1 var(--tg-font); letter-spacing: -0.015em; white-space: nowrap; user-select: none; -webkit-user-select: none; appearance: none; text-decoration: none; }
+.ui-glass-btn[data-size="md"] { --h: 44px; padding: 0 24px; font-size: 15px; }
+.ui-glass-btn[data-shape="circle"] { width: var(--h); padding: 0; aspect-ratio: 1; }
+.ui-glass-btn[data-tone="accent"] { background: linear-gradient(160deg, color-mix(in srgb, var(--tg-accent) 46%, var(--tg-raised)), color-mix(in srgb, var(--tg-accent) 26%, var(--tg-raised))); border-color: color-mix(in srgb, var(--tg-accent) 45%, transparent); }
+.ui-glass-btn-label { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 12px; }
+.ui-glass-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; transition: transform 0.2s ease; }
+.ui-glass-btn:hover svg { transform: translateX(2px); }
+.ui-glass-btn:active { transform: scale(0.98); }
+.ui-glass-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+@media (pointer: coarse) { .ui-glass-btn[data-size="md"] { --h: 48px; } }

@@ -171,6 +171,23 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 | `lamp-login` | A login form under a hanging lamp: pull the cord button to switch the light on and reveal a light cone; the form with validation and submit state works either way. | sign-in page, connect page | code.xr |
 | `bento-board` | A share-ready brand board in a bento grid: statement, key number, logo, type sample, colour swatches, an abstract picture drawn from the brand colours, tone words, a slice of UI and a quote; reflows from four columns to one with its container. | Pitch decks, case studies and portfolio shots for the brand the site was generated for; an About or Brand page; a launch post image. | Original |
 
+## Glass
+
+Ten liquid-glass pieces ported from [Tactile Glass UI](https://github.com/uixninja/tactile-glass-ui) by uixNinja (MIT; the licence ships with them as `src/components/fx/ui/LICENSE-tactile-glass.txt` and must stay). One shared WebGL2 engine draws all of them (a single canvas, however many are on the page); rim light, caustics and ripples use the theme's `--primary` and `--signal`, and everything is scoped under `.ui-glass`. Without WebGL2 (or after a lost context) each falls back to frosted CSS glass; with reduced motion they draw still frames. Pass `optics={{ refraction, frost, sheen, fluidBrightness, ... }}` to tune the glass. Glass shows best over colour or imagery.
+
+| id | what it does | use it for | idea from |
+|---|---|---|---|
+| `glass-background` | A full-section backdrop of flowing liquid light under a tinted glass panel; the pointer bends the light, a click sends a ripple, and glass placed inside it refracts it. | Behind a hero, feature block or sign-in panel (fills its parent; children are centred). | Tactile Glass UI (uixNinja, MIT) |
+| `glass-button` | A pill button of liquid glass: the rim catches light, caustics flow through it and a click sends a ripple. Frosted CSS glass without WebGL. | Primary call to action on a rich or photographic background; round icon buttons. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-card` | A payment card in dark liquid glass that tilts toward the pointer while the glass refracts the tilted surface; accent colours come from the theme. | Checkout, wallet or billing screens; a showpiece for fintech landing pages. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-fx` | Wraps any element and gives it the glass finish: rim light, caustics and ripples drawn over its content, following its border-radius. | Put glass on your own cards, pills or panels without rebuilding them. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-word` | A word whose letter shapes are liquid glass, with rim light and flowing caustics that react to the pointer; click cycles through a list. Real text underneath. | One highlighted word in a hero headline. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-heading` | Display heading with one or more words in liquid glass, optional badge and subtitle, and a size that follows its container. | Hero and section headings on landing pages. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-prompt-input` | An AI prompt box on a glass pane: auto-growing text area (Enter sends), add-context button, a mode pill that cycles Agent / Plan / Ask, and a send button. | Assistant and chat entry points, command bars. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-switch` | An on/off switch: a glass track with a molded glass thumb that refracts what is under it. A real button with role switch. | Settings toggles on rich backgrounds. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-tabs` | A segmented control: a glass capsule with a molded indicator that slides to the chosen tab; arrow keys, Home and End move between tabs. | Section switchers, view toggles. | Tactile Glass UI (uixNinja, MIT) |
+| `glass-audio-player` | A spatial audio deck in liquid glass with a procedural Web Audio synth (no files): play, previous / next, draggable timeline, live spectrum, repeat. Sound starts only when you press play. | Music or podcast teasers, ambient sound on a landing page. | Tactile Glass UI (uixNinja, MIT) |
+
 ## Loaders
 
 | id | what it does | use it for | idea from |

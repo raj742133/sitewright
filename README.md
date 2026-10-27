@@ -13,7 +13,7 @@
   <b>A Claude Code skill that builds your website.</b><br>
   Landing page, sign-in, authenticator MFA, records dashboard, release publishing and a connect-your-phone page,<br>
   restyled with your brand, wired to a real backend, and tested in a real browser.<br>
-  Two design themes, 10 animated backgrounds, 22 interactive line figures, 115 live components, 12 full-page templates (7 dashboards) and 200,000+ icons, all optional.
+  Two design themes, 10 animated backgrounds, 22 interactive line figures, 125 live components, 12 full-page templates (7 dashboards) and 200,000+ icons, all optional.
 </p>
 
 <p align="center">
@@ -237,7 +237,7 @@ Put one anywhere in your own pages by name, nothing to register: `<Figure name="
 
 ## Components (optional)
 
-A library of 115 small interactive components you import by name from `@/components/fx/ui`. They are original code with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
+A library of 125 small interactive components you import by name from `@/components/fx/ui`. They are original code (except the ten `glass-*` pieces, ported from Tactile Glass UI, MIT, see THIRD_PARTY_NOTICES.md) with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
 
 | Group | Components |
 | --- | --- |

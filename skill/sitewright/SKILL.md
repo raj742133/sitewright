@@ -29,7 +29,7 @@ Dependencies are resolved automatically - choosing `publishing` brings `mfa`; `d
 
 **Figures** are the other half of the layer: 22 small interactive isometric line drawings (19 from Hairline, MIT, plus `bars`, `scanner`, `parcel` written for this kit) placed in named *places* of the site, `effects.figures`: `hero`, `releases`, `signin`, `mfa`, `connect`, `empty`, `notfound`. `figures: "auto"` puts the fitting figure in every place the chosen modules have; `{ "signin": "vault" }` chooses one by one. Catalogue, places, how to use them well and how to add your own: `reference/figures.md`. Catalogue, presets and rules: `reference/effects.md`.
 
-**Components** are the third part: 115 small interactive pieces (hold-to-confirm and tactile buttons, a command input, wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers, and 16 SVG charts) imported from `@/components/fx/ui`, chosen with `effects.components` (`"all"` or a list) or `--components`. Catalogue, what each is for and how to choose: `reference/components.md`.
+**Components** are the third part: 125 small interactive pieces (hold-to-confirm and tactile buttons, a command input, wheel picker, dials and gauges, stagger and line-draw reveals, spring-physics helpers, and 16 SVG charts) imported from `@/components/fx/ui`, chosen with `effects.components` (`"all"` or a list) or `--components`. Catalogue, what each is for and how to choose: `reference/components.md`.
 
 **Templates** are full pages and dashboards (12: seven dashboards, five pages), kept apart from components. Choose with `effects.templates` (`"all"` or a list) or `--templates`; they appear at `/effects/templates/`. Ids and use: `reference/templates.md`.
 
@@ -89,6 +89,7 @@ Dependencies are resolved automatically - choosing `publishing` brings `mfa`; `d
 - The root layout must not import values from a `'use client'` file (see `reference/gotchas.md` - it breaks hydration on some routes).
 - Icons keep their set's licence notice (`src/components/icons/NOTICE.md`); a CC BY set also needs the credit line shown to people. Icon markup is sanitised on the way in: never paste raw SVG into `icons.data.json` by hand (use `icons.custom`).
 - Figures keep the Hairline licence notice (`src/components/fx/figures/LICENSE-hairline.txt`) in every project that uses them. Never remove it.
+- Glass components keep the Tactile Glass licence notice (`src/components/fx/ui/LICENSE-tactile-glass.txt`) in every project that uses them. Never remove it.
 - Effects respect `prefers-reduced-motion`, switch off pointer-follow behaviour on touch screens, pause canvases when off screen, and never hide the real headline text from screen readers.
 - Mobile first: every page has `width=device-width`, tap targets >= 44 px, tables scroll inside their card, no horizontal page scroll at 360 px. `prefers-reduced-motion` switches animations off.
 
@@ -101,7 +102,7 @@ New module = a folder under `templates/modules/<id>/` mirroring the output tree,
 - `reference/config.md` - every config key, its default, and a minimal vs full example
 - `reference/effects.md` - the effects catalogue, presets, wiring and rules
 - `reference/templates.md` - the 12 full-page templates and dashboards
-- `reference/components.md` - the component library (115 pieces): ids, what each does, where to use it
+- `reference/components.md` - the component library (125 pieces): ids, what each does, where to use it
 - `reference/icons.md` - icons: places, `auto`, finding names, licences, changing them later
 - `reference/figures.md` - the 22 line figures, the places they go, which fits where, and how to add one
 - `reference/design-system.md` - tokens, palette derivation, components, animations, responsive rules

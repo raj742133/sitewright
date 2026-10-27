@@ -1,0 +1,6 @@
+.ui-glass-switch { width: 104px; height: 56px; padding: 0; border-radius: 999px; cursor: pointer; flex-shrink: 0; appearance: none; transition: background 0.25s var(--tg-ease), border-color 0.25s var(--tg-ease); }
+.ui-glass-switch[aria-checked="true"] { background: linear-gradient(160deg, color-mix(in srgb, var(--tg-accent) 58%, var(--tg-raised)), color-mix(in srgb, var(--tg-accent) 34%, var(--tg-raised))); border-color: color-mix(in srgb, var(--tg-accent) 55%, transparent); }
+.ui-glass-switch-thumb { position: absolute; z-index: 1; top: 4px; left: 4px; width: 48px; height: 48px; border-radius: 999px; pointer-events: none; transition: transform 0.25s var(--tg-ease);
+  background: radial-gradient(circle at 35% 28%, color-mix(in srgb, #ffffff 92%, transparent), color-mix(in srgb, #ffffff 58%, transparent) 70%); box-shadow: 0 2px 8px -2px color-mix(in srgb, #000000 45%, transparent), inset 0 -2px 4px color-mix(in srgb, #000000 10%, transparent); }
+.ui-glass-switch[aria-checked="true"] .ui-glass-switch-thumb { transform: translateX(48px); }
+.ui-glass-switch:disabled { opacity: 0.45; cursor: not-allowed; }

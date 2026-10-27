@@ -104,7 +104,7 @@ export function useGlass<T extends HTMLElement>(o: UseGlassOptions): { rootRef: 
     const next = toParams(optionsRef.current.defaults, optionsRef.current.optics);
     Object.assign(paramsRef.current, next);
     getGlassEngine().invalidate();
-  }, [sig]);
+  }, [sig, o.defaults]);
 
   useEffect(() => {
     const root = rootRef.current;
