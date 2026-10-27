@@ -181,7 +181,7 @@
   .tv-act .tv-day li { grid-template-columns: 26px minmax(0, 1fr); } .tv-act .tv-day time { grid-column: 2; padding: 0; }
 }
 @media (pointer: coarse) {
-  .tv-table td { height: 48px; } .tv-ck { width: 48px; } .tv-ck input { width: 22px; height: 22px; } .tv-open, .tv-link { min-height: 44px; } .tv-open { align-content: center; }
+  .tv-table td { height: 48px; } .tv-ck { width: 48px; } .tv-ck input { width: 24px; height: 24px; } .tv-open, .tv-link { min-height: 44px; } .tv-open { align-content: center; }
   .tv-field input, .tv-field select, .tv-dsel select, .tv-mini select, .tv-handle, .tv-x, .tv-back { min-height: 44px; min-width: 44px; } .tv-acitem, .tv-dealrows button { min-height: 56px; } .tv-toast > button { min-height: 44px; }
   .tv-link { display: inline-flex; align-items: center; }
 }
