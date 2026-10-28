@@ -6,7 +6,8 @@ html:has(.fxe), html:has(.fxe) body { background: transparent; overflow: hidden;
 .fxe-bg > .fx-bg { position: absolute; inset: 0; }
 /* the scaled stage is laid out at (frame / scale) and scaled up from the top-left, so it fills the frame exactly */
 .fxe-scale { --s: 1; position: absolute; left: 0; top: 0; width: calc(100vw / var(--s)); height: calc(100vh / var(--s)); transform: scale(var(--s)); transform-origin: 0 0; display: grid; place-items: center; padding: 12px; }
-.fxe-demo { width: min(100%, 460px); min-width: 0; display: grid; justify-items: center; }
+.fxe-demo { width: min(100%, 460px); height: calc(100vh / var(--s) - 24px); max-height: 100%; min-width: 0; display: grid; justify-items: center; align-items: center; }
+.fxe-demo > * { min-height: 0; }
 .fxe-demo > * { max-width: 100%; }
 /* demos that are a fixed 150px tile in the gallery and need room to be seen */
 .fxe[data-id='drape-background'] .fxe-demo { width: 100%; }

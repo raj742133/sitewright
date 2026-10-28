@@ -72,7 +72,8 @@ for (const id of IDS) {
     // render + phone + keyboard
     {
       const { page, ctx, errs } = await open(browser, id);
-      const box = await page.evaluate(() => { const root = document.querySelector('div[style*="100vh"], main') ?? document.body; const e = root.firstElementChild ?? root; const b = e.getBoundingClientRect(); return { w: Math.round(b.width), h: Math.round(b.height) }; });
+      const box = await page.evaluate(() => { // the demo's size: the largest element inside the page (works for the scratch /g/ pages and the gallery embed pages)
+        let w = 0, h = 0; for (const e of document.querySelectorAll('body *')) { const r = e.getBoundingClientRect(); if (r.width * r.height > w * h && r.width > 0) { w = Math.round(r.width); h = Math.round(r.height); } } return { w, h }; });
       const v = await busy(page, { x: 0, y: 0, width: 900, height: 600 }).catch(() => 0);
       rec('render', errs.length === 0 && box.w > 40 && box.h > 40 && v > 0.02, `errors=${errs.slice(0, 2).join(' | ')} size=${box.w}x${box.h} busy=${v.toFixed(3)}`);
       const nf = await page.evaluate(() => document.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), textarea, select, [tabindex]:not([tabindex="-1"]), [role="button"], [role="tab"], [role="switch"], [role="slider"]').length);
