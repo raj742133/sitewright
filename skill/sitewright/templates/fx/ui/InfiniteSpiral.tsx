@@ -71,7 +71,7 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
       el.style.transform = `translate3d(${(q.x - iw / 2).toFixed(1)}px, ${(q.y - ih / 2).toFixed(1)}px, 0) scale(${Math.pow(q.e, 0.85).toFixed(3)})`;
     }
     const f = best % n;
-    if (f !== s.front) { s.front = f; setFront(f); }
+    if (f !== s.front && s.target === null) { s.front = f; setFront(f); }
   }, [M, n, pt, iw, ih]);
 
   const tickRef = useRef<(t: number) => void>(() => {});
@@ -108,6 +108,7 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
     const cur = Math.round(s.pos);
     const d = wrap(target - cur + Math.floor(n / 2), n) - Math.floor(n / 2);
     s.vel = 0; s.target = cur + d;
+    { const f = wrap(s.target, n); s.front = f; setFront(f); }
     if (reduced) { s.pos = s.target; s.target = null; paint(); } else kick();
   };
   const by = (d: number) => { const s = st.current; goTo((s.target ?? Math.round(s.pos)) + d); };
@@ -142,7 +143,7 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
     e.preventDefault();
     if ((e.target as Element).closest('.ui-infinite-spiral-hit')) {
       const t = wrap(Math.round(st.current.target ?? st.current.pos), n);
-      els.current[t]?.querySelector('button')?.focus();
+      requestAnimationFrame(() => els.current[t]?.querySelector('button')?.focus());
     }
   };
 
@@ -159,9 +160,8 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
           return (
             <div key={i} ref={(el) => { els.current[i] = el; }} className="ui-infinite-spiral-tile" data-front={!dup && i === front ? '' : undefined} {...(dup ? { 'aria-hidden': true } : { role: 'group', 'aria-roledescription': 'slide', 'aria-label': `${i + 1} of ${n}` })}>
               <Artwork item={x} index={i % n} />
-              {dup ? null : <button type="button" className="ui-infinite-spiral-hit" tabIndex={i === front ? 0 : -1} aria-label={`${x.title}${x.subtitle ? ', ' + x.subtitle : ''}`} aria-current={i === front ? 'true' : undefined}
-                onClick={() => { if (i === front && x.href) window.location.assign(x.href); else goTo(i); }} />}
-              {dup ? <span className="ui-infinite-spiral-hit" onClick={() => goTo(i)} /> : null}
+              {!dup && i === front ? <button type="button" className="ui-infinite-spiral-hit" tabIndex={0} aria-label={`${x.title}${x.subtitle ? ', ' + x.subtitle : ''}`} aria-current="true" onClick={() => { if (x.href) window.location.assign(x.href); }} />
+                : <span className="ui-infinite-spiral-hit" aria-hidden="true" onClick={() => goTo(i)} />}
             </div>
           );
         })}

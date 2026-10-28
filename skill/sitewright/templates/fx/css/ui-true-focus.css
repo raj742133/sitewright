@@ -13,7 +13,7 @@
 .ui-true-focus-frame i:nth-child(2) { right: 0; top: 0; border-width: 3px 3px 0 0; border-top-right-radius: 4px; }
 .ui-true-focus-frame i:nth-child(3) { left: 0; bottom: 0; border-width: 0 0 3px 3px; border-bottom-left-radius: 4px; }
 .ui-true-focus-frame i:nth-child(4) { right: 0; bottom: 0; border-width: 0 3px 3px 0; border-bottom-right-radius: 4px; }
-.ui-true-focus-pause { position: relative; min-height: 28px; padding: 3px 12px; font: 600 11px/1.4 var(--font-mono, monospace); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); background: var(--raised); border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; }
+.ui-true-focus-pause { position: relative; min-height: 28px; padding: 3px 12px; font: 600 12px/1.4 var(--font-mono, monospace); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); background: var(--raised); border: 1px solid var(--line-strong); border-radius: 999px; cursor: pointer; }
 .ui-true-focus-pause:hover { border-color: var(--primary); }
 .ui-true-focus-pause:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 @media (pointer: coarse) { .ui-true-focus-pause { min-height: 44px; min-width: 44px; } }

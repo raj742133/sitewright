@@ -9,7 +9,7 @@
 .ui-gallery-heading-tile canvas { display: block; width: 100%; height: 100%; }
 .ui-gallery-heading-foot { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 4px 12px; padding: 8px 14px 12px; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--raised) 90%, transparent); }
 .ui-gallery-heading-copy { display: grid; gap: 2px; min-width: 0; }
-.ui-gallery-heading-kicker { font: 600 10px/1.4 var(--font-mono, monospace); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.ui-gallery-heading-kicker { font: 600 12px/1.4 var(--font-mono, monospace); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .ui-gallery-heading-title { position: relative; margin: 0; font-size: clamp(20px, 7cqw, 40px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; animation: ui-gallery-heading-in 0.55s steps(1, end) both; }
 .ui-gallery-heading-title::before, .ui-gallery-heading-title::after { content: attr(data-text); position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0; animation: ui-gallery-heading-glitch 0.55s steps(1, end) both; }
 .ui-gallery-heading-title::before { color: var(--primary); }

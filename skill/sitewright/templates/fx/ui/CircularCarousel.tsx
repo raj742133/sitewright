@@ -100,7 +100,7 @@ export default function CircularCarousel({ items = DEMO_ITEMS, index, defaultInd
         {items.map((x, i) => (
           <div key={itemKey(x, i)} ref={(el) => { els.current[i] = el; }} className="ui-circular-carousel-item" data-active={i === cur ? '' : undefined} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${n}`}>
             <Artwork item={x} index={i} />
-            <button type="button" className="ui-circular-carousel-hit" aria-label={`${x.title}${x.subtitle ? ', ' + x.subtitle : ''}`} aria-current={i === cur ? 'true' : undefined} tabIndex={i === cur ? 0 : -1} data-i={i} onClick={() => { if (i === cur && x.href) window.location.assign(x.href); else goTo(i); }} />
+            {i === cur ? <button type="button" className="ui-circular-carousel-hit" tabIndex={0} aria-label={`${x.title}${x.subtitle ? ', ' + x.subtitle : ''}`} aria-current="true" onClick={() => { if (x.href) window.location.assign(x.href); }} /> : <span className="ui-circular-carousel-hit" aria-hidden="true" onClick={() => goTo(i)} />}
           </div>
         ))}
       </div>

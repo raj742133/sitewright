@@ -1,0 +1,17 @@
+.ui-option-wheel-demo { height: 100%; min-height: 200px; display: grid; place-items: center; padding: 10px; container-type: size; background: radial-gradient(70% 90% at 50% 50%, color-mix(in srgb, var(--primary, #2563eb) 10%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+.ui-option-wheel-root { font-family: var(--font-body, system-ui); color: var(--ink, #18181b); }
+.ui-option-wheel-dial { --d: min(200px, 86cqh, 90cqw); position: relative; width: var(--d, 200px); height: var(--d, 200px); border-radius: 50%; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; background: radial-gradient(circle at 50% 35%, var(--raised, #fff), var(--raised-2, #edebe7)); border: 1px solid var(--line-strong, #c2bdb2); box-shadow: 0 10px 28px rgba(0,0,0,.18), inset 0 2px 0 rgba(255,255,255,.4); }
+.ui-option-wheel-dial:active { cursor: grabbing; }
+.ui-option-wheel-notch { position: absolute; left: 50%; top: -5px; width: 14px; height: 14px; margin-left: -7px; background: var(--signal, #f59e0b); clip-path: polygon(0 0, 100% 0, 50% 100%); z-index: 2; }
+.ui-option-wheel-ring { position: absolute; inset: 0; transition: transform .45s cubic-bezier(.3, 1.2, .5, 1); }
+.ui-option-wheel-dot { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0; border: 0; background: none; cursor: pointer; transform: rotate(var(--a)) translateY(calc(var(--d) / -2 + 20px)) rotate(calc(var(--a) * -1)); display: grid; place-items: center; }
+.ui-option-wheel-dot i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-strong, #a8a39a); transition: transform .2s, background .2s; }
+.ui-option-wheel-dot:hover i { background: var(--muted, #52525b); }
+.ui-option-wheel-dot.is-on i { background: var(--primary, #2563eb); transform: scale(1.7); box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary, #2563eb) 25%, transparent); }
+.ui-option-wheel-dot:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -4px; border-radius: 50%; }
+.ui-option-wheel-hub { position: absolute; inset: 22%; border-radius: 50%; display: grid; place-content: center; text-align: center; gap: 2px; background: var(--surface, #fafafa); border: 1px solid var(--line, #d9d5cc); pointer-events: none; }
+.ui-option-wheel-hub small { font: 600 9px/1 var(--font-mono, monospace); letter-spacing: .1em; text-transform: uppercase; color: var(--muted, #52525b); }
+.ui-option-wheel-hub strong { font: 700 15px/1.15 var(--font-body, system-ui); }
+.ui-option-wheel-hub em { font: 500 10px/1 var(--font-mono, monospace); font-style: normal; color: var(--muted, #52525b); }
+.ui-option-wheel-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (prefers-reduced-motion: reduce) { .ui-option-wheel-ring, .ui-option-wheel-dot i { transition: none; } }

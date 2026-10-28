@@ -32,7 +32,7 @@ export default function FlexCarousel({ items = DEMO_ITEMS.slice(0, 6), index, de
   const go = (i: number, focus = false) => {
     const t = wrap(i, n);
     setIdx(t);
-    if (focus) hits.current[t]?.focus();
+    if (focus) requestAnimationFrame(() => hits.current[t]?.focus());
   };
   usePointerDrag(list, { axis: 'x', onMove: () => {}, onEnd: (_vx, _vy, dx) => { if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1)); } });
 
@@ -61,7 +61,7 @@ export default function FlexCarousel({ items = DEMO_ITEMS.slice(0, 6), index, de
               <span className="ui-flex-carousel-strip" aria-hidden="true">{it.title}</span>
               <div className="ui-flex-carousel-cap"><strong>{it.title}</strong>{it.subtitle ? <span>{it.subtitle}</span> : null}</div>
               {it.href && on ? <a className="ui-flex-carousel-go" href={it.href} data-nodrag="">Open {it.title}</a> : null}
-              <button ref={(el) => { hits.current[i] = el; }} type="button" className="ui-flex-carousel-hit" tabIndex={on ? 0 : -1} aria-label={`${it.title}${it.subtitle ? ', ' + it.subtitle : ''}`} aria-current={on ? 'true' : undefined} onClick={() => setIdx(i)} />
+              {on ? <button ref={(el) => { hits.current[i] = el; }} type="button" className="ui-flex-carousel-hit" tabIndex={0} aria-label={`${it.title}${it.subtitle ? ', ' + it.subtitle : ''}`} aria-current="true" /> : <span className="ui-flex-carousel-hit" aria-hidden="true" onClick={() => setIdx(i)} />}
             </div>
           );
         })}

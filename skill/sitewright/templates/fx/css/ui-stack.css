@@ -1,0 +1,23 @@
+.ui-stack-demo { height: 100%; min-height: 200px; display: grid; place-items: center; padding: 8px; container-type: size; background: radial-gradient(90% 90% at 20% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+.ui-stack-root { display: grid; gap: 8px; justify-items: center; font-family: var(--font-body, system-ui); outline: none; border-radius: var(--radius, 12px); }
+.ui-stack-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 4px; }
+.ui-stack-pile { position: relative; width: min(240px, 78cqw, 100%); height: clamp(104px, calc(100cqh - 76px), 220px); margin-top: 18px; }
+.ui-stack-card { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line-strong, #c2bdb2); color: var(--ink, #18181b); background: var(--raised, #fff); box-shadow: 0 8px 22px rgba(0,0,0,.16); transition: transform .4s cubic-bezier(.3, 1.2, .5, 1), opacity .3s; touch-action: none; user-select: none; -webkit-user-select: none; overflow: hidden; }
+.ui-stack-card::before { content: ''; position: absolute; inset: 0 0 45% 0; background: linear-gradient(135deg, color-mix(in srgb, var(--primary, #2563eb) 55%, var(--raised, #fff)), color-mix(in srgb, var(--signal, #f59e0b) 45%, var(--raised, #fff))); opacity: .85; }
+.ui-stack-card[data-tone="1"]::before { background: linear-gradient(135deg, color-mix(in srgb, var(--signal, #f59e0b) 55%, var(--raised, #fff)), color-mix(in srgb, var(--primary, #2563eb) 35%, var(--raised, #fff))); }
+.ui-stack-card[data-tone="2"]::before { background: linear-gradient(200deg, color-mix(in srgb, var(--primary, #2563eb) 70%, var(--ink, #000)), color-mix(in srgb, var(--primary, #2563eb) 30%, var(--raised, #fff))); }
+.ui-stack-card[data-tone="3"]::before { background: linear-gradient(160deg, color-mix(in srgb, var(--signal, #f59e0b) 70%, var(--ink, #000)), color-mix(in srgb, var(--signal, #f59e0b) 30%, var(--raised, #fff))); }
+.ui-stack-card.is-top { cursor: grab; }
+.ui-stack-card.is-top:active { cursor: grabbing; }
+.ui-stack-card > * { position: relative; }
+.ui-stack-card strong { font: 700 19px/1.1 var(--font-body, system-ui); }
+.ui-stack-card p { margin: 0; font-size: 12.5px; line-height: 1.35; color: var(--muted, #52525b); }
+.ui-stack-tag { position: absolute !important; top: 12px; left: 14px; font: 700 11px/1 var(--font-mono, monospace); letter-spacing: .1em; padding: 4px 8px; border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #18181b); }
+.ui-stack-bar { display: flex; align-items: center; gap: 12px; font: 600 12px/1 var(--font-mono, monospace); color: var(--muted, #52525b); }
+.ui-stack-bar button { width: 44px; height: 32px; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--line-strong, #c2bdb2); background: var(--raised, #fff); color: var(--ink, #18181b); cursor: pointer; }
+.ui-stack-bar button:hover { border-color: var(--primary, #2563eb); }
+.ui-stack-bar button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-stack-bar svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ui-stack-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (pointer: coarse) { .ui-stack-bar button { height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-stack-card { transition: none; } }

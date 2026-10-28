@@ -53,7 +53,7 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
       const el = panels.current[i];
       if (el) el.style.opacity = d > 100 ? '0' : String(clamp(Math.cos((d * Math.PI) / 180) * 1.1 + 0.15, 0.2, 1));
     }
-    if (best !== s.front) { s.front = best; setFront(best); cb.current?.(best); }
+    if (best !== s.front && s.target === null) { s.front = best; setFront(best); cb.current?.(best); }
   }, [n, step, R]);
 
   const tickRef = useRef<(t: number) => void>(() => {});
@@ -85,11 +85,13 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
   useEffect(() => { if (!live && st.current.raf) { cancelAnimationFrame(st.current.raf); st.current.raf = 0; } else if (live) kick(); }, [live, kick]);
   useEffect(() => () => { cancelAnimationFrame(st.current.raf); st.current.raf = 0; }, []);
 
+  const select = (rot: number) => { const i = wrap(Math.round(-rot / step), n); st.current.front = i; setFront(i); cb.current?.(i); };
   const stepBy = (dir: number) => {
     const s = st.current;
     s.vel = 0;
     const base = s.target ?? Math.round(s.rot / step) * step;
     s.target = base - dir * step;
+    select(s.target);
     if (reduced) { s.rot = s.target; s.target = null; paint(); } else kick();
   };
   const goHome = (end: boolean) => {
@@ -97,6 +99,7 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
     s.vel = 0;
     const want = -(end ? n - 1 : 0) * step;
     s.target = want + Math.round((s.rot - want) / 360) * 360;
+    select(s.target);
     if (reduced) { s.rot = s.target; s.target = null; paint(); } else kick();
   };
 
@@ -125,7 +128,7 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
     if ((e.target as Element).closest('.ui-circular-gallery-hit')) {
       const s = st.current;
       const t = wrap(Math.round(-(s.target ?? s.rot) / step), n);
-      panels.current[t]?.querySelector('button')?.focus();
+      requestAnimationFrame(() => panels.current[t]?.querySelector('button')?.focus());
     }
   };
 
@@ -142,8 +145,7 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
               style={{ transform: `rotateY(${i * step}deg) translateZ(${R}px)` }}>
               <Artwork item={x} index={i} />
               <span className="ui-circular-gallery-shine" aria-hidden="true" />
-              <button type="button" className="ui-circular-gallery-hit" tabIndex={i === front ? 0 : -1} aria-label={`${x.title}${x.subtitle ? ', ' + x.subtitle : ''}`} aria-current={i === front ? 'true' : undefined}
-                onClick={() => { if (i !== front) { const d = wrap(i - front + Math.floor(n / 2), n) - Math.floor(n / 2); stepBy(d); } else if (x.href) window.location.assign(x.href); }} />
+              {i === front ? <button type="button" className="ui-circular-gallery-hit" tabIndex={0} aria-label={`${x.title}${x.subtitle ? ', ' + x.subtitle : ''}`} aria-current="true" onClick={() => { if (x.href) window.location.assign(x.href); }} /> : <span className="ui-circular-gallery-hit" aria-hidden="true" onClick={() => { const d = wrap(i - front + Math.floor(n / 2), n) - Math.floor(n / 2); stepBy(d); }} />}
             </div>
           ))}
         </div>

@@ -21,7 +21,7 @@
 .ui-animated-list-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
 .ui-animated-list-text strong { font-size: 13px; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ui-animated-list-text span { font-size: 12px; color: var(--muted, #5c5851); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ui-animated-list-meta { flex: none; font: 500 11px/1 var(--font-mono, monospace); color: var(--muted, #5c5851); }
+.ui-animated-list-meta { flex: none; font: 500 12px/1 var(--font-mono, monospace); color: var(--muted, #5c5851); }
 .ui-animated-list-x { flex: none; width: 32px; margin: 0; border: 0; background: transparent; color: var(--muted, #5c5851); cursor: pointer; border-radius: 0 var(--radius, 12px) var(--radius, 12px) 0; display: grid; place-items: center; opacity: 0.55; }
 .ui-animated-list-x:hover { opacity: 1; color: var(--ink, #18181b); background: var(--raised-2, #edebe7); }
 @media (pointer: coarse) { .ui-animated-list-x { width: 44px; opacity: 1; } }

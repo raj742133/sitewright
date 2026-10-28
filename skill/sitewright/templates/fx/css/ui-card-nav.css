@@ -1,0 +1,26 @@
+.ui-card-nav-root { width: 100%; padding: 10px; container-type: inline-size; font-family: var(--font-body, system-ui, sans-serif); position: relative; z-index: 2; }
+.ui-card-nav-shell { border-radius: calc(var(--radius, 12px) + 4px); background: var(--raised, #fff); color: var(--ink, #18181b); border: 1px solid var(--line-strong, rgba(127,127,127,.35)); box-shadow: 0 16px 34px -18px rgba(0,0,0,.45); overflow: hidden; }
+.ui-card-nav-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; padding: 8px; min-height: 60px; }
+.ui-card-nav-btn { justify-self: start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border: 0; border-radius: 10px; background: transparent; cursor: pointer; color: inherit; font: 600 14px/1 var(--font-body, system-ui); }
+.ui-card-nav-btn:hover { background: var(--raised-2, rgba(127,127,127,.12)); }
+.ui-card-nav-btn:focus-visible, .ui-card-nav-cta:focus-visible, .ui-card-nav-link:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-card-nav-lines { position: relative; width: 20px; height: 12px; }
+.ui-card-nav-lines i { position: absolute; left: 0; width: 20px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .3s, top .3s; }
+.ui-card-nav-lines i:first-child { top: 2px; } .ui-card-nav-lines i:last-child { top: 9px; }
+.is-open .ui-card-nav-lines i:first-child { top: 5.5px; transform: rotate(45deg); } .is-open .ui-card-nav-lines i:last-child { top: 5.5px; transform: rotate(-45deg); }
+.ui-card-nav-brand { display: inline-flex; align-items: center; gap: 6px; font: 800 17px/1 var(--font-body, system-ui); letter-spacing: -.01em; color: var(--primary, #2563eb); }
+.ui-card-nav-cta { justify-self: end; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 10px; text-decoration: none; font: 700 14px/1 var(--font-body, system-ui); color: #fff; background: var(--primary, #2563eb); }
+.ui-card-nav-cta:hover { filter: brightness(1.1); }
+.ui-card-nav-drawer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.3,.9,.3,1); visibility: hidden; }
+.is-open .ui-card-nav-drawer { grid-template-rows: 1fr; visibility: visible; }
+.ui-card-nav-cards { list-style: none; margin: 0; padding: 0 8px; min-height: 0; overflow: hidden; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.is-open .ui-card-nav-cards { padding-bottom: 8px; }
+.ui-card-nav-card { --i: 0; padding: 14px; border-radius: var(--radius, 12px); background: color-mix(in srgb, var(--tone) 14%, var(--raised-2, #f1f1f4)); border: 1px solid color-mix(in srgb, var(--tone) 30%, transparent); opacity: 0; transform: translateY(16px); transition: opacity .25s, transform .4s cubic-bezier(.3,1.2,.4,1); }
+.is-open .ui-card-nav-card { opacity: 1; transform: none; transition-delay: calc(120ms + var(--i) * 70ms); }
+.ui-card-nav-title { margin: 0; font: 700 16px/1.2 var(--font-body, system-ui); }
+.ui-card-nav-blurb { margin: 2px 0 8px; font: 400 12px/1.4 var(--font-body, system-ui); color: var(--muted, #52525b); }
+.ui-card-nav-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.ui-card-nav-link { display: flex; align-items: center; gap: 6px; min-height: 32px; font: 500 14px/1.2 var(--font-body, system-ui); color: var(--ink, #18181b); text-decoration: none; border-radius: 6px; }
+.ui-card-nav-link:hover { color: var(--primary, #2563eb); text-decoration: underline; }
+@container (max-width: 560px) { .ui-card-nav-cards { grid-template-columns: 1fr; gap: 6px; } .ui-card-nav-card { padding: 8px 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; } .ui-card-nav-blurb { display: none; } .ui-card-nav-title { flex: 0 0 72px; font-size: 14px; } .ui-card-nav-links { display: flex; flex-wrap: wrap; column-gap: 12px; flex: 1; } .ui-card-nav-link { min-height: 32px; font-size: 13px; } .ui-card-nav-link svg { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ui-card-nav-drawer, .ui-card-nav-card, .ui-card-nav-lines i { transition: none; } }

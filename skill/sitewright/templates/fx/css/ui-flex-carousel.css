@@ -1,6 +1,6 @@
 .ui-flex-carousel-root { position: relative; display: flex; flex-direction: column; gap: 10px; width: 100%; min-height: 160px; min-width: 0; padding: 12px; box-sizing: border-box; color: var(--ink, #18181b); font-family: var(--font-body, system-ui, sans-serif); container-type: inline-size; }
 .ui-flex-carousel-list { flex: 1; min-height: 0; display: flex; flex-direction: row; gap: 8px; touch-action: pan-y; }
-.ui-flex-carousel-panel { position: relative; flex: 1 1 0; min-width: 0; min-height: 0; overflow: hidden; border-radius: var(--radius, 12px); border: 1px solid var(--line, rgba(127,127,127,0.25)); background: var(--raised, #fff); transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer; }
+.ui-flex-carousel-panel { position: relative; flex: 1 1 0; min-height: 26px; min-width: 0; min-height: 0; overflow: hidden; border-radius: var(--radius, 12px); border: 1px solid var(--line, rgba(127,127,127,0.25)); background: var(--raised, #fff); transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer; }
 .ui-flex-carousel-panel[data-on] { flex-grow: 6; cursor: default; }
 .ui-flex-carousel-panel::after { content: ''; position: absolute; inset: 0; background: rgba(6,8,20,0.28); transition: opacity 0.4s; pointer-events: none; }
 .ui-flex-carousel-panel[data-on]::after { opacity: 0; }

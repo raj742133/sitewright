@@ -18,9 +18,10 @@
 .ui-card-swap-btn { width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--line-strong, #c2bdb2); background: var(--raised, #fff); color: var(--ink, #18181b); cursor: pointer; padding: 0; }
 .ui-card-swap-btn:hover { background: var(--raised-2, #edebe7); }
 .ui-card-swap-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
-.ui-card-swap-dots { flex: 1; display: flex; justify-content: center; gap: 6px; }
+.ui-card-swap-dots { flex: none; order: 3; padding: 0 6px; display: flex; justify-content: center; gap: 6px; }
 .ui-card-swap-dots i { width: 7px; height: 7px; border-radius: 999px; background: var(--line-strong, #c2bdb2); transition: width 0.3s, background 0.3s; }
 .ui-card-swap-dots i[data-on='true'] { width: 22px; background: var(--primary, #2563eb); }
-.ui-card-swap-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ui-card-swap-live { order: 2; flex: 1 1 0; min-width: 0; font: 500 12px/1.2 var(--font-mono, monospace); color: var(--muted, #5c5851); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
 @media (pointer: coarse) { .ui-card-swap-btn { width: 44px; height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .ui-card-swap-card, .ui-card-swap-dots i { transition: none; } }
+.ui-card-swap-bar > :nth-child(3) { order: 4; } .ui-card-swap-bar > :nth-child(4) { order: 5; }
