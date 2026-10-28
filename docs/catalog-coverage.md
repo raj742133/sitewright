@@ -12,8 +12,8 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Unique entries | 261 (the 5 heroes are among the 43 `tu` entries) |
 | Existing Sitewright equivalents reused | 30 |
 | New independent implementations present | 231 |
-| Verified (all smoke checks passed) | 226 |
-| Implemented, awaiting tests | 5 |
+| Verified (all smoke checks passed) | 231 |
+| Implemented, awaiting tests | 0 |
 | With failing tests | 0 |
 | Blocked | 0 |
 | Remaining (planned / in progress) | 0 |
@@ -32,11 +32,11 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
-| `tu:kage-landing-page` | Kage | implemented | `hero-night-temple` | not run | - |
-| `tu:complete-shelf-landing-page` | Complete Shelf | implemented | `hero-bookshelf` | not run | - |
-| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | implemented | `hero-book-showcase` | not run | - |
-| `tu:sylva-hero` | Sylva | implemented | `hero-living-green` | not run | - |
-| `tu:meng-to-sketchbook-landing-page` | Sketchbook | implemented | `hero-paper-sketchbook` | not run | - |
+| `tu:kage-landing-page` | Kage | verified | `hero-night-temple` | pass | - |
+| `tu:complete-shelf-landing-page` | Complete Shelf | verified | `hero-bookshelf` | pass | - |
+| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | verified | `hero-book-showcase` | pass | - |
+| `tu:sylva-hero` | Sylva | verified | `hero-living-green` | pass | - |
+| `tu:meng-to-sketchbook-landing-page` | Sketchbook | verified | `hero-paper-sketchbook` | pass | - |
 | `tu:predictive-arc` | Predictive Arc | verified | `predictive-arc` | pass | - |
 | `tu:liquid-form` | Liquid Form | verified | `liquid-form` | pass | - |
 | `tu:crt` | CRT | verified | `crt-screen` | pass | - |
@@ -80,11 +80,11 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
-| `tu:kage-landing-page` | Kage | implemented | `hero-night-temple` | not run | - |
-| `tu:complete-shelf-landing-page` | Complete Shelf | implemented | `hero-bookshelf` | not run | - |
-| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | implemented | `hero-book-showcase` | not run | - |
-| `tu:sylva-hero` | Sylva | implemented | `hero-living-green` | not run | - |
-| `tu:meng-to-sketchbook-landing-page` | Sketchbook | implemented | `hero-paper-sketchbook` | not run | - |
+| `tu:kage-landing-page` | Kage | verified | `hero-night-temple` | pass | - |
+| `tu:complete-shelf-landing-page` | Complete Shelf | verified | `hero-bookshelf` | pass | - |
+| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | verified | `hero-book-showcase` | pass | - |
+| `tu:sylva-hero` | Sylva | verified | `hero-living-green` | pass | - |
+| `tu:meng-to-sketchbook-landing-page` | Sketchbook | verified | `hero-paper-sketchbook` | pass | - |
 
 ## The 218 React Bits-origin entries
 

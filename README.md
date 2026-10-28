@@ -13,7 +13,7 @@
   <b>A Claude Code skill that builds your website.</b><br>
   Landing page, sign-in, authenticator MFA, records dashboard, release publishing and a connect-your-phone page,<br>
   restyled with your brand, wired to a real backend, and tested in a real browser.<br>
-  Two design themes, 10 animated backgrounds, 22 interactive line figures, 133 live components, 12 full-page templates (7 dashboards) and 200,000+ icons, all optional.
+  Two design themes, 10 animated backgrounds, 22 interactive line figures, 359 live components, 17 full-page templates (7 dashboards, 5 hero pages) and 200,000+ icons, all optional.
 </p>
 
 <p align="center">
@@ -237,7 +237,7 @@ Put one anywhere in your own pages by name, nothing to register: `<Figure name="
 
 ## Components (optional)
 
-A library of 133 small interactive components you import by name from `@/components/fx/ui`. They are original code (except the ten `glass-*` pieces, ported from Tactile Glass UI, MIT, see THIRD_PARTY_NOTICES.md) with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
+A library of 359 small interactive components you import by name from `@/components/fx/ui`. They are original code (except the ten `glass-*` pieces, ported from Tactile Glass UI, MIT, see THIRD_PARTY_NOTICES.md) with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
 
 | Group | Components |
 | --- | --- |
@@ -255,7 +255,7 @@ A library of 133 small interactive components you import by name from `@/compone
 
 ### Templates (optional)
 
-Dashboards and pages are not components, so they have their own catalogue: 12 full-screen templates chosen with `effects.templates` (`"all"` or a list) or `--templates`, listed in [`reference/templates.md`](skill/sitewright/reference/templates.md). Seven dashboards (analytics, finance, sales pipeline, projects, support inbox, operations, AI assistant) share one app-style kit: container-query responsive layout, tabular numerals, working tables, boards and charts with keyboard support. Pages: art marketplace, restaurant landing, wind 404, lamp login, and a brand bento board. Browse them at [/dashboards/](https://sitewright-skill.vercel.app/dashboards/).
+Dashboards and pages are not components, so they have their own catalogue: 17 full-screen templates chosen with `effects.templates` (`"all"` or a list) or `--templates`, listed in [`reference/templates.md`](skill/sitewright/reference/templates.md). Seven dashboards (analytics, finance, sales pipeline, projects, support inbox, operations, AI assistant) share one app-style kit: container-query responsive layout, tabular numerals, working tables, boards and charts with keyboard support. Pages: art marketplace, restaurant landing, wind 404, lamp login, a brand bento board and five original hero landing pages. Browse them at [/dashboards/](https://sitewright-skill.vercel.app/dashboards/).
 
 **[Try the components live](https://sitewright-skill.vercel.app/demo/effects/components/)** · the catalogue, with what each is for, is [`reference/components.md`](skill/sitewright/reference/components.md). Their ideas come from Kitchen, Kokonut UI, Anime.js, Motion, Bklit, Sileo and @code.xr; all code is written for this kit (see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)).
 

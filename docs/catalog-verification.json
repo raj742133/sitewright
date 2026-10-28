@@ -2710,5 +2710,65 @@
    "cleanup": "pass"
   },
   "date": "2026-10-28T21:22:30.817Z"
+ },
+ "hero-night-temple": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T22:07:55.003Z"
+ },
+ "hero-bookshelf": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T22:07:55.003Z"
+ },
+ "hero-book-showcase": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T22:07:55.003Z"
+ },
+ "hero-living-green": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T22:07:55.003Z"
+ },
+ "hero-paper-sketchbook": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T22:07:55.003Z"
  }
 }

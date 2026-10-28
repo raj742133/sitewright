@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-10-28T21:25:20.930Z",
+  "generated": "2026-10-28T22:08:15.410Z",
   "sourceCatalogEntries": 261,
   "uniqueEntries": 261,
   "note": "the 5 full-page heroes are 5 of the 43 tu entries (see overlap), so unique = rb + tu",
@@ -18,14 +18,14 @@
    "existing": 0,
    "planned": 0,
    "in_progress": 0,
-   "implemented": 5,
-   "verified": 38,
+   "implemented": 0,
+   "verified": 43,
    "blocked": 0
   },
   "fullPageHeroes": {
    "total": 5,
    "completed": 5,
-   "verified": 0
+   "verified": 5
   },
   "tactileGlass": {
    "total": 10,
@@ -34,8 +34,8 @@
   },
   "existingReused": 30,
   "newImplemented": 231,
-  "verified": 226,
-  "awaitingTests": 5,
+  "verified": 231,
+  "awaitingTests": 0,
   "failingTests": 0,
   "blocked": 0,
   "remainingUnimplemented": 0,
@@ -6061,11 +6061,11 @@
    ],
    "source": "Original",
    "demo": "yes",
-   "test": "not run",
+   "test": "pass",
    "dependencies": "none (react only)",
    "license": "Sitewright original",
    "outstanding": [],
-   "status": "implemented"
+   "status": "verified"
   },
   {
    "catalogId": "tu:complete-shelf-landing-page",
@@ -6092,11 +6092,11 @@
    ],
    "source": "Original",
    "demo": "yes",
-   "test": "not run",
+   "test": "pass",
    "dependencies": "none (react only)",
    "license": "Sitewright original",
    "outstanding": [],
-   "status": "implemented"
+   "status": "verified"
   },
   {
    "catalogId": "tu:bestsellers-book-showcase",
@@ -6124,11 +6124,11 @@
    ],
    "source": "Original",
    "demo": "yes",
-   "test": "not run",
+   "test": "pass",
    "dependencies": "none (react only)",
    "license": "Sitewright original",
    "outstanding": [],
-   "status": "implemented"
+   "status": "verified"
   },
   {
    "catalogId": "tu:sylva-hero",
@@ -6157,11 +6157,11 @@
    ],
    "source": "Original",
    "demo": "yes",
-   "test": "not run",
+   "test": "pass",
    "dependencies": "none (react only)",
    "license": "Sitewright original",
    "outstanding": [],
-   "status": "implemented"
+   "status": "verified"
   },
   {
    "catalogId": "tu:meng-to-sketchbook-landing-page",
@@ -6189,11 +6189,11 @@
    ],
    "source": "Original",
    "demo": "yes",
-   "test": "not run",
+   "test": "pass",
    "dependencies": "none (react only)",
    "license": "Sitewright original",
    "outstanding": [],
-   "status": "implemented"
+   "status": "verified"
   },
   {
    "catalogId": "tu:predictive-arc",
