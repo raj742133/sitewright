@@ -75,9 +75,12 @@ export default function Bookshelf3d({ books = DEFAULT_BOOKS, index, defaultIndex
             return (
               <li key={i} className="ui-bookshelf-3d-slot" style={{ transform: `rotateY(${i * step}deg) translateZ(var(--bk-r))`, ['--off' as string]: Math.min(off, 3) }}>
                 <div className={'ui-bookshelf-3d-book' + (sel ? ' is-front' : '') + (reading ? ' is-open' : '')} style={{ ['--turn' as string]: reading ? turn : 0 }}>
-                  <button ref={(el) => { btns.current[i] = el; }} type="button" className="ui-bookshelf-3d-hit" tabIndex={sel ? 0 : -1} disabled={open && !sel}
-                    aria-label={`${b.title}, by ${b.author}. Book ${i + 1} of ${n}.${sel ? ' Press Enter to open.' : ''}`} aria-current={sel ? 'true' : undefined}
-                    onClick={() => (sel ? (!open && openBook()) : set(i))} />
+                  {sel ? (
+                    <button ref={(el) => { btns.current[i] = el; }} type="button" className="ui-bookshelf-3d-hit" tabIndex={0}
+                      aria-label={`${b.title}, by ${b.author}. Book ${i + 1} of ${n}.${open ? '' : ' Press Enter to open.'}`} aria-current="true" onClick={() => { if (!open) openBook(); }} />
+                  ) : (
+                    <span className="ui-bookshelf-3d-hit" aria-hidden="true" onClick={() => { if (!open) set(i); }} />
+                  )}
                   <div className="ui-bookshelf-3d-body" style={{ transform: reading && turn > 0 ? 'translateX(calc(var(--bk-w) * 0.5))' : undefined }}>
                     <div className="ui-bookshelf-3d-face ui-bookshelf-3d-back" />
                     <div className="ui-bookshelf-3d-face ui-bookshelf-3d-spine" style={{ background: `linear-gradient(90deg, ${TONES[(b.tone ?? i) % TONES.length]![1]}, ${TONES[(b.tone ?? i) % TONES.length]![0]})` }} />

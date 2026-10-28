@@ -67,7 +67,7 @@ export function weaveTexture(cw: number, ch: number, scaleK: number, F: Fabric, 
         c.fillStyle = css(over ? [1, 1, 1] : [0, 0, 0], 0.14); if (over) c.fillRect(xx + tp * 0.28, yy, tp * 0.2, tp); else c.fillRect(xx, yy + tp * 0.28, tp, tp * 0.2);
       }
     }
-    const lines = text.split('\n'), size = clamp(Math.min(th * 0.3, (tw / Math.max(...lines.map((l) => l.length), 4)) * 1.5), 10, 200);
+    const lines = text.split('\n'), size = clamp(Math.min(th * 0.3, (tw / Math.max(...lines.map((l) => l.length), 4)) * 1.2), 10, 200);
     c.font = `800 ${size}px ${font}`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillStyle = css(F.ink, 0.94);
     lines.forEach((l, k) => c.fillText(l, tw / 2, th * 0.5 + (k - (lines.length - 1) / 2) * size * 1.12));
     c.fillStyle = css(F.ink, 0.9); c.fillRect(tw * 0.35, th * 0.5 + (lines.length / 2) * size * 1.12 + tp, tw * 0.3, tp * 0.7);

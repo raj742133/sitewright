@@ -3,7 +3,7 @@
 .ui-landscape-towers-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .ui-landscape-towers-bar{position:absolute;left:8px;right:8px;bottom:8px;display:flex;justify-content:center;pointer-events:none}
 .ui-landscape-towers-chips{pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2px;padding:3px;border-radius:999px;background:color-mix(in srgb,var(--surface,#fff) 80%,transparent);border:1px solid var(--line,#d4d4d8);backdrop-filter:blur(8px)}
-.ui-landscape-towers-chip{min-height:24px;padding:0 9px;border:0;border-radius:999px;background:transparent;color:var(--ink,#18181b);font:600 10.5px/1 var(--font-mono,monospace);text-transform:capitalize;cursor:pointer}
-.ui-landscape-towers-chip.is-on{background:var(--primary,#2563eb);color:#fff}
+.ui-landscape-towers-chip{min-height:24px;padding:0 9px;border:0;border-radius:999px;background:transparent;color:var(--ink,#18181b);font:600 12px/1 var(--font-mono,monospace);text-transform:capitalize;cursor:pointer}
+.ui-landscape-towers-chip.is-on{background:var(--ink,#18181b);color:var(--surface,#fff)}
 .ui-landscape-towers-chip:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:2px}
-@media (pointer:coarse){.ui-landscape-towers-chip{min-height:44px;padding:0 12px}}
+@media (pointer:coarse){.ui-landscape-towers-chip{min-height:44px;min-width:44px;padding:0 12px}}
