@@ -72,6 +72,26 @@ export function jump(id: string, reduced: boolean) {
   };
 }
 
+/** Sets data-scheme="dark|light" on the element from the luminance of the host --surface token, so scene colours follow the real theme
+ *  (data-theme, system setting or anything else that changes the tokens). */
+export function useScheme(el: RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const set = () => {
+      const n = el.current; if (!n) return;
+      const v = getComputedStyle(n).getPropertyValue('--surface').trim(); if (!v) return;
+      try {
+        const c = document.createElement('canvas'); c.width = c.height = 1;
+        const x = c.getContext('2d', { willReadFrequently: true }); if (!x) return;
+        x.fillStyle = '#010203'; x.fillStyle = v; x.fillRect(0, 0, 1, 1);
+        const d = x.getImageData(0, 0, 1, 1).data;
+        n.dataset.scheme = (0.2126 * d[0]! + 0.7152 * d[1]! + 0.0722 * d[2]!) / 255 < 0.5 ? 'dark' : 'light';
+      } catch { /* keep the css fallback */ }
+    };
+    set();
+    return onTheme(() => requestAnimationFrame(set));
+  }, [el]);
+}
+
 export interface Pal { [k: string]: string }
 /** reads custom properties (as written, so use hex or rgb in them) from an element */
 export function readVars(el: Element, names: string[]): Pal {

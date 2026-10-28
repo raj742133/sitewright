@@ -1,0 +1,2714 @@
+{
+ "asciitext": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "depth-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "fold-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "masked-heading": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "scroll-reveal": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "split-flap-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "text-cursor": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "true-focus": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "animated-content": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "crystalized-ball": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "dither-veil": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "electric-logo": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "glare-hover": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "image-trail": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "meta-balls": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "pixel-swap": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "ribbons": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "shape-blur": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "sticker-peel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "target-cursor": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "border-glow": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "card-nav": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "chroma-grid": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "counter": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "depth-carousel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "drift-wall": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "flowing-menu": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "folder": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "infinite-menu": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "line-sidebar": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "model-viewer": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "pill-nav": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "reflective-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "staggered-menu": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "aero-shards": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "ballpit": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "dark-veil": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "evil-eye": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "floating-lines": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "ghost-fibers": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "gradient-waves": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "grid-motion": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "iridescence": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "lightning": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "light-tunnel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "liquid-ether": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "micro-slats": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "pixel-blast": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "plasma-wave": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "radar": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "shape-grid": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "silk": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "topography": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "call-chip": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "dodge-field": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "folder-float": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "jelly-radio": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "peek-rating": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "rubber-segment": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "slide-commit": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "spring-check": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "swipe-toast": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "wake-slider": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "liquid-form": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "spark-badge": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "semantic-bloom": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "shader-buttons": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "liquid-metal-button": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "moss-forest-world": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "landscape-towers": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "warp-field": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "performance-gauges": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "article-headings": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "constellation-field": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "skeuomorphic-toggle": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "status-orbs": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:23:13.002Z"
+ },
+ "circular-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "echo-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "fuzzy-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "particle-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "scroll-velocity": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "stroke-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "text-loop": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "variable-proximity": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "blob-cursor": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "cubes": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "elastic-mesh": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "fade-content": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "gradual-blur": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "laser-flow": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "metallic-paint": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "pixel-trail": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "ripple-distortion": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "splash-cursor": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "strands": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "accordion-gallery": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "bounce-cards": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "card-swap": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "circular-carousel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "curved-input": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "dock": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "elastic-slider": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "fluid-glass": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "glass-icons": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "infinite-spiral": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "magic-bento": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "morph-slider": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "pixel-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "scroll-stack": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "stepper": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "antigravity": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "color-bends": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "dither": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "faulty-terminal": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "flux-lines": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "gradient-ascii": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "grainient": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "grid-scan": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "letter-glitch": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "light-pillar": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "line-waves": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "magic-rings": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "molten-metal": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "pixel-snow": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "prism": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "ripple-grid": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "shape-waves": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "sliced-waves": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "web-threads": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "code-slots": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "flip-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "fuse-button": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "lattice-loader": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "pulse-heart": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "scrub-field": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "sling-button": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "status-mark": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "thought-line": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "warm-tooltip": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "crt-screen": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "elemental-fields": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "text-path-studies": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "rectangle-buttons": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "character-carousel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "night-temple-scene": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "bookshelf-3d": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "engraved-certificate": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "uplink-loader": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "animated-top-dock": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "portal-field": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "laser-field": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:25:08.475Z"
+ },
+ "curved-loop": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "falling-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "glitch-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "scroll-float": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "shuffle": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "tech-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "text-pressure": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "warp-text": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "crosshair": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "cursor-grid": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "electric-border": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "ghost-cursor": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "halftone-reveal": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "logo-loop": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "orbit-images": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "pixel-transition": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "scroll-expand": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "star-border": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "swarm-cursor": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "animated-list": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "bubble-menu": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "carousel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "circular-gallery": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "decay-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "dome-gallery": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "flex-carousel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "flying-posters": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "gooey-nav": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "lanyard": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "masonry": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "option-wheel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "profile-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "stack": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "acid-squares": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "balatro": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "crtwarp": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "dot-field": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "ferrofluid": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "galaxy": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "gradient-blinds": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "grid-distortion": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "hyperspeed": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "lightfall": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "light-rays": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "liquid-chrome": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "magnet-lines": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "pattern-waves": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "plasma": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "prismatic-burst": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "scanner": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "side-rays": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "threads": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "branched-menu": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "comet-dial": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "flying-button": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "glide-select": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "paper-crumple": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "refine-frame": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "shredder": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "slosh-gauge": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "swipe-row": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "voice-pill": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "predictive-arc": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "network-globe": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "typography-vortex": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "gallery-heading": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "circle-buttons": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "image-ribbon": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "landscape": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "structure-flow": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "woven-cloth": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "koi-studies": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "page-curl-book": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "diagnostics-panel": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ },
+ "wireframe-forms": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-10-28T21:22:30.817Z"
+ }
+}

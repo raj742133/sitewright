@@ -12,8 +12,8 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Unique entries | 261 (the 5 heroes are among the 43 `tu` entries) |
 | Existing Sitewright equivalents reused | 30 |
 | New independent implementations present | 231 |
-| Verified (all smoke checks passed) | 0 |
-| Implemented, awaiting tests | 231 |
+| Verified (all smoke checks passed) | 226 |
+| Implemented, awaiting tests | 5 |
 | With failing tests | 0 |
 | Blocked | 0 |
 | Remaining (planned / in progress) | 0 |
@@ -37,44 +37,44 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | implemented | `hero-book-showcase` | not run | - |
 | `tu:sylva-hero` | Sylva | implemented | `hero-living-green` | not run | - |
 | `tu:meng-to-sketchbook-landing-page` | Sketchbook | implemented | `hero-paper-sketchbook` | not run | - |
-| `tu:predictive-arc` | Predictive Arc | implemented | `predictive-arc` | not run | - |
-| `tu:liquid-form` | Liquid Form | implemented | `liquid-form` | not run | - |
-| `tu:crt` | CRT | implemented | `crt-screen` | not run | - |
-| `tu:energy-orb` | Globe | implemented | `network-globe` | not run | - |
-| `tu:spark-badge` | Spark Badge | implemented | `spark-badge` | not run | - |
-| `tu:elements` | Elements | implemented | `elemental-fields` | not run | - |
-| `tu:typography-vortex` | Typography Vortex | implemented | `typography-vortex` | not run | - |
-| `tu:semantic-bloom` | Semantic Bloom | implemented | `semantic-bloom` | not run | - |
-| `tu:globe-study` | Text Path Studies | implemented | `text-path-studies` | not run | - |
-| `tu:gallery-heading` | Gallery Heading | implemented | `gallery-heading` | not run | - |
-| `tu:star-portal` | Shader Buttons | implemented | `shader-buttons` | not run | - |
-| `tu:rectangle-buttons` | Rectangle Buttons | implemented | `rectangle-buttons` | not run | - |
-| `tu:circle-buttons` | Circle Buttons | implemented | `circle-buttons` | not run | - |
-| `tu:liquid-metal-button` | Liquid Metal Button | implemented | `liquid-metal-button` | not run | - |
-| `tu:character-carousel` | Character Carousel | implemented | `character-carousel` | not run | - |
-| `tu:gallery` | Gallery | implemented | `image-ribbon` | not run | - |
-| `tu:sylva-living-world` | Sylva Living World | implemented | `moss-forest-world` | not run | - |
-| `tu:temple-night` | Temple Night | implemented | `night-temple-scene` | not run | - |
-| `tu:landscape` | Landscape | implemented | `landscape` | not run | - |
-| `tu:japanese-tower` | Country Towers | implemented | `landscape-towers` | not run | - |
-| `tu:bookshelf` | Bookshelf | implemented | `bookshelf-3d` | not run | - |
-| `tu:structure-flow` | Structure Flow | implemented | `structure-flow` | not run | - |
-| `tu:warp-field` | Warp Field | implemented | `warp-field` | not run | - |
-| `tu:engraved-certificate` | Engraved Certificate | implemented | `engraved-certificate` | not run | - |
-| `tu:woven-cloth` | Woven Cloth | implemented | `woven-cloth` | not run | - |
-| `tu:performance-gauges` | Performance Gauges | implemented | `performance-gauges` | not run | - |
-| `tu:uplink-loader` | Uplink Loader | implemented | `uplink-loader` | not run | - |
-| `tu:koi-studies` | Koi Studies | implemented | `koi-studies` | not run | - |
-| `tu:article-headings` | Article Headings | implemented | `article-headings` | not run | - |
-| `tu:animated-top-dock` | Animated Top Dock | implemented | `animated-top-dock` | not run | - |
-| `tu:sketchbook` | Sketchbook | implemented | `page-curl-book` | not run | - |
-| `tu:constellation-field` | Constellation Field | implemented | `constellation-field` | not run | - |
-| `tu:portal-field` | Portal Field | implemented | `portal-field` | not run | - |
-| `tu:diagnostics-panel` | Diagnostics Panel | implemented | `diagnostics-panel` | not run | - |
-| `tu:skeuomorphic-toggle` | Skeuomorphic Toggle | implemented | `skeuomorphic-toggle` | not run | - |
-| `tu:matrix-field` | Laser | implemented | `laser-field` | not run | - |
-| `tu:wireframe-forms` | Wireframe Forms | implemented | `wireframe-forms` | not run | - |
-| `tu:brand-orbs` | Brand Orbs | implemented | `status-orbs` | not run | - |
+| `tu:predictive-arc` | Predictive Arc | verified | `predictive-arc` | pass | - |
+| `tu:liquid-form` | Liquid Form | verified | `liquid-form` | pass | - |
+| `tu:crt` | CRT | verified | `crt-screen` | pass | - |
+| `tu:energy-orb` | Globe | verified | `network-globe` | pass | - |
+| `tu:spark-badge` | Spark Badge | verified | `spark-badge` | pass | - |
+| `tu:elements` | Elements | verified | `elemental-fields` | pass | - |
+| `tu:typography-vortex` | Typography Vortex | verified | `typography-vortex` | pass | - |
+| `tu:semantic-bloom` | Semantic Bloom | verified | `semantic-bloom` | pass | - |
+| `tu:globe-study` | Text Path Studies | verified | `text-path-studies` | pass | - |
+| `tu:gallery-heading` | Gallery Heading | verified | `gallery-heading` | pass | - |
+| `tu:star-portal` | Shader Buttons | verified | `shader-buttons` | pass | - |
+| `tu:rectangle-buttons` | Rectangle Buttons | verified | `rectangle-buttons` | pass | - |
+| `tu:circle-buttons` | Circle Buttons | verified | `circle-buttons` | pass | - |
+| `tu:liquid-metal-button` | Liquid Metal Button | verified | `liquid-metal-button` | pass | - |
+| `tu:character-carousel` | Character Carousel | verified | `character-carousel` | pass | - |
+| `tu:gallery` | Gallery | verified | `image-ribbon` | pass | - |
+| `tu:sylva-living-world` | Sylva Living World | verified | `moss-forest-world` | pass | - |
+| `tu:temple-night` | Temple Night | verified | `night-temple-scene` | pass | - |
+| `tu:landscape` | Landscape | verified | `landscape` | pass | - |
+| `tu:japanese-tower` | Country Towers | verified | `landscape-towers` | pass | - |
+| `tu:bookshelf` | Bookshelf | verified | `bookshelf-3d` | pass | - |
+| `tu:structure-flow` | Structure Flow | verified | `structure-flow` | pass | - |
+| `tu:warp-field` | Warp Field | verified | `warp-field` | pass | - |
+| `tu:engraved-certificate` | Engraved Certificate | verified | `engraved-certificate` | pass | - |
+| `tu:woven-cloth` | Woven Cloth | verified | `woven-cloth` | pass | - |
+| `tu:performance-gauges` | Performance Gauges | verified | `performance-gauges` | pass | - |
+| `tu:uplink-loader` | Uplink Loader | verified | `uplink-loader` | pass | - |
+| `tu:koi-studies` | Koi Studies | verified | `koi-studies` | pass | - |
+| `tu:article-headings` | Article Headings | verified | `article-headings` | pass | - |
+| `tu:animated-top-dock` | Animated Top Dock | verified | `animated-top-dock` | pass | - |
+| `tu:sketchbook` | Sketchbook | verified | `page-curl-book` | pass | - |
+| `tu:constellation-field` | Constellation Field | verified | `constellation-field` | pass | - |
+| `tu:portal-field` | Portal Field | verified | `portal-field` | pass | - |
+| `tu:diagnostics-panel` | Diagnostics Panel | verified | `diagnostics-panel` | pass | - |
+| `tu:skeuomorphic-toggle` | Skeuomorphic Toggle | verified | `skeuomorphic-toggle` | pass | - |
+| `tu:matrix-field` | Laser | verified | `laser-field` | pass | - |
+| `tu:wireframe-forms` | Wireframe Forms | verified | `wireframe-forms` | pass | - |
+| `tu:brand-orbs` | Brand Orbs | verified | `status-orbs` | pass | - |
 
 ## Full-page heroes (5 of the above)
 
@@ -90,221 +90,221 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
-| `rb:text-animations/asciitext` | ASCIIText | implemented | `asciitext` | not run | - |
+| `rb:text-animations/asciitext` | ASCIIText | verified | `asciitext` | pass | - |
 | `rb:text-animations/blur-text` | Blur Text | existing | `fx-text:BlurIn` | existing | - |
-| `rb:text-animations/circular-text` | Circular Text | implemented | `circular-text` | not run | - |
+| `rb:text-animations/circular-text` | Circular Text | verified | `circular-text` | pass | - |
 | `rb:text-animations/count-up` | Count Up | existing | `fx:CountUp` | existing | - |
-| `rb:text-animations/curved-loop` | Curved Loop | implemented | `curved-loop` | not run | - |
+| `rb:text-animations/curved-loop` | Curved Loop | verified | `curved-loop` | pass | - |
 | `rb:text-animations/decrypted-text` | Decrypted Text | existing | `ui:scramble-text` | existing | - |
-| `rb:text-animations/depth-text` | Depth Text | implemented | `depth-text` | not run | - |
-| `rb:text-animations/echo-text` | Echo Text | implemented | `echo-text` | not run | - |
-| `rb:text-animations/falling-text` | Falling Text | implemented | `falling-text` | not run | - |
-| `rb:text-animations/fold-text` | Fold Text | implemented | `fold-text` | not run | - |
-| `rb:text-animations/fuzzy-text` | Fuzzy Text | implemented | `fuzzy-text` | not run | - |
-| `rb:text-animations/glitch-text` | Glitch Text | implemented | `glitch-text` | not run | - |
+| `rb:text-animations/depth-text` | Depth Text | verified | `depth-text` | pass | - |
+| `rb:text-animations/echo-text` | Echo Text | verified | `echo-text` | pass | - |
+| `rb:text-animations/falling-text` | Falling Text | verified | `falling-text` | pass | - |
+| `rb:text-animations/fold-text` | Fold Text | verified | `fold-text` | pass | - |
+| `rb:text-animations/fuzzy-text` | Fuzzy Text | verified | `fuzzy-text` | pass | - |
+| `rb:text-animations/glitch-text` | Glitch Text | verified | `glitch-text` | pass | - |
 | `rb:text-animations/gradient-text` | Gradient Text | existing | `fx-text:Gradient` | existing | - |
-| `rb:text-animations/masked-heading` | Masked Heading | implemented | `masked-heading` | not run | - |
-| `rb:text-animations/particle-text` | Particle Text | implemented | `particle-text` | not run | - |
+| `rb:text-animations/masked-heading` | Masked Heading | verified | `masked-heading` | pass | - |
+| `rb:text-animations/particle-text` | Particle Text | verified | `particle-text` | pass | - |
 | `rb:text-animations/rotating-text` | Rotating Text | existing | `fx-text:Rotate` | existing | - |
 | `rb:text-animations/scrambled-text` | Scrambled Text | existing | `ui:scramble-text` | existing | - |
-| `rb:text-animations/scroll-float` | Scroll Float | implemented | `scroll-float` | not run | - |
-| `rb:text-animations/scroll-reveal` | Scroll Reveal | implemented | `scroll-reveal` | not run | - |
-| `rb:text-animations/scroll-velocity` | Scroll Velocity | implemented | `scroll-velocity` | not run | - |
+| `rb:text-animations/scroll-float` | Scroll Float | verified | `scroll-float` | pass | - |
+| `rb:text-animations/scroll-reveal` | Scroll Reveal | verified | `scroll-reveal` | pass | - |
+| `rb:text-animations/scroll-velocity` | Scroll Velocity | verified | `scroll-velocity` | pass | - |
 | `rb:text-animations/shiny-text` | Shiny Text | existing | `fx-text:Shimmer` | existing | - |
-| `rb:text-animations/shuffle` | Shuffle | implemented | `shuffle` | not run | - |
-| `rb:text-animations/split-flap-text` | Split Flap Text | implemented | `split-flap-text` | not run | - |
+| `rb:text-animations/shuffle` | Shuffle | verified | `shuffle` | pass | - |
+| `rb:text-animations/split-flap-text` | Split Flap Text | verified | `split-flap-text` | pass | - |
 | `rb:text-animations/split-text` | Split Text | existing | `fx-text:SplitChars` | existing | - |
-| `rb:text-animations/stroke-text` | Stroke Text | implemented | `stroke-text` | not run | - |
-| `rb:text-animations/tech-text` | Tech Text | implemented | `tech-text` | not run | - |
-| `rb:text-animations/text-cursor` | Text Cursor | implemented | `text-cursor` | not run | - |
-| `rb:text-animations/text-loop` | Text Loop | implemented | `text-loop` | not run | - |
-| `rb:text-animations/text-pressure` | Text Pressure | implemented | `text-pressure` | not run | - |
+| `rb:text-animations/stroke-text` | Stroke Text | verified | `stroke-text` | pass | - |
+| `rb:text-animations/tech-text` | Tech Text | verified | `tech-text` | pass | - |
+| `rb:text-animations/text-cursor` | Text Cursor | verified | `text-cursor` | pass | - |
+| `rb:text-animations/text-loop` | Text Loop | verified | `text-loop` | pass | - |
+| `rb:text-animations/text-pressure` | Text Pressure | verified | `text-pressure` | pass | - |
 | `rb:text-animations/text-type` | Text Type | existing | `fx-text:Typewriter` | existing | - |
-| `rb:text-animations/true-focus` | True Focus | implemented | `true-focus` | not run | - |
-| `rb:text-animations/variable-proximity` | Variable Proximity | implemented | `variable-proximity` | not run | - |
-| `rb:text-animations/warp-text` | Warp Text | implemented | `warp-text` | not run | - |
-| `rb:animations/animated-content` | Animated Content | implemented | `animated-content` | not run | - |
-| `rb:animations/blob-cursor` | Blob Cursor | implemented | `blob-cursor` | not run | - |
+| `rb:text-animations/true-focus` | True Focus | verified | `true-focus` | pass | - |
+| `rb:text-animations/variable-proximity` | Variable Proximity | verified | `variable-proximity` | pass | - |
+| `rb:text-animations/warp-text` | Warp Text | verified | `warp-text` | pass | - |
+| `rb:animations/animated-content` | Animated Content | verified | `animated-content` | pass | - |
+| `rb:animations/blob-cursor` | Blob Cursor | verified | `blob-cursor` | pass | - |
 | `rb:animations/click-spark` | Click Spark | existing | `fx-micro:clickSpark` | existing | - |
-| `rb:animations/crosshair` | Crosshair | implemented | `crosshair` | not run | - |
-| `rb:animations/crystalized-ball` | Crystalized Ball | implemented | `crystalized-ball` | not run | - |
-| `rb:animations/cubes` | Cubes | implemented | `cubes` | not run | - |
-| `rb:animations/cursor-grid` | Cursor Grid | implemented | `cursor-grid` | not run | - |
-| `rb:animations/dither-veil` | Dither Veil | implemented | `dither-veil` | not run | - |
-| `rb:animations/elastic-mesh` | Elastic Mesh | implemented | `elastic-mesh` | not run | - |
-| `rb:animations/electric-border` | Electric Border | implemented | `electric-border` | not run | - |
-| `rb:animations/electric-logo` | Electric Logo | implemented | `electric-logo` | not run | - |
-| `rb:animations/fade-content` | Fade Content | implemented | `fade-content` | not run | - |
-| `rb:animations/ghost-cursor` | Ghost Cursor | implemented | `ghost-cursor` | not run | - |
-| `rb:animations/glare-hover` | Glare Hover | implemented | `glare-hover` | not run | - |
+| `rb:animations/crosshair` | Crosshair | verified | `crosshair` | pass | - |
+| `rb:animations/crystalized-ball` | Crystalized Ball | verified | `crystalized-ball` | pass | - |
+| `rb:animations/cubes` | Cubes | verified | `cubes` | pass | - |
+| `rb:animations/cursor-grid` | Cursor Grid | verified | `cursor-grid` | pass | - |
+| `rb:animations/dither-veil` | Dither Veil | verified | `dither-veil` | pass | - |
+| `rb:animations/elastic-mesh` | Elastic Mesh | verified | `elastic-mesh` | pass | - |
+| `rb:animations/electric-border` | Electric Border | verified | `electric-border` | pass | - |
+| `rb:animations/electric-logo` | Electric Logo | verified | `electric-logo` | pass | - |
+| `rb:animations/fade-content` | Fade Content | verified | `fade-content` | pass | - |
+| `rb:animations/ghost-cursor` | Ghost Cursor | verified | `ghost-cursor` | pass | - |
+| `rb:animations/glare-hover` | Glare Hover | verified | `glare-hover` | pass | - |
 | `rb:animations/glow-cursor` | Glow Cursor | existing | `fx-micro:cursorGlow` | existing | - |
-| `rb:animations/gradual-blur` | Gradual Blur | implemented | `gradual-blur` | not run | - |
-| `rb:animations/halftone-reveal` | Halftone Reveal | implemented | `halftone-reveal` | not run | - |
-| `rb:animations/image-trail` | Image Trail | implemented | `image-trail` | not run | - |
-| `rb:animations/laser-flow` | Laser Flow | implemented | `laser-flow` | not run | - |
-| `rb:animations/logo-loop` | Logo Loop | implemented | `logo-loop` | not run | - |
+| `rb:animations/gradual-blur` | Gradual Blur | verified | `gradual-blur` | pass | - |
+| `rb:animations/halftone-reveal` | Halftone Reveal | verified | `halftone-reveal` | pass | - |
+| `rb:animations/image-trail` | Image Trail | verified | `image-trail` | pass | - |
+| `rb:animations/laser-flow` | Laser Flow | verified | `laser-flow` | pass | - |
+| `rb:animations/logo-loop` | Logo Loop | verified | `logo-loop` | pass | - |
 | `rb:animations/magnet` | Magnet | existing | `ui:magnetic-button` | existing | - |
-| `rb:animations/meta-balls` | Meta Balls | implemented | `meta-balls` | not run | - |
-| `rb:animations/metallic-paint` | Metallic Paint | implemented | `metallic-paint` | not run | - |
+| `rb:animations/meta-balls` | Meta Balls | verified | `meta-balls` | pass | - |
+| `rb:animations/metallic-paint` | Metallic Paint | verified | `metallic-paint` | pass | - |
 | `rb:animations/noise` | Noise | existing | `fx-bg:Grain` | existing | - |
-| `rb:animations/orbit-images` | Orbit Images | implemented | `orbit-images` | not run | - |
-| `rb:animations/pixel-swap` | Pixel Swap | implemented | `pixel-swap` | not run | - |
-| `rb:animations/pixel-trail` | Pixel Trail | implemented | `pixel-trail` | not run | - |
-| `rb:animations/pixel-transition` | Pixel Transition | implemented | `pixel-transition` | not run | - |
-| `rb:animations/ribbons` | Ribbons | implemented | `ribbons` | not run | - |
-| `rb:animations/ripple-distortion` | Ripple Distortion | implemented | `ripple-distortion` | not run | - |
-| `rb:animations/scroll-expand` | Scroll Expand | implemented | `scroll-expand` | not run | - |
-| `rb:animations/shape-blur` | Shape Blur | implemented | `shape-blur` | not run | - |
-| `rb:animations/splash-cursor` | Splash Cursor | implemented | `splash-cursor` | not run | - |
-| `rb:animations/star-border` | Star Border | implemented | `star-border` | not run | - |
-| `rb:animations/sticker-peel` | Sticker Peel | implemented | `sticker-peel` | not run | - |
-| `rb:animations/strands` | Strands | implemented | `strands` | not run | - |
-| `rb:animations/swarm-cursor` | Swarm Cursor | implemented | `swarm-cursor` | not run | - |
-| `rb:animations/target-cursor` | Target Cursor | implemented | `target-cursor` | not run | - |
-| `rb:components/accordion-gallery` | Accordion Gallery | implemented | `accordion-gallery` | not run | - |
-| `rb:components/animated-list` | Animated List | implemented | `animated-list` | not run | - |
-| `rb:components/border-glow` | Border Glow | implemented | `border-glow` | not run | - |
-| `rb:components/bounce-cards` | Bounce Cards | implemented | `bounce-cards` | not run | - |
-| `rb:components/bubble-menu` | Bubble Menu | implemented | `bubble-menu` | not run | - |
-| `rb:components/card-nav` | Card Nav | implemented | `card-nav` | not run | - |
-| `rb:components/card-swap` | Card Swap | implemented | `card-swap` | not run | - |
-| `rb:components/carousel` | Carousel | implemented | `carousel` | not run | - |
-| `rb:components/chroma-grid` | Chroma Grid | implemented | `chroma-grid` | not run | - |
-| `rb:components/circular-carousel` | Circular Carousel | implemented | `circular-carousel` | not run | - |
-| `rb:components/circular-gallery` | Circular Gallery | implemented | `circular-gallery` | not run | - |
-| `rb:components/counter` | Counter | implemented | `counter` | not run | - |
-| `rb:components/curved-input` | Curved Input | implemented | `curved-input` | not run | - |
-| `rb:components/decay-card` | Decay Card | implemented | `decay-card` | not run | - |
-| `rb:components/depth-carousel` | Depth Carousel | implemented | `depth-carousel` | not run | - |
-| `rb:components/dock` | Dock | implemented | `dock` | not run | - |
-| `rb:components/dome-gallery` | Dome Gallery | implemented | `dome-gallery` | not run | - |
-| `rb:components/drift-wall` | Drift Wall | implemented | `drift-wall` | not run | - |
-| `rb:components/elastic-slider` | Elastic Slider | implemented | `elastic-slider` | not run | - |
-| `rb:components/flex-carousel` | Flex Carousel | implemented | `flex-carousel` | not run | - |
-| `rb:components/flowing-menu` | Flowing Menu | implemented | `flowing-menu` | not run | - |
-| `rb:components/fluid-glass` | Fluid Glass | implemented | `fluid-glass` | not run | - |
-| `rb:components/flying-posters` | Flying Posters | implemented | `flying-posters` | not run | - |
-| `rb:components/folder` | Folder | implemented | `folder` | not run | - |
-| `rb:components/glass-icons` | Glass Icons | implemented | `glass-icons` | not run | - |
+| `rb:animations/orbit-images` | Orbit Images | verified | `orbit-images` | pass | - |
+| `rb:animations/pixel-swap` | Pixel Swap | verified | `pixel-swap` | pass | - |
+| `rb:animations/pixel-trail` | Pixel Trail | verified | `pixel-trail` | pass | - |
+| `rb:animations/pixel-transition` | Pixel Transition | verified | `pixel-transition` | pass | - |
+| `rb:animations/ribbons` | Ribbons | verified | `ribbons` | pass | - |
+| `rb:animations/ripple-distortion` | Ripple Distortion | verified | `ripple-distortion` | pass | - |
+| `rb:animations/scroll-expand` | Scroll Expand | verified | `scroll-expand` | pass | - |
+| `rb:animations/shape-blur` | Shape Blur | verified | `shape-blur` | pass | - |
+| `rb:animations/splash-cursor` | Splash Cursor | verified | `splash-cursor` | pass | - |
+| `rb:animations/star-border` | Star Border | verified | `star-border` | pass | - |
+| `rb:animations/sticker-peel` | Sticker Peel | verified | `sticker-peel` | pass | - |
+| `rb:animations/strands` | Strands | verified | `strands` | pass | - |
+| `rb:animations/swarm-cursor` | Swarm Cursor | verified | `swarm-cursor` | pass | - |
+| `rb:animations/target-cursor` | Target Cursor | verified | `target-cursor` | pass | - |
+| `rb:components/accordion-gallery` | Accordion Gallery | verified | `accordion-gallery` | pass | - |
+| `rb:components/animated-list` | Animated List | verified | `animated-list` | pass | - |
+| `rb:components/border-glow` | Border Glow | verified | `border-glow` | pass | - |
+| `rb:components/bounce-cards` | Bounce Cards | verified | `bounce-cards` | pass | - |
+| `rb:components/bubble-menu` | Bubble Menu | verified | `bubble-menu` | pass | - |
+| `rb:components/card-nav` | Card Nav | verified | `card-nav` | pass | - |
+| `rb:components/card-swap` | Card Swap | verified | `card-swap` | pass | - |
+| `rb:components/carousel` | Carousel | verified | `carousel` | pass | - |
+| `rb:components/chroma-grid` | Chroma Grid | verified | `chroma-grid` | pass | - |
+| `rb:components/circular-carousel` | Circular Carousel | verified | `circular-carousel` | pass | - |
+| `rb:components/circular-gallery` | Circular Gallery | verified | `circular-gallery` | pass | - |
+| `rb:components/counter` | Counter | verified | `counter` | pass | - |
+| `rb:components/curved-input` | Curved Input | verified | `curved-input` | pass | - |
+| `rb:components/decay-card` | Decay Card | verified | `decay-card` | pass | - |
+| `rb:components/depth-carousel` | Depth Carousel | verified | `depth-carousel` | pass | - |
+| `rb:components/dock` | Dock | verified | `dock` | pass | - |
+| `rb:components/dome-gallery` | Dome Gallery | verified | `dome-gallery` | pass | - |
+| `rb:components/drift-wall` | Drift Wall | verified | `drift-wall` | pass | - |
+| `rb:components/elastic-slider` | Elastic Slider | verified | `elastic-slider` | pass | - |
+| `rb:components/flex-carousel` | Flex Carousel | verified | `flex-carousel` | pass | - |
+| `rb:components/flowing-menu` | Flowing Menu | verified | `flowing-menu` | pass | - |
+| `rb:components/fluid-glass` | Fluid Glass | verified | `fluid-glass` | pass | - |
+| `rb:components/flying-posters` | Flying Posters | verified | `flying-posters` | pass | - |
+| `rb:components/folder` | Folder | verified | `folder` | pass | - |
+| `rb:components/glass-icons` | Glass Icons | verified | `glass-icons` | pass | - |
 | `rb:components/glass-surface` | Glass Surface | existing | `ui:glass-fx` | existing | - |
-| `rb:components/gooey-nav` | Gooey Nav | implemented | `gooey-nav` | not run | - |
+| `rb:components/gooey-nav` | Gooey Nav | verified | `gooey-nav` | pass | - |
 | `rb:components/holo-card` | Holo Card | existing | `ui:holographic-card` | existing | - |
-| `rb:components/infinite-menu` | Infinite Menu | implemented | `infinite-menu` | not run | - |
-| `rb:components/infinite-spiral` | Infinite Spiral | implemented | `infinite-spiral` | not run | - |
-| `rb:components/lanyard` | Lanyard | implemented | `lanyard` | not run | - |
-| `rb:components/line-sidebar` | Line Sidebar | implemented | `line-sidebar` | not run | - |
-| `rb:components/magic-bento` | Magic Bento | implemented | `magic-bento` | not run | - |
-| `rb:components/masonry` | Masonry | implemented | `masonry` | not run | - |
-| `rb:components/model-viewer` | Model Viewer | implemented | `model-viewer` | not run | - |
-| `rb:components/morph-slider` | Morph Slider | implemented | `morph-slider` | not run | - |
-| `rb:components/option-wheel` | Option Wheel | implemented | `option-wheel` | not run | - |
-| `rb:components/pill-nav` | Pill Nav | implemented | `pill-nav` | not run | - |
-| `rb:components/pixel-card` | Pixel Card | implemented | `pixel-card` | not run | - |
-| `rb:components/profile-card` | Profile Card | implemented | `profile-card` | not run | - |
-| `rb:components/reflective-card` | Reflective Card | implemented | `reflective-card` | not run | - |
-| `rb:components/scroll-stack` | Scroll Stack | implemented | `scroll-stack` | not run | - |
+| `rb:components/infinite-menu` | Infinite Menu | verified | `infinite-menu` | pass | - |
+| `rb:components/infinite-spiral` | Infinite Spiral | verified | `infinite-spiral` | pass | - |
+| `rb:components/lanyard` | Lanyard | verified | `lanyard` | pass | - |
+| `rb:components/line-sidebar` | Line Sidebar | verified | `line-sidebar` | pass | - |
+| `rb:components/magic-bento` | Magic Bento | verified | `magic-bento` | pass | - |
+| `rb:components/masonry` | Masonry | verified | `masonry` | pass | - |
+| `rb:components/model-viewer` | Model Viewer | verified | `model-viewer` | pass | - |
+| `rb:components/morph-slider` | Morph Slider | verified | `morph-slider` | pass | - |
+| `rb:components/option-wheel` | Option Wheel | verified | `option-wheel` | pass | - |
+| `rb:components/pill-nav` | Pill Nav | verified | `pill-nav` | pass | - |
+| `rb:components/pixel-card` | Pixel Card | verified | `pixel-card` | pass | - |
+| `rb:components/profile-card` | Profile Card | verified | `profile-card` | pass | - |
+| `rb:components/reflective-card` | Reflective Card | verified | `reflective-card` | pass | - |
+| `rb:components/scroll-stack` | Scroll Stack | verified | `scroll-stack` | pass | - |
 | `rb:components/specular-button` | Specular Button | existing | `ui:gloss-button` | existing | - |
 | `rb:components/spotlight-card` | Spotlight Card | existing | `fx-micro:spotlight` | existing | - |
-| `rb:components/stack` | Stack | implemented | `stack` | not run | - |
-| `rb:components/staggered-menu` | Staggered Menu | implemented | `staggered-menu` | not run | - |
-| `rb:components/stepper` | Stepper | implemented | `stepper` | not run | - |
+| `rb:components/stack` | Stack | verified | `stack` | pass | - |
+| `rb:components/staggered-menu` | Staggered Menu | verified | `staggered-menu` | pass | - |
+| `rb:components/stepper` | Stepper | verified | `stepper` | pass | - |
 | `rb:components/tilted-card` | Tilted Card | existing | `ui:tilt-card-3d` | existing | - |
-| `rb:backgrounds/acid-squares` | Acid Squares | implemented | `acid-squares` | not run | - |
-| `rb:backgrounds/aero-shards` | Aero Shards | implemented | `aero-shards` | not run | - |
-| `rb:backgrounds/antigravity` | Antigravity | implemented | `antigravity` | not run | - |
+| `rb:backgrounds/acid-squares` | Acid Squares | verified | `acid-squares` | pass | - |
+| `rb:backgrounds/aero-shards` | Aero Shards | verified | `aero-shards` | pass | - |
+| `rb:backgrounds/antigravity` | Antigravity | verified | `antigravity` | pass | - |
 | `rb:backgrounds/aurora` | Aurora | existing | `fx-bg:Aurora` | existing | - |
-| `rb:backgrounds/balatro` | Balatro | implemented | `balatro` | not run | - |
-| `rb:backgrounds/ballpit` | Ballpit | implemented | `ballpit` | not run | - |
+| `rb:backgrounds/balatro` | Balatro | verified | `balatro` | pass | - |
+| `rb:backgrounds/ballpit` | Ballpit | verified | `ballpit` | pass | - |
 | `rb:backgrounds/beams` | Beams | existing | `fx-bg:Beams` | existing | - |
-| `rb:backgrounds/color-bends` | Color Bends | implemented | `color-bends` | not run | - |
-| `rb:backgrounds/crtwarp` | CRTWarp | implemented | `crtwarp` | not run | - |
-| `rb:backgrounds/dark-veil` | Dark Veil | implemented | `dark-veil` | not run | - |
-| `rb:backgrounds/dither` | Dither | implemented | `dither` | not run | - |
-| `rb:backgrounds/dot-field` | Dot Field | implemented | `dot-field` | not run | - |
+| `rb:backgrounds/color-bends` | Color Bends | verified | `color-bends` | pass | - |
+| `rb:backgrounds/crtwarp` | CRTWarp | verified | `crtwarp` | pass | - |
+| `rb:backgrounds/dark-veil` | Dark Veil | verified | `dark-veil` | pass | - |
+| `rb:backgrounds/dither` | Dither | verified | `dither` | pass | - |
+| `rb:backgrounds/dot-field` | Dot Field | verified | `dot-field` | pass | - |
 | `rb:backgrounds/dot-grid` | Dot Grid | existing | `fx-bg:Dots` | existing | - |
-| `rb:backgrounds/evil-eye` | Evil Eye | implemented | `evil-eye` | not run | - |
-| `rb:backgrounds/faulty-terminal` | Faulty Terminal | implemented | `faulty-terminal` | not run | - |
-| `rb:backgrounds/ferrofluid` | Ferrofluid | implemented | `ferrofluid` | not run | - |
-| `rb:backgrounds/floating-lines` | Floating Lines | implemented | `floating-lines` | not run | - |
-| `rb:backgrounds/flux-lines` | Flux Lines | implemented | `flux-lines` | not run | - |
-| `rb:backgrounds/galaxy` | Galaxy | implemented | `galaxy` | not run | - |
-| `rb:backgrounds/ghost-fibers` | Ghost Fibers | implemented | `ghost-fibers` | not run | - |
-| `rb:backgrounds/gradient-ascii` | Gradient ASCII | implemented | `gradient-ascii` | not run | - |
-| `rb:backgrounds/gradient-blinds` | Gradient Blinds | implemented | `gradient-blinds` | not run | - |
-| `rb:backgrounds/gradient-waves` | Gradient Waves | implemented | `gradient-waves` | not run | - |
-| `rb:backgrounds/grainient` | Grainient | implemented | `grainient` | not run | - |
-| `rb:backgrounds/grid-distortion` | Grid Distortion | implemented | `grid-distortion` | not run | - |
-| `rb:backgrounds/grid-motion` | Grid Motion | implemented | `grid-motion` | not run | - |
-| `rb:backgrounds/grid-scan` | Grid Scan | implemented | `grid-scan` | not run | - |
-| `rb:backgrounds/hyperspeed` | Hyperspeed | implemented | `hyperspeed` | not run | - |
-| `rb:backgrounds/iridescence` | Iridescence | implemented | `iridescence` | not run | - |
-| `rb:backgrounds/letter-glitch` | Letter Glitch | implemented | `letter-glitch` | not run | - |
-| `rb:backgrounds/lightfall` | Lightfall | implemented | `lightfall` | not run | - |
-| `rb:backgrounds/lightning` | Lightning | implemented | `lightning` | not run | - |
-| `rb:backgrounds/light-pillar` | Light Pillar | implemented | `light-pillar` | not run | - |
-| `rb:backgrounds/light-rays` | Light Rays | implemented | `light-rays` | not run | - |
-| `rb:backgrounds/light-tunnel` | Light Tunnel | implemented | `light-tunnel` | not run | - |
-| `rb:backgrounds/line-waves` | Line Waves | implemented | `line-waves` | not run | - |
-| `rb:backgrounds/liquid-chrome` | Liquid Chrome | implemented | `liquid-chrome` | not run | - |
-| `rb:backgrounds/liquid-ether` | Liquid Ether | implemented | `liquid-ether` | not run | - |
-| `rb:backgrounds/magic-rings` | Magic Rings | implemented | `magic-rings` | not run | - |
-| `rb:backgrounds/magnet-lines` | Magnet Lines | implemented | `magnet-lines` | not run | - |
-| `rb:backgrounds/micro-slats` | Micro Slats | implemented | `micro-slats` | not run | - |
-| `rb:backgrounds/molten-metal` | Molten Metal | implemented | `molten-metal` | not run | - |
+| `rb:backgrounds/evil-eye` | Evil Eye | verified | `evil-eye` | pass | - |
+| `rb:backgrounds/faulty-terminal` | Faulty Terminal | verified | `faulty-terminal` | pass | - |
+| `rb:backgrounds/ferrofluid` | Ferrofluid | verified | `ferrofluid` | pass | - |
+| `rb:backgrounds/floating-lines` | Floating Lines | verified | `floating-lines` | pass | - |
+| `rb:backgrounds/flux-lines` | Flux Lines | verified | `flux-lines` | pass | - |
+| `rb:backgrounds/galaxy` | Galaxy | verified | `galaxy` | pass | - |
+| `rb:backgrounds/ghost-fibers` | Ghost Fibers | verified | `ghost-fibers` | pass | - |
+| `rb:backgrounds/gradient-ascii` | Gradient ASCII | verified | `gradient-ascii` | pass | - |
+| `rb:backgrounds/gradient-blinds` | Gradient Blinds | verified | `gradient-blinds` | pass | - |
+| `rb:backgrounds/gradient-waves` | Gradient Waves | verified | `gradient-waves` | pass | - |
+| `rb:backgrounds/grainient` | Grainient | verified | `grainient` | pass | - |
+| `rb:backgrounds/grid-distortion` | Grid Distortion | verified | `grid-distortion` | pass | - |
+| `rb:backgrounds/grid-motion` | Grid Motion | verified | `grid-motion` | pass | - |
+| `rb:backgrounds/grid-scan` | Grid Scan | verified | `grid-scan` | pass | - |
+| `rb:backgrounds/hyperspeed` | Hyperspeed | verified | `hyperspeed` | pass | - |
+| `rb:backgrounds/iridescence` | Iridescence | verified | `iridescence` | pass | - |
+| `rb:backgrounds/letter-glitch` | Letter Glitch | verified | `letter-glitch` | pass | - |
+| `rb:backgrounds/lightfall` | Lightfall | verified | `lightfall` | pass | - |
+| `rb:backgrounds/lightning` | Lightning | verified | `lightning` | pass | - |
+| `rb:backgrounds/light-pillar` | Light Pillar | verified | `light-pillar` | pass | - |
+| `rb:backgrounds/light-rays` | Light Rays | verified | `light-rays` | pass | - |
+| `rb:backgrounds/light-tunnel` | Light Tunnel | verified | `light-tunnel` | pass | - |
+| `rb:backgrounds/line-waves` | Line Waves | verified | `line-waves` | pass | - |
+| `rb:backgrounds/liquid-chrome` | Liquid Chrome | verified | `liquid-chrome` | pass | - |
+| `rb:backgrounds/liquid-ether` | Liquid Ether | verified | `liquid-ether` | pass | - |
+| `rb:backgrounds/magic-rings` | Magic Rings | verified | `magic-rings` | pass | - |
+| `rb:backgrounds/magnet-lines` | Magnet Lines | verified | `magnet-lines` | pass | - |
+| `rb:backgrounds/micro-slats` | Micro Slats | verified | `micro-slats` | pass | - |
+| `rb:backgrounds/molten-metal` | Molten Metal | verified | `molten-metal` | pass | - |
 | `rb:backgrounds/orb` | Orb | existing | `ui:plasma-orb` | existing | - |
 | `rb:backgrounds/particles` | Particles | existing | `fx-bg:Particles` | existing | - |
-| `rb:backgrounds/pattern-waves` | Pattern Waves | implemented | `pattern-waves` | not run | - |
-| `rb:backgrounds/pixel-blast` | Pixel Blast | implemented | `pixel-blast` | not run | - |
-| `rb:backgrounds/pixel-snow` | Pixel Snow | implemented | `pixel-snow` | not run | - |
-| `rb:backgrounds/plasma` | Plasma | implemented | `plasma` | not run | - |
-| `rb:backgrounds/plasma-wave` | Plasma Wave | implemented | `plasma-wave` | not run | - |
-| `rb:backgrounds/prism` | Prism | implemented | `prism` | not run | - |
-| `rb:backgrounds/prismatic-burst` | Prismatic Burst | implemented | `prismatic-burst` | not run | - |
-| `rb:backgrounds/radar` | Radar | implemented | `radar` | not run | - |
-| `rb:backgrounds/ripple-grid` | Ripple Grid | implemented | `ripple-grid` | not run | - |
-| `rb:backgrounds/scanner` | Scanner | implemented | `scanner` | not run | - |
-| `rb:backgrounds/shape-grid` | Shape Grid | implemented | `shape-grid` | not run | - |
-| `rb:backgrounds/shape-waves` | Shape Waves | implemented | `shape-waves` | not run | - |
-| `rb:backgrounds/side-rays` | Side Rays | implemented | `side-rays` | not run | - |
-| `rb:backgrounds/silk` | Silk | implemented | `silk` | not run | - |
-| `rb:backgrounds/sliced-waves` | Sliced Waves | implemented | `sliced-waves` | not run | - |
+| `rb:backgrounds/pattern-waves` | Pattern Waves | verified | `pattern-waves` | pass | - |
+| `rb:backgrounds/pixel-blast` | Pixel Blast | verified | `pixel-blast` | pass | - |
+| `rb:backgrounds/pixel-snow` | Pixel Snow | verified | `pixel-snow` | pass | - |
+| `rb:backgrounds/plasma` | Plasma | verified | `plasma` | pass | - |
+| `rb:backgrounds/plasma-wave` | Plasma Wave | verified | `plasma-wave` | pass | - |
+| `rb:backgrounds/prism` | Prism | verified | `prism` | pass | - |
+| `rb:backgrounds/prismatic-burst` | Prismatic Burst | verified | `prismatic-burst` | pass | - |
+| `rb:backgrounds/radar` | Radar | verified | `radar` | pass | - |
+| `rb:backgrounds/ripple-grid` | Ripple Grid | verified | `ripple-grid` | pass | - |
+| `rb:backgrounds/scanner` | Scanner | verified | `scanner` | pass | - |
+| `rb:backgrounds/shape-grid` | Shape Grid | verified | `shape-grid` | pass | - |
+| `rb:backgrounds/shape-waves` | Shape Waves | verified | `shape-waves` | pass | - |
+| `rb:backgrounds/side-rays` | Side Rays | verified | `side-rays` | pass | - |
+| `rb:backgrounds/silk` | Silk | verified | `silk` | pass | - |
+| `rb:backgrounds/sliced-waves` | Sliced Waves | verified | `sliced-waves` | pass | - |
 | `rb:backgrounds/soft-aurora` | Soft Aurora | existing | `fx-bg:Aurora` | existing | - |
-| `rb:backgrounds/threads` | Threads | implemented | `threads` | not run | - |
-| `rb:backgrounds/topography` | Topography | implemented | `topography` | not run | - |
+| `rb:backgrounds/threads` | Threads | verified | `threads` | pass | - |
+| `rb:backgrounds/topography` | Topography | verified | `topography` | pass | - |
 | `rb:backgrounds/waves` | Waves | existing | `fx-bg:Waves` | existing | - |
-| `rb:backgrounds/web-threads` | Web Threads | implemented | `web-threads` | not run | - |
+| `rb:backgrounds/web-threads` | Web Threads | verified | `web-threads` | pass | - |
 | `rb:micro/bell-toggle` | Bell Toggle | existing | `ui:bell-button` | existing | - |
-| `rb:micro/branched-menu` | Branched Menu | implemented | `branched-menu` | not run | - |
-| `rb:micro/call-chip` | Call Chip | implemented | `call-chip` | not run | - |
-| `rb:micro/code-slots` | Code Slots | implemented | `code-slots` | not run | - |
-| `rb:micro/comet-dial` | Comet Dial | implemented | `comet-dial` | not run | - |
-| `rb:micro/dodge-field` | Dodge Field | implemented | `dodge-field` | not run | - |
-| `rb:micro/flip-card` | Flip Card | implemented | `flip-card` | not run | - |
-| `rb:micro/flying-button` | Flying Button | implemented | `flying-button` | not run | - |
-| `rb:micro/folder-float` | Folder Float | implemented | `folder-float` | not run | - |
-| `rb:micro/fuse-button` | Fuse Button | implemented | `fuse-button` | not run | - |
-| `rb:micro/glide-select` | Glide Select | implemented | `glide-select` | not run | - |
+| `rb:micro/branched-menu` | Branched Menu | verified | `branched-menu` | pass | - |
+| `rb:micro/call-chip` | Call Chip | verified | `call-chip` | pass | - |
+| `rb:micro/code-slots` | Code Slots | verified | `code-slots` | pass | - |
+| `rb:micro/comet-dial` | Comet Dial | verified | `comet-dial` | pass | - |
+| `rb:micro/dodge-field` | Dodge Field | verified | `dodge-field` | pass | - |
+| `rb:micro/flip-card` | Flip Card | verified | `flip-card` | pass | - |
+| `rb:micro/flying-button` | Flying Button | verified | `flying-button` | pass | - |
+| `rb:micro/folder-float` | Folder Float | verified | `folder-float` | pass | - |
+| `rb:micro/fuse-button` | Fuse Button | verified | `fuse-button` | pass | - |
+| `rb:micro/glide-select` | Glide Select | verified | `glide-select` | pass | - |
 | `rb:micro/hold-button` | Hold Button | existing | `ui:hold-to-confirm` | existing | - |
-| `rb:micro/jelly-radio` | Jelly Radio | implemented | `jelly-radio` | not run | - |
-| `rb:micro/lattice-loader` | Lattice Loader | implemented | `lattice-loader` | not run | - |
-| `rb:micro/paper-crumple` | Paper Crumple | implemented | `paper-crumple` | not run | - |
-| `rb:micro/peek-rating` | Peek Rating | implemented | `peek-rating` | not run | - |
+| `rb:micro/jelly-radio` | Jelly Radio | verified | `jelly-radio` | pass | - |
+| `rb:micro/lattice-loader` | Lattice Loader | verified | `lattice-loader` | pass | - |
+| `rb:micro/paper-crumple` | Paper Crumple | verified | `paper-crumple` | pass | - |
+| `rb:micro/peek-rating` | Peek Rating | verified | `peek-rating` | pass | - |
 | `rb:micro/prompt-bar` | Prompt Bar | existing | `ui:ai-input` | existing | - |
-| `rb:micro/pulse-heart` | Pulse Heart | implemented | `pulse-heart` | not run | - |
-| `rb:micro/refine-frame` | Refine Frame | implemented | `refine-frame` | not run | - |
-| `rb:micro/rubber-segment` | Rubber Segment | implemented | `rubber-segment` | not run | - |
-| `rb:micro/scrub-field` | Scrub Field | implemented | `scrub-field` | not run | - |
-| `rb:micro/shredder` | Shredder | implemented | `shredder` | not run | - |
-| `rb:micro/slide-commit` | Slide Commit | implemented | `slide-commit` | not run | - |
-| `rb:micro/sling-button` | Sling Button | implemented | `sling-button` | not run | - |
-| `rb:micro/slosh-gauge` | Slosh Gauge | implemented | `slosh-gauge` | not run | - |
-| `rb:micro/spring-check` | Spring Check | implemented | `spring-check` | not run | - |
+| `rb:micro/pulse-heart` | Pulse Heart | verified | `pulse-heart` | pass | - |
+| `rb:micro/refine-frame` | Refine Frame | verified | `refine-frame` | pass | - |
+| `rb:micro/rubber-segment` | Rubber Segment | verified | `rubber-segment` | pass | - |
+| `rb:micro/scrub-field` | Scrub Field | verified | `scrub-field` | pass | - |
+| `rb:micro/shredder` | Shredder | verified | `shredder` | pass | - |
+| `rb:micro/slide-commit` | Slide Commit | verified | `slide-commit` | pass | - |
+| `rb:micro/sling-button` | Sling Button | verified | `sling-button` | pass | - |
+| `rb:micro/slosh-gauge` | Slosh Gauge | verified | `slosh-gauge` | pass | - |
+| `rb:micro/spring-check` | Spring Check | verified | `spring-check` | pass | - |
 | `rb:micro/squish-switch` | Squish Switch | existing | `ui:spring-toggle` | existing | - |
-| `rb:micro/status-mark` | Status Mark | implemented | `status-mark` | not run | - |
-| `rb:micro/swipe-row` | Swipe Row | implemented | `swipe-row` | not run | - |
-| `rb:micro/swipe-toast` | Swipe Toast | implemented | `swipe-toast` | not run | - |
+| `rb:micro/status-mark` | Status Mark | verified | `status-mark` | pass | - |
+| `rb:micro/swipe-row` | Swipe Row | verified | `swipe-row` | pass | - |
+| `rb:micro/swipe-toast` | Swipe Toast | verified | `swipe-toast` | pass | - |
 | `rb:micro/tear-ticket` | Tear Ticket | existing | `ui:perforated-ticket` | existing | - |
-| `rb:micro/thought-line` | Thought Line | implemented | `thought-line` | not run | - |
-| `rb:micro/voice-pill` | Voice Pill | implemented | `voice-pill` | not run | - |
-| `rb:micro/wake-slider` | Wake Slider | implemented | `wake-slider` | not run | - |
-| `rb:micro/warm-tooltip` | Warm Tooltip | implemented | `warm-tooltip` | not run | - |
+| `rb:micro/thought-line` | Thought Line | verified | `thought-line` | pass | - |
+| `rb:micro/voice-pill` | Voice Pill | verified | `voice-pill` | pass | - |
+| `rb:micro/wake-slider` | Wake Slider | verified | `wake-slider` | pass | - |
+| `rb:micro/warm-tooltip` | Warm Tooltip | verified | `warm-tooltip` | pass | - |

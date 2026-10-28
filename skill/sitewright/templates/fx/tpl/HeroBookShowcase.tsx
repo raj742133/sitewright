@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState, type KeyboardEvent } from 'react';
 import { Preview } from './_dash';
-import { Dialog, Subscribe, jump, useReduced, useScrollLinked } from './_ha-kit';
+import { useScheme, Dialog, Subscribe, jump, useReduced, useScrollLinked } from './_ha-kit';
 import { BOOKS, Cover } from './_ha-books';
 import { Player } from './_ha-poster';
 
@@ -27,6 +27,7 @@ export default function HeroBookShowcase({ className }: { className?: string }) 
   const [live, setLive] = useState('');
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   useScrollLinked(root, reduced);
+  useScheme(root);
   const b = BOOKS[sel]!;
   const go = (id: string) => (e: { preventDefault(): void }) => { setMenu(false); jump(id, reduced)(e); };
   const toggle = (id: string, title: string) => setSaved((s) => { const has = s.includes(id); setLive(has ? `${title} removed from reading list` : `${title} added to reading list`); return has ? s.filter((x) => x !== id) : [...s, id]; });

@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { Preview } from './_dash';
-import { Dialog, Subscribe, jump, useReduced, useScrollLinked } from './_ha-kit';
+import { useScheme, Dialog, Subscribe, jump, useReduced, useScrollLinked } from './_ha-kit';
 import { BookForm, type Stay } from './_ha-night-book';
 import { Embers, NightLand, NightSky } from './_ha-night';
 
@@ -56,6 +56,7 @@ export default function HeroNightTemple({ className }: { className?: string }) {
   const [open, setOpen] = useState<number | null>(null);
   const [live, setLive] = useState('');
   useScrollLinked(root, reduced);
+  useScheme(root);
   useEffect(() => {
     if (!menu) return;
     const k = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(false); };

@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useMemo, useRef, useState, type PointerEvent, type ReactNode } from 'react';
 import { Preview } from './_dash';
-import { Dialog, Subscribe, jump, useReduced, useScrollLinked } from './_ha-kit';
+import { useScheme, Dialog, Subscribe, jump, useReduced, useScrollLinked } from './_ha-kit';
 import { LivingGround } from './_ha-green-gl';
 import { Art, Fern, LeafMark, PRODUCTS } from './_ha-green-art';
 import { CartBody } from './_ha-green-cart';
@@ -53,6 +53,7 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
   const [cartOpen, setCartOpen] = useState(false);
   const [live, setLive] = useState('');
   useScrollLinked(root, reduced);
+  useScheme(root);
   useEffect(() => {
     if (!menu) return;
     const k = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenu(false); };

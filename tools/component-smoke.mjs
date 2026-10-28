@@ -96,6 +96,7 @@ for (const id of IDS) {
     // reduced motion: static after settling
     {
       const { page, ctx, errs } = await open(browser, id, { reduced: true });
+      await page.addStyleTag({ content: '*, *::before, *::after { caret-color: transparent !important }' }); // a blinking text caret is browser behaviour, not component animation
       const a = hash(await page.screenshot({ clip: { x: 0, y: 0, width: 900, height: 600 } })); await page.waitForTimeout(1200);
       const b = hash(await page.screenshot({ clip: { x: 0, y: 0, width: 900, height: 600 } }));
       rec('reduced', errs.length === 0 && a === b, errs.length ? errs[0] : 'picture still changing under prefers-reduced-motion');

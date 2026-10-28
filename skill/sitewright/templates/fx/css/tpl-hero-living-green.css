@@ -1,7 +1,11 @@
 /* Hollowfern: organic botanical landing page. Greens are local art variables per theme; text, focus and fields use host tokens. */
-.hlg { container-type: inline-size; container-name: hlg; position: relative; width: 100%; overflow-x: clip; color: var(--ink, #111); background: var(--surface, #fff); font: 15px/1.55 var(--font-body, system-ui, sans-serif); text-wrap: pretty; --p: .5;
-  --hg-c0: #e9f0dc; --hg-c1: #cfe0b6; --hg-c2: #a2c385; --hg-c3: #fff6cf; --hg-leaf0: #5b8d4a; --hg-leaf1: #3d6f3c; --hg-leaf2: #88b66b; --hg-moss0: #46703c; --hg-moss1: #628f4f; --hg-moss2: #34592f; --hg-glass: color-mix(in srgb, var(--surface, #fff) 62%, transparent); --hg-metal-a: #a3ada5; --hg-metal-b: #4a534c; --hg-metal-c: #1b211c; --hg-metal-ink: #fff; }
-:root[data-theme='dark'] .hlg { --hg-c0: #07130d; --hg-c1: #0d2a1b; --hg-c2: #1d5835; --hg-c3: #9fdd86; --hg-leaf0: #3f8a52; --hg-leaf1: #2a6a3e; --hg-leaf2: #79c27a; --hg-moss0: #1f4a2c; --hg-moss1: #2e6a3e; --hg-moss2: #143522; --hg-glass: color-mix(in srgb, var(--raised, #111) 55%, transparent); --hg-metal-a: #ffffff; --hg-metal-b: #d4dbd5; --hg-metal-c: #98a29a; --hg-metal-ink: #0c120e; }
+.hlg { container-type: inline-size; container-name: hlg; position: relative; width: 100%; overflow-x: clip; color: var(--ink, #111); background: var(--surface, #fff); font: 15px/1.55 var(--font-body, system-ui, sans-serif); text-wrap: pretty; --p: .5; --hg-em: color-mix(in srgb, var(--hg-leaf1) 45%, var(--ink, #111)); --hg-fic: color-mix(in srgb, var(--hg-leaf1) 85%, var(--ink, #111));
+  --hg-c0: #e9f0dc; --hg-c1: #cfe0b6; --hg-c2: #a2c385; --hg-c3: #fff6cf; --hg-leaf0: #5b8d4a; --hg-leaf1: #3d6f3c; --hg-leaf2: #88b66b; --hg-moss0: #46703c; --hg-moss1: #628f4f; --hg-moss2: #34592f; --hg-glass: color-mix(in srgb, var(--surface, #fff) 62%, transparent); --hg-metal-a: #6f7a72; --hg-metal-b: #384039; --hg-metal-c: #131813; --hg-metal-ink: #fff; --hg-lqb: rgba(0, 0, 0, .55); }
+:root[data-theme='dark'] .hlg { --hg-c0: #07130d; --hg-c1: #0d2a1b; --hg-c2: #1d5835; --hg-c3: #9fdd86; --hg-leaf0: #3f8a52; --hg-leaf1: #2a6a3e; --hg-leaf2: #79c27a; --hg-moss0: #1f4a2c; --hg-moss1: #2e6a3e; --hg-moss2: #143522; --hg-glass: color-mix(in srgb, var(--raised, #111) 55%, transparent); --hg-metal-a: #ffffff; --hg-metal-b: #d4dbd5; --hg-metal-c: #98a29a; --hg-metal-ink: #0c120e; --hg-lqb: rgba(0, 0, 0, .1); --hg-em: var(--hg-c3); --hg-fic: var(--hg-c3); }
+/* scheme: JS sets data-scheme from the real --surface token, so the scene always matches the host theme; the media rule covers the first paint */
+:root:root .hlg[data-scheme='light'] { --hg-c0: #e9f0dc; --hg-c1: #cfe0b6; --hg-c2: #a2c385; --hg-c3: #fff6cf; --hg-leaf0: #5b8d4a; --hg-leaf1: #3d6f3c; --hg-leaf2: #88b66b; --hg-moss0: #46703c; --hg-moss1: #628f4f; --hg-moss2: #34592f; --hg-glass: color-mix(in srgb, var(--surface, #fff) 62%, transparent); --hg-metal-a: #6f7a72; --hg-metal-b: #384039; --hg-metal-c: #131813; --hg-metal-ink: #fff; --hg-lqb: rgba(0, 0, 0, .55); --hg-em: color-mix(in srgb, var(--hg-leaf1) 45%, var(--ink, #111)); --hg-fic: color-mix(in srgb, var(--hg-leaf1) 85%, var(--ink, #111)); }
+:root:root .hlg[data-scheme='dark'] { --hg-c0: #07130d; --hg-c1: #0d2a1b; --hg-c2: #1d5835; --hg-c3: #9fdd86; --hg-leaf0: #3f8a52; --hg-leaf1: #2a6a3e; --hg-leaf2: #79c27a; --hg-moss0: #1f4a2c; --hg-moss1: #2e6a3e; --hg-moss2: #143522; --hg-glass: color-mix(in srgb, var(--raised, #111) 55%, transparent); --hg-metal-a: #ffffff; --hg-metal-b: #d4dbd5; --hg-metal-c: #98a29a; --hg-metal-ink: #0c120e; --hg-lqb: rgba(0, 0, 0, .1); --hg-em: var(--hg-c3); --hg-fic: var(--hg-c3); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .hlg { --hg-c0: #07130d; --hg-c1: #0d2a1b; --hg-c2: #1d5835; --hg-c3: #9fdd86; --hg-leaf0: #3f8a52; --hg-leaf1: #2a6a3e; --hg-leaf2: #79c27a; --hg-moss0: #1f4a2c; --hg-moss1: #2e6a3e; --hg-moss2: #143522; --hg-glass: color-mix(in srgb, var(--raised, #111) 55%, transparent); --hg-metal-a: #ffffff; --hg-metal-b: #d4dbd5; --hg-metal-c: #98a29a; --hg-metal-ink: #0c120e; --hg-lqb: rgba(0, 0, 0, .1); --hg-em: var(--hg-c3); --hg-fic: var(--hg-c3); } }
 .hlg *, .hlg *::before, .hlg *::after { box-sizing: border-box; }
 .hlg h1, .hlg h2, .hlg h3, .hlg p, .hlg ul, .hlg ol { margin: 0; padding: 0; }
 .hlg ul, .hlg ol { list-style: none; }
@@ -36,8 +40,7 @@
 .hlg-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 8px; border-radius: 99px; background: var(--hg-glass); border: 1px solid color-mix(in srgb, var(--ink, #111) 14%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font: 600 12.5px var(--font-mono, monospace); letter-spacing: .06em; text-transform: uppercase; }
 .hlg-eyebrow i { width: 16px; height: 16px; border-radius: 50% 0 50% 50%; background: var(--hg-leaf2); rotate: 45deg; }
 .hlg h1 { font-family: var(--font-display, var(--font-body)); font-size: clamp(40px, 6.4cqi, 82px); line-height: 1; letter-spacing: -.04em; font-weight: 700; text-wrap: balance; }
-.hlg h1 em { font-style: italic; font-weight: 500; color: color-mix(in srgb, var(--hg-leaf1) 80%, var(--ink, #111)); }
-:root[data-theme='dark'] .hlg h1 em { color: var(--hg-c3); }
+.hlg h1 em { font-style: italic; font-weight: 500; color: var(--hg-em); }
 .hlg-lede { font-size: clamp(15px, 1.5cqi, 18px); line-height: 1.6; max-width: 48ch; color: color-mix(in srgb, var(--ink, #111) 82%, transparent); }
 .hlg-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 4px; }
 .hlg-ghost, .hlg-solid, .hlg-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 99px; text-decoration: none; cursor: pointer; font-weight: 600; transition: background .2s, transform .2s; }
@@ -54,11 +57,11 @@
   box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .9), inset 0 -3px 8px rgba(0, 0, 0, .35), 0 12px 30px -10px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .25);
   transition: transform .25s, box-shadow .25s; }
 .hlg-liquid > span, .hlg-liquid > svg { position: relative; z-index: 2; text-shadow: 0 1px 0 rgba(255, 255, 255, .15); }
-.hlg-liquid::before { content: ''; position: absolute; inset: -40%; z-index: 0; background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, .4) 8%, transparent 18%, rgba(255, 255, 255, .22) 50%, transparent 62%, rgba(255, 255, 255, .36) 78%, transparent); mix-blend-mode: soft-light; animation: hlg-spin 9s linear infinite; }
-.hlg-liquid::after { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(90px 60px at var(--lx) var(--ly), rgba(255, 255, 255, .5), transparent 70%); mix-blend-mode: overlay; opacity: .9; transition: opacity .3s; }
-.hlg-lq-a, .hlg-lq-b { position: absolute; z-index: 1; width: 70px; height: 70px; border-radius: 50%; filter: blur(14px); background: rgba(255, 255, 255, .7); mix-blend-mode: soft-light; animation: hlg-blob 6s ease-in-out infinite alternate; }
+.hlg-liquid::before { content: ''; position: absolute; inset: -40%; z-index: 0; background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, .22) 8%, transparent 18%, rgba(255, 255, 255, .12) 50%, transparent 62%, rgba(255, 255, 255, .2) 78%, transparent); mix-blend-mode: soft-light; animation: hlg-spin 9s linear infinite; }
+.hlg-liquid::after { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(70px 44px at var(--lx) var(--ly), rgba(255, 255, 255, .3), transparent 70%); mix-blend-mode: overlay; opacity: .9; transition: opacity .3s; }
+.hlg-lq-a, .hlg-lq-b { position: absolute; z-index: 1; width: 70px; height: 70px; border-radius: 50%; filter: blur(14px); background: rgba(255, 255, 255, .35); mix-blend-mode: soft-light; animation: hlg-blob 6s ease-in-out infinite alternate; }
 .hlg-lq-a { left: 10%; top: -20%; }
-.hlg-lq-b { right: 6%; bottom: -30%; background: rgba(0, 0, 0, .55); animation-duration: 8s; animation-direction: alternate-reverse; mix-blend-mode: multiply; }
+.hlg-lq-b { right: 6%; bottom: -30%; background: var(--hg-lqb); animation-duration: 8s; animation-direction: alternate-reverse; mix-blend-mode: multiply; }
 .hlg-liquid:hover { transform: translateY(-2px) scale(1.015); box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .95), inset 0 -3px 8px rgba(0, 0, 0, .35), 0 18px 36px -10px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .35); }
 .hlg-liquid:active { transform: translateY(0) scale(.99); }
 .hlg-liquid:focus-visible { outline-offset: 4px; border-radius: 99px; }
@@ -86,8 +89,7 @@
 .hlg-feat { position: relative; overflow: hidden; padding: 24px; border-radius: 26px; background: var(--raised, #fff); border: 1px solid var(--line-strong, #ccc); box-shadow: 0 24px 50px -30px rgba(0, 0, 0, .45); transition: transform .35s, border-color .35s; }
 .hlg-feat::before { content: ''; position: absolute; inset: 0; background: radial-gradient(260px 160px at var(--fx, 85%) -10%, color-mix(in srgb, var(--hg-leaf2) 30%, transparent), transparent 70%); pointer-events: none; }
 .hlg-feat:hover { transform: translateY(-4px); border-color: var(--hg-leaf0); }
-.hlg-ficon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 16px; margin-bottom: 14px; color: color-mix(in srgb, var(--hg-leaf1) 85%, var(--ink, #111)); background: color-mix(in srgb, var(--hg-leaf2) 30%, transparent); }
-:root[data-theme='dark'] .hlg-ficon { color: var(--hg-c3); }
+.hlg-ficon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 16px; margin-bottom: 14px; color: var(--hg-fic); background: color-mix(in srgb, var(--hg-leaf2) 30%, transparent); }
 .hlg h3 { font-size: 19px; letter-spacing: -.01em; margin-bottom: 6px; font-family: var(--font-display, var(--font-body)); }
 .hlg-feat p { color: var(--muted, #5b6472); font-size: 14.5px; }
 

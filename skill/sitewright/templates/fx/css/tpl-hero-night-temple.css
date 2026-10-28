@@ -1,7 +1,11 @@
 /* Lanternfall: night-mountain landing page. Scene colours are local variables per theme; text, focus and buttons use host tokens. */
 .hnt { container-type: inline-size; container-name: hnt; position: relative; width: 100%; overflow-x: clip; color: var(--ink, #111); background: var(--surface, #fff); font: 15px/1.55 var(--font-body, system-ui, sans-serif); text-wrap: pretty;
-  --p: .5; --hnt-sky0: #c6d4ee; --hnt-sky1: #e4e3f1; --hnt-sky2: #f8e2d0; --hnt-moon: #fffaf0; --hnt-far: #b7c1dc; --hnt-mid: #8e9abd; --hnt-near: #5b6890; --hnt-tem: #39425f; --hnt-star: #6d7ba6; --hnt-mist: rgba(255, 255, 255, .6); --hnt-glass: color-mix(in srgb, var(--surface, #fff) 72%, transparent); }
-:root[data-theme='dark'] .hnt { --hnt-sky0: #04060f; --hnt-sky1: #0e1731; --hnt-sky2: #2d2344; --hnt-moon: #f3ead7; --hnt-far: #263662; --hnt-mid: #162449; --hnt-near: #0a1128; --hnt-tem: #04060f; --hnt-star: #e8ecff; --hnt-mist: rgba(150, 170, 220, .2); }
+  --p: .5; --hnt-sub: var(--muted, #5b6472); --hnt-starop: .3; --hnt-sky0: #c6d4ee; --hnt-sky1: #e4e3f1; --hnt-sky2: #f8e2d0; --hnt-moon: #fffaf0; --hnt-far: #b7c1dc; --hnt-mid: #8e9abd; --hnt-near: #5b6890; --hnt-tem: #39425f; --hnt-star: #6d7ba6; --hnt-mist: rgba(255, 255, 255, .6); --hnt-glass: color-mix(in srgb, var(--surface, #fff) 88%, transparent); }
+:root[data-theme='dark'] .hnt { --hnt-sky0: #04060f; --hnt-sky1: #0e1731; --hnt-sky2: #2d2344; --hnt-moon: #f3ead7; --hnt-far: #263662; --hnt-mid: #162449; --hnt-near: #0a1128; --hnt-tem: #04060f; --hnt-star: #e8ecff; --hnt-mist: rgba(150, 170, 220, .2); --hnt-sub: color-mix(in srgb, var(--ink, #fff) 80%, transparent); --hnt-starop: .9; }
+/* scheme: JS sets data-scheme from the real --surface token, so the scene always matches the host theme; the media rule covers the first paint */
+:root:root .hnt[data-scheme='light'] { --hnt-sky0: #c6d4ee; --hnt-sky1: #e4e3f1; --hnt-sky2: #f8e2d0; --hnt-moon: #fffaf0; --hnt-far: #b7c1dc; --hnt-mid: #8e9abd; --hnt-near: #5b6890; --hnt-tem: #39425f; --hnt-star: #6d7ba6; --hnt-mist: rgba(255, 255, 255, .6); --hnt-glass: color-mix(in srgb, var(--surface, #fff) 88%, transparent); --hnt-sub: var(--muted, #5b6472); --hnt-starop: .3; }
+:root:root .hnt[data-scheme='dark'] { --hnt-sky0: #04060f; --hnt-sky1: #0e1731; --hnt-sky2: #2d2344; --hnt-moon: #f3ead7; --hnt-far: #263662; --hnt-mid: #162449; --hnt-near: #0a1128; --hnt-tem: #04060f; --hnt-star: #e8ecff; --hnt-mist: rgba(150, 170, 220, .2); --hnt-sub: color-mix(in srgb, var(--ink, #fff) 80%, transparent); --hnt-starop: .9; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .hnt { --hnt-sky0: #04060f; --hnt-sky1: #0e1731; --hnt-sky2: #2d2344; --hnt-moon: #f3ead7; --hnt-far: #263662; --hnt-mid: #162449; --hnt-near: #0a1128; --hnt-tem: #04060f; --hnt-star: #e8ecff; --hnt-mist: rgba(150, 170, 220, .2); --hnt-sub: color-mix(in srgb, var(--ink, #fff) 80%, transparent); --hnt-starop: .9; } }
 .hnt *, .hnt *::before, .hnt *::after { box-sizing: border-box; }
 .hnt h1, .hnt h2, .hnt h3, .hnt p, .hnt figure, .hnt blockquote, .hnt dl, .hnt dd, .hnt ul, .hnt ol { margin: 0; padding: 0; }
 .hnt ul, .hnt ol { list-style: none; }
@@ -36,8 +40,7 @@
 /* hero */
 .hnt-hero { --mx: 0; --my: 0; --p: 0; position: relative; isolation: isolate; min-height: max(720px, 54cqi); display: grid; align-content: center; padding: clamp(56px, 8cqi, 110px) clamp(16px, 5cqi, 72px) 150px; overflow: hidden; background: linear-gradient(var(--hnt-sky0), var(--hnt-sky1) 55%, var(--hnt-sky2)); }
 .hnt-sky { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -6; }
-.hnt-stars circle { fill: var(--hnt-star); opacity: .85; animation: hnt-tw 4.5s ease-in-out infinite; }
-:root:not([data-theme='dark']) .hnt-stars circle { opacity: .3; }
+.hnt-stars circle { fill: var(--hnt-star); opacity: var(--hnt-starop); animation: hnt-tw 4.5s ease-in-out infinite; }
 .hnt-moondisc { fill: var(--hnt-moon); }
 .hnt-layer { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; will-change: transform; }
 .hnt-far { z-index: -5; transform: translate3d(calc(var(--mx) * -6px), calc(var(--p) * 30px), 0) scale(1.06); }
@@ -59,14 +62,12 @@
 .hnt-embers { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 .hnt-vig { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, color-mix(in srgb, var(--hnt-sky0) 78%, transparent), transparent 56%); }
 .hnt-copy { position: relative; max-width: 590px; display: grid; justify-items: start; gap: 18px; }
-.hnt-eyebrow { display: inline-flex; align-items: center; gap: 12px; font: 600 12.5px var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; color: var(--muted, #5b6472); }
+.hnt-eyebrow { display: inline-flex; align-items: center; gap: 12px; font: 600 12.5px var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; color: var(--hnt-sub); }
 .hnt-eyebrow span { width: 34px; height: 1px; background: var(--signal, #f59e0b); }
 .hnt h1 { font-family: var(--font-display, var(--font-body)); font-size: clamp(40px, 7.2cqi, 88px); line-height: .98; letter-spacing: -.035em; font-weight: 700; text-wrap: balance; }
-.hnt-lede { font-size: clamp(15px, 1.5cqi, 18px); line-height: 1.6; color: var(--muted, #5b6472); max-width: 50ch; }
-:root[data-theme='dark'] .hnt-lede, :root[data-theme='dark'] .hnt-eyebrow { color: color-mix(in srgb, var(--ink, #fff) 78%, transparent); }
+.hnt-lede { font-size: clamp(15px, 1.5cqi, 18px); line-height: 1.6; color: var(--hnt-sub); max-width: 50ch; }
 .hnt-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
-.hnt-lit { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px 0 6px; border-radius: 99px; border: 0; background: transparent; color: var(--muted, #5b6472); cursor: pointer; font-size: 13.5px; font-weight: 600; }
-:root[data-theme='dark'] .hnt-lit { color: color-mix(in srgb, var(--ink, #fff) 78%, transparent); }
+.hnt-lit { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px 0 8px; border-radius: 99px; border: 1px solid color-mix(in srgb, var(--ink, #111) 16%, transparent); background: var(--hnt-glass); color: var(--ink, #111); cursor: pointer; font-size: 13.5px; font-weight: 600; }
 .hnt-lit i { width: 38px; height: 22px; border-radius: 99px; background: color-mix(in srgb, var(--ink, #111) 22%, transparent); position: relative; transition: background .3s; }
 .hnt-lit i::after { content: ''; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--surface, #fff); transition: transform .3s; }
 .hnt-lit[aria-pressed='true'] i { background: var(--signal, #f59e0b); }
@@ -79,7 +80,7 @@
 
 /* sections */
 .hnt-sec { padding: clamp(56px, 9cqi, 120px) clamp(16px, 5cqi, 72px); scroll-margin-top: 64px; }
-.hnt-kicker { font: 600 12.5px var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; color: var(--signal-ink, var(--muted)); margin-bottom: 12px; }
+.hnt-kicker { font: 600 12.5px var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; color: color-mix(in srgb, var(--ink, #111) 82%, transparent); margin-bottom: 12px; }
 .hnt h2 { font-family: var(--font-display, var(--font-body)); font-size: clamp(30px, 4.6cqi, 56px); line-height: 1.04; letter-spacing: -.03em; font-weight: 700; max-width: 16ch; text-wrap: balance; }
 .hnt h3 { font-size: 20px; letter-spacing: -.01em; margin-bottom: 6px; font-family: var(--font-display, var(--font-body)); }
 .hnt-journey { position: relative; background-image: radial-gradient(60% 50% at 10% 20%, color-mix(in srgb, var(--signal, #f59e0b) 14%, transparent), transparent 70%); display: grid; gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); border-block: 1px solid var(--line, #e3e0da); }
@@ -135,7 +136,7 @@
 .hnt-dlg .hnt-cta { margin-top: 4px; }
 .hnt-dlg .ha-fld :is(input, select) { background: var(--surface, #fff); }
 
-@keyframes hnt-tw { 0%, 100% { opacity: .9; } 50% { opacity: .25; } }
+@keyframes hnt-tw { 0%, 100% { opacity: var(--hnt-starop); } 50% { opacity: .15; } }
 @keyframes hnt-flick { 0%, 100% { opacity: .95; } 40% { opacity: .78; } 60% { opacity: 1; } }
 @keyframes hnt-drift { from { transform: translateX(-4%); } to { transform: translateX(4%); } }
 @keyframes hnt-in { from { opacity: 0; transform: translateY(8px); } }

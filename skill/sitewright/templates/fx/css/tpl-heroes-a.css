@@ -15,8 +15,7 @@ dialog.ha-dlg[open] { animation: ha-pop .22s ease both; }
 .ha-fld :is(input, select) { width: 100%; min-height: 46px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--line-strong, #aaa); background: var(--surface, #fff); color: inherit; font: inherit; font-size: 16px; }
 .ha-fld :is(input, select):focus-visible { outline: 2px solid var(--signal, #2563eb); outline-offset: 1px; }
 .ha-fld[data-bad='true'] :is(input, select) { border-color: var(--critical, #dc2626); }
-.ha-fld small { color: var(--critical, #b91c1c); font-size: 12.5px; }
-:root[data-theme='dark'] .ha-fld small { color: color-mix(in srgb, var(--critical, #ef4444) 70%, #fff); }
+.ha-fld small { color: color-mix(in srgb, var(--critical, #b91c1c) 72%, var(--ink, #000)); font-size: 12.5px; }
 .ha-sum { margin: 0; font-size: 13.5px; color: var(--muted, #5b6472); }
 .ha-sum b { color: var(--ink, #111); }
 .ha-ok { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start; padding: 16px; border-radius: 16px; border: 1px solid color-mix(in srgb, var(--ok, #16a34a) 60%, transparent); background: color-mix(in srgb, var(--ok, #16a34a) 10%, transparent); animation: ha-pop .3s ease both; }
