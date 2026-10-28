@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { UI_DEMOS } from './ui/demos';
+import { DemoFrame } from './DemoFrame';
 import { BACKGROUND_COMPONENTS, FIGURE_FACTORIES } from './catalog';
 
 export type EmbedKind = 'c' | 'f' | 'bg';
@@ -14,7 +15,7 @@ const MAX = 1.35;
 function ComponentView({ id }: { id: string }) {
   const d = UI_DEMOS.find((x) => x.id === id);
   if (!d) return null;
-  return <div className="fxe-demo"><d.Demo /></div>;
+  return <DemoFrame className="fxe-demo"><d.Demo /></DemoFrame>;
 }
 
 /** One figure, live. The pointer moves it, as on the gallery. */
