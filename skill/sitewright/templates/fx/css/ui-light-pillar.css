@@ -1,0 +1,3 @@
+.ui-light-pillar{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--ink,#111) 8%,var(--surface,#fff)),color-mix(in srgb,var(--primary,#2563eb) 7%,var(--surface,#fff)))}
+.ui-light-pillar-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

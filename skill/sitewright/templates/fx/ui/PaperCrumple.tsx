@@ -27,7 +27,7 @@ export default function PaperCrumple({ crumpled, defaultCrumpled = false, onChan
         <span className="ui-paper-crumple-shadow" aria-hidden="true" />
         <div className="ui-paper-crumple-ball">
           <div className="ui-paper-crumple-sheet" aria-hidden={on || undefined}>
-            <div className="ui-paper-crumple-note">{children ?? <><strong>Todo before launch</strong><span>Rewrite the pricing page intro</span><span>Ask legal about the footer</span><span>Fix the broken favicon</span></>}</div>
+            <div className="ui-paper-crumple-note">{children ?? <><strong>Todo before launch</strong><span>Rewrite pricing intro</span><span>Ask legal about footer</span><span>Fix the favicon</span></>}</div>
             <svg className="ui-paper-crumple-facets" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
               {FACETS.map((f, i) => <polygon key={i} points={f} style={{ ['--k' as string]: (i % 3) * 0.5 }} data-i={i % 3} />)}
             </svg>

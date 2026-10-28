@@ -1,0 +1,3 @@
+.ui-grid-distortion{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  background:radial-gradient(70% 80% at 50% 50%,color-mix(in srgb,var(--primary,#2563eb) 9%,var(--surface,#fff)),var(--surface,#fff))}
+.ui-grid-distortion-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

@@ -22,7 +22,7 @@ function Doc() {
   return (
     <div className="ui-shredder-doc">
       <strong>Statement 07</strong>
-      <i style={{ width: '90%' }} /><i style={{ width: '72%' }} /><i style={{ width: '84%' }} /><i style={{ width: '48%' }} />
+      <i style={{ width: '90%' }} /><i style={{ width: '72%' }} /><i style={{ width: '56%' }} />
       <b>$4,210.00</b>
     </div>
   );
@@ -51,7 +51,7 @@ export default function Shredder({ strips = 10, onShred, children, labels = ['Sh
   return (
     <div className={`ui-shredder ${className}`.trim()} style={style} data-state={state}>
       <div className="ui-shredder-scene" style={{ ['--w' as string]: `${W}px` }}>
-        <div className="ui-shredder-paper" aria-hidden={state !== 'idle' || undefined}>{doc}</div>
+        <div className="ui-shredder-feed"><div className="ui-shredder-paper" aria-hidden={state !== 'idle' || undefined}>{doc}</div></div>
         <div className="ui-shredder-head" aria-hidden="true"><span className="ui-shredder-slot" /><span className="ui-shredder-led" /></div>
         <div className="ui-shredder-out" aria-hidden="true">
           {Array.from({ length: n }, (_, i) => (

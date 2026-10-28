@@ -1,0 +1,3 @@
+.ui-grid-scan{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:var(--surface,#fff)}
+.ui-grid-scan::after{content:'';position:absolute;inset:0;background:radial-gradient(90% 90% at 50% 50%,transparent 40%,color-mix(in srgb,var(--surface,#fff) 70%,transparent))}
+.ui-grid-scan-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

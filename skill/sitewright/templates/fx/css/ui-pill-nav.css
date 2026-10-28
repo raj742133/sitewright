@@ -15,7 +15,7 @@
   .ui-pill-nav-bar { width: 100%; justify-content: space-between; }
   .ui-pill-nav-list { display: none; }
   .ui-pill-nav-burger { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; cursor: pointer; color: var(--ink, #18181b); background: var(--raised-2, rgba(127,127,127,.14)); font: 600 14px/1 var(--font-body, system-ui); }
-  .ui-pill-nav-drop { position: absolute; left: 0; right: 0; top: calc(100% + 8px); flex-direction: column; padding: 6px; gap: 2px; border-radius: 22px; background: var(--raised, #fff); border: 1px solid var(--line-strong, rgba(127,127,127,.35)); box-shadow: 0 16px 30px -12px rgba(0,0,0,.5);
+  .ui-pill-nav-drop { display: flex; position: absolute; left: 0; right: 0; top: calc(100% + 8px); flex-direction: column; padding: 6px; gap: 2px; border-radius: 22px; background: var(--raised, #fff); border: 1px solid var(--line-strong, rgba(127,127,127,.35)); box-shadow: 0 16px 30px -12px rgba(0,0,0,.5);
     visibility: hidden; opacity: 0; transform: translateY(-8px) scale(.98); transform-origin: 50% 0; transition: opacity .2s, transform .3s cubic-bezier(.3,1.3,.5,1), visibility 0s .3s; }
   .ui-pill-nav-root.is-open .ui-pill-nav-drop { visibility: visible; opacity: 1; transform: none; transition-delay: 0s; }
   .ui-pill-nav-drop .ui-pill-nav-link { justify-content: flex-start; width: 100%; border-radius: 16px; }

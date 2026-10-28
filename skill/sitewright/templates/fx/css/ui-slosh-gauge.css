@@ -10,7 +10,7 @@
 .ui-slosh-gauge-glass { fill: var(--raised-2, #eef1f5); }
 .ui-slosh-gauge-liquid { fill: color-mix(in srgb, var(--primary, #2563eb) 88%, #000); }
 .ui-slosh-gauge-liquid-back { fill: color-mix(in srgb, var(--primary, #2563eb) 45%, var(--signal, #f59e0b)); opacity: .75; }
-.ui-slosh-gauge-ticks path { stroke: rgba(255, 255, 255, .85); stroke-width: 1.6; stroke-linecap: round; fill: none; }
+.ui-slosh-gauge-ticks path { stroke: var(--ink, #111); stroke-opacity: .55; stroke-width: 1.6; stroke-linecap: round; fill: none; }
 .ui-slosh-gauge-rim { fill: none; stroke: var(--line-strong, #8a94a3); stroke-width: 2; }
 .ui-slosh-gauge-read { position: absolute; left: 10px; top: 10px; display: flex; align-items: baseline; gap: 2px; padding: 4px 8px; border-radius: 8px; background: rgba(8, 12, 24, .82); color: #fff; font: 700 18px/1 var(--font-mono, monospace); pointer-events: none; }
 .ui-slosh-gauge-read span { font-size: 12px; font-weight: 600; }

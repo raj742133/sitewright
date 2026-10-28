@@ -33,10 +33,10 @@ export default function AcidSquares({ size = 28, speed = 1, interactive = true, 
         for (let j = 0; j < rows; j++) {
           for (let i = 0; i < cols; i++) {
             const x = ox + i * cell, y = oy + j * cell;
-            let v = Math.sin(x * 0.011 + tt * 0.8) + Math.sin(y * 0.014 - tt * 0.6) + Math.sin((x + y) * 0.007 + tt * 0.45) + Math.sin(Math.hypot(x - w * 0.7, y - h * 0.3) * 0.02 - tt);
-            v = clamp01(0.5 + v / 6);
+            let v = Math.sin(x * 0.02 + tt * 0.8) + Math.sin(y * 0.024 - tt * 0.6) + Math.sin((x + y) * 0.012 + tt * 0.45) + Math.sin(Math.hypot(x - w * 0.7, y - h * 0.3) * 0.03 - tt);
+            v = smooth(0.12, 0.88, 0.5 + v / 6.5);
             if (interactive && ptr.inside) v = clamp01(v + smooth(150, 0, Math.hypot(x - ptr.x, y - ptr.y)) * 0.7);
-            const s = cell * (0.1 + 0.82 * v * v);
+            const s = cell * (0.16 + 0.78 * v);
             const col = mixc(pal.primary, pal.signal, smooth(0.45, 0.85, v));
             ctx.save();
             ctx.translate(x, y);

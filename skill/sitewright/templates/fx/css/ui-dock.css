@@ -1,8 +1,9 @@
 .ui-dock-root { --size: 44px; --pad: 8px; position: relative; display: inline-flex; padding-top: calc(var(--size) * 1.1); max-width: 100%; touch-action: manipulation; font-family: var(--font-body, system-ui, sans-serif); }
-.ui-dock-bar { position: relative; padding: var(--pad); max-width: 100%; border-radius: calc(var(--size) * 0.5); border: 1px solid var(--line-strong, rgba(127,127,127,.35));
+.ui-dock-bar { --grow: 0px; position: relative; padding: var(--pad); max-width: 100%; }
+.ui-dock-bg { position: absolute; inset: 0 calc(var(--grow) / -2); border-radius: calc(var(--size) * 0.5); border: 1px solid var(--line-strong, rgba(127,127,127,.35));
   background: color-mix(in srgb, var(--raised, #fff) 72%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
   box-shadow: 0 14px 30px -12px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.35); }
-.ui-dock-row { position: relative; display: flex; align-items: flex-end; height: var(--size); }
+.ui-dock-row { position: relative; gap: var(--gap, 8px); display: flex; align-items: flex-end; height: var(--size); }
 .ui-dock-cell { --s: 1; --dx: 0px; position: relative; flex: none; width: var(--size); height: var(--size); transform: translateX(var(--dx)); display: grid; justify-items: center; }
 .ui-dock-item { position: relative; width: var(--size); height: var(--size); padding: 0; display: grid; place-items: center; cursor: pointer; color: var(--ink, #18181b);
   border-radius: 28%; border: 1px solid var(--line, rgba(127,127,127,.3)); background: linear-gradient(160deg, var(--raised, #fff), var(--raised-2, #f1f1f4));
@@ -18,6 +19,8 @@
   font: 600 12px/1.4 var(--font-body, system-ui); color: var(--ink, #18181b); background: var(--raised, #fff); border: 1px solid var(--line-strong, rgba(127,127,127,.35)); box-shadow: 0 6px 16px rgba(0,0,0,.2); z-index: 3; }
 .ui-dock-cell:hover .ui-dock-tip, .ui-dock-cell:has(:focus-visible) .ui-dock-tip { opacity: 1; transform: translate(-50%, 0); }
 @media (pointer: coarse) { .ui-dock-root { --size: 48px; } .ui-dock-tip { display: none; } }
+@container (max-width: 420px) { .ui-dock-root { --size: 34px; --gap: 6px; } }
+@container (max-width: 340px) { .ui-dock-root { --size: 32px; --gap: 4px; } }
 @media (prefers-reduced-motion: reduce) { .ui-dock-item.is-bounce { animation: none; } .ui-dock-tip { transition: none; } }
-.ui-dock-demo { display: grid; justify-items: center; gap: 4px; padding: 0 8px 12px; max-width: 100%; }
-.ui-dock-demo-note { margin: 0; font: 500 11px/1.2 var(--font-mono, monospace); color: var(--muted, #52525b); }
+.ui-dock-demo { container-type: inline-size; width: 100%; display: grid; justify-items: center; padding: 0 8px 12px; max-width: 100%; }
+.ui-dock-demo-note { position: absolute; top: 10px; left: 12px; margin: 0; font: 500 11px/1.2 var(--font-mono, monospace); color: var(--muted, #52525b); }

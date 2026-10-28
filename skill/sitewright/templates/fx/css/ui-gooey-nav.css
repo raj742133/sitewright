@@ -12,5 +12,6 @@
 .ui-gooey-nav-link:hover:not(.is-active) { color: var(--primary, #2563eb); }
 .ui-gooey-nav-link.is-active { color: #fff; }
 .ui-gooey-nav-link:focus-visible { outline: 2px solid var(--signal, #f59e0b); outline-offset: 0; box-shadow: 0 0 0 4px var(--ink, #18181b); }
+@container (max-width: 340px) { .ui-gooey-nav-link { padding: 0 6px; font-size: 12px; } }
 @container (max-width: 440px) { .ui-gooey-nav-link { padding: 0 9px; font-size: 12.5px; } .ui-gooey-nav-root { padding: 6px 4px; } }
 @media (prefers-reduced-motion: reduce) { .ui-gooey-nav-link { transition: none; } .ui-gooey-nav-drop { display: none; } }

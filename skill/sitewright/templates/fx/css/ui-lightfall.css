@@ -1,0 +1,3 @@
+.ui-lightfall{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--ink,#111) 9%,var(--surface,#fff)),color-mix(in srgb,var(--primary,#2563eb) 8%,var(--surface,#fff)))}
+.ui-lightfall-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

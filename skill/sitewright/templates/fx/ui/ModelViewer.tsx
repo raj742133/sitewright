@@ -60,7 +60,7 @@ export default function ModelViewer({ shape = 'gem', autoRotate = true, controls
         if (nz <= 0.0) return; // facing away (camera looks down -z; rotate keeps +z toward viewer)
         const z = f.reduce((m, i) => m + tv[i]![2], 0) / f.length;
         const lam = Math.max(0, nx * LIGHT[0] + ny * LIGHT[1] + nz * LIGHT[2]);
-        const spec = Math.pow(Math.max(0, nz * 0.6 + ny * 0.8), 18) * (mesh.name === 'Gem' ? 0.9 : 0.35);
+        const spec = Math.pow(Math.max(0, nz * 0.6 + ny * 0.8), 18) * (mesh.name === 'Gem' ? 0.5 : 0.3);
         items.push({ f, z, shade: Math.min(1, 0.18 + lam * 0.82 + spec + (fi % 3) * 0.015) });
       });
       items.sort((p, q) => p.z - q.z);
@@ -70,7 +70,7 @@ export default function ModelViewer({ shape = 'gem', autoRotate = true, controls
         g.beginPath();
         it.f.forEach((i, k) => { const p = tv[i]!; const persp = 3.2 / (3.2 - p[2] * 0.9); const x = cx + p[0] * scale * persp, y = cy - p[1] * scale * persp; k ? g.lineTo(x, y) : g.moveTo(x, y); });
         g.closePath();
-        const col = it.shade < 0.55 ? mix(dark, base, it.shade / 0.55) : mix(base, [255, 255, 255], (it.shade - 0.55) / 0.45 * 0.85);
+        const col = it.shade < 0.55 ? mix(dark, base, it.shade / 0.55) : mix(base, [255, 255, 255], (it.shade - 0.55) / 0.45 * 0.5);
         g.fillStyle = `rgb(${col[0] | 0},${col[1] | 0},${col[2] | 0})`;
         g.fill();
         g.strokeStyle = mesh.name === 'Gem' ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.28)'; g.lineWidth = 1; g.lineJoin = 'round'; g.stroke();

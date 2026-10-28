@@ -12,12 +12,12 @@
 .ui-refine-frame-sun { fill: var(--signal, #f59e0b); }
 .ui-refine-frame-far { fill: color-mix(in srgb, var(--primary, #2563eb) 55%, var(--ink, #18181b) 10%); }
 .ui-refine-frame-near { fill: color-mix(in srgb, var(--primary, #2563eb) 85%, var(--ink, #18181b) 35%); }
-.ui-refine-frame-fine path { stroke: color-mix(in srgb, var(--raised, #fff) 55%, transparent); stroke-width: 1.5; fill: none; }
-.ui-refine-frame-grain { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, color-mix(in srgb, var(--raised, #fff) 28%, transparent) 0 1px, transparent 1px 4px), repeating-linear-gradient(90deg, color-mix(in srgb, var(--raised, #fff) 28%, transparent) 0 1px, transparent 1px 4px); opacity: .9; transition: opacity .5s; pointer-events: none; }
+.ui-refine-frame-fine path { stroke: rgba(255, 255, 255, .5); stroke-width: 1.5; fill: none; }
+.ui-refine-frame-grain { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .3) 0 1px, transparent 1px 4px), repeating-linear-gradient(90deg, rgba(255, 255, 255, .3) 0 1px, transparent 1px 4px); opacity: .4; transition: opacity .5s; pointer-events: none; }
 .ui-refine-frame[data-on] .ui-refine-frame-grain { opacity: 0; }
 .ui-refine-frame-sweep { position: absolute; left: 0; right: 0; top: 0; height: 26%; pointer-events: none; opacity: 0; background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--signal, #f59e0b) 45%, transparent) 70%, var(--signal, #f59e0b) 100%); border-bottom: 2px solid var(--signal, #f59e0b); }
 .ui-refine-frame[data-on] .ui-refine-frame-sweep { animation: ui-refine-frame-sweep .7s ease-out; }
-.ui-refine-frame-corner { position: absolute; width: 22px; height: 22px; border: 0 solid var(--raised, #fff); transition: inset .45s cubic-bezier(.3, 1.4, .5, 1), border-color .3s; filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .55)); }
+.ui-refine-frame-corner { position: absolute; width: 22px; height: 22px; border: 0 solid #fff; transition: inset .45s cubic-bezier(.3, 1.4, .5, 1), border-color .3s; filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .55)); }
 .ui-refine-frame[data-on] .ui-refine-frame-corner { border-color: var(--signal, #f59e0b); }
 .ui-refine-frame-corner[data-c='tl'] { left: var(--rf-in); top: var(--rf-in); border-width: 3px 0 0 3px; border-top-left-radius: 4px; }
 .ui-refine-frame-corner[data-c='tr'] { right: var(--rf-in); top: var(--rf-in); border-width: 3px 3px 0 0; border-top-right-radius: 4px; }

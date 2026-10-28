@@ -32,11 +32,15 @@ export default function FolderFloat({ label = 'Project files', files = FILES, on
     <div className={cx('ui-folder-float', on && 'is-open', className)} style={style} onKeyDown={onKey}>
       <div className="ui-folder-float-stage">
         <div className="ui-folder-float-back" aria-hidden="true"><span className="ui-folder-float-tab" /></div>
+        <button type="button" className="ui-folder-float-btn" aria-expanded={on} aria-controls={`${id}-files`} onClick={() => setOn(!on)}>
+          <span className="ui-folder-float-front" aria-hidden="true" />
+          <span className="ui-folder-float-title"><strong>{label}</strong><span>{n} files</span></span>
+        </button>
         <ul id={`${id}-files`} className="ui-folder-float-files" aria-label={`${label} contents`} aria-hidden={!on || undefined}>
           {files.map((f, i) => {
             const mid = (n - 1) / 2;
             const rot = n === 3 ? (FAN[i] ?? 0) : (i - mid) * 9;
-            const x = (i - mid) * 62;
+            const x = (i - mid) * 84;
             return (
               <li key={f.id} className="ui-folder-float-slot" style={{ '--x': `${x}px`, '--r': `${rot}deg`, '--i': i, '--lift': `${-62 - Math.abs(i - mid) * -6}px` } as CSSProperties}>
                 <button type="button" className="ui-folder-float-file" tabIndex={on ? 0 : -1} onClick={() => onOpenFile?.(f)}>
@@ -48,10 +52,6 @@ export default function FolderFloat({ label = 'Project files', files = FILES, on
             );
           })}
         </ul>
-        <button type="button" className="ui-folder-float-btn" aria-expanded={on} aria-controls={`${id}-files`} onClick={() => setOn(!on)}>
-          <span className="ui-folder-float-front" aria-hidden="true" />
-          <span className="ui-folder-float-title"><strong>{label}</strong><span>{n} files</span></span>
-        </button>
       </div>
     </div>
   );

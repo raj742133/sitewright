@@ -7,7 +7,7 @@
 .ui-comet-dial-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .ui-comet-dial-track { fill: none; stroke: var(--line, #ddd); stroke-width: 7; stroke-linecap: round; }
 .ui-comet-dial-fill { fill: none; stroke: color-mix(in srgb, var(--primary, #2563eb) 55%, transparent); stroke-width: 7; stroke-linecap: round; }
-.ui-comet-dial-tail { fill: none; stroke: var(--primary, #2563eb); stroke-linecap: round; }
+.ui-comet-dial-tail { fill: none; stroke: var(--signal, #f59e0b); stroke-linecap: round; }
 .ui-comet-dial-halo { fill: var(--signal, #f59e0b); opacity: .28; }
 .ui-comet-dial-head { fill: var(--signal, #f59e0b); stroke: var(--raised, #fff); stroke-width: 2.5; }
 .ui-comet-dial-core { fill: var(--raised, #fff); }

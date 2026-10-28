@@ -19,8 +19,8 @@
 .ui-staggered-menu-layer, .ui-staggered-menu-panel { position: absolute; top: 0; bottom: 0; width: min(360px, 88%); right: 0; transform: translateX(calc(101% * var(--dir))); visibility: hidden; transition: transform .55s cubic-bezier(.7,0,.2,1), visibility 0s .9s; }
 .is-left .ui-staggered-menu-layer, .is-left .ui-staggered-menu-panel { right: auto; left: 0; }
 .is-open .ui-staggered-menu-layer, .is-open .ui-staggered-menu-panel { transform: none; visibility: visible; transition-delay: 0s; }
-.ui-staggered-menu-layer.l1 { background: var(--signal, #f59e0b); z-index: 1; }
-.ui-staggered-menu-layer.l2 { background: color-mix(in srgb, var(--primary, #2563eb) 70%, #fff); z-index: 2; }
+.ui-staggered-menu-layer.l1 { width: min(376px, 94%); background: var(--signal, #f59e0b); z-index: 1; }
+.ui-staggered-menu-layer.l2 { width: min(368px, 91%); background: color-mix(in srgb, var(--primary, #2563eb) 70%, #fff); z-index: 2; }
 .is-open .ui-staggered-menu-layer.l2 { transition-delay: 70ms; }
 .ui-staggered-menu-panel { z-index: 3; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 68px 24px 20px; overflow: auto; background: var(--raised, #fff); color: var(--ink, #18181b); box-shadow: -20px 0 40px -24px rgba(0,0,0,.5); }
 .is-open .ui-staggered-menu-panel { transition-delay: 140ms; }

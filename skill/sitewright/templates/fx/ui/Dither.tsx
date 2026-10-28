@@ -59,7 +59,7 @@ export default function Dither({ cell = 3, speed = 1, interactive = true, classN
               v = 0.5 + v / 8;
               if (interactive) { const dd = Math.hypot(x - px, y - py); if (dd < 14) v += (1 - dd / 14) ** 2 * 0.5; }
               const th = BAYER[(y & 7) * 8 + (x & 7)]!;
-              const c = v - 0.18 > th * 0.9 + 0.1 ? (v > 0.8 && v - 0.5 > th * 0.5 ? hi : mid) : base;
+              const c = v - 0.3 > th * 0.8 ? (v > 0.78 && v - 0.45 > th * 0.45 ? hi : mid) : base;
               const i = (y * gw + x) * 4;
               d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
             }

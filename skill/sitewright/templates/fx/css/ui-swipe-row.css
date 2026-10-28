@@ -2,13 +2,13 @@
 .ui-swipe-row-list { display: grid; gap: 6px; min-height: 180px; align-content: center; }
 .ui-swipe-row-log { margin: 0; text-align: center; font: 500 12px/1.3 var(--font-mono, monospace); color: var(--muted, #5b6472); }
 .ui-swipe-row { position: relative; overflow: hidden; border-radius: var(--radius, 12px); border: 1px solid var(--line, #d8dde5); background: var(--raised-2, #eef1f5); }
-.ui-swipe-row-actions { position: absolute; top: 0; right: 0; bottom: 0; display: flex; visibility: hidden; }
+.ui-swipe-row-actions { position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; display: flex; visibility: hidden; }
 .ui-swipe-row[data-open] .ui-swipe-row-actions, .ui-swipe-row[data-drag] .ui-swipe-row-actions, .ui-swipe-row[data-gone] .ui-swipe-row-actions { visibility: visible; }
 .ui-swipe-row-action { flex: 1 1 0; min-width: 44px; border: 0; color: #fff; font: 700 13px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; background: #475569; }
 .ui-swipe-row-action[data-tone="primary"] { background: color-mix(in srgb, var(--primary, #2563eb) 82%, #000); }
 .ui-swipe-row-action[data-tone="danger"] { background: #b91c1c; }
 .ui-swipe-row-action:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
-.ui-swipe-row-face { position: relative; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 14px; background: var(--raised, #fff); color: var(--ink, #111); touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; transition: transform .32s cubic-bezier(.2, .9, .3, 1.15); outline: none; }
+.ui-swipe-row-face { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 14px; background: var(--raised, #fff); color: var(--ink, #111); touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; transition: transform .32s cubic-bezier(.2, .9, .3, 1.15); outline: none; }
 .ui-swipe-row[data-drag] .ui-swipe-row-face { transition: none; cursor: grabbing; }
 .ui-swipe-row[data-gone] .ui-swipe-row-face { transition: transform .22s ease-in; }
 .ui-swipe-row-face:focus-visible { box-shadow: inset 0 0 0 2px var(--primary, #2563eb); }

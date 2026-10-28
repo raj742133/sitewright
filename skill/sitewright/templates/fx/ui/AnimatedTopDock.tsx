@@ -49,7 +49,7 @@ export default function AnimatedTopDock({ items = ITEMS, variant = 'dock', value
       const q = variant === 'retro' ? Math.round(s * 8) / 8 : s;
       el.style.setProperty('--s', q.toFixed(3));
       el.style.setProperty('--dx', (variant === 'retro' ? Math.round(dx / 2) * 2 : dx).toFixed(1) + 'px');
-      el.style.setProperty('--lift', (Math.max(0, q - 1) * (variant === 'bar' ? 14 : 24)).toFixed(1) + 'px');
+      el.style.setProperty('--lift', (variant === 'dock' ? 0 : Math.max(0, q - 1) * (variant === 'bar' ? 14 : 24)).toFixed(1) + 'px');
     },
   });
   const aim = (i: number | null) => {

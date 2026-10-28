@@ -67,7 +67,8 @@ export default function ThoughtLine({ label = 'What is on your mind?', placehold
       <div className="ui-thought-line-rail" aria-hidden="true">
         <svg viewBox="0 0 100 12" preserveAspectRatio="none" focusable="false">
           <path ref={baseRef} className="ui-thought-line-base" d={flat} />
-          <path ref={fillRef} className="ui-thought-line-fill" d={flat} pathLength={100} strokeDasharray={`${(progress * 100).toFixed(2)} 100`} />
+          <defs><clipPath id={`${id.replace(/[^a-zA-Z0-9]/g, '')}c`}><rect x="-2" y="-4" width={(progress * 100 + 2).toFixed(2)} height="20" /></clipPath></defs>
+          <path ref={fillRef} className="ui-thought-line-fill" d={flat} clipPath={`url(#${id.replace(/[^a-zA-Z0-9]/g, '')}c)`} />
         </svg>
         <span className="ui-thought-line-head" style={{ left: `${(progress * 100).toFixed(2)}%`, opacity: progress > 0 ? 1 : 0 }} />
       </div>

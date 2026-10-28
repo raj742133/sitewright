@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type MouseEvent } from 'react';
+import { useEffect, useId, useRef, useState, type CSSProperties, type KeyboardEvent, type MouseEvent } from 'react';
 import { cx } from './_micro-a';
 import { useReducedMotion } from './_t2';
 
@@ -23,6 +23,7 @@ type Phase = 'idle' | 'burning' | 'armed' | 'done';
 /** A press-and-hold confirm button with a burning fuse. Hold the pointer, Enter or Space until the spark reaches the end; let go early and it snuffs out. Where holding is not practical (reduced motion, assistive-tech clicks) it falls back to press twice to confirm. */
 export default function FuseButton({ label = 'Hold to launch', holdLabel = 'Keep holding…', doneLabel = 'Launched', holdMs = 1200, onFuse, resetAfter = 2000, disabled, className, style }: FuseButtonProps) {
   const reduced = useReducedMotion();
+  const helpId = useId();
   const [phase, setPhase] = useState<Phase>('idle');
   const btn = useRef<HTMLButtonElement>(null);
   const raf = useRef(0);
@@ -50,7 +51,7 @@ export default function FuseButton({ label = 'Hold to launch', holdLabel = 'Keep
   const start = () => {
     if (disabled || phaseRef.current === 'done' || phaseRef.current === 'burning') return;
     timers.current.forEach(clearTimeout); timers.current = [];
-    set('burning'); t0.current = performance.now() - p.current * holdMs * 0;
+    paint(0); set('burning'); t0.current = performance.now();
     raf.current = requestAnimationFrame(burn);
   };
   const snuff = () => {
@@ -77,20 +78,19 @@ export default function FuseButton({ label = 'Hold to launch', holdLabel = 'Keep
       later(() => { if (phaseRef.current === 'armed') { paint(0); set('idle'); } }, 3500);
     }
   };
-  const shown = phase === 'done' ? doneLabel : phase === 'burning' ? holdLabel : phase === 'armed' ? 'Press again to confirm' : label;
 
   return (
     <span className={cx('ui-fuse-button-wrap', className)} style={style}>
-      <button ref={btn} type="button" className="ui-fuse-button" data-phase={phase} aria-disabled={disabled || undefined} aria-describedby="ui-fuse-button-help"
-        onPointerDown={(e) => { if (reduced || e.button !== 0 || e.pointerType === 'mouse' && e.detail === 0) return; e.currentTarget.setPointerCapture(e.pointerId); start(); }}
+      <button ref={btn} type="button" className="ui-fuse-button" data-phase={phase} aria-disabled={disabled || undefined} aria-describedby={helpId}
+        onPointerDown={(e) => { if (reduced || e.button !== 0) return; e.currentTarget.setPointerCapture(e.pointerId); start(); }}
         onPointerUp={snuff} onPointerCancel={snuff} onLostPointerCapture={snuff} onBlur={snuff} onContextMenu={(e) => e.preventDefault()}
         onKeyDown={onKeyDown} onKeyUp={onKeyUp} onClick={onClick}>
         <span className="ui-fuse-button-row">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
             {phase === 'done' ? <path d="M5 12.5l4.5 4.5L19 7.5" /> : <path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 .3 1.2 1 2 2 2 0-3-1-5 1-8z" />}
           </svg>
           <span className="ui-fuse-button-label" aria-hidden="true">
-            <span data-on={shown === label || undefined}>{label}</span>
+            <span data-on={phase === 'idle' || undefined}>{label}</span>
             <span data-on={phase === 'burning' || undefined}>{holdLabel}</span>
             <span data-on={phase === 'armed' || undefined}>Press again to confirm</span>
             <span data-on={phase === 'done' || undefined}>{doneLabel}</span>
@@ -103,7 +103,7 @@ export default function FuseButton({ label = 'Hold to launch', holdLabel = 'Keep
         </span>
         <span className="ui-fuse-button-sr">{label}</span>
       </button>
-      <span id="ui-fuse-button-help" className="ui-fuse-button-sr">{reduced ? 'Press twice to confirm.' : 'Press and hold until the fuse burns out, or press twice with a screen reader.'}</span>
+      <span id={helpId} className="ui-fuse-button-sr">{reduced ? 'Press twice to confirm.' : 'Press and hold until the fuse burns out, or press twice with a screen reader.'}</span>
       <span className="ui-fuse-button-sr" role="status" aria-live="polite">{phase === 'done' ? doneLabel : phase === 'armed' ? 'Press again to confirm' : ''}</span>
     </span>
   );

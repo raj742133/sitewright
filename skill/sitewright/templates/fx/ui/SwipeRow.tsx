@@ -88,12 +88,6 @@ export default function SwipeRow({ title, subtitle, leading, actions = [{ id: 'a
 
   return (
     <div className={`ui-swipe-row ${className}`.trim()} data-open={open || undefined} data-drag={drag || undefined} data-gone={gone || undefined}>
-      <div className="ui-swipe-row-actions" style={{ width: Math.max(total, -x), ['--n' as string]: actions.length }}>
-        {actions.map((a) => (
-          <button key={a.id} type="button" className="ui-swipe-row-action" data-tone={a.tone ?? 'neutral'} tabIndex={open ? 0 : -1} onClick={() => run(a.id)}
-            aria-label={`${a.label} ${title}`}>{a.label}</button>
-        ))}
-      </div>
       <div ref={rowRef} className="ui-swipe-row-face" role="group" tabIndex={0} aria-label={subtitle ? `${title}, ${subtitle}` : title}
         aria-describedby={hintId} aria-keyshortcuts="ArrowLeft ArrowRight Delete"
         style={{ transform: `translateX(${x.toFixed(1)}px)` }}
@@ -101,6 +95,12 @@ export default function SwipeRow({ title, subtitle, leading, actions = [{ id: 'a
         {leading && <span className="ui-swipe-row-lead" aria-hidden="true">{leading}</span>}
         <span className="ui-swipe-row-text"><strong>{title}</strong>{subtitle && <span>{subtitle}</span>}</span>
         <span className="ui-swipe-row-grip" aria-hidden="true">‹</span>
+      </div>
+      <div className="ui-swipe-row-actions" style={{ width: Math.max(total, -x), ['--n' as string]: actions.length }}>
+        {actions.map((a) => (
+          <button key={a.id} type="button" className="ui-swipe-row-action" data-tone={a.tone ?? 'neutral'} tabIndex={open ? 0 : -1} onClick={() => run(a.id)}
+            aria-label={`${a.label} ${title}`}>{a.label}</button>
+        ))}
       </div>
       <span id={hintId} className="ui-swipe-row-sr">Swipe left or press the left arrow to show actions, the right arrow to hide them. Delete performs {actions[actions.length - 1]?.label ?? 'the last action'}.</span>
       <span className="ui-swipe-row-sr" role="status" aria-live="polite">{msg}</span>

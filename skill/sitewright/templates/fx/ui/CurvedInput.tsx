@@ -23,8 +23,8 @@ export default function CurvedInput({ value, defaultValue = '', onChange, label 
   const [v, setV] = useControlled(value, defaultValue, onChange);
   const id = useId();
   const k = Math.max(0, Math.min(1, curve));
-  const b = (14 * k).toFixed(2); // bow in viewBox units (box is 100 x 40)
-  const shell = `M0 ${b} Q50 ${(-14 * k + 14 * k).toFixed(2)} 100 ${b} L100 ${(40 - 14 * k).toFixed(2)} Q50 40 0 ${(40 - 14 * k).toFixed(2)} Z`;
+  const b = (9 * k).toFixed(2); // bow in viewBox units (box is 100 x 40)
+  const shell = `M0 ${b} Q50 ${(-9 * k).toFixed(2)} 100 ${b} L100 ${(40 - 9 * k).toFixed(2)} Q50 ${(40 + 9 * k).toFixed(2)} 0 ${(40 - 9 * k).toFixed(2)} Z`;
   const arc = `M 10 ${(26 - 14 * k).toFixed(1)} Q 160 ${(-8 - 20 * k).toFixed(1)} 310 ${(26 - 14 * k).toFixed(1)}`;
   return (
     <div className={`ui-curved-input-root ${className ?? ''}`} style={style}>

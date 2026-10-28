@@ -1,6 +1,6 @@
 .ui-morph-slider-demo { height: 100%; min-height: 160px; display: grid; place-items: center; padding: 12px 20px; background: radial-gradient(70% 90% at 50% 0%, color-mix(in srgb, var(--signal, #f59e0b) 12%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
 .ui-morph-slider-root { --ui-ms-c: var(--primary, #2563eb); width: min(100%, 340px); display: grid; justify-items: center; gap: 6px; font-family: var(--font-body, system-ui); color: var(--ink, #18181b); }
-.ui-morph-slider-preview { width: clamp(56px, 22vh, 104px); height: clamp(56px, 22vh, 104px); }
+.ui-morph-slider-preview { overflow: visible; width: clamp(56px, 22vh, 104px); height: clamp(56px, 22vh, 104px); }
 .ui-morph-slider-preview path { fill: var(--ui-ms-c); filter: drop-shadow(0 8px 14px color-mix(in srgb, var(--ui-ms-c) 45%, transparent)); }
 .ui-morph-slider-head { width: 100%; display: flex; justify-content: space-between; font: 600 12px/1 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--muted, #52525b); }
 .ui-morph-slider-head output { color: var(--ink, #18181b); font-variant-numeric: tabular-nums; }

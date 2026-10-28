@@ -72,6 +72,8 @@ export interface ProximityOpts {
   damping?: number;
   /** Receives each item's scale and the x shift (px) that keeps neighbours from overlapping. */
   apply: (i: number, scale: number, dx: number) => void;
+  /** Optional: called after each frame with how many px wider the row has become. */
+  frame?: (grow: number) => void;
 }
 
 /** A bank of springs driven by the pointer's distance to each item. Runs rAF only while something moves, and not off-screen. */
@@ -123,6 +125,7 @@ export function useProximity(rootRef: RefObject<HTMLElement | null>, o: Proximit
         const sc = s.sc[i] ?? 1, w = s.w[i] ?? 0;
         op.apply(i, sc, (pos2[i] ?? 0) + (w * sc) / 2 + shift - ((s.st[i] ?? 0) + w / 2));
       }
+      op.frame?.(w1 - w0);
       if (moving && s.live) s.raf = requestAnimationFrame(frame);
     };
     const kick = () => { if (!s.raf && s.live) { s.last = 0; s.raf = requestAnimationFrame(frame); } };

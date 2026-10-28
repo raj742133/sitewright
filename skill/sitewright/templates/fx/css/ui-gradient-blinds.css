@@ -1,0 +1,6 @@
+.ui-gradient-blinds{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  background:repeating-linear-gradient(90deg,transparent 0 28px,color-mix(in srgb,var(--ink,#111) 18%,transparent) 28px 30px),
+    linear-gradient(100deg,var(--primary,#2563eb),var(--signal,#f59e0b))}
+.ui-gradient-blinds-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .5s ease}
+.ui-gradient-blinds[data-state='on'] .ui-gradient-blinds-canvas{opacity:1}
+@media (prefers-reduced-motion:reduce){.ui-gradient-blinds-canvas{transition:none}}

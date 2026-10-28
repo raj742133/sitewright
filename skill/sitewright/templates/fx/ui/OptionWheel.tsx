@@ -41,14 +41,21 @@ export default function OptionWheel({ options = DEFAULT, value, defaultValue, on
 
   const pick = (i: number) => { const o = options[((i % n) + n) % n]; if (o) setVal(o.value); };
   const angleOf = (e: PointerEvent) => { const r = dial.current!.getBoundingClientRect(); return (Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180) / Math.PI; };
+  const press = useRef<{ x: number; y: number; id: number } | null>(null);
   const down = (e: PointerEvent<HTMLDivElement>) => {
-    if (e.button !== 0 || (e.target as HTMLElement).closest('button')) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
-    drag.current = { last: angleOf(e), acc: rot, moved: false };
-    setDragging(true);
+    if (e.button !== 0) return;
+    press.current = { x: e.clientX, y: e.clientY, id: e.pointerId };
   };
   const move = (e: PointerEvent<HTMLDivElement>) => {
-    if (!dragging) return;
+    const p = press.current;
+    if (!p) return;
+    if (!dragging) {
+      if (Math.hypot(e.clientX - p.x, e.clientY - p.y) < 5) return;
+      e.currentTarget.setPointerCapture(e.pointerId); // only once it is a drag, so plain clicks still reach the dots
+      const a0 = (Math.atan2(p.y - (dial.current!.getBoundingClientRect().top + dial.current!.clientHeight / 2), p.x - (dial.current!.getBoundingClientRect().left + dial.current!.clientWidth / 2)) * 180) / Math.PI;
+      drag.current = { last: a0, acc: rot, moved: false };
+      setDragging(true);
+    }
     const a = angleOf(e);
     let d = a - drag.current.last;
     if (d > 180) d -= 360; if (d < -180) d += 360;
@@ -57,6 +64,7 @@ export default function OptionWheel({ options = DEFAULT, value, defaultValue, on
     pick(Math.round(-drag.current.acc / step));
   };
   const up = () => {
+    press.current = null;
     if (!dragging) return;
     setDragging(false);
     if (drag.current.moved) setRot(Math.round(drag.current.acc / step) * step);

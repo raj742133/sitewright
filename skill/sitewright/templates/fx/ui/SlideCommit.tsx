@@ -25,6 +25,7 @@ export default function SlideCommit({ label = 'Slide to send payment', doneLabel
   const [drag, setDrag] = useState(false);
   const [nudge, setNudge] = useState(0);
   const g = useRef({ x: 0, max: 1, p: 0, pid: -1, moved: false });
+  const at = useRef(0);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const cb = useRef(onCommit);
   useEffect(() => { cb.current = onCommit; });
@@ -32,7 +33,7 @@ export default function SlideCommit({ label = 'Slide to send payment', doneLabel
 
   const setP = (p: number) => { g.current.p = p; track.current?.style.setProperty('--p', p.toFixed(4)); };
   const finish = () => {
-    setP(1); setDone(true); cb.current?.();
+    setP(1); setDone(true); at.current = Date.now(); cb.current?.();
     clearTimeout(timer.current);
     if (resetAfter !== null) timer.current = setTimeout(reset, resetAfter);
   };
@@ -61,7 +62,7 @@ export default function SlideCommit({ label = 'Slide to send payment', doneLabel
   };
   const click = (e: { detail: number }) => {
     if (disabled) return;
-    if (done) { reset(); return; }
+    if (done) { if (Date.now() - at.current > 500) reset(); return; }
     if (e.detail === 0) finish(); // keyboard activation
   };
 
