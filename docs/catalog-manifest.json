@@ -1,0 +1,4982 @@
+{
+ "summary": {
+  "generated": "2026-10-28T07:33:29.225Z",
+  "sourceCatalogEntries": 261,
+  "uniqueEntries": 261,
+  "note": "the 5 full-page heroes are 5 of the 43 tu entries (see overlap), so unique = rb + tu",
+  "reactBitsOrigin": {
+   "total": 218,
+   "existing": 30,
+   "planned": 188,
+   "in_progress": 0,
+   "implemented": 0,
+   "verified": 0,
+   "blocked": 0
+  },
+  "thirdPartyTu": {
+   "total": 43,
+   "existing": 0,
+   "planned": 43,
+   "in_progress": 0,
+   "implemented": 0,
+   "verified": 0,
+   "blocked": 0
+  },
+  "fullPageHeroes": {
+   "total": 5,
+   "completed": 0,
+   "verified": 0
+  },
+  "tactileGlass": {
+   "total": 10,
+   "registered": 10,
+   "complete": 10
+  },
+  "existingReused": 30,
+  "newImplemented": 0,
+  "verified": 0,
+  "awaitingTests": 0,
+  "failingTests": 0,
+  "blocked": 0,
+  "remainingUnimplemented": 231,
+  "registry": {
+   "components": 133,
+   "templates": 12,
+   "registeredNotInCatalog": 133
+  },
+  "problems": []
+ },
+ "records": [
+  {
+   "catalogId": "rb:text-animations/asciitext",
+   "label": "ASCIIText",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "asciitext",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/blur-text",
+   "label": "Blur Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-text:BlurIn",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/circular-text",
+   "label": "Circular Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "circular-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/count-up",
+   "label": "Count Up",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx:CountUp",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/curved-loop",
+   "label": "Curved Loop",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "curved-loop",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/decrypted-text",
+   "label": "Decrypted Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:scramble-text",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/depth-text",
+   "label": "Depth Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "depth-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/echo-text",
+   "label": "Echo Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "echo-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/falling-text",
+   "label": "Falling Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "falling-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/fold-text",
+   "label": "Fold Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "fold-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/fuzzy-text",
+   "label": "Fuzzy Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "fuzzy-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/glitch-text",
+   "label": "Glitch Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "glitch-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/gradient-text",
+   "label": "Gradient Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-text:Gradient",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/masked-heading",
+   "label": "Masked Heading",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "masked-heading",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/particle-text",
+   "label": "Particle Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "particle-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/rotating-text",
+   "label": "Rotating Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-text:Rotate",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/scrambled-text",
+   "label": "Scrambled Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:scramble-text",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/scroll-float",
+   "label": "Scroll Float",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "scroll-float",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/scroll-reveal",
+   "label": "Scroll Reveal",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "scroll-reveal",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/scroll-velocity",
+   "label": "Scroll Velocity",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "scroll-velocity",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/shiny-text",
+   "label": "Shiny Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-text:Shimmer",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/shuffle",
+   "label": "Shuffle",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "shuffle",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/split-flap-text",
+   "label": "Split Flap Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "split-flap-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/split-text",
+   "label": "Split Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-text:SplitChars",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/stroke-text",
+   "label": "Stroke Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "stroke-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/tech-text",
+   "label": "Tech Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "tech-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/text-cursor",
+   "label": "Text Cursor",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "text-cursor",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/text-loop",
+   "label": "Text Loop",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "text-loop",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/text-pressure",
+   "label": "Text Pressure",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "text-pressure",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/text-type",
+   "label": "Text Type",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-text:Typewriter",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:text-animations/true-focus",
+   "label": "True Focus",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "true-focus",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/variable-proximity",
+   "label": "Variable Proximity",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "variable-proximity",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:text-animations/warp-text",
+   "label": "Warp Text",
+   "catalogCategory": "Text Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "warp-text",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/animated-content",
+   "label": "Animated Content",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "animated-content",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/blob-cursor",
+   "label": "Blob Cursor",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "blob-cursor",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/click-spark",
+   "label": "Click Spark",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-micro:clickSpark",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:animations/crosshair",
+   "label": "Crosshair",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "crosshair",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/crystalized-ball",
+   "label": "Crystalized Ball",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "crystalized-ball",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/cubes",
+   "label": "Cubes",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "cubes",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/cursor-grid",
+   "label": "Cursor Grid",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "cursor-grid",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/dither-veil",
+   "label": "Dither Veil",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "dither-veil",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/elastic-mesh",
+   "label": "Elastic Mesh",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "elastic-mesh",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/electric-border",
+   "label": "Electric Border",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "electric-border",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/electric-logo",
+   "label": "Electric Logo",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "electric-logo",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/fade-content",
+   "label": "Fade Content",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "fade-content",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/ghost-cursor",
+   "label": "Ghost Cursor",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "ghost-cursor",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/glare-hover",
+   "label": "Glare Hover",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "glare-hover",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/glow-cursor",
+   "label": "Glow Cursor",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-micro:cursorGlow",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:animations/gradual-blur",
+   "label": "Gradual Blur",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "gradual-blur",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/halftone-reveal",
+   "label": "Halftone Reveal",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "halftone-reveal",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/image-trail",
+   "label": "Image Trail",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "image-trail",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/laser-flow",
+   "label": "Laser Flow",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "laser-flow",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/logo-loop",
+   "label": "Logo Loop",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "logo-loop",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/magnet",
+   "label": "Magnet",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:magnetic-button",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:animations/meta-balls",
+   "label": "Meta Balls",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "meta-balls",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/metallic-paint",
+   "label": "Metallic Paint",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "metallic-paint",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/noise",
+   "label": "Noise",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-bg:Grain",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:animations/orbit-images",
+   "label": "Orbit Images",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "orbit-images",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/pixel-swap",
+   "label": "Pixel Swap",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pixel-swap",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/pixel-trail",
+   "label": "Pixel Trail",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pixel-trail",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/pixel-transition",
+   "label": "Pixel Transition",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pixel-transition",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/ribbons",
+   "label": "Ribbons",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "ribbons",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/ripple-distortion",
+   "label": "Ripple Distortion",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "ripple-distortion",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/scroll-expand",
+   "label": "Scroll Expand",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "scroll-expand",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/shape-blur",
+   "label": "Shape Blur",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "shape-blur",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/splash-cursor",
+   "label": "Splash Cursor",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "splash-cursor",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/star-border",
+   "label": "Star Border",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "star-border",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/sticker-peel",
+   "label": "Sticker Peel",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "sticker-peel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/strands",
+   "label": "Strands",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "motion-gl",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "strands",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/swarm-cursor",
+   "label": "Swarm Cursor",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "swarm-cursor",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:animations/target-cursor",
+   "label": "Target Cursor",
+   "catalogCategory": "Animation",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cursor",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "target-cursor",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/accordion-gallery",
+   "label": "Accordion Gallery",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "accordion-gallery",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/animated-list",
+   "label": "Animated List",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "animated-list",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/border-glow",
+   "label": "Border Glow",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "border-glow",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/bounce-cards",
+   "label": "Bounce Cards",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "bounce-cards",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/bubble-menu",
+   "label": "Bubble Menu",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "bubble-menu",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/card-nav",
+   "label": "Card Nav",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "card-nav",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/card-swap",
+   "label": "Card Swap",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "card-swap",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/carousel",
+   "label": "Carousel",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "carousel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/chroma-grid",
+   "label": "Chroma Grid",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "chroma-grid",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/circular-carousel",
+   "label": "Circular Carousel",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "circular-carousel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/circular-gallery",
+   "label": "Circular Gallery",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "circular-gallery",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/counter",
+   "label": "Counter",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "counter",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/curved-input",
+   "label": "Curved Input",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "curved-input",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/decay-card",
+   "label": "Decay Card",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "decay-card",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/depth-carousel",
+   "label": "Depth Carousel",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "depth-carousel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/dock",
+   "label": "Dock",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "dock",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/dome-gallery",
+   "label": "Dome Gallery",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "dome-gallery",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/drift-wall",
+   "label": "Drift Wall",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "drift-wall",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/elastic-slider",
+   "label": "Elastic Slider",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "elastic-slider",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/flex-carousel",
+   "label": "Flex Carousel",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "flex-carousel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/flowing-menu",
+   "label": "Flowing Menu",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "flowing-menu",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/fluid-glass",
+   "label": "Fluid Glass",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "fluid-glass",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/flying-posters",
+   "label": "Flying Posters",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "flying-posters",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/folder",
+   "label": "Folder",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "folder",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/glass-icons",
+   "label": "Glass Icons",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "glass-icons",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/glass-surface",
+   "label": "Glass Surface",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:glass-fx",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:components/gooey-nav",
+   "label": "Gooey Nav",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "gooey-nav",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/holo-card",
+   "label": "Holo Card",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:holographic-card",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:components/infinite-menu",
+   "label": "Infinite Menu",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "infinite-menu",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/infinite-spiral",
+   "label": "Infinite Spiral",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "infinite-spiral",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/lanyard",
+   "label": "Lanyard",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "lanyard",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/line-sidebar",
+   "label": "Line Sidebar",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "line-sidebar",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/magic-bento",
+   "label": "Magic Bento",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "magic-bento",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/masonry",
+   "label": "Masonry",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "masonry",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/model-viewer",
+   "label": "Model Viewer",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "model-viewer",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/morph-slider",
+   "label": "Morph Slider",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "morph-slider",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/option-wheel",
+   "label": "Option Wheel",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "option-wheel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/pill-nav",
+   "label": "Pill Nav",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pill-nav",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/pixel-card",
+   "label": "Pixel Card",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pixel-card",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/profile-card",
+   "label": "Profile Card",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "profile-card",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/reflective-card",
+   "label": "Reflective Card",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "cards",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "reflective-card",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/scroll-stack",
+   "label": "Scroll Stack",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "galleries",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "scroll-stack",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/specular-button",
+   "label": "Specular Button",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:gloss-button",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:components/spotlight-card",
+   "label": "Spotlight Card",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-micro:spotlight",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:components/stack",
+   "label": "Stack",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "inputs-ui",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "stack",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/staggered-menu",
+   "label": "Staggered Menu",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "staggered-menu",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/stepper",
+   "label": "Stepper",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "stepper",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:components/tilted-card",
+   "label": "Tilted Card",
+   "catalogCategory": "UI Component",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:tilt-card-3d",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/acid-squares",
+   "label": "Acid Squares",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "acid-squares",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/aero-shards",
+   "label": "Aero Shards",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "aero-shards",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/antigravity",
+   "label": "Antigravity",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "antigravity",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/aurora",
+   "label": "Aurora",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-bg:Aurora",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/balatro",
+   "label": "Balatro",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "balatro",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/ballpit",
+   "label": "Ballpit",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "ballpit",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/beams",
+   "label": "Beams",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-bg:Beams",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/color-bends",
+   "label": "Color Bends",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "color-bends",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/crtwarp",
+   "label": "CRTWarp",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "crtwarp",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/dark-veil",
+   "label": "Dark Veil",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "dark-veil",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/dither",
+   "label": "Dither",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "dither",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/dot-field",
+   "label": "Dot Field",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-a",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "dot-field",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/dot-grid",
+   "label": "Dot Grid",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-bg:Dots",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/evil-eye",
+   "label": "Evil Eye",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "evil-eye",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/faulty-terminal",
+   "label": "Faulty Terminal",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "faulty-terminal",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/ferrofluid",
+   "label": "Ferrofluid",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "ferrofluid",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/floating-lines",
+   "label": "Floating Lines",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "floating-lines",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/flux-lines",
+   "label": "Flux Lines",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "flux-lines",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/galaxy",
+   "label": "Galaxy",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "galaxy",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/ghost-fibers",
+   "label": "Ghost Fibers",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "ghost-fibers",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/gradient-ascii",
+   "label": "Gradient ASCII",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "gradient-ascii",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/gradient-blinds",
+   "label": "Gradient Blinds",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "gradient-blinds",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/gradient-waves",
+   "label": "Gradient Waves",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-b",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "gradient-waves",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/grainient",
+   "label": "Grainient",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "grainient",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/grid-distortion",
+   "label": "Grid Distortion",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "grid-distortion",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/grid-motion",
+   "label": "Grid Motion",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "grid-motion",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/grid-scan",
+   "label": "Grid Scan",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "grid-scan",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/hyperspeed",
+   "label": "Hyperspeed",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "hyperspeed",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/iridescence",
+   "label": "Iridescence",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "iridescence",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/letter-glitch",
+   "label": "Letter Glitch",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "letter-glitch",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/lightfall",
+   "label": "Lightfall",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "lightfall",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/lightning",
+   "label": "Lightning",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "lightning",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/light-pillar",
+   "label": "Light Pillar",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-c",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "light-pillar",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/light-rays",
+   "label": "Light Rays",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "light-rays",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/light-tunnel",
+   "label": "Light Tunnel",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "light-tunnel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/line-waves",
+   "label": "Line Waves",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "line-waves",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/liquid-chrome",
+   "label": "Liquid Chrome",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "liquid-chrome",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/liquid-ether",
+   "label": "Liquid Ether",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "liquid-ether",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/magic-rings",
+   "label": "Magic Rings",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "magic-rings",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/magnet-lines",
+   "label": "Magnet Lines",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "magnet-lines",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/micro-slats",
+   "label": "Micro Slats",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "micro-slats",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/molten-metal",
+   "label": "Molten Metal",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "molten-metal",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/orb",
+   "label": "Orb",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "ui:plasma-orb",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/particles",
+   "label": "Particles",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-bg:Particles",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/pattern-waves",
+   "label": "Pattern Waves",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-d",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pattern-waves",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/pixel-blast",
+   "label": "Pixel Blast",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pixel-blast",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/pixel-snow",
+   "label": "Pixel Snow",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "pixel-snow",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/plasma",
+   "label": "Plasma",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "plasma",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/plasma-wave",
+   "label": "Plasma Wave",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "plasma-wave",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/prism",
+   "label": "Prism",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "prism",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/prismatic-burst",
+   "label": "Prismatic Burst",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "prismatic-burst",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/radar",
+   "label": "Radar",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "radar",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/ripple-grid",
+   "label": "Ripple Grid",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "ripple-grid",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/scanner",
+   "label": "Scanner",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "scanner",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/shape-grid",
+   "label": "Shape Grid",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-e",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "shape-grid",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/shape-waves",
+   "label": "Shape Waves",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-f",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "shape-waves",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/side-rays",
+   "label": "Side Rays",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-f",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "side-rays",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/silk",
+   "label": "Silk",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-f",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "silk",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/sliced-waves",
+   "label": "Sliced Waves",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-f",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "sliced-waves",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/soft-aurora",
+   "label": "Soft Aurora",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-bg:Aurora",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/threads",
+   "label": "Threads",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-f",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "threads",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/topography",
+   "label": "Topography",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-f",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "topography",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:backgrounds/waves",
+   "label": "Waves",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "existing": "fx-bg:Waves",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:backgrounds/web-threads",
+   "label": "Web Threads",
+   "catalogCategory": "Background",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "bg-f",
+   "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
+   "newId": "web-threads",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/bell-toggle",
+   "label": "Bell Toggle",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "existing": "ui:bell-button",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:micro/branched-menu",
+   "label": "Branched Menu",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "branched-menu",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/call-chip",
+   "label": "Call Chip",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "call-chip",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/code-slots",
+   "label": "Code Slots",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "code-slots",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/comet-dial",
+   "label": "Comet Dial",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "comet-dial",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/dodge-field",
+   "label": "Dodge Field",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "dodge-field",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/flip-card",
+   "label": "Flip Card",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "flip-card",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/flying-button",
+   "label": "Flying Button",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "flying-button",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/folder-float",
+   "label": "Folder Float",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "folder-float",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/fuse-button",
+   "label": "Fuse Button",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "fuse-button",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/glide-select",
+   "label": "Glide Select",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-a",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "glide-select",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/hold-button",
+   "label": "Hold Button",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "existing": "ui:hold-to-confirm",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:micro/jelly-radio",
+   "label": "Jelly Radio",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "jelly-radio",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/lattice-loader",
+   "label": "Lattice Loader",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "lattice-loader",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/paper-crumple",
+   "label": "Paper Crumple",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "paper-crumple",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/peek-rating",
+   "label": "Peek Rating",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "peek-rating",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/prompt-bar",
+   "label": "Prompt Bar",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "existing": "ui:ai-input",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:micro/pulse-heart",
+   "label": "Pulse Heart",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "pulse-heart",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/refine-frame",
+   "label": "Refine Frame",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "refine-frame",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/rubber-segment",
+   "label": "Rubber Segment",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "rubber-segment",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/scrub-field",
+   "label": "Scrub Field",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "scrub-field",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/shredder",
+   "label": "Shredder",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "shredder",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/slide-commit",
+   "label": "Slide Commit",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-b",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "slide-commit",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/sling-button",
+   "label": "Sling Button",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "sling-button",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/slosh-gauge",
+   "label": "Slosh Gauge",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "slosh-gauge",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/spring-check",
+   "label": "Spring Check",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "spring-check",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/squish-switch",
+   "label": "Squish Switch",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "existing": "ui:spring-toggle",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:micro/status-mark",
+   "label": "Status Mark",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "status-mark",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/swipe-row",
+   "label": "Swipe Row",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "swipe-row",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/swipe-toast",
+   "label": "Swipe Toast",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "swipe-toast",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/tear-ticket",
+   "label": "Tear Ticket",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "existing",
+   "package": null,
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "existing": "ui:perforated-ticket",
+   "status": "existing",
+   "license": "Sitewright original (or its own recorded notice)",
+   "demo": "existing",
+   "test": "existing",
+   "outstanding": []
+  },
+  {
+   "catalogId": "rb:micro/thought-line",
+   "label": "Thought Line",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "thought-line",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/voice-pill",
+   "label": "Voice Pill",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "voice-pill",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/wake-slider",
+   "label": "Wake Slider",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "wake-slider",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "rb:micro/warm-tooltip",
+   "label": "Warm Tooltip",
+   "catalogCategory": "Micro Interaction",
+   "origin": "react-bits-origin",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "micro-c",
+   "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
+   "newId": "warm-tooltip",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:kage-landing-page",
+   "label": "Kage",
+   "catalogCategory": "Landing Pages",
+   "origin": "third-party-tu",
+   "kind": "full-page-hero",
+   "strategy": "independent",
+   "package": "heroes",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "hero-night-temple",
+   "destination": "template",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:complete-shelf-landing-page",
+   "label": "Complete Shelf",
+   "catalogCategory": "Hero",
+   "origin": "third-party-tu",
+   "kind": "full-page-hero",
+   "strategy": "independent",
+   "package": "heroes",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "hero-bookshelf",
+   "destination": "template",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:bestsellers-book-showcase",
+   "label": "Bestsellers Book Showcase",
+   "catalogCategory": "Hero",
+   "origin": "third-party-tu",
+   "kind": "full-page-hero",
+   "strategy": "independent",
+   "package": "heroes",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "hero-book-showcase",
+   "destination": "template",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:sylva-hero",
+   "label": "Sylva",
+   "catalogCategory": "Hero",
+   "origin": "third-party-tu",
+   "kind": "full-page-hero",
+   "strategy": "independent",
+   "package": "heroes",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "hero-living-green",
+   "destination": "template",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:meng-to-sketchbook-landing-page",
+   "label": "Sketchbook",
+   "catalogCategory": "Landing Pages",
+   "origin": "third-party-tu",
+   "kind": "full-page-hero",
+   "strategy": "independent",
+   "package": "heroes",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "hero-paper-sketchbook",
+   "destination": "template",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:predictive-arc",
+   "label": "Predictive Arc",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "predictive-arc",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:liquid-form",
+   "label": "Liquid Form",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "liquid-form",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:crt",
+   "label": "CRT",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "crt-screen",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:energy-orb",
+   "label": "Globe",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "network-globe",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:spark-badge",
+   "label": "Spark Badge",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "spark-badge",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:elements",
+   "label": "Elements",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "elemental-fields",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:typography-vortex",
+   "label": "Typography Vortex",
+   "catalogCategory": "Text Animation",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "typography-vortex",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:semantic-bloom",
+   "label": "Semantic Bloom",
+   "catalogCategory": "Text Animation",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "semantic-bloom",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:globe-study",
+   "label": "Text Path Studies",
+   "catalogCategory": "Text Animation",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "text-path-studies",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:gallery-heading",
+   "label": "Gallery Heading",
+   "catalogCategory": "Text Animation",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "gallery-heading",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:star-portal",
+   "label": "Shader Buttons",
+   "catalogCategory": "Buttons",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "shader-buttons",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:rectangle-buttons",
+   "label": "Rectangle Buttons",
+   "catalogCategory": "Buttons",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "rectangle-buttons",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:circle-buttons",
+   "label": "Circle Buttons",
+   "catalogCategory": "Buttons",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "circle-buttons",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:liquid-metal-button",
+   "label": "Liquid Metal Button",
+   "catalogCategory": "Buttons",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "liquid-metal-button",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:character-carousel",
+   "label": "Character Carousel",
+   "catalogCategory": "UI Elements",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "character-carousel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:gallery",
+   "label": "Gallery",
+   "catalogCategory": "UI Elements",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "image-ribbon",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:sylva-living-world",
+   "label": "Sylva Living World",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "moss-forest-world",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:temple-night",
+   "label": "Temple Night",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "night-temple-scene",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:landscape",
+   "label": "Landscape",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "landscape",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:japanese-tower",
+   "label": "Country Towers",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "landscape-towers",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:bookshelf",
+   "label": "Bookshelf",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "bookshelf-3d",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:structure-flow",
+   "label": "Structure Flow",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "structure-flow",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:warp-field",
+   "label": "Warp Field",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "warp-field",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:engraved-certificate",
+   "label": "Engraved Certificate",
+   "catalogCategory": "UI Elements",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "engraved-certificate",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:woven-cloth",
+   "label": "Woven Cloth",
+   "catalogCategory": "Three.js",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-three",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "woven-cloth",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:performance-gauges",
+   "label": "Performance Gauges",
+   "catalogCategory": "CSS",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-css",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "performance-gauges",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:uplink-loader",
+   "label": "Uplink Loader",
+   "catalogCategory": "CSS",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-css",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "uplink-loader",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:koi-studies",
+   "label": "Koi Studies",
+   "catalogCategory": "CSS",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-css",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "koi-studies",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:article-headings",
+   "label": "Article Headings",
+   "catalogCategory": "Text Animation",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "text-c",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "article-headings",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:animated-top-dock",
+   "label": "Animated Top Dock",
+   "catalogCategory": "CSS",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "menus",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "animated-top-dock",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:sketchbook",
+   "label": "Sketchbook",
+   "catalogCategory": "CSS",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-css",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "page-curl-book",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:constellation-field",
+   "label": "Constellation Field",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "constellation-field",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:portal-field",
+   "label": "Portal Field",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "portal-field",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:diagnostics-panel",
+   "label": "Diagnostics Panel",
+   "catalogCategory": "UI Elements",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "diagnostics-panel",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:skeuomorphic-toggle",
+   "label": "Skeuomorphic Toggle",
+   "catalogCategory": "UI Elements",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "skeuomorphic-toggle",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:matrix-field",
+   "label": "Laser",
+   "catalogCategory": "Backgrounds",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-bg",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "laser-field",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:wireframe-forms",
+   "label": "Wireframe Forms",
+   "catalogCategory": "UI Elements",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "wireframe-forms",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  },
+  {
+   "catalogId": "tu:brand-orbs",
+   "label": "Brand Orbs",
+   "catalogCategory": "UI Elements",
+   "origin": "third-party-tu",
+   "kind": "component",
+   "strategy": "independent",
+   "package": "tu-ui",
+   "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
+   "newId": "status-orbs",
+   "destination": "component",
+   "status": "planned",
+   "registryId": null,
+   "demo": "none",
+   "test": "none",
+   "outstanding": [
+    "not implemented yet"
+   ]
+  }
+ ],
+ "tactileGlass": [
+  {
+   "id": "glass-background",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-button",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-card",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-fx",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-word",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-heading",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-prompt-input",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-switch",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-tabs",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  },
+  {
+   "id": "glass-audio-player",
+   "registered": true,
+   "missing": [],
+   "demo": true
+  }
+ ]
+}
