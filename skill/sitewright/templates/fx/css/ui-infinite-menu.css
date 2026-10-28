@@ -18,4 +18,3 @@
 .ui-infinite-menu-step .flip { transform: scaleX(-1); }
 .ui-infinite-menu-open { padding: 0 14px; color: #fff; background: var(--primary, #2563eb); }
 .ui-infinite-menu-step:focus-visible, .ui-infinite-menu-open:focus-visible { outline: 2px solid var(--ink, #18181b); outline-offset: 2px; }
-@container (max-width: 1px) { .x { display: none; } }
