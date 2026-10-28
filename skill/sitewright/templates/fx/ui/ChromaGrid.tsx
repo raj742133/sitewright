@@ -35,6 +35,8 @@ const DEFAULTS: ChromaGridItem[] = [
   { id: 'tao', title: 'Tao Nguyen', subtitle: 'Motion', meta: '@tao' },
   { id: 'rhea', title: 'Rhea Patel', subtitle: 'Product', meta: '@rhea' },
   { id: 'sven', title: 'Sven Holm', subtitle: 'Platform', meta: '@sven' },
+  { id: 'mia', title: 'Mia Larsen', subtitle: 'Content', meta: '@mia' },
+  { id: 'omar', title: 'Omar Haddad', subtitle: 'Data', meta: '@omar' },
 ];
 
 /** A grid of cards, each with its own tint. While the pointer (or keyboard focus) is inside the grid everything outside a soft spotlight fades to grey, so colour follows attention. Cards are links or buttons. */
@@ -81,5 +83,5 @@ export default function ChromaGrid({ items = DEFAULTS, minWidth = 150, spotlight
 }
 
 export function Demo() {
-  return <div className="ui-chroma-grid-demo"><ChromaGrid items={DEFAULTS} /></div>;
+  return <div className="ui-chroma-grid-demo"><div className="ui-chroma-grid-wrap"><ChromaGrid items={DEFAULTS} /></div></div>;
 }

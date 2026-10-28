@@ -1,6 +1,6 @@
 .ui-drift-wall-root { --mx: 0; --my: 0; position: relative; width: 100%; min-height: 180px; min-width: 0; overflow: hidden; color: var(--ink, #18181b); font-family: var(--font-body, system-ui, sans-serif); background: radial-gradient(90% 80% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 14%, var(--surface, #fafafa)), var(--surface, #fafafa)); perspective: 1100px; }
-.ui-drift-wall-stage { position: absolute; inset: -30% -12%; display: grid; place-items: center; }
-.ui-drift-wall-wall { display: flex; gap: 14px; width: 100%; height: 100%; justify-content: center; transform-style: preserve-3d; }
+.ui-drift-wall-stage { position: absolute; inset: -30% -12%; }
+.ui-drift-wall-wall { position: absolute; inset: 0; display: flex; gap: 14px; justify-content: center; }
 .ui-drift-wall-root[data-tilt] .ui-drift-wall-wall { transform: rotateX(calc(18deg + var(--my) * -4deg)) rotateZ(calc(-12deg + var(--mx) * 3deg)) translateX(calc(var(--mx) * -14px)); transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
 .ui-drift-wall-col { flex: 1 1 0; max-width: 220px; min-width: 0; overflow: hidden; }
 .ui-drift-wall-lane { display: flex; flex-direction: column; gap: 14px; padding-bottom: 14px; margin-top: calc(var(--off) * -1); animation: ui-drift-wall-run var(--dur, 44s) linear infinite var(--dir, normal); animation-play-state: paused; will-change: transform; }

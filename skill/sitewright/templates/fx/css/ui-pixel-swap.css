@@ -9,7 +9,7 @@
 .ui-pixel-swap-controls button:hover { background: rgba(255, 255, 255, 0.18); }
 .ui-pixel-swap-controls button:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
 .ui-pixel-swap-controls svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.ui-pixel-swap-count { min-width: 38px; text-align: center; font: 600 11px/1 var(--font-mono, monospace); }
+.ui-pixel-swap-count { min-width: 38px; text-align: center; font: 600 12px/1 var(--font-mono, monospace); }
 @media (pointer: coarse) { .ui-pixel-swap-controls button { width: 44px; height: 44px; } }
 
 /* demo */

@@ -53,7 +53,7 @@ void main(){
   float fres=pow(1.-fn.z,2.2);
   float id=h3(bid).x;
   vec3 tint=mix(uA,uB,id);
-  vec3 deep=mix(uInk,uA,.45);
+  vec3 deep=uA*.5+uInk*.05;
   vec3 col=mix(deep,tint*1.12,.38+.62*pow(diff,.8));
   col+=mix(uSurf,uB,.5)*fres*.32;
   col+=vec3(1.)*spec*.85;

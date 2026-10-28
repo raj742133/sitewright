@@ -6,7 +6,7 @@ import { glyphAt, project, put, resetTransform, type PathState } from './_text-c
 export function drawBall(f: Frame, s: PathState, chars: string[]) {
   const { ctx, w, h, pal } = f;
   const R = Math.min(w, h) * 0.26 * s.zoom, b = s.ball;
-  const floor = h - R - 10, g = 1500;
+  const floor = h - R - 56, g = 1500;
   if (!b.init) { b.init = true; b.x = w / 2; b.y = f.still ? floor : h * 0.35; b.vx = 100; b.vy = 0; }
   if (!f.still && !s.dragging && f.dt > 0) {
     b.vy += g * f.dt; b.x += b.vx * f.dt; b.y += b.vy * f.dt;
@@ -17,7 +17,7 @@ export function drawBall(f: Frame, s: PathState, chars: string[]) {
   }
   s.yaw = b.spin + 0.6;
   const air = clamp((floor - b.y) / Math.max(1, h * 0.6), 0, 1);
-  ctx.fillStyle = rgba(pal.ink, 0.16 * (1 - air * 0.7)); ctx.beginPath(); ctx.ellipse(b.x, floor + R + 6, R * (0.95 - air * 0.35), R * 0.12, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = rgba(pal.ink, 0.16 * (1 - air * 0.7)); ctx.beginPath(); ctx.ellipse(b.x, floor + R + 4, R * (0.95 - air * 0.35), R * 0.12, 0, 0, Math.PI * 2); ctx.fill();
   const sq = b.squash, sx = 1 + sq, sy = 1 - sq;
   const cx = b.x, cy = b.y + (1 - sy) * R;
   const gr = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R * 1.05);

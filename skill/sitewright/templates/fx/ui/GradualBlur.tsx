@@ -89,7 +89,7 @@ export function Demo() {
             {[...ART_VARIANTS].reverse().map((v) => <Art key={v} variant={v} className="ui-gradual-blur-art" />)}
           </div>
         </div>
-        <GradualBlur edges={edges} strength={strength} size={88} />
+        <GradualBlur edges={edges} strength={strength} size={set === "right" ? "20%" : "34%"} />
       </div>
     </div>
   );

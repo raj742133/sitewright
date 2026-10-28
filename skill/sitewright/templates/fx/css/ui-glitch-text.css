@@ -3,7 +3,7 @@
 .ui-glitch-text-layer { pointer-events: none; opacity: 0.85; }
 .ui-glitch-text-a { color: var(--primary, #2563eb); transform: translate(calc(var(--gt-split) * -1), 0); z-index: -1; }
 .ui-glitch-text-b { color: var(--signal, #f59e0b); transform: translate(var(--gt-split), 0); z-index: -1; }
-.ui-glitch-text-scan { pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 2px, color-mix(in srgb, var(--surface, #fafafa) 55%, transparent) 2px 3px); mix-blend-mode: normal; opacity: 0.35; }
+.ui-glitch-text-scan { pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 2px, color-mix(in srgb, var(--surface, #fafafa) 55%, transparent) 2px 3px); mix-blend-mode: normal; opacity: 0.2; }
 .ui-glitch-text-root[data-mode='loop'] .ui-glitch-text-a { animation: ui-glitch-text-slice-a var(--gt-dur) steps(1, end) infinite; }
 .ui-glitch-text-root[data-mode='loop'] .ui-glitch-text-b { animation: ui-glitch-text-slice-b var(--gt-dur) steps(1, end) infinite; }
 .ui-glitch-text-root[data-mode='loop'] .ui-glitch-text-main { animation: ui-glitch-text-jolt var(--gt-dur) steps(1, end) infinite; }

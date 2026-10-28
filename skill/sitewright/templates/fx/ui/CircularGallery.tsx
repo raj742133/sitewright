@@ -56,6 +56,8 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
     if (best !== s.front) { s.front = best; setFront(best); cb.current?.(best); }
   }, [n, step, R]);
 
+  const tickRef = useRef<(t: number) => void>(() => {});
+  const loop = useCallback((t: number) => tickRef.current(t), []);
   const tick = useCallback((t: number) => {
     const s = st.current;
     s.raf = 0;
@@ -71,11 +73,12 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
       if (Math.abs(s.vel) <= 12) { s.vel = 0; s.target = Math.round(s.rot / step) * step; }
     } else if (s.spin) { s.rot += autoRotate * dt; more = true; }
     paint();
-    if (more || s.spin) s.raf = requestAnimationFrame(tick);
+    if (more || s.spin) s.raf = requestAnimationFrame(loop);
     else s.last = 0;
   }, [autoRotate, paint, step]);
 
-  const kick = useCallback(() => { const s = st.current; if (!s.raf && live) { s.last = 0; s.raf = requestAnimationFrame(tick); } }, [tick, live]);
+  useEffect(() => { tickRef.current = tick; });
+  const kick = useCallback(() => { const s = st.current; if (!s.raf && live) { s.last = 0; s.raf = requestAnimationFrame(loop); } }, [loop, live]);
 
   useIsoLayoutEffect(() => { paint(); }, [paint]);
   useEffect(() => { st.current.spin = spinning; if (spinning || st.current.target !== null) kick(); }, [spinning, kick]);

@@ -5,8 +5,8 @@
 .ui-variable-proximity-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .ui-variable-proximity-line { position: relative; display: block; }
 .ui-variable-proximity-halo { position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none; border-radius: 50%; opacity: 0; background: radial-gradient(closest-side, color-mix(in srgb, var(--primary) 20%, transparent), transparent); }
-.ui-variable-proximity-word { position: relative; display: inline-block; white-space: nowrap; }
-.ui-variable-proximity-char { --p: 0; position: relative; display: inline-grid; justify-items: center; }
+.ui-variable-proximity-word { display: inline-block; white-space: nowrap; }
+.ui-variable-proximity-char { --p: 0; display: inline-grid; justify-items: center; }
 .ui-variable-proximity-char > span { grid-area: 1 / 1; }
 .ui-variable-proximity-size { visibility: hidden; font: italic 800 1em/1.15 Georgia, 'Times New Roman', serif; padding: 0 0.02em; }
 .ui-variable-proximity-a { font: 300 1em/1.15 var(--font-body, system-ui); letter-spacing: -0.02em; color: var(--ink); opacity: calc(1 - var(--p)); transform: scale(calc(1 - var(--p) * 0.15)); }

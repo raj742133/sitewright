@@ -56,7 +56,7 @@ function StickerArt() {
   );
 }
 
-/** A sticker with a lifting corner: hover near the corner to curl it, drag it to peel back further, press Enter or tap to flip it open. A real fold line, backing paper and shading are computed from geometry. Arrow keys adjust the peel. */
+/** A sticker with a lifting corner: hover near the corner to curl it, drag it to peel back further (release past halfway and it stays peeled; drag back, tap or press Enter to stick it down). A real fold line, backing paper and shading are computed from geometry. Arrow keys adjust the peel. */
 export default function StickerPeel({
   children, corner = 'br', width = 168, height = 168, rotate = -5, radius = 22, peel, defaultPeel = 0, onPeelChange, hoverPeel = 0.3,
   backing = '#ebe6d8', label = 'Sticker', className, style,
@@ -70,7 +70,7 @@ export default function StickerPeel({
   const value = peel ?? inner;
   const maxD = Math.min(width, height) * 0.92;
   const C: V = [corner[1] === 'r' ? width : 0, corner[0] === 'b' ? height : 0];
-  const st = useRef({ d: REST, dx: 0, dy: 0, td: REST, tdx: 0, tdy: 0, raf: 0, drag: false, hover: 0 });
+  const st = useRef({ d: REST, dx: 0, dy: 0, td: REST, tdx: 0, tdy: 0, raf: 0, drag: false, hover: 0, sx: 0, sy: 0 });
   const cfg = useRef({ width, height, C, maxD, reduced, rotate, value });
   const draw = useRef<() => void>(() => {});
   const run = useRef<() => void>(() => {});
@@ -158,7 +158,7 @@ export default function StickerPeel({
   const onDown = (e: PointerEvent) => {
     const s = st.current, p = local(e);
     if (Math.hypot(p[0] - C[0], p[1] - C[1]) > Math.min(width, height) * 0.6) return;
-    s.drag = true;
+    s.drag = true; s.sx = e.clientX; s.sy = e.clientY;
     e.currentTarget.setPointerCapture(e.pointerId);
     onMove(e);
   };
@@ -167,7 +167,8 @@ export default function StickerPeel({
     if (!s.drag) return;
     s.drag = false;
     try { e.currentTarget.releasePointerCapture(e.pointerId); } catch { /* already released */ }
-    const next = s.td > maxD * 0.55 ? s.td / maxD : value;
+    const tap = Math.hypot(e.clientX - s.sx, e.clientY - s.sy) < 6;
+    const next = tap ? (value > 0.3 ? 0 : 0.7) : s.td > maxD * 0.55 ? s.td / maxD : value;
     const c = toCentre(); s.tdx = c[0]; s.tdy = c[1];
     setValue(next > 0.55 ? next : 0);
     s.td = Math.max(REST, (next > 0.55 ? next : 0) * maxD, s.hover * maxD * hoverPeel * 2);
@@ -205,7 +206,7 @@ export default function StickerPeel({
 export function Demo() {
   return (
     <div className="ui-sticker-peel-demo">
-      <div className="ui-sticker-peel-lid" aria-hidden="true"><span /></div>
+      <div className="ui-sticker-peel-lid" aria-hidden="true" />
       <StickerPeel width={148} height={148} corner="br" />
     </div>
   );

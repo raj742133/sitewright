@@ -57,7 +57,7 @@ export default function CircularText({ text = 'Build the web your way', duration
     parts.push(<tspan key={'d' + i} className="ui-circular-text-dot" dx="0.5em" dy="0">{'●'}</tspan>);
   }
   const circ = 2 * Math.PI * R;
-  const dim = size ?? '100%';
+  const dim = size ?? 'min(100cqw, 100cqh)';
   return (
     <div ref={root} className={`ui-circular-text-root ${className ?? ''}`} style={style}
       onPointerEnter={() => setOver(true)} onPointerLeave={() => setOver(false)}
@@ -82,7 +82,7 @@ export default function CircularText({ text = 'Build the web your way', duration
 export function Demo() {
   return (
     <div className="ui-circular-text-stage">
-      <CircularText text="Design in motion" duration={24} hover="slow-down" size="min(100%, 280px)" />
+      <CircularText text="Design in motion" duration={24} hover="slow-down" size="min(100cqw, 100cqh, 280px)" />
     </div>
   );
 }

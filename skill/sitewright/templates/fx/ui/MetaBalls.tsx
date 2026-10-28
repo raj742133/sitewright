@@ -23,7 +23,7 @@ export default function MetaBalls({ count = 7, size = 0.14, interactive = true, 
   const cur = useRef({ x: 0.5, y: 0.5, a: 0 });
   const { wrapRef, canvasRef } = useCanvas2D((f: Frame) => {
     const { ctx, w, h, t, pal, ptr, dt } = f;
-    const cell = Math.max(3, Math.sqrt((w * h) / 52000));
+    const cell = Math.max(3, Math.sqrt((w * h) / 90000));
     const cw = Math.max(8, Math.round(w / cell)), ch = Math.max(8, Math.round(h / cell));
     let b = buf.current;
     if (!b || b.cw !== cw || b.ch !== ch) {
@@ -59,11 +59,11 @@ export default function MetaBalls({ count = 7, size = 0.14, interactive = true, 
         let s = 0;
         for (let k = 0; k < N; k++) { const dx = x - bx[k]!, dy = y - by[k]!; s += (br[k]! * br[k]!) / (dx * dx + dy * dy + 1); }
         const o = (j * cw + i) * 4;
-        const a = clamp01((s - 0.97) / 0.07);
+        const a = clamp01((s - 0.98) / 0.035);
         if (a <= 0) { d[o + 3] = 0; continue; }
         const rim = 1 - clamp01((s - 1) / 0.35);          // 1 at the edge, 0 inside
         const tone = clamp01(0.1 + 0.8 * (x / w) * 0.6 + 0.4 * (y / h) - 0.1);
-        const base = mix(A, B, tone);
+        const base = mix(A, B, tone * 0.5);
         const lit = mix(base, [255, 255, 255], 0.5 * rim * rim + 0.08);
         const deep = 1;
         d[o] = lit[0] * deep; d[o + 1] = lit[1] * deep; d[o + 2] = lit[2] * deep; d[o + 3] = a * 255;

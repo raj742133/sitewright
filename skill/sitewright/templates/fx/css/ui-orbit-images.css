@@ -24,4 +24,4 @@ button.ui-orbit-images-pic:focus-visible { outline: 3px solid var(--primary, #25
   color: var(--ink, #0f172a); font-family: var(--font-body, system-ui); box-shadow: 0 6px 18px rgba(11, 16, 32, 0.14);
 }
 .ui-orbit-images-badge strong { font-size: 14px; line-height: 1.2; }
-.ui-orbit-images-badge span { font: 500 10px/1.2 var(--font-mono, monospace); color: var(--muted, #475569); }
+.ui-orbit-images-badge span { font: 500 12px/1.2 var(--font-mono, monospace); color: var(--muted, #475569); }

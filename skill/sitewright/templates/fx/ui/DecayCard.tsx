@@ -24,6 +24,7 @@ export default function DecayCard({ title = 'Field notes', text = 'Some things a
   const uid = useId().replace(/[^a-zA-Z0-9]/g, '');
   const root = useRef<HTMLDivElement>(null);
   const disp = useRef<SVGFEDisplacementMapElement>(null);
+  const art = useRef<HTMLDivElement>(null);
   const cut = useRef<SVGFEFuncAElement>(null);
   const turb = useRef<SVGFETurbulenceElement>(null);
   const reduced = useReducedMotion();
@@ -35,6 +36,7 @@ export default function DecayCard({ title = 'Field notes', text = 'Some things a
     // a: 0..100 erosion, px: 0..100 pointer x (shifts the noise so holes drift)
     const k = a / 100;
     disp.current?.setAttribute('scale', (k * 46).toFixed(1));
+    if (art.current) art.current.style.filter = k < 0.004 ? 'none' : `url(#dc${uid})`;
     const slope = 14;
     cut.current?.setAttribute('intercept', (-slope * (-0.1 + 0.72 * k)).toFixed(2));
     turb.current?.setAttribute('baseFrequency', (0.018 + px / 100 * 0.012).toFixed(4) + ' ' + (0.026 + px / 100 * 0.01).toFixed(4));
@@ -56,11 +58,11 @@ export default function DecayCard({ title = 'Field notes', text = 'Some things a
           <feTurbulence ref={turb} type="fractalNoise" baseFrequency="0.02 0.028" numOctaves="3" seed="7" result="n" />
           <feDisplacementMap ref={disp} in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" result="d" />
           <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 1 0 0" result="m" />
-          <feComponentTransfer in="m" result="mask"><feFuncA ref={cut} type="linear" slope="14" intercept="-0.5" /></feComponentTransfer>
+          <feComponentTransfer in="m" result="mask"><feFuncA ref={cut} type="linear" slope="14" intercept="1.4" /></feComponentTransfer>
           <feComposite in="d" in2="mask" operator="in" />
         </filter>
       </svg>
-      <div className="ui-decay-card-art" style={{ filter: `url(#dc${uid})` }}>{children ?? <Scene index={0} />}</div>
+      <div ref={art} className="ui-decay-card-art">{children ?? <Scene index={0} />}</div>
       <div className="ui-decay-card-copy">
         <strong>{title}</strong>
         <p>{text}</p>

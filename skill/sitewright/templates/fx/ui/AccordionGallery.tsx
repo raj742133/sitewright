@@ -44,6 +44,7 @@ export default function AccordionGallery({ items = DEFAULTS, active, defaultActi
   const [cur, setCur] = useControlled<string>(active, defaultActive ?? items[0]?.id ?? '', onChange);
   const uid = useId();
   const btns = useRef<(HTMLButtonElement | null)[]>([]);
+  const last = useRef({ x: -99, y: -99 });
   const idx = Math.max(0, items.findIndex((i) => i.id === cur));
 
   const onKey = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {
@@ -66,7 +67,7 @@ export default function AccordionGallery({ items = DEFAULTS, active, defaultActi
         {items.map((it, i) => {
           const open = i === idx;
           return (
-            <div key={it.id} className="ui-accordion-gallery-panel" data-open={open ? 'true' : 'false'} onPointerEnter={(e) => { if (openOnHover && e.pointerType === 'mouse' && !open) setCur(it.id); }}>
+            <div key={it.id} className="ui-accordion-gallery-panel" data-open={open ? 'true' : 'false'} onPointerMove={(e) => { const m = Math.hypot(e.clientX - last.current.x, e.clientY - last.current.y) > 2; last.current = { x: e.clientX, y: e.clientY }; if (m && openOnHover && e.pointerType === 'mouse' && !open) setCur(it.id); }}>
               <div className="ui-accordion-gallery-art" aria-hidden={it.art ? undefined : true}>{it.art ?? <Scene index={i} />}</div>
               <div className="ui-accordion-gallery-shade" aria-hidden="true" />
               <button type="button" ref={(el) => { btns.current[i] = el; }} className="ui-accordion-gallery-trigger" aria-expanded={open} aria-controls={`${uid}-${i}`}

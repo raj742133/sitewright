@@ -92,7 +92,7 @@ export function Demo() {
   return (
     <div className="ui-split-flap-text-demo">
       <span className="ui-split-flap-text-label" aria-hidden="true">Next flight</span>
-      <SplitFlapText words={['LISBON', 'OSLO', 'KYOTO', 'LIMA']} size={40} />
+      <SplitFlapText words={['LISBON', 'OSLO', 'KYOTO', 'LIMA']} size={52} />
       <span className="ui-split-flap-text-gate" aria-hidden="true"><i /> Gate 12 - on time</span>
     </div>
   );

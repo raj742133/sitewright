@@ -1,6 +1,7 @@
-.ui-text-loop-root { position: relative; display: inline-block; font-family: var(--font-body, system-ui); color: var(--ink, #111); }
+.ui-text-loop-root { position: relative; display: inline-flex; align-items: center; font-family: var(--font-body, system-ui); color: var(--ink, #111); }
 .ui-text-loop-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.ui-text-loop-line { display: inline-flex; align-items: baseline; flex-wrap: nowrap; white-space: pre; }
+.ui-text-loop-fixed { line-height: 1.3em; }
+.ui-text-loop-line { display: inline-flex; align-items: flex-start; flex-wrap: nowrap; white-space: pre; }
 .ui-text-loop-slot { position: relative; display: inline-block; height: 1.3em; line-height: 1.3em; vertical-align: bottom; overflow: hidden; transition: width 0.5s cubic-bezier(0.3, 0.8, 0.2, 1); color: var(--primary, #2563eb); font-weight: 800; padding-inline: 0.05em; box-sizing: content-box; margin-inline: -0.05em; }
 .ui-text-loop-word { display: block; white-space: nowrap; position: absolute; left: 0.05em; top: 0; }
 .ui-text-loop-flow { position: static; }
@@ -25,7 +26,7 @@
 .ui-text-loop-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
 @media (pointer: coarse) { .ui-text-loop-btn { width: 44px; height: 44px; } }
 
-.ui-text-loop-demo { height: 100%; min-height: 200px; display: grid; place-content: center; justify-items: center; gap: 12px; padding: 16px; background: radial-gradient(60% 70% at 50% 120%, color-mix(in srgb, var(--primary, #2563eb) 14%, transparent), transparent), var(--surface, #fafafa); overflow: hidden; }
-.ui-text-loop-head { margin: 0; font: 800 clamp(26px, 6.2vw, 52px)/1.15 var(--font-body, system-ui); letter-spacing: -0.02em; color: var(--ink, #111); text-align: center; }
+.ui-text-loop-demo { container-type: inline-size; height: 100%; min-height: 200px; display: grid; place-content: center; justify-items: center; gap: 12px; padding: 16px; background: radial-gradient(60% 70% at 50% 120%, color-mix(in srgb, var(--primary, #2563eb) 14%, transparent), transparent), var(--surface, #fafafa); overflow: hidden; }
+.ui-text-loop-head { margin: 0; font: 800 clamp(24px, 9cqw, 52px)/1.15 var(--font-body, system-ui); letter-spacing: -0.02em; color: var(--ink, #111); text-align: center; }
 .ui-text-loop-note { font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted, #6b7280); }
 @media (prefers-reduced-motion: reduce) { .ui-text-loop-in, .ui-text-loop-out { animation: none; } .ui-text-loop-slot { transition: none; } }

@@ -20,7 +20,7 @@ export interface BorderGlowProps {
 }
 
 /** A surface with a glowing border. The glow follows the pointer along the edge (and leaks a soft halo); when nothing points at it a slow light circles the border. Keyboard focus lights the whole edge. */
-export default function BorderGlow({ children, as, spread = 220, thickness = 1.5, radius, halo = 0.5, className, style, ...rest }: BorderGlowProps) {
+export default function BorderGlow({ children, as, spread = 260, thickness = 1.5, radius, halo = 0.5, className, style, ...rest }: BorderGlowProps) {
   const Tag = (as ?? 'div') as ElementType;
   const ref = useRef<HTMLElement>(null);
   const onMove = (e: PointerEvent<HTMLElement>) => { if (ref.current) setPointerVars(ref.current, e.clientX, e.clientY); };

@@ -10,6 +10,6 @@
 @keyframes ui-stroke-text-draw { from { stroke-dashoffset: 700; } to { stroke-dashoffset: 0; } }
 @keyframes ui-stroke-text-fill { from { fill-opacity: 0; } to { fill-opacity: 1; } }
 
-.ui-stroke-text-demo { height: 100%; min-height: 200px; display: grid; place-content: center; gap: 8px; padding: 16px 20px; background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent), var(--surface, #fafafa); overflow: hidden; }
+.ui-stroke-text-demo { grid-template-columns: minmax(0, 560px); justify-content: center; height: 100%; min-height: 200px; display: grid; place-content: center; gap: 8px; padding: 16px 20px; background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent), var(--surface, #fafafa); overflow: hidden; }
 .ui-stroke-text-note { text-align: center; font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted, #6b7280); }
 @media (prefers-reduced-motion: reduce) { .ui-stroke-text-t { animation: none !important; stroke-dashoffset: 0 !important; } }

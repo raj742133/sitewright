@@ -50,12 +50,14 @@ export default function DomeGallery({ items = DEMO_ITEMS, rows = 4, drift = 4, l
   }, [rows, dLat, R, tw, n]);
   const maxPitch = (rows - 1) * dLat + 6;
 
-  const st = useRef({ yaw: 0, pitch: dLat * 0.7, vy: 0, vp: 0, ty: null as number | null, tp: null as number | null, dragging: false, raf: 0, last: 0, spin: false });
+  const st = useRef({ yaw: 0, pitch: dLat * 1.05, vy: 0, vp: 0, ty: null as number | null, tp: null as number | null, dragging: false, raf: 0, last: 0, spin: false });
   const paint = useCallback(() => {
     const s = st.current;
     if (world.current) world.current.style.transform = `translateZ(${R}px) rotateX(${s.pitch.toFixed(2)}deg) rotateY(${s.yaw.toFixed(2)}deg)`;
   }, [R]);
 
+  const tickRef = useRef<(t: number) => void>(() => {});
+  const loop = useCallback((t: number) => tickRef.current(t), []);
   const tick = useCallback((t: number) => {
     const s = st.current;
     s.raf = 0;
@@ -72,10 +74,11 @@ export default function DomeGallery({ items = DEMO_ITEMS, rows = 4, drift = 4, l
       const f = Math.pow(0.06, dt); s.vy *= f; s.vp *= f; more = true;
     } else if (s.spin) { s.yaw -= drift * dt; more = true; }
     paint();
-    if (more || s.spin) s.raf = requestAnimationFrame(tick);
+    if (more || s.spin) s.raf = requestAnimationFrame(loop);
     else s.last = 0;
   }, [drift, maxPitch, paint]);
-  const kick = useCallback(() => { const s = st.current; if (!s.raf && live) { s.last = 0; s.raf = requestAnimationFrame(tick); } }, [tick, live]);
+  useEffect(() => { tickRef.current = tick; });
+  const kick = useCallback(() => { const s = st.current; if (!s.raf && live) { s.last = 0; s.raf = requestAnimationFrame(loop); } }, [loop, live]);
 
   useIsoLayoutEffect(() => { paint(); }, [paint]);
   useEffect(() => { st.current.spin = spinning; if (spinning) kick(); }, [spinning, kick]);

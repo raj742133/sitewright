@@ -1,5 +1,5 @@
 'use client';
-import { useRef, type CSSProperties, type ElementType } from 'react';
+import { Fragment, useRef, type CSSProperties, type ElementType } from 'react';
 import { useProbeLoop, useReducedMotion } from './_text-c';
 
 export interface WarpTextProps {
@@ -49,10 +49,11 @@ export default function WarpText({ text = 'Bend the line', lens = 1, wave = 0.08
       <span className="ui-warp-text-sr">{text}</span>
       <span ref={ref} className="ui-warp-text-line" aria-hidden="true">
         {words.map((w, wi) => (
-          <span key={wi} className="ui-warp-text-word">
+          <Fragment key={wi}><span className="ui-warp-text-word">
             {Array.from(w).map((ch, ci) => <span key={ci} data-c="" className="ui-warp-text-char">{ch}</span>)}
-            {wi < words.length - 1 ? ' ' : null}
           </span>
+            {wi < words.length - 1 ? ' ' : null}
+          </Fragment>
         ))}
       </span>
     </Tag>

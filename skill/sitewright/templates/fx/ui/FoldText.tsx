@@ -50,8 +50,7 @@ export default function FoldText({ text = 'Fold', panels = 8, angle = 64, auto =
       const el = kids[i] as HTMLElement;
       const even = i % 2 === 0;
       el.style.transform = `translate3d(${(i * pw * c).toFixed(2)}px,0,${even ? 0 : (-pw * s).toFixed(2)}px) rotateY(${((even ? 1 : -1) * th0 * 180) / Math.PI}deg)`;
-      const shade = el.lastElementChild as HTMLElement | null;
-      if (shade) shade.style.opacity = String((even ? 0.0 : 0.42) * Math.min(1, a * 1.4) + (even ? 0.12 * a : 0));
+      el.style.setProperty('--sh', (even ? 0 : a).toFixed(3));
     }
   };
 
@@ -78,7 +77,6 @@ export default function FoldText({ text = 'Fold', panels = 8, angle = 64, auto =
             {Array.from({ length: n }, (_, i) => (
               <span key={i} className="ui-fold-text-panel" style={{ width: pw + 0.75, height: th }}>
                 <span className="ui-fold-text-ink" style={{ left: -i * pw }}>{text}</span>
-                <span className="ui-fold-text-shade" data-odd={i % 2 || undefined} />
               </span>
             ))}
           </span>

@@ -12,7 +12,7 @@ export interface OrbitImagesProps {
   tilt?: number;
   /** Degrees per second; negative turns the other way. */
   speed?: number;
-  /** Size of each picture in px. */
+  /** Size of each picture in px. Default scales with the container. */
   itemSize?: number;
   /** How much smaller and dimmer pictures get at the back (0 to 1). */
   depth?: number;
@@ -31,7 +31,7 @@ export interface OrbitImagesProps {
 const DEFAULTS: Source[] = ART_VARIANTS.map((variant) => ({ variant }));
 
 /** Pictures travelling around an elliptical orbit with depth: farther ones shrink and dim, nearer ones overlap. Space pauses, arrow keys step the ring, hover pauses. Static under reduced motion. */
-export default function OrbitImages({ images = DEFAULTS, radius, tilt = 0.42, speed = 18, itemSize = 76, depth = 0.45, ring = true, pauseOnHover = true, onSelect, children, className, style }: OrbitImagesProps) {
+export default function OrbitImages({ images = DEFAULTS, radius, tilt = 0.42, speed = 18, itemSize: itemSizeProp, depth = 0.45, ring = true, pauseOnHover = true, onSelect, children, className, style }: OrbitImagesProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
   const reduced = useReducedMotion();
@@ -40,6 +40,7 @@ export default function OrbitImages({ images = DEFAULTS, radius, tilt = 0.42, sp
   const st = useRef({ angle: -90, goal: 0, hold: false, factor: 1 });
   const ctl = useRef<{ place: () => void; kick: () => void } | null>(null);
   const n = images.length;
+  const itemSize = itemSizeProp ?? Math.round(Math.max(52, Math.min(120, Math.min(box.w, box.h * 1.4) * 0.22)));
   const rx = radius ?? Math.max(24, (box.w - itemSize) / 2 - 6);
   const ry = Math.max(8, Math.min(rx * tilt, (box.h - itemSize) / 2 - 4));
   const cfg = useRef({ rx, ry, depth, speed, paused, n, reduced, pauseOnHover, itemSize });
@@ -116,12 +117,12 @@ export default function OrbitImages({ images = DEFAULTS, radius, tilt = 0.42, sp
           const pic = im.src
             // eslint-disable-next-line @next/next/no-img-element
             ? <img src={im.src} alt={alt} loading="lazy" draggable={false} />
-            : <><Art variant={im.variant ?? 'dunes'} /><span className="ui-orbit-images-sr">{alt}</span></>;
+            : <Art variant={im.variant ?? 'dunes'} />;
           return (
             <li key={i} ref={(el) => { itemRefs.current[i] = el; }} className="ui-orbit-images-item">
               {onSelect
                 ? <button type="button" className="ui-orbit-images-pic" onClick={() => onSelect(i)} aria-label={alt || `Picture ${i + 1}`}>{pic}</button>
-                : <div className="ui-orbit-images-pic">{pic}</div>}
+                : <div className="ui-orbit-images-pic" role="img" aria-label={alt || undefined}>{pic}</div>}
             </li>
           );
         })}
@@ -133,7 +134,7 @@ export default function OrbitImages({ images = DEFAULTS, radius, tilt = 0.42, sp
 export function Demo() {
   return (
     <div className="ui-orbit-images-demo">
-      <OrbitImages itemSize={64}>
+      <OrbitImages>
         <div className="ui-orbit-images-badge"><strong>Journal</strong><span>6 scenes</span></div>
       </OrbitImages>
     </div>

@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useRef, type CSSProperties, type ElementType, type RefObject } from 'react';
+import { Fragment, useMemo, useRef, type CSSProperties, type ElementType, type RefObject } from 'react';
 import { clamp01, easeOutBack, useIsoLayoutEffect, useReducedMotion, watchScrollProgress } from './_text-b';
 
 export interface ScrollFloatProps {
@@ -50,10 +50,10 @@ export default function ScrollFloat({ text = 'Rise with the page', as: Tag = 'h2
       <span className="ui-scroll-float-sr">{text}</span>
       <span aria-hidden="true" className="ui-scroll-float-vis">
         {words.map((w, wi) => (
-          <span key={wi} className="ui-scroll-float-word">
-            {Array.from(w).map((ch) => <span key={k++} className="ui-scroll-float-ch">{ch}</span>)}
-            {wi < words.length - 1 ? ' ' : ''}
-          </span>
+          <Fragment key={wi}>
+            <span className="ui-scroll-float-word">{Array.from(w).map((ch) => <span key={k++} className="ui-scroll-float-ch">{ch}</span>)}</span>
+            {wi < words.length - 1 ? ' ' : null}
+          </Fragment>
         ))}
       </span>
     </Tag>

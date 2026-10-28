@@ -19,10 +19,10 @@
 .ui-article-headings-root[data-variant='neon'] { background: radial-gradient(90% 120% at 50% 100%, color-mix(in srgb, #05070d 80%, var(--primary)), #05070d); --neon: color-mix(in srgb, var(--primary) 55%, #fff); --neon2: color-mix(in srgb, var(--signal) 60%, #fff); }
 .ui-article-headings-root[data-variant='neon'] .ui-article-headings-kicker { color: #aeb6c8; }
 .ui-article-headings-root[data-variant='neon'] .ui-article-headings-btn { background: #121626; color: #e6e9f2; border-color: #3a4260; }
-.ui-article-headings-neon > span { display: inline-block; white-space: pre; color: color-mix(in srgb, var(--neon) 45%, #fff); opacity: 0.18; text-shadow: none; }
+.ui-article-headings-neon > span { display: inline-block; white-space: pre; color: color-mix(in srgb, var(--neon) 30%, #fff); opacity: 0.18; text-shadow: none; }
 .ui-article-headings-neon[data-seen] > span { animation: ui-article-headings-on 0.5s steps(1, end) forwards; animation-delay: calc(var(--i) * 0.11s); }
 .ui-article-headings-neon[data-seen] > span[data-f] { animation: ui-article-headings-on 0.5s steps(1, end) forwards, ui-article-headings-flick 4.6s steps(1, end) infinite; animation-delay: calc(var(--i) * 0.11s), calc(1.2s + var(--i) * 0.4s); }
-@keyframes ui-article-headings-on { 0% { opacity: 0.18; } 20% { opacity: 1; } 35% { opacity: 0.3; } 55%, 100% { opacity: 1; text-shadow: 0 0 4px #fff, 0 0 12px var(--neon), 0 0 28px var(--neon), 0 0 54px var(--primary); } }
+@keyframes ui-article-headings-on { 0% { opacity: 0.18; } 20% { opacity: 1; } 35% { opacity: 0.3; } 55%, 100% { opacity: 1; text-shadow: 0 0 2px #fff, 0 0 9px var(--neon), 0 0 22px color-mix(in srgb, var(--primary) 70%, transparent); } }
 @keyframes ui-article-headings-flick { 0%, 100% { opacity: 1; } 91% { opacity: 1; } 92% { opacity: 0.35; } 94% { opacity: 1; } 96% { opacity: 0.5; } 97% { opacity: 1; } }
 
 /* particles */
@@ -38,4 +38,4 @@
 @keyframes ui-article-headings-eq { from { transform: scaleY(0.12); } to { transform: scaleY(1); } }
 .ui-article-headings-eqtext { position: relative; display: block; white-space: pre-wrap; }
 @media (pointer: coarse) { .ui-article-headings-btn, .ui-article-headings-tabs button { min-height: 44px; min-width: 44px; } }
-@media (prefers-reduced-motion: reduce) { .ui-article-headings-neon > span, .ui-article-headings-neon[data-seen] > span, .ui-article-headings-neon[data-seen] > span[data-f] { animation: none; opacity: 1; text-shadow: 0 0 4px #fff, 0 0 12px var(--neon), 0 0 28px var(--neon); } .ui-article-headings-bars i { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .ui-article-headings-neon > span, .ui-article-headings-neon[data-seen] > span, .ui-article-headings-neon[data-seen] > span[data-f] { animation: none; opacity: 1; text-shadow: 0 0 2px #fff, 0 0 9px var(--neon), 0 0 22px color-mix(in srgb, var(--primary) 70%, transparent); } .ui-article-headings-bars i { animation: none; } }

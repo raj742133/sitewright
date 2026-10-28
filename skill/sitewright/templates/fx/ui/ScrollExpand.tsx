@@ -32,7 +32,7 @@ export interface ScrollExpandProps {
 
 /** Scroll-linked expansion: a framed picture grows to full bleed while the headline splits apart, then the page content continues. Works as its own scroller or with page scroll; full size under reduced motion. */
 export default function ScrollExpand({
-  media, title = 'Open the horizon', eyebrow = 'Scroll to expand', children, length = 1.4, startWidth = 0.36, startHeight = 0.42,
+  media, title = 'Open the horizon', eyebrow = 'Scroll to expand', children, length = 1.4, startWidth = 0.64, startHeight = 0.58,
   startRadius = 24, contained = true, height = '100%', onProgress, className, style,
 }: ScrollExpandProps) {
   const rootRef = useRef<HTMLDivElement>(null);

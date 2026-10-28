@@ -59,7 +59,7 @@ function sparkle(g: CanvasRenderingContext2D, x: number, y: number, r: number, r
 }
 
 /** A bordered container (div, button or link) with glowing four-point stars travelling around its edge on a canvas overlay. Speeds up on hover and focus; frozen under reduced motion. */
-export default function StarBorder({ children, as = 'div', radius = 14, stars = 3, period = 7, starSize = 7, tail = 0.07, tone = 'signal', className, style, ...rest }: StarBorderProps) {
+export default function StarBorder({ children, as = 'div', radius = 14, stars = 3, period = 7, starSize = 8, tail = 0.1, tone = 'signal', className, style, ...rest }: StarBorderProps) {
   const rootRef = useRef<HTMLElement>(null);
   const cvRef = useRef<HTMLCanvasElement>(null);
   const reduced = useReducedMotion();
@@ -100,7 +100,7 @@ export default function StarBorder({ children, as = 'div', radius = 14, stars = 
         const [hx, hy] = onBorder(head, w, h, r);
         const tw = c.reduced ? 1 : 0.8 + 0.2 * Math.sin(phase * 40 + i * 2);
         const glow = g.createRadialGradient(hx, hy, 0, hx, hy, c.starSize * 2.4);
-        glow.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},0.55)`); glow.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
+        glow.addColorStop(0, `rgba(${col[0]},${col[1]},${col[2]},0.38)`); glow.addColorStop(1, `rgba(${col[0]},${col[1]},${col[2]},0)`);
         g.fillStyle = glow; g.fillRect(hx - c.starSize * 3, hy - c.starSize * 3, c.starSize * 6, c.starSize * 6);
         g.fillStyle = `rgba(255,255,255,${(0.92 * tw).toFixed(3)})`;
         sparkle(g, hx, hy, c.starSize * tw, phase * 6);

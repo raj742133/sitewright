@@ -95,9 +95,9 @@ export default function AsciiText({ text = 'Sitewright', ramp = ' .:-=+*#%@', ce
         if (s.lens > 0.01) {
           const dx = col * f.cw - s.px, dy = r * f.ch - s.py;
           const d = Math.sqrt(dx * dx + dy * dy);
-          const k = Math.max(0, 1 - d / (f.ch * 7)) * s.lens;
+          const k = Math.max(0, 1 - d / (f.ch * 5.5)) * s.lens;
           heat = k;
-          lvl = Math.min(1, lvl + k * 0.55 * (v > 0.04 ? 1 : 0.35));
+          lvl = Math.min(1, lvl + k * 0.55 * (v > 0.04 ? 1 : 0.16));
         }
         for (const rp of s.ripples) {
           const age = t - rp.t;
@@ -134,7 +134,7 @@ export default function AsciiText({ text = 'Sitewright', ramp = ' .:-=+*#%@', ce
       const cs = getComputedStyle(el);
       const body = cs.fontFamily;
       st.current.mono = cs.getPropertyValue('--font-mono').trim() || 'ui-monospace, Menlo, monospace';
-      const size = cell > 0 ? cell : Math.max(6, Math.min(14, Math.round(w / 64)));
+      const size = cell > 0 ? cell : Math.max(7, Math.min(20, Math.round(w / 50)));
       st.current.field = buildField(text, w, h, size, weight, body);
       draw(1.3, 0.016);
     };
@@ -178,7 +178,7 @@ export default function AsciiText({ text = 'Sitewright', ramp = ' .:-=+*#%@', ce
 export function Demo() {
   return (
     <div className="ui-asciitext-stage">
-      <AsciiText text="Sitewright" />
+      <AsciiText text="ASCII" />
     </div>
   );
 }

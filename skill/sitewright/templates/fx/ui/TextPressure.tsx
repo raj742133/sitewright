@@ -1,5 +1,5 @@
 'use client';
-import { useRef, type CSSProperties, type ElementType } from 'react';
+import { Fragment, useRef, type CSSProperties, type ElementType } from 'react';
 import { useProbeLoop, useReducedMotion } from './_text-c';
 
 export interface TextPressureProps {
@@ -41,10 +41,11 @@ export default function TextPressure({ text = 'Press down', radius = 150, as: Ta
       <span className="ui-text-pressure-sr">{text}</span>
       <span ref={ref} className="ui-text-pressure-line" aria-hidden="true">
         {words.map((w, wi) => (
-          <span key={wi} className="ui-text-pressure-word">
+          <Fragment key={wi}><span className="ui-text-pressure-word">
             {Array.from(w).map((ch, ci) => <span key={ci} data-c="" className="ui-text-pressure-char">{ch}</span>)}
-            {wi < words.length - 1 ? ' ' : null}
           </span>
+            {wi < words.length - 1 ? ' ' : null}
+          </Fragment>
         ))}
       </span>
     </Tag>

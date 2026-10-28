@@ -178,12 +178,12 @@ export default function HalftoneReveal({
   const onEnter = (e: PointerEvent) => {
     if (e.pointerType === 'touch' || trigger !== 'hover') return;
     const o = origin(e);
-    if (o) api.current?.target(true, o[0] * (cvRef.current?.width ?? 1), o[1] * (cvRef.current?.height ?? 1));
+    if (o) api.current?.target(true, o[0], o[1]);
     setHover(true);
   };
   const onClick = (e: MouseEvent) => {
     const o = origin(e);
-    if (o && !pin) api.current?.target(true, o[0] * (cvRef.current?.width ?? 1), o[1] * (cvRef.current?.height ?? 1));
+    if (o && !pin) api.current?.target(true, o[0], o[1]);
     setPin(!pin);
   };
   const onKey = (e: KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPin(!pin); } };

@@ -78,8 +78,8 @@ export default function MetallicPaint({ relief = 1, speed = 1, interactive = tru
         g.uniform2f(pr.u('uPt'), pt.current.x, pt.current.y);
         g.uniform3fv(pr.u('uA'), e.pal.primary);
         g.uniform3fv(pr.u('uB'), e.pal.signal);
-        g.uniform3fv(pr.u('uLo'), mix3([0.05, 0.06, 0.09], e.pal.primary, 0.18));
-        g.uniform3fv(pr.u('uHi'), mix3([0.92, 0.94, 0.98], e.pal.primary, 0.1));
+        g.uniform3fv(pr.u('uLo'), mix3([0.04, 0.05, 0.08], e.pal.primary, 0.05));
+        g.uniform3fv(pr.u('uHi'), mix3([0.93, 0.95, 0.98], e.pal.primary, 0.03));
       }),
     { res: 0.7, maxPixels: 1.5e6 },
   );

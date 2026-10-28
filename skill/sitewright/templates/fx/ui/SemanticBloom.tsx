@@ -67,7 +67,7 @@ export default function SemanticBloom({ seed = 'Light', graph = DEFAULT_GRAPH, m
     const base = Math.min(w, h);
     for (const p of pts) {
       if (p.wd === c.focus || p.s < 0.03 || !cn) continue;
-      ctx.lineWidth = Math.max(2, base * 0.05 * (1 - Math.min(1, Math.hypot(p.x - cn.x, p.y - cn.y) / base) * 0.5) * p.s);
+      ctx.lineWidth = Math.max(1.5, base * 0.028 * (1 - Math.min(1, Math.hypot(p.x - cn.x, p.y - cn.y) / base) * 0.5) * p.s);
       ctx.beginPath(); ctx.moveTo(cn.x, cn.y);
       ctx.quadraticCurveTo((cn.x + p.x) / 2 + Math.sin(t + p.x) * 6, (cn.y + p.y) / 2 + Math.cos(t * 0.8 + p.y) * 6, p.x, p.y);
       ctx.stroke();
@@ -77,7 +77,7 @@ export default function SemanticBloom({ seed = 'Light', graph = DEFAULT_GRAPH, m
       const foc = p.wd === c.focus;
       ctx.fillStyle = foc ? fillC : fill;
       const wl = p.wd.length * 4.2 + 16;
-      ctx.beginPath(); ctx.ellipse(p.x, p.y, (foc ? wl * 1.5 + 14 : wl) * p.s, (foc ? 30 : 17) * p.s, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(p.x, p.y, (foc ? wl * 1.5 + 14 : wl * 1.1) * p.s, (foc ? 30 : 20) * p.s, 0, 0, Math.PI * 2); ctx.fill();
     }
     if (cn && cn.s > 0.5) {
       ctx.fillStyle = rgba(pal.primary, 0.55);

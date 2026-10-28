@@ -75,7 +75,7 @@ export default function GalleryHeading({ items = DEFAULTS, index, defaultIndex =
     const off = watchPalette(el, paint);
     const offLive = watchLive(el, setLive);
     const st = stage.current;
-    const size = () => { if (st && ring.current) { const tw = Math.max(64, Math.min(st.clientHeight * 0.58, st.clientWidth * 0.34, 210)); const r = (tw / 2) / Math.tan(Math.PI / n) + 8; ring.current.style.setProperty('--tw', `${tw.toFixed(1)}px`); ring.current.style.setProperty('--r', `${r.toFixed(1)}px`); } };
+    const size = () => { if (st && ring.current) { const tw = Math.max(64, Math.min((st.clientHeight - 24) * 0.58, st.clientWidth * 0.36, 260)); const r = (tw / 2) / Math.tan(Math.PI / n) + 8; ring.current.style.setProperty('--tw', `${tw.toFixed(1)}px`); ring.current.style.setProperty('--r', `${r.toFixed(1)}px`); } };
     size();
     const ro = new ResizeObserver(size);
     if (st) ro.observe(st);

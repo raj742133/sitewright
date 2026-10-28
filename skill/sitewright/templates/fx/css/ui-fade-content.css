@@ -18,7 +18,7 @@
 }
 .ui-fade-content-bar button[aria-pressed='true'] { background: var(--ink, #0f172a); color: var(--surface, #fff); border-color: var(--ink, #0f172a); }
 .ui-fade-content-bar button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
-.ui-fade-content-bar span { margin-inline-start: auto; color: var(--muted, #475569); font: 500 11px/1 var(--font-mono, monospace); }
+.ui-fade-content-bar span { margin-inline-start: auto; color: var(--muted, #475569); font: 500 12px/1 var(--font-mono, monospace); }
 @media (pointer: coarse) { .ui-fade-content-bar button { min-height: 44px; min-width: 44px; } }
 .ui-fade-content-scroller { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding: 4px 2px 4px 0; scrollbar-width: thin; border-radius: var(--radius, 12px); }
 .ui-fade-content-scroller:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }

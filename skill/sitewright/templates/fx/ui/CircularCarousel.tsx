@@ -32,11 +32,12 @@ export default function CircularCarousel({ items = DEMO_ITEMS, index, defaultInd
   const [idx, setIdx] = useIndexState(index, defaultIndex, onIndexChange);
   const cur = wrap(idx, n);
 
-  const iw = clamp(Math.min(size.w * 0.22, size.h * 0.4), 56, 190) || 90;
+  const iw = clamp(Math.min(size.w * 0.17, size.h * 0.3), 52, 170) || 90;
   const ih = iw * 1.25;
   const R = Math.max((n * iw * 1.2) / (2 * Math.PI), iw * 1.7);
   const cx = (size.w || 300) / 2;
-  const cy = R + ih / 2 + 14;
+  const drop = R * (1 - Math.cos(Math.min(1.2, (2.4 * step * Math.PI) / 180)));
+  const cy = R + ih * 0.58 + Math.max(10, ((size.h || 200) - ih * 1.16 - drop) / 2);
 
   const paint = useCallback((rot: number) => {
     rotNow.current = rot;

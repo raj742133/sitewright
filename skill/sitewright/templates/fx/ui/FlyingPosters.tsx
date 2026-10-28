@@ -67,6 +67,8 @@ export default function FlyingPosters({ items = DEMO_ITEMS, speed = 1, label = '
     if (best !== s.near) { s.near = best; setNear(best); }
   }, [count, pw, ph]);
 
+  const tickRef = useRef<(t: number) => void>(() => {});
+  const loop = useCallback((t: number) => tickRef.current(t), []);
   const tick = useCallback((now: number) => {
     const s = st.current;
     s.raf = 0;
@@ -80,9 +82,10 @@ export default function FlyingPosters({ items = DEMO_ITEMS, speed = 1, label = '
     s.cy += (s.ty - s.cy) * Math.min(1, dt * 4);
     paint();
     const settled = Math.abs(s.tx - s.cx) < 0.002 && Math.abs(s.ty - s.cy) < 0.002;
-    if (s.run || !settled) s.raf = requestAnimationFrame(tick); else s.last = 0;
+    if (s.run || !settled) s.raf = requestAnimationFrame(loop); else s.last = 0;
   }, [paint]);
-  const kick = useCallback(() => { const s = st.current; if (!s.raf && live && !reduced) { s.last = 0; s.raf = requestAnimationFrame(tick); } }, [tick, live, reduced]);
+  useEffect(() => { tickRef.current = tick; });
+  const kick = useCallback(() => { const s = st.current; if (!s.raf && live && !reduced) { s.last = 0; s.raf = requestAnimationFrame(loop); } }, [loop, live, reduced]);
 
   useIsoLayoutEffect(() => { st.current.w = size.w || 600; st.current.h = size.h || 300; paint(); view.current?.setAttribute('data-ready', ''); }, [paint, size.w, size.h]);
   useEffect(() => { st.current.run = run; if (run) kick(); }, [run, kick]);

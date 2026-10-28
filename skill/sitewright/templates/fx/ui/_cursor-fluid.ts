@@ -1,15 +1,18 @@
 /* A small CPU "stable fluids" solver (velocity + three dye channels) on a coarse grid. Cheap enough for a 70x45 grid every frame; the canvas upscales it smoothly. */
 
+const newF = (n: number) => new Float32Array(n);
+type F = ReturnType<typeof newF>;
+
 export class Fluid {
   readonly cols: number; readonly rows: number;
   private readonly n: number; private readonly s: number;
-  u: Float32Array; v: Float32Array; private u0: Float32Array; private v0: Float32Array;
-  dye: Float32Array[]; private dye0: Float32Array[];
-  private p: Float32Array; private div: Float32Array;
+  u: F; v: F; private u0: F; private v0: F;
+  dye: F[]; private dye0: F[];
+  private p: F; private div: F;
 
   constructor(cols: number, rows: number) {
     this.cols = cols; this.rows = rows; this.s = cols + 2; this.n = (cols + 2) * (rows + 2);
-    const mk = () => new Float32Array(this.n);
+    const mk = () => newF(this.n);
     this.u = mk(); this.v = mk(); this.u0 = mk(); this.v0 = mk(); this.p = mk(); this.div = mk();
     this.dye = [mk(), mk(), mk()]; this.dye0 = [mk(), mk(), mk()];
   }
@@ -26,12 +29,12 @@ export class Fluid {
     }
   }
 
-  private bnd(b: number, x: Float32Array) {
+  private bnd(b: number, x: F) {
     const { cols: C, rows: R } = this;
     for (let i = 1; i <= C; i++) { x[this.idx(i, 0)] = b === 2 ? -x[this.idx(i, 1)]! : x[this.idx(i, 1)]!; x[this.idx(i, R + 1)] = b === 2 ? -x[this.idx(i, R)]! : x[this.idx(i, R)]!; }
     for (let j = 1; j <= R; j++) { x[this.idx(0, j)] = b === 1 ? -x[this.idx(1, j)]! : x[this.idx(1, j)]!; x[this.idx(C + 1, j)] = b === 1 ? -x[this.idx(C, j)]! : x[this.idx(C, j)]!; }
   }
-  private advect(b: number, d: Float32Array, d0: Float32Array, u: Float32Array, v: Float32Array, dt: number) {
+  private advect(b: number, d: F, d0: F, u: F, v: F, dt: number) {
     const { cols: C, rows: R } = this;
     for (let j = 1; j <= R; j++) for (let i = 1; i <= C; i++) {
       const a = this.idx(i, j);

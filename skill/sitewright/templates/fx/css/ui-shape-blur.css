@@ -20,7 +20,7 @@
 .ui-shape-blur-picker { position: absolute; top: 8px; right: 8px; z-index: 3; display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 80%; }
 .ui-shape-blur-picker button {
   min-height: 26px; padding: 0 9px; border: 1px solid var(--line-strong, #cbd5e1); border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #0f172a);
-  font: 600 11px/1 var(--font-mono, monospace); text-transform: capitalize; cursor: pointer;
+  font: 600 12px/1 var(--font-mono, monospace); text-transform: capitalize; cursor: pointer;
 }
 .ui-shape-blur-picker button[aria-pressed='true'] { background: var(--ink, #0f172a); color: var(--surface, #fff); border-color: var(--ink, #0f172a); }
 .ui-shape-blur-picker button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }

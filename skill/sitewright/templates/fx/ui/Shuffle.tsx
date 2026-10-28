@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useMemo, useRef, type CSSProperties, type ElementType } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, type CSSProperties, type ElementType } from 'react';
 import { useReducedMotion, watchInView } from './_text-b';
 
 export interface ShuffleProps {
@@ -29,7 +29,8 @@ export default function Shuffle({ text = 'Shuffle the deck', as: Tag = 'h2', rou
   const timers = useRef<number[]>([]);
   const running = useRef(false);
   const reduced = useReducedMotion();
-  const chars = useMemo(() => Array.from(text), [text]);
+  const words = useMemo(() => text.split(/\s+/).filter(Boolean), [text]);
+  let k = 0;
 
   const clear = () => { timers.current.forEach((t) => window.clearTimeout(t)); timers.current = []; };
   const reset = useCallback(() => {
@@ -80,7 +81,12 @@ export default function Shuffle({ text = 'Shuffle the deck', as: Tag = 'h2', rou
     <Tag className={`ui-shuffle-root${className ? ` ${className}` : ''}`} style={style}>
       <button ref={btn} type="button" className="ui-shuffle-btn" aria-label={`${text}. Shuffle the letters.`} onClick={play} onPointerEnter={(e) => { if (e.pointerType === 'mouse') play(); }}>
         <span aria-hidden="true">
-          {chars.map((c, i) => (c === ' ' ? <span key={i} className="ui-shuffle-ch ui-shuffle-sp" data-sp="1"> </span> : <span key={i} className="ui-shuffle-ch">{c}</span>))}
+          {words.map((w, wi) => (
+            <Fragment key={wi}>
+              <span className="ui-shuffle-word">{Array.from(w).map((c) => <span key={k++} className="ui-shuffle-ch">{c}</span>)}</span>
+              {wi < words.length - 1 && <span key={'s' + k++} className="ui-shuffle-ch ui-shuffle-sp" data-sp="1"> </span>}
+            </Fragment>
+          ))}
         </span>
       </button>
     </Tag>

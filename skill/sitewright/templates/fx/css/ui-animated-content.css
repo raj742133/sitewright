@@ -28,7 +28,7 @@
 .ui-animated-content-hero svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .ui-animated-content-hero span {
   position: absolute; left: 10px; bottom: 8px; padding: 3px 8px; border-radius: 999px; background: rgba(11, 16, 32, 0.78); color: #fff;
-  font: 700 11px/1.3 var(--font-mono, monospace); letter-spacing: 0.04em;
+  font: 700 12px/1.3 var(--font-mono, monospace); letter-spacing: 0.04em;
 }
 .ui-animated-content-demo h3 { margin: 0; font: 700 17px/1.2 var(--font-body, system-ui); }
 .ui-animated-content-demo p { margin: 0; color: var(--muted, #475569); font-size: 13px; line-height: 1.4; }

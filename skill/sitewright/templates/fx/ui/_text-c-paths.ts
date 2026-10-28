@@ -38,7 +38,7 @@ export function project(lat: number, lon: number, yaw: number, pitch: number) {
 }
 
 /** A procedural "land" mask so the globe shows continents without shipping map data. */
-const land = (lat: number, lon: number) => Math.sin(lon * 2 + lat * 3) + Math.sin(lon * 3 - lat * 2 + 1) * 0.8 + Math.cos(lat * 5 + lon) * 0.5 > 0.55;
+const land = (lat: number, lon: number) => Math.sin(lon * 2 + lat * 3) + Math.sin(lon * 3 - lat * 2 + 1) * 0.8 + Math.cos(lat * 5 + lon) * 0.5 > 0.1;
 const MARKERS: [number, number][] = [[0.5, 0.8], [-0.3, 2.4], [0.15, 4.1], [0.8, 5.3]];
 
 export function drawGlobe(f: Frame, s: PathState, chars: string[]) {
@@ -62,7 +62,7 @@ export function drawGlobe(f: Frame, s: PathState, chars: string[]) {
       const p = project(lat, lon0, s.yaw, s.pitch);
       const ch = glyphAt(chars, gi++);
       if (p.z < 0) { if (isLand && p.z > -0.9) { ctx.fillStyle = rgba(pal.ink, 0.07); put(f, '·', cx + p.x * R, cy - p.y * R, 0, 1, 1); } continue; }
-      ctx.fillStyle = isLand ? rgba(landC, 0.35 + 0.65 * p.z) : rgba(pal.muted, (0.12 + 0.4 * p.z) * 0.9);
+      ctx.fillStyle = isLand ? rgba(landC, 0.35 + 0.65 * p.z) : rgba(pal.muted, (0.2 + 0.5 * p.z) * 0.9);
       const sz = isLand ? 1.05 : 0.55;
       put(f, isLand ? ch : '·', cx + p.x * R, cy - p.y * R, Math.atan2(-p.ey, p.ex), Math.max(0.2, Math.sqrt(p.z)) * sz, sz);
     }

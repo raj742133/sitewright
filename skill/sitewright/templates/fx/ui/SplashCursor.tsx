@@ -74,7 +74,7 @@ export default function SplashCursor({ children, className, style, global = fals
         }
         if (reduced) { draw(f); return; }
         const sp = Math.hypot(f.vx, f.vy);
-        if (f.seen && (f.inside || f.auto) && sp > 12) { hue += f.dt * 0.9; stir(f, f.x, f.y, f.vx * 0.9, f.vy * 0.9, Math.min(0.55, 0.12 + sp / 1400) * (f.auto ? 1.5 : 1)); }
+        if (f.seen && (f.inside || f.auto) && sp > 12) { hue += f.dt * 2.4; stir(f, f.x, f.y, f.vx * 0.9, f.vy * 0.9, Math.min(0.55, 0.12 + sp / 1400)); }
         sim.step(Math.min(f.dt, 1 / 30), 1.1, 2.2 / linger);
         return draw(f) > 0.004;
       },

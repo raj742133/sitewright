@@ -4,10 +4,10 @@
 .ui-border-glow-root { --bg-r: var(--radius, 14px); --mx: 50%; --my: 0%; position: relative; isolation: isolate; border-radius: var(--bg-r); background: var(--raised, #fff); color: var(--ink, #18181b); font-family: var(--font-body, system-ui); outline: none;
   --bg-a: var(--primary, #2563eb); --bg-b: var(--signal, #f59e0b); }
 .ui-border-glow-body { position: relative; z-index: 1; padding: 18px 20px; border-radius: inherit; }
-.ui-border-glow-root::after { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; border: 1px solid var(--line, #d8d4cb); pointer-events: none; }
+.ui-border-glow-root::before { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; border: 1px solid var(--line, #d8d4cb); pointer-events: none; }
 .ui-border-glow-edge { position: absolute; inset: 0; z-index: 0; border-radius: inherit; padding: var(--bg-t, 1.5px); pointer-events: none; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
-.ui-border-glow-idle { background: conic-gradient(from var(--bg-ang), transparent 0deg, var(--bg-a) 40deg, var(--bg-b) 90deg, transparent 150deg, transparent 360deg); animation: ui-border-glow-spin 7s linear infinite; opacity: 0.9; transition: opacity 0.3s; }
-.ui-border-glow-spot { background: radial-gradient(var(--bg-spread, 220px) circle at var(--mx) var(--my), var(--bg-b), var(--bg-a) 38%, transparent 72%); opacity: 0; transition: opacity 0.3s; }
+.ui-border-glow-idle { background: conic-gradient(from var(--bg-ang), transparent 0deg, var(--bg-a) 50deg, var(--bg-b) 110deg, transparent 190deg, transparent 360deg); animation: ui-border-glow-spin 7s linear infinite; opacity: 0.9; transition: opacity 0.3s; }
+.ui-border-glow-spot { background: radial-gradient(var(--bg-spread, 260px) circle at var(--mx) var(--my), var(--bg-b), var(--bg-a) 42%, transparent 78%); opacity: 0; transition: opacity 0.3s; }
 .ui-border-glow-halo { position: absolute; inset: -1px; z-index: -1; border-radius: inherit; background: radial-gradient(calc(var(--bg-spread, 220px) * 1.1) circle at var(--mx) var(--my), color-mix(in srgb, var(--bg-a) 55%, transparent), transparent 70%); filter: blur(22px); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
 .ui-border-glow-root:hover .ui-border-glow-spot { opacity: 1; }
 .ui-border-glow-root:hover .ui-border-glow-idle { opacity: 0; }

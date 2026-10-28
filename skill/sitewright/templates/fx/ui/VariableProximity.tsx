@@ -1,5 +1,5 @@
 'use client';
-import { useRef, type CSSProperties, type ElementType } from 'react';
+import { Fragment, useRef, type CSSProperties, type ElementType } from 'react';
 import { useProbeLoop, useReducedMotion } from './_text-c';
 
 export interface VariableProximityProps {
@@ -47,7 +47,7 @@ export default function VariableProximity({ text = 'Closer changes everything', 
       <span ref={ref} className="ui-variable-proximity-line" aria-hidden="true">
         {halo ? <span ref={haloRef} className="ui-variable-proximity-halo" style={{ width: radius * 2, height: radius * 2 }} /> : null}
         {words.map((w, wi) => (
-          <span key={wi} className="ui-variable-proximity-word">
+          <Fragment key={wi}><span className="ui-variable-proximity-word">
             {Array.from(w).map((ch, ci) => (
               <span key={ci} data-c="" className="ui-variable-proximity-char">
                 <span className="ui-variable-proximity-size">{ch}</span>
@@ -55,8 +55,9 @@ export default function VariableProximity({ text = 'Closer changes everything', 
                 <span className="ui-variable-proximity-b">{ch}</span>
               </span>
             ))}
-            {wi < words.length - 1 ? ' ' : null}
           </span>
+            {wi < words.length - 1 ? ' ' : null}
+          </Fragment>
         ))}
       </span>
     </Tag>

@@ -20,8 +20,8 @@
 }
 .ui-gradual-blur-seg button[aria-pressed='true'] { background: var(--ink, #0f172a); color: var(--surface, #fff); border-color: var(--ink, #0f172a); }
 .ui-gradual-blur-seg button:focus-visible, .ui-gradual-blur-bar input:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
-.ui-gradual-blur-bar label { display: flex; align-items: center; gap: 6px; font: 500 11px/1 var(--font-mono, monospace); color: var(--muted, #475569); }
-.ui-gradual-blur-bar input { width: 84px; accent-color: var(--primary, #2563eb); }
+.ui-gradual-blur-bar label { display: flex; align-items: center; gap: 6px; font: 500 12px/1 var(--font-mono, monospace); color: var(--muted, #475569); }
+.ui-gradual-blur-bar input { width: 84px; height: 24px; margin: 0; accent-color: var(--primary, #2563eb); }
 @media (pointer: coarse) { .ui-gradual-blur-seg button { min-height: 44px; } .ui-gradual-blur-bar input { min-height: 44px; } }
 .ui-gradual-blur-stage { position: relative; flex: 1; min-height: 0; border: 1px solid var(--line, #e2e8f0); border-radius: var(--radius, 12px); background: var(--raised, #fff); overflow: hidden; }
 .ui-gradual-blur-scroll { position: absolute; inset: 0; overflow-y: auto; padding: 14px 16px 60px; scrollbar-width: none; }

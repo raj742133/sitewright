@@ -35,7 +35,7 @@ void main(){
       float x=d-age*.42;
       float env=exp(-x*x*90.)*exp(-age*.9)*r.w/(1.+d*2.);
       float wave=sin(x*48.);
-      disp+=normalize(dv+1e-5)*wave*env*.03;
+      disp+=normalize(dv+1e-5)*wave*env*.06;
       shade+=cos(x*48.)*env;
     }
   }

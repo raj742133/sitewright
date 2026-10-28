@@ -22,12 +22,12 @@ export interface InfiniteSpiralProps {
   style?: CSSProperties;
 }
 
-const TURNS = 2.1;
+const TURNS = 1.6;
 
 /** Pictures laid along a spiral that winds into the centre. They flow outward and grow as they near you, forever: drag, use the buttons or arrow keys, click one to bring it forward. */
 export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex = 0, onIndexChange, autoplay = 0.25, wheel = false, label = 'Spiral gallery', height, className, style }: InfiniteSpiralProps) {
   const n = items.length;
-  const M = n * Math.ceil(14 / n);
+  const M = n * Math.ceil(12 / n);
   const reduced = useReducedMotion();
   const root = useRef<HTMLElement>(null);
   const view = useRef<HTMLDivElement>(null);
@@ -40,10 +40,16 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
   const spin = autoplay > 0 && !reduced && !paused && !hot && live;
 
   const w = size.w || 600, h = size.h || 300;
-  const iw = clamp(Math.min(w * 0.2, h * 0.34), 54, 170);
+  const iw = clamp(Math.min(w * 0.15, h * 0.26), 48, 150);
   const ih = iw * 1.25;
   const k = Math.log(9) / (M - 1.5);
-  const rx = clamp((w - iw) * 0.4, 60, 520), ry = Math.max(30, (h - ih) * 0.46);
+  const rx = clamp((w - iw) * 0.42, 60, 560), ry = Math.max(30, (h - ih) * 0.44);
+  const pt = useCallback((p: number) => {
+    const e = Math.exp(-k * p);
+    const ang = Math.PI / 2 + p * ((2 * Math.PI * TURNS) / M);
+    return { e, x: w / 2 + Math.cos(ang) * rx * e, y: h / 2 + Math.sin(ang) * ry * e };
+  }, [k, M, w, h, rx, ry]);
+  const guide = Array.from({ length: 90 }, (_, i) => { const q = pt(-1.2 + (i * (M - 0.3)) / 89); return `${i ? 'L' : 'M'}${q.x.toFixed(1)} ${q.y.toFixed(1)}`; }).join('');
 
   const st = useRef({ pos: index ?? defaultIndex, target: null as number | null, vel: 0, dragging: false, raf: 0, last: 0, spin: false, front: -1, base: 0 });
   const cbs = useRef(onIndexChange);
@@ -55,22 +61,21 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
     for (let i = 0; i < M; i++) {
       const el = els.current[i];
       const p = wrap(i - s.pos + 1.5, M) - 1.5;
-      const e = Math.exp(-k * p);
-      const ang = Math.PI / 2 + p * ((2 * Math.PI * TURNS) / M);
+      const q = pt(p);
       if (Math.abs(p) < bestD) { bestD = Math.abs(p); best = i; }
       if (!el) continue;
       const o = clamp((p + 1.5) / 1.2, 0, 1) * clamp((M - 1.5 - p) / 3, 0, 1);
       el.style.opacity = o.toFixed(3);
       el.style.visibility = o < 0.01 ? 'hidden' : '';
       el.style.zIndex = String(Math.round(1000 - p * 20));
-      const x = w / 2 + Math.cos(ang) * rx * e * 1.0;
-      const y = h / 2 + (Math.sin(ang) * ry * e) - ih * 0.06 * e;
-      el.style.transform = `translate3d(${(x - iw / 2).toFixed(1)}px, ${(y - ih / 2).toFixed(1)}px, 0) scale(${(e * 0.95).toFixed(3)})`;
+      el.style.transform = `translate3d(${(q.x - iw / 2).toFixed(1)}px, ${(q.y - ih / 2).toFixed(1)}px, 0) scale(${Math.pow(q.e, 0.85).toFixed(3)})`;
     }
     const f = best % n;
     if (f !== s.front) { s.front = f; setFront(f); }
-  }, [M, n, k, w, h, iw, ih, rx, ry]);
+  }, [M, n, pt, iw, ih]);
 
+  const tickRef = useRef<(t: number) => void>(() => {});
+  const loop = useCallback((t: number) => tickRef.current(t), []);
   const tick = useCallback((now: number) => {
     const s = st.current;
     s.raf = 0;
@@ -86,9 +91,10 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
       if (Math.abs(s.vel) <= 0.15) { s.vel = 0; s.target = Math.round(s.pos); }
     } else if (s.spin) { s.pos += autoplay * dt; more = true; }
     paint();
-    if (more || s.spin) s.raf = requestAnimationFrame(tick); else s.last = 0;
+    if (more || s.spin) s.raf = requestAnimationFrame(loop); else s.last = 0;
   }, [autoplay, paint]);
-  const kick = useCallback(() => { const s = st.current; if (!s.raf && live) { s.last = 0; s.raf = requestAnimationFrame(tick); } }, [tick, live]);
+  useEffect(() => { tickRef.current = tick; });
+  const kick = useCallback(() => { const s = st.current; if (!s.raf && live) { s.last = 0; s.raf = requestAnimationFrame(loop); } }, [loop, live]);
 
   useIsoLayoutEffect(() => { paint(); view.current?.setAttribute('data-ready', ''); }, [paint]);
   useEffect(() => { st.current.spin = spin; if (spin) kick(); }, [spin, kick]);
@@ -142,6 +148,7 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
       onPointerEnter={(e) => { if (e.pointerType === 'mouse') setHot(true); }} onPointerLeave={() => setHot(false)}
       onFocus={() => setHot(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setHot(false); }}>
       <div ref={view} className="ui-infinite-spiral-view" style={{ '--w': `${iw}px`, '--h': `${ih}px` } as CSSProperties}>
+        <svg className="ui-infinite-spiral-guide" viewBox={`0 0 ${w} ${h}`} aria-hidden="true" focusable="false"><path d={guide} /></svg>
         {Array.from({ length: M }, (_, i) => {
           const x = items[i % n]!;
           const dup = i >= n;

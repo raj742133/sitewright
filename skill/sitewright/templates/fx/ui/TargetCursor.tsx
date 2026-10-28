@@ -47,7 +47,7 @@ export default function TargetCursor({ children, className, style, global = fals
         } else if (f.inside) target = hoverEl && hoverEl.isConnected ? hoverEl : null;
         else if (kbEl && kbEl.isConnected) target = kbEl;
         if (reduced && !f.seen && !kbEl) target = null;
-        if (target !== lockedTo) { lockedTo = target; tang = target ? Math.round(ang / 90) * 90 : tang; }
+        if (target !== lockedTo) { lockedTo = target; tang = target ? Math.round(ang / 360) * 360 : tang; }
         presence = reduced ? 1 : ease(presence, here || kbEl ? 1 : 0, 9, f.dt);
         let gx = f.x, gy = f.y, gw = size, gh = size;
         if (lockedTo) { const b = boxIn(layer, lockedTo); gx = b.cx; gy = b.cy; gw = b.w + padding * 2; gh = b.h + padding * 2; }

@@ -5,9 +5,7 @@
 .ui-fold-text-root[data-ready] .ui-fold-text-sizer { visibility: hidden; }
 .ui-fold-text-scene { grid-area: 1 / 1; position: relative; display: block; transform-style: preserve-3d; align-self: center; }
 .ui-fold-text-panel { position: absolute; left: 0; top: 0; display: block; overflow: hidden; transform-origin: 0 50%; backface-visibility: hidden; will-change: transform; }
-.ui-fold-text-ink { position: absolute; top: 0; display: block; white-space: nowrap; color: var(--ink, #18181b); }
-.ui-fold-text-shade { position: absolute; inset: 0; opacity: 0; pointer-events: none; background: color-mix(in srgb, var(--surface, #fafafa) 85%, transparent); }
-.ui-fold-text-shade[data-odd] { background: color-mix(in srgb, var(--surface, #fafafa) 70%, var(--primary, #2563eb)); mix-blend-mode: normal; }
+.ui-fold-text-ink { position: absolute; top: 0; display: block; white-space: nowrap; color: color-mix(in srgb, var(--primary, #2563eb) calc(var(--sh, 0) * 85%), var(--ink, #18181b)); }
 .ui-fold-text-stage { position: relative; width: 100%; height: 100%; min-height: 200px; box-sizing: border-box; padding: 12px; overflow: hidden; display: grid;
   background: linear-gradient(160deg, transparent 40%, color-mix(in srgb, var(--primary, #2563eb) 10%, transparent)), radial-gradient(60% 70% at 50% 45%, color-mix(in srgb, var(--signal, #f59e0b) 14%, transparent), transparent 70%), repeating-linear-gradient(90deg, transparent 0 39px, var(--line, #e4e4e7) 39px 40px), var(--surface, #fafafa); }
 .ui-fold-text-stage > .ui-fold-text-root { min-height: 0; }
