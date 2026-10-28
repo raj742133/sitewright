@@ -11,21 +11,15 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Source catalogue entries | 261 (218 React Bits-origin + 43 `tu`) |
 | Unique entries | 261 (the 5 heroes are among the 43 `tu` entries) |
 | Existing Sitewright equivalents reused | 30 |
-| New independent implementations present | 222 |
+| New independent implementations present | 231 |
 | Verified (all smoke checks passed) | 0 |
-| Implemented, awaiting tests | 222 |
+| Implemented, awaiting tests | 231 |
 | With failing tests | 0 |
 | Blocked | 0 |
-| Remaining (planned / in progress) | 9 |
-| Full-page heroes completed | 3 / 5 |
+| Remaining (planned / in progress) | 0 |
+| Full-page heroes completed | 5 / 5 |
 | Tactile Glass components complete | 10 / 10 |
-| Registry | 352 components, 15 templates |
-
-## Inconsistencies (3)
-
-- component file not in any registry entry: templates/fx/ui/Landscape.tsx
-- component file not in any registry entry: templates/fx/ui/LandscapeTowers.tsx
-- component file not in any registry entry: templates/fx/ui/NightTempleScene.tsx
+| Registry | 359 components, 17 templates |
 
 ## Provenance and licence
 
@@ -39,8 +33,8 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
 | `tu:kage-landing-page` | Kage | implemented | `hero-night-temple` | not run | - |
-| `tu:complete-shelf-landing-page` | Complete Shelf | planned | - | none | not implemented yet |
-| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | planned | - | none | not implemented yet |
+| `tu:complete-shelf-landing-page` | Complete Shelf | implemented | `hero-bookshelf` | not run | - |
+| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | implemented | `hero-book-showcase` | not run | - |
 | `tu:sylva-hero` | Sylva | implemented | `hero-living-green` | not run | - |
 | `tu:meng-to-sketchbook-landing-page` | Sketchbook | implemented | `hero-paper-sketchbook` | not run | - |
 | `tu:predictive-arc` | Predictive Arc | implemented | `predictive-arc` | not run | - |
@@ -60,14 +54,14 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | `tu:character-carousel` | Character Carousel | implemented | `character-carousel` | not run | - |
 | `tu:gallery` | Gallery | implemented | `image-ribbon` | not run | - |
 | `tu:sylva-living-world` | Sylva Living World | implemented | `moss-forest-world` | not run | - |
-| `tu:temple-night` | Temple Night | planned | - | none | not implemented yet |
-| `tu:landscape` | Landscape | planned | - | none | not implemented yet |
-| `tu:japanese-tower` | Country Towers | planned | - | none | not implemented yet |
-| `tu:bookshelf` | Bookshelf | planned | - | none | not implemented yet |
-| `tu:structure-flow` | Structure Flow | planned | - | none | not implemented yet |
-| `tu:warp-field` | Warp Field | planned | - | none | not implemented yet |
+| `tu:temple-night` | Temple Night | implemented | `night-temple-scene` | not run | - |
+| `tu:landscape` | Landscape | implemented | `landscape` | not run | - |
+| `tu:japanese-tower` | Country Towers | implemented | `landscape-towers` | not run | - |
+| `tu:bookshelf` | Bookshelf | implemented | `bookshelf-3d` | not run | - |
+| `tu:structure-flow` | Structure Flow | implemented | `structure-flow` | not run | - |
+| `tu:warp-field` | Warp Field | implemented | `warp-field` | not run | - |
 | `tu:engraved-certificate` | Engraved Certificate | implemented | `engraved-certificate` | not run | - |
-| `tu:woven-cloth` | Woven Cloth | planned | - | none | not implemented yet |
+| `tu:woven-cloth` | Woven Cloth | implemented | `woven-cloth` | not run | - |
 | `tu:performance-gauges` | Performance Gauges | implemented | `performance-gauges` | not run | - |
 | `tu:uplink-loader` | Uplink Loader | implemented | `uplink-loader` | not run | - |
 | `tu:koi-studies` | Koi Studies | implemented | `koi-studies` | not run | - |
@@ -87,8 +81,8 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
 | `tu:kage-landing-page` | Kage | implemented | `hero-night-temple` | not run | - |
-| `tu:complete-shelf-landing-page` | Complete Shelf | planned | - | none | not implemented yet |
-| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | planned | - | none | not implemented yet |
+| `tu:complete-shelf-landing-page` | Complete Shelf | implemented | `hero-bookshelf` | not run | - |
+| `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | implemented | `hero-book-showcase` | not run | - |
 | `tu:sylva-hero` | Sylva | implemented | `hero-living-green` | not run | - |
 | `tu:meng-to-sketchbook-landing-page` | Sketchbook | implemented | `hero-paper-sketchbook` | not run | - |
 

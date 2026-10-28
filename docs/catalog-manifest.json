@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-10-28T14:49:05.071Z",
+  "generated": "2026-10-28T19:25:20.891Z",
   "sourceCatalogEntries": 261,
   "uniqueEntries": 261,
   "note": "the 5 full-page heroes are 5 of the 43 tu entries (see overlap), so unique = rb + tu",
@@ -16,15 +16,15 @@
   "thirdPartyTu": {
    "total": 43,
    "existing": 0,
-   "planned": 9,
+   "planned": 0,
    "in_progress": 0,
-   "implemented": 34,
+   "implemented": 43,
    "verified": 0,
    "blocked": 0
   },
   "fullPageHeroes": {
    "total": 5,
-   "completed": 3,
+   "completed": 5,
    "verified": 0
   },
   "tactileGlass": {
@@ -33,22 +33,18 @@
    "complete": 10
   },
   "existingReused": 30,
-  "newImplemented": 222,
+  "newImplemented": 231,
   "verified": 0,
-  "awaitingTests": 222,
+  "awaitingTests": 231,
   "failingTests": 0,
   "blocked": 0,
-  "remainingUnimplemented": 9,
+  "remainingUnimplemented": 0,
   "registry": {
-   "components": 352,
-   "templates": 15,
+   "components": 359,
+   "templates": 17,
    "registeredNotInCatalog": 133
   },
-  "problems": [
-   "component file not in any registry entry: templates/fx/ui/Landscape.tsx",
-   "component file not in any registry entry: templates/fx/ui/LandscapeTowers.tsx",
-   "component file not in any registry entry: templates/fx/ui/NightTempleScene.tsx"
-  ]
+  "problems": []
  },
  "records": [
   {
@@ -6082,13 +6078,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "hero-bookshelf",
    "destination": "template",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "hero-bookshelf",
+   "destinationFile": "skill/sitewright/templates/fx/tpl/HeroBookshelf.tsx",
+   "files": [
+    "HeroBookshelf.tsx",
+    "_hbs-data.tsx",
+    "_hbs-shelf.tsx",
+    "_dash.tsx",
+    "_shared.tsx"
+   ],
+   "css": [
+    "tpl-hero-bookshelf"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:bestsellers-book-showcase",
@@ -6101,13 +6109,26 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "hero-book-showcase",
    "destination": "template",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "hero-book-showcase",
+   "destinationFile": "skill/sitewright/templates/fx/tpl/HeroBookShowcase.tsx",
+   "files": [
+    "HeroBookShowcase.tsx",
+    "_ha-kit.tsx",
+    "_ha-books.tsx",
+    "_ha-poster.tsx",
+    "_dash.tsx"
+   ],
+   "css": [
+    "tpl-heroes-a",
+    "tpl-hero-book-showcase"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:sylva-hero",
@@ -6673,6 +6694,7 @@
     "MossForestWorld.tsx",
     "_tu-three-kit.ts",
     "_tu-three-forest.ts",
+    "_tu-three-chips.tsx",
     "_t1.ts"
    ],
    "css": [
@@ -6697,13 +6719,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "night-temple-scene",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "night-temple-scene",
+   "destinationFile": "skill/sitewright/templates/fx/ui/NightTempleScene.tsx",
+   "files": [
+    "NightTempleScene.tsx",
+    "_tu-three-kit.ts",
+    "_tu-three-temple.ts",
+    "_tu-three-towers.ts",
+    "_t1.ts"
+   ],
+   "css": [
+    "ui-night-temple-scene"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:landscape",
@@ -6716,13 +6750,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "landscape",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "landscape",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Landscape.tsx",
+   "files": [
+    "Landscape.tsx",
+    "_tu-three-kit.ts",
+    "_tu-three-land.ts",
+    "_tu-three-chips.tsx",
+    "_t1.ts"
+   ],
+   "css": [
+    "ui-landscape"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:japanese-tower",
@@ -6735,13 +6781,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "landscape-towers",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "landscape-towers",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LandscapeTowers.tsx",
+   "files": [
+    "LandscapeTowers.tsx",
+    "_tu-three-kit.ts",
+    "_tu-three-towers.ts",
+    "_tu-three-chips.tsx",
+    "_t1.ts"
+   ],
+   "css": [
+    "ui-landscape-towers"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:bookshelf",
@@ -6754,13 +6812,22 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "bookshelf-3d",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "bookshelf-3d",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Bookshelf3d.tsx",
+   "files": [
+    "Bookshelf3d.tsx",
+    "_tu-three-books.tsx"
+   ],
+   "css": [
+    "ui-bookshelf-3d"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:structure-flow",
@@ -6773,13 +6840,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "structure-flow",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "structure-flow",
+   "destinationFile": "skill/sitewright/templates/fx/ui/StructureFlow.tsx",
+   "files": [
+    "StructureFlow.tsx",
+    "_tu-three-kit.ts",
+    "_tu-three-flow.ts",
+    "_tu-three-chips.tsx",
+    "_t1.ts"
+   ],
+   "css": [
+    "ui-structure-flow"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:warp-field",
@@ -6792,13 +6871,24 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "warp-field",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "warp-field",
+   "destinationFile": "skill/sitewright/templates/fx/ui/WarpField.tsx",
+   "files": [
+    "WarpField.tsx",
+    "_tu-three-kit.ts",
+    "_tu-three-chips.tsx",
+    "_t1.ts"
+   ],
+   "css": [
+    "ui-warp-field"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:engraved-certificate",
@@ -6839,13 +6929,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "woven-cloth",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "woven-cloth",
+   "destinationFile": "skill/sitewright/templates/fx/ui/WovenCloth.tsx",
+   "files": [
+    "WovenCloth.tsx",
+    "_tu-three-kit.ts",
+    "_tu-three-cloth.ts",
+    "_tu-three-chips.tsx",
+    "_t1.ts"
+   ],
+   "css": [
+    "ui-woven-cloth"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:performance-gauges",
