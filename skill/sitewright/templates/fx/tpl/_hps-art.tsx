@@ -25,7 +25,7 @@ function Stipple({ n, seed, x, y, w, h }: { n: number; seed: number; x: number; 
   const rnd = rng(seed);
   const dots: ReactNode[] = [];
   for (let k = 0; k < n; k++) dots.push(<circle key={k} className={F} cx={r2(x + rnd() * w)} cy={r2(y + rnd() * h)} r={r2(0.16 + rnd() * 0.22)} />);
-  return <g opacity=".7">{dots}</g>;
+  return <g opacity=".55">{dots}</g>;
 }
 
 function Hatch({ x, y, w, n, dy = 1.6, seed = 3 }: { x: number; y: number; w: number; n: number; dy?: number; seed?: number }) {
@@ -55,8 +55,8 @@ function Fern({ detail }: { detail?: boolean }) {
       <path className={I} d="M50 122C47 96 53 62 47 16" strokeWidth="1.2" />
       {leaves}
       <ellipse className={O} cx="47" cy="12" rx="3" ry="5" />
-      <Hatch x={26} y={124} w={48} n={3} dy={1.7} seed={9} />
-      {detail && <Stipple n={420} seed={11} x={14} y={18} w={74} h={100} />}
+      <Hatch x={26} y={124} w={48} n={1} dy={1.7} seed={9} />
+      {detail && <Stipple n={252} seed={11} x={14} y={18} w={74} h={100} />}
     </g>
   );
 }
@@ -78,8 +78,8 @@ function Tram({ detail }: { detail?: boolean }) {
       <path className={I} d="M4 95.5H96" />
       <path className={I} d="M20 102H40M52 104H80M30 110H62" strokeWidth=".5" opacity=".6" />
       <circle className={O} cx="82" cy="79" r="2" />
-      <Hatch x={16} y={98} w={70} n={4} dy={2.2} seed={5} />
-      {detail && <Stipple n={300} seed={4} x={14} y={44} w={72} h={42} />}
+      <Hatch x={16} y={98} w={70} n={2} dy={2.2} seed={5} />
+      {detail && <Stipple n={180} seed={4} x={14} y={44} w={72} h={42} />}
     </g>
   );
 }
@@ -98,8 +98,8 @@ function Teapot({ detail }: { detail?: boolean }) {
       <path className={R} d="M60 98H84C84 110 80 114 72 114C64 114 60 110 60 98Z" />
       <path className={I} d="M60 98H84C84 110 80 114 72 114C64 114 60 110 60 98ZM84 101C92 101 92 109 83 109" />
       <path className={I} d="M6 118H94" />
-      <Hatch x={14} y={120} w={74} n={4} dy={2} seed={7} />
-      {detail && <Stipple n={300} seed={6} x={28} y={46} w={48} h={44} />}
+      <Hatch x={14} y={120} w={74} n={2} dy={2} seed={7} />
+      {detail && <Stipple n={180} seed={6} x={28} y={46} w={48} h={44} />}
     </g>
   );
 }
@@ -116,8 +116,8 @@ function Wren({ detail }: { detail?: boolean }) {
       <circle className={F} cx="33" cy="56" r="1.6" />
       <path className={I} d="M44 66C54 62 62 70 56 80M48 72C54 70 58 76 54 82" strokeWidth=".6" />
       <path className={I} d="M48 84L46 92M58 83L60 92" />
-      <Hatch x={30} y={116} w={46} n={3} dy={2} seed={2} />
-      {detail && <Stipple n={380} seed={8} x={30} y={48} w={44} h={40} />}
+      <Hatch x={30} y={116} w={46} n={1} dy={2} seed={2} />
+      {detail && <Stipple n={228} seed={8} x={30} y={48} w={44} h={40} />}
     </g>
   );
 }
@@ -139,7 +139,12 @@ function Moth({ detail }: { detail?: boolean }) {
       <g transform="translate(100 0) scale(-1 1)">{wing}</g>
       <ellipse className={F} cx="50" cy="68" rx="3.4" ry="18" opacity=".85" />
       <path className={I} d="M48 50C44 40 38 34 30 32M52 50C56 40 62 34 70 32" />
-      {detail && <><Stipple n={260} seed={12} x={10} y={32} w={38} h={72} /><Stipple n={260} seed={13} x={52} y={32} w={38} h={72} /></>}
+      {detail && (
+        <g clipPath="url(#hps-moth-clip)">
+          <Stipple n={300} seed={12} x={8} y={28} w={84} h={80} />
+        </g>
+      )}
+      <clipPath id="hps-moth-clip"><path d="M50 58C36 30 10 28 8 50C8 66 30 70 50 66ZM50 68C34 72 20 92 30 104C42 108 50 88 50 72Z" /><path transform="translate(100 0) scale(-1 1)" d="M50 58C36 30 10 28 8 50C8 66 30 70 50 66ZM50 68C34 72 20 92 30 104C42 108 50 88 50 72Z" /></clipPath>
     </g>
   );
 }
@@ -155,8 +160,8 @@ function Cat({ detail }: { detail?: boolean }) {
       <path className={I} d="M24 84C26 86 29 86 31 84M34 84C36 86 39 86 41 84M27 90C30 92 33 92 36 90" strokeWidth=".7" />
       <path className={I} d="M16 90L6 88M16 93L6 95M44 90L54 88M44 93L54 95" strokeWidth=".4" />
       <path className={I} d="M52 70C56 76 56 84 52 90M62 72C66 78 66 86 62 92M72 74C76 80 76 88 72 94" strokeWidth=".6" />
-      <Hatch x={14} y={118} w={72} n={3} dy={2} seed={4} />
-      {detail && <Stipple n={340} seed={15} x={22} y={70} w={64} h={38} />}
+      <Hatch x={14} y={118} w={72} n={1} dy={2} seed={4} />
+      {detail && <Stipple n={204} seed={15} x={22} y={70} w={64} h={38} />}
     </g>
   );
 }
@@ -173,7 +178,7 @@ function Light({ detail }: { detail?: boolean }) {
       <rect className={I} x="44" y="32" width="14" height="10" /><path className={I} d="M42 32H60L51 24Z" /><circle className={F} cx="51" cy="37" r="2" />
       <path className={G} d="M20 110C30 100 44 104 52 108C66 104 80 100 88 110Z" /><path className={I} d="M20 110C30 100 44 104 52 108C66 104 80 100 88 110Z" />
       {[0, 1, 2, 3].map((k) => <path key={k} className={I} d={`M${6 + k * 4} ${114 + k * 4}q6-3 12 0t12 0t12 0t12 0t12 0t12 0`} strokeWidth=".6" opacity={0.9 - k * 0.15} />)}
-      {detail && <Stipple n={300} seed={14} x={20} y={30} w={70} h={80} />}
+      {detail && <Stipple n={180} seed={14} x={20} y={30} w={70} h={80} />}
     </g>
   );
 }
@@ -193,7 +198,7 @@ function Mushroom({ detail }: { detail?: boolean }) {
     <g>
       {cap(46, 64, 40, 28, R, 'a')}{cap(10, 82, 32, 22, O, 'b')}{cap(68, 94, 22, 14, B, 'c')}
       <g className={I} strokeWidth=".6">{grass}</g>
-      {detail && <Stipple n={320} seed={16} x={10} y={36} w={78} h={80} />}
+      {detail && <Stipple n={192} seed={16} x={10} y={36} w={78} h={80} />}
     </g>
   );
 }

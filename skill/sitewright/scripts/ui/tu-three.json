@@ -1,3 +1,142 @@
 [
-  {"id":"moss-forest-world","label":"Moss forest world","desc":"A procedural mossy forest glade with layered trunks, light shafts, a moss-capped root arch, swaying ferns and drifting pollen; seasonal variants add blossom petals, autumn leaves or snow, and the pointer shifts the layers for parallax.","source":"Original","group":"3d","files":["MossForestWorld.tsx","_tu-three-kit.ts","_tu-three-forest.ts","_t1.ts"],"css":["ui-moss-forest-world"],"use":"Behind a landing hero, an about or nature section (fills its parent, which should be positioned); pick `variant` by season."}
+ {
+  "id": "moss-forest-world",
+  "label": "Moss forest world",
+  "desc": "A procedural mossy forest glade with layered trunks, light shafts, a moss-capped root arch, swaying ferns and drifting pollen; the variant prop turns it into spring blossoms, autumn leaves or winter snow, and the pointer shifts the layers for parallax.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "MossForestWorld.tsx",
+   "_tu-three-kit.ts",
+   "_tu-three-forest.ts",
+   "_tu-three-chips.tsx",
+   "_t1.ts"
+  ],
+  "css": [
+   "ui-moss-forest-world"
+  ],
+  "use": "Behind a landing hero, an about page or a nature section (fills its parent, which should be positioned); pick `variant` by season."
+ },
+ {
+  "id": "night-temple-scene",
+  "label": "Night temple scene",
+  "desc": "A procedural night scene of a tiered pagoda and hall on a mountain under a moon, with layered ridges, drifting mist, rain, flickering lantern glow and ripples on wet ground (invented, generic forms).",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "NightTempleScene.tsx",
+   "_tu-three-kit.ts",
+   "_tu-three-temple.ts",
+   "_tu-three-towers.ts",
+   "_t1.ts"
+  ],
+  "css": [
+   "ui-night-temple-scene"
+  ],
+  "use": "Behind a hero, a 404 page or an atmospheric section (fills its parent, which should be positioned)."
+ },
+ {
+  "id": "landscape",
+  "label": "Landscape",
+  "desc": "A procedural 3-D terrain rendered by a column-marching heightfield renderer, with sunrise, noon, sunset or night skies and clear, rain, storm (lightning), snow or fog weather; the pointer pans and tilts the camera.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "Landscape.tsx",
+   "_tu-three-kit.ts",
+   "_tu-three-land.ts",
+   "_tu-three-chips.tsx",
+   "_t1.ts"
+  ],
+  "css": [
+   "ui-landscape"
+  ],
+  "use": "Behind a hero, a weather or travel section (fills its parent, which should be positioned); set `time` and `weather`."
+ },
+ {
+  "id": "landscape-towers",
+  "label": "Landscape towers",
+  "desc": "A dusk landscape where invented tower forms (tiered pagoda-like, minaret-like, stupa-like, lighthouse-like and stacked spire) build up from their foot; show one with `variant` or all five as an ensemble, mirrored in water.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "LandscapeTowers.tsx",
+   "_tu-three-kit.ts",
+   "_tu-three-towers.ts",
+   "_tu-three-chips.tsx",
+   "_t1.ts"
+  ],
+  "css": [
+   "ui-landscape-towers"
+  ],
+  "use": "Hero or section backdrop for travel, culture or architecture pages (fills its parent, which should be positioned)."
+ },
+ {
+  "id": "bookshelf-3d",
+  "label": "Bookshelf 3D",
+  "desc": "A room with a bookshelf whose books stand on a rotating ring: pick one to bring it to the front, then open it and turn its pages with a 3-D flip; covers are generated and keyboard and touch work.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "Bookshelf3d.tsx",
+   "_tu-three-books.tsx"
+  ],
+  "css": [
+   "ui-bookshelf-3d"
+  ],
+  "use": "Library, reading list, product or catalogue showcase (fills its parent; pass `books`)."
+ },
+ {
+  "id": "structure-flow",
+  "label": "Structure flow",
+  "desc": "Six particle studies drawn as projected 3-D points in the host ink with accent tints: geodesic dome, horizon field, nested orbits, funnel vortex, data matrix and rising embers; the pointer turns the view.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "StructureFlow.tsx",
+   "_tu-three-kit.ts",
+   "_tu-three-flow.ts",
+   "_tu-three-chips.tsx",
+   "_t1.ts"
+  ],
+  "css": [
+   "ui-structure-flow"
+  ],
+  "use": "Behind a hero or data/AI product section (fills its parent, which should be positioned); choose `variant`."
+ },
+ {
+  "id": "warp-field",
+  "label": "Warp field",
+  "desc": "A warp tunnel of additive light streaks with keycap-like letter tiles flying past in perspective; the pointer steers the vanishing point.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "WarpField.tsx",
+   "_tu-three-kit.ts",
+   "_tu-three-chips.tsx",
+   "_t1.ts"
+  ],
+  "css": [
+   "ui-warp-field"
+  ],
+  "use": "Behind a launch or speed-themed hero, a typing or keyboard product section (fills its parent, which should be positioned)."
+ },
+ {
+  "id": "woven-cloth",
+  "label": "Woven cloth",
+  "desc": "A hanging cloth simulated with Verlet physics and wind, woven from procedural threads (plain, twill or basket) and printed with text; the pointer dents and drags the weave.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "WovenCloth.tsx",
+   "_tu-three-kit.ts",
+   "_tu-three-cloth.ts",
+   "_tu-three-chips.tsx",
+   "_t1.ts"
+  ],
+  "css": [
+   "ui-woven-cloth"
+  ],
+  "use": "Textile, fashion or craft hero, or a banner section (fills its parent, which should be positioned); set `text` and `weave`."
+ }
 ]

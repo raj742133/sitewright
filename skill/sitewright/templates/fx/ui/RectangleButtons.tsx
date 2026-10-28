@@ -41,7 +41,7 @@ export default function RectangleButton(props: RectangleButtonProps | RectangleL
 }
 
 const LABELS: Record<RectangleVariant, string> = {
-  glass: 'Glass', 'gradient-border': 'Gradient', keycap: 'Enter', dotted: 'Dotted', technical: 'Specs', 'arrow-pill': 'Start', halftone: 'Halftone', chip: 'Continue', stamp: 'Stamp', sweep: 'Sweep',
+  glass: 'Glass', 'gradient-border': 'Gradient', keycap: 'Enter', dotted: 'Dotted', technical: 'Specs', 'arrow-pill': 'Start', halftone: 'Halftone', chip: 'Next', stamp: 'Stamp', sweep: 'Sweep',
 };
 
 export function Demo() {

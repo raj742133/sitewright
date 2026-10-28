@@ -19,7 +19,7 @@ interface Streak { th: number; r: number; a: number; sp: number; tint: number }
 interface State { streaks: Streak[]; tiles: { th: number; r: number; a: number; roll: number; ch: string; sp: number }[]; bg: HTMLCanvasElement; tint: RGB[]; deep: RGB }
 
 function build(env: Env, letters: string, density: number): State {
-  const { w, h, dpr, pal } = env, r = rng(31), n = Math.round(clamp(Math.sqrt(w * h) * 0.55, 160, 520) * clamp(density, 0.2, 3));
+  const { w, h, dpr, pal } = env, r = rng(31), n = Math.round(clamp(Math.sqrt(w * h) * 0.8, 220, 700) * clamp(density, 0.2, 3));
   const streaks = Array.from({ length: n }, () => ({ th: r() * 6.2832, r: 0.14 + Math.pow(r(), 0.8) * 1.5, a: r(), sp: 0.7 + r() * 0.6, tint: r() < 0.14 ? 2 : r() < 0.3 ? 1 : 0 }));
   const chars = (letters.replace(/\s+/g, '') || 'FORWARD').toUpperCase().split('');
   const tn = Math.round(clamp(Math.sqrt(w * h) / 45, 7, 22));
@@ -36,11 +36,11 @@ const frame = (speed: number, showTiles: boolean) => (c: CanvasRenderingContext2
   c.globalCompositeOperation = 'lighter'; c.lineCap = 'round';
   const buckets: number[][] = [[], [], [], [], [], []];
   for (const st of s.streaks) {
-    const u = (st.a + T * st.sp) % 1, z = 1 - u, zz = 0.015 + z * z * 1.4, L = (0.012 + speed * 0.05 * (1 - z * 0.4)) * st.sp, z0 = 0.015 + Math.max(0, z + L) ** 2 * 1.4;
+    const u = (st.a + T * st.sp) % 1, z = 1 - u, zz = 0.015 + z * z * 1.4, L = (0.006 + speed * 0.02 * (1 - z * 0.4)) * st.sp, z0 = 0.015 + Math.max(0, z + L) ** 2 * 1.4;
     const k1 = (F * 0.1) / zz, k0 = (F * 0.1) / z0, x = Math.cos(st.th) * st.r, y = Math.sin(st.th) * st.r, sx = cx + x * k1, sy = cy + y * k1;
     if (sx < -40 || sx > w + 40 || sy < -40 || sy > h + 40) continue;
     const al = clamp(u * 3, 0, 1) * clamp((1 - u) * 6, 0, 1) * (0.25 + 0.75 * u), b = st.tint * 2 + (u > 0.85 ? 1 : 0);
-    buckets[b]!.push(cx + x * k0, cy + y * k0, sx, sy, al, 0.6 + u * 1.8);
+    buckets[b]!.push(cx + x * k0, cy + y * k0, sx, sy, al, 0.5 + u * 1.4);
   }
   buckets.forEach((q, b) => {
     if (!q.length) return;
@@ -62,7 +62,7 @@ const frame = (speed: number, showTiles: boolean) => (c: CanvasRenderingContext2
       const r = size * 0.16, hs = size / 2;
       c.fillStyle = css(mixc(s.deep, s.tint[1]!, 0.18)); c.strokeStyle = css(s.tint[tl.ch.charCodeAt(0) % 3 === 0 ? 2 : 1]!, 0.9); c.lineWidth = Math.max(1, size * 0.03);
       c.beginPath(); c.roundRect(-hs, -hs, size, size, r); c.fill(); c.stroke();
-      c.fillStyle = css(WHITE, 0.95); c.font = `700 ${size * 0.58}px var(--font-mono, ui-monospace, monospace)`; c.fillText(tl.ch, 0, size * 0.04);
+      c.fillStyle = css(WHITE, 0.95); c.font = `700 ${size * 0.58}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`; c.fillText(tl.ch, 0, size * 0.04);
       c.restore();
     }
     c.globalAlpha = 1;

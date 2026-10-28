@@ -41,9 +41,9 @@ export default function SkeuomorphicToggle({ variant = 'groove', checked, defaul
 
 const ITEMS: { v: ToggleVariant; label: string; on: boolean; hint: string }[] = [
   { v: 'groove', label: 'Wi-Fi', on: true, hint: 'Metal slider' },
-  { v: 'rocker', label: 'Night mode', on: false, hint: 'Rocker' },
+  { v: 'rocker', label: 'Dark', on: false, hint: 'Rocker' },
   { v: 'flat', label: 'Alerts', on: true, hint: 'Flat pill' },
-  { v: 'segment', label: 'Backups', on: false, hint: 'Segmented' },
+  { v: 'segment', label: 'Sync', on: false, hint: 'Segmented' },
 ];
 
 export function Demo() {

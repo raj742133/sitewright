@@ -67,9 +67,9 @@ export default function ImageRibbon({ panels = 10, turns = 1.25, speed = 14, lab
     if (!el) return;
     const size = () => {
       const r = el.getBoundingClientRect();
-      const R = Math.max(40, Math.min(r.width * 0.26, r.height * 0.4));
+      const R = Math.max(40, Math.min(r.width * 0.24, r.height * 0.36));
       const arc = (2 * Math.PI * R * (slices.used / 360));
-      const ph = Math.min(r.height * 0.27, R * 0.8);
+      const ph = Math.min(r.height * 0.21, R * 0.75);
       const w = (2 * Math.PI * R * (slices.used / SLICES / 360)) + 1.2;
       el.style.setProperty('--image-ribbon-r', R.toFixed(1) + 'px');
       el.style.setProperty('--image-ribbon-h', ph.toFixed(1) + 'px');

@@ -57,16 +57,17 @@ void main(){
   } else if(uV<1.5){
     vec2 vp=vec2(m.x*.5,.46+(uPtr.y-.5)*.12);
     float dy=vp.y-p.y;
-    if(dy>.002){
-      float z=.12/dy;
-      float gx=(p.x-vp.x)*z*1.1;
-      float gz=z+t*.55;
+    if(dy>.003){
+      float gx=(p.x-vp.x)*2.4/dy;
+      float gz=.55/dy+t*.8;
+      float wx=clamp(1.4*2.4*asp/(uRes.x*dy),0.,.5);
+      float wz=clamp(1.4*.55/(dy*dy*uRes.y),0.,.5);
       float lx=abs(fract(gx)-.5), lz=abs(fract(gz)-.5);
-      float line=smoothstep(.5-.03*z,.5,max(lx,0.))*0.+smoothstep(.47,.5,lx)+smoothstep(.47,.5,lz);
-      float fade=smoothstep(0.,.3,dy)*exp(-z*.05);
-      float pulse=smoothstep(.9,1.,fract(gz*.25-t*.1))*smoothstep(.47,.5,lx);
-      add+=mix(bp,bs,clamp(pulse*2.,0.,1.))*(line*.5+pulse*1.6)*fade;
-      I+=(line*.5+pulse*1.2)*fade;
+      float line=smoothstep(.5-wx*2.,.5,lx)*(1.-wx*1.6)+smoothstep(.5-wz*2.,.5,lz)*(1.-wz*1.6);
+      float fade=smoothstep(.0,.12,dy)*(.5+.5*smoothstep(.5,.0,dy));
+      float pulse=smoothstep(.85,1.,fract(gz*.2-t*.08))*smoothstep(.45,.5,lx);
+      add+=mix(bp,bs,clamp(pulse*2.,0.,1.))*(line*.7+pulse*2.)*fade;
+      I+=(line*.6+pulse*1.5)*fade;
     }
     for(int i=0;i<5;i++){
       float fi=float(i)-2.;
@@ -102,7 +103,7 @@ void main(){
   if(uDark>.5){
     col=uSurf+add*(.6+.5*halo)+vec3(clamp(core*.35,0.,1.))*uInt;
   } else {
-    float a=clamp(I*.85,0.,1.)*(.55+.45*halo);
+    float a=clamp(I*1.1,0.,1.)*(.62+.38*halo);
     vec3 beamC=add/max(I,.001);
     col=mix(uSurf,clamp(beamC,0.,1.),a);
     col=mix(col,uInk,clamp(core*.25,0.,1.));

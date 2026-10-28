@@ -148,7 +148,7 @@
   .hbs-detail { grid-template-columns: 170px minmax(0, 1fr); gap: 24px; padding: 24px; }
 }
 @container hbs (max-width: 700px) {
-  .hbs-row { justify-content: flex-start; overflow-x: auto; gap: 14px; padding: 40px 6px 36px; scroll-snap-type: x proximity; margin-inline: -6px; }
+  .hbs-row { min-height: 0; justify-content: flex-start; overflow-x: auto; gap: 14px; padding: 40px 6px 36px; scroll-snap-type: x proximity; margin-inline: -6px; }
   .hbs-book { flex: 0 0 118px; margin-left: 0; transform: none; scroll-snap-align: center; }
   .hbs-book:hover { transform: translateY(-8px); }
   .hbs-book[aria-selected='true'] { transform: translateY(-14px); }

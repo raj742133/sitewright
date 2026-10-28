@@ -3,16 +3,16 @@ import { useState, type ReactNode } from 'react';
 import { useCoarsePointer } from './_t2';
 
 /** Demo frame with a foreground card (solid enough for >= 4.5:1 text) and an optional variant picker. */
-export function TuDemo<V extends string>({ title, sub, variants, labels, initial, children }: {
-  title: string; sub: string; variants?: readonly V[]; labels?: Record<V, string>; initial?: V; children: (v: V | undefined) => ReactNode;
+export function TuDemo<V extends string>({ title, sub, variants, labels, initial, dock, children }: {
+  title: string; sub: string; /** `bottom` keeps the card out of the middle so the scene stays visible */ dock?: 'center' | 'bottom'; variants?: readonly V[]; labels?: Record<V, string>; initial?: V; children: (v: V | undefined) => ReactNode;
 }) {
   const [v, setV] = useState<V | undefined>(initial ?? variants?.[0]);
   const coarse = useCoarsePointer();
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: 150, overflow: 'hidden', borderRadius: 'var(--radius, 12px)', background: 'var(--surface, #fff)' }}>
       {children(v)}
-      <div style={{ position: 'relative', display: 'grid', placeItems: 'center', alignContent: 'center', gap: 8, height: '100%', minHeight: 150, padding: 12, boxSizing: 'border-box' }}>
-        <div style={{ textAlign: 'center', padding: '10px 18px', borderRadius: 'var(--radius, 12px)', background: 'color-mix(in srgb, var(--surface, #fff) 92%, transparent)', border: '1px solid var(--line-strong, var(--line, #d4d4d8))', color: 'var(--ink, #111)', maxWidth: 'min(92%, 420px)', boxSizing: 'border-box' }}>
+      <div style={{ position: 'relative', display: 'grid', placeItems: 'center', alignContent: dock === 'bottom' ? 'end' : 'center', gap: 8, height: '100%', minHeight: 150, padding: 12, boxSizing: 'border-box' }}>
+        <div style={{ textAlign: 'center', padding: dock === 'bottom' ? '6px 14px' : '10px 18px', borderRadius: 'var(--radius, 12px)', background: 'color-mix(in srgb, var(--surface, #fff) 92%, transparent)', border: '1px solid var(--line-strong, var(--line, #d4d4d8))', color: 'var(--ink, #111)', maxWidth: 'min(92%, 420px)', boxSizing: 'border-box' }}>
           <strong style={{ display: 'block', font: '700 clamp(15px, 3vw, 24px)/1.15 var(--font-body, system-ui)' }}>{title}</strong>
           <span style={{ display: 'block', marginTop: 4, font: '500 clamp(12px, 1.7vw, 14px)/1.4 var(--font-body, system-ui)' }}>{sub}</span>
         </div>

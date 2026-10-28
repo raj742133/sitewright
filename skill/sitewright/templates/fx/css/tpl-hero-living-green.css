@@ -54,8 +54,8 @@
   box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .9), inset 0 -3px 8px rgba(0, 0, 0, .35), 0 12px 30px -10px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .25);
   transition: transform .25s, box-shadow .25s; }
 .hlg-liquid > span, .hlg-liquid > svg { position: relative; z-index: 2; text-shadow: 0 1px 0 rgba(255, 255, 255, .15); }
-.hlg-liquid::before { content: ''; position: absolute; inset: -40%; z-index: 0; background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, .85) 8%, transparent 18%, rgba(255, 255, 255, .5) 50%, transparent 62%, rgba(255, 255, 255, .8) 78%, transparent); mix-blend-mode: soft-light; animation: hlg-spin 9s linear infinite; }
-.hlg-liquid::after { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(90px 60px at var(--lx) var(--ly), rgba(255, 255, 255, .8), transparent 70%); mix-blend-mode: overlay; opacity: .9; transition: opacity .3s; }
+.hlg-liquid::before { content: ''; position: absolute; inset: -40%; z-index: 0; background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, .4) 8%, transparent 18%, rgba(255, 255, 255, .22) 50%, transparent 62%, rgba(255, 255, 255, .36) 78%, transparent); mix-blend-mode: soft-light; animation: hlg-spin 9s linear infinite; }
+.hlg-liquid::after { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(90px 60px at var(--lx) var(--ly), rgba(255, 255, 255, .5), transparent 70%); mix-blend-mode: overlay; opacity: .9; transition: opacity .3s; }
 .hlg-lq-a, .hlg-lq-b { position: absolute; z-index: 1; width: 70px; height: 70px; border-radius: 50%; filter: blur(14px); background: rgba(255, 255, 255, .7); mix-blend-mode: soft-light; animation: hlg-blob 6s ease-in-out infinite alternate; }
 .hlg-lq-a { left: 10%; top: -20%; }
 .hlg-lq-b { right: 6%; bottom: -30%; background: rgba(0, 0, 0, .55); animation-duration: 8s; animation-direction: alternate-reverse; mix-blend-mode: multiply; }

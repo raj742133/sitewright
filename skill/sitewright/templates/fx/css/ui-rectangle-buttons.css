@@ -41,7 +41,7 @@
 /* arrow pill */
 .ui-rectangle-buttons-arrow-pill { border-radius: 999px; padding: 0 5px 0 20px; background: var(--primary, #2563eb); color: var(--on-primary, #fff); gap: 12px; }
 .ui-rectangle-buttons-sm.ui-rectangle-buttons-arrow-pill { padding-left: 16px; }
-.ui-rectangle-buttons-arrow-pill .ui-rectangle-buttons-arrow { display: grid; place-items: center; width: calc(var(--rectangle-buttons-h) - 10px); aspect-ratio: 1; border-radius: 50%; background: var(--on-primary, #fff); color: var(--primary, #2563eb); transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ui-rectangle-buttons-arrow-pill .ui-rectangle-buttons-arrow { display: grid; place-items: center; width: calc(var(--rectangle-buttons-h) - 10px); height: calc(var(--rectangle-buttons-h) - 10px); flex: none; border-radius: 50%; background: var(--on-primary, #fff); color: var(--primary, #2563eb); transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .ui-rectangle-buttons-arrow-pill:hover .ui-rectangle-buttons-arrow { transform: translateX(3px) rotate(-45deg); }
 .ui-rectangle-buttons-arrow-pill:active { transform: scale(0.97); }
 
@@ -54,8 +54,8 @@
 /* inset arrow chip */
 .ui-rectangle-buttons-chip { padding: 0 5px 0 20px; background: var(--ink, #111827); color: var(--surface, #fff); border-radius: 12px; gap: 14px; }
 .ui-rectangle-buttons-sm.ui-rectangle-buttons-chip { padding-left: 14px; }
-.ui-rectangle-buttons-chip .ui-rectangle-buttons-arrow { display: grid; place-items: center; height: calc(var(--rectangle-buttons-h) - 10px); aspect-ratio: 1.35; border-radius: 8px; background: var(--surface, #fff); color: var(--ink, #111827); transition: aspect-ratio 0.25s, background-color 0.2s; }
-.ui-rectangle-buttons-chip:hover .ui-rectangle-buttons-arrow { aspect-ratio: 1.9; background: var(--signal, #f59e0b); color: #111; }
+.ui-rectangle-buttons-chip .ui-rectangle-buttons-arrow { display: grid; place-items: center; height: calc(var(--rectangle-buttons-h) - 10px); width: calc((var(--rectangle-buttons-h) - 10px) * 1.35); flex: none; border-radius: 8px; background: var(--surface, #fff); color: var(--ink, #111827); transition: width 0.25s, background-color 0.2s; }
+.ui-rectangle-buttons-chip:hover .ui-rectangle-buttons-arrow { width: calc((var(--rectangle-buttons-h) - 10px) * 1.8); background: var(--signal, #f59e0b); color: #111; }
 .ui-rectangle-buttons-chip:active { transform: scale(0.98); }
 
 /* hard-shadow stamp */

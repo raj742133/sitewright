@@ -23,7 +23,7 @@ export function buildGlobe(dots: number, arcs: number): GlobeGeo {
   for (let i = 0; i < dots; i++) {
     const y = 1 - ((i + 0.5) / dots) * 2, r = Math.sqrt(1 - y * y), th = ga * i;
     const v: V3 = [Math.cos(th) * r, y, Math.sin(th) * r];
-    if (land(v) > 0.5) { pts.push(v[0], v[1], v[2], 0); land3.push(v); }
+    if (land(v) > 0.47) { pts.push(v[0], v[1], v[2], 0); land3.push(v); }
   }
   const hubs: V3[] = [];
   let guard = 0;

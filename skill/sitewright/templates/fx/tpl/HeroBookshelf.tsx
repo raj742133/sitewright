@@ -111,12 +111,10 @@ export default function HeroBookshelf({ studio = 'Marrow & Pine', tools = TOOLS,
                 <button type="button" className="hbs-btn hbs-btn-ghost" onClick={() => dlg.current?.showModal()}>Open the catalogue</button>
               </div>
             </div>
-            <aside className="hbs-colophon" aria-label="Colophon">
-              <b>Catalogue 2026</b>
-              <span>Seven titles in print</span>
-              <span>Set in serif and sans</span>
-              <span>Bound in Ghent, Belgium</span>
-            </aside>
+            <nav className="hbs-toc" aria-label="Contents">
+              <b>Contents</b>
+              <ol>{tools.map((x, i) => <li key={x.id}><button type="button" aria-current={i === index ? 'true' : undefined} onClick={() => { select(i); to('hbs-shelf'); }}><span>{String(i + 1).padStart(2, '0')}</span><em>{x.title}</em><small>{x.kind}</small></button></li>)}</ol>
+            </nav>
           </div>
         </section>
 

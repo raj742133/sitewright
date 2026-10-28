@@ -1,5 +1,5 @@
 'use client';
-import type { CSSProperties } from 'react';
+import { useId } from 'react';
 
 /* Book data and procedural covers for the 3-D bookshelf: titles, authors and text are invented; artwork is generated SVG. */
 
@@ -59,7 +59,7 @@ function Motif({ art, c }: { art: CoverArt; c: string }) {
 /** The procedural cover (SVG, aria-hidden): tone gradient, motif, title and author. */
 export function Cover({ b, i }: { b: BookData; i: number }) {
   const tone = TONES[(b.tone ?? i) % TONES.length]!, lines = wrap(b.title, 12);
-  const id = `bk-g${i}`;
+  const id = 'bk' + useId().replace(/:/g, '') + i;
   return (
     <svg viewBox="0 0 120 170" preserveAspectRatio="none" aria-hidden="true" focusable="false" className="ui-bookshelf-3d-cover">
       <defs><linearGradient id={id} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={tone[0]} /><stop offset="1" stopColor={tone[1]} /></linearGradient></defs>
@@ -72,4 +72,3 @@ export function Cover({ b, i }: { b: BookData; i: number }) {
     </svg>
   );
 }
-export interface LeafStyle extends CSSProperties { ['--ry']?: string; ['--zf']?: number }

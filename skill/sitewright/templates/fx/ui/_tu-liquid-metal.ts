@@ -51,7 +51,7 @@ void main(){
   float fm=smoothstep(bw*.9,bw*1.1,t);
   vec3 nf=normalize(vec3(fl*.3+rip*.6,1.));
   vec3 rf=reflect(vec3(0.,0.,-1.),nf);rf.xy+=(uPtr-.5)*.4;
-  vec3 face=vec3(.05)+vec3(env(rf,k*.7))*.1+.06*smoothstep(.1,.9,sin((p.x*1.3-p.y*.9)*3.4+tm*2.2));
+  vec3 face=vec3(.05)+vec3(env(rf,k*.7))*.06+.06*smoothstep(.1,.9,sin((p.x*1.3-p.y*.9)*3.4+tm*2.2));
   face+=uTint*uTintAmt*.06;
   face+=vec3(.5)*ring*.08;
   col=mix(col,face,fm);

@@ -55,7 +55,7 @@ void main(){
   float head=fract(uT*.22+vPh);float d=fract(head-vS);
   float pulse=exp(-d*9.)*step(d,.6);
   vec3 c=mix(uA,uB,vS);
-  float a=(.22+.95*pulse)*f;
+  float a=(.4+.95*pulse)*f;
   gl_FragColor=vec4(mix(c,vec3(1.),pulse*.35)*a,a);
 }`;
 
@@ -77,7 +77,7 @@ export default function NetworkGlobe({ arcs = 16, tone = 'dusk', spin = 0.12, la
   const { wrapRef, canvasRef, status, invalidate } = useGL(
     (env) => {
       const gl = env.gl;
-      const geo = buildGlobe(1500, clamp(Math.round(arcs), 0, 40));
+      const geo = buildGlobe(3400, clamp(Math.round(arcs), 0, 40));
       const glow = fullscreenScene(gl, GLOW, () => (_t, _dt, e, pr) => {
         const s = st.current;
         const R = Math.min(e.pw, e.ph) * 0.5 * 0.7;
@@ -113,7 +113,7 @@ export default function NetworkGlobe({ arcs = 16, tone = 'dusk', spin = 0.12, la
           gl.enableVertexAttribArray(0); gl.disableVertexAttribArray(1);
           gl.vertexAttribPointer(0, 4, gl.FLOAT, false, 16, 0);
           gl.uniformMatrix3fv(pp.u('uM'), false, M); gl.uniform2f(pp.u('uK'), R / (e.w / 2), R / (e.h / 2));
-          gl.uniform1f(pp.u('uPx'), e.dpr); gl.uniform1f(pp.u('uSz'), clamp(R / 90, 0.9, 2.2) * 1.5);
+          gl.uniform1f(pp.u('uPx'), e.dpr); gl.uniform1f(pp.u('uSz'), clamp(R / 90, 0.9, 2.2) * 1.6);
           gl.uniform3fv(pp.u('uA'), a); gl.uniform3fv(pp.u('uB'), b); gl.uniform1f(pp.u('uT'), e.reduced ? 0 : t);
           gl.drawArrays(gl.POINTS, 0, geo.pointCount);
         },

@@ -1,7 +1,6 @@
 'use client';
 import type { CSSProperties } from 'react';
 import { clamp, fullscreenScene, useGL } from './_t1';
-import { TuDemo } from './_tu-bg-demo';
 
 export interface LiquidFormProps {
   /** Number of orbiting lobes, 2 to 5 (default 4). */
@@ -34,12 +33,13 @@ float map(vec3 p){
 }
 vec3 nrm(vec3 p){vec2 e=vec2(.002,-.002);return normalize(e.xyy*map(p+e.xyy)+e.yyx*map(p+e.yyx)+e.yxy*map(p+e.yxy)+e.xxx*map(p+e.xxx));}
 vec3 env(vec3 r){
-  vec3 lo=uDark>.5?mix(uInk,uSurf,.15)*.4:mix(uSurf,uInk,.55);
+  vec3 lo=uDark>.5?mix(uInk,uSurf,.1)*.28:mix(uSurf,uInk,.4);
   vec3 hi=uDark>.5?mix(uSurf,vec3(1.),.35)*1.25:mix(uSurf,vec3(1.),.6);
   vec3 c=mix(lo,hi,smoothstep(-.5,.7,r.y));
   c=mix(c,lo*.8,smoothstep(.1,-.6,r.y)*.6);
-  float band=smoothstep(.55,.62,sin(r.y*7.+r.x*2.))*smoothstep(-.2,.5,r.y);
-  c=mix(c,hi*(uDark>.5?1.5:1.08),band*.55);
+  float band=smoothstep(.5,.6,sin(r.y*6.+r.x*2.5+r.z))*smoothstep(-.4,.5,r.y);
+  c=mix(c,hi*(uDark>.5?1.7:1.15),band*.85);
+  c=mix(c,lo*.5,smoothstep(.2,-.25,r.y)*smoothstep(-.9,-.3,r.y)*.7);
   c+=uP*pow(max(dot(r,normalize(vec3(-.7,.35,-.6))),0.),6.)*(uDark>.5?1.1:.7);
   c+=uS*pow(max(dot(r,normalize(vec3(.8,.15,-.5))),0.),7.)*(uDark>.5?1.0:.6);
   return c;
@@ -60,11 +60,9 @@ void main(){
     vec3 pos=ro+rd*t, n=nrm(pos), r=reflect(rd,n);
     float fr=pow(1.-max(dot(-rd,n),0.),3.);
     vec3 base=mix(uP,uS,.5+.5*n.y);
-    vec3 m=env(r)*(.78+.5*fr);
-    m=mix(m,m*mix(vec3(1.),base,.55),.7);
-    vec3 under=env(refract(rd,n,.8));
-    m=mix(m,under,.12);
-    m+=pow(max(dot(r,normalize(vec3(.3,.8,-.5))),0.),40.)*.8;
+    vec3 m=env(r)*(.9+.5*fr);
+    m=mix(m,m*mix(vec3(1.),base*1.3,.5),.55);
+    m+=pow(max(dot(r,normalize(vec3(.3,.8,-.5))),0.),50.)*1.1;
     col=m; a=1.;
   } else {
     col=mix(uP,uS,.5)*(uDark>.5?1.:.8); a=glow;
@@ -103,7 +101,7 @@ export default function LiquidForm({ lobes = 4, speed = 1, pull = 0.8, className
         g.uniform3fv(pr.u('uInk'), e.pal.ink);
       });
     },
-    { res: 0.55, fps: 40, maxPixels: 1.1e6 },
+    { res: 0.75, fps: 40, maxPixels: 1.3e6 },
   );
   return (
     <div ref={wrapRef} className={'ui-liquid-form' + (className ? ' ' + className : '')} style={style} data-gl={status} aria-hidden="true">
@@ -114,8 +112,11 @@ export default function LiquidForm({ lobes = 4, speed = 1, pull = 0.8, className
 
 export function Demo() {
   return (
-    <TuDemo title="Liquid form" sub="Drag the pointer through the metal.">
-      {() => <LiquidForm />}
-    </TuDemo>
+    <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: 150, overflow: 'hidden', borderRadius: 'var(--radius, 12px)', background: 'var(--surface, #fff)' }}>
+      <LiquidForm />
+      <p style={{ position: 'absolute', left: 12, right: 12, bottom: 10, margin: 0, textAlign: 'center', pointerEvents: 'none', font: '600 clamp(11px, 1.6vw, 13px)/1.3 var(--font-body, system-ui)', color: 'var(--ink, #111)' }}>
+        <span style={{ padding: '3px 10px', borderRadius: 999, background: 'color-mix(in srgb, var(--surface, #fff) 90%, transparent)', border: '1px solid var(--line, #d4d4d8)' }}>Drag the pointer through the metal</span>
+      </p>
+    </div>
   );
 }

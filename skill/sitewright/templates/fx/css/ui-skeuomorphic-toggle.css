@@ -1,4 +1,4 @@
-.ui-skeuomorphic-toggle-b { display: inline-flex; align-items: center; gap: 12px; min-height: 36px; padding: 2px 4px; border: 0; border-radius: 10px; background: none; color: var(--ink, #111827); font: 600 14px/1.2 var(--font-body, system-ui); cursor: pointer; text-align: left; -webkit-tap-highlight-color: transparent; }
+.ui-skeuomorphic-toggle-b { display: inline-flex; align-items: center; gap: 10px; min-height: 36px; padding: 2px 4px; border: 0; border-radius: 10px; background: none; color: var(--ink, #111827); font: 600 14px/1.2 var(--font-body, system-ui); cursor: pointer; text-align: left; -webkit-tap-highlight-color: transparent; }
 @media (pointer: coarse) { .ui-skeuomorphic-toggle-b { min-height: 44px; min-width: 44px; } }
 .ui-skeuomorphic-toggle-b:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 3px; }
 .ui-skeuomorphic-toggle-b:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -34,7 +34,7 @@
 .ui-skeuomorphic-toggle-flat[data-on='true']:active:not(:disabled) .ui-skeuomorphic-toggle-knob { transform: translateX(17px); }
 
 /* segment: a two-part flat control */
-.ui-skeuomorphic-toggle-seg { position: relative; flex: none; display: grid; grid-template-columns: 1fr 1fr; width: 92px; height: 34px; padding: 3px; box-sizing: border-box; border-radius: 9px; background: var(--raised-2, #e5e7eb); border: 1px solid var(--line, rgba(0, 0, 0, 0.12)); font: 700 12px/1 var(--font-mono, monospace); letter-spacing: 0.04em; }
+.ui-skeuomorphic-toggle-seg { position: relative; flex: none; display: grid; grid-template-columns: 1fr 1fr; width: 84px; height: 34px; padding: 3px; box-sizing: border-box; border-radius: 9px; background: var(--raised-2, #e5e7eb); border: 1px solid var(--line, rgba(0, 0, 0, 0.12)); font: 700 12px/1 var(--font-mono, monospace); letter-spacing: 0.04em; }
 .ui-skeuomorphic-toggle-seg > span { position: relative; z-index: 1; display: grid; place-items: center; color: var(--muted, #4b5563); transition: color 0.2s; }
 .ui-skeuomorphic-toggle-pill { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 6px; background: var(--surface, #fff); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); transition: transform 0.28s cubic-bezier(0.3, 1.2, 0.5, 1), background-color 0.2s; }
 .ui-skeuomorphic-toggle-segment[data-on='true'] .ui-skeuomorphic-toggle-pill { transform: translateX(100%); background: var(--primary, #2563eb); }

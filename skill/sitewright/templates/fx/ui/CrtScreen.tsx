@@ -76,7 +76,11 @@ void main(){
  * Fills the positioned parent, centred; aria-hidden; no pointer events. Reduced motion: one still frame.
  * Without WebGL a CSS tube with scanlines is shown.
  */
-export default function CrtScreen({ screen = 'terminal', curve = 0.6, scanlines = 0.7, className, style }: CrtScreenProps) {
+export default function CrtScreen({ screen = 'terminal', ...rest }: CrtScreenProps) {
+  return <Tube key={screen} screen={screen} {...rest} />;
+}
+
+function Tube({ screen, curve = 0.6, scanlines = 0.7, className, style }: CrtScreenProps & { screen: CrtScreenKind }) {
   const cv = useRef<{ c: HTMLCanvasElement; x: CanvasRenderingContext2D } | null>(null);
   const { wrapRef, canvasRef, status } = useGL(
     (env) => {
@@ -125,7 +129,7 @@ const VARIANTS = ['terminal', 'pattern', 'static', 'title'] as const;
 const NAMES: Record<CrtScreenKind, string> = { terminal: 'Terminal', pattern: 'Test card', static: 'Static', title: 'Arcade' };
 export function Demo() {
   return (
-    <TuDemo title="CRT screen" sub="Four screens on one curved tube." variants={VARIANTS} labels={NAMES}>
+    <TuDemo dock="bottom" title="CRT screen" sub="Four screens on one curved tube." variants={VARIANTS} labels={NAMES}>
       {(v) => <CrtScreen screen={v} />}
     </TuDemo>
   );
