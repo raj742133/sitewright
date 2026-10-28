@@ -55,7 +55,7 @@ export function Catalogue() {
           <div className="fxc-grid">
             {list.map((d) => (
               <button key={d.id} type="button" className="fxc-tile" aria-pressed={sel === d.id} onClick={() => pick(sel === d.id ? null : d.id)}>
-                <span className="fxc-stage"><Lazy height={150}><DemoFrame className="fxc-demo"><d.Demo /></DemoFrame></Lazy></span>
+                <span className="fxc-stage" aria-hidden="true" inert><Lazy height={150}><DemoFrame className="fxc-demo"><d.Demo /></DemoFrame></Lazy></span>
                 <span className="fxc-name"><b>{d.label}</b><small>{label(d.group)}</small></span>
               </button>
             ))}
