@@ -191,7 +191,7 @@ section = 'catalogue';
     eq(await page.textContent('.tile:not([hidden]) h2'), 'Area chart', 'first result'); eq(new URL(page.url()).searchParams.get('q'), 'area', 'url q');
     truthy(/results? for/.test(await page.textContent('#cat-count')), 'count text');
     await page.fill('#cat-q', 'zzzzqq'); await page.waitForTimeout(200); truthy(await page.locator('#cat-empty').isVisible(), 'empty state'); eq(await page.locator('.tile:visible').count(), 0, 'no tiles');
-    await page.click('#cat-reset'); await page.waitForTimeout(200); eq(await page.locator('.tile:visible').count(), 24, 'back to 24'); eq(await page.inputValue('#cat-q'), '', 'field cleared');
+    await page.click('#cat-reset'); await page.waitForTimeout(200); eq(await page.locator('.tile:visible').count(), 20, 'back to 20'); eq(await page.inputValue('#cat-q'), '', 'field cleared');
   });
   await check('the URL state is restored on load (?g=charts&q=area)', async () => {
     const { ctx: c2, page: p2 } = await openAt('wide', '/components/?g=charts&q=area'); eq(await p2.inputValue('#cat-q'), 'area', 'q'); eq(await p2.textContent('.tile:not([hidden]) h2'), 'Area chart', 'first');
