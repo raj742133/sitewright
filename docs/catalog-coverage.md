@@ -11,15 +11,19 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Source catalogue entries | 261 (218 React Bits-origin + 43 `tu`) |
 | Unique entries | 261 (the 5 heroes are among the 43 `tu` entries) |
 | Existing Sitewright equivalents reused | 30 |
-| New independent implementations present | 0 |
+| New independent implementations present | 85 |
 | Verified (all smoke checks passed) | 0 |
-| Implemented, awaiting tests | 0 |
+| Implemented, awaiting tests | 85 |
 | With failing tests | 0 |
 | Blocked | 0 |
-| Remaining (planned / in progress) | 231 |
+| Remaining (planned / in progress) | 146 |
 | Full-page heroes completed | 0 / 5 |
 | Tactile Glass components complete | 10 / 10 |
-| Registry | 133 components, 12 templates |
+| Registry | 218 components, 12 templates |
+
+## Inconsistencies (1)
+
+- component file not in any registry entry: templates/fx/ui/Dock.tsx
 
 ## Provenance and licence
 
@@ -43,10 +47,10 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | `tu:energy-orb` | Globe | planned | - | none | not implemented yet |
 | `tu:spark-badge` | Spark Badge | planned | - | none | not implemented yet |
 | `tu:elements` | Elements | planned | - | none | not implemented yet |
-| `tu:typography-vortex` | Typography Vortex | planned | - | none | not implemented yet |
-| `tu:semantic-bloom` | Semantic Bloom | planned | - | none | not implemented yet |
-| `tu:globe-study` | Text Path Studies | planned | - | none | not implemented yet |
-| `tu:gallery-heading` | Gallery Heading | planned | - | none | not implemented yet |
+| `tu:typography-vortex` | Typography Vortex | implemented | `typography-vortex` | not run | - |
+| `tu:semantic-bloom` | Semantic Bloom | implemented | `semantic-bloom` | not run | - |
+| `tu:globe-study` | Text Path Studies | implemented | `text-path-studies` | not run | - |
+| `tu:gallery-heading` | Gallery Heading | implemented | `gallery-heading` | not run | - |
 | `tu:star-portal` | Shader Buttons | planned | - | none | not implemented yet |
 | `tu:rectangle-buttons` | Rectangle Buttons | planned | - | none | not implemented yet |
 | `tu:circle-buttons` | Circle Buttons | planned | - | none | not implemented yet |
@@ -65,7 +69,7 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | `tu:performance-gauges` | Performance Gauges | planned | - | none | not implemented yet |
 | `tu:uplink-loader` | Uplink Loader | planned | - | none | not implemented yet |
 | `tu:koi-studies` | Koi Studies | planned | - | none | not implemented yet |
-| `tu:article-headings` | Article Headings | planned | - | none | not implemented yet |
+| `tu:article-headings` | Article Headings | implemented | `article-headings` | not run | - |
 | `tu:animated-top-dock` | Animated Top Dock | planned | - | none | not implemented yet |
 | `tu:sketchbook` | Sketchbook | planned | - | none | not implemented yet |
 | `tu:constellation-field` | Constellation Field | planned | - | none | not implemented yet |
@@ -90,119 +94,119 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
-| `rb:text-animations/asciitext` | ASCIIText | planned | - | none | not implemented yet |
+| `rb:text-animations/asciitext` | ASCIIText | implemented | `asciitext` | not run | - |
 | `rb:text-animations/blur-text` | Blur Text | existing | `fx-text:BlurIn` | existing | - |
-| `rb:text-animations/circular-text` | Circular Text | planned | - | none | not implemented yet |
+| `rb:text-animations/circular-text` | Circular Text | implemented | `circular-text` | not run | - |
 | `rb:text-animations/count-up` | Count Up | existing | `fx:CountUp` | existing | - |
-| `rb:text-animations/curved-loop` | Curved Loop | planned | - | none | not implemented yet |
+| `rb:text-animations/curved-loop` | Curved Loop | implemented | `curved-loop` | not run | - |
 | `rb:text-animations/decrypted-text` | Decrypted Text | existing | `ui:scramble-text` | existing | - |
-| `rb:text-animations/depth-text` | Depth Text | planned | - | none | not implemented yet |
-| `rb:text-animations/echo-text` | Echo Text | planned | - | none | not implemented yet |
-| `rb:text-animations/falling-text` | Falling Text | planned | - | none | not implemented yet |
-| `rb:text-animations/fold-text` | Fold Text | planned | - | none | not implemented yet |
-| `rb:text-animations/fuzzy-text` | Fuzzy Text | planned | - | none | not implemented yet |
-| `rb:text-animations/glitch-text` | Glitch Text | planned | - | none | not implemented yet |
+| `rb:text-animations/depth-text` | Depth Text | implemented | `depth-text` | not run | - |
+| `rb:text-animations/echo-text` | Echo Text | implemented | `echo-text` | not run | - |
+| `rb:text-animations/falling-text` | Falling Text | implemented | `falling-text` | not run | - |
+| `rb:text-animations/fold-text` | Fold Text | implemented | `fold-text` | not run | - |
+| `rb:text-animations/fuzzy-text` | Fuzzy Text | implemented | `fuzzy-text` | not run | - |
+| `rb:text-animations/glitch-text` | Glitch Text | implemented | `glitch-text` | not run | - |
 | `rb:text-animations/gradient-text` | Gradient Text | existing | `fx-text:Gradient` | existing | - |
-| `rb:text-animations/masked-heading` | Masked Heading | planned | - | none | not implemented yet |
-| `rb:text-animations/particle-text` | Particle Text | planned | - | none | not implemented yet |
+| `rb:text-animations/masked-heading` | Masked Heading | implemented | `masked-heading` | not run | - |
+| `rb:text-animations/particle-text` | Particle Text | implemented | `particle-text` | not run | - |
 | `rb:text-animations/rotating-text` | Rotating Text | existing | `fx-text:Rotate` | existing | - |
 | `rb:text-animations/scrambled-text` | Scrambled Text | existing | `ui:scramble-text` | existing | - |
-| `rb:text-animations/scroll-float` | Scroll Float | planned | - | none | not implemented yet |
-| `rb:text-animations/scroll-reveal` | Scroll Reveal | planned | - | none | not implemented yet |
-| `rb:text-animations/scroll-velocity` | Scroll Velocity | planned | - | none | not implemented yet |
+| `rb:text-animations/scroll-float` | Scroll Float | implemented | `scroll-float` | not run | - |
+| `rb:text-animations/scroll-reveal` | Scroll Reveal | implemented | `scroll-reveal` | not run | - |
+| `rb:text-animations/scroll-velocity` | Scroll Velocity | implemented | `scroll-velocity` | not run | - |
 | `rb:text-animations/shiny-text` | Shiny Text | existing | `fx-text:Shimmer` | existing | - |
-| `rb:text-animations/shuffle` | Shuffle | planned | - | none | not implemented yet |
-| `rb:text-animations/split-flap-text` | Split Flap Text | planned | - | none | not implemented yet |
+| `rb:text-animations/shuffle` | Shuffle | implemented | `shuffle` | not run | - |
+| `rb:text-animations/split-flap-text` | Split Flap Text | implemented | `split-flap-text` | not run | - |
 | `rb:text-animations/split-text` | Split Text | existing | `fx-text:SplitChars` | existing | - |
-| `rb:text-animations/stroke-text` | Stroke Text | planned | - | none | not implemented yet |
-| `rb:text-animations/tech-text` | Tech Text | planned | - | none | not implemented yet |
-| `rb:text-animations/text-cursor` | Text Cursor | planned | - | none | not implemented yet |
-| `rb:text-animations/text-loop` | Text Loop | planned | - | none | not implemented yet |
-| `rb:text-animations/text-pressure` | Text Pressure | planned | - | none | not implemented yet |
+| `rb:text-animations/stroke-text` | Stroke Text | implemented | `stroke-text` | not run | - |
+| `rb:text-animations/tech-text` | Tech Text | implemented | `tech-text` | not run | - |
+| `rb:text-animations/text-cursor` | Text Cursor | implemented | `text-cursor` | not run | - |
+| `rb:text-animations/text-loop` | Text Loop | implemented | `text-loop` | not run | - |
+| `rb:text-animations/text-pressure` | Text Pressure | implemented | `text-pressure` | not run | - |
 | `rb:text-animations/text-type` | Text Type | existing | `fx-text:Typewriter` | existing | - |
-| `rb:text-animations/true-focus` | True Focus | planned | - | none | not implemented yet |
-| `rb:text-animations/variable-proximity` | Variable Proximity | planned | - | none | not implemented yet |
-| `rb:text-animations/warp-text` | Warp Text | planned | - | none | not implemented yet |
-| `rb:animations/animated-content` | Animated Content | planned | - | none | not implemented yet |
-| `rb:animations/blob-cursor` | Blob Cursor | planned | - | none | not implemented yet |
+| `rb:text-animations/true-focus` | True Focus | implemented | `true-focus` | not run | - |
+| `rb:text-animations/variable-proximity` | Variable Proximity | implemented | `variable-proximity` | not run | - |
+| `rb:text-animations/warp-text` | Warp Text | implemented | `warp-text` | not run | - |
+| `rb:animations/animated-content` | Animated Content | implemented | `animated-content` | not run | - |
+| `rb:animations/blob-cursor` | Blob Cursor | implemented | `blob-cursor` | not run | - |
 | `rb:animations/click-spark` | Click Spark | existing | `fx-micro:clickSpark` | existing | - |
-| `rb:animations/crosshair` | Crosshair | planned | - | none | not implemented yet |
-| `rb:animations/crystalized-ball` | Crystalized Ball | planned | - | none | not implemented yet |
-| `rb:animations/cubes` | Cubes | planned | - | none | not implemented yet |
-| `rb:animations/cursor-grid` | Cursor Grid | planned | - | none | not implemented yet |
-| `rb:animations/dither-veil` | Dither Veil | planned | - | none | not implemented yet |
-| `rb:animations/elastic-mesh` | Elastic Mesh | planned | - | none | not implemented yet |
-| `rb:animations/electric-border` | Electric Border | planned | - | none | not implemented yet |
-| `rb:animations/electric-logo` | Electric Logo | planned | - | none | not implemented yet |
-| `rb:animations/fade-content` | Fade Content | planned | - | none | not implemented yet |
-| `rb:animations/ghost-cursor` | Ghost Cursor | planned | - | none | not implemented yet |
-| `rb:animations/glare-hover` | Glare Hover | planned | - | none | not implemented yet |
+| `rb:animations/crosshair` | Crosshair | implemented | `crosshair` | not run | - |
+| `rb:animations/crystalized-ball` | Crystalized Ball | implemented | `crystalized-ball` | not run | - |
+| `rb:animations/cubes` | Cubes | implemented | `cubes` | not run | - |
+| `rb:animations/cursor-grid` | Cursor Grid | implemented | `cursor-grid` | not run | - |
+| `rb:animations/dither-veil` | Dither Veil | implemented | `dither-veil` | not run | - |
+| `rb:animations/elastic-mesh` | Elastic Mesh | implemented | `elastic-mesh` | not run | - |
+| `rb:animations/electric-border` | Electric Border | implemented | `electric-border` | not run | - |
+| `rb:animations/electric-logo` | Electric Logo | implemented | `electric-logo` | not run | - |
+| `rb:animations/fade-content` | Fade Content | implemented | `fade-content` | not run | - |
+| `rb:animations/ghost-cursor` | Ghost Cursor | implemented | `ghost-cursor` | not run | - |
+| `rb:animations/glare-hover` | Glare Hover | implemented | `glare-hover` | not run | - |
 | `rb:animations/glow-cursor` | Glow Cursor | existing | `fx-micro:cursorGlow` | existing | - |
-| `rb:animations/gradual-blur` | Gradual Blur | planned | - | none | not implemented yet |
-| `rb:animations/halftone-reveal` | Halftone Reveal | planned | - | none | not implemented yet |
-| `rb:animations/image-trail` | Image Trail | planned | - | none | not implemented yet |
-| `rb:animations/laser-flow` | Laser Flow | planned | - | none | not implemented yet |
-| `rb:animations/logo-loop` | Logo Loop | planned | - | none | not implemented yet |
+| `rb:animations/gradual-blur` | Gradual Blur | implemented | `gradual-blur` | not run | - |
+| `rb:animations/halftone-reveal` | Halftone Reveal | implemented | `halftone-reveal` | not run | - |
+| `rb:animations/image-trail` | Image Trail | implemented | `image-trail` | not run | - |
+| `rb:animations/laser-flow` | Laser Flow | implemented | `laser-flow` | not run | - |
+| `rb:animations/logo-loop` | Logo Loop | implemented | `logo-loop` | not run | - |
 | `rb:animations/magnet` | Magnet | existing | `ui:magnetic-button` | existing | - |
-| `rb:animations/meta-balls` | Meta Balls | planned | - | none | not implemented yet |
-| `rb:animations/metallic-paint` | Metallic Paint | planned | - | none | not implemented yet |
+| `rb:animations/meta-balls` | Meta Balls | implemented | `meta-balls` | not run | - |
+| `rb:animations/metallic-paint` | Metallic Paint | implemented | `metallic-paint` | not run | - |
 | `rb:animations/noise` | Noise | existing | `fx-bg:Grain` | existing | - |
-| `rb:animations/orbit-images` | Orbit Images | planned | - | none | not implemented yet |
-| `rb:animations/pixel-swap` | Pixel Swap | planned | - | none | not implemented yet |
-| `rb:animations/pixel-trail` | Pixel Trail | planned | - | none | not implemented yet |
-| `rb:animations/pixel-transition` | Pixel Transition | planned | - | none | not implemented yet |
-| `rb:animations/ribbons` | Ribbons | planned | - | none | not implemented yet |
-| `rb:animations/ripple-distortion` | Ripple Distortion | planned | - | none | not implemented yet |
-| `rb:animations/scroll-expand` | Scroll Expand | planned | - | none | not implemented yet |
-| `rb:animations/shape-blur` | Shape Blur | planned | - | none | not implemented yet |
-| `rb:animations/splash-cursor` | Splash Cursor | planned | - | none | not implemented yet |
-| `rb:animations/star-border` | Star Border | planned | - | none | not implemented yet |
-| `rb:animations/sticker-peel` | Sticker Peel | planned | - | none | not implemented yet |
-| `rb:animations/strands` | Strands | planned | - | none | not implemented yet |
-| `rb:animations/swarm-cursor` | Swarm Cursor | planned | - | none | not implemented yet |
-| `rb:animations/target-cursor` | Target Cursor | planned | - | none | not implemented yet |
-| `rb:components/accordion-gallery` | Accordion Gallery | planned | - | none | not implemented yet |
-| `rb:components/animated-list` | Animated List | planned | - | none | not implemented yet |
-| `rb:components/border-glow` | Border Glow | planned | - | none | not implemented yet |
-| `rb:components/bounce-cards` | Bounce Cards | planned | - | none | not implemented yet |
+| `rb:animations/orbit-images` | Orbit Images | implemented | `orbit-images` | not run | - |
+| `rb:animations/pixel-swap` | Pixel Swap | implemented | `pixel-swap` | not run | - |
+| `rb:animations/pixel-trail` | Pixel Trail | implemented | `pixel-trail` | not run | - |
+| `rb:animations/pixel-transition` | Pixel Transition | implemented | `pixel-transition` | not run | - |
+| `rb:animations/ribbons` | Ribbons | implemented | `ribbons` | not run | - |
+| `rb:animations/ripple-distortion` | Ripple Distortion | implemented | `ripple-distortion` | not run | - |
+| `rb:animations/scroll-expand` | Scroll Expand | implemented | `scroll-expand` | not run | - |
+| `rb:animations/shape-blur` | Shape Blur | implemented | `shape-blur` | not run | - |
+| `rb:animations/splash-cursor` | Splash Cursor | implemented | `splash-cursor` | not run | - |
+| `rb:animations/star-border` | Star Border | implemented | `star-border` | not run | - |
+| `rb:animations/sticker-peel` | Sticker Peel | implemented | `sticker-peel` | not run | - |
+| `rb:animations/strands` | Strands | implemented | `strands` | not run | - |
+| `rb:animations/swarm-cursor` | Swarm Cursor | implemented | `swarm-cursor` | not run | - |
+| `rb:animations/target-cursor` | Target Cursor | implemented | `target-cursor` | not run | - |
+| `rb:components/accordion-gallery` | Accordion Gallery | implemented | `accordion-gallery` | not run | - |
+| `rb:components/animated-list` | Animated List | implemented | `animated-list` | not run | - |
+| `rb:components/border-glow` | Border Glow | implemented | `border-glow` | not run | - |
+| `rb:components/bounce-cards` | Bounce Cards | implemented | `bounce-cards` | not run | - |
 | `rb:components/bubble-menu` | Bubble Menu | planned | - | none | not implemented yet |
 | `rb:components/card-nav` | Card Nav | planned | - | none | not implemented yet |
-| `rb:components/card-swap` | Card Swap | planned | - | none | not implemented yet |
-| `rb:components/carousel` | Carousel | planned | - | none | not implemented yet |
-| `rb:components/chroma-grid` | Chroma Grid | planned | - | none | not implemented yet |
-| `rb:components/circular-carousel` | Circular Carousel | planned | - | none | not implemented yet |
-| `rb:components/circular-gallery` | Circular Gallery | planned | - | none | not implemented yet |
+| `rb:components/card-swap` | Card Swap | implemented | `card-swap` | not run | - |
+| `rb:components/carousel` | Carousel | implemented | `carousel` | not run | - |
+| `rb:components/chroma-grid` | Chroma Grid | implemented | `chroma-grid` | not run | - |
+| `rb:components/circular-carousel` | Circular Carousel | implemented | `circular-carousel` | not run | - |
+| `rb:components/circular-gallery` | Circular Gallery | implemented | `circular-gallery` | not run | - |
 | `rb:components/counter` | Counter | planned | - | none | not implemented yet |
 | `rb:components/curved-input` | Curved Input | planned | - | none | not implemented yet |
-| `rb:components/decay-card` | Decay Card | planned | - | none | not implemented yet |
-| `rb:components/depth-carousel` | Depth Carousel | planned | - | none | not implemented yet |
+| `rb:components/decay-card` | Decay Card | implemented | `decay-card` | not run | - |
+| `rb:components/depth-carousel` | Depth Carousel | implemented | `depth-carousel` | not run | - |
 | `rb:components/dock` | Dock | planned | - | none | not implemented yet |
-| `rb:components/dome-gallery` | Dome Gallery | planned | - | none | not implemented yet |
-| `rb:components/drift-wall` | Drift Wall | planned | - | none | not implemented yet |
+| `rb:components/dome-gallery` | Dome Gallery | implemented | `dome-gallery` | not run | - |
+| `rb:components/drift-wall` | Drift Wall | implemented | `drift-wall` | not run | - |
 | `rb:components/elastic-slider` | Elastic Slider | planned | - | none | not implemented yet |
-| `rb:components/flex-carousel` | Flex Carousel | planned | - | none | not implemented yet |
+| `rb:components/flex-carousel` | Flex Carousel | implemented | `flex-carousel` | not run | - |
 | `rb:components/flowing-menu` | Flowing Menu | planned | - | none | not implemented yet |
 | `rb:components/fluid-glass` | Fluid Glass | planned | - | none | not implemented yet |
-| `rb:components/flying-posters` | Flying Posters | planned | - | none | not implemented yet |
-| `rb:components/folder` | Folder | planned | - | none | not implemented yet |
+| `rb:components/flying-posters` | Flying Posters | implemented | `flying-posters` | not run | - |
+| `rb:components/folder` | Folder | implemented | `folder` | not run | - |
 | `rb:components/glass-icons` | Glass Icons | planned | - | none | not implemented yet |
 | `rb:components/glass-surface` | Glass Surface | existing | `ui:glass-fx` | existing | - |
 | `rb:components/gooey-nav` | Gooey Nav | planned | - | none | not implemented yet |
 | `rb:components/holo-card` | Holo Card | existing | `ui:holographic-card` | existing | - |
 | `rb:components/infinite-menu` | Infinite Menu | planned | - | none | not implemented yet |
-| `rb:components/infinite-spiral` | Infinite Spiral | planned | - | none | not implemented yet |
+| `rb:components/infinite-spiral` | Infinite Spiral | implemented | `infinite-spiral` | not run | - |
 | `rb:components/lanyard` | Lanyard | planned | - | none | not implemented yet |
 | `rb:components/line-sidebar` | Line Sidebar | planned | - | none | not implemented yet |
 | `rb:components/magic-bento` | Magic Bento | planned | - | none | not implemented yet |
-| `rb:components/masonry` | Masonry | planned | - | none | not implemented yet |
+| `rb:components/masonry` | Masonry | implemented | `masonry` | not run | - |
 | `rb:components/model-viewer` | Model Viewer | planned | - | none | not implemented yet |
 | `rb:components/morph-slider` | Morph Slider | planned | - | none | not implemented yet |
 | `rb:components/option-wheel` | Option Wheel | planned | - | none | not implemented yet |
 | `rb:components/pill-nav` | Pill Nav | planned | - | none | not implemented yet |
-| `rb:components/pixel-card` | Pixel Card | planned | - | none | not implemented yet |
-| `rb:components/profile-card` | Profile Card | planned | - | none | not implemented yet |
-| `rb:components/reflective-card` | Reflective Card | planned | - | none | not implemented yet |
-| `rb:components/scroll-stack` | Scroll Stack | planned | - | none | not implemented yet |
+| `rb:components/pixel-card` | Pixel Card | implemented | `pixel-card` | not run | - |
+| `rb:components/profile-card` | Profile Card | implemented | `profile-card` | not run | - |
+| `rb:components/reflective-card` | Reflective Card | implemented | `reflective-card` | not run | - |
+| `rb:components/scroll-stack` | Scroll Stack | implemented | `scroll-stack` | not run | - |
 | `rb:components/specular-button` | Specular Button | existing | `ui:gloss-button` | existing | - |
 | `rb:components/spotlight-card` | Spotlight Card | existing | `fx-micro:spotlight` | existing | - |
 | `rb:components/stack` | Stack | planned | - | none | not implemented yet |

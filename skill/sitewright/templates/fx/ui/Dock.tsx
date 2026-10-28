@@ -1,12 +1,12 @@
 'use client';
-import { useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from 'react';
 import { Icon, Stage, useControlled, useCoarsePointer, useProximity, useReducedMotion, useRoving } from './_menus-kit';
 
 export interface DockItem {
   id: string;
   label: string;
   /** Name of a built-in icon (home, search, folder, mail, music, camera, gear, user, chat, star, grid, bolt) or your own node. */
-  icon?: string | React.ReactNode;
+  icon?: string | ReactNode;
   onSelect?: () => void;
 }
 export interface DockProps {
@@ -43,6 +43,7 @@ export default function Dock({ items = ITEMS, value, defaultValue, onChange, siz
   const rowRef = useRef<HTMLDivElement>(null);
   const cells = useRef<(HTMLElement | null)[]>([]);
   const [bounce, setBounce] = useState('');
+  useEffect(() => { if (!bounce) return; const t = setTimeout(() => setBounce(''), 520); return () => clearTimeout(t); }, [bounce]);
   const rov = useRoving(items.length, 'horizontal');
   const peak = coarse ? 1 : Math.max(1, magnification);
   const prox = useProximity(rowRef, {
@@ -57,7 +58,7 @@ export default function Dock({ items = ITEMS, value, defaultValue, onChange, siz
   const pick = (it: DockItem) => {
     setActive(it.id);
     it.onSelect?.();
-    if (!reduced) { setBounce(it.id + Math.random().toString(36).slice(2, 5)); }
+    if (!reduced) setBounce(it.id);
   };
 
   return (
@@ -69,8 +70,7 @@ export default function Dock({ items = ITEMS, value, defaultValue, onChange, siz
             return (
               <div key={it.id} className="ui-dock-cell" ref={(el) => { cells.current[i] = el; }}>
                 <span className="ui-dock-tip" aria-hidden="true">{it.label}</span>
-                <button type="button" className={`ui-dock-item${isActive ? ' is-active' : ''}${bounce.startsWith(it.id) && bounce.length > it.id.length ? ' is-bounce' : ''}`}
-                  key={bounce.startsWith(it.id) ? bounce : it.id}
+                <button type="button" className={`ui-dock-item${isActive ? ' is-active' : ''}${bounce === it.id ? ' is-bounce' : ''}`}
                   {...rov.item(i)} aria-label={it.label} aria-current={isActive ? 'true' : undefined}
                   onFocus={(e) => { rov.item(i).onFocus(); if (e.currentTarget.matches(':focus-visible')) prox.focus(i); }}
                   onBlur={() => prox.focus(null)}
