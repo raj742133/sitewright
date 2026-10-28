@@ -33,8 +33,7 @@ function Art() {
 export default function FlipCard({ front, back, flipped, defaultFlipped = false, onFlip, axis = 'y', label = 'Flip card', height, className, style }: FlipCardProps) {
   const [on, setOn] = useControlled(flipped, defaultFlipped, onFlip);
   return (
-    <button type="button" className={cx('ui-flip-card', on && 'is-flipped', className)} data-axis={axis} aria-pressed={on} style={{ ...(height !== undefined ? { height } : null), ...style }} onClick={() => setOn(!on)}>
-      <span className="ui-flip-card-sr">{label}, {on ? 'showing back' : 'showing front'}. </span>
+    <button type="button" className={cx('ui-flip-card', on && 'is-flipped', className)} data-axis={axis} aria-pressed={on} title={label} style={{ ...(height !== undefined ? { height } : null), ...style }} onClick={() => setOn(!on)}>
       <span className="ui-flip-card-inner">
         <span className="ui-flip-card-face is-front" aria-hidden={on || undefined}>
           {front ?? (

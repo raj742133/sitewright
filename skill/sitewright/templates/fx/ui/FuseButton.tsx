@@ -81,7 +81,7 @@ export default function FuseButton({ label = 'Hold to launch', holdLabel = 'Keep
 
   return (
     <span className={cx('ui-fuse-button-wrap', className)} style={style}>
-      <button ref={btn} type="button" className="ui-fuse-button" data-phase={phase} aria-disabled={disabled || undefined} aria-describedby={helpId}
+      <button ref={btn} type="button" className="ui-fuse-button" data-phase={phase} aria-disabled={disabled || undefined} aria-label={label} aria-describedby={helpId}
         onPointerDown={(e) => { if (reduced || e.button !== 0) return; e.currentTarget.setPointerCapture(e.pointerId); start(); }}
         onPointerUp={snuff} onPointerCancel={snuff} onLostPointerCapture={snuff} onBlur={snuff} onContextMenu={(e) => e.preventDefault()}
         onKeyDown={onKeyDown} onKeyUp={onKeyUp} onClick={onClick}>
@@ -101,10 +101,9 @@ export default function FuseButton({ label = 'Hold to launch', holdLabel = 'Keep
           <span className="ui-fuse-button-burnt" />
           <span className="ui-fuse-button-spark" />
         </span>
-        <span className="ui-fuse-button-sr">{label}</span>
       </button>
-      <span id={helpId} className="ui-fuse-button-sr">{reduced ? 'Press twice to confirm.' : 'Press and hold until the fuse burns out, or press twice with a screen reader.'}</span>
-      <span className="ui-fuse-button-sr" role="status" aria-live="polite">{phase === 'done' ? doneLabel : phase === 'armed' ? 'Press again to confirm' : ''}</span>
+      <span id={helpId} hidden>{reduced ? 'Press twice to confirm.' : 'Press and hold until the fuse burns out, or press twice with a screen reader.'}</span>
+      <span className="ui-fuse-button-status" role="status" aria-live="polite">{phase === 'done' ? doneLabel : phase === 'armed' ? 'Press again to confirm' : ''}</span>
     </span>
   );
 }

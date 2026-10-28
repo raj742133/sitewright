@@ -1,0 +1,5 @@
+.ui-topography{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);
+  background-image:repeating-radial-gradient(ellipse at 30% 40%,transparent 0 14px,color-mix(in srgb,var(--primary,#d33) 38%,transparent) 14px 15px),
+    repeating-radial-gradient(ellipse at 78% 72%,transparent 0 18px,color-mix(in srgb,var(--signal,#36c) 34%,transparent) 18px 19px)}
+.ui-topography-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-topography[data-ready='off'] .ui-topography-canvas{display:none}

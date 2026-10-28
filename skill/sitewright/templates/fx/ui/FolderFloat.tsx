@@ -16,9 +16,9 @@ export interface FolderFloatProps {
 }
 
 const FILES: FolderFile[] = [
-  { id: 'brief', name: 'Brief', meta: 'PDF · 12 KB' },
-  { id: 'moods', name: 'Moodboard', meta: 'Images · 14' },
-  { id: 'budget', name: 'Budget', meta: 'Sheet · v3' },
+  { id: 'brief', name: 'Brief', meta: '12 KB' },
+  { id: 'moods', name: 'Moodboard', meta: '14 items' },
+  { id: 'budget', name: 'Budget', meta: 'Version 3' },
 ];
 const FAN = [-9, 0, 9];
 

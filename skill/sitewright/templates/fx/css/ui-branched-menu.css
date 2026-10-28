@@ -20,7 +20,7 @@
 .ui-branched-menu-item[aria-disabled='true'] { opacity: .45; cursor: not-allowed; }
 .ui-branched-menu-icon { display: inline-flex; color: var(--primary, #2563eb); }
 .ui-branched-menu-text { flex: 1; white-space: nowrap; }
-.ui-branched-menu-hint { font: 500 11px/1 var(--font-mono, monospace); color: var(--muted, #666); }
+.ui-branched-menu-hint { font: 500 12px/1 var(--font-mono, monospace); color: var(--muted, #666); }
 .ui-branched-menu-demo { display: grid; place-items: center; height: 100%; min-height: 200px; padding: 14px 8px; box-sizing: border-box; background: radial-gradient(120% 100% at 0% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, var(--surface, #fafafa)), var(--surface, #fafafa) 70%); }
 @media (pointer: coarse) { .ui-branched-menu { --bm-row: 44px; } .ui-branched-menu-trigger { min-height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .ui-branched-menu *, .ui-branched-menu *::before, .ui-branched-menu *::after { transition: none !important; } }

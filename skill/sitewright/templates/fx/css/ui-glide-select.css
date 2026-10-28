@@ -16,7 +16,7 @@
 .ui-glide-select-opt[aria-disabled='true'] { opacity: .45; cursor: not-allowed; }
 .ui-glide-select-check { width: 14px; color: var(--primary, #2563eb); font-weight: 700; }
 .ui-glide-select-text { flex: 1; }
-.ui-glide-select-hint { font: 500 11px/1 var(--font-mono, monospace); color: var(--muted, #555); }
+.ui-glide-select-hint { font: 500 12px/1 var(--font-mono, monospace); color: var(--muted, #555); }
 .ui-glide-select-demo { display: grid; place-items: center; height: 100%; min-height: 200px; padding: 18px 16px; box-sizing: border-box; background: radial-gradient(100% 100% at 100% 0%, color-mix(in srgb, var(--primary, #2563eb) 11%, var(--surface, #fafafa)), var(--surface, #fafafa) 70%); }
 @keyframes ui-glide-select-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 @media (pointer: coarse) { .ui-glide-select { --gs-row: 44px; } }

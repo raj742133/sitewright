@@ -19,7 +19,7 @@
 .ui-fuse-button-spark { position: absolute; top: 5.5px; left: calc(var(--p) * 100%); width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: radial-gradient(circle, #fff 0 25%, var(--signal, #f59e0b) 45%, transparent 72%); opacity: 0; box-shadow: 0 0 10px 3px color-mix(in srgb, var(--signal, #f59e0b) 70%, transparent); }
 .ui-fuse-button[data-phase='burning'] .ui-fuse-button-spark { opacity: 1; animation: ui-fuse-button-flicker .16s steps(2) infinite; }
 .ui-fuse-button[data-phase='armed'] .ui-fuse-button-spark { opacity: 1; left: 50%; }
-.ui-fuse-button-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ui-fuse-button-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ui-fuse-button-demo { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; height: 100%; min-height: 200px; padding: 14px; box-sizing: border-box; background: radial-gradient(100% 90% at 50% 100%, color-mix(in srgb, var(--signal, #f59e0b) 12%, var(--surface, #fafafa)), var(--surface, #fafafa) 72%); }
 .ui-fuse-button-note { margin: 0; font: 500 12px/1 var(--font-mono, monospace); color: var(--muted, #555); }
 @keyframes ui-fuse-button-flicker { 0% { transform: scale(1) rotate(0); } 100% { transform: scale(1.35) rotate(40deg); } }

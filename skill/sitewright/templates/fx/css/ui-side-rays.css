@@ -1,0 +1,5 @@
+.ui-side-rays{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);
+  background-image:conic-gradient(from 80deg at -6% 30%,transparent 0deg,color-mix(in srgb,var(--primary,#d33) 30%,transparent) 8deg,transparent 15deg,color-mix(in srgb,var(--primary,#d33) 22%,transparent) 24deg,transparent 33deg,color-mix(in srgb,var(--primary,#d33) 26%,transparent) 44deg,transparent 54deg),
+    conic-gradient(from 260deg at 106% 70%,transparent 0deg,color-mix(in srgb,var(--signal,#36c) 28%,transparent) 8deg,transparent 18deg,color-mix(in srgb,var(--signal,#36c) 22%,transparent) 30deg,transparent 42deg)}
+.ui-side-rays-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-side-rays[data-ready='off'] .ui-side-rays-canvas{display:none}

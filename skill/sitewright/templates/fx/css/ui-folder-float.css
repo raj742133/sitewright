@@ -9,7 +9,7 @@
 .ui-folder-float-file { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; width: 100%; height: 92px; padding: 10px; border-radius: 8px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: var(--ink, #111); font: inherit; text-align: left; cursor: pointer; box-shadow: 0 8px 16px -10px rgba(0,0,0,.45); transition: border-color .15s, box-shadow .15s; }
 .ui-folder-float-file svg { color: var(--primary, #2563eb); margin-bottom: 4px; }
 .ui-folder-float-file strong { font: 700 13px/1.1 var(--font-body, system-ui, sans-serif); }
-.ui-folder-float-file span { font: 500 10.5px/1.2 var(--font-mono, monospace); color: var(--muted, #555); }
+.ui-folder-float-file span { font: 500 12px/1.2 var(--font-mono, monospace); color: var(--muted, #555); }
 .ui-folder-float-file:hover { border-color: var(--primary, #2563eb); box-shadow: 0 12px 20px -10px rgba(0,0,0,.5); }
 .ui-folder-float-file:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; z-index: 3; }
 .ui-folder-float-slot:focus-within, .ui-folder-float-slot:hover { z-index: 3; }
@@ -21,7 +21,7 @@
 .ui-folder-float.is-open .ui-folder-float-btn:hover .ui-folder-float-front { transform: rotateX(-30deg); }
 .ui-folder-float-title { position: absolute; left: 14px; right: 14px; bottom: 10px; display: flex; flex-direction: column; gap: 2px; text-align: left; }
 .ui-folder-float-title strong { font: 700 14px/1.1 var(--font-body, system-ui, sans-serif); }
-.ui-folder-float-title span { font: 500 11px/1.1 var(--font-mono, monospace); opacity: .9; }
+.ui-folder-float-title span { font: 500 12px/1.1 var(--font-mono, monospace); opacity: .9; }
 .ui-folder-float-demo { display: grid; place-items: center; height: 100%; min-height: 200px; padding: 8px 8px 14px; box-sizing: border-box; background: radial-gradient(100% 100% at 50% 100%, color-mix(in srgb, var(--primary, #2563eb) 14%, var(--surface, #fafafa)), var(--surface, #fafafa) 75%); overflow: hidden; }
 @keyframes ui-folder-float-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 @keyframes ui-folder-float-hover { 0%,100% { translate: 0 0; } 50% { translate: 0 -5px; } }

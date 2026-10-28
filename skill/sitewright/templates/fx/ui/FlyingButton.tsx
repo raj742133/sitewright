@@ -39,7 +39,7 @@ export default function FlyingButton({ label = 'Send message', busyLabel = 'Send
 
   return (
     <span className={cx('ui-flying-button-wrap', className)} style={style}>
-      <button type="button" className="ui-flying-button" data-phase={phase} aria-disabled={disabled || phase !== 'idle' || undefined} aria-busy={phase === 'flying'} onClick={go}>
+      <button type="button" className="ui-flying-button" data-phase={phase} aria-disabled={disabled || phase !== 'idle' || undefined} aria-label={label} aria-busy={phase === 'flying'} onClick={go}>
         <span className="ui-flying-button-trail" aria-hidden="true" />
         <span className="ui-flying-button-plane" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" focusable="false"><path d="M21.5 3.2 2.8 10.4a.8.8 0 0 0 0 1.5l6.2 2.3 2.3 6.2a.8.8 0 0 0 1.5 0L20 5.9z" opacity=".95" /><path d="M9 14.2 21.5 3.2l-9.4 13.7z" opacity=".55" /></svg>
@@ -52,7 +52,6 @@ export default function FlyingButton({ label = 'Send message', busyLabel = 'Send
           <span data-on={phase === 'flying' || undefined}>{busyLabel}</span>
           <span data-on={phase === 'done' || undefined}>{doneLabel}</span>
         </span>
-        <span className="ui-flying-button-sr">{label}</span>
       </button>
       <span className="ui-flying-button-status" role="status" aria-live="polite">{err ? 'Could not send. Try again.' : phase === 'idle' ? '' : text}</span>
     </span>

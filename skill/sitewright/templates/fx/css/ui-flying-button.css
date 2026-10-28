@@ -8,7 +8,7 @@
 .ui-flying-button-labels { display: inline-grid; justify-items: start; }
 .ui-flying-button-labels > span { grid-area: 1 / 1; opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .25s; white-space: nowrap; }
 .ui-flying-button-labels > span[data-on] { opacity: 1; transform: none; }
-.ui-flying-button-sr, .ui-flying-button-status:empty { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ui-flying-button-status:empty { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ui-flying-button-status { min-height: 0; font: 500 12px/1.2 var(--font-mono, monospace); color: var(--muted, #555); position: absolute; top: 100%; margin-top: 6px; white-space: nowrap; }
 .ui-flying-button-wrap { position: relative; }
 .ui-flying-button-plane, .ui-flying-button-check { grid-area: 1 / 1; display: grid; place-items: center; width: 24px; height: 24px; }
