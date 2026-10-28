@@ -84,7 +84,7 @@ export default function HeroBookShowcase({ className }: { className?: string }) 
           <div className="hbs-dcover"><Cover b={b} /></div>
           <div className="hbs-dtext">
             <p className="hbs-meta">{b.form} · {b.pages} pages · {b.year}</p>
-            <h3>{b.title}</h3>
+            <h2>{b.title}</h2>
             <p className="hbs-by">by {b.author}</p>
             <p className="hbs-blurb">{b.blurb}</p>
             <div className="hbs-buy">

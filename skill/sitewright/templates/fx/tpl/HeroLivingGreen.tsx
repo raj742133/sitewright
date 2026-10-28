@@ -68,8 +68,8 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
   const add = (id: string, name: string) => { setQty(id, (cart[id] ?? 0) + 1); setLive(`${name} added to basket`); };
   const go = (id: string) => (e: { preventDefault(): void }) => { setMenu(false); jump(id, reduced)(e); };
   const copy = async () => {
-    try { await navigator.clipboard.writeText('MOSS10'); } catch { /* clipboard may be blocked; the code is shown anyway */ }
     setCopied(true); setLive('Code MOSS10 copied'); window.setTimeout(() => setCopied(false), 2200);
+    try { await navigator.clipboard.writeText('MOSS10'); } catch { /* clipboard may be blocked; the code is shown anyway */ }
   };
   return (
     <div ref={root} className={`hlg ${className ?? ''}`}>

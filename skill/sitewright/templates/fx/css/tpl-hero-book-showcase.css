@@ -62,7 +62,8 @@
 .hbs-detail { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: center; max-width: 920px; margin: 8px auto 0; padding: 32px; border: 1px solid var(--ink, #111); background: var(--hbs-paper); box-shadow: 8px 8px 0 var(--ink, #111); animation: hbs-in .4s ease both; }
 .hbs-dcover .hbs-cover { width: 100%; height: auto; display: block; box-shadow: 0 20px 36px -14px rgba(0, 0, 0, .55); border-radius: 3px 6px 6px 3px; }
 .hbs-meta { font: 600 12px var(--font-mono, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--muted, #5b6472); }
-.hbs h3 { font-family: var(--hbs-serif); font-size: clamp(28px, 3.6cqi, 44px); line-height: 1.05; letter-spacing: -.03em; margin: 6px 0 4px; }
+.hbs .hbs-dtext h2 { font-size: clamp(28px, 3.6cqi, 44px); line-height: 1.05; letter-spacing: -.03em; margin: 6px 0 4px; }
+.hbs .hbs-perks h3 { font-family: var(--hbs-serif); font-size: clamp(24px, 2.6cqi, 34px); line-height: 1.1; letter-spacing: -.03em; }
 .hbs-by { color: var(--muted, #5b6472); font-style: italic; font-family: var(--hbs-serif); font-size: 17px; }
 .hbs-blurb { font-family: var(--hbs-serif); font-size: 18px; line-height: 1.5; margin: 14px 0 18px; max-width: 46ch; }
 .hbs-buy { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }

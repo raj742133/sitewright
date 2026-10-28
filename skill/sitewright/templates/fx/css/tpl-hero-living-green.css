@@ -102,7 +102,7 @@
 .hlg-chips button:hover { background: var(--raised-2, #eee); }
 .hlg-chips button[aria-pressed='true'] { background: var(--ink, #111); color: var(--surface, #fff); border-color: transparent; }
 .hlg-sort { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted, #5b6472); }
-.hlg-sort select { font-size: 16px; min-height: 44px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: var(--ink, #111); font: inherit; }
+.hlg-sort select { min-height: 44px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: var(--ink, #111); font: inherit; font-size: 16px; }
 .hlg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .hlg-prod { display: grid; grid-template-rows: auto 1fr; border-radius: 26px; overflow: hidden; border: 1px solid var(--line, #e0e0e0); background: var(--raised, #fff); transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .3s, box-shadow .35s; animation: hlg-in .4s ease both; }
 .hlg-prod:hover, .hlg-prod:focus-within { transform: translateY(-5px); border-color: var(--hg-leaf0); box-shadow: 0 26px 50px -28px rgba(0, 0, 0, .45); }
