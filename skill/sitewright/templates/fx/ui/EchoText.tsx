@@ -31,11 +31,10 @@ export default function EchoText({ text = 'Echo', count = 5, duration = 3.2, mod
     );
   }
   return (
-    <div className={`ui-echo-text-root ${className ?? ''}`} data-mode={mode} data-hot={hot || undefined}
+    <div role="img" aria-label={text} className={`ui-echo-text-root ${className ?? ''}`} data-mode={mode} data-hot={hot || undefined}
       style={{ ['--reach' as string]: reach, ['--dur' as string]: `${duration}s`, ...style }}
       onPointerEnter={() => interactive && setHot(true)} onPointerLeave={() => setHot(false)}
       onPointerDown={(e) => { if (interactive && e.pointerType === 'touch') setHot((v) => !v); }}>
-      <span className="ui-echo-text-sr">{text}</span>
       <div className="ui-echo-text-scene" aria-hidden="true">
         {echoes}
         <span className="ui-echo-text-main">{text}</span>

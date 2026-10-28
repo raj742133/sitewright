@@ -37,12 +37,15 @@ function buildField(text: string, w: number, h: number, cell: number, weight: nu
   g.fillStyle = '#000';
   let size = off.height * 0.78;
   g.font = `${weight} ${size}px ${family}`;
-  const mw = g.measureText(text).width;
+  const sx = 0.7; // letters are drawn narrower so the word gets more character rows
+  const mw = g.measureText(text).width * sx;
   const maxW = off.width * 0.94;
   if (mw > maxW) { size *= maxW / mw; g.font = `${weight} ${size}px ${family}`; }
   g.textAlign = 'center';
   g.textBaseline = 'middle';
-  g.fillText(text, off.width / 2, off.height * 0.54);
+  g.translate(off.width / 2, off.height * 0.54);
+  g.scale(sx, 1);
+  g.fillText(text, 0, 0);
   const data = g.getImageData(0, 0, off.width, off.height).data;
   const bw = cw * S;
   const bh = ch * S;
@@ -119,7 +122,7 @@ export default function AsciiText({ text = 'Sitewright', ramp = ' .:-=+*#%@', ce
         const tone = col / f.cols;
         const base = mix(mix(p.primary, p.signal, tone * 0.85), p.ink, 0.12);
         const col2 = mix(base, hi, 0);
-        const fill = heat > 0.05 ? rgba(mix(col2, p.signal, Math.min(1, heat)), 0.55 + 0.45 * lvl) : rgba(col2, 0.45 + 0.55 * lvl);
+        const fill = heat > 0.05 ? rgba(mix(col2, p.signal, Math.min(1, heat)), 0.55 + 0.45 * lvl) : rgba(col2, 0.6 + 0.4 * lvl);
         if (fill !== last) { ctx.fillStyle = fill; last = fill; }
         ctx.fillText(chr, col * f.cw + f.cw / 2, r * f.ch + f.ch / 2);
       }

@@ -1,6 +1,5 @@
 .ui-depth-text-root { --dx: 1px; --dy: 1px; --cx: -10px; --cy: -10px; --lean: 0.5; position: relative; width: 100%; height: 100%; min-height: 120px; display: grid; place-items: center; container-type: inline-size; outline: none; border-radius: var(--radius, 12px); touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .ui-depth-text-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
-.ui-depth-text-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .ui-depth-text-scene { position: relative; display: grid; font: 900 clamp(40px, 21cqw, 128px)/1 var(--font-body, system-ui, sans-serif); letter-spacing: -0.02em; text-transform: uppercase; white-space: nowrap; transform: translate(var(--cx), var(--cy)); }
 .ui-depth-text-layer, .ui-depth-text-face { grid-area: 1 / 1; }
 .ui-depth-text-face { position: relative; }

@@ -140,6 +140,10 @@ export default function InfiniteSpiral({ items = DEMO_ITEMS, index, defaultIndex
     else if (e.key === 'End') goTo(n - 1);
     else return;
     e.preventDefault();
+    if ((e.target as Element).closest('.ui-infinite-spiral-hit')) {
+      const t = wrap(Math.round(st.current.target ?? st.current.pos), n);
+      els.current[t]?.querySelector('button')?.focus();
+    }
   };
 
   const it = items[front];

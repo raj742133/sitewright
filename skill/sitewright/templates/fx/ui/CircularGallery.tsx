@@ -122,6 +122,11 @@ export default function CircularGallery({ items = DEMO_ITEMS, autoRotate = 8, on
     else if (e.key === 'End') goHome(true);
     else return;
     e.preventDefault();
+    if ((e.target as Element).closest('.ui-circular-gallery-hit')) {
+      const s = st.current;
+      const t = wrap(Math.round(-(s.target ?? s.rot) / step), n);
+      panels.current[t]?.querySelector('button')?.focus();
+    }
   };
 
   const it = items[front];

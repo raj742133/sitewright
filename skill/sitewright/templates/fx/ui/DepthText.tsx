@@ -65,7 +65,6 @@ export default function DepthText({ text = 'Depth', depth = 34, layers = 18, cla
       style={{ ['--dx' as string]: (REST.x / RANGE) * (depth / n) + 'px', ['--dy' as string]: (REST.y / RANGE) * (depth / n) + 'px', ['--cx' as string]: -((REST.x / RANGE) * depth * 0.5) + 'px', ['--cy' as string]: -((REST.y / RANGE) * depth * 0.5) + 'px', ...style }}
       onPointerMove={onMove} onPointerLeave={() => drive.set(REST.x, REST.y)}
       onFocus={() => drive.set(REST.x, REST.y)}>
-      <span className="ui-depth-text-sr">{text}</span>
       <div className="ui-depth-text-scene" aria-hidden="true">
         {stack}
         <span className="ui-depth-text-face">{text}</span>

@@ -73,9 +73,9 @@ export default function Carousel({ items = DEMO_ITEMS, perView = 1, gap = 16, lo
       const t = track.current;
       t?.removeAttribute('data-drag');
       t?.style.setProperty('--drag', '0px');
-      const proj = dx + vx * 220;
       const s = stepPx();
-      let d = -Math.round(proj / s);
+      const proj = dx + clamp(vx * 220, -s * 0.6, s * 0.6);
+      let d = clamp(-Math.round(proj / s), -pv, pv);
       if (d === 0 && Math.abs(dx) > 40) d = dx < 0 ? 1 : -1;
       if (d !== 0) go(cur + d);
     },
