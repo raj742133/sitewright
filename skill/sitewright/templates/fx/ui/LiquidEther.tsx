@@ -15,7 +15,7 @@ export interface LiquidEtherProps {
 
 const FRAG = BG_D_NOISE + `
 vec2 bdFlow(vec2 p,float t){
-  float e=.2;
+  float e=.1;
   float a=bdF(p+vec2(0.,e)+t)-bdF(p-vec2(0.,e)+t);
   float b=bdF(p+vec2(e,0.)+t)-bdF(p-vec2(e,0.)+t);
   return vec2(a,-b)/(2.*e);
@@ -29,13 +29,13 @@ void main(){
   float k=exp(-dot(d,d)*1.6)*uAmt;
   p+=vec2(-d.y,d.x)*k*1.1;
   vec2 w=p;
-  for(int i=0;i<3;i++) w+=bdFlow(w*.55,t*(1.+float(i)*.35))*.32;
+  for(int i=0;i<3;i++) w+=bdFlow(w*.7,t*(1.+float(i)*.35))*.42;
   float f=bdF(w*.8-t);
   float g=bdF(w*.5+vec2(4.,1.)+t*1.3);
   vec3 c1=mix(uSurf,uPri,.18);
-  vec3 c2=mix(uSurf,uPri,.8);
+  vec3 c2=mix(uSurf,uPri,.95);
   vec3 c3=mix(uSig,uSurf,.15);
-  vec3 col=mix(c1,c2,smoothstep(.3,.65,f));
+  vec3 col=mix(c1,c2,smoothstep(.38,.58,f));
   col=mix(col,c3,smoothstep(.55,.85,g)*smoothstep(.35,.7,f)*.85);
   col=mix(col,mix(uSurf,uInk,.5),smoothstep(.62,.75,1.-f)*.28);
   

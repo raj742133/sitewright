@@ -5,9 +5,9 @@
 .ui-voice-pill:hover:not(:disabled) { border-color: var(--primary, #2563eb); }
 .ui-voice-pill:disabled { opacity: .5; cursor: not-allowed; }
 .ui-voice-pill:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
-.ui-voice-pill[data-on] { background: color-mix(in srgb, var(--primary, #2563eb) 86%, #000); border-color: transparent; color: #fff; }
+.ui-voice-pill[data-on] { background: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); border-color: transparent; color: #fff; }
 .ui-voice-pill-mic { position: relative; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--raised-2, #eef1f5); color: var(--ink, #111); transition: background .25s, color .25s; }
-.ui-voice-pill[data-on] .ui-voice-pill-mic { background: #fff; color: color-mix(in srgb, var(--primary, #2563eb) 86%, #000); }
+.ui-voice-pill[data-on] .ui-voice-pill-mic { background: #fff; color: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); }
 .ui-voice-pill[data-on] .ui-voice-pill-mic::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #fff; animation: ui-voice-pill-ping 1.6s ease-out infinite; }
 .ui-voice-pill-bars { display: inline-flex; align-items: center; gap: 3px; width: 0; height: 24px; overflow: hidden; opacity: 0; transition: width .3s cubic-bezier(.3, 1.3, .5, 1), opacity .2s; }
 .ui-voice-pill[data-on] .ui-voice-pill-bars { width: 45px; opacity: 1; }

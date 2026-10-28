@@ -6,7 +6,7 @@
 .ui-spring-check-box { position: relative; flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; border: 2px solid var(--line-strong, #8a94a3); background: var(--raised, #fff); color: #fff; transition: background .18s, border-color .18s; }
 .ui-spring-check-box svg { overflow: visible; }
 .ui-spring-check-tick, .ui-spring-check-dash { stroke-dasharray: 1; stroke-dashoffset: 1; }
-.ui-spring-check[data-state="on"] .ui-spring-check-box, .ui-spring-check[data-state="mixed"] .ui-spring-check-box { background: color-mix(in srgb, var(--primary, #2563eb) 85%, #000); border-color: color-mix(in srgb, var(--primary, #2563eb) 85%, #000); }
+.ui-spring-check[data-state="on"] .ui-spring-check-box, .ui-spring-check[data-state="mixed"] .ui-spring-check-box { background: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); border-color: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); }
 .ui-spring-check[data-state="on"] .ui-spring-check-box { animation: ui-spring-check-squash .5s cubic-bezier(.3, 1.6, .5, 1); }
 .ui-spring-check[data-state="on"] .ui-spring-check-tick { stroke-dashoffset: 0; transition: stroke-dashoffset .22s ease-out .06s; }
 .ui-spring-check[data-state="mixed"] .ui-spring-check-dash { stroke-dashoffset: 0; transition: stroke-dashoffset .2s ease-out; }

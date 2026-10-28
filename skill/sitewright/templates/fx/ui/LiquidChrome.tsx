@@ -16,7 +16,7 @@ export interface LiquidChromeProps {
 const FRAG = BG_D_NOISE + `
 float bdHt(vec2 p){
   float t=uT*.18;
-  vec2 q=p*.9;
+  vec2 q=p*1.35;
   q+=.5*vec2(sin(q.y*1.3+t*1.3),cos(q.x*1.1-t));
   q+=.2*vec2(sin(q.y*2.2-t*1.7),cos(q.x*2.1+t*1.2));
   float d=length(p-(uPtr-.5)*vec2(uRes.x/uRes.y,1.))*uAmt;
@@ -33,7 +33,7 @@ void main(){
   float s=R.x*2.6+R.y*1.8+sin(R.x*7.+R.y*5.)*.35;
   float band=.5+.5*sin(s*3.1);
   band=smoothstep(.15,.85,band);
-  vec3 dark=mix(uDeep,uPri,.12);
+  vec3 dark=mix(mix(uDeep,uPale,.1),uPri,.1);
   vec3 lite=mix(uPale,uSig,.08);
   vec3 col=mix(dark,lite,band);
   col=mix(col,mix(uPri,uPale,.5),smoothstep(.6,.95,.5+.5*sin(s*3.1+2.2))*.3);

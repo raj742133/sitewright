@@ -5,7 +5,7 @@
 .ui-swipe-row-actions { position: absolute; z-index: 0; top: 0; right: 0; bottom: 0; display: flex; visibility: hidden; }
 .ui-swipe-row[data-open] .ui-swipe-row-actions, .ui-swipe-row[data-drag] .ui-swipe-row-actions, .ui-swipe-row[data-gone] .ui-swipe-row-actions { visibility: visible; }
 .ui-swipe-row-action { flex: 1 1 0; min-width: 44px; border: 0; color: #fff; font: 700 13px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; background: #475569; }
-.ui-swipe-row-action[data-tone="primary"] { background: color-mix(in srgb, var(--primary, #2563eb) 82%, #000); }
+.ui-swipe-row-action[data-tone="primary"] { background: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); }
 .ui-swipe-row-action[data-tone="danger"] { background: #b91c1c; }
 .ui-swipe-row-action:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
 .ui-swipe-row-face { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 14px; background: var(--raised, #fff); color: var(--ink, #111); touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; transition: transform .32s cubic-bezier(.2, .9, .3, 1.15); outline: none; }
@@ -15,7 +15,7 @@
 .ui-swipe-row-text { display: flex; flex-direction: column; min-width: 0; flex: 1; font: 400 12px/1.35 var(--font-body, system-ui, sans-serif); color: var(--muted, #5b6472); }
 .ui-swipe-row-text strong { font-size: 14px; font-weight: 650; color: var(--ink, #111); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ui-swipe-row-grip { color: var(--muted, #5b6472); font-size: 20px; line-height: 1; }
-.ui-swipe-row-avatar { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; font: 700 14px/1 var(--font-body, system-ui); color: #fff; background: color-mix(in srgb, var(--primary, #2563eb) 80%, #000); }
+.ui-swipe-row-avatar { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; font: 700 14px/1 var(--font-body, system-ui); color: #fff; background: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); }
 .ui-swipe-row-avatar[data-hue="1"] { background: color-mix(in srgb, var(--signal, #f59e0b) 55%, #000); }
 .ui-swipe-row-avatar[data-hue="2"] { background: #475569; }
 .ui-swipe-row-reset { min-height: 44px; border: 1px dashed var(--line-strong, #8a94a3); border-radius: var(--radius, 12px); background: transparent; color: var(--ink, #111); font: 600 13px/1 var(--font-body, system-ui); cursor: pointer; }

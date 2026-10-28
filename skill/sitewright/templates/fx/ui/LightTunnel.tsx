@@ -21,7 +21,7 @@ void main(){
   float r=pow(pow(q.x,4.)+pow(q.y,4.),.25);
   float a=atan(p.y,p.x);
   float z=.22/max(r,.001);
-  float run=z*1.15-uT*.5;
+  float run=z*2.6-uT*.55;
   float fr=fract(run);
   float edge=smoothstep(.0,.05,fr)*(1.-smoothstep(.1,.3,fr));
   float seg=floor(a*3.8197+floor(run)*.5);
