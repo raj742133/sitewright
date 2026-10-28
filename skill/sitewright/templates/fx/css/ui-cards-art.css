@@ -1,0 +1,13 @@
+/* Shared scenery for the card components (see _cards-art.tsx). Override --ca-c1 / --ca-c2 on any ancestor to recolour. */
+.ca-scene { --h1: var(--ca-c1, var(--primary, #2563eb)); --h2: var(--ca-c2, var(--signal, #f59e0b)); display: block; width: 100%; height: 100%;
+  background: linear-gradient(170deg, color-mix(in srgb, var(--h1) 62%, #0a0e1c) 0%, color-mix(in srgb, var(--h1) 30%, #0a0e1c) 58%, color-mix(in srgb, var(--h2) 38%, #0a0e1c) 100%); }
+.ca-scene-1 { --h1: var(--ca-c2, var(--signal, #f59e0b)); --h2: var(--ca-c1, var(--primary, #2563eb)); }
+.ca-scene-3 { background: linear-gradient(190deg, color-mix(in srgb, var(--h2) 40%, #0a0e1c), color-mix(in srgb, var(--h1) 55%, #0a0e1c)); }
+.ca-scene-4 { background: linear-gradient(180deg, color-mix(in srgb, var(--h1) 50%, #0a0e1c), color-mix(in srgb, var(--h2) 30%, #0a0e1c)); }
+.ca-sky { fill: none; }
+.ca-sun { fill: color-mix(in srgb, var(--h2) 82%, #fff); }
+.ca-far { fill: color-mix(in srgb, var(--h1) 38%, #070a16); }
+.ca-near { fill: color-mix(in srgb, var(--h1) 18%, #04060e); }
+.ca-dot { fill: rgba(255, 255, 255, 0.85); }
+.ca-ring { fill: none; stroke: rgba(255, 255, 255, 0.75); stroke-width: 2.2; }
+.ca-path { stroke: color-mix(in srgb, var(--h2) 70%, #fff); stroke-width: 3; stroke-linecap: round; }

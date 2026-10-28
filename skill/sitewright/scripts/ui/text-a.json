@@ -1,0 +1,159 @@
+[
+ {
+  "id": "asciitext",
+  "label": "ASCII text",
+  "desc": "A word rendered as living ASCII art: characters swell in a travelling wave, the pointer acts as a lens and clicks send ripples.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "AsciiText.tsx",
+   "_t2.ts",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-asciitext"
+  ],
+  "use": "Hero word or logotype for a developer, terminal or retro-tech landing page (fills its parent)."
+ },
+ {
+  "id": "circular-text",
+  "label": "Circular text",
+  "desc": "Text set around a ring that turns slowly; hover can speed it up, slow it, reverse it or pause it, and a centre slot holds an icon or label.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "CircularText.tsx",
+   "_t2.ts",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-circular-text"
+  ],
+  "use": "Rotating badge beside a hero heading, a 'scroll down' or 'new' sticker, or a footer seal."
+ },
+ {
+  "id": "curved-loop",
+  "label": "Curved loop",
+  "desc": "A marquee that scrolls along an arched line; drag to scrub and flip direction, arrow keys and Space steer it.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "CurvedLoop.tsx",
+   "_t2.ts",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-curved-loop"
+  ],
+  "use": "Full-width ticker between landing sections, announcement or client-name band."
+ },
+ {
+  "id": "depth-text",
+  "label": "Depth text",
+  "desc": "Big text with a solid shaded extrusion whose direction follows the pointer; arrow keys steer it and touch screens get a slow sway.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "DepthText.tsx",
+   "_t2.ts",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-depth-text"
+  ],
+  "use": "Section title or hero word on a landing page where a bold 3D feel is wanted."
+ },
+ {
+  "id": "echo-text",
+  "label": "Echo text",
+  "desc": "Solid text followed by outlined echoes that ripple outwards (or trail away) and fade; hover or tap throws them further.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "EchoText.tsx",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-echo-text"
+  ],
+  "use": "Hero headline or a single emphasised word on a landing page or announcement band."
+ },
+ {
+  "id": "falling-text",
+  "label": "Falling text",
+  "desc": "A sentence whose words drop under gravity, bounce and pile up on the bottom edge; trigger by click, hover, scroll or button, then Reset.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "FallingText.tsx",
+   "_text-a-fall.ts",
+   "_t2.ts",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-falling-text"
+  ],
+  "use": "Playful 404 or empty state, closing statement of a landing page, quote reveal."
+ },
+ {
+  "id": "fold-text",
+  "label": "Fold text",
+  "desc": "Text cut into panels that fold like a 3D accordion: breathes on its own, previews on hover or focus, and click pins it folded.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "FoldText.tsx",
+   "_t2.ts",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-fold-text"
+  ],
+  "use": "Hero word or section title that reacts on hover; a toggleable headline."
+ },
+ {
+  "id": "fuzzy-text",
+  "label": "Fuzzy text",
+  "desc": "Canvas text whose scanlines tremble sideways for a furry static edge; the pointer or a touch raises the interference.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "FuzzyText.tsx",
+   "_t2.ts",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-fuzzy-text"
+  ],
+  "use": "404 or error headings, retro or broadcast-styled hero text."
+ },
+ {
+  "id": "glitch-text",
+  "label": "Glitch text",
+  "desc": "Text with a brand-coloured chromatic split and torn slices that jump in short bursts (loop) or on hover; pure CSS.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "GlitchText.tsx"
+  ],
+  "css": [
+   "ui-glitch-text"
+  ],
+  "use": "Hero or error heading, tech or gaming landing pages; can be a real h1/h2 via the as prop."
+ },
+ {
+  "id": "masked-heading",
+  "label": "Masked heading",
+  "desc": "A heading whose lines rise out of a clipping mask on scroll, filled with a drifting brand gradient and a pointer-following highlight.",
+  "source": "Original",
+  "group": "text",
+  "files": [
+   "MaskedHeading.tsx",
+   "_text-a-kit.ts"
+  ],
+  "css": [
+   "ui-masked-heading"
+  ],
+  "use": "Section and hero headings on landing pages (renders a real h1/h2/h3)."
+ }
+]

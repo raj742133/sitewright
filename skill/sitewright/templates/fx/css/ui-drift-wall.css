@@ -1,0 +1,19 @@
+.ui-drift-wall-root { --mx: 0; --my: 0; position: relative; width: 100%; min-height: 180px; min-width: 0; overflow: hidden; color: var(--ink, #18181b); font-family: var(--font-body, system-ui, sans-serif); background: radial-gradient(90% 80% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 14%, var(--surface, #fafafa)), var(--surface, #fafafa)); perspective: 1100px; }
+.ui-drift-wall-stage { position: absolute; inset: -30% -12%; display: grid; place-items: center; }
+.ui-drift-wall-wall { display: flex; gap: 14px; width: 100%; height: 100%; justify-content: center; transform-style: preserve-3d; }
+.ui-drift-wall-root[data-tilt] .ui-drift-wall-wall { transform: rotateX(calc(18deg + var(--my) * -4deg)) rotateZ(calc(-12deg + var(--mx) * 3deg)) translateX(calc(var(--mx) * -14px)); transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.ui-drift-wall-col { flex: 1 1 0; max-width: 220px; min-width: 0; overflow: hidden; }
+.ui-drift-wall-lane { display: flex; flex-direction: column; gap: 14px; padding-bottom: 14px; margin-top: calc(var(--off) * -1); animation: ui-drift-wall-run var(--dur, 44s) linear infinite var(--dir, normal); animation-play-state: paused; will-change: transform; }
+.ui-drift-wall-root[data-run] .ui-drift-wall-lane { animation-play-state: running; }
+@keyframes ui-drift-wall-run { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+.ui-drift-wall-tile { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border-radius: var(--radius, 12px); border: 1px solid var(--line-strong, rgba(127,127,127,0.4)); background: var(--raised, #fff); box-shadow: 0 14px 24px -16px rgba(0,0,0,0.55); color: inherit; text-decoration: none; cursor: default; flex: none; transition: transform 0.3s, box-shadow 0.3s; }
+button.ui-drift-wall-tile, a.ui-drift-wall-tile { cursor: pointer; }
+button.ui-drift-wall-tile:hover, a.ui-drift-wall-tile:hover { transform: scale(1.03); }
+.ui-drift-wall-tile:focus-visible, .ui-drift-wall-btn:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-drift-wall-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 10px 8px; font: 600 12px/1.25 var(--font-body, system-ui); color: #fff; text-align: left; background: linear-gradient(to top, rgba(6,8,20,0.8), transparent); }
+.ui-drift-wall-fade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, var(--surface, #fafafa), transparent 18%, transparent 78%, var(--surface, #fafafa)); opacity: 0.85; }
+.ui-drift-wall-ctl { position: absolute; z-index: 3; right: 10px; bottom: 10px; }
+.ui-drift-wall-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 999px; border: 1px solid var(--line-strong, rgba(127,127,127,0.45)); background: var(--raised, #fff); color: var(--ink, #18181b); cursor: pointer; }
+.ui-drift-wall-btn:hover { border-color: var(--primary, #2563eb); }
+@media (pointer: coarse) { .ui-drift-wall-btn { width: 44px; height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-drift-wall-lane { animation: none; } .ui-drift-wall-root[data-tilt] .ui-drift-wall-wall, .ui-drift-wall-tile { transition: none; } }

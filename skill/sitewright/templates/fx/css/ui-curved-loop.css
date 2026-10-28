@@ -1,0 +1,12 @@
+.ui-curved-loop-root { position: relative; width: 100%; height: 100%; min-height: 120px; display: grid; place-items: center; overflow: hidden; outline: none; border-radius: var(--radius, 12px); touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.ui-curved-loop-root[data-draggable] { cursor: grab; }
+.ui-curved-loop-root[data-draggable]:active { cursor: grabbing; }
+.ui-curved-loop-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
+.ui-curved-loop-root > svg { width: 100%; height: auto; max-height: 100%; display: block; overflow: hidden; }
+.ui-curved-loop-type { font-family: var(--font-body, system-ui, sans-serif); font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; fill: var(--ink, #18181b); white-space: pre; }
+.ui-curved-loop-measure { visibility: hidden; }
+.ui-curved-loop-guide { fill: none; stroke: color-mix(in srgb, var(--primary, #2563eb) 40%, transparent); stroke-width: 1.5; stroke-dasharray: 2 8; stroke-linecap: round; }
+.ui-curved-loop-badge { position: absolute; top: 8px; right: 8px; padding: 2px 8px; border-radius: 999px; font: 600 11px/1.5 var(--font-mono, monospace); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink, #18181b); background: var(--raised, #fff); border: 1px solid var(--line-strong, #d4d4d8); }
+.ui-curved-loop-stage { position: relative; width: 100%; height: 100%; min-height: 200px; box-sizing: border-box; overflow: hidden; display: grid; align-items: center;
+  background: linear-gradient(115deg, color-mix(in srgb, var(--primary, #2563eb) 14%, transparent), transparent 55%), radial-gradient(circle at 85% 85%, color-mix(in srgb, var(--signal, #f59e0b) 18%, transparent), transparent 55%), var(--surface, #fafafa); }
+.ui-curved-loop-stage > .ui-curved-loop-root { min-height: 0; }

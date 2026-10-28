@@ -1,0 +1,28 @@
+.ui-folder-demo { height: 100%; min-height: 200px; box-sizing: border-box; padding: 8px; background: radial-gradient(70% 60% at 50% 100%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent 70%), var(--surface, #fafafa); }
+.ui-folder-root { --fo-c: var(--primary, #2563eb); container-type: size; width: 100%; height: 100%; min-height: 180px; display: grid; place-items: end center; font-family: var(--font-body, system-ui); color: var(--ink, #18181b); }
+.ui-folder-stage { --w: min(100cqw, 128cqh, 340px); position: relative; width: var(--w); height: calc(var(--w) * 0.78); margin-bottom: 2px; perspective: 900px; }
+.ui-folder-back { position: absolute; left: 0; right: 0; bottom: 0; height: 68%; border-radius: 4px 12px 12px 12px; background: color-mix(in srgb, var(--fo-c) 70%, #000); }
+.ui-folder-back::before { content: ''; position: absolute; left: 0; bottom: 99%; width: 38%; height: 16%; background: inherit; border-radius: 10px 0 0 0; clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%); }
+.ui-folder-papers { position: absolute; left: 7%; right: 7%; bottom: 10%; height: 64%; }
+.ui-folder-paper { position: absolute; inset: 0; box-sizing: border-box; padding: 9% 7%; border-radius: 6px; background: var(--raised, #fff); border: 1px solid var(--line-strong, #c2bdb2); color: var(--ink, #18181b); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18); overflow: hidden;
+  transform-origin: 50% 100%; transform: translateY(calc(10% - var(--i) * 3%)) scale(calc(1 - var(--i) * 0.01)); transition: transform 0.55s cubic-bezier(0.3, 1.25, 0.4, 1); }
+.ui-folder-paper h4 { margin: 0 0 4px; font-size: clamp(11px, 4.2cqw, 14px); line-height: 1.2; }
+.ui-folder-body { font-size: clamp(10px, 3.5cqw, 12px); line-height: 1.4; color: var(--muted, #5c5851); }
+.ui-folder-body a { color: var(--primary, #2563eb); }
+.ui-folder-lines { position: absolute; left: 7%; right: 7%; bottom: 14%; height: 20%; background: repeating-linear-gradient(to bottom, var(--line, #d8d4cb) 0 2px, transparent 2px 8px); }
+.ui-folder-front { position: absolute; left: 0; right: 0; bottom: 0; height: 56%; box-sizing: border-box; margin: 0; padding: 0 7% 5%; border: 0; border-radius: 10px 12px 12px 12px; cursor: pointer; text-align: left; font: inherit; color: var(--fo-on, var(--on-primary, #fff)); display: flex; flex-direction: column; justify-content: flex-end; gap: 1px;
+  background: linear-gradient(175deg, color-mix(in srgb, var(--fo-c) 94%, #fff), color-mix(in srgb, var(--fo-c) 86%, #000)); box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35) inset, 0 12px 20px rgba(6, 9, 20, 0.28);
+  transform-origin: 50% 100%; transition: transform 0.5s cubic-bezier(0.3, 1.2, 0.4, 1); min-height: 44px; }
+.ui-folder-front:focus-visible { outline: 3px solid var(--ink, #18181b); outline-offset: 3px; }
+.ui-folder-label { font-size: clamp(15px, 6cqw, 22px); font-weight: 750; letter-spacing: -0.01em; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3); }
+.ui-folder-count { font: 500 11px/1.2 var(--font-mono, monospace); opacity: 0.92; }
+.ui-folder-hint { position: absolute; right: 7%; top: 12%; font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; background: color-mix(in srgb, var(--fo-on, var(--on-primary, #fff)) 20%, transparent); }
+/* peek on hover, fan when open */
+@media (hover: hover) {
+  .ui-folder-root[data-open='false']:hover .ui-folder-paper { transform: translateY(calc(-4% - var(--i) * 3%)) scale(calc(1 - var(--i) * 0.01)); }
+  .ui-folder-root[data-open='false']:hover .ui-folder-front { transform: rotateX(-8deg); }
+}
+.ui-folder-root[data-open='true'] .ui-folder-paper { transform: translate(calc(var(--k) * 14%), calc(-30% + var(--k) * var(--k) * 4%)) rotate(calc(var(--k) * 7deg)); transition-delay: calc(var(--i) * 40ms); }
+.ui-folder-root[data-open='true'] .ui-folder-front { transform: rotateX(-24deg); }
+@container (max-height: 250px) { .ui-folder-root[data-open='true'] .ui-folder-paper { transform: translate(calc(var(--k) * 12%), calc(-24% + var(--k) * var(--k) * 4%)) rotate(calc(var(--k) * 6deg)); } }
+@media (prefers-reduced-motion: reduce) { .ui-folder-paper, .ui-folder-front { transition: none !important; } }

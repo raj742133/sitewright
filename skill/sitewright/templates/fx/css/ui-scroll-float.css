@@ -1,0 +1,17 @@
+.ui-scroll-float-root { margin: 0; font-family: var(--font-body, system-ui); font-weight: 800; font-size: clamp(30px, 7vw, 76px); line-height: 1.04; letter-spacing: -0.02em; color: var(--ink, #111); overflow-wrap: normal; }
+.ui-scroll-float-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.ui-scroll-float-word { display: inline-block; white-space: nowrap; }
+.ui-scroll-float-ch { display: inline-block; --y: 0; --o: 1; --k: 0; opacity: var(--o); transform-origin: 50% 100%; will-change: transform, opacity;
+  transform: translateY(calc(var(--y) * var(--dist, 0.9em))) rotate(calc(var(--k) * 9deg)) scaleY(calc(1 + var(--k) * 0.45)); }
+.ui-scroll-float-ch:nth-child(3n) { color: var(--primary, #2563eb); }
+
+.ui-scroll-float-demo { height: 100%; min-height: 220px; overflow-y: auto; overscroll-behavior: contain; position: relative; background: radial-gradient(120% 70% at 85% 100%, color-mix(in srgb, var(--primary, #2563eb) 14%, transparent), transparent 60%), var(--surface, #fafafa); scrollbar-width: thin; }
+.ui-scroll-float-demo:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
+.ui-scroll-float-hint { height: 150px; display: grid; place-items: end center; padding-bottom: 18px; font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted, #6b7280); }
+.ui-scroll-float-hint span { display: block; }
+.ui-scroll-float-hint i { display: block; width: 1px; height: 22px; margin: 8px auto 0; background: linear-gradient(var(--muted, #6b7280), transparent); }
+.ui-scroll-float-stage { padding: 28px 24px 36px; max-width: 760px; margin-inline: auto; }
+.ui-scroll-float-eyebrow { margin: 0 0 8px; font: 600 11px/1.2 var(--font-mono, monospace); letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary, #2563eb); }
+.ui-scroll-float-sub { margin: 14px 0 0; font: 400 14px/1.5 var(--font-body, system-ui); color: var(--muted, #6b7280); max-width: 36ch; }
+.ui-scroll-float-tail { height: 220px; }
+@media (prefers-reduced-motion: reduce) { .ui-scroll-float-ch { will-change: auto; } }

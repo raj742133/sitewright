@@ -1,0 +1,16 @@
+.ui-laser-flow{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:#05060d}
+.ui-laser-flow::before{content:'';position:absolute;inset:0;transition:opacity .6s ease;
+  background:
+   linear-gradient(112deg,transparent 30%,color-mix(in srgb,var(--primary,#2563eb) 85%,#fff) 30.2%,transparent 30.9%),
+   linear-gradient(104deg,transparent 40%,color-mix(in srgb,var(--signal,#f59e0b) 85%,#fff) 40.2%,transparent 40.8%),
+   linear-gradient(120deg,transparent 52%,color-mix(in srgb,var(--primary,#2563eb) 70%,#fff) 52.2%,transparent 52.8%),
+   linear-gradient(112deg,transparent 22%,color-mix(in srgb,var(--primary,#2563eb) 22%,transparent) 36%,transparent 52%),
+   #05060d}
+.ui-laser-flow[data-gl='on']::before{opacity:0}
+.ui-laser-flow-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-laser-flow-canvas[hidden]{display:none}
+.ui-laser-flow-stage{position:relative;width:100%;height:100%;min-height:150px;overflow:hidden;border-radius:inherit}
+.ui-laser-flow-copy{position:absolute;left:18px;bottom:16px;display:grid;gap:2px;font-family:var(--font-body,system-ui);color:#f4f6ff}
+.ui-laser-flow-copy strong{font-size:18px}
+.ui-laser-flow-copy span{font-size:13px;color:#b8bfd6}
+@media (prefers-reduced-motion:reduce){.ui-laser-flow::before{transition:none}}

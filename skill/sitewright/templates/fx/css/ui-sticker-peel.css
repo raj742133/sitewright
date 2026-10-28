@@ -1,0 +1,24 @@
+.ui-sticker-peel-root { position: relative; display: inline-block; flex: none; cursor: grab; touch-action: none; outline: none; user-select: none; -webkit-user-select: none; }
+.ui-sticker-peel-root:active { cursor: grabbing; }
+.ui-sticker-peel-root:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 6px; border-radius: var(--ui-sp-r, 22px); }
+.ui-sticker-peel-stage { position: absolute; inset: 0; filter: drop-shadow(0 6px 8px rgba(11, 16, 32, 0.38)); }
+.ui-sticker-peel-front, .ui-sticker-peel-flap { position: absolute; inset: 0; transform-origin: 0 0; }
+.ui-sticker-peel-front { border-radius: var(--ui-sp-r, 22px); }
+.ui-sticker-peel-face { position: absolute; inset: 0; border-radius: var(--ui-sp-r, 22px); overflow: hidden; border: 5px solid #fff; background: #fff; box-sizing: border-box; }
+.ui-sticker-peel-face > * { width: 100%; height: 100%; }
+.ui-sticker-peel-shade { position: absolute; inset: 0; border-radius: var(--ui-sp-r, 22px); pointer-events: none; }
+.ui-sticker-peel-paper { position: absolute; inset: 0; border-radius: var(--ui-sp-r, 22px); background: var(--ui-sp-bg, none), var(--ui-sp-back, #ebe6d8); }
+.ui-sticker-peel-art { position: relative; border-radius: calc(var(--ui-sp-r, 22px) - 5px); overflow: hidden; }
+.ui-sticker-peel-art svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ui-sticker-peel-art span {
+  position: absolute; left: 12px; top: 10px; color: #fff; font: 800 22px/1 var(--font-body, system-ui); letter-spacing: -0.02em; text-shadow: 0 2px 8px rgba(11, 16, 32, 0.55);
+}
+
+/* demo */
+.ui-sticker-peel-demo {
+  position: relative; display: grid; place-items: center; height: 100%; min-height: 200px; overflow: hidden;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--primary, #2563eb) 22%, var(--surface, #e5e7eb)), var(--surface, #e5e7eb));
+}
+.ui-sticker-peel-lid { position: absolute; inset: 14px; border-radius: 18px; background: linear-gradient(160deg, color-mix(in srgb, var(--ink, #0f172a) 8%, var(--raised, #fff)), color-mix(in srgb, var(--ink, #0f172a) 18%, var(--raised, #fff))); border: 1px solid var(--line-strong, #cbd5e1); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); }
+.ui-sticker-peel-lid span { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px; border-radius: 50%; background: color-mix(in srgb, var(--ink, #0f172a) 14%, var(--raised, #fff)); opacity: 0.6; }
+.ui-sticker-peel-demo .ui-sticker-peel-root { position: relative; z-index: 1; }
