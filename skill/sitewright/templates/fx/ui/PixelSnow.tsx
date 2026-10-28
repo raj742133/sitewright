@@ -32,7 +32,7 @@ export default function PixelSnow({ pixel = 3, density = 1, speed = 1, interacti
       ctx.fillStyle = g;
       ctx.fillRect(0, 0, w, h);
       const flake = dark ? pal.ink : mixc(pal.primary, pal.ink, 0.2);
-      const n = Math.round(Math.min(260, Math.max(30, (w * h) / 5200)) * density);
+      const n = Math.round(Math.min(260, Math.max(30, (w * h) / 3000)) * density);
       const span = h + px * 8;
       for (let i = 0; i < n; i++) {
         const d = hash2(i, 1, 11);
@@ -52,7 +52,7 @@ export default function PixelSnow({ pixel = 3, density = 1, speed = 1, interacti
       // the drift: stair-stepped columns along the bottom
       const colW = px * 4;
       const base = h - Math.max(14, h * 0.07);
-      ctx.fillStyle = rgba(dark ? mixc(pal.surface, pal.ink, 0.82) : mixc(pal.surface, pal.primary, 0.3), 1);
+      ctx.fillStyle = rgba(dark ? mixc(pal.surface, pal.ink, 0.3) : mixc(pal.surface, pal.primary, 0.3), 1);
       for (let x = 0, c = 0; x < w; x += colW, c++) {
         const top = base - (Math.sin(c * 0.37) * 0.5 + Math.sin(c * 0.11 + 1) * 0.5 + 1) * h * 0.025 - hash2(c, 9, 3) * px * 1.5;
         const y0 = Math.round(top / px) * px;

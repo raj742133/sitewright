@@ -1,0 +1,59 @@
+[
+ {
+  "id": "constellation-field",
+  "label": "Constellation field",
+  "desc": "Particle networks in four styles: drifting linked nodes, a parallax star sky, a springy lattice and orbiting hubs; the pointer pulls or pushes the nodes.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "ConstellationField.tsx",
+   "_tu-bg-constellation.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-constellation-field"
+  ],
+  "use": "Behind a landing hero, footer or sign-in panel (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "predictive-arc",
+  "label": "Predictive arc",
+  "desc": "Five generative Canvas 2D scenes selected by variant: a pixel-grid horizon arch, pulses on a signal network, flowing ribbons, a halftone dot matrix and flow-field trails.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "PredictiveArc.tsx",
+   "_tu-bg-arc.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-predictive-arc"
+  ],
+  "use": "Behind a product or analytics hero (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "portal-field",
+  "label": "Portal field",
+  "desc": "Ambient particle fields: a rotating noise-shaped cloud, a resonant plate whose grains settle on nodal lines, and streams converging on a focal portal that follows the pointer.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "PortalField.tsx",
+   "_tu-bg-portal.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-portal-field"
+  ],
+  "use": "Behind a hero or call-to-action band (first child of a position:relative section; fills its parent)."
+ }
+]

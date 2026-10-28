@@ -46,7 +46,7 @@ void main(){
     float sk=shock(uB0,uv,asp,fi*.012)+shock(uB1,uv,asp,fi*.012)+shock(uB2,uv,asp,fi*.012)+shock(uB3,uv,asp,fi*.012);
     acc+=tone*(ray*.62+ring*.5+sk*.8);
   }
-  acc+=mix(uPri,uSig,.5)*.05/(r+.05);
+  acc+=mix(uPri,uSig,.5)*.018/(r+.04);
   vec3 base=mix(uSurf,uPri,.08+.1*(1.-smoothstep(0.,.9,r)));
   gl_FragColor=vec4(bgeCompose(base,acc),1.);
 }`;

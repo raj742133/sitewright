@@ -1,0 +1,19 @@
+[
+ {
+  "id": "performance-gauges",
+  "label": "Performance gauges",
+  "desc": "Four layered dashboard instruments (tachometer, speedometer, boost gauge, EV power meter) whose needles ease to the values you pass.",
+  "source": "Original",
+  "group": "feedback",
+  "files": [
+   "PerformanceGauges.tsx",
+   "_tu-css-gauge.tsx",
+   "_tu-css-gauges.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-performance-gauges"
+  ],
+  "use": "Vehicle or device status panels, diagnostics dashboards, telemetry heroes (fills its parent; pass `values`)."
+ }
+]

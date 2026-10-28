@@ -1,0 +1,38 @@
+.ui-uplink-loader-demo { width: 100%; height: 100%; min-height: 0; padding: 12px; box-sizing: border-box; display: grid; place-items: center; background: radial-gradient(80% 80% at 50% 20%, color-mix(in srgb, var(--primary, #2563eb) 18%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+.ui-uplink-loader-demo > .ui-uplink-loader-root { max-height: 100%; }
+.ui-uplink-loader-root { --ul-acc: color-mix(in srgb, var(--primary, #2563eb) 55%, #fff); --ul-bg: #070a10; position: relative; width: 100%; max-width: 520px; box-sizing: border-box; padding: clamp(10px, 4cqw, 20px) clamp(12px, 4.5cqw, 22px); overflow: hidden; border-radius: var(--radius, 12px); isolation: isolate; container-type: inline-size;
+  display: grid; gap: clamp(6px, 2.4cqw, 14px); color: #dbe4f3; font-family: var(--font-mono, ui-monospace, monospace);
+  background: radial-gradient(120% 90% at 50% -10%, color-mix(in srgb, var(--primary, #2563eb) 24%, var(--ul-bg)), var(--ul-bg) 65%); border: 1px solid color-mix(in srgb, var(--ul-acc) 35%, #000); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 0 40px rgba(0, 0, 0, 0.5); }
+.ui-uplink-loader-root.is-done { --ul-acc: color-mix(in srgb, var(--signal, #f59e0b) 70%, #fff); }
+.ui-uplink-loader-grain { position: absolute; inset: -20%; z-index: 3; pointer-events: none; opacity: 0.16; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); animation: ui-uplink-loader-grain 0.9s steps(6) infinite; }
+.ui-uplink-loader-scan { position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px), linear-gradient(180deg, transparent 0, color-mix(in srgb, var(--ul-acc) 22%, transparent) 50%, transparent 100%) 0 -40% / 100% 40% no-repeat; animation: ui-uplink-loader-sweep 3.4s linear infinite; }
+.ui-uplink-loader-corner { position: absolute; z-index: 1; width: 12px; height: 12px; border: 0 solid var(--ul-acc); opacity: 0.8; }
+.ui-uplink-loader-corner.is-tl { top: 6px; left: 6px; border-width: 1px 0 0 1px; } .ui-uplink-loader-corner.is-tr { top: 6px; right: 6px; border-width: 1px 1px 0 0; }
+.ui-uplink-loader-corner.is-bl { bottom: 6px; left: 6px; border-width: 0 0 1px 1px; } .ui-uplink-loader-corner.is-br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+.ui-uplink-loader-head { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+.ui-uplink-loader-title { display: inline-flex; align-items: center; gap: 8px; color: var(--ul-acc); font-weight: 700; }
+.ui-uplink-loader-title i { width: 7px; height: 7px; border-radius: 50%; background: var(--ul-acc); box-shadow: 0 0 8px var(--ul-acc); animation: ui-uplink-loader-pulse 1.4s ease-in-out infinite; }
+.ui-uplink-loader-stage { color: #9fb0c9; }
+.ui-uplink-loader-main { position: relative; z-index: 1; display: grid; gap: 8px; }
+.ui-uplink-loader-pct { font-size: clamp(30px, 14cqw, 56px); font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: #fff; text-shadow: 0 0 18px color-mix(in srgb, var(--ul-acc) 60%, transparent); font-variant-numeric: tabular-nums; }
+.ui-uplink-loader-pct small { font-size: 0.4em; margin-left: 4px; color: var(--ul-acc); }
+.ui-uplink-loader-bar { display: grid; grid-template-columns: repeat(24, 1fr); gap: 3px; height: 14px; }
+.ui-uplink-loader-bar span { background: rgba(255, 255, 255, 0.09); border-radius: 1px; transition: background 0.2s, box-shadow 0.2s; }
+.ui-uplink-loader-bar span.is-on { background: var(--ul-acc); box-shadow: 0 0 8px color-mix(in srgb, var(--ul-acc) 70%, transparent); }
+.ui-uplink-loader-ruler { position: relative; display: flex; justify-content: space-between; align-items: flex-end; height: 10px; }
+.ui-uplink-loader-ruler span { width: 1px; height: 4px; background: rgba(255, 255, 255, 0.28); }
+.ui-uplink-loader-ruler span.is-major { height: 9px; background: rgba(255, 255, 255, 0.5); }
+.ui-uplink-loader-ruler b { position: absolute; bottom: -2px; width: 0; height: 0; margin-left: -4px; border: 4px solid transparent; border-bottom: 6px solid #fff; border-top: 0; transition: left 0.2s linear; }
+.ui-uplink-loader-status { position: relative; z-index: 1; margin: 0; font-size: 13px; color: #f1f5ff; min-height: 1.4em; }
+.ui-uplink-loader-prompt { color: var(--ul-acc); font-weight: 700; }
+.ui-uplink-loader-caret { display: inline-block; width: 7px; height: 1em; margin-left: 4px; vertical-align: -2px; background: var(--ul-acc); animation: ui-uplink-loader-blink 1s steps(2, start) infinite; }
+.ui-uplink-loader-telemetry { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+.ui-uplink-loader-telemetry dt { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #8fa1bd; }
+.ui-uplink-loader-telemetry dd { margin: 2px 0 0; font-size: 12px; color: #e6edfa; font-variant-numeric: tabular-nums; }
+@container (max-width: 300px) { .ui-uplink-loader-telemetry { display: none; } .ui-uplink-loader-ruler { display: none; } }
+@keyframes ui-uplink-loader-sweep { to { background-position: 0 0, 0 140%; } }
+@keyframes ui-uplink-loader-grain { 0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); } 60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); } }
+@keyframes ui-uplink-loader-pulse { 50% { opacity: 0.35; } }
+@keyframes ui-uplink-loader-blink { to { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .ui-uplink-loader-grain, .ui-uplink-loader-scan, .ui-uplink-loader-title i, .ui-uplink-loader-caret { animation: none; } .ui-uplink-loader-bar span, .ui-uplink-loader-ruler b { transition: none; } }

@@ -46,7 +46,7 @@ export default function PixelBlast({ size = 14, speed = 1, interval = 2.4, inter
         }
         const cell = Math.max(6, size);
         const cols = Math.ceil(w / cell), rows = Math.ceil(h / cell);
-        const bw = cell * 3.4, reach = 250 * speed;
+        const bw = cell * 3.4, reach = Math.max(w, h) * 0.34 * speed;
         const dark = e.dark;
         // faint pixel lattice
         ctx.fillStyle = rgba(pal.ink, dark ? 0.1 : 0.09);

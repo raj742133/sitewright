@@ -1,7 +1,7 @@
 'use client';
 import type { CSSProperties } from 'react';
 import { useCanvas2D } from './_bg-c-canvas';
-import { BgcDemo } from './_bg-c-demo';
+import { TuDemo } from './_tu-bg-demo';
 import { makeConstellation, type ConstellationVariant } from './_tu-bg-constellation';
 
 export type { ConstellationVariant };
@@ -33,11 +33,12 @@ export default function ConstellationField({ variant = 'network', density = 1, c
   return <Field key={variant + density} variant={variant} density={Math.max(0.4, Math.min(2, density))} className={className} style={style} />;
 }
 
-const NAMES: Record<ConstellationVariant, string> = { network: 'Network', stars: 'Starfield', lattice: 'Lattice', orbits: 'Orbits' };
-export function Demo({ variant = 'network' }: { variant?: ConstellationVariant }) {
+const VARIANTS = ['network', 'stars', 'lattice', 'orbits'] as const;
+const NAMES: Record<ConstellationVariant, string> = { network: 'Network', stars: 'Stars', lattice: 'Lattice', orbits: 'Orbits' };
+export function Demo() {
   return (
-    <BgcDemo title="Constellation field" sub={NAMES[variant] + ' variant. Move the pointer over it.'}>
-      <ConstellationField variant={variant} />
-    </BgcDemo>
+    <TuDemo title="Constellation field" sub="Move the pointer over it." variants={VARIANTS} labels={NAMES}>
+      {(v) => <ConstellationField variant={v} />}
+    </TuDemo>
   );
 }
