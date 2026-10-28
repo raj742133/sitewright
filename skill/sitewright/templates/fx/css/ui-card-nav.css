@@ -9,7 +9,7 @@
 .ui-card-nav-lines i:first-child { top: 2px; } .ui-card-nav-lines i:last-child { top: 9px; }
 .is-open .ui-card-nav-lines i:first-child { top: 5.5px; transform: rotate(45deg); } .is-open .ui-card-nav-lines i:last-child { top: 5.5px; transform: rotate(-45deg); }
 .ui-card-nav-brand { display: inline-flex; align-items: center; gap: 6px; font: 800 17px/1 var(--font-body, system-ui); letter-spacing: -.01em; color: var(--primary, #2563eb); }
-.ui-card-nav-cta { white-space: nowrap; justify-self: end; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 10px; text-decoration: none; font: 700 14px/1 var(--font-body, system-ui); color: #fff; background: var(--primary, #2563eb); }
+.ui-card-nav-cta { white-space: nowrap; justify-self: end; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 10px; text-decoration: none; font: 700 14px/1 var(--font-body, system-ui); color: var(--on, #fff); background: var(--primary, #2563eb); }
 .ui-card-nav-cta:hover { filter: brightness(1.1); }
 .ui-card-nav-drawer { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.3,.9,.3,1); visibility: hidden; }
 .is-open .ui-card-nav-drawer { grid-template-rows: 1fr; visibility: visible; }
@@ -24,3 +24,6 @@
 .ui-card-nav-link:hover { color: var(--primary, #2563eb); text-decoration: underline; }
 @container (max-width: 560px) { .ui-card-nav-cta { padding: 0 12px; font-size: 13px; } .ui-card-nav-btn { padding: 0 8px; } .ui-card-nav-cards { grid-template-columns: 1fr; gap: 6px; } .ui-card-nav-card { padding: 8px 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; } .ui-card-nav-blurb { display: none; } .ui-card-nav-title { flex: 0 0 72px; font-size: 14px; } .ui-card-nav-links { display: flex; flex-wrap: wrap; column-gap: 12px; flex: 1; } .ui-card-nav-link { min-height: 32px; font-size: 13px; } .ui-card-nav-link svg { display: none; } }
 @media (prefers-reduced-motion: reduce) { .ui-card-nav-drawer, .ui-card-nav-card, .ui-card-nav-lines i { transition: none; } }
+
+.ui-card-nav-root { --on: #fff; }
+@supports (color: oklch(from red l c h)) { .ui-card-nav-root { --on: oklch(from var(--primary, #2563eb) clamp(0, (0.62 - l) * 1000, 1) 0 0); } }

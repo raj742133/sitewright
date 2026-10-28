@@ -14,7 +14,7 @@ export interface InfiniteMenuProps {
   className?: string;
   style?: CSSProperties;
 }
-const NAMES = ['Atlas', 'Beacon', 'Cinder', 'Delta', 'Ember', 'Fjord', 'Grove', 'Harbor', 'Ion', 'Juniper', 'Kite', 'Lumen', 'Meadow', 'Nova', 'Orbit', 'Prism', 'Quartz', 'Ridge'];
+const NAMES = ['Atlas', 'Beacon', 'Cinder', 'Delta', 'Ember', 'Fjord', 'Grove', 'Harbor', 'Ion', 'Juniper', 'Kite', 'Lumen'];
 const GLYPHS = ['home', 'star', 'bolt', 'camera', 'music', 'folder', 'chat', 'grid', 'mail'];
 const ITEMS: InfiniteItem[] = NAMES.map((t, i) => ({ title: t, desc: ['A quiet corner of the collection.', 'Fresh arrivals, hand picked.', 'Small pieces, big ideas.', 'Notes from the workshop.'][i % 4], href: '#' + t.toLowerCase(), icon: GLYPHS[i % GLYPHS.length] }));
 
@@ -94,7 +94,7 @@ export default function InfiniteMenu({ items = ITEMS, autoRotate = true, onSelec
   useEffect(() => { if (reduced) { const s = sim.current; s.mode = 'snap'; s.target = -1; kick(); } }, [reduced, kick]);
 
   const snapTo = (i: number) => { const s = sim.current; s.engaged = true; s.target = i; s.mode = 'snap'; kick(); };
-  const stepBy = (d: number) => { const i = (sim.current.front + d + n) % n; rov.focusAt(i); snapTo(i); };
+  const stepBy = (d: number) => { const i = (rov.index + d + n) % n; rov.focusAt(i); snapTo(i); };
 
   const down = (e: PointerEvent) => {
     const s = sim.current, el = stage.current;
@@ -162,7 +162,7 @@ export default function InfiniteMenu({ items = ITEMS, autoRotate = true, onSelec
 }
 
 function nodeT(v: V3): string {
-  const t = (v[2] + 1) / 2, sc = 0.45 + 0.7 * t;
+  const t = (v[2] + 1) / 2, sc = 0.72 + 0.43 * t;
   return `translate(calc(var(--rad) * ${v[0].toFixed(4)}), calc(var(--rad) * ${(-v[1]).toFixed(4)})) scale(${sc.toFixed(3)})`;
 }
 function alignInstant(R: M3, v: V3): M3 {

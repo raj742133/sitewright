@@ -1,10 +1,10 @@
 .ui-flying-button-wrap { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; font-family: var(--font-body, system-ui, sans-serif); }
-.ui-flying-button { position: relative; display: inline-grid; grid-template-columns: 24px auto; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px 0 16px; border: 1px solid transparent; border-radius: 999px; overflow: hidden; background: var(--primary, #2563eb); color: #fff; font: 700 15px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; box-shadow: 0 10px 22px -12px var(--primary, #2563eb); transition: transform .12s, background .2s, box-shadow .2s; }
-.ui-flying-button:hover { background: color-mix(in srgb, var(--primary, #2563eb) 88%, #000); }
+.ui-flying-button { position: relative; display: inline-grid; grid-template-columns: 24px auto; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px 0 16px; border: 1px solid transparent; border-radius: 999px; overflow: hidden; background: var(--primary, #2563eb); color: var(--on-primary, #fff); font: 700 15px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; box-shadow: 0 10px 22px -12px var(--primary, #2563eb); transition: transform .12s, background .2s, box-shadow .2s; }
+.ui-flying-button:hover { background: color-mix(in srgb, var(--primary, #2563eb) 88%, var(--ink, #000)); }
 .ui-flying-button:active { transform: scale(.97); }
 .ui-flying-button:focus-visible { outline: 2px solid var(--ink, #111); outline-offset: 3px; }
 .ui-flying-button[aria-disabled='true'] { cursor: default; }
-.ui-flying-button[data-phase='done'] { background: color-mix(in srgb, var(--primary, #2563eb) 70%, #000); }
+.ui-flying-button[data-phase='done'] { background: color-mix(in srgb, var(--primary, #2563eb) 80%, var(--ink, #000)); }
 .ui-flying-button-labels { display: inline-grid; justify-items: start; }
 .ui-flying-button-labels > span { grid-area: 1 / 1; opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .25s; white-space: nowrap; }
 .ui-flying-button-labels > span[data-on] { opacity: 1; transform: none; }

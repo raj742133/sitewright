@@ -1,0 +1,4 @@
+.ui-magnet-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);
+  background-image:radial-gradient(color-mix(in srgb,var(--primary,#2563eb) 55%,transparent) 1.5px,transparent 2px);background-size:30px 30px}
+.ui-magnet-lines-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-magnet-lines[data-ready='off'] .ui-magnet-lines-canvas{display:none}

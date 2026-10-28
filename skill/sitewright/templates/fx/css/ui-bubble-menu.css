@@ -1,6 +1,6 @@
 .ui-bubble-menu-root { position: absolute; inset: 0; pointer-events: none; font-family: var(--font-body, system-ui, sans-serif); }
 .ui-bubble-menu-root > * { pointer-events: auto; }
-.ui-bubble-menu-btn { position: absolute; z-index: 3; width: 52px; height: 52px; padding: 0; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: #fff; background: var(--primary, #2563eb); border: 2px solid color-mix(in srgb, #fff 50%, var(--primary, #2563eb)); box-shadow: 0 10px 22px -8px rgba(0,0,0,.45); transition: transform .35s cubic-bezier(.3,1.5,.5,1); }
+.ui-bubble-menu-btn { position: absolute; z-index: 3; width: 52px; height: 52px; padding: 0; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--on, #fff); background: var(--primary, #2563eb); border: 2px solid color-mix(in srgb, #fff 50%, var(--primary, #2563eb)); box-shadow: 0 10px 22px -8px rgba(0,0,0,.45); transition: transform .35s cubic-bezier(.3,1.5,.5,1); }
 .ui-bubble-menu-btn:hover { transform: scale(1.06); }
 .ui-bubble-menu-btn:focus-visible { outline: 3px solid var(--ink, #18181b); outline-offset: 3px; }
 .ui-bubble-menu-root.is-open .ui-bubble-menu-btn { transform: rotate(90deg); }
@@ -26,3 +26,6 @@
 .ui-bubble-menu-link:hover { transform: scale(1.07); }
 .ui-bubble-menu-link:focus-visible { outline: 3px solid var(--ink, #18181b); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .ui-bubble-menu-li, .ui-bubble-menu-root.is-open .ui-bubble-menu-li, .ui-bubble-menu-btn, .ui-bubble-menu-bars i, .ui-bubble-menu-link { transition: none; } }
+
+.ui-bubble-menu-root { --on: #fff; }
+@supports (color: oklch(from red l c h)) { .ui-bubble-menu-root { --on: oklch(from var(--primary, #2563eb) clamp(0, (0.62 - l) * 1000, 1) 0 0); } }

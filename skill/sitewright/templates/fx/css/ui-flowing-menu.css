@@ -5,7 +5,7 @@
 .ui-flowing-menu-link { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--ink, #18181b); }
 .ui-flowing-menu-link:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: -3px; z-index: 2; }
 .ui-flowing-menu-label { font: 800 clamp(20px, 6.5vmin, 54px)/1 var(--font-body, system-ui); letter-spacing: -.02em; text-transform: uppercase; }
-.ui-flowing-menu-ribbon { position: absolute; inset: 0; overflow: hidden; background: var(--primary, #2563eb); color: #fff; transform: translateY(101%); transition: transform .55s cubic-bezier(.3,.9,.3,1); display: flex; align-items: center; pointer-events: none; }
+.ui-flowing-menu-ribbon { position: absolute; inset: 0; overflow: hidden; background: var(--primary, #2563eb); color: var(--on, #fff); transform: translateY(101%); transition: transform .55s cubic-bezier(.3,.9,.3,1); display: flex; align-items: center; pointer-events: none; }
 .from-top .ui-flowing-menu-ribbon { transform: translateY(-101%); }
 .ui-flowing-menu-row.is-on .ui-flowing-menu-ribbon { transform: none; }
 .ui-flowing-menu-track { display: flex; flex: none; width: max-content; animation: ui-flowing-menu-run 16s linear infinite; }
@@ -16,3 +16,6 @@
 @keyframes ui-flowing-menu-run { to { transform: translateX(-50%); } }
 .ui-flowing-menu-row:not(.is-on) .ui-flowing-menu-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .ui-flowing-menu-track { animation: none; } .ui-flowing-menu-ribbon { transition: none; } }
+
+.ui-flowing-menu-root { --on: #fff; }
+@supports (color: oklch(from red l c h)) { .ui-flowing-menu-root { --on: oklch(from var(--primary, #2563eb) clamp(0, (0.62 - l) * 1000, 1) 0 0); } }

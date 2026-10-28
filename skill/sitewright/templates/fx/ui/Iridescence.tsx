@@ -35,10 +35,12 @@ void main(){
   float fy=film(p+vec2(0.,e),t)+bump*.35;
   vec3 n=normalize(vec3((f-fx)/e*.07,(f-fy)/e*.07,1.));
   float thick=f*2.2+n.x*.6+uT*.015;
-  /* thin-film style colour: three phase-shifted cosines, then pulled toward the brand pair */
+  /* thin-film style colour cycle between the two brand colours, a pearly tint and a faint spectral shimmer */
+  float a=.5+.5*sin(thick*6.2831), b2=.5+.5*sin(thick*4.58+2.);
+  vec3 pearl=mix(uSurf,vec3(1.),.55);
   vec3 spec=.5+.5*cos(6.2831*(thick*vec3(1.,.93,.82)+vec3(.0,.22,.47)));
-  vec3 brand=mix(uP,uS,smoothstep(.25,.85,fract(thick*.6+.1)));
-  vec3 col=mix(brand,spec,.12+.3*uShim);
+  vec3 col=mix(mix(uP,uS,a),pearl,b2*.5);
+  col+=(spec-.5)*(.1+.22*uShim);
   float lum=dot(col,vec3(.299,.587,.114));
   col=mix(vec3(lum),col,1.15);
   col=mix(uSurf,col,mix(.8,.9,uDark));

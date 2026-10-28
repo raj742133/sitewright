@@ -19,8 +19,8 @@
   font: 600 12px/1.4 var(--font-body, system-ui); color: var(--ink, #18181b); background: var(--raised, #fff); border: 1px solid var(--line-strong, rgba(127,127,127,.35)); box-shadow: 0 6px 16px rgba(0,0,0,.2); z-index: 3; }
 .ui-dock-cell:hover .ui-dock-tip, .ui-dock-cell:has(:focus-visible) .ui-dock-tip { opacity: 1; transform: translate(-50%, 0); }
 @media (pointer: coarse) { .ui-dock-root { --size: 48px; } .ui-dock-tip { display: none; } }
-@container (max-width: 420px) { .ui-dock-root { --size: 34px; --gap: 6px; } }
+@container (max-width: 420px) { .ui-dock-root { --size: 42px; --gap: 4px; } }
 @container (max-width: 340px) { .ui-dock-root { --size: 32px; --gap: 4px; } }
 @media (prefers-reduced-motion: reduce) { .ui-dock-item.is-bounce { animation: none; } .ui-dock-tip { transition: none; } }
 .ui-dock-demo { container-type: inline-size; width: 100%; display: grid; justify-items: center; padding: 0 8px 12px; max-width: 100%; }
-.ui-dock-demo-note { position: absolute; top: 10px; left: 12px; margin: 0; font: 500 11px/1.2 var(--font-mono, monospace); color: var(--muted, #52525b); }
+.ui-dock-demo-note { position: absolute; top: 10px; left: 12px; margin: 0; font: 500 12px/1.2 var(--font-mono, monospace); color: var(--muted, #52525b); }

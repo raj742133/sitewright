@@ -40,9 +40,8 @@ export default function StaggeredMenu({ items = ITEMS, socials = SOCIALS, open, 
   return (
     <div ref={root} className={`ui-staggered-menu-root is-${side}${fullscreen ? ' is-fixed' : ''}${isOpen ? ' is-open' : ''} ${className}`} style={style}>
       <div className="ui-staggered-menu-scrim" aria-hidden="true" onClick={() => close(false)} />
-      <button ref={btn} type="button" className="ui-staggered-menu-toggle" aria-expanded={isOpen} aria-controls={id} onClick={() => setOpen(!isOpen)}>
+      <button ref={btn} type="button" className="ui-staggered-menu-toggle" aria-expanded={isOpen} aria-controls={id} aria-label={isOpen ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!isOpen)}>
         <span className="ui-staggered-menu-word" aria-hidden="true"><span>Menu</span><span>Close</span></span>
-        <span className="ui-staggered-menu-sr">{isOpen ? 'Close menu' : 'Open menu'}</span>
         <span className="ui-staggered-menu-plus" aria-hidden="true" />
       </button>
       <i className="ui-staggered-menu-layer l1" aria-hidden="true" />

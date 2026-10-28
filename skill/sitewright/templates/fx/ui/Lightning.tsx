@@ -46,7 +46,7 @@ function makeBolt(rand: () => number, x0: number, y0: number, x1: number, y1: nu
       grow(px, py, px + Math.cos(dir) * len, py + Math.sin(dir) * len, w * 0.55, depth + 1);
     }
   };
-  grow(x0, y0, x1, y1, 2.4, 0);
+  grow(x0, y0, x1, y1, 3.4, 0);
   return { segs, age: 0, life: 1.3, flicker: rand(), x: x1 };
 }
 
@@ -67,7 +67,7 @@ function makePainter(f0: Frame, rate: number, branching: number): Painter {
     resize(f) { frozen.segs.length = 0; frozen.segs.push(...makeBolt(rng(31), f.w * 0.58, -10, f.w * 0.46, f.h * 0.82, branching).segs); },
     draw(f: Frame) {
       const { ctx, w, h, pal, dt } = f;
-      const pk = f.dark ? pal.ink : pal.primary;
+      const pk = f.dark ? pal.ink : mix(pal.ink, pal.primary, 0.25);
       if (!f.reduced) {
         for (const tp of f.ptr.taps) strike(f, tp.x, tp.y);
         next -= dt;

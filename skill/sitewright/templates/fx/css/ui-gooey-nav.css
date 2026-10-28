@@ -10,8 +10,12 @@
 .ui-gooey-nav-list { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: flex; }
 .ui-gooey-nav-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 18px; border-radius: 999px; text-decoration: none; color: var(--ink, #18181b); font: 600 14px/1 var(--font-body, system-ui); transition: color .25s; }
 .ui-gooey-nav-link:hover:not(.is-active) { color: var(--primary, #2563eb); }
-.ui-gooey-nav-link.is-active { color: #fff; }
+.ui-gooey-nav-root.is-ready .ui-gooey-nav-link.is-active { color: var(--on, #fff); }
+.ui-gooey-nav-link.is-active { font-weight: 700; }
 .ui-gooey-nav-link:focus-visible { outline: 2px solid var(--signal, #f59e0b); outline-offset: 0; box-shadow: 0 0 0 4px var(--ink, #18181b); }
 @container (max-width: 340px) { .ui-gooey-nav-link { padding: 0 6px; font-size: 12px; } }
 @container (max-width: 440px) { .ui-gooey-nav-link { padding: 0 9px; font-size: 12.5px; } .ui-gooey-nav-root { padding: 6px 4px; } }
 @media (prefers-reduced-motion: reduce) { .ui-gooey-nav-link { transition: none; } .ui-gooey-nav-drop { display: none; } }
+
+.ui-gooey-nav-root { --on: #fff; }
+@supports (color: oklch(from red l c h)) { .ui-gooey-nav-root { --on: oklch(from var(--primary, #2563eb) clamp(0, (0.62 - l) * 1000, 1) 0 0); } }

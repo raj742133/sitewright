@@ -110,8 +110,8 @@ function drawEye(f: Frame, blink: boolean, follow: number, size: number) {
   ctx.fillStyle = 'rgba(255,255,255,.85)';
   ctx.beginPath(); ctx.ellipse(ix - ir * 0.3, iy - ir * 0.34, ir * 0.07, ir * 0.05, -0.6, 0, Math.PI * 2); ctx.fill();
   // lid shadow over the top
-  const sh = ctx.createLinearGradient(0, ey - H, 0, ey + H * 0.2);
-  sh.addColorStop(0, 'rgba(10,4,8,.55)'); sh.addColorStop(0.5, 'rgba(10,4,8,0)');
+  const sh = ctx.createLinearGradient(0, ey - H * 1.6, 0, ey + H * 0.1);
+  sh.addColorStop(0, 'rgba(10,4,8,.5)'); sh.addColorStop(1, 'rgba(10,4,8,0)');
   ctx.fillStyle = sh; ctx.fillRect(ex - A, ey - H * 2, A * 2, H * 3);
   ctx.restore();
   // lid line

@@ -15,7 +15,7 @@ export interface DockProps {
   value?: string;
   defaultValue?: string;
   onChange?: (id: string) => void;
-  /** Base size of an icon tile in px (44 keeps touch targets large enough). */
+  /** Base size of an icon tile in px. Defaults to 44 (48 on touch screens, smaller in very narrow containers). */
   size?: number;
   /** Scale of the icon under the pointer (1 turns magnification off). */
   magnification?: number;
@@ -35,7 +35,7 @@ const ITEMS: DockItem[] = [
 
 /** A magnifying dock: icons swell with a spring as the pointer (or keyboard focus) nears them, neighbours slide aside, labels appear above.
  *  One tab stop with arrow-key roving (Home/End jump), Enter/Space select. Touch screens skip magnification and get larger press targets. */
-export default function Dock({ items = ITEMS, value, defaultValue, onChange, size = 44, magnification = 1.65, reach = 130, label = 'Dock', className = '', style }: DockProps) {
+export default function Dock({ items = ITEMS, value, defaultValue, onChange, size, magnification = 1.65, reach = 130, label = 'Dock', className = '', style }: DockProps) {
   const [active, setActive] = useControlled<string>(value, defaultValue ?? '', onChange);
   const reduced = useReducedMotion();
   const coarse = useCoarsePointer();
@@ -63,7 +63,7 @@ export default function Dock({ items = ITEMS, value, defaultValue, onChange, siz
   };
 
   return (
-    <div className={`ui-dock-root ${className}`} style={{ ['--size' as string]: size + 'px', ...style }} onPointerMove={onMove} onPointerLeave={() => prox.point(null)}>
+    <div className={`ui-dock-root ${className}`} style={size ? { ['--size' as string]: size + 'px', ...style } : style} onPointerMove={onMove} onPointerLeave={() => prox.point(null)}>
       <div className="ui-dock-bar" ref={barRef} role="toolbar" aria-label={label} aria-orientation="horizontal" onKeyDown={rov.onKeyDown}>
         <span className="ui-dock-bg" aria-hidden="true" />
         <div className="ui-dock-row" ref={rowRef} >
@@ -77,7 +77,7 @@ export default function Dock({ items = ITEMS, value, defaultValue, onChange, siz
                   onFocus={(e) => { rov.item(i).onFocus(); if (e.currentTarget.matches(':focus-visible')) prox.focus(i); }}
                   onBlur={() => prox.focus(null)}
                   onClick={() => pick(it)}>
-                  {typeof it.icon === 'string' || it.icon == null ? <Icon name={(it.icon as string) ?? 'star'} size={Math.round(size * 0.5)} /> : it.icon}
+                  {typeof it.icon === 'string' || it.icon == null ? <Icon name={(it.icon as string) ?? 'star'} size={22} /> : it.icon}
                 </button>
                 <i className="ui-dock-dot" aria-hidden="true" />
               </div>

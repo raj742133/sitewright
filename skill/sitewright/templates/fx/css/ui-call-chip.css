@@ -2,7 +2,7 @@
 .ui-call-chip[data-state='calling'], .ui-call-chip[data-state='connected'] { border-color: var(--cc-accent); }
 .ui-call-chip[data-state='connected'] { background: color-mix(in srgb, var(--cc-accent) 8%, var(--raised, #fff)); }
 .ui-call-chip-avatar { position: relative; flex: none; width: 40px; height: 40px; display: grid; place-items: center; }
-.ui-call-chip-face { position: relative; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--cc-accent); color: #fff; font: 700 13px/1 var(--font-body, system-ui, sans-serif); letter-spacing: .02em; }
+.ui-call-chip-face { position: relative; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--cc-accent); color: var(--on-primary, #fff); font: 700 13px/1 var(--font-body, system-ui, sans-serif); letter-spacing: .02em; }
 .ui-call-chip-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--cc-accent); opacity: 0; pointer-events: none; }
 .ui-call-chip[data-state='calling'] .ui-call-chip-ring { animation: ui-call-chip-ring 1.5s ease-out infinite; }
 .ui-call-chip[data-state='calling'] .ui-call-chip-ring:nth-child(2) { animation-delay: .75s; }
@@ -13,8 +13,8 @@
 .ui-call-chip-btn:hover { background: var(--line, #ddd); }
 .ui-call-chip-btn:active { transform: scale(.94); }
 .ui-call-chip-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
-.ui-call-chip-btn.is-call { background: var(--cc-accent); border-color: var(--cc-accent); color: #fff; }
-.ui-call-chip-btn.is-call:hover { background: color-mix(in srgb, var(--cc-accent) 85%, #000); }
+.ui-call-chip-btn.is-call { background: var(--cc-accent); border-color: var(--cc-accent); color: var(--on-primary, #fff); }
+.ui-call-chip-btn.is-call:hover { background: color-mix(in srgb, var(--cc-accent) 85%, var(--ink, #000)); }
 .ui-call-chip-btn.is-end { background: #b91c1c; border-color: #b91c1c; color: #fff; }
 .ui-call-chip-btn.is-end:hover { background: #991b1b; }
 .ui-call-chip-btn.is-done { cursor: default; border-color: transparent; background: transparent; color: var(--cc-accent); }

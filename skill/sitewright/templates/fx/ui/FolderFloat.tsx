@@ -16,7 +16,7 @@ export interface FolderFloatProps {
 }
 
 const FILES: FolderFile[] = [
-  { id: 'brief', name: 'Brief', meta: 'PDF · 2 pages' },
+  { id: 'brief', name: 'Brief', meta: 'PDF · 12 KB' },
   { id: 'moods', name: 'Moodboard', meta: 'Images · 14' },
   { id: 'budget', name: 'Budget', meta: 'Sheet · v3' },
 ];
@@ -40,7 +40,7 @@ export default function FolderFloat({ label = 'Project files', files = FILES, on
           {files.map((f, i) => {
             const mid = (n - 1) / 2;
             const rot = n === 3 ? (FAN[i] ?? 0) : (i - mid) * 9;
-            const x = (i - mid) * 84;
+            const x = (i - mid) * 92;
             return (
               <li key={f.id} className="ui-folder-float-slot" style={{ '--x': `${x}px`, '--r': `${rot}deg`, '--i': i, '--lift': `${-62 - Math.abs(i - mid) * -6}px` } as CSSProperties}>
                 <button type="button" className="ui-folder-float-file" tabIndex={on ? 0 : -1} onClick={() => onOpenFile?.(f)}>

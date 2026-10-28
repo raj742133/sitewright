@@ -7,7 +7,7 @@
 .ui-model-viewer-shapes, .ui-model-viewer-zoom { display: inline-flex; align-items: center; gap: 2px; padding: 2px; border-radius: 999px; background: var(--raised, #fff); border: 1px solid var(--line, #d9d5cc); }
 .ui-model-viewer-bar button { min-width: 28px; min-height: 28px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent; color: var(--ink, #18181b); font: 600 12px/1 var(--font-body, system-ui); cursor: pointer; }
 .ui-model-viewer-bar button:hover { background: var(--raised-2, #edebe7); }
-.ui-model-viewer-bar button.is-on { background: var(--primary, #2563eb); color: #fff; }
+.ui-model-viewer-bar button.is-on { background: var(--primary, #2563eb); color: var(--surface, #fff); }
 .ui-model-viewer-bar button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 1px; }
-.ui-model-viewer-zoom span { min-width: 40px; text-align: center; font: 600 11px/1 var(--font-mono, monospace); color: var(--muted, #52525b); }
+.ui-model-viewer-zoom span { min-width: 40px; text-align: center; font: 600 12px/1 var(--font-mono, monospace); color: var(--muted, #52525b); }
 @media (pointer: coarse) { .ui-model-viewer-bar button { min-height: 44px; min-width: 44px; } }

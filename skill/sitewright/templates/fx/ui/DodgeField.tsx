@@ -20,7 +20,7 @@ export interface DodgeFieldProps {
   style?: CSSProperties;
 }
 
-const DEFAULTS = ['Typography', 'Motion', 'Colour', 'Layout', 'Icons', 'Grids', 'Depth', 'Sound', 'Forms', 'Charts', 'Copy'];
+const DEFAULTS = ['Typography', 'Motion', 'Colour', 'Layout', 'Icons', 'Grids', 'Depth', 'Sound', 'Forms', 'Charts'];
 
 /** A cloud of toggle chips that slip out of the pointer's way and spring back when it leaves. They stay ordinary buttons (aria-pressed), and the slip fades to zero over the chip itself so it can always be caught. Touch and reduced-motion users get a still field. */
 export default function DodgeField({ items = DEFAULTS, value, defaultValue = ['Motion', 'Colour'], onChange, radius = 96, strength = 22, label = 'Topics', className, style }: DodgeFieldProps) {

@@ -25,7 +25,7 @@ float heightAt(vec2 p,out float cov){
   float f=blob(p);
   float m=clamp(mag(p),0.,1.4);
   vec2 q=hexc(p/.05);
-  float cone=pow(max(0.,1.-length(q)*2.05),2.6);
+  float cone=pow(max(0.,1.-length(q)*1.75),3.4);
   float spike=cone*(.18+m*1.3)*uSp;
   float s=f+spike*.5;
   cov=smoothstep(1.,1.1,s);
@@ -44,7 +44,10 @@ void main(){
   float spec=pow(max(dot(n,normalize(L+vec3(0.,0.,1.))),0.),70.);
   float rim=pow(1.-n.z,2.);
   vec3 fluid=mix(vec3(.02,.02,.03),uPri*.3,.18);
-  fluid+=uPri*.28*diff*diff+uSig*.55*rim+vec3(1.)*spec*1.1;
+  float ao=smoothstep(0.,.45,h*2.2);
+  float sky=pow(clamp(n.y*.9+.45,0.,1.),3.);
+  fluid+=uPri*.22*diff*diff+uSig*.22*rim+mix(uPri,vec3(1.),.6)*sky*.5*ao+vec3(1.)*spec*1.2;
+  fluid*=mix(.3,1.,ao);
   float m=clamp(mag(p),0.,1.);
   vec3 bg=uBg+uPri*.06*m;
   // soft contact shadow around the fluid

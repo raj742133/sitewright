@@ -4,11 +4,11 @@
 .ui-fuse-button:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
 .ui-fuse-button[data-phase='burning'] { border-color: var(--signal, #f59e0b); }
 .ui-fuse-button[data-phase='armed'] { border-color: var(--primary, #2563eb); }
-.ui-fuse-button[data-phase='done'] { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: #fff; animation: ui-fuse-button-pop .5s cubic-bezier(.3,1.6,.5,1); }
+.ui-fuse-button[data-phase='done'] { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: var(--on-primary, #fff); animation: ui-fuse-button-pop .5s cubic-bezier(.3,1.6,.5,1); }
 .ui-fuse-button[aria-disabled='true'] { opacity: .5; cursor: not-allowed; }
 .ui-fuse-button-row { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 0 20px; font: 700 15px/1 var(--font-body, system-ui, sans-serif); }
 .ui-fuse-button-row svg { flex: none; color: var(--signal, #f59e0b); }
-.ui-fuse-button[data-phase='done'] .ui-fuse-button-row svg { color: #fff; }
+.ui-fuse-button[data-phase='done'] .ui-fuse-button-row svg { color: var(--on-primary, #fff); }
 .ui-fuse-button-label { display: inline-grid; justify-items: start; }
 .ui-fuse-button-label > span { grid-area: 1 / 1; opacity: 0; white-space: nowrap; transform: translateY(6px); transition: opacity .15s, transform .2s; }
 .ui-fuse-button-label > span[data-on] { opacity: 1; transform: none; }

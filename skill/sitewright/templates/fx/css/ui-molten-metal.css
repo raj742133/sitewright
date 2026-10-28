@@ -1,0 +1,8 @@
+.ui-molten-metal{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:color-mix(in srgb,var(--primary,#2563eb) 22%,var(--ink,#111))}
+.ui-molten-metal::before{content:'';position:absolute;inset:0;transition:opacity .6s var(--ease,ease);
+  background:linear-gradient(112deg,transparent 30%,color-mix(in srgb,var(--signal,#f59e0b) 85%,#fff) 31% 32%,transparent 34% 58%,var(--primary,#2563eb) 59% 61%,transparent 63%),
+  linear-gradient(70deg,transparent 12%,color-mix(in srgb,var(--signal,#f59e0b) 70%,transparent) 13% 14%,transparent 16% 78%,color-mix(in srgb,var(--primary,#2563eb) 80%,#fff) 79% 80%,transparent 82%)}
+.ui-molten-metal[data-gl='on']::before{opacity:0}
+.ui-molten-metal-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-molten-metal-canvas[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.ui-molten-metal::before{transition:none}}

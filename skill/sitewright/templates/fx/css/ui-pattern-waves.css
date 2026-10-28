@@ -1,0 +1,4 @@
+.ui-pattern-waves{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);
+  background-image:radial-gradient(color-mix(in srgb,var(--primary,#2563eb) 65%,transparent) 3px,transparent 3.5px);background-size:22px 22px}
+.ui-pattern-waves-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-pattern-waves[data-ready='off'] .ui-pattern-waves-canvas{display:none}

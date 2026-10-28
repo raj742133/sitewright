@@ -5,7 +5,7 @@
 .ui-lanyard-card:active { cursor: grabbing; }
 .ui-lanyard-card:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
 .ui-lanyard-slot { position: absolute; top: calc(6px * var(--u)); width: calc(26px * var(--u)); height: calc(5px * var(--u)); border-radius: 999px; background: var(--line-strong, #c2bdb2); box-shadow: inset 0 1px 2px rgba(0,0,0,.35); }
-.ui-lanyard-avatar { width: calc(38px * var(--u)); height: calc(38px * var(--u)); display: grid; place-items: center; margin-top: calc(6px * var(--u)); border-radius: 50%; background: linear-gradient(135deg, var(--primary, #2563eb), var(--signal, #f59e0b)); color: #fff; font: 700 calc(14px * var(--u))/1 var(--font-body, system-ui); }
+.ui-lanyard-avatar { width: calc(38px * var(--u)); height: calc(38px * var(--u)); display: grid; place-items: center; margin-top: calc(6px * var(--u)); border-radius: 50%; background: linear-gradient(135deg, var(--primary, #2563eb), var(--signal, #f59e0b)); color: var(--surface, #fff); font: 700 calc(14px * var(--u))/1 var(--font-body, system-ui); }
 .ui-lanyard-card strong { font: 700 calc(13px * var(--u))/1.15 var(--font-body, system-ui); }
 .ui-lanyard-role { font: 500 calc(9.5px * var(--u))/1.2 var(--font-body, system-ui); color: var(--muted, #52525b); }
 .ui-lanyard-id { font: 600 calc(8.5px * var(--u))/1 var(--font-mono, monospace); letter-spacing: .1em; color: var(--muted, #52525b); }

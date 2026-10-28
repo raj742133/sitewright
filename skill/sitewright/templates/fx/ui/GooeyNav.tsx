@@ -57,7 +57,7 @@ export default function GooeyNav({ items = ITEMS, value, defaultValue, onChange,
   };
 
   return (
-    <div className={`ui-gooey-nav-root ${className}`} style={style}>
+    <div className={`ui-gooey-nav-root${box ? ' is-ready' : ''} ${className}`} style={style}>
       <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: 'absolute' }}>
         <defs>
           <filter id={fid} x="-20%" y="-60%" width="140%" height="220%" colorInterpolationFilters="sRGB">

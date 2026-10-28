@@ -12,7 +12,7 @@
 .ui-stack-card > * { position: relative; }
 .ui-stack-card strong { font: 700 19px/1.1 var(--font-body, system-ui); }
 .ui-stack-card p { margin: 0; font-size: 12.5px; line-height: 1.35; color: var(--muted, #52525b); }
-.ui-stack-tag { position: absolute !important; top: 12px; left: 14px; font: 700 11px/1 var(--font-mono, monospace); letter-spacing: .1em; padding: 4px 8px; border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #18181b); }
+.ui-stack-tag { position: absolute !important; top: 12px; left: 14px; font: 700 12px/1 var(--font-mono, monospace); letter-spacing: .1em; padding: 4px 8px; border-radius: 999px; background: var(--raised, #fff); color: var(--ink, #18181b); }
 .ui-stack-bar { display: flex; align-items: center; gap: 12px; font: 600 12px/1 var(--font-mono, monospace); color: var(--muted, #52525b); }
 .ui-stack-bar button { width: 44px; height: 32px; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--line-strong, #c2bdb2); background: var(--raised, #fff); color: var(--ink, #18181b); cursor: pointer; }
 .ui-stack-bar button:hover { border-color: var(--primary, #2563eb); }
