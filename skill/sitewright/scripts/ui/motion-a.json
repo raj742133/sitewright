@@ -1,0 +1,194 @@
+[
+ {
+  "id": "animated-content",
+  "label": "Animated content",
+  "desc": "A reveal wrapper that slides, scales, rotates and un-blurs its content in when it scrolls into view, with per-child stagger, easing presets and a replay-friendly once/repeat switch.",
+  "source": "Original",
+  "group": "motion",
+  "files": [
+   "AnimatedContent.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-animated-content"
+  ],
+  "use": "Wrap a section, card group or list to reveal it as the page scrolls (direction, distance, threshold, once, stagger, easing)."
+ },
+ {
+  "id": "fade-content",
+  "label": "Fade content",
+  "desc": "An opacity-first reveal wrapper: fade in once, fade in and out as it enters and leaves, or scrub the opacity with scroll position so content dissolves at the edges of its scroll area.",
+  "source": "Original",
+  "group": "motion",
+  "files": [
+   "FadeContent.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-fade-content"
+  ],
+  "use": "Wrap long lists, gallery cards or article blocks that should dissolve into view or out of it."
+ },
+ {
+  "id": "gradual-blur",
+  "label": "Gradual blur",
+  "desc": "A progressive edge blur built from stacked backdrop-filter layers with overlapping masks, on any combination of edges, with strength, depth, curve and tint.",
+  "source": "Original",
+  "group": "motion",
+  "files": [
+   "GradualBlur.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-gradual-blur"
+  ],
+  "use": "Drop inside a position:relative scroll area or panel to soften its top, bottom or side edge."
+ },
+ {
+  "id": "halftone-reveal",
+  "label": "Halftone reveal",
+  "desc": "A picture shown as a rotated halftone dot screen that a soft circular wipe from the pointer (or the centre on scroll-in) turns into the full-colour image.",
+  "source": "Original",
+  "group": "media",
+  "files": [
+   "HalftoneReveal.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-halftone-reveal"
+  ],
+  "use": "Feature images, team portraits or cards that reveal on hover, tap or when scrolled into view."
+ },
+ {
+  "id": "logo-loop",
+  "label": "Logo loop",
+  "desc": "A seamless endless row or column of logos with edge fade, pause on hover, focus and button, and a plain scrollable row under reduced motion.",
+  "source": "Original",
+  "group": "motion",
+  "files": [
+   "LogoLoop.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-logo-loop"
+  ],
+  "use": "A \"trusted by\" strip under a hero, or a vertical partner list in a sidebar."
+ },
+ {
+  "id": "orbit-images",
+  "label": "Orbit images",
+  "desc": "Pictures travelling around an elliptical orbit with depth scaling and dimming at the back, pausing on hover; Space pauses and arrows step the ring.",
+  "source": "Original",
+  "group": "media",
+  "files": [
+   "OrbitImages.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-orbit-images"
+  ],
+  "use": "A hero visual or about-page centrepiece around a badge, logo or headline (fills its parent)."
+ },
+ {
+  "id": "pixel-swap",
+  "label": "Pixel swap",
+  "desc": "A picture swap done in tiles: each square squashes over to the next picture on its own beat, in random, diagonal, row or ripple order, with controls and optional autoplay.",
+  "source": "Original",
+  "group": "media",
+  "files": [
+   "PixelSwap.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-pixel-swap"
+  ],
+  "use": "A hero or product image that changes between views, with previous/next controls."
+ },
+ {
+  "id": "pixel-transition",
+  "label": "Pixel transition",
+  "desc": "A hover, focus or tap transition that pixelates one picture into chunky blocks in a few stages and resolves it into another.",
+  "source": "Original",
+  "group": "media",
+  "files": [
+   "PixelTransition.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-pixel-transition"
+  ],
+  "use": "A before/after, day/night or team-photo card that switches pictures on interaction."
+ },
+ {
+  "id": "scroll-expand",
+  "label": "Scroll expand",
+  "desc": "A framed picture that grows to full bleed as you scroll while the headline splits apart, then the page content continues below.",
+  "source": "Original",
+  "group": "motion",
+  "files": [
+   "ScrollExpand.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-scroll-expand"
+  ],
+  "use": "A story or product opener; works as its own scroll area or with page scroll."
+ },
+ {
+  "id": "shape-blur",
+  "label": "Shape blur",
+  "desc": "A soft shape that chases the pointer on a spring, blurring and stretching with speed, sharpening at rest and drifting on its own when idle.",
+  "source": "Original",
+  "group": "hover",
+  "files": [
+   "ShapeBlur.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-shape-blur"
+  ],
+  "use": "Behind a hero or empty state (fills its parent; layer content on top via children)."
+ },
+ {
+  "id": "star-border",
+  "label": "Star border",
+  "desc": "A container, button or link whose border is circled by glowing four-point stars with comet tails, speeding up on hover and focus.",
+  "source": "Original",
+  "group": "hover",
+  "files": [
+   "StarBorder.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-star-border"
+  ],
+  "use": "Highlight a primary call to action or a featured pricing card."
+ },
+ {
+  "id": "sticker-peel",
+  "label": "Sticker peel",
+  "desc": "A sticker with a corner that curls with a computed fold line, backing paper and shading: hover near the corner, drag to peel, keyboard arrows to adjust.",
+  "source": "Original",
+  "group": "hover",
+  "files": [
+   "StickerPeel.tsx",
+   "_motion-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-sticker-peel"
+  ],
+  "use": "A playful decorative sticker on a card, device mock-up or hero collage."
+ }
+]

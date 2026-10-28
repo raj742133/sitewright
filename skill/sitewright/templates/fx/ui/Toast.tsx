@@ -51,7 +51,8 @@ export const toast = Object.assign(
 
 const subscribe = (f: () => void) => { subs.add(f); return () => { subs.delete(f); }; };
 const snapshot = () => items;
-const server = (): Item[] => [];
+const EMPTY: Item[] = []; // one stable reference: React warns (and can loop) when getServerSnapshot returns a new array each call
+const server = (): Item[] => EMPTY;
 
 function Icon({ kind }: { kind: ToastKind }) {
   const p = { viewBox: '0 0 24 24', width: 20, height: 20, fill: 'none', stroke: 'currentColor', strokeWidth: 2.2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true };

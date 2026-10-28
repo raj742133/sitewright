@@ -1,0 +1,3 @@
+.ui-pixel-snow{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);background-image:radial-gradient(circle,color-mix(in srgb,var(--primary,#2563eb) 60%,transparent) 0 2px,transparent 2.5px),radial-gradient(circle,color-mix(in srgb,var(--ink,#111) 40%,transparent) 0 3px,transparent 3.5px),linear-gradient(180deg,var(--surface,#fff),color-mix(in srgb,var(--primary,#2563eb) 20%,var(--surface,#fff)));background-size:37px 53px,71px 89px,100% 100%;background-position:0 0,23px 31px,0 0}
+.ui-pixel-snow-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-pixel-snow[data-ready='off'] .ui-pixel-snow-canvas{display:none}

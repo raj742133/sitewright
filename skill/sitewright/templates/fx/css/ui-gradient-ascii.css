@@ -1,0 +1,6 @@
+.ui-gradient-ascii{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:var(--surface,#fff);font-family:var(--font-mono,ui-monospace,monospace)}
+.ui-gradient-ascii::before{content:'.:-=+*#%@@%#*+=-:.\A:-=+*#%@@%#*+=-:.:\A-=+*#%@@%#*+=-:.:-\A=+*#%@@%#*+=-:.:-=';white-space:pre;position:absolute;inset:0;display:grid;align-content:center;justify-content:center;font-size:14px;line-height:1.3;
+  background:linear-gradient(100deg,var(--primary,#2563eb),var(--signal,#f59e0b));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.8;transition:opacity .4s ease}
+.ui-gradient-ascii[data-state='on']::before{opacity:0}
+.ui-gradient-ascii-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:reduce){.ui-gradient-ascii::before{transition:none}}

@@ -1,0 +1,4 @@
+.ui-line-waves{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);
+  background-image:repeating-linear-gradient(180deg,color-mix(in srgb,var(--primary,#2563eb) 45%,transparent) 0 1px,transparent 1px 14px)}
+.ui-line-waves-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-line-waves[data-ready='off'] .ui-line-waves-canvas{display:none}

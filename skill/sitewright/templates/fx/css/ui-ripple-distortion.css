@@ -1,0 +1,10 @@
+.ui-ripple-distortion{position:absolute;inset:0;overflow:hidden;background:var(--surface,#fff)}
+.ui-ripple-distortion-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:manipulation}
+.ui-ripple-distortion-canvas[hidden]{display:none}
+.ui-ripple-distortion-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ui-ripple-distortion-pattern{position:absolute;inset:0;background:
+  linear-gradient(-24deg,transparent 28%,color-mix(in srgb,var(--primary,#2563eb) 85%,transparent) 28% 44%,color-mix(in srgb,var(--signal,#f59e0b) 90%,transparent) 44% 58%,color-mix(in srgb,var(--primary,#2563eb) 85%,transparent) 58% 72%,transparent 72%),
+  linear-gradient(var(--line-strong,#d1d5db) 1px,transparent 1px) 0 0/40px 40px,
+  linear-gradient(90deg,var(--line-strong,#d1d5db) 1px,transparent 1px) 0 0/40px 40px,var(--surface,#fff)}
+.ui-ripple-distortion-stage{position:relative;width:100%;height:100%;min-height:150px;overflow:hidden;border-radius:inherit}
+.ui-ripple-distortion-label{position:absolute;left:14px;bottom:12px;padding:5px 9px;border-radius:6px;background:color-mix(in srgb,var(--surface,#fff) 88%,transparent);font:600 12px/1 var(--font-mono,monospace);letter-spacing:.1em;text-transform:uppercase;color:var(--ink,#111);pointer-events:none}

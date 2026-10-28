@@ -1,0 +1,14 @@
+.ui-falling-text-root { position: relative; width: 100%; height: 100%; min-height: 160px; overflow: hidden; box-sizing: border-box; container-type: inline-size; cursor: default; }
+.ui-falling-text-root[data-fallen] { cursor: default; }
+.ui-falling-text-para { margin: 0; padding: 20px 16px 0; text-align: center; font: 700 clamp(20px, 6.2cqw, 40px)/1.35 var(--font-body, system-ui, sans-serif); letter-spacing: -0.01em; color: var(--ink, #18181b); text-wrap: balance; }
+.ui-falling-text-word { display: inline-block; will-change: transform; transform-origin: 50% 60%; }
+.ui-falling-text-hl { padding: 0 0.28em; border-radius: 0.3em; color: #fff; background: var(--primary, #2563eb); box-shadow: 0 6px 14px color-mix(in srgb, var(--primary, #2563eb) 30%, transparent); }
+.ui-falling-text-btn { position: absolute; top: 8px; right: 8px; z-index: 2; min-height: 32px; padding: 4px 14px; border-radius: 999px; font: 600 12px/1.5 var(--font-mono, monospace); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink, #18181b); background: var(--raised, #fff); border: 1px solid var(--line-strong, #d4d4d8); cursor: pointer; }
+.ui-falling-text-btn:hover { background: var(--raised-2, #f4f4f5); }
+.ui-falling-text-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-falling-text-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (pointer: coarse) { .ui-falling-text-btn { min-height: 44px; min-width: 44px; } }
+.ui-falling-text-stage { position: relative; width: 100%; height: 100%; min-height: 200px; box-sizing: border-box; overflow: hidden;
+  background: linear-gradient(180deg, transparent 70%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent)), radial-gradient(70% 60% at 50% 0%, color-mix(in srgb, var(--signal, #f59e0b) 14%, transparent), transparent 70%), var(--surface, #fafafa); }
+.ui-falling-text-stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 9px; height: 1px; background: var(--line-strong, #d4d4d8); pointer-events: none; }
+.ui-falling-text-stage > .ui-falling-text-root { min-height: 0; }

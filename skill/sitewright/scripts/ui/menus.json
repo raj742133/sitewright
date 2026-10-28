@@ -1,0 +1,181 @@
+[
+ {
+  "id": "bubble-menu",
+  "label": "Bubble menu",
+  "desc": "A round button that fans out tinted pill bubbles with a springy stagger; aria-expanded, Escape closes and returns focus.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "BubbleMenu.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-bubble-menu",
+   "ui-menus-stage"
+  ],
+  "use": "Compact site menu in a corner of a hero, card or app frame (fills a position:relative parent)."
+ },
+ {
+  "id": "card-nav",
+  "label": "Card nav",
+  "desc": "A top bar with a menu button and call to action that expands downward into a row of link cards.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "CardNav.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-card-nav",
+   "ui-menus-stage"
+  ],
+  "use": "Marketing site header with grouped links (Product, Learn, Company)."
+ },
+ {
+  "id": "dock",
+  "label": "Dock",
+  "desc": "A magnifying icon dock: icons swell on a spring near the pointer or focus, neighbours slide aside; roving-tabindex toolbar.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "Dock.tsx",
+   "_menus-kit.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-dock",
+   "ui-menus-stage"
+  ],
+  "use": "App launcher or quick-actions strip at the bottom of an app or demo frame."
+ },
+ {
+  "id": "flowing-menu",
+  "label": "Flowing menu",
+  "desc": "Large stacked rows; a ribbon of scrolling text slides in from the edge the pointer crossed.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "FlowingMenu.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-flowing-menu",
+   "ui-menus-stage"
+  ],
+  "use": "Full-width section index or portfolio menu."
+ },
+ {
+  "id": "gooey-nav",
+  "label": "Gooey nav",
+  "desc": "A nav bar whose active marker is a liquid blob that stretches between links through an SVG goo filter and sprays droplets.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "GooeyNav.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-gooey-nav",
+   "ui-menus-stage"
+  ],
+  "use": "Header or section switcher with a playful, liquid selection."
+ },
+ {
+  "id": "infinite-menu",
+  "label": "Infinite menu",
+  "desc": "Menu items orbit on a draggable sphere with inertia; the facing item is described below and arrows step through items.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "InfiniteMenu.tsx",
+   "_menus-sphere.ts",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-infinite-menu",
+   "ui-menus-stage"
+  ],
+  "use": "Collection or category picker where exploring is the point."
+ },
+ {
+  "id": "line-sidebar",
+  "label": "Line sidebar",
+  "desc": "A slim rail of tick lines that stretch toward the pointer, unfold labels on hover or focus and follow scroll position.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "LineSidebar.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-line-sidebar",
+   "ui-menus-stage"
+  ],
+  "use": "In-page table of contents beside long articles or docs."
+ },
+ {
+  "id": "pill-nav",
+  "label": "Pill nav",
+  "desc": "A rounded pill navigation bar with circle-fill hover that folds into a menu button with a contained dropdown when narrow.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "PillNav.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-pill-nav",
+   "ui-menus-stage"
+  ],
+  "use": "Floating site header."
+ },
+ {
+  "id": "staggered-menu",
+  "label": "Staggered menu",
+  "desc": "A slide-in panel with colour layers sweeping ahead and links rising in sequence; contained unless fullscreen is set.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "StaggeredMenu.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-staggered-menu",
+   "ui-menus-stage"
+  ],
+  "use": "Site menu for a portfolio or landing page (parent should be position:relative)."
+ },
+ {
+  "id": "stepper",
+  "label": "Stepper",
+  "desc": "A multi-step flow with a progress rail, animated panels, validation, Back/Next and a finish state.",
+  "source": "Original",
+  "group": "inputs",
+  "files": [
+   "Stepper.tsx",
+   "_menus-kit.tsx"
+  ],
+  "css": [
+   "ui-stepper",
+   "ui-menus-stage"
+  ],
+  "use": "Onboarding, checkout or any short wizard."
+ },
+ {
+  "id": "animated-top-dock",
+  "label": "Animated top dock",
+  "desc": "A proximity-spring top navigation in three fits (centred glass dock, modern bar, pixel retro bar) chosen by a variant prop.",
+  "source": "Original",
+  "group": "navigation",
+  "files": [
+   "AnimatedTopDock.tsx",
+   "_menus-kit.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-animated-top-dock",
+   "ui-menus-stage"
+  ],
+  "use": "Site header with a lively hover response."
+ }
+]

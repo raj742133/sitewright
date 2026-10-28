@@ -1,0 +1,7 @@
+.ui-ghost-fibers{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  background:repeating-linear-gradient(97deg,transparent 0 9px,color-mix(in srgb,var(--primary,#2563eb) 22%,transparent) 9px 10px),
+    linear-gradient(0deg,color-mix(in srgb,var(--primary,#2563eb) 16%,var(--surface,#fff)),var(--surface,#fff) 80%)}
+.ui-ghost-fibers-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .5s ease}
+.ui-ghost-fibers[data-state='on']{background:linear-gradient(0deg,color-mix(in srgb,var(--primary,#2563eb) 10%,var(--surface,#fff)),var(--surface,#fff) 80%)}
+.ui-ghost-fibers[data-state='on'] .ui-ghost-fibers-canvas{opacity:1}
+@media (prefers-reduced-motion:reduce){.ui-ghost-fibers-canvas{transition:none}}

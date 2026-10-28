@@ -1,0 +1,14 @@
+.ui-dither-veil{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ui-dither-veil::before{content:'';position:absolute;inset:0;transition:opacity .6s ease;
+  background:radial-gradient(circle,var(--primary,#2563eb) 1px,transparent 1.6px) 0 0/6px 6px;
+  -webkit-mask-image:linear-gradient(var(--ui-dv-from,180deg),transparent 10%,#000 85%);mask-image:linear-gradient(var(--ui-dv-from,180deg),transparent 10%,#000 85%)}
+.ui-dither-veil[data-gl='on']::before{opacity:0}
+.ui-dither-veil-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-dither-veil-canvas[hidden]{display:none}
+.ui-dither-veil-stage{position:relative;display:grid;align-content:start;width:100%;height:100%;min-height:150px;padding:20px;overflow:hidden;background:
+  linear-gradient(160deg,color-mix(in srgb,var(--primary,#2563eb) 10%,var(--surface,#fff)),var(--surface,#fff) 70%)}
+.ui-dither-veil-copy{position:relative;z-index:1;display:grid;gap:4px;font-family:var(--font-body,system-ui);color:var(--ink,#111)}
+.ui-dither-veil-copy strong{font-size:20px}
+.ui-dither-veil-copy span{font-size:14px;color:var(--muted,#6b7280)}
+.ui-dither-veil-stage .ui-dither-veil{z-index:0}
+@media (prefers-reduced-motion:reduce){.ui-dither-veil::before{transition:none}}

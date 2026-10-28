@@ -174,7 +174,7 @@
   if (tilesEl) (function () {
     var tiles = $$('.tile', tilesEl), qIn = $('#cat-q'), countEl = $('#cat-count'), more = $('#cat-more'), empty = $('#cat-empty'), clear = $('#cat-clear'), links = $$('#groups a');
     var total = tiles.length, state = { g: '', q: '', shown: 0 };
-    var page = function () { return window.matchMedia('(max-width: 640px)').matches ? 12 : 24; };
+    var page = function () { return window.matchMedia('(max-width: 640px)').matches ? 12 : 20; };
     var names = {}; links.forEach(function (a) { names[a.dataset.g] = $('span', a).textContent; });
     tiles.forEach(function (t, i) { t.dataset.i = i; t._name = $('h2', t).textContent.toLowerCase(); t._hay = (t._name + ' ' + $('.tag', t).textContent + ' ' + $('.tile-d', t).textContent + ' ' + $('.tile-s', t).textContent + ' ' + t.dataset.k).toLowerCase(); });
     function readUrl() { var p = new URLSearchParams(location.search); state.g = names[p.get('g')] !== undefined ? p.get('g') || '' : ''; state.q = (p.get('q') || '').slice(0, 60); state.shown = page(); if (qIn) qIn.value = state.q; }

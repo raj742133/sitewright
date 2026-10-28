@@ -1,0 +1,42 @@
+.ui-circle-buttons-b { --circle-buttons-size: 56px; --circle-buttons-accent: var(--primary, #2563eb); position: relative; isolation: isolate; display: inline-grid; place-items: center; flex: none; box-sizing: border-box; width: var(--circle-buttons-size); height: var(--circle-buttons-size); min-width: 24px; min-height: 24px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; color: var(--ink, #111827); background: none; transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s, background-color 0.25s; -webkit-tap-highlight-color: transparent; }
+@media (pointer: coarse) { .ui-circle-buttons-b { min-width: 44px; min-height: 44px; } }
+.ui-circle-buttons-tone-signal { --circle-buttons-accent: var(--signal, #f59e0b); }
+.ui-circle-buttons-b:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 4px; }
+.ui-circle-buttons-b:disabled { opacity: 0.45; cursor: not-allowed; }
+.ui-circle-buttons-g { width: 42%; height: 42%; display: block; overflow: visible; position: relative; transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ui-circle-buttons-play .ui-circle-buttons-tri, .ui-circle-buttons-play .ui-circle-buttons-bars { transition: opacity 0.2s; }
+.ui-circle-buttons-b:not(:disabled):hover .ui-circle-buttons-plus { transform: rotate(90deg); }
+.ui-circle-buttons-b:not(:disabled):hover .ui-circle-buttons-play { transform: scale(1.12); }
+.ui-circle-buttons-ring { position: absolute; inset: 0; border-radius: 50%; z-index: -1; }
+
+/* glass */
+.ui-circle-buttons-glass .ui-circle-buttons-ring { background: radial-gradient(circle at 30% 22%, color-mix(in srgb, #fff 70%, transparent), color-mix(in srgb, var(--surface, #fff) 40%, transparent) 55%); -webkit-backdrop-filter: blur(12px) saturate(1.5); backdrop-filter: blur(12px) saturate(1.5); border: 1px solid color-mix(in srgb, #fff 60%, transparent); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -8px 16px -10px var(--circle-buttons-accent), 0 10px 24px -10px rgba(0, 0, 0, 0.4); }
+.ui-circle-buttons-glass { color: var(--ink, #111827); }
+.ui-circle-buttons-glass:not(:disabled):hover { transform: translateY(-2px) scale(1.04); }
+.ui-circle-buttons-glass:not(:disabled):active { transform: scale(0.95); }
+
+/* dotted ring */
+.ui-circle-buttons-dotted .ui-circle-buttons-ring { border: 2.5px dotted var(--circle-buttons-accent); transition: transform 0.6s, background-color 0.25s; }
+.ui-circle-buttons-dotted { color: var(--ink, #111827); }
+.ui-circle-buttons-dotted:not(:disabled):hover .ui-circle-buttons-ring { transform: rotate(60deg); background: color-mix(in srgb, var(--circle-buttons-accent) 16%, transparent); }
+.ui-circle-buttons-dotted:not(:disabled):active { transform: scale(0.94); }
+
+/* tactile dome */
+.ui-circle-buttons-tactile { color: var(--ink, #111827); }
+.ui-circle-buttons-tactile .ui-circle-buttons-ring { background: radial-gradient(circle at 34% 24%, var(--raised, #fff), var(--raised-2, #e5e7eb) 78%); border: 1px solid var(--line-strong, rgba(0, 0, 0, 0.2)); box-shadow: 0 4px 0 var(--line-strong, rgba(0, 0, 0, 0.22)), 0 10px 16px -6px rgba(0, 0, 0, 0.4), inset 0 2px 1px rgba(255, 255, 255, 0.7), inset 0 -3px 6px rgba(0, 0, 0, 0.12); transition: transform 0.12s, box-shadow 0.12s; }
+.ui-circle-buttons-tactile::after { content: ''; position: absolute; left: 50%; bottom: 10%; width: 22%; height: 3px; margin-left: -11%; border-radius: 3px; background: color-mix(in srgb, var(--circle-buttons-accent) 70%, transparent); opacity: 0.6; transition: opacity 0.2s, box-shadow 0.2s; }
+.ui-circle-buttons-tactile:not(:disabled):hover::after { opacity: 1; box-shadow: 0 0 8px var(--circle-buttons-accent); }
+.ui-circle-buttons-tactile:not(:disabled):active .ui-circle-buttons-ring { transform: translateY(3px); box-shadow: 0 1px 0 var(--line-strong, rgba(0, 0, 0, 0.22)), 0 3px 6px -3px rgba(0, 0, 0, 0.4), inset 0 3px 8px rgba(0, 0, 0, 0.18); }
+.ui-circle-buttons-tactile:not(:disabled):active .ui-circle-buttons-g { transform: translateY(2px); }
+
+/* mail: the envelope flies off and returns */
+.ui-circle-buttons-sent .ui-circle-buttons-mail { animation: ui-circle-buttons-fly 0.85s cubic-bezier(0.5, 0, 0.2, 1); }
+@keyframes ui-circle-buttons-fly { 0% { transform: none; opacity: 1; } 40% { transform: translate(60%, -60%) rotate(-12deg) scale(0.7); opacity: 0; } 41% { transform: translate(-60%, 60%) scale(0.7); opacity: 0; } 100% { transform: none; opacity: 1; } }
+
+.ui-circle-buttons-demo { container-type: size; position: relative; box-sizing: border-box; width: 100%; height: 100%; min-height: 200px; display: grid; place-items: center; overflow: hidden; padding: 12px; background: var(--surface, #fff); }
+.ui-circle-buttons-blob { position: absolute; inset: 15% 18%; border-radius: 40%; filter: blur(34px); opacity: 0.5; background: linear-gradient(120deg, var(--primary, #2563eb), var(--signal, #f59e0b)); }
+.ui-circle-buttons-rows { position: relative; display: grid; gap: 14px; }
+.ui-circle-buttons-row { display: flex; gap: 22px; justify-content: center; }
+@media (max-height: 260px) { .ui-circle-buttons-rows { gap: 6px; } .ui-circle-buttons-row { gap: 18px; } .ui-circle-buttons-demo .ui-circle-buttons-b { --circle-buttons-size: 46px; } }
+@media (prefers-reduced-motion: reduce) { .ui-circle-buttons-b, .ui-circle-buttons-b *, .ui-circle-buttons-ring { transition: none !important; } .ui-circle-buttons-sent .ui-circle-buttons-mail { animation: none; } .ui-circle-buttons-b:hover, .ui-circle-buttons-b:active { transform: none !important; } }
+@container (min-width: 620px) and (min-height: 420px) { .ui-circle-buttons-demo .ui-circle-buttons-b { --circle-buttons-size: 88px; } .ui-circle-buttons-row { gap: 40px; } .ui-circle-buttons-rows { gap: 28px; } }

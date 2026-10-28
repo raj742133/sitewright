@@ -1,0 +1,25 @@
+@property --bg-ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.ui-border-glow-demo { height: 100%; min-height: 200px; padding: 14px; box-sizing: border-box; display: grid; place-items: center; background: radial-gradient(70% 60% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent 70%), var(--surface, #fafafa); container-type: inline-size; }
+.ui-border-glow-demo .ui-border-glow-root { width: min(100%, 360px); }
+.ui-border-glow-root { --bg-r: var(--radius, 14px); --mx: 50%; --my: 0%; position: relative; isolation: isolate; border-radius: var(--bg-r); background: var(--raised, #fff); color: var(--ink, #18181b); font-family: var(--font-body, system-ui); outline: none;
+  --bg-a: var(--primary, #2563eb); --bg-b: var(--signal, #f59e0b); }
+.ui-border-glow-body { position: relative; z-index: 1; padding: 18px 20px; border-radius: inherit; }
+.ui-border-glow-root::before { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; border: 1px solid var(--line, #d8d4cb); pointer-events: none; }
+.ui-border-glow-edge { position: absolute; inset: 0; z-index: 0; border-radius: inherit; padding: var(--bg-t, 1.5px); pointer-events: none; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.ui-border-glow-idle { background: conic-gradient(from var(--bg-ang), transparent 0deg, var(--bg-a) 50deg, var(--bg-b) 110deg, transparent 190deg, transparent 360deg); animation: ui-border-glow-spin 7s linear infinite; opacity: 0.9; transition: opacity 0.3s; }
+.ui-border-glow-spot { background: radial-gradient(var(--bg-spread, 260px) circle at var(--mx) var(--my), var(--bg-b), var(--bg-a) 42%, transparent 78%); opacity: 0; transition: opacity 0.3s; }
+.ui-border-glow-halo { position: absolute; inset: -1px; z-index: -1; border-radius: inherit; background: radial-gradient(calc(var(--bg-spread, 220px) * 1.1) circle at var(--mx) var(--my), color-mix(in srgb, var(--bg-a) 55%, transparent), transparent 70%); filter: blur(22px); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.ui-border-glow-root:hover .ui-border-glow-spot { opacity: 1; }
+.ui-border-glow-root:hover .ui-border-glow-idle { opacity: 0; }
+.ui-border-glow-root:hover .ui-border-glow-halo { opacity: var(--bg-halo, 0.5); }
+.ui-border-glow-root:focus-visible .ui-border-glow-idle, .ui-border-glow-root:focus-within .ui-border-glow-idle { opacity: 1; }
+.ui-border-glow-root:focus-visible { box-shadow: 0 0 0 2px var(--surface, #fafafa), 0 0 0 4px var(--primary, #2563eb); }
+@keyframes ui-border-glow-spin { to { --bg-ang: 360deg; } }
+.ui-border-glow-kicker { font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted, #5c5851); }
+.ui-border-glow-price { display: block; margin-top: 8px; font-size: 34px; line-height: 1; font-weight: 750; letter-spacing: -0.02em; }
+.ui-border-glow-price small { font-size: 14px; font-weight: 500; color: var(--muted, #5c5851); margin-left: 2px; }
+.ui-border-glow-copy { margin: 10px 0 10px; font-size: 13px; line-height: 1.45; color: var(--muted, #5c5851); }
+.ui-border-glow-list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.ui-border-glow-list li { font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-strong, #c2bdb2); background: var(--raised-2, #edebe7); }
+@media (hover: none) { .ui-border-glow-root:hover .ui-border-glow-idle { opacity: 0.9; } .ui-border-glow-root:hover .ui-border-glow-spot { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ui-border-glow-idle { animation: none; --bg-ang: 30deg; } .ui-border-glow-edge, .ui-border-glow-halo { transition: none; } }

@@ -1,0 +1,44 @@
+.ui-profile-card-demo { height: 100%; min-height: 200px; box-sizing: border-box; padding: 10px; display: grid; place-items: center; overflow: auto; background: radial-gradient(70% 70% at 80% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent 70%), var(--surface, #fafafa); container-type: inline-size; }
+.ui-profile-card-root { --mx: 50%; --my: 0%; container-type: inline-size; position: relative; width: 100%; max-width: 540px; box-sizing: border-box; overflow: hidden; isolation: isolate; border-radius: var(--radius, 16px); border: 1px solid var(--line-strong, #c2bdb2); background: var(--raised, #fff); color: var(--ink, #18181b); font-family: var(--font-body, system-ui); }
+.ui-profile-card-banner { position: absolute; left: 0; right: 0; top: 0; height: 64px; z-index: -1; overflow: hidden; }
+.ui-profile-card-banner > svg { width: 100%; height: 100%; transform: scale(1.1) translate(calc((var(--px, 0.5) - 0.5) * -8px), 0); }
+.ui-profile-card-sheen { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; transition: opacity 0.3s; mix-blend-mode: soft-light;
+  background: radial-gradient(260px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.55), transparent 60%), conic-gradient(from 210deg at var(--mx) var(--my), color-mix(in srgb, var(--primary, #2563eb) 60%, transparent), color-mix(in srgb, var(--signal, #f59e0b) 60%, transparent), color-mix(in srgb, var(--primary, #2563eb) 60%, transparent)); }
+.ui-profile-card-root:hover .ui-profile-card-sheen { opacity: 0.55; }
+.ui-profile-card-main { position: relative; padding: 28px 16px 14px; display: grid; gap: 8px; }
+.ui-profile-card-ava { position: relative; width: 64px; height: 64px; }
+.ui-profile-card-face { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; border: 3px solid var(--raised, #fff); font: 750 22px/1 var(--font-body, system-ui); color: #fff; letter-spacing: 0.02em; background: conic-gradient(from 200deg, color-mix(in srgb, var(--primary, #2563eb) 62%, #000), color-mix(in srgb, var(--signal, #f59e0b) 62%, #000), color-mix(in srgb, var(--primary, #2563eb) 62%, #000)); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); box-shadow: 0 6px 14px rgba(6, 9, 20, 0.25); }
+.ui-profile-card-face > img { width: 100%; height: 100%; object-fit: cover; }
+.ui-profile-card-dot { position: absolute; right: 2px; bottom: 2px; width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--raised, #fff); box-sizing: border-box; background: var(--muted, #5c5851); }
+.ui-profile-card-dot[data-status='online'] { background: #16a34a; }
+.ui-profile-card-dot[data-status='away'] { background: var(--signal, #f59e0b); }
+.ui-profile-card-id h3 { margin: 0; font-size: 18px; line-height: 1.2; font-weight: 750; letter-spacing: -0.01em; }
+.ui-profile-card-handle { margin: 2px 0 0; font: 500 12px/1.3 var(--font-mono, monospace); color: var(--muted, #5c5851); }
+.ui-profile-card-bio { margin: 0; font-size: 13px; line-height: 1.45; color: var(--ink, #18181b); opacity: 0.85; }
+.ui-profile-card-stats { display: flex; gap: 6px; margin: 2px 0 0; }
+.ui-profile-card-stats > div { flex: 1; min-width: 0; padding: 7px 8px; border-radius: 10px; background: var(--raised-2, #edebe7); display: flex; flex-direction: column-reverse; }
+.ui-profile-card-stats dd { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.2; }
+.ui-profile-card-stats dt { font: 500 10px/1.2 var(--font-mono, monospace); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted, #5c5851); }
+.ui-profile-card-actions { display: flex; gap: 8px; }
+.ui-profile-card-btn { flex: 1; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-strong, #c2bdb2); background: var(--raised, #fff); color: var(--ink, #18181b); font: 650 13px/1 var(--font-body, system-ui); cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+.ui-profile-card-btn:hover { border-color: var(--primary, #2563eb); }
+.ui-profile-card-btn[data-primary='true'] { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-profile-card-btn[data-primary='true'][aria-pressed='true'] { background: var(--raised, #fff); color: var(--primary, #2563eb); }
+.ui-profile-card-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+@media (pointer: coarse) { .ui-profile-card-btn { min-height: 44px; } }
+@container (min-width: 460px) {
+  .ui-profile-card-banner { height: 46px; }
+  .ui-profile-card-main { grid-template-columns: auto 1fr auto; grid-template-areas: 'ava id actions' 'bio bio bio' 'stats stats stats'; align-items: end; column-gap: 14px; }
+  .ui-profile-card-ava { grid-area: ava; } .ui-profile-card-id { grid-area: id; } .ui-profile-card-actions { grid-area: actions; } .ui-profile-card-bio { grid-area: bio; } .ui-profile-card-stats { grid-area: stats; }
+}
+.ui-profile-card-id { min-width: 0; }
+@container (max-width: 340px) {
+  .ui-profile-card-banner { height: 36px; }
+  .ui-profile-card-bio { display: none; }
+  .ui-profile-card-main { padding: 14px 14px 12px; grid-template-columns: auto 1fr; grid-template-areas: 'ava id' 'stats stats' 'actions actions'; align-items: end; column-gap: 12px; row-gap: 8px; }
+  .ui-profile-card-ava { grid-area: ava; width: 52px; height: 52px; } .ui-profile-card-face { font-size: 18px; }
+  .ui-profile-card-id { grid-area: id; margin-top: 22px; } .ui-profile-card-stats { grid-area: stats; } .ui-profile-card-actions { grid-area: actions; }
+  .ui-profile-card-handle span { display: none; }
+  .ui-profile-card-id h3 { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .ui-profile-card-sheen, .ui-profile-card-btn { transition: none; } .ui-profile-card-banner > svg { transform: scale(1.1); } }

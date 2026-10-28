@@ -105,6 +105,17 @@ projects' licences, but credit is due and given here.
 
 The 3D and shader components (`shader-gradient`, `shader-waves`, `particle-sphere`, `wire-terrain`, `plasma-orb`, `tilt-card-3d`, `cube-carousel`, `globe-arcs`, `phone-3d`, `lit-torus`) are written from scratch with raw WebGL and CSS 3D. They are inspired by the general category of 3D UI component libraries (for example threeui.com); no source, asset or text from any of them was seen, copied or used, and none is a dependency. The dashboard and page templates under `templates/fx/tpl/` are original code and original sample data.
 
+## Catalogue expansion (clean-room, original)
+
+The 226 components and 5 hero pages added under `docs/catalog-map.json` were checked against a personal design-library catalogue of 261 entries (218 labelled React Bits-origin, 43 labelled `tu`). None of that catalogue's source code, markup, shaders, artwork or text was copied, ported or used as a template, and the authors of the new components were forbidden to open it. While inventorying the library, the coordinator looked only at directory listings, catalogue metadata and the first lines (imports and type names) of one React Bits file; nothing from it was used.
+
+- **React Bits-origin entries (MIT with the Commons Clause, (c) David Haz):** the licence does not allow redistributing the components, alone, in a bundle or as a ported version, so none of them is included. Each entry is either mapped to an existing Sitewright equivalent (30 entries, listed in `docs/catalog-map.json`) or was written from scratch from nothing more than the entry's plain name and category, by authors who were forbidden to open the library. Names such as "scroll float" or "ripple distortion" describe a technique, and a technique is not protected expression. If you believe any component here reproduces protected expression, open an issue and it will be rewritten or removed.
+- **The 35 "Micro Interaction" entries** carry the `rb:` prefix but their folder is not part of the public React Bits layout, so their origin is unresolved; they were treated as restricted and written the same way.
+- **`tu` entries** are complete works authored by third parties (several are described as "preserved unchanged"). Their code, artwork, copy, names and any company marks are not redistributed. Only the general technique behind each was re-implemented, with invented names, copy and art (for example a CRT-screen shader, a liquid-metal button, procedural terrain). The five hero pages are original compositions in the same genres, with their own invented brands; they do not reproduce those pages. Real company logos and marks are deliberately not recreated.
+- **Tactile Glass UI (MIT, (c) 2026 uixNinja)** is the one ported piece; see its section above.
+
+The per-entry status, provenance note and verification result is in `docs/catalog-manifest.json` and `docs/catalog-coverage.md`.
+
 ## Audits (ideas only)
 
 `scripts/audit.mjs`, `reference/audits.md`, `reference/better-interface.md` and the bento board component take their *ideas* from the public descriptions

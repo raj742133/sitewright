@@ -1,0 +1,13 @@
+.ui-shuffle-root { margin: 0; font-family: var(--font-body, system-ui); font-weight: 800; font-size: clamp(26px, 9.5cqw, 72px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink, #111); }
+.ui-shuffle-btn { position: relative; display: inline-block; margin: 0; padding: 4px 6px; min-height: 44px; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: inherit; cursor: pointer; border-radius: 8px; -webkit-tap-highlight-color: transparent; }
+.ui-shuffle-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-shuffle-word { display: inline-block; white-space: nowrap; }
+.ui-shuffle-ch { display: inline-block; white-space: pre; transition: transform 0.42s cubic-bezier(0.65, 0, 0.25, 1), color 0.5s ease; will-change: transform; }
+.ui-shuffle-btn[data-run='true'] .ui-shuffle-word { display: inline-block; white-space: nowrap; }
+.ui-shuffle-ch { color: var(--primary, #2563eb); }
+.ui-shuffle-btn[data-run='true'] .ui-shuffle-ch:nth-child(3n) { color: var(--ink, #111); }
+
+.ui-shuffle-demo { container-type: inline-size; height: 100%; min-height: 200px; display: grid; place-content: center; justify-items: center; gap: 10px; padding: 16px; text-align: center; background: repeating-linear-gradient(135deg, transparent 0 14px, color-mix(in srgb, var(--primary, #2563eb) 6%, transparent) 14px 15px), var(--surface, #fafafa); overflow: hidden; }
+.ui-shuffle-kicker { font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted, #6b7280); }
+@media (prefers-reduced-motion: reduce) { .ui-shuffle-word { display: inline-block; white-space: nowrap; }
+.ui-shuffle-ch { transition: none; will-change: auto; } }

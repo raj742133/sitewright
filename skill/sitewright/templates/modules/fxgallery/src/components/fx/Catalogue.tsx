@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { DemoFrame } from './DemoFrame';
 import { UI_DEMOS } from './ui/demos';
 import { GalleryNav } from './GalleryNav';
 
@@ -54,7 +55,7 @@ export function Catalogue() {
           <div className="fxc-grid">
             {list.map((d) => (
               <button key={d.id} type="button" className="fxc-tile" aria-pressed={sel === d.id} onClick={() => pick(sel === d.id ? null : d.id)}>
-                <span className="fxc-stage"><Lazy height={150}><span className="fxc-demo"><d.Demo /></span></Lazy></span>
+                <span className="fxc-stage" aria-hidden="true" inert><Lazy height={150}><DemoFrame className="fxc-demo"><d.Demo /></DemoFrame></Lazy></span>
                 <span className="fxc-name"><b>{d.label}</b><small>{label(d.group)}</small></span>
               </button>
             ))}
@@ -63,7 +64,7 @@ export function Catalogue() {
         {cur && (
           <aside className="fxc-insp" aria-label={`${cur.label} details`}>
             <div className="fxc-insp-h"><div><p className="eyebrow">{label(cur.group)} · {cur.source}</p><h2>{cur.label}</h2></div><button type="button" className="btn sm" onClick={() => pick(null)} aria-label="Close details">Close</button></div>
-            <div className="fxc-big"><span className="fxc-demo"><cur.Demo /></span></div>
+            <div className="fxc-big"><DemoFrame className="fxc-demo"><cur.Demo /></DemoFrame></div>
             <p>{cur.desc}</p>
             <p className="muted small"><b>Use it for.</b> {cur.use}</p>
             <div className="fxc-code"><div><span>Import</span><Copy what="import line" text={`import { ${name} } from '@/components/fx/ui';`} /></div><pre>{`import { ${name} } from '@/components/fx/ui';`}</pre></div>

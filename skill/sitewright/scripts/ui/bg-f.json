@@ -1,0 +1,121 @@
+[
+ {
+  "id": "shape-waves",
+  "label": "Shape waves",
+  "desc": "Rows of triangles, circles, squares or diamonds riding travelling sine waves, turning with the slope and swelling near the pointer.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "ShapeWaves.tsx",
+   "_bg-f.ts",
+   "_bg-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-shape-waves"
+  ],
+  "use": "Behind a landing hero, feature band or empty state (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "side-rays",
+  "label": "Side rays",
+  "desc": "Soft shafts of light entering from the left and right edges in the brand colours, breathing and swaying; the left source follows the pointer height.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "SideRays.tsx",
+   "_bg-f.ts",
+   "_bg-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-side-rays"
+  ],
+  "use": "Behind a hero or pricing section where light from the side frames the content (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "silk",
+  "label": "Silk",
+  "desc": "Soft flowing satin: overlapping translucent ribbons with a sheen band that read as folds of cloth; the pointer gathers them.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "Silk.tsx",
+   "_bg-f.ts",
+   "_bg-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-silk"
+  ],
+  "use": "Behind a landing hero, sign-in panel or footer (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "sliced-waves",
+  "label": "Sliced waves",
+  "desc": "Three wave bands cut into vertical slabs with thin gaps; slabs near the pointer lift.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "SlicedWaves.tsx",
+   "_bg-f.ts",
+   "_bg-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-sliced-waves"
+  ],
+  "use": "Behind a hero, stats band or footer (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "threads",
+  "label": "Threads",
+  "desc": "Flowing hairline threads that pinch together at two waists and fan out again; they bend away from the pointer.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "Threads.tsx",
+   "_bg-f.ts",
+   "_bg-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-threads"
+  ],
+  "use": "Behind a hero or section divider (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "topography",
+  "label": "Topography",
+  "desc": "An animated contour map: a drifting height field traced into iso-lines with marching squares; the pointer raises a hill.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "Topography.tsx",
+   "_bg-f.ts",
+   "_bg-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-topography"
+  ],
+  "use": "Behind a hero, docs landing or 404 page (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "web-threads",
+  "label": "Web threads",
+  "desc": "A spider-web of spoke and ring threads on spring joints that the pointer plucks; they ring and settle, with an idle ghost pluck.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "WebThreads.tsx",
+   "_bg-f.ts",
+   "_bg-a.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-web-threads"
+  ],
+  "use": "Behind a hero, error page or contact section (first child of a position:relative section; fills its parent)."
+ }
+]

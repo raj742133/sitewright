@@ -1,0 +1,31 @@
+.ui-bubble-menu-root { position: absolute; inset: 0; pointer-events: none; font-family: var(--font-body, system-ui, sans-serif); }
+.ui-bubble-menu-root > * { pointer-events: auto; }
+.ui-bubble-menu-btn { position: absolute; z-index: 3; width: 52px; height: 52px; padding: 0; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: var(--on, #fff); background: var(--primary, #2563eb); border: 2px solid color-mix(in srgb, #fff 50%, var(--primary, #2563eb)); box-shadow: 0 10px 22px -8px rgba(0,0,0,.45); transition: transform .35s cubic-bezier(.3,1.5,.5,1); }
+.ui-bubble-menu-btn:hover { transform: scale(1.06); }
+.ui-bubble-menu-btn:focus-visible { outline: 3px solid var(--ink, #18181b); outline-offset: 3px; }
+.ui-bubble-menu-root.is-open .ui-bubble-menu-btn { transform: rotate(90deg); }
+.ui-bubble-menu-bars { position: relative; width: 20px; height: 14px; }
+.ui-bubble-menu-bars i { position: absolute; left: 0; width: 20px; height: 2.5px; border-radius: 2px; background: currentColor; transition: transform .3s, top .3s; }
+.ui-bubble-menu-bars i:first-child { top: 2px; } .ui-bubble-menu-bars i:last-child { top: 10px; }
+.ui-bubble-menu-root.is-open .ui-bubble-menu-bars i:first-child { top: 6px; transform: rotate(45deg); }
+.ui-bubble-menu-root.is-open .ui-bubble-menu-bars i:last-child { top: 6px; transform: rotate(-45deg); }
+.ui-bubble-menu-root.is-top-right .ui-bubble-menu-btn { top: 14px; right: 14px; } .ui-bubble-menu-root.is-top-left .ui-bubble-menu-btn { top: 14px; left: 14px; }
+.ui-bubble-menu-root.is-bottom-right .ui-bubble-menu-btn { bottom: 14px; right: 14px; } .ui-bubble-menu-root.is-bottom-left .ui-bubble-menu-btn { bottom: 14px; left: 14px; }
+.ui-bubble-menu-nav { position: absolute; z-index: 2; display: flex; max-width: calc(100% - 28px); }
+.ui-bubble-menu-root.is-top-right .ui-bubble-menu-nav { top: 76px; right: 14px; justify-content: flex-end; } .ui-bubble-menu-root.is-top-left .ui-bubble-menu-nav { top: 76px; left: 14px; }
+.ui-bubble-menu-root.is-bottom-right .ui-bubble-menu-nav { bottom: 76px; right: 14px; justify-content: flex-end; } .ui-bubble-menu-root.is-bottom-left .ui-bubble-menu-nav { bottom: 76px; left: 14px; }
+.ui-bubble-menu-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ui-bubble-menu-root.is-bottom-right .ui-bubble-menu-list, .ui-bubble-menu-root.is-bottom-left .ui-bubble-menu-list { flex-direction: column; }
+.ui-bubble-menu-root:is(.is-top-right, .is-bottom-right) .ui-bubble-menu-list { align-items: flex-end; }
+.ui-bubble-menu-li { --i: 0; --sway: 0px; transform: translate(0, -12px) scale(.2); opacity: 0; visibility: hidden; transform-origin: 90% 0; transition: transform .45s cubic-bezier(.3,1.5,.5,1) calc(var(--i) * 55ms), opacity .2s calc(var(--i) * 55ms), visibility 0s .5s; }
+.ui-bubble-menu-root:is(.is-bottom-right, .is-bottom-left) .ui-bubble-menu-li { transform: translate(0, 12px) scale(.2); transform-origin: 90% 100%; }
+.ui-bubble-menu-root.is-open .ui-bubble-menu-li { transform: translate(var(--sway), 0) scale(1); opacity: 1; visibility: visible; transition: transform .5s cubic-bezier(.3,1.5,.5,1) calc(var(--i) * 55ms), opacity .2s calc(var(--i) * 55ms), visibility 0s; }
+.ui-bubble-menu-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; text-decoration: none; font: 700 15px/1 var(--font-body, system-ui); color: #fff;
+  background: color-mix(in srgb, var(--t) 86%, #000); border: 1.5px solid color-mix(in srgb, #fff 45%, var(--t)); box-shadow: 0 8px 18px -8px rgba(0,0,0,.5), inset 0 2px 0 rgba(255,255,255,.28); transition: transform .2s; }
+.ui-bubble-menu-li:nth-child(even) .ui-bubble-menu-link { color: #111; background: color-mix(in srgb, var(--t) 92%, #fff); }
+.ui-bubble-menu-link:hover { transform: scale(1.07); }
+.ui-bubble-menu-link:focus-visible { outline: 3px solid var(--ink, #18181b); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .ui-bubble-menu-li, .ui-bubble-menu-root.is-open .ui-bubble-menu-li, .ui-bubble-menu-btn, .ui-bubble-menu-bars i, .ui-bubble-menu-link { transition: none; } }
+
+.ui-bubble-menu-root { --on: #fff; }
+@supports (color: oklch(from red l c h)) { .ui-bubble-menu-root { --on: oklch(from var(--primary, #2563eb) clamp(0, (0.62 - l) * 1000, 1) 0 0); } }

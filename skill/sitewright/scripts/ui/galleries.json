@@ -1,0 +1,198 @@
+[
+ {
+  "id": "carousel",
+  "label": "Carousel",
+  "desc": "A plain, accessible slide carousel with previous/next buttons, pagination, arrow/Home/End keys, swipe or drag, optional autoplay that pauses on hover and focus, and one to four slides per view.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "Carousel.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-carousel"
+  ],
+  "use": "Featured content, product or case-study slides, testimonials (give it a height or an aspect ratio)."
+ },
+ {
+  "id": "circular-carousel",
+  "label": "Circular carousel",
+  "desc": "Cards on a wheel of which only the top arc shows; the chosen card sits at the top, larger and brighter. Drag to spin, click a card, buttons and arrow keys.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "CircularCarousel.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-circular-carousel"
+  ],
+  "use": "Picking one of 6 to 16 options visually: destinations, templates, team members."
+ },
+ {
+  "id": "circular-gallery",
+  "label": "Circular gallery",
+  "desc": "A 3D cylinder of picture panels that turns slowly by itself; drag to spin with inertia and settle on a panel; pauses on hover and focus.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "CircularGallery.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-circular-gallery"
+  ],
+  "use": "Portfolio or album showcase on a landing page (fills its parent)."
+ },
+ {
+  "id": "depth-carousel",
+  "label": "Depth carousel",
+  "desc": "A deck of cards in 3D: the front card is sharp, the ones behind step back, shrink and soften; swipe, click a card behind or use the buttons and keys.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "DepthCarousel.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-depth-carousel"
+  ],
+  "use": "Featured stories, release notes or case studies where order matters."
+ },
+ {
+  "id": "dome-gallery",
+  "label": "Dome gallery",
+  "desc": "Pictures on the inside of a dome: look around by dragging (with inertia), move tile to tile with the arrow keys, click a tile to bring it to the centre.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "DomeGallery.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-dome-gallery"
+  ],
+  "use": "An immersive gallery section or event recap (fills its parent)."
+ },
+ {
+  "id": "drift-wall",
+  "label": "Drift wall",
+  "desc": "A tilted wall of tiles whose columns drift up and down endlessly at different speeds; stops on hover and focus, has a pause button, still under reduced motion.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "DriftWall.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-drift-wall"
+  ],
+  "use": "Hero backdrop or social-proof wall of work, customers or photos."
+ },
+ {
+  "id": "flex-carousel",
+  "label": "Flex carousel",
+  "desc": "A row of picture panels where one is open and captioned and the others are slim strips, swapping with flex-grow; stacks vertically in narrow containers.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "FlexCarousel.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-flex-carousel"
+  ],
+  "use": "Compact feature or destination picker (3 to 8 panels)."
+ },
+ {
+  "id": "flying-posters",
+  "label": "Flying posters",
+  "desc": "Posters fly out of the distance toward you through a 3D tunnel; the pointer steers, hovering freezes it, speed buttons and keys; holds still under reduced motion.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "FlyingPosters.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-flying-posters"
+  ],
+  "use": "Event, film or launch teaser sections (fills its parent)."
+ },
+ {
+  "id": "infinite-spiral",
+  "label": "Infinite spiral",
+  "desc": "Pictures laid along a spiral that winds into the centre and flow outward and grow as they near you, forever; drag, buttons, keys, click to bring one forward.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "InfiniteSpiral.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts",
+   "_galleries-ui.tsx"
+  ],
+  "css": [
+   "ui-infinite-spiral"
+  ],
+  "use": "A playful gallery or archive teaser (fills its parent)."
+ },
+ {
+  "id": "masonry",
+  "label": "Masonry",
+  "desc": "Tiles of different heights packed into responsive columns by shortest-column placement, with reveal-on-scroll, hover captions and optional selection.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "Masonry.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts"
+  ],
+  "css": [
+   "ui-masonry"
+  ],
+  "use": "Photo walls, inspiration boards and portfolio grids (scrolls inside its frame)."
+ },
+ {
+  "id": "scroll-stack",
+  "label": "Scroll stack",
+  "desc": "Cards that pile up as you scroll: each sticks near the top while the next slides over it and the covered ones shrink and dim; includes a card navigator.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "ScrollStack.tsx",
+   "_t2.ts",
+   "_galleries-data.tsx",
+   "_galleries-hooks.ts"
+  ],
+  "css": [
+   "ui-scroll-stack"
+  ],
+  "use": "Step-by-step explainers and process sections (scrolls inside its frame)."
+ }
+]

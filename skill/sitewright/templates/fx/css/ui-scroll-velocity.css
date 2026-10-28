@@ -1,0 +1,14 @@
+.ui-scroll-velocity-root { width: 100%; overflow: hidden; display: flex; flex-direction: column; gap: 0.08em; font-family: var(--font-body, system-ui); font-weight: 800; font-size: clamp(30px, 12cqw, 84px); line-height: 1.05; letter-spacing: -0.03em; text-transform: uppercase; color: var(--ink, #111); }
+.ui-scroll-velocity-row { overflow: hidden; }
+.ui-scroll-velocity-track { display: flex; width: max-content; white-space: nowrap; will-change: transform; }
+.ui-scroll-velocity-item { display: inline-flex; align-items: center; gap: 0.4em; padding-right: 0.4em; }
+.ui-scroll-velocity-row:nth-child(even) .ui-scroll-velocity-item { color: color-mix(in srgb, var(--ink, #111) 30%, transparent); }
+.ui-scroll-velocity-row:nth-child(3n) .ui-scroll-velocity-item { color: var(--primary, #2563eb); }
+.ui-scroll-velocity-dot { width: 0.22em; height: 0.22em; flex: none; border-radius: 50%; background: var(--signal, #f59e0b); }
+
+.ui-scroll-velocity-demo { container-type: inline-size; height: 100%; min-height: 220px; overflow-y: auto; overscroll-behavior: contain; background: var(--surface, #fafafa); scrollbar-width: thin; position: relative; }
+.ui-scroll-velocity-demo:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
+.ui-scroll-velocity-hint { height: 120px; display: grid; place-items: end center; padding-bottom: 14px; font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted, #6b7280); }
+.ui-scroll-velocity-demo .ui-scroll-velocity-root { font-size: clamp(30px, 13cqw, 72px); }
+.ui-scroll-velocity-tail { height: 520px; background: repeating-linear-gradient(180deg, transparent 0 59px, var(--line, rgba(127,127,127,0.25)) 59px 60px); }
+@media (prefers-reduced-motion: reduce) { .ui-scroll-velocity-track { will-change: auto; transform: none !important; } }

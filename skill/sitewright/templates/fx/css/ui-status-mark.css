@@ -1,0 +1,44 @@
+.ui-status-mark-stage { width: 100%; height: 100%; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 12px; background: radial-gradient(90% 80% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, var(--surface, #fff)), var(--surface, #fff)); }
+.ui-status-mark-row { display: flex; align-items: center; min-height: 56px; }
+.ui-status-mark { --c: var(--muted, #5b6472); display: inline-flex; align-items: center; gap: 12px; color: var(--ink, #111); font: 600 16px/1.2 var(--font-body, system-ui, sans-serif); }
+.ui-status-mark[data-status="success"] { --c: #15803d; }
+.ui-status-mark[data-status="warning"] { --c: #b45309; }
+.ui-status-mark[data-status="error"] { --c: #b91c1c; }
+.ui-status-mark[data-status="loading"] { --c: var(--primary, #2563eb); }
+:root[data-theme="dark"] .ui-status-mark[data-status="success"], .dark .ui-status-mark[data-status="success"] { --c: #4ade80; }
+:root[data-theme="dark"] .ui-status-mark[data-status="warning"], .dark .ui-status-mark[data-status="warning"] { --c: #fbbf24; }
+:root[data-theme="dark"] .ui-status-mark[data-status="error"], .dark .ui-status-mark[data-status="error"] { --c: #f87171; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ui-status-mark[data-status="success"] { --c: #4ade80; }
+  :root:not([data-theme="light"]) .ui-status-mark[data-status="warning"] { --c: #fbbf24; }
+  :root:not([data-theme="light"]) .ui-status-mark[data-status="error"] { --c: #f87171; }
+}
+.ui-status-mark-svg { flex: none; stroke: var(--c); stroke-width: 2.6; overflow: visible; }
+.ui-status-mark-disc { fill: color-mix(in srgb, var(--c) 14%, transparent); stroke: none; }
+.ui-status-mark-ring { stroke-width: 2.4; stroke-dasharray: 100; stroke-dashoffset: 0; transform: rotate(-90deg); transform-origin: 18px 18px; }
+.ui-status-mark[data-status="idle"] .ui-status-mark-ring { stroke-dasharray: 3 5; stroke-opacity: .7; }
+.ui-status-mark[data-status="loading"] .ui-status-mark-ring { stroke-dasharray: 28 72; animation: ui-status-mark-spin 1s linear infinite; }
+.ui-status-mark[data-status="success"] .ui-status-mark-ring, .ui-status-mark[data-status="error"] .ui-status-mark-ring, .ui-status-mark[data-status="warning"] .ui-status-mark-ring { animation: ui-status-mark-draw .45s ease-out both; }
+.ui-status-mark-glyph { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ui-status-mark-draw-g .35s ease-out .3s forwards; }
+.ui-status-mark-dot { fill: var(--c); stroke: none; }
+.ui-status-mark[data-status="success"] .ui-status-mark-svg { animation: ui-status-mark-pop .5s cubic-bezier(.3, 1.6, .5, 1); }
+.ui-status-mark[data-status="error"] .ui-status-mark-svg { animation: ui-status-mark-shake .45s ease-out; }
+.ui-status-mark[data-status="warning"] .ui-status-mark-svg { animation: ui-status-mark-pop .5s cubic-bezier(.3, 1.6, .5, 1); }
+.ui-status-mark-text { min-width: 7ch; }
+.ui-status-mark-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ui-status-mark { position: relative; }
+.ui-status-mark-pick { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.ui-status-mark-chip { min-height: 28px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-strong, #8a94a3); background: var(--raised, #fff); color: var(--ink, #111); font: 600 12px/1 var(--font-mono, monospace); cursor: pointer; }
+.ui-status-mark-chip[aria-pressed="true"] { background: var(--ink, #111); color: var(--surface, #fff); border-color: var(--ink, #111); }
+.ui-status-mark-chip:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+@keyframes ui-status-mark-spin { to { transform: rotate(270deg); } }
+@keyframes ui-status-mark-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes ui-status-mark-draw-g { to { stroke-dashoffset: 0; } }
+@keyframes ui-status-mark-pop { 0% { transform: scale(.7); } 100% { transform: scale(1); } }
+@keyframes ui-status-mark-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
+@media (pointer: coarse) { .ui-status-mark-chip { min-height: 44px; min-width: 44px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-status-mark-svg, .ui-status-mark-ring, .ui-status-mark-glyph { animation: none !important; }
+  .ui-status-mark-glyph { stroke-dashoffset: 0; }
+  .ui-status-mark[data-status="loading"] .ui-status-mark-ring { stroke-dasharray: 70 30; }
+}

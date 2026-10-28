@@ -1,0 +1,7 @@
+.ui-prismatic-burst{position:absolute;inset:0;overflow:hidden;pointer-events:none;background:var(--surface,#fff)}
+.ui-prismatic-burst::before{content:'';position:absolute;inset:0;transition:opacity .6s var(--ease,ease);background:repeating-conic-gradient(from 0deg at 50% 50%,color-mix(in srgb,var(--primary,#2563eb) 55%,transparent) 0 6deg,transparent 6deg 12deg,color-mix(in srgb,var(--signal,#f59e0b) 45%,transparent) 12deg 16deg,transparent 16deg 25.7deg),color-mix(in srgb,var(--primary,#2563eb) 10%,var(--surface,#fff))}
+.ui-prismatic-burst[data-gl='on']::before{opacity:0}
+.ui-prismatic-burst-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-prismatic-burst-canvas[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.ui-prismatic-burst::before{transition:none}}
+.ui-prismatic-burst::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 0,var(--surface,#fff) 90%);opacity:.5}

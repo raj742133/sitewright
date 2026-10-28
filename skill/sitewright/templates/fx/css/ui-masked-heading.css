@@ -1,0 +1,19 @@
+.ui-masked-heading-root { --mx: -999px; --my: -999px; --mh-n: 2; margin: 0; display: block; font: 900 clamp(30px, 13cqw, 96px)/1.1 var(--font-body, system-ui, sans-serif); letter-spacing: -0.03em; color: var(--ink, #18181b); text-wrap: balance; }
+.ui-masked-heading-mask { display: block; overflow: hidden; padding: 0.04em 0.06em 0.14em; margin: -0.04em -0.06em -0.14em; }
+.ui-masked-heading-line { display: block; width: fit-content; transform: translateY(112%) rotate(5deg); transform-origin: 0 100%; transition: transform 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) var(--delay, 0ms);
+  color: transparent; -webkit-text-fill-color: transparent; -webkit-background-clip: text; background-clip: text;
+  background-image: radial-gradient(circle 150px at var(--mx) var(--my), color-mix(in srgb, var(--raised, #fff) 90%, transparent), transparent 70%),
+    linear-gradient(100deg, var(--primary, #2563eb) 0%, var(--primary, #2563eb) 25%, color-mix(in srgb, var(--signal, #f59e0b) 80%, var(--ink, #18181b)) 55%, var(--primary, #2563eb) 85%, var(--primary, #2563eb) 100%);
+  background-size: 100% calc(var(--mh-n) * 100%), 200% calc(var(--mh-n) * 100%);
+  background-repeat: no-repeat;
+  background-position: 0 calc(var(--li) * -1.1em), 0 calc(var(--li) * -1.1em);
+  animation: ui-masked-heading-drift 9s linear infinite alternate; }
+.ui-masked-heading-root[data-in] .ui-masked-heading-line { transform: none; }
+@keyframes ui-masked-heading-drift {
+  from { background-position: 0 calc(var(--li) * -1.1em), 0 calc(var(--li) * -1.1em); }
+  to { background-position: 0 calc(var(--li) * -1.1em), 100% calc(var(--li) * -1.1em); }
+}
+@media (prefers-reduced-motion: reduce) { .ui-masked-heading-line { transition: none; transform: none; animation: none; } }
+.ui-masked-heading-stage { position: relative; width: 100%; height: 100%; min-height: 200px; box-sizing: border-box; padding: 16px; overflow: hidden; display: grid; align-content: center; container-type: inline-size;
+  background: radial-gradient(60% 70% at 100% 100%, color-mix(in srgb, var(--primary, #2563eb) 16%, transparent), transparent 70%), radial-gradient(40% 50% at 0% 0%, color-mix(in srgb, var(--signal, #f59e0b) 14%, transparent), transparent 70%), var(--surface, #fafafa); }
+.ui-masked-heading-stage::before { content: ''; position: absolute; left: 16px; top: 16px; width: 40px; height: 4px; border-radius: 2px; background: var(--signal, #f59e0b); }

@@ -1,0 +1,168 @@
+[
+ {
+  "id": "constellation-field",
+  "label": "Constellation field",
+  "desc": "Particle networks in four styles: drifting linked nodes, a parallax star sky, a springy lattice and orbiting hubs; the pointer pulls or pushes the nodes.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "ConstellationField.tsx",
+   "_tu-bg-constellation.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-constellation-field"
+  ],
+  "use": "Behind a landing hero, footer or sign-in panel (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "predictive-arc",
+  "label": "Predictive arc",
+  "desc": "Five generative Canvas 2D scenes selected by variant: a pixel-grid horizon arch, pulses on a signal network, flowing ribbons, a halftone dot matrix and flow-field trails.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "PredictiveArc.tsx",
+   "_tu-bg-arc.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-predictive-arc"
+  ],
+  "use": "Behind a product or analytics hero (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "portal-field",
+  "label": "Portal field",
+  "desc": "Ambient particle fields: a rotating noise-shaped cloud, a resonant plate whose grains settle on nodal lines, and streams converging on a focal portal that follows the pointer.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "PortalField.tsx",
+   "_tu-bg-portal.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-portal-field"
+  ],
+  "use": "Behind a hero or call-to-action band (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "spark-badge",
+  "label": "Spark badge",
+  "desc": "A luminous credential badge assembled from particles that spring home, scatter from the pointer and shed embers on curl-noise currents.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "SparkBadge.tsx",
+   "_tu-bg-spark.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-spark-badge"
+  ],
+  "use": "Hero visual for a membership, certificate or sign-up page (fills its positioned parent; the badge is centred)."
+ },
+ {
+  "id": "elemental-fields",
+  "label": "Elemental fields",
+  "desc": "Four generative fields in one component: rippling water, branching lightning, rising fire and beading condensation on glass.",
+  "source": "Original",
+  "group": "backgrounds",
+  "files": [
+   "ElementalFields.tsx",
+   "_tu-bg-elements.ts",
+   "_tu-bg-elements2.ts",
+   "_tu-bg-kit.ts",
+   "_tu-bg-demo.tsx",
+   "_bg-c-canvas.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-elemental-fields"
+  ],
+  "use": "Behind a hero, feature band or empty state (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "laser-field",
+  "label": "Laser field",
+  "desc": "Pointer-reactive laser beams in a WebGL shader with three layouts: a fan from the floor, a vanishing-point grid and a prism that splits one beam into a spectrum.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "LaserField.tsx",
+   "_t1.ts",
+   "_tu-bg-demo.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-laser-field"
+  ],
+  "use": "Behind a hero or event page (first child of a position:relative section; fills its parent)."
+ },
+ {
+  "id": "liquid-form",
+  "label": "Liquid form",
+  "desc": "A ray-marched metallic liquid blob of smoothly merging spheres with a reflective sky; the pointer drags a lobe around.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "LiquidForm.tsx",
+   "_t1.ts",
+   "_tu-bg-demo.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-liquid-form"
+  ],
+  "use": "Hero accent or loading visual (centred in its parent, which it fills)."
+ },
+ {
+  "id": "crt-screen",
+  "label": "CRT screen",
+  "desc": "A curved-glass CRT shader (barrel curvature, scanlines, aperture mask, bloom, flicker) showing a terminal, a test pattern, static or an arcade title screen chosen by the screen prop.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "CrtScreen.tsx",
+   "_tu-bg-crt.ts",
+   "_t1.ts",
+   "_tu-bg-demo.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-crt-screen"
+  ],
+  "use": "Behind a retro or developer-tools hero, 404 page or terminal-style section (fills its parent)."
+ },
+ {
+  "id": "network-globe",
+  "label": "Network globe",
+  "desc": "A dotted globe of nodes and arcs with FBM atmosphere glow; drag to spin with inertia, arrow keys rotate, pulses travel along the arcs.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "NetworkGlobe.tsx",
+   "_tu-bg-globe.ts",
+   "_t1.ts",
+   "_tu-bg-demo.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-network-globe"
+  ],
+  "use": "Hero visual for infrastructure, network or global-reach pages (fills its parent; the globe fits the smaller side)."
+ }
+]

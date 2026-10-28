@@ -1,0 +1,20 @@
+.ui-spring-check-stage { width: 100%; height: 100%; min-height: 200px; display: grid; place-items: center; padding: 12px; background: radial-gradient(90% 80% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, var(--surface, #fff)), var(--surface, #fff)); }
+.ui-spring-check-card { display: grid; gap: 4px; padding: 12px 16px; border: 1px solid var(--line, #d8dde5); border-radius: var(--radius, 12px); background: var(--raised, #fff); }
+.ui-spring-check { position: relative; display: inline-flex; align-items: center; gap: 12px; min-height: 36px; padding: 4px 0; cursor: pointer; color: var(--ink, #111); font: 500 15px/1.3 var(--font-body, system-ui, sans-serif); user-select: none; -webkit-user-select: none; }
+.ui-spring-check[data-disabled] { opacity: .55; cursor: not-allowed; }
+.ui-spring-check-input { position: absolute; width: 24px; height: 24px; margin: 0; opacity: 0; cursor: inherit; }
+.ui-spring-check-box { position: relative; flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; border: 2px solid var(--line-strong, #8a94a3); background: var(--raised, #fff); color: #fff; transition: background .18s, border-color .18s; }
+.ui-spring-check-box svg { overflow: visible; }
+.ui-spring-check-tick, .ui-spring-check-dash { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ui-spring-check[data-state="on"] .ui-spring-check-box, .ui-spring-check[data-state="mixed"] .ui-spring-check-box { background: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); border-color: color-mix(in srgb, var(--primary, #2563eb) 66%, #000); }
+.ui-spring-check[data-state="on"] .ui-spring-check-box { animation: ui-spring-check-squash .5s cubic-bezier(.3, 1.6, .5, 1); }
+.ui-spring-check[data-state="on"] .ui-spring-check-tick { stroke-dashoffset: 0; transition: stroke-dashoffset .22s ease-out .06s; }
+.ui-spring-check[data-state="mixed"] .ui-spring-check-dash { stroke-dashoffset: 0; transition: stroke-dashoffset .2s ease-out; }
+.ui-spring-check:hover:not([data-disabled]) .ui-spring-check-box { border-color: var(--primary, #2563eb); }
+.ui-spring-check-ring { position: absolute; inset: -2px; border-radius: 9px; border: 2px solid var(--signal, #f59e0b); opacity: 0; pointer-events: none; }
+.ui-spring-check[data-state="on"] .ui-spring-check-ring[data-run] { animation: ui-spring-check-ring .55s ease-out; }
+.ui-spring-check-input:focus-visible ~ .ui-spring-check-box { outline: 2px solid var(--ink, #111); outline-offset: 3px; }
+@keyframes ui-spring-check-squash { 0% { transform: scale(1); } 25% { transform: scale(.78, 1.12); } 55% { transform: scale(1.14, .92); } 80% { transform: scale(.98); } 100% { transform: scale(1); } }
+@keyframes ui-spring-check-ring { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+@media (pointer: coarse) { .ui-spring-check { min-height: 44px; } .ui-spring-check-input { width: 100%; height: 44px; left: 0; top: 0; } }
+@media (prefers-reduced-motion: reduce) { .ui-spring-check-box, .ui-spring-check-tick, .ui-spring-check-dash { transition: none !important; animation: none !important; } .ui-spring-check-ring { display: none; } }

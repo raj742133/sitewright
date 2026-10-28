@@ -1,0 +1,4 @@
+.ui-portal-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:inherit}
+.ui-portal-field::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%,color-mix(in srgb,var(--primary,#2563eb) 10%,transparent) 0,transparent 55%)}
+.ui-portal-field-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

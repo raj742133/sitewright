@@ -1,0 +1,5 @@
+.ui-shape-waves{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);
+  background-image:radial-gradient(color-mix(in srgb,var(--primary,#d33) 55%,transparent) 3px,transparent 3.5px),radial-gradient(color-mix(in srgb,var(--signal,#36c) 50%,transparent) 2.5px,transparent 3px);
+  background-size:28px 56px,28px 56px;background-position:0 0,14px 28px}
+.ui-shape-waves-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-shape-waves[data-ready='off'] .ui-shape-waves-canvas{display:none}

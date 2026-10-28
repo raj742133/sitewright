@@ -1,0 +1,11 @@
+.ui-dodge-field { width: 100%; max-width: 440px; font-family: var(--font-body, system-ui, sans-serif); color: var(--ink, #111); }
+.ui-dodge-field-cloud { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 6px; padding: 14px 10px; border-radius: calc(var(--radius, 10px) + 4px); border: 1px dashed var(--line-strong, #bbb); background: color-mix(in srgb, var(--raised, #fff) 70%, transparent); }
+.ui-dodge-field-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px 0 8px; border-radius: 999px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: var(--ink, #111); font: 600 13px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; will-change: transform; transition: background .15s, color .15s, border-color .15s; }
+.ui-dodge-field-chip:hover { border-color: var(--primary, #2563eb); }
+.ui-dodge-field-chip:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-dodge-field-chip[aria-pressed='true'] { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-dodge-field-tick { width: 16px; text-align: center; font: 700 13px/1 var(--font-mono, monospace); opacity: .8; }
+.ui-dodge-field-count { margin: 10px 0 0; text-align: center; font: 500 12px/1 var(--font-mono, monospace); color: var(--muted, #555); }
+.ui-dodge-field-demo { display: grid; place-items: center; height: 100%; min-height: 200px; padding: 12px; box-sizing: border-box; background: radial-gradient(90% 100% at 50% 0%, color-mix(in srgb, var(--signal, #f59e0b) 10%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+@media (pointer: coarse) { .ui-dodge-field-chip { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-dodge-field-chip { transition: none; transform: none !important; } }

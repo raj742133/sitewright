@@ -1,0 +1,4 @@
+.ui-predictive-arc{position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:inherit}
+.ui-predictive-arc::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 50% at 50% 110%,color-mix(in srgb,var(--primary,#2563eb) 10%,transparent),transparent 70%)}
+.ui-predictive-arc-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

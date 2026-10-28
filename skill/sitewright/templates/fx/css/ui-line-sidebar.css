@@ -1,0 +1,24 @@
+.ui-line-sidebar-root { position: relative; z-index: 2; display: flex; align-items: center; height: 100%; font-family: var(--font-body, system-ui, sans-serif); }
+.ui-line-sidebar-list { list-style: none; margin: 0; padding: 8px 0; display: flex; flex-direction: column; gap: 2px; }
+.ui-line-sidebar-li { --k: 0; }
+.ui-line-sidebar-link { display: flex; align-items: center; gap: 12px; min-height: 28px; padding: 0 10px; text-decoration: none; color: var(--muted, #52525b); border-radius: 8px; }
+.ui-line-sidebar-root.is-right .ui-line-sidebar-link { flex-direction: row-reverse; }
+.ui-line-sidebar-tick { flex: none; display: block; height: 3px; width: calc(14px + 22px * var(--k)); border-radius: 3px; background: color-mix(in srgb, var(--ink, #18181b) 45%, transparent); transition: width .2s ease-out, background .25s; }
+.is-active .ui-line-sidebar-tick { background: var(--primary, #2563eb); width: calc(30px + 8px * var(--k)); }
+.ui-line-sidebar-text { max-width: 0; overflow: hidden; white-space: nowrap; opacity: 0; transform: translateX(-6px); font: 600 13px/1 var(--font-body, system-ui); transition: max-width .35s cubic-bezier(.3,.9,.3,1), opacity .25s, transform .3s; }
+.ui-line-sidebar-root.is-right .ui-line-sidebar-text { transform: translateX(6px); }
+.ui-line-sidebar-root:hover .ui-line-sidebar-text, .ui-line-sidebar-root:focus-within .ui-line-sidebar-text { max-width: 160px; opacity: 1; transform: none; }
+.ui-line-sidebar-root:hover, .ui-line-sidebar-root:focus-within { }
+.ui-line-sidebar-link:hover { color: var(--ink, #18181b); }
+.ui-line-sidebar-link.is-active { color: var(--primary, #2563eb); }
+.ui-line-sidebar-link:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 1px; }
+.ui-line-sidebar-demo { position: relative; display: flex; height: 100%; min-height: 0; background: color-mix(in srgb, var(--raised, #fff) 70%, transparent); }
+.ui-line-sidebar-demo .ui-line-sidebar-root { flex: none; padding-left: 4px; }
+.ui-line-sidebar-demo .ui-line-sidebar-root:hover, .ui-line-sidebar-demo .ui-line-sidebar-root:focus-within { background: var(--raised, #fff); box-shadow: 8px 0 20px -14px rgba(0,0,0,.5); }
+.ui-line-sidebar-scroll { flex: 1; min-width: 0; overflow-y: auto; padding: 8px 16px; scroll-snap-type: y proximity; }
+.ui-line-sidebar-scroll:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
+.ui-line-sidebar-sec { min-height: 80%; padding: 16px 0; scroll-snap-align: start; color: var(--ink, #18181b); }
+.ui-line-sidebar-sec h3 { margin: 0 0 6px; font: 800 22px/1.1 var(--font-body, system-ui); }
+.ui-line-sidebar-sec p { margin: 0; font: 400 14px/1.5 var(--font-body, system-ui); color: var(--muted, #52525b); max-width: 32ch; }
+@media (pointer: coarse) { .ui-line-sidebar-link { min-height: 44px; } .ui-line-sidebar-text { max-width: 0; } }
+@media (prefers-reduced-motion: reduce) { .ui-line-sidebar-tick, .ui-line-sidebar-text { transition: none; } }

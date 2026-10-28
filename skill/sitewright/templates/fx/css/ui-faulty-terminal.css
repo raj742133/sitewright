@@ -1,0 +1,7 @@
+.ui-faulty-terminal{position:absolute;inset:0;overflow:hidden;pointer-events:none;font-family:var(--font-mono,ui-monospace,monospace);
+  background:repeating-linear-gradient(0deg,transparent 0 2px,color-mix(in srgb,var(--ink,#111) 6%,transparent) 2px 3px),
+    linear-gradient(180deg,color-mix(in srgb,var(--primary,#2563eb) 12%,var(--surface,#fff)),color-mix(in srgb,var(--primary,#2563eb) 6%,var(--surface,#fff)))}
+.ui-faulty-terminal::before{content:'> run --check\A ok   link/uplink ....\A warn relay.3f2 retry\A fail shard.9c1 ....';white-space:pre;position:absolute;left:14px;top:14px;font-size:12px;line-height:1.6;color:color-mix(in srgb,var(--primary,#2563eb) 70%,var(--ink,#111));opacity:.8;transition:opacity .4s ease}
+.ui-faulty-terminal[data-state='on']::before{opacity:0}
+.ui-faulty-terminal-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:reduce){.ui-faulty-terminal::before{transition:none}}

@@ -1,0 +1,15 @@
+.ui-echo-text-root { --reach: 38; --dur: 3.2s; position: relative; width: 100%; height: 100%; min-height: 120px; display: grid; place-items: center; container-type: inline-size; touch-action: pan-y; }
+.ui-echo-text-scene { display: grid; font: 900 clamp(40px, 24cqw, 170px)/1 var(--font-body, system-ui, sans-serif); letter-spacing: -0.03em; text-transform: uppercase; white-space: nowrap; user-select: none; -webkit-user-select: none; }
+.ui-echo-text-scene > span { grid-area: 1 / 1; }
+.ui-echo-text-main { color: var(--ink, #18181b); position: relative; }
+.ui-echo-text-copy { color: transparent; -webkit-text-stroke: 2px color-mix(in srgb, var(--primary, #2563eb) calc(100% - var(--t) * 100%), var(--signal, #f59e0b)); transform-origin: 50% 55%; opacity: 0; animation: ui-echo-text-ripple var(--dur) cubic-bezier(0.2, 0.6, 0.3, 1) var(--delay) infinite both; }
+.ui-echo-text-root[data-mode='trail'] .ui-echo-text-copy { animation-name: ui-echo-text-trail; }
+@keyframes ui-echo-text-ripple { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(calc(1 + var(--reach) / 100)); } }
+@keyframes ui-echo-text-trail { 0% { opacity: 0.85; transform: translate(0, 0); } 100% { opacity: 0; transform: translate(calc(var(--reach) * -1px), calc(var(--reach) * 0.5px)); } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-echo-text-copy { animation: none; opacity: calc(0.75 - var(--t) * 0.55); transform: scale(calc(1 + var(--reach) / 100 * var(--t) * 0.6)); }
+  .ui-echo-text-root[data-mode='trail'] .ui-echo-text-copy { transform: translate(calc(var(--reach) * var(--t) * -0.6px), calc(var(--reach) * var(--t) * 0.3px)); }
+}
+.ui-echo-text-stage { position: relative; width: 100%; height: 100%; min-height: 200px; box-sizing: border-box; padding: 12px; overflow: hidden; display: grid;
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--primary, #2563eb) 14%, transparent), transparent 65%), radial-gradient(color-mix(in srgb, var(--ink, #18181b) 16%, transparent) 1px, transparent 1.5px) 0 0 / 16px 16px, var(--surface, #fafafa); }
+.ui-echo-text-stage > .ui-echo-text-root { min-height: 0; }

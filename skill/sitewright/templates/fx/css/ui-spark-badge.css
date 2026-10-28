@@ -1,0 +1,4 @@
+.ui-spark-badge{position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:inherit}
+.ui-spark-badge::before{content:'';position:absolute;left:50%;top:50%;width:min(86%,520px);aspect-ratio:8/5;max-height:78%;transform:translate(-50%,-50%);border-radius:7%;
+  background:radial-gradient(circle at 20% 35%,color-mix(in srgb,var(--signal,#f59e0b) 16%,transparent),transparent 45%),linear-gradient(135deg,color-mix(in srgb,var(--primary,#2563eb) 9%,transparent),transparent)}
+.ui-spark-badge-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

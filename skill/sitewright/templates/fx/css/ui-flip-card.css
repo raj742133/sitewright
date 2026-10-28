@@ -1,0 +1,27 @@
+.ui-flip-card { display: block; position: relative; width: 100%; max-width: 280px; height: 180px; padding: 0; border: 0; background: none; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); text-align: left; cursor: pointer; perspective: 900px; border-radius: calc(var(--radius, 10px) + 4px); -webkit-tap-highlight-color: transparent; }
+.ui-flip-card:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 4px; }
+.ui-flip-card-inner { position: absolute; inset: 0; display: block; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.3,1.25,.4,1); }
+.ui-flip-card:hover .ui-flip-card-inner { transform: translateY(-3px); }
+.ui-flip-card.is-flipped .ui-flip-card-inner { transform: rotateY(180deg); }
+.ui-flip-card[data-axis='x'].is-flipped .ui-flip-card-inner { transform: rotateX(180deg); }
+.ui-flip-card.is-flipped:hover .ui-flip-card-inner { transform: rotateY(180deg); }
+.ui-flip-card[data-axis='x'].is-flipped:hover .ui-flip-card-inner { transform: rotateX(180deg); }
+.ui-flip-card-face { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; border-radius: calc(var(--radius, 10px) + 4px); border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); box-shadow: 0 14px 28px -16px rgba(0,0,0,.4); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.ui-flip-card-face.is-back { transform: rotateY(180deg); background: linear-gradient(155deg, color-mix(in srgb, var(--primary, #2563eb) 88%, #000), color-mix(in srgb, var(--primary, #2563eb) 60%, #000)); color: #fff; border-color: transparent; padding: 18px; gap: 10px; }
+.ui-flip-card[data-axis='x'] .ui-flip-card-face.is-back { transform: rotateX(180deg); }
+.ui-flip-card-art { width: 100%; flex: 1; min-height: 0; display: block; background: linear-gradient(180deg, color-mix(in srgb, var(--primary, #2563eb) 22%, var(--raised-2, #f3f3f3)), var(--raised-2, #f3f3f3)); }
+.ui-flip-card-sun { fill: var(--signal, #f59e0b); }
+.ui-flip-card-hill { fill: color-mix(in srgb, var(--primary, #2563eb) 60%, var(--raised, #fff)); }
+.ui-flip-card-hill2 { fill: var(--primary, #2563eb); }
+.ui-flip-card-body { display: flex; flex-direction: column; gap: 3px; padding: 12px 16px 14px; }
+.ui-flip-card-body strong { font: 700 17px/1.1 var(--font-body, system-ui, sans-serif); }
+.ui-flip-card-body span { font: 400 13px/1.3 var(--font-body, system-ui, sans-serif); color: var(--muted, #555); }
+.ui-flip-card-h { font: 700 19px/1.1 var(--font-body, system-ui, sans-serif); }
+.ui-flip-card-list { display: flex; flex-direction: column; gap: 6px; font: 500 14px/1.3 var(--font-body, system-ui, sans-serif); }
+.ui-flip-card-list > span::before { content: '—'; margin-right: 8px; opacity: .7; }
+.ui-flip-card-cue { position: absolute; bottom: 12px; right: 12px; display: inline-flex; gap: 4px; align-items: center; padding: 4px 9px; border-radius: 999px; font: 600 12px/1 var(--font-mono, monospace); letter-spacing: .04em; background: var(--raised, #fff); color: var(--ink, #111); border: 1px solid var(--line-strong, #bbb); }
+.ui-flip-card-cue i { font-style: normal; }
+.is-back .ui-flip-card-cue { background: rgba(255,255,255,.18); color: #fff; border-color: rgba(255,255,255,.5); }
+.ui-flip-card-demo { display: grid; place-items: center; height: 100%; min-height: 200px; padding: 14px; box-sizing: border-box; background: radial-gradient(110% 100% at 100% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, var(--surface, #fafafa)), var(--surface, #fafafa) 70%); }
+.ui-flip-card-demo .ui-flip-card { height: min(100%, 190px); }
+@media (prefers-reduced-motion: reduce) { .ui-flip-card-inner { transition: none !important; } .ui-flip-card:hover .ui-flip-card-inner { transform: none; } .ui-flip-card.is-flipped:hover .ui-flip-card-inner { transform: rotateY(180deg); } .ui-flip-card[data-axis='x'].is-flipped:hover .ui-flip-card-inner { transform: rotateX(180deg); } }

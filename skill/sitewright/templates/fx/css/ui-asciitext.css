@@ -1,0 +1,5 @@
+.ui-asciitext-root { position: relative; width: 100%; height: 100%; min-height: 120px; display: grid; place-items: center; color: var(--ink, #18181b); touch-action: pan-y; cursor: crosshair; font-family: var(--font-body, system-ui, sans-serif); }
+.ui-asciitext-canvas { display: block; max-width: 100%; max-height: 100%; }
+.ui-asciitext-stage { position: relative; width: 100%; height: 100%; min-height: 200px; box-sizing: border-box; padding: 12px; overflow: hidden; display: grid;
+  background: radial-gradient(80% 90% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 14%, transparent), transparent 70%), radial-gradient(color-mix(in srgb, var(--ink, #18181b) 14%, transparent) 1px, transparent 1.5px) 0 0 / 20px 20px, var(--surface, #fafafa); }
+.ui-asciitext-stage > .ui-asciitext-root { min-height: 0; }

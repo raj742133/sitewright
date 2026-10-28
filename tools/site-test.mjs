@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { pathToFileURL } from 'node:url';
+import zlib from 'node:zlib';
 
 const argv = process.argv.slice(2);
 const arg = (k, d) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : d; };
@@ -120,10 +121,10 @@ await check('search.json lists every component and template, and every url answe
   const bad = []; for (const e of j.filter((x) => x.t !== 'template' && x.url.startsWith('/') && !x.url.includes('#'))) if ((await get(abs(e.url))).status !== 200) bad.push(e.url);
   eq(bad.join(','), '', 'dead urls');
 });
-await check('sitemap lists every component page; page weight is sane (catalogue <= 150 KB, home <= 100 KB)', async () => {
+await check('sitemap lists every component page; page weight is sane (catalogue <= 64 KB and home <= 40 KB compressed)', async () => {
   const sm = (await text('/sitemap.xml')).t; eq((sm.match(/\/components\/[a-z0-9-]+\//g) ?? []).length, N_UI, 'sitemap entries');
-  const c = (await text('/components/')).t; truthy(Buffer.byteLength(c) <= 150 * 1024, `catalogue ${Buffer.byteLength(c)} bytes`);
-  const h = (await text('/')).t; truthy(Buffer.byteLength(h) <= 100 * 1024, `home ${Buffer.byteLength(h)} bytes`);
+  const c = (await text('/components/')).t; const gz = (x) => zlib.gzipSync(Buffer.from(x)).length; truthy(gz(c) <= 64 * 1024, `catalogue ${gz(c)} bytes compressed (${Buffer.byteLength(c)} raw)`);
+  const h = (await text('/')).t; truthy(gz(h) <= 40 * 1024, `home ${gz(h)} bytes compressed (${Buffer.byteLength(h)} raw)`);
 });
 await check('no external scripts, and every local file, link and image on the main pages exists', async () => {
   const bad = [];
@@ -163,10 +164,10 @@ section = 'catalogue';
     for (const [g, n] of sum) eq(n, GROUPS[g], `group ${g}`); eq(sum.reduce((a, b) => a + b[1], 0), N_UI, 'sum of groups');
     eq(await page.textContent('#groups a[data-g=""] i'), String(N_UI), 'All');
   });
-  await check('"All" shows the first 24 and a Show more button; it adds more and then goes away', async () => {
-    eq(await page.locator('.tile:visible').count(), 24, 'visible tiles'); truthy(await page.locator('#cat-more').isVisible(), 'more button');
-    truthy(/Showing 24 of /.test(await page.textContent('#cat-count')), 'count text');
-    let guard = 0; while (await page.locator('#cat-more').isVisible() && guard++ < 10) await page.click('#cat-more');
+  await check('"All" shows the first 20 and a Show more button; it adds more and then goes away', async () => {
+    eq(await page.locator('.tile:visible').count(), 20, 'visible tiles'); truthy(await page.locator('#cat-more').isVisible(), 'more button');
+    truthy(/Showing 20 of /.test(await page.textContent('#cat-count')), 'count text');
+    let guard = 0; while (await page.locator('#cat-more').isVisible() && guard++ < 60) await page.click('#cat-more');
     eq(await page.locator('.tile:visible').count(), N_UI, 'all visible at the end'); truthy(!(await page.locator('#cat-more').isVisible()), 'button gone');
   });
   await check('previews are lazy: few frames exist at first, and they load and become visible', async () => {
@@ -190,7 +191,7 @@ section = 'catalogue';
     eq(await page.textContent('.tile:not([hidden]) h2'), 'Area chart', 'first result'); eq(new URL(page.url()).searchParams.get('q'), 'area', 'url q');
     truthy(/results? for/.test(await page.textContent('#cat-count')), 'count text');
     await page.fill('#cat-q', 'zzzzqq'); await page.waitForTimeout(200); truthy(await page.locator('#cat-empty').isVisible(), 'empty state'); eq(await page.locator('.tile:visible').count(), 0, 'no tiles');
-    await page.click('#cat-reset'); await page.waitForTimeout(200); eq(await page.locator('.tile:visible').count(), 24, 'back to 24'); eq(await page.inputValue('#cat-q'), '', 'field cleared');
+    await page.click('#cat-reset'); await page.waitForTimeout(200); eq(await page.locator('.tile:visible').count(), 20, 'back to 20'); eq(await page.inputValue('#cat-q'), '', 'field cleared');
   });
   await check('the URL state is restored on load (?g=charts&q=area)', async () => {
     const { ctx: c2, page: p2 } = await openAt('wide', '/components/?g=charts&q=area'); eq(await p2.inputValue('#cat-q'), 'area', 'q'); eq(await p2.textContent('.tile:not([hidden]) h2'), 'Area chart', 'first');

@@ -1,0 +1,28 @@
+/* shared parts of the "heroes a" landing pages: dialog, form fields, confirmation, screen-reader text */
+.ha-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+dialog.ha-dlg { padding: 0; border: 1px solid var(--line-strong, #bbb); border-radius: 20px; background: var(--raised, #fff); color: var(--ink, #111); width: min(520px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; box-shadow: 0 30px 80px rgba(0, 0, 0, .45); font: 15px/1.5 var(--font-body, system-ui, sans-serif); }
+dialog.ha-dlg::backdrop { background: color-mix(in srgb, #000 58%, transparent); backdrop-filter: blur(4px); }
+dialog.ha-dlg[open] { animation: ha-pop .22s ease both; }
+.ha-dlg-box { padding: 22px 22px 24px; display: grid; gap: 14px; }
+.ha-dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ha-dlg-head h2 { margin: 0; font-size: 22px; letter-spacing: -.02em; line-height: 1.2; }
+.ha-x { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong, #bbb); background: transparent; color: inherit; cursor: pointer; flex: none; }
+.ha-x:hover { background: var(--raised-2, #eee); }
+.ha-form, .ha-sub { display: grid; gap: 12px; }
+.ha-row3 { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 10px; }
+.ha-fld { display: grid; gap: 4px; min-width: 0; align-content: start; }
+.ha-fld label { font-size: 13px; font-weight: 600; }
+.ha-fld :is(input, select) { width: 100%; min-height: 46px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--line-strong, #aaa); background: var(--surface, #fff); color: inherit; font: inherit; font-size: 16px; }
+.ha-fld :is(input, select):focus-visible { outline: 2px solid var(--signal, #2563eb); outline-offset: 1px; }
+.ha-fld[data-bad='true'] :is(input, select) { border-color: var(--critical, #dc2626); }
+.ha-fld small { color: color-mix(in srgb, var(--critical, #b91c1c) 72%, var(--ink, #000)); font-size: 12.5px; }
+.ha-sum { margin: 0; font-size: 13.5px; color: var(--muted, #5b6472); }
+.ha-sum b { color: var(--ink, #111); }
+.ha-ok { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start; padding: 16px; border-radius: 16px; border: 1px solid color-mix(in srgb, var(--ok, #16a34a) 60%, transparent); background: color-mix(in srgb, var(--ok, #16a34a) 10%, transparent); animation: ha-pop .3s ease both; }
+.ha-ok > svg { color: var(--ok, #16a34a); margin-top: 2px; }
+.ha-ok p { margin: 4px 0 0; color: var(--muted, #5b6472); font-size: 14px; }
+.ha-ok > button { grid-column: 1 / -1; justify-self: start; margin-top: 8px; }
+@keyframes ha-pop { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+@media (max-width: 480px) { .ha-row3 { grid-template-columns: 1fr 1fr; } .ha-row3 > :first-child { grid-column: 1 / -1; } }
+@media (prefers-reduced-motion: reduce) { dialog.ha-dlg[open], .ha-ok { animation: none; } }
+@media (pointer: coarse) { .ha-x { width: 44px; height: 44px; } }

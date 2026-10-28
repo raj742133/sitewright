@@ -1,0 +1,18 @@
+.ui-cubes{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;pointer-events:none;perspective:1400px;--ui-cubes-half:calc(var(--ui-cubes-edge,44px)/2)}
+.ui-cubes-grid{display:grid;grid-template-columns:repeat(var(--ui-cubes-cols,9),var(--ui-cubes-edge,44px));gap:var(--ui-cubes-gap,6px);transform-style:preserve-3d;transform:scale(.92) rotateX(10deg) rotateY(-8deg)}
+.ui-cubes-slot{width:var(--ui-cubes-edge,44px);height:var(--ui-cubes-edge,44px);transform-style:preserve-3d}
+.ui-cubes-bob,.ui-cubes-cube{width:100%;height:100%;transform-style:preserve-3d}
+.ui-cubes-cube{position:relative;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.ui-cubes.is-ambient .ui-cubes-bob{animation:ui-cubes-wave 5.4s ease-in-out infinite;animation-delay:var(--d,0s)}
+.ui-cubes-face{position:absolute;inset:0;border-radius:3px;backface-visibility:hidden;border:1px solid color-mix(in srgb,var(--ink,#111) 14%,transparent)}
+.ui-cubes-front{transform:translateZ(var(--ui-cubes-half));background:linear-gradient(145deg,color-mix(in srgb,var(--primary,#2563eb) 78%,#fff),var(--primary,#2563eb))}
+.ui-cubes-back{transform:rotateY(180deg) translateZ(var(--ui-cubes-half));background:linear-gradient(145deg,color-mix(in srgb,var(--signal,#f59e0b) 78%,#fff),var(--signal,#f59e0b))}
+.ui-cubes-right{transform:rotateY(90deg) translateZ(var(--ui-cubes-half));background:color-mix(in srgb,var(--primary,#2563eb) 55%,var(--ink,#111))}
+.ui-cubes-left{transform:rotateY(-90deg) translateZ(var(--ui-cubes-half));background:color-mix(in srgb,var(--signal,#f59e0b) 55%,var(--ink,#111))}
+.ui-cubes-top{transform:rotateX(90deg) translateZ(var(--ui-cubes-half));background:color-mix(in srgb,var(--primary,#2563eb) 35%,var(--raised,#fff))}
+.ui-cubes-bottom{transform:rotateX(-90deg) translateZ(var(--ui-cubes-half));background:color-mix(in srgb,var(--signal,#f59e0b) 35%,var(--raised,#fff))}
+.ui-cubes.is-still .ui-cubes-cube{transition:none}
+@keyframes ui-cubes-wave{0%,100%{transform:translateZ(0)}50%{transform:translateZ(14px)}}
+@media (prefers-reduced-motion:reduce){.ui-cubes-cube{transition:none}.ui-cubes.is-ambient .ui-cubes-bob{animation:none}}
+.ui-cubes-stage{position:relative;width:100%;height:100%;min-height:150px;overflow:hidden;background:
+  radial-gradient(ellipse at 50% 0%,color-mix(in srgb,var(--primary,#2563eb) 10%,transparent),transparent 70%),var(--surface,#fff)}

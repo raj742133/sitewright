@@ -1,0 +1,22 @@
+.ui-comet-dial { display: inline-block; width: 100%; max-width: 220px; color: var(--ink, #111); font-family: var(--font-body, system-ui, sans-serif); }
+.ui-comet-dial-face { position: relative; aspect-ratio: 1; width: 100%; border-radius: 50%; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; outline: none; }
+.ui-comet-dial.is-drag .ui-comet-dial-face { cursor: grabbing; }
+.ui-comet-dial-face:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 4px; }
+.ui-comet-dial.is-disabled { opacity: .5; }
+.ui-comet-dial.is-disabled .ui-comet-dial-face { cursor: not-allowed; }
+.ui-comet-dial-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ui-comet-dial-track { fill: none; stroke: var(--line, #ddd); stroke-width: 7; stroke-linecap: round; }
+.ui-comet-dial-fill { fill: none; stroke: color-mix(in srgb, var(--primary, #2563eb) 55%, transparent); stroke-width: 7; stroke-linecap: round; }
+.ui-comet-dial-tail { fill: none; stroke: var(--signal, #f59e0b); stroke-linecap: round; }
+.ui-comet-dial-halo { fill: var(--signal, #f59e0b); opacity: .28; }
+.ui-comet-dial-head { fill: var(--signal, #f59e0b); stroke: var(--raised, #fff); stroke-width: 2.5; }
+.ui-comet-dial-core { fill: var(--raised, #fff); }
+.ui-comet-dial.is-drag .ui-comet-dial-halo { opacity: .45; }
+.ui-comet-dial-tick { stroke: var(--line-strong, #bbb); stroke-width: 1.6; stroke-linecap: round; }
+.ui-comet-dial-tick.is-on { stroke: var(--primary, #2563eb); }
+.ui-comet-dial-read { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; pointer-events: none; }
+.ui-comet-dial-read strong { font: 700 clamp(26px, 9vw, 38px)/1 var(--font-mono, ui-monospace, monospace); font-variant-numeric: tabular-nums; }
+.ui-comet-dial-read small { font-size: .45em; font-weight: 600; margin-left: 2px; color: var(--muted, #555); }
+.ui-comet-dial-read span { font: 600 12px/1 var(--font-body, system-ui, sans-serif); color: var(--muted, #555); letter-spacing: .06em; text-transform: uppercase; }
+.ui-comet-dial-demo { display: grid; place-items: center; height: 100%; min-height: 200px; padding: 12px; box-sizing: border-box; background: radial-gradient(90% 90% at 50% 40%, color-mix(in srgb, var(--primary, #2563eb) 10%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+.ui-comet-dial-demo .ui-comet-dial { height: min(100%, 220px); width: auto; aspect-ratio: 1; }

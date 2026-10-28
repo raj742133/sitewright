@@ -1,0 +1,48 @@
+.ui-performance-gauges-root { width: 100%; height: 100%; min-height: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 6px; container-type: size; }
+@container (min-aspect-ratio: 5/2) { .ui-performance-gauges-root { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); } .ui-performance-gauges-gauge { width: min(calc(25cqw - 5px), 100cqh); } }
+.ui-performance-gauges-gauge { position: relative; width: min(calc(50cqw - 3px), calc(50cqh - 3px)); aspect-ratio: 1; justify-self: center; align-self: center; container-type: inline-size; border-radius: 50%; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.38)); }
+.ui-performance-gauges-gauge > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.ui-performance-gauges-glass { position: absolute; inset: 6%; border-radius: 50%; pointer-events: none; background: radial-gradient(120% 70% at 30% 8%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 55%), linear-gradient(200deg, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.07)); }
+.ui-performance-gauges-rim { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }
+.ui-performance-gauges-zone { fill: none; stroke-width: 4; stroke-linecap: butt; }
+.ui-performance-gauges-z-warn { stroke: var(--signal, #f59e0b); }
+.ui-performance-gauges-z-hot { stroke: #ff5a4d; }
+.ui-performance-gauges-z-vac { stroke: color-mix(in srgb, var(--primary, #2563eb) 70%, #fff); }
+.ui-performance-gauges-z-regen { stroke: var(--signal, #f59e0b); opacity: 0.85; }
+.ui-performance-gauges-ticks path { fill: none; stroke: #e8eaee; stroke-linecap: round; }
+.ui-performance-gauges-ticks .is-major { stroke-width: 2.2; }
+.ui-performance-gauges-ticks .is-minor { stroke-width: 1; stroke: #9aa0ab; }
+.ui-performance-gauges-numerals text { fill: #eef0f4; font: 700 11px/1 var(--font-mono, monospace); }
+.ui-performance-gauges-value { fill: #fff; font: 700 19px/1 var(--font-mono, monospace); font-variant-numeric: tabular-nums; }
+.ui-performance-gauges-unit { fill: #b6bcc7; font: 600 7.5px/1 var(--font-mono, monospace); letter-spacing: 0.06em; }
+.ui-performance-gauges-name { fill: color-mix(in srgb, var(--primary, #2563eb) 55%, #fff); font: 700 8.5px/1 var(--font-body, system-ui); letter-spacing: 0.22em; text-transform: uppercase; }
+.ui-performance-gauges-needle { transform-origin: 100px 100px; transform-box: view-box; transition: transform 0.95s cubic-bezier(0.22, 1.25, 0.4, 1); filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.6)); }
+.ui-performance-gauges-needle-body { fill: #eef0f4; }
+.ui-performance-gauges-k-tach .ui-performance-gauges-needle-body { fill: var(--signal, #f59e0b); }
+.ui-performance-gauges-needle-glow { fill: #fff; opacity: 0.8; }
+.ui-performance-gauges-k-boost .ui-performance-gauges-needle-body { fill: color-mix(in srgb, var(--primary, #2563eb) 55%, #fff); }
+.ui-performance-gauges-k-ev .ui-performance-gauges-needle-body { fill: #fff; }
+.ui-performance-gauges-pin { fill: #15171b; }
+.ui-performance-gauges-seg { fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 5; transition: stroke 0.25s, filter 0.25s; }
+.ui-performance-gauges-seg.is-lit { stroke: color-mix(in srgb, var(--primary, #2563eb) 60%, #fff); filter: drop-shadow(0 0 2px var(--primary, #2563eb)); }
+.ui-performance-gauges-seg.is-regen.is-lit { stroke: var(--signal, #f59e0b); filter: drop-shadow(0 0 2px var(--signal, #f59e0b)); }
+.ui-performance-gauges-k-ev .ui-performance-gauges-zone { display: none; }
+.ui-performance-gauges-k-ev .ui-performance-gauges-ticks { transform: scale(0.9); transform-origin: 100px 100px; }
+.ui-performance-gauges-k-ev .ui-performance-gauges-numerals text { font-size: 10px; }
+.ui-performance-gauges-zero { fill: var(--signal, #f59e0b); }
+@container (max-width: 130px) {
+  .ui-performance-gauges-numerals, .ui-performance-gauges-ticks .is-minor, .ui-performance-gauges-unit, .ui-performance-gauges-name { display: none; }
+  .ui-performance-gauges-value { font-size: 24px; }
+}
+
+.ui-performance-gauges-demo { width: 100%; height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 6px; padding: 10px; box-sizing: border-box; font-family: var(--font-body, system-ui); color: var(--ink, #18181b);
+  background: radial-gradient(90% 70% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 14%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+.ui-performance-gauges-stage { flex: 1 1 0; min-height: 0; }
+.ui-performance-gauges-bar { display: flex; align-items: center; gap: 12px; padding: 4px 6px; border: 1px solid var(--line, #e4e4e7); border-radius: var(--radius, 10px); background: var(--raised, #fff); }
+.ui-performance-gauges-throttle { flex: 1; display: flex; align-items: center; gap: 10px; font: 600 12px/1 var(--font-mono, monospace); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted, #52525b); }
+.ui-performance-gauges-throttle input { flex: 1; min-width: 0; height: 24px; accent-color: var(--primary, #2563eb); }
+.ui-performance-gauges-auto { white-space: nowrap; min-height: 28px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-strong, #a1a1aa); background: var(--raised-2, var(--raised, #fff)); color: var(--ink, #18181b); font: 600 12px/1 var(--font-mono, monospace); cursor: pointer; }
+.ui-performance-gauges-auto[aria-pressed="true"] { border-color: var(--primary, #2563eb); }
+.ui-performance-gauges-auto:focus-visible, .ui-performance-gauges-throttle input:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+@media (pointer: coarse) { .ui-performance-gauges-auto { min-height: 44px; min-width: 44px; } .ui-performance-gauges-throttle input { height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-performance-gauges-needle, .ui-performance-gauges-seg { transition: none; } }

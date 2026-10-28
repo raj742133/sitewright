@@ -1,0 +1,30 @@
+.ui-jelly-radio-stage { height: 100%; min-height: 200px; display: grid; place-items: center; padding: 16px; box-sizing: border-box; background: radial-gradient(90% 80% at 15% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent 70%), var(--surface, #fafafa); }
+.ui-jelly-radio { display: grid; gap: 8px; width: min(100%, 320px); font-family: var(--font-body, system-ui, sans-serif); }
+.ui-jelly-radio-opt { position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px; box-sizing: border-box; border: 1px solid var(--line-strong, #c4c4cc); border-radius: var(--radius, 12px); background: var(--raised, #fff); color: var(--ink, #18181b); cursor: pointer; transition: border-color .2s, background-color .2s, transform .3s cubic-bezier(.3, 1.8, .5, 1); }
+.ui-jelly-radio-opt:hover { background: var(--raised-2, #f4f4f5); }
+.ui-jelly-radio-opt:active { transform: scale(1.02, .94); }
+.ui-jelly-radio-opt[data-checked] { border-color: var(--primary, #2563eb); background: color-mix(in srgb, var(--primary, #2563eb) 9%, var(--raised, #fff)); }
+.ui-jelly-radio-opt[data-disabled] { opacity: .5; cursor: not-allowed; }
+.ui-jelly-radio-opt:has(.ui-jelly-radio-input:focus-visible) { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-jelly-radio-input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: inherit; }
+.ui-jelly-radio-dot { position: relative; flex: none; width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--muted, #52525b); box-sizing: border-box; display: grid; place-items: center; transition: border-color .2s; }
+.ui-jelly-radio-opt[data-checked] .ui-jelly-radio-dot { border-color: var(--primary, #2563eb); animation: ui-jelly-radio-ring .7s cubic-bezier(.3, 1, .4, 1); }
+.ui-jelly-radio-blob { width: 12px; height: 12px; border-radius: 50%; background: var(--primary, #2563eb); transform: scale(0); transition: transform .15s ease-in; }
+.ui-jelly-radio-opt[data-checked] .ui-jelly-radio-blob { animation: ui-jelly-radio-jelly .75s linear both; }
+.ui-jelly-radio-text { display: grid; gap: 1px; min-width: 0; }
+.ui-jelly-radio-label { font-size: 15px; font-weight: 650; line-height: 1.3; }
+.ui-jelly-radio-hint { font-size: 12.5px; line-height: 1.35; color: var(--muted, #52525b); }
+@keyframes ui-jelly-radio-jelly {
+  0% { transform: scale(0); border-radius: 50%; }
+  22% { transform: scale(1.7, .8); }
+  42% { transform: scale(.78, 1.4); }
+  60% { transform: scale(1.25, .88); }
+  78% { transform: scale(.94, 1.08); }
+  100% { transform: scale(1); }
+}
+@keyframes ui-jelly-radio-ring { 0% { transform: scale(1); } 25% { transform: scale(1.18, .88); } 50% { transform: scale(.92, 1.1); } 75% { transform: scale(1.04, .98); } 100% { transform: scale(1); } }
+@media (pointer: coarse) { .ui-jelly-radio-opt { min-height: 56px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-jelly-radio-opt, .ui-jelly-radio-dot, .ui-jelly-radio-blob { animation: none !important; transition: none !important; }
+  .ui-jelly-radio-opt[data-checked] .ui-jelly-radio-blob { transform: scale(1); }
+}

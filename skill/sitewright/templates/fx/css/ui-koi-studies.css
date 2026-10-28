@@ -1,0 +1,45 @@
+.ui-koi-studies-demo { width: 100%; height: 100%; min-height: 0; padding: 8px; box-sizing: border-box; background: radial-gradient(90% 90% at 50% 0%, color-mix(in srgb, var(--signal, #f59e0b) 14%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+.ui-koi-studies-root { --ui-koi-studies-cream: #f3ecdd; --ui-koi-studies-warm: color-mix(in srgb, var(--signal, #f59e0b) 55%, #e0402c); --ui-koi-studies-cool: color-mix(in srgb, var(--primary, #2563eb) 70%, #fff);
+  --ui-koi-studies-deep: color-mix(in srgb, var(--primary, #2563eb) 55%, #0a0f1a); --ui-koi-studies-gold: color-mix(in srgb, var(--signal, #f59e0b) 80%, #fff);
+  width: 100%; height: 100%; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font-family: var(--font-body, system-ui); }
+.ui-koi-studies-stack { --ui-koi-studies-dx: 0px; --ui-koi-studies-dy: 0px; --ui-koi-studies-rx: 0deg; --ui-koi-studies-ry: 0deg; position: relative; flex: 1 1 0; min-height: 0; width: 100%; container-type: size; perspective: 900px; perspective-origin: 50% 40%; outline: none; cursor: grab; touch-action: pan-y; border-radius: var(--radius, 12px); }
+.ui-koi-studies-stack.is-drag { cursor: grabbing; }
+.ui-koi-studies-stack:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-koi-studies-card { --ui-koi-studies-w: min(66cqw, 70cqh, 460px); position: absolute; left: 50%; top: 50%; margin: 0; width: var(--ui-koi-studies-w); aspect-ratio: 5 / 4; margin-left: calc(var(--ui-koi-studies-w) / -2); margin-top: calc(var(--ui-koi-studies-w) / -2.5 + 2%); transform-style: preserve-3d; z-index: calc(10 - var(--ui-koi-studies-o));
+  transform: translate3d(calc(var(--ui-koi-studies-o) * 7cqw), calc(var(--ui-koi-studies-o) * -6cqh), calc(var(--ui-koi-studies-o) * -70px)) rotateZ(calc(var(--ui-koi-studies-o) * 2.2deg)); transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s; }
+.ui-koi-studies-card.is-front { transform: translate3d(var(--ui-koi-studies-dx), var(--ui-koi-studies-dy), 0) rotateX(var(--ui-koi-studies-rx)) rotateY(var(--ui-koi-studies-ry)); }
+.ui-koi-studies-stack.is-drag .ui-koi-studies-card.is-front { transition: none; }
+.ui-koi-studies-card.is-flying { transition: none; animation: ui-koi-studies-fly 0.62s cubic-bezier(0.3, 0.7, 0.3, 1); }
+.ui-koi-studies-card.is-back { opacity: 0.92; }
+.ui-koi-studies-face { position: absolute; inset: 0; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.22); box-shadow: 0 16px 28px rgba(0, 0, 0, 0.32), 0 2px 0 rgba(255, 255, 255, 0.12) inset; background: linear-gradient(160deg, var(--ui-koi-studies-k1), var(--ui-koi-studies-k2)); transform: translateZ(0); }
+.is-k0 { --ui-koi-studies-k1: color-mix(in srgb, var(--primary, #2563eb) 62%, #0a0f1a); --ui-koi-studies-k2: color-mix(in srgb, var(--primary, #2563eb) 25%, #070b14); }
+.is-k1 { --ui-koi-studies-k1: color-mix(in srgb, var(--signal, #f59e0b) 38%, #1a0e08); --ui-koi-studies-k2: color-mix(in srgb, var(--signal, #f59e0b) 14%, #0a0706); }
+.is-k2 { --ui-koi-studies-k1: color-mix(in srgb, var(--primary, #2563eb) 35%, #20170a); --ui-koi-studies-k2: color-mix(in srgb, var(--signal, #f59e0b) 18%, #0a0f1a); }
+.ui-koi-studies-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ui-koi-studies-shadow path { fill: #000; opacity: 0.28; filter: blur(2.5px); }
+.ui-koi-studies-pixels rect { fill: #0b1020; opacity: 0; transition: opacity 0.35s steps(3); }
+.ui-koi-studies-card:not(.is-front) .ui-koi-studies-pixels rect { opacity: 0.6; }
+.ui-koi-studies-card:not(.is-front) .ui-koi-studies-art { filter: saturate(0.6); }
+.ui-koi-studies-sheen { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(120deg, rgba(255, 255, 255, 0.18), transparent 36%), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px); mix-blend-mode: soft-light; }
+.ui-koi-studies-card figcaption { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: baseline; gap: 8px; padding: 18px 12px 8px; color: #fff; background: linear-gradient(0deg, rgba(5, 8, 16, 0.78), transparent); transform: translateZ(1px); }
+.ui-koi-studies-card figcaption b { font-size: 15px; font-weight: 700; }
+.ui-koi-studies-card figcaption span { flex: 1; font-size: 11px; opacity: 0.9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ui-koi-studies-card figcaption i { font: 600 10px/1 var(--font-mono, monospace); letter-spacing: 0.08em; opacity: 0.85; font-style: normal; }
+@container (max-width: 260px) { .ui-koi-studies-card figcaption span { display: none; } }
+.ui-koi-studies-tail.is-swim { transform-origin: 0 0; animation: ui-koi-studies-sway 1.6s ease-in-out infinite alternate; }
+.ui-koi-studies-fin-l path.is-swim, .ui-koi-studies-fin-r path.is-swim { transform-origin: 0 0; animation: ui-koi-studies-flap 2.2s ease-in-out infinite alternate; }
+.ui-koi-studies-nav { flex: none; display: flex; align-items: center; gap: 8px; }
+.ui-koi-studies-btn, .ui-koi-studies-dot { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border-radius: 50%; border: 1px solid var(--line-strong, #a1a1aa); background: var(--raised, #fff); color: var(--ink, #18181b); cursor: pointer; }
+.ui-koi-studies-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ui-koi-studies-btn:hover { border-color: var(--primary, #2563eb); }
+.ui-koi-studies-dots { display: flex; gap: 2px; }
+.ui-koi-studies-dot { width: 24px; height: 24px; border: 0; background: transparent; }
+.ui-koi-studies-dot span { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong, #a1a1aa); transition: transform 0.2s, background 0.2s; }
+.ui-koi-studies-dot[aria-current="true"] span { background: var(--primary, #2563eb); transform: scale(1.35); }
+.ui-koi-studies-btn:focus-visible, .ui-koi-studies-dot:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+@media (pointer: coarse) { .ui-koi-studies-btn, .ui-koi-studies-dot { width: 44px; height: 44px; } }
+.ui-koi-studies-live { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@keyframes ui-koi-studies-fly { 0% { z-index: 20; transform: translate3d(0, 0, 0); } 38% { z-index: 20; transform: translate3d(calc(var(--ui-koi-studies-fd) * 46cqw), -2cqh, 40px) rotateZ(calc(var(--ui-koi-studies-fd) * 9deg)); } 100% { z-index: 0; } }
+@keyframes ui-koi-studies-sway { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
+@keyframes ui-koi-studies-flap { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+@media (prefers-reduced-motion: reduce) { .ui-koi-studies-card, .ui-koi-studies-pixels rect, .ui-koi-studies-dot span { transition: none; } .ui-koi-studies-card.is-flying { animation: none; } .ui-koi-studies-tail.is-swim, .ui-koi-studies-fin-l path.is-swim, .ui-koi-studies-fin-r path.is-swim { animation: none; } }

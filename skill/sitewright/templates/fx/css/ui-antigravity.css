@@ -1,0 +1,5 @@
+.ui-antigravity{position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  background:radial-gradient(2px 2px at 20% 80%,var(--primary,#2563eb),transparent),radial-gradient(3px 3px at 65% 55%,var(--signal,#f59e0b),transparent),radial-gradient(2px 2px at 85% 25%,var(--primary,#2563eb),transparent),radial-gradient(3px 3px at 35% 30%,var(--ink,#111),transparent),
+    linear-gradient(0deg,color-mix(in srgb,var(--primary,#2563eb) 14%,var(--surface,#fff)),var(--surface,#fff))}
+.ui-antigravity-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-antigravity[data-ready='off'] .ui-antigravity-canvas{display:none}

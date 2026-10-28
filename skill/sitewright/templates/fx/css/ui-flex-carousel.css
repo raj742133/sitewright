@@ -1,0 +1,29 @@
+.ui-flex-carousel-root { position: relative; display: flex; flex-direction: column; gap: 10px; width: 100%; min-height: 160px; min-width: 0; padding: 12px; box-sizing: border-box; color: var(--ink, #18181b); font-family: var(--font-body, system-ui, sans-serif); container-type: inline-size; }
+.ui-flex-carousel-list { flex: 1; min-height: 0; display: flex; flex-direction: row; gap: 8px; touch-action: pan-y; }
+.ui-flex-carousel-panel { position: relative; flex: 1 1 0; min-height: 26px; min-width: 0; min-height: 0; overflow: hidden; border-radius: var(--radius, 12px); border: 1px solid var(--line, rgba(127,127,127,0.25)); background: var(--raised, #fff); transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer; }
+.ui-flex-carousel-panel[data-on] { flex-grow: 6; cursor: default; }
+.ui-flex-carousel-panel::after { content: ''; position: absolute; inset: 0; background: rgba(6,8,20,0.28); transition: opacity 0.4s; pointer-events: none; }
+.ui-flex-carousel-panel[data-on]::after { opacity: 0; }
+.ui-flex-carousel-strip { position: absolute; z-index: 1; left: 50%; bottom: 12px; writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg); white-space: nowrap; font: 600 12px/1 var(--font-body, system-ui); letter-spacing: 0.04em; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.7); transition: opacity 0.25s; pointer-events: none; }
+.ui-flex-carousel-panel[data-on] .ui-flex-carousel-strip { opacity: 0; }
+.ui-flex-carousel-cap { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 2px; padding: 36px 16px 14px; color: #fff; background: linear-gradient(to top, rgba(6,8,20,0.85), rgba(6,8,20,0.5) 55%, transparent); opacity: 0; transform: translateY(8px); transition: opacity 0.35s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); pointer-events: none; }
+.ui-flex-carousel-panel[data-on] .ui-flex-carousel-cap { opacity: 1; transform: none; transition-delay: 0.15s; }
+.ui-flex-carousel-cap strong { font-size: 16px; font-weight: 700; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ui-flex-carousel-cap span { font-size: 12px; line-height: 1.35; opacity: 0.92; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ui-flex-carousel-go { position: absolute; z-index: 3; top: 10px; right: 10px; padding: 6px 12px; border-radius: 999px; font: 600 12px/1.2 var(--font-body, system-ui); color: #fff; background: rgba(6,8,20,0.72); border: 1px solid rgba(255,255,255,0.35); text-decoration: none; }
+.ui-flex-carousel-hit { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: inherit; border-radius: inherit; }
+.ui-flex-carousel-hit:focus-visible, .ui-flex-carousel-btn:focus-visible, .ui-flex-carousel-go:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: -3px; box-shadow: inset 0 0 0 5px rgba(255,255,255,0.85); }
+.ui-flex-carousel-btn:focus-visible { outline-offset: 2px; box-shadow: none; }
+.ui-flex-carousel-bar { display: flex; align-items: center; justify-content: center; gap: 10px; flex: none; }
+.ui-flex-carousel-btn { display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 999px; border: 1px solid var(--line-strong, rgba(127,127,127,0.45)); background: var(--raised, #fff); color: var(--ink, #18181b); cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+.ui-flex-carousel-btn:hover { border-color: var(--primary, #2563eb); background: color-mix(in srgb, var(--primary, #2563eb) 10%, var(--raised, #fff)); }
+.ui-flex-carousel-count { min-width: 56px; text-align: center; font: 500 12px/1 var(--font-mono, ui-monospace, monospace); color: var(--muted, #52525b); }
+@container (max-width: 480px) {
+  .ui-flex-carousel-list { flex-direction: column; gap: 6px; }
+  .ui-flex-carousel-panel[data-on] { flex-grow: 5; }
+  .ui-flex-carousel-strip { writing-mode: horizontal-tb; transform: none; left: 12px; bottom: auto; top: 50%; margin-top: -6px; }
+  .ui-flex-carousel-cap { padding: 22px 12px 8px; }
+  .ui-flex-carousel-cap span { display: none; }
+}
+@media (pointer: coarse) { .ui-flex-carousel-btn { width: 44px; height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-flex-carousel-panel, .ui-flex-carousel-cap, .ui-flex-carousel-strip, .ui-flex-carousel-panel::after { transition: none; } }

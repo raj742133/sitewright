@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid distortion · React component · Sitewright</title>
+<meta name="description" content="A line grid that bends away from the pointer and springs back; taps send ripples through it and a slow swell keeps it alive when idle. Behind a hero or…">
+<meta name="theme-color" content="#f4f2ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0c0b" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Grid distortion: a Sitewright component">
+<meta property="og:description" content="A line grid that bends away from the pointer and springs back; taps send ripples through it and a slow swell keeps it alive when idle. Behind a hero or…">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://sitewright-skill.vercel.app/assets/og.png">
+<meta property="og:url" content="https://sitewright-skill.vercel.app/components/grid-distortion/">
+<link rel="canonical" href="https://sitewright-skill.vercel.app/components/grid-distortion/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/catalog.css">
+<script>try{var t=localStorage.getItem('sitewright-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Sitewright home"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="44" height="44" rx="12" fill="var(--primary)"/><g fill="var(--primary-ink)"><rect x="11" y="10" width="26" height="7" rx="3.5"/><rect x="11" y="10" width="7" height="14" rx="3.5"/><rect x="11" y="20.5" width="26" height="7" rx="3.5"/><rect x="30" y="20.5" width="7" height="17.5" rx="3.5"/><rect x="11" y="31" width="26" height="7" rx="3.5"/></g></svg>Sitewright</a>
+    <nav id="nav" aria-label="Main">
+        <a href="/components/" aria-current="page">Components</a>
+        <a href="/dashboards/">Dashboards</a>
+        <a href="/demo/effects/">Effects</a>
+        <a href="/icons/">Icons</a>
+        <a class="ext" href="https://github.com/raj742133/sitewright#readme" rel="noopener">Docs<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a class="nav-gh" href="https://github.com/raj742133/sitewright" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a>
+    </nav>
+    <button class="search-btn" id="search" type="button" aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K /" aria-label="Search components and pages"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="search-t">Search</span><kbd id="kbd">Ctrl K</kbd></button>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch colour theme" title="Switch colour theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg></button>
+    <a class="icon-btn gh-btn" href="https://github.com/raj742133/sitewright" rel="noopener" aria-label="Sitewright on GitHub" title="Star Sitewright on GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+    <button class="icon-btn menu-btn" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main id="main">
+<div class="wrap det">
+  <div class="det-main">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/components/">Components</a></li><li><a href="/components/?g=backgrounds">Backgrounds</a></li><li aria-current="page">Grid distortion</li></ol></nav>
+    <h1>Grid distortion</h1>
+    <p class="det-sub">A line grid that bends away from the pointer and springs back; taps send ripples through it and a slow swell keeps it alive when idle.</p>
+
+    
+    <section class="stage-wrap" aria-label="Live preview" id="stage-wrap" data-id="grid-distortion">
+      <div class="toolbar" role="toolbar" aria-label="Preview controls">
+        <div class="seg" role="group" aria-label="Preview theme"><button type="button" data-theme="light" aria-pressed="true">Light</button><button type="button" data-theme="dark" aria-pressed="false">Dark</button></div>
+        <div class="seg" role="group" aria-label="Stage width"><button type="button" data-w="320" aria-pressed="false">Compact<small>320</small></button><button type="button" data-w="480" aria-pressed="true">Default<small>480</small></button><button type="button" data-w="760" aria-pressed="false">Wide<small>760</small></button></div>
+        <div class="tb-end"><button type="button" class="btn-s" id="replay">Replay</button><a class="btn-s" id="full" href="/demo/effects/c/grid-distortion/?theme=light&primary=%23c2410c&signal=%230f766e">Full screen</a></div>
+      </div>
+      <div class="stage" id="stage" data-theme="light">
+        <iframe id="pv" title="Live preview of Grid distortion" data-src="/demo/effects/c/grid-distortion/"></iframe>
+        <span class="stage-w" id="stage-w" aria-hidden="true">480 px</span>
+      </div>
+      <noscript><p class="muted">Turn on JavaScript to run the live preview, or <a href="/demo/effects/c/grid-distortion/">open it full screen</a>.</p></noscript>
+    </section>
+
+    <section class="blk"><h2>What it is for</h2><p>Behind a hero or feature section where the page should feel responsive to the cursor (first child of a position:relative section).</p></section>
+
+    <section class="blk"><h2>Use it</h2>
+      <div class="codes">
+        <div class="code"><span class="lbl">1 &middot; site.json</span><pre tabindex="0"><code>&quot;effects&quot;: { &quot;components&quot;: [&quot;grid-distortion&quot;] }</code></pre><button class="copy" type="button" data-copy="&quot;effects&quot;: { &quot;components&quot;: [&quot;grid-distortion&quot;] }">Copy</button></div>
+        <div class="code"><span class="lbl">or on the command line</span><pre tabindex="0"><code>node ~/.claude/skills/sitewright/scripts/scaffold.mjs --config site.json --out ./my-site --components grid-distortion</code></pre><button class="copy" type="button" data-copy="node ~/.claude/skills/sitewright/scripts/scaffold.mjs --config site.json --out ./my-site --components grid-distortion">Copy</button></div>
+        <div class="code"><span class="lbl">2 &middot; import it</span><pre tabindex="0"><code>import { GridDistortion } from '@/components/fx/ui';</code></pre><button class="copy" type="button" data-copy="import { GridDistortion } from '@/components/fx/ui';">Copy</button></div>
+      </div>
+    </section>
+
+    <section class="blk two">
+      <div><h2>Files</h2><ul class="files"><li><code>components/fx/ui/GridDistortion.tsx</code></li><li><code>components/fx/ui/_bg-c-canvas.ts</code></li><li><code>components/fx/ui/_bg-c-demo.tsx</code></li><li><code>components/fx/ui/_t2.ts</code></li><li><code>ui-grid-distortion.css</code> <span class="muted">styles</span></li></ul></div>
+      <div><h2>Source</h2><p>Original to Sitewright. MIT licensed.</p><p class="muted small">Credits and licences: <a href="https://github.com/raj742133/sitewright/blob/main/THIRD_PARTY_NOTICES.md" rel="noopener">third-party notices</a>.</p></div>
+    </section>
+
+    <section class="blk"><h2>Accessibility</h2>
+      <ul class="a11y">
+        <li><b>Keyboard.</b> Components in the kit are written to be reached and used with the keyboard. Try it: press Tab inside the preview.</li>
+        <li><b>Reduced motion.</b> With <code>prefers-reduced-motion</code> on, animation settles to its finished state at once.</li>
+        <li><b>Touch.</b> Pointer-follow effects are skipped on touch screens; controls stay finger-sized.</li>
+      </ul>
+    </section>
+    <div class="pn"><a rel="prev" href="/components/grainient/"><small>&larr; Previous</small><b>Grainient</b></a><a rel="next" href="/components/grid-motion/"><small>Next &rarr;</small><b>Grid motion</b></a></div>
+  </div>
+  <aside class="rail" aria-label="More in Backgrounds">
+    <div class="pn"><a rel="prev" href="/components/grainient/"><small>&larr; Previous</small><b>Grainient</b></a><a rel="next" href="/components/grid-motion/"><small>Next &rarr;</small><b>Grid motion</b></a></div>
+    <h2>More in Backgrounds <span>62</span></h2>
+    <ul class="rail-list"><li><a href="/components/acid-squares/">Acid squares</a></li><li><a href="/components/aero-shards/">Aero shards</a></li><li><a href="/components/antigravity/">Antigravity</a></li><li><a href="/components/balatro/">Balatro swirl</a></li><li><a href="/components/ballpit/">Ballpit</a></li><li><a href="/components/color-bends/">Color bends</a></li><li><a href="/components/crtwarp/">CRT warp</a></li><li><a href="/components/dark-veil/">Dark veil</a></li><li><a href="/components/dither/">Dither</a></li><li><a href="/components/dot-field/">Dot field</a></li><li><a href="/components/evil-eye/">Evil eye</a></li><li><a href="/components/faulty-terminal/">Faulty terminal</a></li><li><a href="/components/floating-lines/">Floating lines</a></li><li><a href="/components/flux-lines/">Flux lines</a></li><li><a href="/components/ghost-fibers/">Ghost fibers</a></li><li><a href="/components/gradient-ascii/">Gradient ASCII</a></li><li><a href="/components/gradient-blinds/">Gradient blinds</a></li><li><a href="/components/gradient-waves/">Gradient waves</a></li><li><a href="/components/grainient/">Grainient</a></li><li><a href="/components/grid-distortion/" aria-current="page">Grid distortion</a></li><li><a href="/components/grid-motion/">Grid motion</a></li><li><a href="/components/grid-scan/">Grid scan</a></li><li><a href="/components/hyperspeed/">Hyperspeed</a></li><li><a href="/components/iridescence/">Iridescence</a></li><li><a href="/components/letter-glitch/">Letter glitch</a></li><li><a href="/components/lightfall/">Lightfall</a></li><li><a href="/components/lightning/">Lightning</a></li><li><a href="/components/light-pillar/">Light pillar</a></li><li><a href="/components/light-rays/">Light rays</a></li><li><a href="/components/line-waves/">Line waves</a></li><li><a href="/components/magic-rings/">Magic rings</a></li><li><a href="/components/magnet-lines/">Magnet lines</a></li><li><a href="/components/micro-slats/">Micro slats</a></li><li><a href="/components/pattern-waves/">Pattern waves</a></li><li><a href="/components/pixel-blast/">Pixel blast</a></li><li><a href="/components/pixel-snow/">Pixel snow</a></li><li><a href="/components/plasma/">Plasma</a></li><li><a href="/components/plasma-wave/">Plasma wave</a></li><li><a href="/components/prism/">Prism</a></li><li><a href="/components/prismatic-burst/">Prismatic burst</a></li><li><a href="/components/radar/">Radar</a></li><li><a href="/components/ripple-grid/">Ripple grid</a></li><li><a href="/components/scanner/">Scanner</a></li><li><a href="/components/shape-grid/">Shape grid</a></li><li><a href="/components/shape-waves/">Shape waves</a></li><li><a href="/components/side-rays/">Side rays</a></li><li><a href="/components/silk/">Silk</a></li><li><a href="/components/sliced-waves/">Sliced waves</a></li><li><a href="/components/threads/">Threads</a></li><li><a href="/components/topography/">Topography</a></li><li><a href="/components/web-threads/">Web threads</a></li><li><a href="/components/repelling-dots/">Repelling dots</a></li><li><a href="/components/magic-tree/">Seasons tree</a></li><li><a href="/components/iridescent-foil/">Iridescent foil</a></li><li><a href="/components/dither-veil/">Dither veil</a></li><li><a href="/components/strands/">Strands</a></li><li><a href="/components/drape-background/">Drape background</a></li><li><a href="/components/constellation-field/">Constellation field</a></li><li><a href="/components/predictive-arc/">Predictive arc</a></li><li><a href="/components/portal-field/">Portal field</a></li><li><a href="/components/spark-badge/">Spark badge</a></li><li><a href="/components/elemental-fields/">Elemental fields</a></li></ul>
+    <a class="rail-all" href="/components/?g=backgrounds">All backgrounds &rarr;</a>
+  </aside>
+</div>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div><b class="foot-b">Sitewright</b> &middot; a Claude Code skill &middot; MIT licence<br>Screenshots show fictional brands and data.</div>
+    <nav aria-label="Footer">
+      <a href="/components/">Components</a>
+      <a href="/dashboards/">Dashboards</a>
+      <a href="/demo/effects/">Effects</a>
+      <a href="/icons/">Icons</a>
+      <a href="https://github.com/raj742133/sitewright" rel="noopener">GitHub</a>
+      <a href="https://github.com/raj742133/sitewright/issues" rel="noopener">Issues</a>
+    </nav>
+  </div>
+</footer>
+<script src="/catalog.js" defer></script>
+
+</body>
+</html>

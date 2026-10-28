@@ -1,0 +1,16 @@
+.ui-masonry-root { width: 100%; min-height: 160px; min-width: 0; box-sizing: border-box; padding: 12px; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; color: var(--ink, #18181b); font-family: var(--font-body, system-ui, sans-serif); border-radius: var(--radius, 12px); scrollbar-width: thin; }
+.ui-masonry-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: -2px; }
+.ui-masonry-grid { display: flex; align-items: flex-start; gap: var(--gap); }
+.ui-masonry-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--gap); }
+.ui-masonry-tile { position: relative; display: block; width: 100%; margin: 0; padding: 0; overflow: hidden; flex: none; border-radius: var(--radius, 12px); border: 1px solid var(--line, rgba(127,127,127,0.25)); background: var(--raised, #fff); color: inherit; text-align: left; text-decoration: none; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s, opacity 0.5s var(--delay, 0ms), translate 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms); }
+.ui-masonry-root[data-armed] .ui-masonry-tile:not([data-in]) { opacity: 0; translate: 0 18px; }
+button.ui-masonry-tile, a.ui-masonry-tile { cursor: pointer; }
+button.ui-masonry-tile:hover, a.ui-masonry-tile:hover { transform: translateY(-3px); box-shadow: 0 16px 28px -16px rgba(0,0,0,0.55); }
+.ui-masonry-tile:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-masonry-tile[data-sel] { border-color: var(--primary, #2563eb); box-shadow: 0 0 0 3px var(--primary, #2563eb); }
+.ui-masonry-cap { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 1px; padding: 26px 10px 9px; color: #fff; background: linear-gradient(to top, rgba(6,8,20,0.82), transparent); opacity: 0; transform: translateY(6px); transition: opacity 0.25s, transform 0.3s; }
+.ui-masonry-tile:hover .ui-masonry-cap, .ui-masonry-tile:focus-visible .ui-masonry-cap, .ui-masonry-tile[data-sel] .ui-masonry-cap { opacity: 1; transform: none; }
+.ui-masonry-cap strong { font-size: 13px; font-weight: 700; line-height: 1.25; }
+.ui-masonry-cap span { font-size: 11px; line-height: 1.3; opacity: 0.92; }
+@media (hover: none) { .ui-masonry-cap { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ui-masonry-tile, .ui-masonry-cap { transition: none; } .ui-masonry-root[data-armed] .ui-masonry-tile:not([data-in]) { translate: none; } }

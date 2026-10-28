@@ -1,0 +1,12 @@
+.ui-lanyard-demo { position: relative; height: 100%; min-height: 200px; background: linear-gradient(180deg, color-mix(in srgb, var(--primary, #2563eb) 14%, var(--surface, #fafafa)), var(--surface, #fafafa) 70%); }
+.ui-lanyard-root { position: relative; width: 100%; height: 100%; min-height: 200px; overflow: hidden; font-family: var(--font-body, system-ui); }
+.ui-lanyard-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.ui-lanyard-card { position: absolute; left: 0; top: 0; --u: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(3px * var(--u)); padding: calc(14px * var(--u)) calc(8px * var(--u)) calc(10px * var(--u)); border-radius: calc(10px * var(--u)); background: var(--raised, #fff); color: var(--ink, #18181b); border: 1px solid var(--line-strong, #c2bdb2); box-shadow: 0 10px 22px rgba(0,0,0,.25); cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; overflow: hidden; text-align: center; will-change: transform; outline: none; }
+.ui-lanyard-card:active { cursor: grabbing; }
+.ui-lanyard-card:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
+.ui-lanyard-slot { position: absolute; top: calc(6px * var(--u)); width: calc(26px * var(--u)); height: calc(5px * var(--u)); border-radius: 999px; background: var(--line-strong, #c2bdb2); box-shadow: inset 0 1px 2px rgba(0,0,0,.35); }
+.ui-lanyard-avatar { width: calc(38px * var(--u)); height: calc(38px * var(--u)); display: grid; place-items: center; margin-top: calc(6px * var(--u)); border-radius: 50%; background: linear-gradient(135deg, var(--primary, #2563eb), var(--signal, #f59e0b)); color: var(--surface, #fff); font: 700 calc(14px * var(--u))/1 var(--font-body, system-ui); }
+.ui-lanyard-card strong { font: 700 calc(13px * var(--u))/1.15 var(--font-body, system-ui); }
+.ui-lanyard-role { font: 500 calc(9.5px * var(--u))/1.2 var(--font-body, system-ui); color: var(--muted, #52525b); }
+.ui-lanyard-id { font: 600 calc(8.5px * var(--u))/1 var(--font-mono, monospace); letter-spacing: .1em; color: var(--muted, #52525b); }
+.ui-lanyard-stripe { position: absolute; left: 0; right: 0; bottom: 0; height: calc(8px * var(--u)); background: repeating-linear-gradient(135deg, var(--primary, #2563eb) 0 8px, var(--signal, #f59e0b) 8px 16px); }

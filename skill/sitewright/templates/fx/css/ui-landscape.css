@@ -1,0 +1,9 @@
+.ui-landscape{position:relative;width:100%;height:100%;min-height:120px;overflow:hidden;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--primary,#2563eb) 40%,#0a1020) 0,color-mix(in srgb,var(--signal,#f59e0b) 55%,#2a1a20) 46%,#27331f 46%,#162012)}
+.ui-landscape-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-landscape-bar{position:absolute;left:8px;right:8px;bottom:8px;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none}
+.ui-landscape-chips{pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2px;padding:3px;border-radius:999px;background:color-mix(in srgb,var(--surface,#fff) 80%,transparent);border:1px solid var(--line,#d4d4d8);backdrop-filter:blur(8px)}
+.ui-landscape-chip{min-height:24px;padding:0 9px;border:0;border-radius:999px;background:transparent;color:var(--ink,#18181b);font:600 12px/1 var(--font-mono,monospace);text-transform:capitalize;cursor:pointer}
+.ui-landscape-chip.is-on{background:var(--ink,#18181b);color:var(--surface,#fff)}
+.ui-landscape-chip:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:2px}
+@media (pointer:coarse){.ui-landscape-chip{min-height:44px;min-width:44px;padding:0 12px}}

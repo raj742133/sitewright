@@ -1,0 +1,7 @@
+.ui-particle-text-root { position: relative; width: 100%; min-height: 120px; border-radius: var(--radius, 12px); cursor: crosshair; touch-action: pan-y; outline: none; font-family: var(--font-body, system-ui); user-select: none; -webkit-tap-highlight-color: transparent; }
+.ui-particle-text-root:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-particle-text-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ui-particle-text-plain { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 800; font-size: clamp(28px, 12cqw, 96px); color: var(--primary, #2563eb); letter-spacing: -0.02em; }
+.ui-particle-text-demo { position: relative; height: 100%; min-height: 200px; display: grid; background: radial-gradient(90% 90% at 50% 40%, color-mix(in srgb, var(--primary, #2563eb) 10%, var(--raised, #fff)), var(--surface, #fafafa)); overflow: hidden; }
+.ui-particle-text-demo > .ui-particle-text-root { align-self: stretch; }
+.ui-particle-text-note { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font: 500 11px/1 var(--font-mono, monospace); letter-spacing: 0.08em; color: var(--muted, #6b7280); pointer-events: none; }

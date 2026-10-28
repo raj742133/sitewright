@@ -1,0 +1,3 @@
+.ui-night-temple-scene{position:relative;width:100%;height:100%;min-height:120px;overflow:hidden;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--primary,#2563eb) 14%,#050810),color-mix(in srgb,var(--primary,#2563eb) 38%,#080c18) 80%,#04060d)}
+.ui-night-temple-scene-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}

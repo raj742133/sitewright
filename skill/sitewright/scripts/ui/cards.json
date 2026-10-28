@@ -1,0 +1,182 @@
+[
+ {
+  "id": "accordion-gallery",
+  "label": "Accordion gallery",
+  "desc": "A row of image panels where one is open and the rest collapse to slim strips; click, hover or arrow keys switch, and it stacks vertically in narrow containers.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "AccordionGallery.tsx",
+   "_cards-art.tsx",
+   "_cards-use.ts"
+  ],
+  "css": [
+   "ui-accordion-gallery",
+   "ui-cards-art"
+  ],
+  "use": "Portfolio or destination showcases (fills its parent; give the parent a height)."
+ },
+ {
+  "id": "animated-list",
+  "label": "Animated list",
+  "desc": "A feed whose rows rise in one by one, slide in when added and fold away when dismissed, with arrow-key navigation and Delete to dismiss.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "AnimatedList.tsx",
+   "_cards-use.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-animated-list"
+  ],
+  "use": "Activity feeds, notifications and inboxes (scrolls inside its parent)."
+ },
+ {
+  "id": "border-glow",
+  "label": "Border glow",
+  "desc": "A surface with a glowing edge that follows the pointer and leaks a soft halo; a slow light circles the border when idle, and focus lights it up.",
+  "source": "Original",
+  "group": "hover",
+  "files": [
+   "BorderGlow.tsx",
+   "_cards-use.ts"
+  ],
+  "css": [
+   "ui-border-glow"
+  ],
+  "use": "Wrap pricing cards, feature tiles or call-out panels."
+ },
+ {
+  "id": "bounce-cards",
+  "label": "Bounce cards",
+  "desc": "A fan of cards that bounces into place on scroll; hover or focus lifts one and nudges the others, click gives a hop and reports the choice.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "BounceCards.tsx",
+   "_cards-art.tsx",
+   "_cards-use.ts"
+  ],
+  "css": [
+   "ui-bounce-cards",
+   "ui-cards-art"
+  ],
+  "use": "Hero visuals, gallery teasers and \"pick a card\" selectors."
+ },
+ {
+  "id": "card-swap",
+  "label": "Card swap",
+  "desc": "A stacked card deck where the front card drops away and returns to the back; buttons, dots, arrow keys and a pausable autoplay switch cards.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "CardSwap.tsx",
+   "_cards-art.tsx",
+   "_cards-use.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-card-swap",
+   "ui-cards-art"
+  ],
+  "use": "Feature walkthroughs and step previews beside hero copy."
+ },
+ {
+  "id": "chroma-grid",
+  "label": "Chroma grid",
+  "desc": "A grid of tinted link/button cards where a pointer or focus spotlight keeps colour while the rest of the grid greys out.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "ChromaGrid.tsx",
+   "_cards-art.tsx"
+  ],
+  "css": [
+   "ui-chroma-grid",
+   "ui-cards-art"
+  ],
+  "use": "Team pages, partner grids and directory listings."
+ },
+ {
+  "id": "decay-card",
+  "label": "Decay card",
+  "desc": "A card whose picture frays away like old paper under hover or focus, with a button to let it crumble fully and restore it; an SVG-filter effect.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "DecayCard.tsx",
+   "_cards-art.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-decay-card",
+   "ui-cards-art"
+  ],
+  "use": "Editorial, archive or story cards with an artwork area."
+ },
+ {
+  "id": "folder",
+  "label": "Folder",
+  "desc": "A drawn folder that opens to fan out the papers inside; click, Enter or Space toggles, hover peeks, and paper content is real DOM.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "Folder.tsx",
+   "_cards-use.ts"
+  ],
+  "css": [
+   "ui-folder"
+  ],
+  "use": "File collections, resource bundles and download groups."
+ },
+ {
+  "id": "pixel-card",
+  "label": "Pixel card",
+  "desc": "A card covered by tiny squares that bloom outward from the pointer or focus point and shimmer, then fold away; drawn on canvas.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "PixelCard.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-pixel-card"
+  ],
+  "use": "Feature cards and call-outs that should wake on interaction."
+ },
+ {
+  "id": "profile-card",
+  "label": "Profile card",
+  "desc": "A person card with banner, generated avatar, status dot, bio, stats and Follow / Message actions, plus a pointer-driven foil sheen; adapts to its container width.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "ProfileCard.tsx",
+   "_cards-art.tsx",
+   "_cards-use.ts"
+  ],
+  "css": [
+   "ui-profile-card",
+   "ui-cards-art"
+  ],
+  "use": "Team, author and community member pages."
+ },
+ {
+  "id": "reflective-card",
+  "label": "Reflective card",
+  "desc": "A glass card on a glossy floor with a faded mirrored reflection and a highlight that follows the pointer (drifts on its own otherwise).",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "ReflectiveCard.tsx",
+   "_cards-art.tsx",
+   "_cards-use.ts"
+  ],
+  "css": [
+   "ui-reflective-card",
+   "ui-cards-art"
+  ],
+  "use": "Product, ticket or pass showcases on a plain backdrop."
+ }
+]

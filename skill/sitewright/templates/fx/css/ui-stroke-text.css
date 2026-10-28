@@ -1,0 +1,15 @@
+.ui-stroke-text-root { margin: 0; width: 100%; font-family: var(--font-body, system-ui); }
+.ui-stroke-text-btn { display: block; width: 100%; max-width: 760px; margin-inline: auto; padding: 0; min-height: 44px; border: 0; background: none; color: var(--ink, #111); cursor: pointer; border-radius: 8px; -webkit-tap-highlight-color: transparent; }
+.ui-stroke-text-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-stroke-text-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ui-stroke-text-t { font-family: var(--font-body, system-ui); font-weight: 900; font-size: 100px; letter-spacing: -2px; fill: var(--ink, #111); fill-opacity: 1; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 700; stroke-dashoffset: 0; paint-order: stroke; }
+.ui-stroke-text-btn[data-variant='outline'] .ui-stroke-text-t { fill: transparent; fill-opacity: 0; }
+.ui-stroke-text-t[data-phase='pre'] { stroke-dashoffset: 700; fill-opacity: 0; }
+.ui-stroke-text-t[data-phase='draw'] { animation: ui-stroke-text-draw var(--dur, 2.2s) cubic-bezier(0.5, 0, 0.2, 1) both, ui-stroke-text-fill calc(var(--dur, 2.2s) * 0.45) ease-out calc(var(--dur, 2.2s) * 0.75) both; }
+.ui-stroke-text-btn[data-variant='outline'] .ui-stroke-text-t[data-phase='draw'] { animation: ui-stroke-text-draw var(--dur, 2.2s) cubic-bezier(0.5, 0, 0.2, 1) both; }
+@keyframes ui-stroke-text-draw { from { stroke-dashoffset: 700; } to { stroke-dashoffset: 0; } }
+@keyframes ui-stroke-text-fill { from { fill-opacity: 0; } to { fill-opacity: 1; } }
+
+.ui-stroke-text-demo { grid-template-columns: minmax(0, 560px); justify-content: center; height: 100%; min-height: 200px; display: grid; place-content: center; gap: 8px; padding: 16px 20px; background: radial-gradient(70% 70% at 50% 100%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent), var(--surface, #fafafa); overflow: hidden; }
+.ui-stroke-text-note { text-align: center; font: 600 11px/1 var(--font-mono, monospace); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted, #6b7280); }
+@media (prefers-reduced-motion: reduce) { .ui-stroke-text-t { animation: none !important; stroke-dashoffset: 0 !important; } }
