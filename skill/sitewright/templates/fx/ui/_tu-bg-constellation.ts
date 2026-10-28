@@ -140,7 +140,7 @@ function lattice(f0: Frame, density: number): Painter {
       for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
         const [x, y, m] = at(i, j), hot = Math.min(1, m / 22);
         const col = hot > 0.3 ? B : N;
-        const a = (f.dark ? 0.28 : 0.22) + hot * 0.4;
+        const a = (f.dark ? 0.16 : 0.13) + hot * 0.45;
         if (i + 1 < cols) { const [x2, y2] = at(i + 1, j); line(f, x, y, x2, y2, rgba(col, a)); }
         if (j + 1 < rows) { const [x2, y2] = at(i, j + 1); line(f, x, y, x2, y2, rgba(col, a)); }
         if (i + 1 < cols && j + 1 < rows && (i + j) % 2 === 0) { const [x2, y2] = at(i + 1, j + 1); line(f, x, y, x2, y2, rgba(col, a * 0.5)); }

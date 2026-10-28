@@ -145,7 +145,7 @@
   .hnt-links, .hnt-pill { display: none; }
   .hnt-burger { display: grid; }
   .hnt-hero { min-height: 0; align-content: start; padding-top: 44px; padding-bottom: calc(var(--sh) - 50px); }
-  .hnt { --sh: max(520px, 84cqi); }
+  .hnt-hero { --sh: max(520px, 84cqi); }
   .hnt-layer { left: 50%; width: auto; height: var(--sh); aspect-ratio: 16 / 9; translate: -66.25% 0; }
   .hnt-moonwrap { display: none; }
   .hnt-vig { background: linear-gradient(180deg, color-mix(in srgb, var(--hnt-sky0) 60%, transparent), transparent 60%); }
@@ -167,7 +167,7 @@
   .hnt-foot nav { justify-content: flex-start; }
   .hnt-actions > * { flex: 1 1 100%; }
   .hnt-facts dd { font-size: 16px; }
-  .hnt { --sh: max(470px, 84cqi); }
+  .hnt-hero { --sh: max(470px, 84cqi); }
 }
 @container hnt (min-width: 901px) and (max-width: 1180px) { .hnt-ritgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hnt-cards { gap: 12px; } }
 @media (prefers-reduced-motion: reduce) {

@@ -19,8 +19,8 @@ function arc(): Painter {
         const dx = x - cx, dy = y - cy, d = Math.hypot(dx, dy) - rr;
         const ang = Math.atan2(dy, dx);
         const pulse = 0.5 + 0.5 * Math.sin(ang * 9 - f.t * 1.6);
-        const near = Math.exp(-(d * d) / (2 * cell * cell * 5));
-        const inner = d < 0 ? Math.exp(d / (cell * 9)) * 0.22 : 0;
+        const near = Math.exp(-(d * d) / (2 * cell * cell * 2.2));
+        const inner = d < 0 ? Math.exp(d / (cell * 7)) * 0.16 : 0;
         const v = Math.min(1, near * (0.55 + pulse * 0.6) + inner * (0.6 + 0.4 * pulse));
         if (v < 0.04) continue;
         const col = mix(A, B, smooth(-0.2, 0.2, Math.cos(ang * 2 + f.t * 0.2)) * 0.8 + (d > 0 ? 0 : 0.1));
@@ -161,9 +161,9 @@ function flow(f0: Frame): Painter {
       c.lineWidth = 1.4; c.lineCap = 'round';
       for (const p of ps) {
         const a = fbm2(p.x * sc, p.y * sc + f.t * 0.05) * 9.4;
-        p.x += Math.cos(a) * 46 * f.dt; p.y += Math.sin(a) * 46 * f.dt;
+        p.x += Math.cos(a) * 80 * f.dt; p.y += Math.sin(a) * 80 * f.dt;
         if (f.ptr.inside) { const dx = p.x - f.ptr.x, dy = p.y - f.ptr.y, d = Math.hypot(dx, dy); if (d < 120 && d > 1) { p.x += (dx / d) * (1 - d / 120) * 90 * f.dt; p.y += (dy / d) * (1 - d / 120) * 90 * f.dt; } }
-        p.age += f.dt; p.h.push(p.x, p.y); if (p.h.length > 32) p.h.splice(0, 2);
+        p.age += f.dt; p.h.push(p.x, p.y); if (p.h.length > 56) p.h.splice(0, 2);
         if (p.age > p.life || p.x < -20 || p.y < -20 || p.x > f.w + 20 || p.y > f.h + 20) { spawn(f, p); continue; }
         const fade = Math.min(1, p.age / 0.6) * Math.min(1, (p.life - p.age) / 0.8);
         const n = p.h.length / 2;

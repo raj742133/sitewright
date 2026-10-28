@@ -142,7 +142,7 @@ export function Sketchbook({ reduced, pages = PAGES, name }: SketchbookProps) {
       </div>
       <div className="hps-bk-bar">
         <button type="button" className="hps-ib" onClick={() => go(-1)} disabled={turned <= 0} aria-label="Previous page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <p className="hps-bk-label" aria-live="polite"><b>{label}</b><span className="hps-sr">{shown ? `. ${shown}.` : '.'}</span></p>
+        <p className="hps-bk-label" aria-live="polite"><b>{label}</b><span className="hps-sr">{shown ? ` ${shown}.` : ''}</span></p>
         <div className="hps-bk-dots" role="group" aria-label="Jump to a spread">
           {Array.from({ length: L + 1 }, (_, n) => <button key={n} type="button" className="hps-dot" aria-label={`Spread ${n + 1} of ${L + 1}`} aria-current={n === turned ? 'true' : undefined} onClick={() => jump(n)}><i /></button>)}
         </div>

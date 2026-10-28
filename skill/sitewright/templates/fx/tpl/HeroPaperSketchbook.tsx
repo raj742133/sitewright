@@ -133,7 +133,7 @@ export default function HeroPaperSketchbook({ name = 'Odile Marsh', className }:
             <div className="hps-sheet hps-sheet-b"><span className="hps-tape hps-tape-b" /><Plate kind="moth" /></div>
             <div className="hps-sheet hps-sheet-c"><Plate kind="teapot" /></div>
             <svg className="hps-pencil" viewBox="0 0 240 22"><rect x="40" y="3" width="150" height="16" rx="1.5" className="hps-pen-body" /><rect x="40" y="3" width="150" height="5" className="hps-pen-hi" /><rect x="190" y="3" width="14" height="16" className="hps-pen-fer" /><rect x="204" y="3" width="14" height="16" rx="3" className="hps-pen-er" /><path d="M40 3L8 11l32 8z" className="hps-pen-wood" /><path d="M14 9.2L6 11l8 1.8z" className="hps-pen-lead" /></svg>
-            <svg className="hps-stamp" viewBox="0 0 120 120"><defs><path id="hps-circ" d="M60 60m-42 0a42 42 0 1 1 84 0a42 42 0 1 1-84 0" /></defs><circle cx="60" cy="60" r="56" /><circle cx="60" cy="60" r="31" /><text><textPath href="#hps-circ">ORIGINAL DRAWINGS * PORTO * INK AND WASH *</textPath></text><path d="M48 62l8 8 17-18" /></svg>
+            <svg className="hps-stamp" viewBox="0 0 120 120"><defs><path id="hps-circ" d="M60 60m-42 0a42 42 0 1 1 84 0a42 42 0 1 1-84 0" /></defs><circle cx="60" cy="60" r="56" /><circle cx="60" cy="60" r="31" /><text><textPath href="#hps-circ">ORIGINAL DRAWINGS * PORTO *</textPath></text><path d="M48 62l8 8 17-18" /></svg>
           </div>
         </section>
 

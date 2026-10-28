@@ -37,5 +37,24 @@
       "tpl-hero-living-green"
     ],
     "use": "organic product, skincare, wellness or garden brand landing page"
+  },
+  {
+    "id": "hero-book-showcase",
+    "label": "Book showcase hero",
+    "desc": "Editorial publisher landing page: oversized serif headline that slides on scroll, a fan of six SVG book covers that works as a keyboard tab list with a detail panel, excerpt dialog and reading list, a canvas-poster media player with seek, speed, captions and a clickable transcript, and a validated newsletter.",
+    "source": "Original",
+    "group": "page",
+    "files": [
+      "HeroBookShowcase.tsx",
+      "_ha-kit.tsx",
+      "_ha-books.tsx",
+      "_ha-poster.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-heroes-a",
+      "tpl-hero-book-showcase"
+    ],
+    "use": "publisher, bookshop, magazine or editorial landing page"
   }
 ]

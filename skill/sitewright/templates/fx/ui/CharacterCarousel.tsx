@@ -47,7 +47,7 @@ export default function CharacterCarousel({ variant = 'filmstrip', items = CAST,
         s = { o: o.toFixed(3), sc: (1 - Math.min(a, 2) * 0.09).toFixed(3), ry: '0', y: '0', z: '0', op: Math.max(0, 1 - Math.max(0, a - 1.2) * 0.45).toFixed(2), gr: Math.min(1, a * 0.9).toFixed(2) };
       } else {
         const c = Math.max(-2.6, Math.min(2.6, o));
-        s = { o: (Math.sign(o) * Math.pow(a, 0.92) * 0.9).toFixed(3), sc: (1 - Math.min(a, 2.5) * 0.06).toFixed(3), ry: (-c * 26).toFixed(1), y: (Math.sin(o * 0.95 + wave * 1.5) * 9 + a * a * 2).toFixed(1), z: (-Math.min(a, 3) * 90).toFixed(0), op: Math.max(0, 1 - Math.max(0, a - 2) * 0.6).toFixed(2), gr: Math.min(1, a * 0.35).toFixed(2) };
+        s = { o: (Math.sign(o) * Math.pow(a, 0.92) * 0.9).toFixed(3), sc: (1 - Math.min(a, 2.5) * 0.06).toFixed(3), ry: (-c * 21).toFixed(1), y: (Math.sin(o * 0.95 + wave * 1.5) * 9 + a * a * 2).toFixed(1), z: (-Math.min(a, 3) * 90).toFixed(0), op: Math.max(0, 1 - Math.max(0, a - 2) * 0.6).toFixed(2), gr: Math.min(1, a * 0.35).toFixed(2) };
       }
       const k = el.style;
       k.setProperty('--character-carousel-o', s.o!); k.setProperty('--character-carousel-sc', s.sc!); k.setProperty('--character-carousel-ry', s.ry!);

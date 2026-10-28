@@ -68,9 +68,9 @@ export default function EngravedCertificate({
           <text x="500" y="332" className="ui-engraved-certificate-name">{recipient}</text>
           <path d="M290 352h420" className="ui-engraved-certificate-rule" />
           {lines.map((l, i) => <text key={i} x="500" y={398 + i * 30} className="ui-engraved-certificate-cite">{l}</text>)}
-          <text x="166" y="624" className="ui-engraved-certificate-meta" textAnchor="start">{date}</text>
+          <text x="166" y="624" className="ui-engraved-certificate-meta ui-engraved-certificate-meta-l">{date}</text>
           <path d="M166 596h210" className="ui-engraved-certificate-rule" />
-          <text x="834" y="624" className="ui-engraved-certificate-meta" textAnchor="end">{serial}</text>
+          <text x="834" y="624" className="ui-engraved-certificate-meta ui-engraved-certificate-meta-r">{serial}</text>
           <path d="M624 596h210" className="ui-engraved-certificate-rule" />
         </g>
         <circle cx="500" cy="604" r="66" className="ui-engraved-certificate-sealbg" />

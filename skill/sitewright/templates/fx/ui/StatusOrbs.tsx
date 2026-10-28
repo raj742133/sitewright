@@ -26,12 +26,12 @@ const GOLD = Math.PI * (3 - Math.sqrt(5));
 /** A small orb made of dots (a Fibonacci sphere) that animates to show an activity state. Drawn on a Canvas 2D at 20px or 56px; reduced motion shows one still pose. */
 export default function StatusOrb({ state = 'thinking', size = 'md', tone = 'primary', label, announce = false, className, style }: StatusOrbProps) {
   const px = size === 'sm' ? 20 : 56;
-  const N = size === 'sm' ? 30 : 110;
+  const N = size === 'sm' ? 28 : 96;
   const base = useMemo(() => Array.from({ length: N }, (_, i) => { const y = 1 - ((i + 0.5) / N) * 2, r = Math.sqrt(1 - y * y), a = i * GOLD; return [Math.cos(a) * r, y, Math.sin(a) * r] as [number, number, number]; }), [N]);
   const draw = (e: CanvasEnv) => {
     const { ctx, w, h, t, pal } = e;
     const R = Math.min(w, h) * (size === 'sm' ? 0.4 : 0.38);
-    const dot = size === 'sm' ? 1.05 : 1.7;
+    const dot = size === 'sm' ? 1.0 : 1.4;
     const c0: RGB = tone === 'signal' ? pal.signal : tone === 'mono' ? pal.ink : pal.primary;
     const c1: RGB = tone === 'aurora' ? pal.signal : c0;
     const ang = state === 'idle' ? t * 0.35 : state === 'listening' ? t * 0.5 : state === 'thinking' ? t * 0.9 : t * 0.4;

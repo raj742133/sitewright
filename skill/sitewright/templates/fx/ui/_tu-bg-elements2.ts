@@ -11,7 +11,7 @@ export function fire(f0: Frame): Painter {
   let acc = 0;
   let embers: { x: number; y: number; vx: number; vy: number; life: number; max: number }[] = [];
   const build = (f: Frame) => {
-    const cell = Math.max(4, Math.round(Math.sqrt((f.w * f.h) / 14000)));
+    const cell = Math.max(2, Math.round(Math.sqrt((f.w * f.h) / 36000)));
     gw = Math.max(24, Math.round(f.w / cell)); gh = Math.max(16, Math.round(f.h / cell));
     heat = new Float32Array(gw * gh);
     off = document.createElement('canvas'); off.width = gw; off.height = gh;
@@ -33,16 +33,17 @@ export function fire(f0: Frame): Painter {
           const bump = 0.55 + 0.45 * Math.sin(x * 0.35 + f.t * 2.1) * Math.sin(x * 0.11 - f.t * 0.7);
           heat[(gh - 1) * gw + x] = Math.min(1, (0.55 + R() * 0.55) * bump + 0.15);
         }
+        const wind = Math.sin(f.t * 0.7) > 0.3 ? 1 : Math.sin(f.t * 0.7) < -0.3 ? -1 : 0;
         for (let y = 0; y < gh - 1; y++) for (let x = 0; x < gw; x++) {
-          const sway = Math.round(Math.sin(f.t * 1.3 + y * 0.18 + x * 0.05) * 0.9 + (R() - 0.5) * 1.6);
-          const sx = Math.min(gw - 1, Math.max(0, x + sway));
-          const below = heat[(y + 1) * gw + sx]!, l = heat[(y + 1) * gw + Math.max(0, sx - 1)]!, r = heat[(y + 1) * gw + Math.min(gw - 1, sx + 1)]!;
-          heat[y * gw + x] = Math.max(0, (below * 2 + l + r) / 4 - (0.028 + R() * 0.03) * (1.3 - (y / gh) * 0.5));
+          const r0 = (y + 1) * gw, l = heat[r0 + Math.max(0, x - 1)]!, c0 = heat[r0 + x]!, r = heat[r0 + Math.min(gw - 1, x + 1)]!;
+          const below = (l + 2 * c0 + r) / 4;
+          const dx = Math.min(gw - 1, Math.max(0, x + (R() < 0.3 ? Math.floor(R() * 3) - 1 : 0) + (R() < 0.3 ? wind : 0)));
+          heat[y * gw + dx] = Math.max(0, below - (0.006 + R() * 0.012) * (1.25 - (y / gh) * 0.4));
         }
         if (px > 0) { const k = Math.round(py) * gw + Math.round(px); if (k >= 0 && k < heat.length) for (let j = -2; j <= 2; j++) for (let i = -2; i <= 2; i++) { const kk = k + j * gw + i; if (kk >= 0 && kk < heat.length) heat[kk] = Math.min(1, heat[kk]! + 0.35); } }
       }
       if (acc > 1 / 30) acc = 0;
-      const hot: RGB = f.dark ? mix(B, [255, 255, 255], 0.6) : mix(B, [255, 255, 255], 0.35), mid = B, low: RGB = f.dark ? mix(A, f.pal.surface, 0.1) : mix(A, f.pal.ink, 0.1);
+      const hot: RGB = f.dark ? mix(A, [255, 245, 220], 0.75) : mix(A, [255, 240, 200], 0.55), mid: RGB = f.dark ? mix(A, [255, 190, 90], 0.25) : A, low: RGB = f.dark ? mix(A, [120, 20, 0], 0.4) : mix(A, f.pal.ink, 0.3);
       const d = img.data;
       for (let k = 0; k < gw * gh; k++) {
         const h = heat[k]!, o = k * 4;
@@ -51,7 +52,9 @@ export function fire(f0: Frame): Painter {
       }
       octx.putImageData(img, 0, 0);
       f.ctx.imageSmoothingEnabled = true; f.ctx.imageSmoothingQuality = 'high';
+      f.ctx.filter = 'blur(2px)';
       f.ctx.drawImage(off, 0, 0, f.w, f.h);
+      f.ctx.filter = 'none';
       if (!f.reduced && embers.length < 40 && R() < 0.5) embers.push({ x: R() * f.w, y: f.h * (0.8 + R() * 0.2), vx: (R() - 0.5) * 20, vy: -(30 + R() * 50), life: 0, max: 1.5 + R() * 2 });
       if (f.reduced && embers.length === 0) for (let i = 0; i < 24; i++) embers.push({ x: R() * f.w, y: f.h * (0.2 + R() * 0.7), vx: 0, vy: 0, life: R() * 2, max: 3 });
       for (let i = embers.length - 1; i >= 0; i--) {
@@ -59,7 +62,7 @@ export function fire(f0: Frame): Painter {
         if (!f.reduced) { e.life += f.dt; e.x += (e.vx + Math.sin(e.life * 3 + i) * 14) * f.dt; e.y += e.vy * f.dt; }
         if (e.life > e.max) { embers.splice(i, 1); continue; }
         const k = 1 - e.life / e.max;
-        f.ctx.fillStyle = rgba(k > 0.5 ? hot : B, k);
+        f.ctx.fillStyle = rgba(k > 0.5 ? B : hot, k);
         f.ctx.beginPath(); f.ctx.arc(e.x, e.y, 0.8 + k * 1.3, 0, 6.2832); f.ctx.fill();
       }
     },
@@ -83,12 +86,13 @@ export function condensation(f0: Frame): Painter {
     fctx.fillStyle = rgba(f.dark ? mix(f.pal.ink, A, 0.2) : mix(f.pal.surface, A, 0.18), strength);
     fctx.fillRect(0, 0, fog.width, fog.height);
   };
-  let started = false;
+  let started = false, wasDark: boolean | null = null;
   return {
     resize: (f) => { build(f); started = false; },
     draw(f) {
       if (!fctx || !fog) return;
       const A = accent(f), B = accent2(f);
+      if (wasDark !== f.dark) { wasDark = f.dark; started = false; }
       if (!started) { started = true; refog(f, A, 1); for (let i = 0; i < 6; i++) refog(f, A, 0.3); }
       else refog(f, A, f.dt * 0.12);
       const wipe = (x: number, y: number, rad: number) => { if (!fctx) return; fctx.globalCompositeOperation = 'destination-out'; fctx.fillStyle = '#000'; fctx.beginPath(); fctx.arc(x / 2, y / 2, rad / 2, 0, 6.2832); fctx.fill(); };
@@ -103,7 +107,9 @@ export function condensation(f0: Frame): Painter {
       }
       const c = f.ctx;
       c.imageSmoothingEnabled = true;
+      c.globalAlpha = 0.55;
       c.drawImage(fog, 0, 0, f.w, f.h);
+      c.globalAlpha = 1;
       const rim: RGB = f.dark ? [255, 255, 255] : f.pal.ink;
       for (const d of drops) {
         c.fillStyle = rgba(f.dark ? [255, 255, 255] : B, f.dark ? 0.1 : 0.12);

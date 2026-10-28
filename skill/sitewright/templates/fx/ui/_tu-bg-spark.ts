@@ -14,22 +14,22 @@ function raster(txt: BadgeText, scale: number) {
   const c = cv.getContext('2d', { willReadFrequently: true });
   if (!c) return null;
   c.scale(scale, scale);
-  c.fillStyle = '#000'; c.strokeStyle = '#000'; c.lineWidth = 3;
-  c.beginPath(); c.roundRect(3, 3, BW - 6, BH - 6, 22); c.stroke();
-  c.lineWidth = 1.5; c.beginPath(); c.roundRect(12, 12, BW - 24, BH - 24, 15); c.stroke();
+  c.fillStyle = '#000'; c.strokeStyle = '#000'; c.lineWidth = 5;
+  c.beginPath(); c.roundRect(4, 4, BW - 8, BH - 8, 22); c.stroke();
+  c.lineWidth = 2.5; c.beginPath(); c.roundRect(12, 12, BW - 24, BH - 24, 15); c.stroke();
   /* emblem: a four-point spark inside a ring */
   const ex = 62, ey = 70;
-  c.lineWidth = 2.5; c.beginPath(); c.arc(ex, ey, 30, 0, 6.2832); c.stroke();
+  c.lineWidth = 4; c.beginPath(); c.arc(ex, ey, 30, 0, 6.2832); c.stroke();
   c.beginPath();
   for (let i = 0; i < 8; i++) { const a = (i / 8) * 6.2832 - 1.5708, r = i % 2 ? 7 : 22; c.lineTo(ex + Math.cos(a) * r, ey + Math.sin(a) * r); }
   c.closePath(); c.fill();
   c.textBaseline = 'alphabetic';
-  c.font = '700 13px system-ui, sans-serif'; c.fillText(txt.org.toUpperCase(), 108, 58);
-  c.font = '800 27px system-ui, sans-serif'; c.fillText(txt.name, 108, 92, 195);
-  c.fillRect(108, 104, 56, 2.5);
-  c.font = '600 12px ui-monospace, monospace'; c.fillText(txt.role.toUpperCase(), 108, 124);
+  c.font = '800 14px system-ui, sans-serif'; c.fillText(txt.org.toUpperCase(), 108, 58);
+  c.font = '900 29px system-ui, sans-serif'; c.fillText(txt.name, 108, 92, 195);
+  c.fillRect(108, 103, 60, 4);
+  c.font = '800 13px ui-monospace, monospace'; c.fillText(txt.role.toUpperCase(), 108, 124);
   c.font = '700 11px ui-monospace, monospace';
-  for (let i = 0; i < 26; i++) c.fillRect(34 + i * 10.4 + (i % 3), 156, 2 + (i * 7) % 4, 18);
+  for (let i = 0; i < 26; i++) c.fillRect(34 + i * 10.4 + (i % 3), 156, 3 + (i * 7) % 4, 18);
   return c.getImageData(0, 0, cv.width, cv.height);
 }
 
@@ -42,12 +42,16 @@ export function sparkBadge(f0: Frame, txt: BadgeText, intensity: number): Painte
   const build = (f: Frame) => {
     sc = Math.min(f.w * 0.86 / BW, f.h * 0.78 / BH, 1.6);
     ox = (f.w - BW * sc) / 2; oy = (f.h - BH * sc) / 2;
-    const rs = Math.min(2, f.dpr) * Math.min(1, 1.2);
-    const img = raster(txt, sc * rs);
+    const img = raster(txt, sc);
     parts = []; embers = [];
     if (!img) return;
-    const total = img.width * img.height;
-    let step = 2; while ((total / (step * step)) * 0.18 > 2600 && step < 8) step++;
+    let step = 2;
+    for (;;) {
+      let n = 0;
+      for (let y = 0; y < img.height; y += step) for (let x = 0; x < img.width; x += step) if (img.data[(y * img.width + x) * 4 + 3]! > 120) n++;
+      if (n <= 3800 || step >= 6) break;
+      step++;
+    }
     for (let y = 0; y < img.height; y += step) for (let x = 0; x < img.width; x += step) {
       if (img.data[(y * img.width + x) * 4 + 3]! > 120) {
         const hx = ox + (x / img.width) * BW * sc, hy = oy + (y / img.height) * BH * sc;
@@ -83,7 +87,7 @@ export function sparkBadge(f0: Frame, txt: BadgeText, intensity: number): Painte
         const band = Math.exp(-((p.hx - sweepX) ** 2) / (2 * 22 * 22));
         const col = mix(mix(A, B, smooth(0.3, 0.9, p.u)), B, Math.max(p.hot, band));
         c.fillStyle = rgba(col, Math.min(1, 0.78 + p.hot * 0.3 + band * 0.3));
-        const s = 1.5 + p.hot * 1.2 + band * 0.8;
+        const s = 1.7 + p.hot * 1.2 + band * 0.8;
         c.fillRect(p.x - s / 2, p.y - s / 2, s, s);
         if (!f.reduced && parts.length && R() < 0.00018 * intensity * (1 + band * 12)) embers.push({ x: p.x, y: p.y, vx: (R() - 0.5) * 20, vy: -20 - R() * 30, life: 0, max: 1.4 + R() * 1.8, hot: R() });
       }

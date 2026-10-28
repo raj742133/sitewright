@@ -10,7 +10,7 @@ export function water(f0: Frame): Painter {
   let off: HTMLCanvasElement | null = null, octx: CanvasRenderingContext2D | null = null, img: ImageData | null = null;
   let acc = 0, rain = 0, lx = -1, ly = -1;
   const build = (f: Frame) => {
-    const cell = Math.max(3, Math.round(Math.sqrt((f.w * f.h) / 26000)));
+    const cell = Math.max(2, Math.round(Math.sqrt((f.w * f.h) / 52000)));
     gw = Math.max(16, Math.round(f.w / cell)); gh = Math.max(12, Math.round(f.h / cell));
     cur = new Float32Array(gw * gh); prev = new Float32Array(gw * gh);
     off = document.createElement('canvas'); off.width = gw; off.height = gh;
@@ -41,22 +41,22 @@ export function water(f0: Frame): Painter {
         acc -= 1 / 60; steps++;
         for (let y = 1; y < gh - 1; y++) for (let x = 1; x < gw - 1; x++) {
           const k = y * gw + x;
-          const v = ((cur[k - 1]! + cur[k + 1]! + cur[k - gw]! + cur[k + gw]!) * 0.5 - prev[k]!) * 0.985;
+          const v = ((cur[k - 1]! + cur[k + 1]! + cur[k - gw]! + cur[k + gw]!) * 0.5 - prev[k]!) * 0.992;
           prev[k] = v;
         }
         const s = cur; cur = prev; prev = s;
       }
       if (acc > 1 / 60) acc = 0;
-      const d = img.data, lightC: RGB = f.dark ? mix(B, [255, 255, 255], 0.55) : mix(B, [255, 255, 255], 0.2), shadeC: RGB = f.dark ? mix(A, f.pal.ink, 0.2) : mix(A, f.pal.ink, 0.45);
+      const d = img.data;
+      const lightC: RGB = f.dark ? mix(B, [255, 255, 255], 0.7) : mix(B, [255, 255, 255], 0.3), shadeC: RGB = f.dark ? mix(A, f.pal.ink, 0.5) : mix(A, f.pal.ink, 0.55);
       for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++) {
         const k = y * gw + x, o = k * 4;
         const dx = x > 0 && x < gw - 1 ? cur[k + 1]! - cur[k - 1]! : 0, dy = y > 0 && y < gh - 1 ? cur[k + gw]! - cur[k - gw]! : 0;
-        const s = (dx + dy) * 0.5, m = Math.min(1, Math.abs(s) * 0.35);
+        const s = (dx + dy) * 0.5, m = Math.min(1, Math.abs(s) * 0.5);
         const c = s > 0 ? lightC : shadeC;
-        d[o] = c[0]; d[o + 1] = c[1]; d[o + 2] = c[2];
-        const base = 22 + 18 * Math.sin(x * 0.18 + y * 0.11 + f.t * 0.5) * Math.sin(y * 0.14 - f.t * 0.3);
-        d[o + 3] = Math.min(255, base * (f.dark ? 1 : 0.9) + m * 230);
-        if (s <= 0 && base > 0) { d[o] = A[0]; d[o + 1] = A[1]; d[o + 2] = A[2]; if (m > 0.05) { d[o] = shadeC[0]; d[o + 1] = shadeC[1]; d[o + 2] = shadeC[2]; } }
+        const wash = 16 + 30 * (y / gh);
+        d[o] = c[0] * m + A[0] * (1 - m); d[o + 1] = c[1] * m + A[1] * (1 - m); d[o + 2] = c[2] * m + A[2] * (1 - m);
+        d[o + 3] = Math.min(255, wash * (f.dark ? 1 : 0.8) + m * 235);
       }
       octx.putImageData(img, 0, 0);
       f.ctx.imageSmoothingEnabled = true; f.ctx.imageSmoothingQuality = 'high';
@@ -86,7 +86,7 @@ export function lightning(f0: Frame): Painter {
   void f0;
   const strike = (f: Frame, tx?: number, ty?: number) => {
     const x1 = tx !== undefined ? tx + (R() - 0.5) * f.w * 0.3 : f.w * (0.15 + R() * 0.7);
-    bolts.push({ segs: makeBolt(R, x1, -10, tx ?? x1 + (R() - 0.5) * f.w * 0.25, ty ?? f.h * (0.65 + R() * 0.3)), age: 0, life: 0.75 });
+    bolts.push({ segs: makeBolt(R, x1, -10, tx ?? x1 + (R() - 0.5) * f.w * 0.25, ty ?? f.h * (0.65 + R() * 0.3)), age: 0, life: 1 });
     flash = 1;
   };
   return {
@@ -109,7 +109,7 @@ export function lightning(f0: Frame): Painter {
       for (const b of bolts) {
         const k = 1 - b.age / b.life, flick = b.age < 0.18 ? 1 : 0.55 + 0.45 * Math.sin(b.age * 70);
         const a = Math.max(0, k * (b.age < 0.1 ? 1 : flick));
-        for (const [lw, col, al] of [[9, A, 0.14], [4, B, 0.4], [1.4, core, 1]] as [number, RGB, number][]) {
+        for (const [lw, col, al] of [[14, A, 0.2], [6, B, 0.45], [1.6, core, 1]] as [number, RGB, number][]) {
           c.strokeStyle = rgba(col, al * a); c.beginPath();
           for (const s of b.segs) { c.lineWidth = lw * s.w; c.moveTo(s.x1, s.y1); c.lineTo(s.x2, s.y2); }
           c.stroke();

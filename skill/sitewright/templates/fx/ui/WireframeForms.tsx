@@ -69,7 +69,7 @@ export default function WireframeForms({ variant = 'cube', spin = 0.45, classNam
       const d = Math.pow(0.03, e.dt); s.vy *= d; s.vp *= d;
     }
     const cy = Math.cos(s.yaw), sy = Math.sin(s.yaw), cp = Math.cos(s.pitch), sp = Math.sin(s.pitch);
-    const scale = Math.min(w, h) * (variant === 'cube' ? 0.27 : 0.33), dist = 5;
+    const scale = Math.min(w, h) * (variant === 'cube' ? 0.22 : 0.3), dist = 5;
     const cols = [pal.primary, pal.signal, mix(pal.primary, pal.ink, 0.5)];
     const proj = (p: V) => {
       const x = p[0] * cy + p[2] * sy, z0 = -p[0] * sy + p[2] * cy;

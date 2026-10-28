@@ -49,7 +49,7 @@ export function Fern() {
     <svg className="hlg-fern" viewBox="0 0 400 520" role="img" aria-label="Illustration of green fern fronds growing from a mound of moss">
       <g transform="translate(0 482)">
         {FRONDS.map((f, i) => (
-          <g key={i} transform={`translate(${f.x - 200} 0)`}><g className="hlg-sway" style={{ animationDelay: `${f.delay}s`, transform: `rotate(${f.rot}deg)` }}><path className={`hlg-frond hlg-f${f.c}`} d={f.d} /></g></g>
+          <g key={i} transform={`translate(${f.x} 0)`}><g className="hlg-sway" style={{ animationDelay: `${f.delay}s`, transform: `rotate(${f.rot}deg)` }}><path className={`hlg-frond hlg-f${f.c}`} d={f.d} /></g></g>
         ))}
       </g>
       <path className="hlg-mound" d="M-10 520 V478 Q60 440 130 458 Q200 424 270 456 Q340 436 410 480 V520 Z" />

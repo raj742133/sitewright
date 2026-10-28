@@ -13,31 +13,31 @@ const PLASMA = GLSL_NOISE2 + `
 uniform float uH,uP;uniform vec3 uA,uB,uBg;uniform vec2 uPtr;varying vec2 vUv;
 void main(){
   vec2 p=vUv*vec2(uRes.x/uRes.y,1.);
-  float t=uT*(.28+.5*uH);
-  vec2 q=p*2.3;
-  float a=fbm(q+vec2(t*.6,-t*.4));
-  float b=fbm(q*1.25+a*2.3+vec2(-t*.5,t*.3));
-  float v=sin(6.2832*(b*1.3+a*.7)+t*2.)*.5+.5;
-  vec3 col=mix(uBg,uA,smoothstep(.2,.75,b)*.8);
-  col=mix(col,uB,smoothstep(.5,.95,v*b*1.7)*.85);
-  col+=pow(v,7.)*.3*(.5+uH);
+  float t=uT*(.3+.45*uH);
+  vec2 q=p*1.7;
+  float a=fbm(q+vec2(t*.5,-t*.35));
+  float b=fbm(q*1.1+a*2.1+vec2(-t*.45,t*.3));
+  float v=sin(6.2832*(b*1.2+a*.5)+t*1.8)*.5+.5;
+  vec3 col=uBg+uA*(.25+.95*smoothstep(.25,.8,b));
+  col+=uB*pow(v,5.)*(.55+.4*uH);
+  col+=uA*pow(1.-abs(v-.5)*2.,8.)*.25;
   vec2 d=(vUv-uPtr)*vec2(uRes.x/uRes.y,1.);
-  col+=uB*.4*uH*exp(-dot(d,d)*7.);
-  col=mix(uBg,col,.82);
+  col+=mix(uB,vec3(1.),.4)*.35*uH*exp(-dot(d,d)*8.);
+  col*=.78+.22*smoothstep(1.,.2,abs(vUv.y-.5)*2.);
   col*=1.-.22*uP;
-  gl_FragColor=vec4(col,1.);
+  gl_FragColor=vec4(min(col,vec3(1.)),1.);
 }`;
 const HOLO = GLSL_NOISE2 + `
 uniform float uH,uP;uniform vec3 uA,uB,uBg;uniform vec2 uPtr;varying vec2 vUv;
 void main(){
   vec2 p=vUv*vec2(uRes.x/uRes.y,1.);
   float n=fbm(p*3.+vec2(uT*.08,0.));
-  float ang=(vUv.x-uPtr.x)*1.4+(vUv.y-uPtr.y)*.7+n*.55+uT*.05;
-  vec3 rainbow=.5+.5*cos(6.2832*(vec3(0.,.33,.67)+ang*1.4));
-  float foil=.5+.5*sin((p.x*1.6+p.y*2.2)*18.+n*9.);
+  float ang=(vUv.x-uPtr.x)*.9+(vUv.y-uPtr.y)*.5+n*.35+uT*.04;
+  vec3 rainbow=.5+.5*cos(6.2832*(vec3(0.,.33,.67)+ang*1.1));
+  float foil=.5+.5*sin((p.x*1.6+p.y*2.2)*14.+n*4.);
   vec3 col=mix(vec3(.86,.88,.92),rainbow,.5+.2*uH);
   col=mix(col,uA,.14);
-  col+=(foil-.5)*.12;
+  col+=(foil-.5)*.05;
   float g=exp(-pow((vUv.x-uPtr.x)*3.2,2.)-pow((vUv.y-uPtr.y)*5.,2.));
   col+=vec3(1.)*g*.35*uH;
   col=mix(col,vec3(1.),.12);
@@ -65,7 +65,7 @@ export function GlFace({ kind, state, onStatus }: { kind: 'plasma' | 'holographi
       gl.uniform2f(prog.u('uPtr'), s.px, s.py);
       gl.uniform3fv(prog.u('uA'), e.pal.primary);
       gl.uniform3fv(prog.u('uB'), kind === 'plasma' ? e.pal.signal : mix3(e.pal.signal, e.pal.primary, 0.4));
-      gl.uniform3fv(prog.u('uBg'), dark(e.pal.primary, 0.1));
+      gl.uniform3fv(prog.u('uBg'), dark(e.pal.primary, kind === 'plasma' ? 0.16 : 0.1));
     });
   }, { dpr: 1.5, pointer: true });
   useEffect(() => { invalidate(); }, [state.hover, state.press, invalidate]);
@@ -114,11 +114,11 @@ export function CanvasFace({ kind, state }: { kind: 'ignition' | 'particles' | '
       const rate = (18 + 60 * m.h + 160 * m.burst) * dt;
       for (let n = m.rnd() < rate % 1 ? 1 : 0, i = 0; i < Math.floor(rate) + n && m.embers.length < 120; i++) {
         const rr = m.rnd;
-        m.embers.push({ x: rr() * w, y: h + 2, vx: (rr() - 0.5) * 14, vy: -(24 + rr() * 50) * (0.6 + heat), life: 0, max: 0.9 + rr() * 0.9, r: 0.8 + rr() * 1.8 });
+        m.embers.push({ x: rr() * w, y: h + 2, vx: (rr() - 0.5) * 14, vy: -(24 + rr() * 50) * (0.6 + heat), life: 0, max: 0.9 + rr() * 0.9, r: 1 + rr() * 2.2 });
       }
       ctx.globalCompositeOperation = 'lighter';
-      const fl = ctx.createRadialGradient(w / 2, h * 1.25, 2, w / 2, h * 1.25, w * 0.55);
-      fl.addColorStop(0, rgba(S, 0.75 * heat + 0.25 * m.burst)); fl.addColorStop(0.5, rgba(mix(S, P, 0.6), 0.28 * heat)); fl.addColorStop(1, rgba(P, 0));
+      const fl = ctx.createRadialGradient(w / 2, h * 1.15, 2, w / 2, h * 1.15, w * 0.62);
+      fl.addColorStop(0, rgba(mix(S, [255, 255, 255], 0.2), 0.95 * heat + 0.25 * m.burst)); fl.addColorStop(0.45, rgba(mix(S, P, 0.5), 0.5 * heat)); fl.addColorStop(1, rgba(P, 0));
       ctx.fillStyle = fl; ctx.fillRect(0, 0, w, h);
       for (let i = m.embers.length - 1; i >= 0; i--) {
         const b = m.embers[i]!;

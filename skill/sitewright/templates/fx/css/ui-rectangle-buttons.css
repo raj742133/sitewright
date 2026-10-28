@@ -39,15 +39,15 @@
 .ui-rectangle-buttons-technical:active { background: color-mix(in srgb, var(--primary, #2563eb) 20%, transparent); }
 
 /* arrow pill */
-.ui-rectangle-buttons-arrow-pill { border-radius: 999px; padding: 0 5px 0 20px; background: var(--primary, #2563eb); color: #fff; gap: 12px; }
+.ui-rectangle-buttons-arrow-pill { border-radius: 999px; padding: 0 5px 0 20px; background: var(--primary, #2563eb); color: var(--on-primary, #fff); gap: 12px; }
 .ui-rectangle-buttons-sm.ui-rectangle-buttons-arrow-pill { padding-left: 16px; }
-.ui-rectangle-buttons-arrow-pill .ui-rectangle-buttons-arrow { display: grid; place-items: center; width: calc(var(--rectangle-buttons-h) - 10px); aspect-ratio: 1; border-radius: 50%; background: #fff; color: var(--primary, #2563eb); transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.ui-rectangle-buttons-arrow-pill .ui-rectangle-buttons-arrow { display: grid; place-items: center; width: calc(var(--rectangle-buttons-h) - 10px); aspect-ratio: 1; border-radius: 50%; background: var(--on-primary, #fff); color: var(--primary, #2563eb); transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .ui-rectangle-buttons-arrow-pill:hover .ui-rectangle-buttons-arrow { transform: translateX(3px) rotate(-45deg); }
 .ui-rectangle-buttons-arrow-pill:active { transform: scale(0.97); }
 
 /* halftone bloom */
-.ui-rectangle-buttons-halftone { overflow: hidden; background: color-mix(in srgb, var(--primary, #2563eb) 88%, #000); color: #fff; }
-.ui-rectangle-buttons-halftone::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at center, rgba(255, 255, 255, 0.55) 0 1.3px, transparent 1.9px) 0 0 / 8px 8px; -webkit-mask-image: radial-gradient(circle at 100% 100%, #000 0%, transparent 62%); mask-image: radial-gradient(circle at 100% 100%, #000 0%, transparent 62%); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; transition: -webkit-mask-size 0.45s ease, mask-size 0.45s ease; }
+.ui-rectangle-buttons-halftone { overflow: hidden; background: var(--primary, #2563eb); color: var(--on-primary, #fff); }
+.ui-rectangle-buttons-halftone::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at center, color-mix(in srgb, var(--on-primary, #fff) 60%, transparent) 0 1.3px, transparent 1.9px) 0 0 / 8px 8px; -webkit-mask-image: radial-gradient(circle at 100% 100%, #000 0%, transparent 62%); mask-image: radial-gradient(circle at 100% 100%, #000 0%, transparent 62%); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; transition: -webkit-mask-size 0.45s ease, mask-size 0.45s ease; }
 .ui-rectangle-buttons-halftone:hover::before { -webkit-mask-size: 240% 240%; mask-size: 240% 240%; -webkit-mask-position: 100% 100%; mask-position: 100% 100%; }
 .ui-rectangle-buttons-halftone:active { transform: scale(0.98); }
 
@@ -66,7 +66,7 @@
 /* fill sweep */
 .ui-rectangle-buttons-sweep { overflow: hidden; border: 1.5px solid var(--primary, #2563eb); color: var(--primary, #2563eb); background: transparent; border-radius: 4px; }
 .ui-rectangle-buttons-sweep::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--primary, #2563eb); transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.35s cubic-bezier(0.7, 0, 0.2, 1); }
-.ui-rectangle-buttons-sweep:hover, .ui-rectangle-buttons-sweep:focus-visible { color: #fff; }
+.ui-rectangle-buttons-sweep:hover, .ui-rectangle-buttons-sweep:focus-visible { color: var(--on-primary, #fff); }
 .ui-rectangle-buttons-sweep:hover::before, .ui-rectangle-buttons-sweep:focus-visible::before { transform: scaleX(1); }
 .ui-rectangle-buttons-sweep:active { transform: scale(0.98); }
 

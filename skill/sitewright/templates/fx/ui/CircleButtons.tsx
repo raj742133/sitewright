@@ -14,7 +14,9 @@ export interface CircleButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonE
   size?: number;
   /** Required accessible name, e.g. "Play video". */
   'aria-label': string;
-  /** Play only: controlled state (true shows pause). Leave undefined for uncontrolled. */
+  /** Play only: treat the button as a play/pause toggle (default true). Set false for a plain play button that, say, opens a dialog. */
+  toggle?: boolean;
+  /** Play toggle only: controlled state (true shows pause). Leave undefined for uncontrolled. */
   pressed?: boolean;
   defaultPressed?: boolean;
   onPressedChange?: (pressed: boolean) => void;
@@ -37,13 +39,13 @@ function Glyph({ icon, on }: { icon: CircleIcon; on: boolean }) {
 }
 
 /** A circular icon button in three treatments (glass, dotted ring, tactile dome) with play, plus and mail glyphs. Real <button>: keyboard, focus ring, press and disabled states, reduced-motion safe. */
-export default function CircleButton({ icon = 'play', variant = 'glass', tone = 'primary', size, pressed, defaultPressed = false, onPressedChange, onClick, className, style, type = 'button', ...rest }: CircleButtonProps) {
+export default function CircleButton({ icon = 'play', variant = 'glass', tone = 'primary', size, toggle = true, pressed, defaultPressed = false, onPressedChange, onClick, className, style, type = 'button', ...rest }: CircleButtonProps) {
   const [inner, setInner] = useState(defaultPressed);
   const [sent, setSent] = useState(false);
   const timer = useRef(0);
   useEffect(() => () => window.clearTimeout(timer.current), []);
-  const isToggle = icon === 'play' && (pressed !== undefined || onPressedChange !== undefined || defaultPressed);
-  const on = icon === 'play' ? (pressed ?? inner) : false;
+  const isToggle = icon === 'play' && toggle;
+  const on = isToggle ? (pressed ?? inner) : false;
   return (
     <button
       {...rest}
@@ -52,7 +54,7 @@ export default function CircleButton({ icon = 'play', variant = 'glass', tone = 
       className={`ui-circle-buttons-b ui-circle-buttons-${variant} ui-circle-buttons-tone-${tone} ${sent ? 'ui-circle-buttons-sent' : ''} ${className ?? ''}`}
       style={size === undefined ? style : ({ ['--circle-buttons-size' as string]: `${size}px`, ...style } as CSSProperties)}
       onClick={(e) => {
-        if (icon === 'play') { const next = !on; if (pressed === undefined) setInner(next); onPressedChange?.(next); }
+        if (isToggle) { const next = !on; if (pressed === undefined) setInner(next); onPressedChange?.(next); }
         if (icon === 'mail') { setSent(true); window.clearTimeout(timer.current); timer.current = window.setTimeout(() => setSent(false), 900); }
         onClick?.(e);
       }}

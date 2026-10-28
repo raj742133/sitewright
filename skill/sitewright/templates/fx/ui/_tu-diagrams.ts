@@ -24,7 +24,7 @@ const LINKS = (() => { const r = rng(7); const a: [number, number][] = []; for (
 export function drawLayers(e: CanvasEnv) {
   const { ctx, w, h, t, pal } = e;
   const P = pal.primary, S = pal.signal;
-  const sc = Math.min(w * 0.17, h * 0.2);
+  const sc = Math.min(w * 0.15, h * 0.165);
   const pr = camera(0.75 + Math.sin(t * 0.35) * 0.12, 0.62, sc, w * 0.46, h * 0.52);
   const n = 4, gap = 0.78, half = 1.55;
   const act = Math.floor(t / 1.7) % n;

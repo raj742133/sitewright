@@ -34,7 +34,7 @@ export default function ImageRibbon({ panels = 10, turns = 1.25, speed = 14, lab
     const span = 360 * turns, step = span / n, used = step * 0.94;
     for (let p = 0; p < n; p++) for (let k = 0; k < SLICES; k++) {
       const th = p * step + ((k + 0.5) / SLICES) * used;
-      out.push({ key: `${p}-${k}`, th, y: th / span - 0.5, k, p });
+      out.push({ key: `${p}-${k}`, th, y: (p + 0.5) / n - 0.5, k, p });
     }
     return { list: out, span, step, used };
   }, [n, turns]);
@@ -67,14 +67,14 @@ export default function ImageRibbon({ panels = 10, turns = 1.25, speed = 14, lab
     if (!el) return;
     const size = () => {
       const r = el.getBoundingClientRect();
-      const R = Math.max(40, Math.min(r.width * 0.3, r.height * 0.46));
+      const R = Math.max(40, Math.min(r.width * 0.26, r.height * 0.4));
       const arc = (2 * Math.PI * R * (slices.used / 360));
-      const ph = Math.min(r.height * 0.3, R * 0.95);
+      const ph = Math.min(r.height * 0.27, R * 0.8);
       const w = (2 * Math.PI * R * (slices.used / SLICES / 360)) + 1.2;
       el.style.setProperty('--image-ribbon-r', R.toFixed(1) + 'px');
       el.style.setProperty('--image-ribbon-h', ph.toFixed(1) + 'px');
       el.style.setProperty('--image-ribbon-w', w.toFixed(2) + 'px');
-      el.style.setProperty('--image-ribbon-rise', (turns * ph * 1.08 + 0).toFixed(1) + 'px');
+      el.style.setProperty('--image-ribbon-rise', (turns * ph * 1.1).toFixed(1) + 'px');
       void arc;
       kick();
     };

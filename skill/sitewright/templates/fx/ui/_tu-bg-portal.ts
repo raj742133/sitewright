@@ -8,7 +8,7 @@ export type PortalVariant = 'cloud' | 'bell' | 'flow';
 /** A rotating cloud of points shaped by noise, projected with perspective; the pointer tilts it. */
 function cloud(): Painter {
   const R = rng(3);
-  const pts = Array.from({ length: 1100 }, () => {
+  const pts = Array.from({ length: 2400 }, () => {
     const u = R() * 6.2832, v = Math.acos(2 * R() - 1), r = Math.cbrt(R());
     const n = 0.55 + 0.9 * fbm2(Math.cos(u) * Math.sin(v) * 1.7 + 4, Math.cos(v) * 1.7 + Math.sin(u) * 0.9);
     return { x: Math.cos(u) * Math.sin(v) * r * n * 1.25, y: Math.cos(v) * r * n * 0.78, z: Math.sin(u) * Math.sin(v) * r * n * 1.25, k: R() };
@@ -32,7 +32,7 @@ function cloud(): Painter {
       for (const [x, y, z, k] of out) {
         const w = 1 / (1 - z * 0.28), d = (z + 1.4) / 2.8;
         c.fillStyle = rgba(k > 0.8 ? B : mix(A, B, k * 0.3), (f.dark ? 0.25 : 0.2) + d * 0.7);
-        const r = (0.8 + d * 1.4) * w;
+        const r = (1 + d * 1.6) * w;
         c.fillRect(f.w / 2 + x * s * w - r / 2, f.h / 2 + y * s * w - r / 2, r, r);
       }
     },

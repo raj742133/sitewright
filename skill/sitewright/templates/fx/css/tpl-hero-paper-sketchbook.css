@@ -9,7 +9,7 @@
 .hps-grain { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .55; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .38 0 0 0 0 .22 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 :root[data-theme='dark'] .hps-grain { mix-blend-mode: screen; opacity: .22; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .hps-grain { mix-blend-mode: screen; opacity: .22; } }
-.hps-i { fill: none; stroke: var(--hps-ink); stroke-width: .9; stroke-linecap: round; stroke-linejoin: round; }
+.hps-i { fill: none; stroke: var(--hps-ink); stroke-width: .7; stroke-linecap: round; stroke-linejoin: round; }
 .hps-f { fill: var(--hps-ink); stroke: none; }
 .hps-g { fill: var(--ok, #16a34a); fill-opacity: .38; } .hps-r { fill: var(--critical, #dc2626); fill-opacity: .4; } .hps-b { fill: var(--primary, #2563eb); fill-opacity: .3; } .hps-o { fill: var(--signal, #f59e0b); fill-opacity: .5; }
 .hps-i.hps-g, .hps-i.hps-r, .hps-i.hps-b, .hps-i.hps-o { stroke: var(--hps-ink); }
@@ -72,7 +72,7 @@
 .hps-pen-body { fill: var(--signal, #f59e0b); } .hps-pen-hi { fill: #fff; fill-opacity: .28; } .hps-pen-fer { fill: color-mix(in srgb, var(--hps-ink) 35%, var(--hps-paper)); } .hps-pen-er { fill: var(--critical, #dc2626); fill-opacity: .8; } .hps-pen-wood { fill: color-mix(in srgb, var(--hps-paper) 60%, var(--signal, #f59e0b)); stroke: var(--hps-ink); stroke-width: .8; } .hps-pen-lead { fill: var(--hps-ink); }
 .hps-stamp { position: absolute; left: 3%; top: 0; width: 104px; height: 104px; transform: rotate(-14deg) translate(calc(var(--mx) * -6px), calc(var(--my) * -6px)); opacity: .9; }
 .hps-stamp circle, .hps-stamp path { fill: none; stroke: var(--critical, #dc2626); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.hps-stamp text { fill: var(--critical, #dc2626); font: 700 9.4px var(--font-body, system-ui, sans-serif); letter-spacing: 1.6px; }
+.hps-stamp text { fill: var(--critical, #dc2626); font: 700 9.4px var(--font-body, system-ui, sans-serif); letter-spacing: 2.2px; }
 
 /* sketchbook */
 .hps-bk { max-width: 1000px; margin-inline: auto; }
