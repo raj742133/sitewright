@@ -1,30 +1,30 @@
 {
  "summary": {
-  "generated": "2026-10-28T09:23:54.376Z",
+  "generated": "2026-10-28T14:49:05.071Z",
   "sourceCatalogEntries": 261,
   "uniqueEntries": 261,
   "note": "the 5 full-page heroes are 5 of the 43 tu entries (see overlap), so unique = rb + tu",
   "reactBitsOrigin": {
    "total": 218,
    "existing": 30,
-   "planned": 108,
+   "planned": 0,
    "in_progress": 0,
-   "implemented": 80,
+   "implemented": 188,
    "verified": 0,
    "blocked": 0
   },
   "thirdPartyTu": {
    "total": 43,
    "existing": 0,
-   "planned": 38,
+   "planned": 9,
    "in_progress": 0,
-   "implemented": 5,
+   "implemented": 34,
    "verified": 0,
    "blocked": 0
   },
   "fullPageHeroes": {
    "total": 5,
-   "completed": 0,
+   "completed": 3,
    "verified": 0
   },
   "tactileGlass": {
@@ -33,19 +33,21 @@
    "complete": 10
   },
   "existingReused": 30,
-  "newImplemented": 85,
+  "newImplemented": 222,
   "verified": 0,
-  "awaitingTests": 85,
+  "awaitingTests": 222,
   "failingTests": 0,
   "blocked": 0,
-  "remainingUnimplemented": 146,
+  "remainingUnimplemented": 9,
   "registry": {
-   "components": 218,
-   "templates": 12,
+   "components": 352,
+   "templates": 15,
    "registeredNotInCatalog": 133
   },
   "problems": [
-   "component file not in any registry entry: templates/fx/ui/Dock.tsx"
+   "component file not in any registry entry: templates/fx/ui/Landscape.tsx",
+   "component file not in any registry entry: templates/fx/ui/LandscapeTowers.tsx",
+   "component file not in any registry entry: templates/fx/ui/NightTempleScene.tsx"
   ]
  },
  "records": [
@@ -2079,13 +2081,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "bubble-menu",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "bubble-menu",
+   "destinationFile": "skill/sitewright/templates/fx/ui/BubbleMenu.tsx",
+   "files": [
+    "BubbleMenu.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-bubble-menu",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/card-nav",
@@ -2098,13 +2110,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "card-nav",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "card-nav",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CardNav.tsx",
+   "files": [
+    "CardNav.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-card-nav",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/card-swap",
@@ -2270,13 +2292,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "counter",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "counter",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Counter.tsx",
+   "files": [
+    "Counter.tsx",
+    "_inputs-ui.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-counter"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/curved-input",
@@ -2289,13 +2321,22 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "curved-input",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "curved-input",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CurvedInput.tsx",
+   "files": [
+    "CurvedInput.tsx",
+    "_inputs-ui.ts"
+   ],
+   "css": [
+    "ui-curved-input"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/decay-card",
@@ -2369,13 +2410,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "dock",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "dock",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Dock.tsx",
+   "files": [
+    "Dock.tsx",
+    "_menus-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-dock",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/dome-gallery",
@@ -2450,13 +2502,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "elastic-slider",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "elastic-slider",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ElasticSlider.tsx",
+   "files": [
+    "ElasticSlider.tsx",
+    "_inputs-ui.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-elastic-slider"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/flex-carousel",
@@ -2500,13 +2562,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "flowing-menu",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "flowing-menu",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FlowingMenu.tsx",
+   "files": [
+    "FlowingMenu.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-flowing-menu",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/fluid-glass",
@@ -2519,13 +2591,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "fluid-glass",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "fluid-glass",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FluidGlass.tsx",
+   "files": [
+    "FluidGlass.tsx",
+    "_inputs-lensmap.ts",
+    "_inputs-ui.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-fluid-glass"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/flying-posters",
@@ -2597,13 +2680,21 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "glass-icons",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "glass-icons",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GlassIcons.tsx",
+   "files": [
+    "GlassIcons.tsx"
+   ],
+   "css": [
+    "ui-glass-icons"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/glass-surface",
@@ -2632,13 +2723,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "gooey-nav",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "gooey-nav",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GooeyNav.tsx",
+   "files": [
+    "GooeyNav.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-gooey-nav",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/holo-card",
@@ -2667,13 +2768,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "infinite-menu",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "infinite-menu",
+   "destinationFile": "skill/sitewright/templates/fx/ui/InfiniteMenu.tsx",
+   "files": [
+    "InfiniteMenu.tsx",
+    "_menus-sphere.ts",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-infinite-menu",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/infinite-spiral",
@@ -2717,13 +2829,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "lanyard",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "lanyard",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Lanyard.tsx",
+   "files": [
+    "Lanyard.tsx",
+    "_inputs-verlet.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-lanyard"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/line-sidebar",
@@ -2736,13 +2858,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "line-sidebar",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "line-sidebar",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LineSidebar.tsx",
+   "files": [
+    "LineSidebar.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-line-sidebar",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/magic-bento",
@@ -2755,13 +2887,22 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "magic-bento",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "magic-bento",
+   "destinationFile": "skill/sitewright/templates/fx/ui/MagicBento.tsx",
+   "files": [
+    "MagicBento.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-magic-bento"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/masonry",
@@ -2780,8 +2921,7 @@
     "Masonry.tsx",
     "_t2.ts",
     "_galleries-data.tsx",
-    "_galleries-hooks.ts",
-    "_galleries-ui.tsx"
+    "_galleries-hooks.ts"
    ],
    "css": [
     "ui-masonry"
@@ -2805,13 +2945,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "model-viewer",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "model-viewer",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ModelViewer.tsx",
+   "files": [
+    "ModelViewer.tsx",
+    "_inputs-mesh.ts",
+    "_inputs-ui.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-model-viewer"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/morph-slider",
@@ -2824,13 +2975,22 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "morph-slider",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "morph-slider",
+   "destinationFile": "skill/sitewright/templates/fx/ui/MorphSlider.tsx",
+   "files": [
+    "MorphSlider.tsx",
+    "_inputs-ui.ts"
+   ],
+   "css": [
+    "ui-morph-slider"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/option-wheel",
@@ -2843,13 +3003,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "option-wheel",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "option-wheel",
+   "destinationFile": "skill/sitewright/templates/fx/ui/OptionWheel.tsx",
+   "files": [
+    "OptionWheel.tsx",
+    "_inputs-ui.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-option-wheel"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/pill-nav",
@@ -2862,13 +3032,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "pill-nav",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "pill-nav",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PillNav.tsx",
+   "files": [
+    "PillNav.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-pill-nav",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/pixel-card",
@@ -2975,8 +3155,7 @@
     "ScrollStack.tsx",
     "_t2.ts",
     "_galleries-data.tsx",
-    "_galleries-hooks.ts",
-    "_galleries-ui.tsx"
+    "_galleries-hooks.ts"
    ],
    "css": [
     "ui-scroll-stack"
@@ -3032,13 +3211,22 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "stack",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "stack",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Stack.tsx",
+   "files": [
+    "Stack.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-stack"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/staggered-menu",
@@ -3051,13 +3239,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "staggered-menu",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "staggered-menu",
+   "destinationFile": "skill/sitewright/templates/fx/ui/StaggeredMenu.tsx",
+   "files": [
+    "StaggeredMenu.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-staggered-menu",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/stepper",
@@ -3070,13 +3268,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "stepper",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "stepper",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Stepper.tsx",
+   "files": [
+    "Stepper.tsx",
+    "_menus-kit.tsx"
+   ],
+   "css": [
+    "ui-stepper",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:components/tilted-card",
@@ -3105,13 +3313,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "acid-squares",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "acid-squares",
+   "destinationFile": "skill/sitewright/templates/fx/ui/AcidSquares.tsx",
+   "files": [
+    "AcidSquares.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-acid-squares"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/aero-shards",
@@ -3124,13 +3342,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "aero-shards",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "aero-shards",
+   "destinationFile": "skill/sitewright/templates/fx/ui/AeroShards.tsx",
+   "files": [
+    "AeroShards.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-aero-shards"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/antigravity",
@@ -3143,13 +3371,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "antigravity",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "antigravity",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Antigravity.tsx",
+   "files": [
+    "Antigravity.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-antigravity"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/aurora",
@@ -3178,13 +3416,25 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "balatro",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "balatro",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Balatro.tsx",
+   "files": [
+    "Balatro.tsx",
+    "_t1.ts",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-balatro"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/ballpit",
@@ -3197,13 +3447,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "ballpit",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "ballpit",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Ballpit.tsx",
+   "files": [
+    "Ballpit.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-ballpit"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/beams",
@@ -3232,13 +3492,25 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "color-bends",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "color-bends",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ColorBends.tsx",
+   "files": [
+    "ColorBends.tsx",
+    "_t1.ts",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-color-bends"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/crtwarp",
@@ -3251,13 +3523,25 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "crtwarp",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "crtwarp",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CrtWarp.tsx",
+   "files": [
+    "CrtWarp.tsx",
+    "_t1.ts",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-crtwarp"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/dark-veil",
@@ -3270,13 +3554,25 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "dark-veil",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "dark-veil",
+   "destinationFile": "skill/sitewright/templates/fx/ui/DarkVeil.tsx",
+   "files": [
+    "DarkVeil.tsx",
+    "_t1.ts",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-dark-veil"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/dither",
@@ -3289,13 +3585,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "dither",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "dither",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Dither.tsx",
+   "files": [
+    "Dither.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-dither"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/dot-field",
@@ -3308,13 +3614,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "dot-field",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "dot-field",
+   "destinationFile": "skill/sitewright/templates/fx/ui/DotField.tsx",
+   "files": [
+    "DotField.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-dot-field"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/dot-grid",
@@ -3343,13 +3659,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "evil-eye",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "evil-eye",
+   "destinationFile": "skill/sitewright/templates/fx/ui/EvilEye.tsx",
+   "files": [
+    "EvilEye.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-evil-eye"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/faulty-terminal",
@@ -3362,13 +3688,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "faulty-terminal",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "faulty-terminal",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FaultyTerminal.tsx",
+   "files": [
+    "FaultyTerminal.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-faulty-terminal"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/ferrofluid",
@@ -3381,13 +3717,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "ferrofluid",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "ferrofluid",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Ferrofluid.tsx",
+   "files": [
+    "Ferrofluid.tsx",
+    "_bg-b-kit.tsx",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-ferrofluid"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/floating-lines",
@@ -3400,13 +3747,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "floating-lines",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "floating-lines",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FloatingLines.tsx",
+   "files": [
+    "FloatingLines.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-floating-lines"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/flux-lines",
@@ -3419,13 +3776,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "flux-lines",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "flux-lines",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FluxLines.tsx",
+   "files": [
+    "FluxLines.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-flux-lines"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/galaxy",
@@ -3438,13 +3805,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "galaxy",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "galaxy",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Galaxy.tsx",
+   "files": [
+    "Galaxy.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-galaxy"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/ghost-fibers",
@@ -3457,13 +3834,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "ghost-fibers",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "ghost-fibers",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GhostFibers.tsx",
+   "files": [
+    "GhostFibers.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-ghost-fibers"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/gradient-ascii",
@@ -3476,13 +3863,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "gradient-ascii",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "gradient-ascii",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GradientAscii.tsx",
+   "files": [
+    "GradientAscii.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-gradient-ascii"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/gradient-blinds",
@@ -3495,13 +3892,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "gradient-blinds",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "gradient-blinds",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GradientBlinds.tsx",
+   "files": [
+    "GradientBlinds.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-gradient-blinds"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/gradient-waves",
@@ -3514,13 +3921,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "gradient-waves",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "gradient-waves",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GradientWaves.tsx",
+   "files": [
+    "GradientWaves.tsx",
+    "_bg-b-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-gradient-waves"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/grainient",
@@ -3533,13 +3950,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "grainient",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "grainient",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Grainient.tsx",
+   "files": [
+    "Grainient.tsx",
+    "_t2.ts",
+    "_bg-c-demo.tsx"
+   ],
+   "css": [
+    "ui-grainient"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/grid-distortion",
@@ -3552,13 +3979,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "grid-distortion",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "grid-distortion",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GridDistortion.tsx",
+   "files": [
+    "GridDistortion.tsx",
+    "_bg-c-canvas.ts",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-grid-distortion"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/grid-motion",
@@ -3571,13 +4009,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "grid-motion",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "grid-motion",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GridMotion.tsx",
+   "files": [
+    "GridMotion.tsx",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-grid-motion"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/grid-scan",
@@ -3590,13 +4038,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "grid-scan",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "grid-scan",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GridScan.tsx",
+   "files": [
+    "GridScan.tsx",
+    "_bg-c-canvas.ts",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-grid-scan"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/hyperspeed",
@@ -3609,13 +4068,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "hyperspeed",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "hyperspeed",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Hyperspeed.tsx",
+   "files": [
+    "Hyperspeed.tsx",
+    "_bg-c-canvas.ts",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-hyperspeed"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/iridescence",
@@ -3628,13 +4098,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "iridescence",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "iridescence",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Iridescence.tsx",
+   "files": [
+    "Iridescence.tsx",
+    "_t1.ts",
+    "_bg-c-demo.tsx"
+   ],
+   "css": [
+    "ui-iridescence"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/letter-glitch",
@@ -3647,13 +4127,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "letter-glitch",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "letter-glitch",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LetterGlitch.tsx",
+   "files": [
+    "LetterGlitch.tsx",
+    "_bg-c-canvas.ts",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-letter-glitch"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/lightfall",
@@ -3666,13 +4157,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "lightfall",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "lightfall",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Lightfall.tsx",
+   "files": [
+    "Lightfall.tsx",
+    "_bg-c-canvas.ts",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-lightfall"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/lightning",
@@ -3685,13 +4187,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "lightning",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "lightning",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Lightning.tsx",
+   "files": [
+    "Lightning.tsx",
+    "_bg-c-canvas.ts",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-lightning"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/light-pillar",
@@ -3704,13 +4217,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "light-pillar",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "light-pillar",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LightPillar.tsx",
+   "files": [
+    "LightPillar.tsx",
+    "_bg-c-canvas.ts",
+    "_bg-c-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-light-pillar"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/light-rays",
@@ -3723,13 +4247,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "light-rays",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "light-rays",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LightRays.tsx",
+   "files": [
+    "LightRays.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-light-rays"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/light-tunnel",
@@ -3742,13 +4276,25 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "light-tunnel",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "light-tunnel",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LightTunnel.tsx",
+   "files": [
+    "LightTunnel.tsx",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-light-tunnel"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/line-waves",
@@ -3761,13 +4307,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "line-waves",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "line-waves",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LineWaves.tsx",
+   "files": [
+    "LineWaves.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-line-waves"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/liquid-chrome",
@@ -3780,13 +4336,26 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "liquid-chrome",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "liquid-chrome",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LiquidChrome.tsx",
+   "files": [
+    "LiquidChrome.tsx",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_bg-d.ts",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-liquid-chrome"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/liquid-ether",
@@ -3799,13 +4368,26 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "liquid-ether",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "liquid-ether",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LiquidEther.tsx",
+   "files": [
+    "LiquidEther.tsx",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_bg-d.ts",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-liquid-ether"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/magic-rings",
@@ -3818,13 +4400,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "magic-rings",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "magic-rings",
+   "destinationFile": "skill/sitewright/templates/fx/ui/MagicRings.tsx",
+   "files": [
+    "MagicRings.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-magic-rings"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/magnet-lines",
@@ -3837,13 +4429,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "magnet-lines",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "magnet-lines",
+   "destinationFile": "skill/sitewright/templates/fx/ui/MagnetLines.tsx",
+   "files": [
+    "MagnetLines.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-magnet-lines"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/micro-slats",
@@ -3856,13 +4458,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "micro-slats",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "micro-slats",
+   "destinationFile": "skill/sitewright/templates/fx/ui/MicroSlats.tsx",
+   "files": [
+    "MicroSlats.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-micro-slats"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/molten-metal",
@@ -3875,13 +4487,26 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "molten-metal",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "molten-metal",
+   "destinationFile": "skill/sitewright/templates/fx/ui/MoltenMetal.tsx",
+   "files": [
+    "MoltenMetal.tsx",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_bg-d.ts",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-molten-metal"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/orb",
@@ -3926,13 +4551,23 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "pattern-waves",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "pattern-waves",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PatternWaves.tsx",
+   "files": [
+    "PatternWaves.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-pattern-waves"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/pixel-blast",
@@ -3945,13 +4580,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "pixel-blast",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "pixel-blast",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PixelBlast.tsx",
+   "files": [
+    "PixelBlast.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-pixel-blast"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/pixel-snow",
@@ -3964,13 +4610,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "pixel-snow",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "pixel-snow",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PixelSnow.tsx",
+   "files": [
+    "PixelSnow.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-pixel-snow"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/plasma",
@@ -3983,13 +4640,25 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "plasma",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "plasma",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Plasma.tsx",
+   "files": [
+    "Plasma.tsx",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-plasma"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/plasma-wave",
@@ -4002,13 +4671,26 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "plasma-wave",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "plasma-wave",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PlasmaWave.tsx",
+   "files": [
+    "PlasmaWave.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-plasma-wave"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/prism",
@@ -4021,13 +4703,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "prism",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "prism",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Prism.tsx",
+   "files": [
+    "Prism.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-prism"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/prismatic-burst",
@@ -4040,13 +4733,26 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "prismatic-burst",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "prismatic-burst",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PrismaticBurst.tsx",
+   "files": [
+    "PrismaticBurst.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_bg-a-gl.tsx",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-prismatic-burst"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/radar",
@@ -4059,13 +4765,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "radar",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "radar",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Radar.tsx",
+   "files": [
+    "Radar.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-radar"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/ripple-grid",
@@ -4078,13 +4795,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "ripple-grid",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "ripple-grid",
+   "destinationFile": "skill/sitewright/templates/fx/ui/RippleGrid.tsx",
+   "files": [
+    "RippleGrid.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-ripple-grid"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/scanner",
@@ -4097,13 +4825,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "scanner",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "scanner",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Scanner.tsx",
+   "files": [
+    "Scanner.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-scanner"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/shape-grid",
@@ -4116,13 +4855,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "shape-grid",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "shape-grid",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ShapeGrid.tsx",
+   "files": [
+    "ShapeGrid.tsx",
+    "_bg-e.tsx",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-shape-grid"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/shape-waves",
@@ -4135,13 +4885,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "shape-waves",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "shape-waves",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ShapeWaves.tsx",
+   "files": [
+    "ShapeWaves.tsx",
+    "_bg-f.ts",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-shape-waves"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/side-rays",
@@ -4154,13 +4915,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "side-rays",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "side-rays",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SideRays.tsx",
+   "files": [
+    "SideRays.tsx",
+    "_bg-f.ts",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-side-rays"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/silk",
@@ -4173,13 +4945,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "silk",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "silk",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Silk.tsx",
+   "files": [
+    "Silk.tsx",
+    "_bg-f.ts",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-silk"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/sliced-waves",
@@ -4192,13 +4975,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "sliced-waves",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "sliced-waves",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SlicedWaves.tsx",
+   "files": [
+    "SlicedWaves.tsx",
+    "_bg-f.ts",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-sliced-waves"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/soft-aurora",
@@ -4227,13 +5021,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "threads",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "threads",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Threads.tsx",
+   "files": [
+    "Threads.tsx",
+    "_bg-f.ts",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-threads"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/topography",
@@ -4246,13 +5051,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "topography",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "topography",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Topography.tsx",
+   "files": [
+    "Topography.tsx",
+    "_bg-f.ts",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-topography"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:backgrounds/waves",
@@ -4281,13 +5097,24 @@
    "provenanceNote": "React Bits (MIT + Commons Clause): not redistributable, independently implemented",
    "newId": "web-threads",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "web-threads",
+   "destinationFile": "skill/sitewright/templates/fx/ui/WebThreads.tsx",
+   "files": [
+    "WebThreads.tsx",
+    "_bg-f.ts",
+    "_bg-a.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-web-threads"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/bell-toggle",
@@ -4316,13 +5143,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "branched-menu",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "branched-menu",
+   "destinationFile": "skill/sitewright/templates/fx/ui/BranchedMenu.tsx",
+   "files": [
+    "BranchedMenu.tsx",
+    "_micro-a.ts"
+   ],
+   "css": [
+    "ui-branched-menu"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/call-chip",
@@ -4335,13 +5171,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "call-chip",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "call-chip",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CallChip.tsx",
+   "files": [
+    "CallChip.tsx",
+    "_micro-a.ts"
+   ],
+   "css": [
+    "ui-call-chip"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/code-slots",
@@ -4354,13 +5199,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "code-slots",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "code-slots",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CodeSlots.tsx",
+   "files": [
+    "CodeSlots.tsx",
+    "_micro-a.ts"
+   ],
+   "css": [
+    "ui-code-slots"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/comet-dial",
@@ -4373,13 +5227,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "comet-dial",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "comet-dial",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CometDial.tsx",
+   "files": [
+    "CometDial.tsx",
+    "_micro-a.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-comet-dial"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/dodge-field",
@@ -4392,13 +5256,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "dodge-field",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "dodge-field",
+   "destinationFile": "skill/sitewright/templates/fx/ui/DodgeField.tsx",
+   "files": [
+    "DodgeField.tsx",
+    "_micro-a.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-dodge-field"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/flip-card",
@@ -4411,13 +5285,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "flip-card",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "flip-card",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FlipCard.tsx",
+   "files": [
+    "FlipCard.tsx",
+    "_micro-a.ts"
+   ],
+   "css": [
+    "ui-flip-card"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/flying-button",
@@ -4430,13 +5313,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "flying-button",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "flying-button",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FlyingButton.tsx",
+   "files": [
+    "FlyingButton.tsx",
+    "_micro-a.ts"
+   ],
+   "css": [
+    "ui-flying-button"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/folder-float",
@@ -4449,13 +5341,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "folder-float",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "folder-float",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FolderFloat.tsx",
+   "files": [
+    "FolderFloat.tsx",
+    "_micro-a.ts"
+   ],
+   "css": [
+    "ui-folder-float"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/fuse-button",
@@ -4468,13 +5369,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "fuse-button",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "fuse-button",
+   "destinationFile": "skill/sitewright/templates/fx/ui/FuseButton.tsx",
+   "files": [
+    "FuseButton.tsx",
+    "_micro-a.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-fuse-button"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/glide-select",
@@ -4487,13 +5398,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "glide-select",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "glide-select",
+   "destinationFile": "skill/sitewright/templates/fx/ui/GlideSelect.tsx",
+   "files": [
+    "GlideSelect.tsx",
+    "_micro-a.ts"
+   ],
+   "css": [
+    "ui-glide-select"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/hold-button",
@@ -4522,13 +5442,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "jelly-radio",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "jelly-radio",
+   "destinationFile": "skill/sitewright/templates/fx/ui/JellyRadio.tsx",
+   "files": [
+    "JellyRadio.tsx"
+   ],
+   "css": [
+    "ui-jelly-radio"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/lattice-loader",
@@ -4541,13 +5469,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "lattice-loader",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "lattice-loader",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LatticeLoader.tsx",
+   "files": [
+    "LatticeLoader.tsx",
+    "_micro-b.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-lattice-loader"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/paper-crumple",
@@ -4560,13 +5498,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "paper-crumple",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "paper-crumple",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PaperCrumple.tsx",
+   "files": [
+    "PaperCrumple.tsx"
+   ],
+   "css": [
+    "ui-paper-crumple"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/peek-rating",
@@ -4579,13 +5525,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "peek-rating",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "peek-rating",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PeekRating.tsx",
+   "files": [
+    "PeekRating.tsx"
+   ],
+   "css": [
+    "ui-peek-rating"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/prompt-bar",
@@ -4614,13 +5568,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "pulse-heart",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "pulse-heart",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PulseHeart.tsx",
+   "files": [
+    "PulseHeart.tsx",
+    "_micro-b.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-pulse-heart"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/refine-frame",
@@ -4633,13 +5597,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "refine-frame",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "refine-frame",
+   "destinationFile": "skill/sitewright/templates/fx/ui/RefineFrame.tsx",
+   "files": [
+    "RefineFrame.tsx"
+   ],
+   "css": [
+    "ui-refine-frame"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/rubber-segment",
@@ -4652,13 +5624,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "rubber-segment",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "rubber-segment",
+   "destinationFile": "skill/sitewright/templates/fx/ui/RubberSegment.tsx",
+   "files": [
+    "RubberSegment.tsx"
+   ],
+   "css": [
+    "ui-rubber-segment"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/scrub-field",
@@ -4671,13 +5651,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "scrub-field",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "scrub-field",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ScrubField.tsx",
+   "files": [
+    "ScrubField.tsx",
+    "_micro-b.ts"
+   ],
+   "css": [
+    "ui-scrub-field"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/shredder",
@@ -4690,13 +5679,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "shredder",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "shredder",
+   "destinationFile": "skill/sitewright/templates/fx/ui/Shredder.tsx",
+   "files": [
+    "Shredder.tsx",
+    "_micro-b.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-shredder"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/slide-commit",
@@ -4709,13 +5708,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "slide-commit",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "slide-commit",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SlideCommit.tsx",
+   "files": [
+    "SlideCommit.tsx",
+    "_micro-b.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-slide-commit"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/sling-button",
@@ -4728,13 +5737,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "sling-button",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "sling-button",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SlingButton.tsx",
+   "files": [
+    "SlingButton.tsx",
+    "_micro-c.ts"
+   ],
+   "css": [
+    "ui-sling-button"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/slosh-gauge",
@@ -4747,13 +5765,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "slosh-gauge",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "slosh-gauge",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SloshGauge.tsx",
+   "files": [
+    "SloshGauge.tsx",
+    "_micro-c.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-slosh-gauge"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/spring-check",
@@ -4766,13 +5794,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "spring-check",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "spring-check",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SpringCheck.tsx",
+   "files": [
+    "SpringCheck.tsx"
+   ],
+   "css": [
+    "ui-spring-check"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/squish-switch",
@@ -4801,13 +5837,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "status-mark",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "status-mark",
+   "destinationFile": "skill/sitewright/templates/fx/ui/StatusMark.tsx",
+   "files": [
+    "StatusMark.tsx"
+   ],
+   "css": [
+    "ui-status-mark"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/swipe-row",
@@ -4820,13 +5864,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "swipe-row",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "swipe-row",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SwipeRow.tsx",
+   "files": [
+    "SwipeRow.tsx",
+    "_micro-c.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-swipe-row"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/swipe-toast",
@@ -4839,13 +5893,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "swipe-toast",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "swipe-toast",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SwipeToast.tsx",
+   "files": [
+    "SwipeToast.tsx",
+    "_micro-c.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-swipe-toast"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/tear-ticket",
@@ -4874,13 +5938,23 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "thought-line",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "thought-line",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ThoughtLine.tsx",
+   "files": [
+    "ThoughtLine.tsx",
+    "_micro-c.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-thought-line"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/voice-pill",
@@ -4893,13 +5967,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "voice-pill",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "voice-pill",
+   "destinationFile": "skill/sitewright/templates/fx/ui/VoicePill.tsx",
+   "files": [
+    "VoicePill.tsx",
+    "_micro-c.ts"
+   ],
+   "css": [
+    "ui-voice-pill"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/wake-slider",
@@ -4912,13 +5995,22 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "wake-slider",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "wake-slider",
+   "destinationFile": "skill/sitewright/templates/fx/ui/WakeSlider.tsx",
+   "files": [
+    "WakeSlider.tsx",
+    "_micro-c.ts"
+   ],
+   "css": [
+    "ui-wake-slider"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "rb:micro/warm-tooltip",
@@ -4931,13 +6023,21 @@
    "provenanceNote": "catalog prefix is rb: but the folder is not in the public React Bits layout; provenance unresolved - treated as restricted, implemented independently",
    "newId": "warm-tooltip",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "warm-tooltip",
+   "destinationFile": "skill/sitewright/templates/fx/ui/WarmTooltip.tsx",
+   "files": [
+    "WarmTooltip.tsx"
+   ],
+   "css": [
+    "ui-warm-tooltip"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:kage-landing-page",
@@ -4950,13 +6050,26 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "hero-night-temple",
    "destination": "template",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "hero-night-temple",
+   "destinationFile": "skill/sitewright/templates/fx/tpl/HeroNightTemple.tsx",
+   "files": [
+    "HeroNightTemple.tsx",
+    "_ha-kit.tsx",
+    "_ha-night.tsx",
+    "_ha-night-book.tsx",
+    "_dash.tsx"
+   ],
+   "css": [
+    "tpl-heroes-a",
+    "tpl-hero-night-temple"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:complete-shelf-landing-page",
@@ -5007,13 +6120,27 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "hero-living-green",
    "destination": "template",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "hero-living-green",
+   "destinationFile": "skill/sitewright/templates/fx/tpl/HeroLivingGreen.tsx",
+   "files": [
+    "HeroLivingGreen.tsx",
+    "_ha-kit.tsx",
+    "_ha-green-gl.tsx",
+    "_ha-green-art.tsx",
+    "_ha-green-cart.tsx",
+    "_dash.tsx"
+   ],
+   "css": [
+    "tpl-heroes-a",
+    "tpl-hero-living-green"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:meng-to-sketchbook-landing-page",
@@ -5026,13 +6153,26 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "hero-paper-sketchbook",
    "destination": "template",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "hero-paper-sketchbook",
+   "destinationFile": "skill/sitewright/templates/fx/tpl/HeroPaperSketchbook.tsx",
+   "files": [
+    "HeroPaperSketchbook.tsx",
+    "_hps-art.tsx",
+    "_hps-book.tsx",
+    "_hps-loupe.tsx",
+    "_dash.tsx",
+    "_shared.tsx"
+   ],
+   "css": [
+    "tpl-hero-paper-sketchbook"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:predictive-arc",
@@ -5045,13 +6185,26 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "predictive-arc",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "predictive-arc",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PredictiveArc.tsx",
+   "files": [
+    "PredictiveArc.tsx",
+    "_tu-bg-arc.ts",
+    "_tu-bg-kit.ts",
+    "_tu-bg-demo.tsx",
+    "_bg-c-canvas.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-predictive-arc"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:liquid-form",
@@ -5064,13 +6217,24 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "liquid-form",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "liquid-form",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LiquidForm.tsx",
+   "files": [
+    "LiquidForm.tsx",
+    "_t1.ts",
+    "_tu-bg-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-liquid-form"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:crt",
@@ -5083,13 +6247,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "crt-screen",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "crt-screen",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CrtScreen.tsx",
+   "files": [
+    "CrtScreen.tsx",
+    "_tu-bg-crt.ts",
+    "_t1.ts",
+    "_tu-bg-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-crt-screen"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:energy-orb",
@@ -5102,13 +6278,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "network-globe",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "network-globe",
+   "destinationFile": "skill/sitewright/templates/fx/ui/NetworkGlobe.tsx",
+   "files": [
+    "NetworkGlobe.tsx",
+    "_tu-bg-globe.ts",
+    "_t1.ts",
+    "_tu-bg-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-network-globe"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:spark-badge",
@@ -5121,13 +6309,26 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "spark-badge",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "spark-badge",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SparkBadge.tsx",
+   "files": [
+    "SparkBadge.tsx",
+    "_tu-bg-spark.ts",
+    "_tu-bg-kit.ts",
+    "_tu-bg-demo.tsx",
+    "_bg-c-canvas.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-spark-badge"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:elements",
@@ -5140,13 +6341,27 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "elemental-fields",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "elemental-fields",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ElementalFields.tsx",
+   "files": [
+    "ElementalFields.tsx",
+    "_tu-bg-elements.ts",
+    "_tu-bg-elements2.ts",
+    "_tu-bg-kit.ts",
+    "_tu-bg-demo.tsx",
+    "_bg-c-canvas.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-elemental-fields"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:typography-vortex",
@@ -5279,13 +6494,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "shader-buttons",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "shader-buttons",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ShaderButtons.tsx",
+   "files": [
+    "ShaderButtons.tsx",
+    "_tu-shader-faces.tsx",
+    "_tu-ui-kit.ts",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-shader-buttons"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:rectangle-buttons",
@@ -5298,13 +6525,21 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "rectangle-buttons",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "rectangle-buttons",
+   "destinationFile": "skill/sitewright/templates/fx/ui/RectangleButtons.tsx",
+   "files": [
+    "RectangleButtons.tsx"
+   ],
+   "css": [
+    "ui-rectangle-buttons"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:circle-buttons",
@@ -5317,13 +6552,21 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "circle-buttons",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "circle-buttons",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CircleButtons.tsx",
+   "files": [
+    "CircleButtons.tsx"
+   ],
+   "css": [
+    "ui-circle-buttons"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:liquid-metal-button",
@@ -5336,13 +6579,25 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "liquid-metal-button",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "liquid-metal-button",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LiquidMetalButton.tsx",
+   "files": [
+    "LiquidMetalButton.tsx",
+    "_tu-liquid-metal.ts",
+    "_tu-ui-kit.ts",
+    "_t1.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-liquid-metal-button"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:character-carousel",
@@ -5355,13 +6610,23 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "character-carousel",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "character-carousel",
+   "destinationFile": "skill/sitewright/templates/fx/ui/CharacterCarousel.tsx",
+   "files": [
+    "CharacterCarousel.tsx",
+    "_tu-characters.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-character-carousel"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:gallery",
@@ -5374,13 +6639,22 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "image-ribbon",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "image-ribbon",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ImageRibbon.tsx",
+   "files": [
+    "ImageRibbon.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-image-ribbon"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:sylva-living-world",
@@ -5393,13 +6667,24 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "moss-forest-world",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "moss-forest-world",
+   "destinationFile": "skill/sitewright/templates/fx/ui/MossForestWorld.tsx",
+   "files": [
+    "MossForestWorld.tsx",
+    "_tu-three-kit.ts",
+    "_tu-three-forest.ts",
+    "_t1.ts"
+   ],
+   "css": [
+    "ui-moss-forest-world"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:temple-night",
@@ -5526,13 +6811,22 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "engraved-certificate",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "engraved-certificate",
+   "destinationFile": "skill/sitewright/templates/fx/ui/EngravedCertificate.tsx",
+   "files": [
+    "EngravedCertificate.tsx",
+    "_tu-guilloche.ts"
+   ],
+   "css": [
+    "ui-engraved-certificate"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:woven-cloth",
@@ -5564,13 +6858,24 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "performance-gauges",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "performance-gauges",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PerformanceGauges.tsx",
+   "files": [
+    "PerformanceGauges.tsx",
+    "_tu-css-gauge.tsx",
+    "_tu-css-gauges.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-performance-gauges"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:uplink-loader",
@@ -5583,13 +6888,22 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "uplink-loader",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "uplink-loader",
+   "destinationFile": "skill/sitewright/templates/fx/ui/UplinkLoader.tsx",
+   "files": [
+    "UplinkLoader.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-uplink-loader"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:koi-studies",
@@ -5602,13 +6916,23 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "koi-studies",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "koi-studies",
+   "destinationFile": "skill/sitewright/templates/fx/ui/KoiStudies.tsx",
+   "files": [
+    "KoiStudies.tsx",
+    "_tu-css-koi.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-koi-studies"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:article-headings",
@@ -5651,13 +6975,24 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "animated-top-dock",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "animated-top-dock",
+   "destinationFile": "skill/sitewright/templates/fx/ui/AnimatedTopDock.tsx",
+   "files": [
+    "AnimatedTopDock.tsx",
+    "_menus-kit.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-animated-top-dock",
+    "ui-menus-stage"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:sketchbook",
@@ -5670,13 +7005,23 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "page-curl-book",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "page-curl-book",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PageCurlBook.tsx",
+   "files": [
+    "PageCurlBook.tsx",
+    "_tu-css-sketch.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-page-curl-book"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:constellation-field",
@@ -5689,13 +7034,26 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "constellation-field",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "constellation-field",
+   "destinationFile": "skill/sitewright/templates/fx/ui/ConstellationField.tsx",
+   "files": [
+    "ConstellationField.tsx",
+    "_tu-bg-constellation.ts",
+    "_tu-bg-kit.ts",
+    "_tu-bg-demo.tsx",
+    "_bg-c-canvas.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-constellation-field"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:portal-field",
@@ -5708,13 +7066,26 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "portal-field",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "portal-field",
+   "destinationFile": "skill/sitewright/templates/fx/ui/PortalField.tsx",
+   "files": [
+    "PortalField.tsx",
+    "_tu-bg-portal.ts",
+    "_tu-bg-kit.ts",
+    "_tu-bg-demo.tsx",
+    "_bg-c-canvas.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-portal-field"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:diagnostics-panel",
@@ -5727,13 +7098,24 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "diagnostics-panel",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "diagnostics-panel",
+   "destinationFile": "skill/sitewright/templates/fx/ui/DiagnosticsPanel.tsx",
+   "files": [
+    "DiagnosticsPanel.tsx",
+    "_tu-diagrams.ts",
+    "_tu-ui-kit.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-diagnostics-panel"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:skeuomorphic-toggle",
@@ -5746,13 +7128,21 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "skeuomorphic-toggle",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "skeuomorphic-toggle",
+   "destinationFile": "skill/sitewright/templates/fx/ui/SkeuomorphicToggle.tsx",
+   "files": [
+    "SkeuomorphicToggle.tsx"
+   ],
+   "css": [
+    "ui-skeuomorphic-toggle"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:matrix-field",
@@ -5765,13 +7155,24 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "laser-field",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "laser-field",
+   "destinationFile": "skill/sitewright/templates/fx/ui/LaserField.tsx",
+   "files": [
+    "LaserField.tsx",
+    "_t1.ts",
+    "_tu-bg-demo.tsx",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-laser-field"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:wireframe-forms",
@@ -5784,13 +7185,23 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "wireframe-forms",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "wireframe-forms",
+   "destinationFile": "skill/sitewright/templates/fx/ui/WireframeForms.tsx",
+   "files": [
+    "WireframeForms.tsx",
+    "_tu-ui-kit.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-wireframe-forms"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   },
   {
    "catalogId": "tu:brand-orbs",
@@ -5803,13 +7214,23 @@
    "provenanceNote": "authored work by a third party; catalog says some are preserved verbatim - not redistributed, technique re-implemented independently",
    "newId": "status-orbs",
    "destination": "component",
-   "status": "planned",
-   "registryId": null,
-   "demo": "none",
-   "test": "none",
-   "outstanding": [
-    "not implemented yet"
-   ]
+   "registryId": "status-orbs",
+   "destinationFile": "skill/sitewright/templates/fx/ui/StatusOrbs.tsx",
+   "files": [
+    "StatusOrbs.tsx",
+    "_tu-ui-kit.ts",
+    "_t2.ts"
+   ],
+   "css": [
+    "ui-status-orbs"
+   ],
+   "source": "Original",
+   "demo": "yes",
+   "test": "not run",
+   "dependencies": "none (react only)",
+   "license": "Sitewright original",
+   "outstanding": [],
+   "status": "implemented"
   }
  ],
  "tactileGlass": [

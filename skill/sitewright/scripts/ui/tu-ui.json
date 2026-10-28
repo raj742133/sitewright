@@ -1,3 +1,175 @@
 [
-  {"id":"shader-buttons","label":"Shader buttons","desc":"Five different live-drawn call-to-action buttons (plasma and holographic fragment shaders, ignition embers, a particle constellation, a tactile brushed plate) chosen with `variant`; hover, focus and press drive the animation.","source":"Original","group":"buttons","files":["ShaderButtons.tsx","_tu-shader-faces.tsx","_tu-ui-kit.ts","_t1.ts","_t2.ts"],"css":["ui-shader-buttons"],"use":"Primary call to action on a hero or pricing card; pick one variant per page, not all five."}
+ {
+  "id": "shader-buttons",
+  "label": "Shader buttons",
+  "desc": "Five different live-drawn call-to-action buttons (plasma and holographic fragment shaders, ignition embers, a particle constellation, a tactile brushed plate) chosen with `variant`; hover, focus and press drive the animation.",
+  "source": "Original",
+  "group": "buttons",
+  "files": [
+   "ShaderButtons.tsx",
+   "_tu-shader-faces.tsx",
+   "_tu-ui-kit.ts",
+   "_t1.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-shader-buttons"
+  ],
+  "use": "Primary call to action on a hero or pricing card; pick one variant per page, not all five."
+ },
+ {
+  "id": "rectangle-buttons",
+  "label": "Rectangle buttons",
+  "desc": "Ten distinct CSS-only rectangular call-to-action treatments (glass, gradient border, keycap, dotted border, technical outline, arrow pill, halftone bloom, inset arrow chip, hard-shadow stamp, fill sweep) via `variant`; renders a button or a link.",
+  "source": "Original",
+  "group": "buttons",
+  "files": [
+   "RectangleButtons.tsx"
+  ],
+  "css": [
+   "ui-rectangle-buttons"
+  ],
+  "use": "Calls to action, form submits and link buttons; choose one variant to match the page's tone."
+ },
+ {
+  "id": "circle-buttons",
+  "label": "Circle buttons",
+  "desc": "Circular icon controls (play/pause, plus, mail with a send animation) in three treatments: glass, dotted ring and tactile dome.",
+  "source": "Original",
+  "group": "buttons",
+  "files": [
+   "CircleButtons.tsx"
+  ],
+  "css": [
+   "ui-circle-buttons"
+  ],
+  "use": "Media controls, floating add actions and send buttons; always pass an aria-label."
+ },
+ {
+  "id": "liquid-metal-button",
+  "label": "Liquid metal button",
+  "desc": "A WebGL liquid-chrome button in pill and orb shapes: a bevelled reflective rim with edge dispersion, a flowing dark face, hover bloom and a click ripple, with a CSS chrome fallback.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "LiquidMetalButton.tsx",
+   "_tu-liquid-metal.ts",
+   "_tu-ui-kit.ts",
+   "_t1.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-liquid-metal-button"
+  ],
+  "use": "A premium hero call to action or play button on a dark section."
+ },
+ {
+  "id": "character-carousel",
+  "label": "Character carousel",
+  "desc": "An editorial profile-card carousel in two layouts, a flat filmstrip and a perspective wave, with invented illustrated characters; drag, wheel, arrows and keyboard, looping.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "CharacterCarousel.tsx",
+   "_tu-characters.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-character-carousel"
+  ],
+  "use": "Team, cast or testimonial profiles on an about page; pass your own `items`."
+ },
+ {
+  "id": "image-ribbon",
+  "label": "Image ribbon",
+  "desc": "A spiral ribbon of curved artwork panels orbiting in CSS 3D, built from narrow slices; drag or arrow keys turn it and a button pauses it.",
+  "source": "Original",
+  "group": "media",
+  "files": [
+   "ImageRibbon.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-image-ribbon"
+  ],
+  "use": "A gallery or portfolio hero (fills its parent)."
+ },
+ {
+  "id": "engraved-certificate",
+  "label": "Engraved certificate",
+  "desc": "A certificate drawn in SVG with a woven guilloche border, rosette watermark and seal, lathe-line paper and set type; the lines draw in once and a sheen follows the pointer.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "EngravedCertificate.tsx",
+   "_tu-guilloche.ts"
+  ],
+  "css": [
+   "ui-engraved-certificate"
+  ],
+  "use": "Award, course-completion or membership pages; pass recipient, citation and issuer."
+ },
+ {
+  "id": "diagnostics-panel",
+  "label": "Diagnostics panel",
+  "desc": "A diagnostics card with three Canvas 2D illustrations (stacked layer planes, a node cube, a rippling mesh) chosen with an accessible tab list.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "DiagnosticsPanel.tsx",
+   "_tu-diagrams.ts",
+   "_tu-ui-kit.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-diagnostics-panel"
+  ],
+  "use": "System, model or network health screens; a dashboard tile that explains structure with a moving diagram."
+ },
+ {
+  "id": "skeuomorphic-toggle",
+  "label": "Skeuomorphic toggle",
+  "desc": "A real switch (role=switch) in four takes: a metal knob in a recessed slot with an LED, a tilting rocker paddle, a flat pill and a flat segmented control.",
+  "source": "Original",
+  "group": "inputs",
+  "files": [
+   "SkeuomorphicToggle.tsx"
+  ],
+  "css": [
+   "ui-skeuomorphic-toggle"
+  ],
+  "use": "Settings panels and preference lists; pick tactile for hardware-flavoured products, flat for everything else."
+ },
+ {
+  "id": "wireframe-forms",
+  "label": "Wireframe forms",
+  "desc": "A rotating wireframe cube, three crossing cylinders or a latitude/longitude sphere drawn on a canvas with depth-faded lines; drag to spin, arrow keys nudge.",
+  "source": "Original",
+  "group": "3d",
+  "files": [
+   "WireframeForms.tsx",
+   "_tu-ui-kit.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-wireframe-forms"
+  ],
+  "use": "A technical hero accent or empty-state illustration (fills its parent)."
+ },
+ {
+  "id": "status-orbs",
+  "label": "Status orbs",
+  "desc": "Animated dot-orb status indicators for Thinking, Uploading, Listening and Idle in 20px and 56px sizes with primary, signal, aurora and mono colour styles.",
+  "source": "Original",
+  "group": "loaders",
+  "files": [
+   "StatusOrbs.tsx",
+   "_tu-ui-kit.ts",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-status-orbs"
+  ],
+  "use": "Inline with a status line (small) or as the centrepiece of an assistant or upload state (medium)."
+ }
 ]

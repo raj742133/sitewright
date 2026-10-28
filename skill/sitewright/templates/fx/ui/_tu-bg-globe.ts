@@ -12,8 +12,8 @@ function seeded(seed: number) {
 const land = (v: V3) => (fbm2(v[0] * 2.4 + 5, v[1] * 2.4 + v[2] * 1.1) + fbm2(v[2] * 2.4 + 9, v[1] * 2.4 + v[0] * 1.1)) / 2;
 
 export interface GlobeGeo {
-  /** x,y,z,kind(0 dot, 1 hub) per point */ points: Float32Array; pointCount: number;
-  /** x,y,z,s,phase per line vertex (GL_LINES pairs) */ lines: Float32Array; lineCount: number;
+  /** x,y,z,kind(0 dot, 1 hub) per point */ points: Float32Array<ArrayBuffer>; pointCount: number;
+  /** x,y,z,s,phase per line vertex (GL_LINES pairs) */ lines: Float32Array<ArrayBuffer>; lineCount: number;
 }
 export function buildGlobe(dots: number, arcs: number): GlobeGeo {
   const R = seeded(2024);

@@ -43,7 +43,7 @@ export function paintTrunks(c: CanvasRenderingContext2D, W: number, H: number, T
     const x = ((i + 0.3 + r() * 0.5) / n) * W, w = lerp(wmin, wmax, r());
     trunk(c, x, w, H, T.bark, T.fog, fogK, r, y0);
     c.fillStyle = css(mixc(T.moss, T.fog, fogK), 0.85);
-    for (let j = 0; j < w * 0.9; j++) { const yy = y0 - r() * H * 0.34; c.beginPath(); c.arc(x + (r() - 0.5) * w * 0.9, yy, 1 + r() * w * 0.09, 0, 6.3); c.fill(); }
+    for (let j = 0; j < w * 0.35; j++) { const yy = y0 - r() * H * 0.34; c.beginPath(); c.arc(x + (r() - 0.5) * w * 0.9, yy, 1 + r() * w * 0.09, 0, 6.3); c.fill(); }
     if (frost) { c.fillStyle = css(mixc(WHITE, T.fog, fogK), 0.6); for (let j = 0; j < 22; j++) c.fillRect(x - w * 0.46 + r() * w * 0.2, r() * H * 0.7, 2, 3 + r() * 8); }
   }
 }

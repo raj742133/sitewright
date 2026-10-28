@@ -1,0 +1,28 @@
+.ui-engraved-certificate-root { --engraved-certificate-ink: color-mix(in srgb, var(--primary, #2563eb) 62%, var(--ink, #111827)); --engraved-certificate-paper: color-mix(in srgb, var(--raised, #fff) 93%, var(--signal, #f59e0b)); --engraved-certificate-gx: 30%; --engraved-certificate-gy: 20%; width: 100%; height: 100%; min-height: 0; display: block; position: relative; container-type: size; font-family: var(--font-display, Georgia, 'Times New Roman', serif); }
+.ui-engraved-certificate-svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.28)); }
+.ui-engraved-certificate-paper { fill: var(--engraved-certificate-paper); }
+.ui-engraved-certificate-lathe path, .ui-engraved-certificate-wm path, .ui-engraved-certificate-band path, .ui-engraved-certificate-corner path, .ui-engraved-certificate-seal path { fill: none; stroke: var(--engraved-certificate-ink); stroke-linejoin: round; }
+.ui-engraved-certificate-lathe path { stroke-width: 0.5; opacity: 0.16; }
+.ui-engraved-certificate-wm path { stroke-width: 0.45; opacity: 0.34; }
+.ui-engraved-certificate-band path { stroke-width: 0.75; opacity: 0.8; }
+.ui-engraved-certificate-corner path { stroke-width: 0.5; opacity: 0.8; }
+.ui-engraved-certificate-seal path { stroke-width: 0.5; opacity: 0.9; }
+.ui-engraved-certificate-seal circle { fill: none; stroke: var(--engraved-certificate-ink); stroke-width: 1.6; }
+.ui-engraved-certificate-seal .ui-engraved-certificate-hub { fill: var(--engraved-certificate-ink); stroke: none; }
+.ui-engraved-certificate-sealbg { fill: var(--engraved-certificate-paper); }
+.ui-engraved-certificate-edge { fill: none; stroke: var(--engraved-certificate-ink); stroke-width: 1.4; }
+.ui-engraved-certificate-rule { stroke: var(--engraved-certificate-ink); stroke-width: 1; fill: none; opacity: 0.7; }
+.ui-engraved-certificate-type text { text-anchor: middle; fill: var(--ink, #111827); paint-order: stroke; stroke: var(--engraved-certificate-paper); stroke-width: 7px; stroke-linejoin: round; }
+.ui-engraved-certificate-issuer { font-size: 15px; letter-spacing: 0.34em; font-weight: 600; fill: var(--engraved-certificate-ink) !important; }
+.ui-engraved-certificate-title { font-size: 50px; font-weight: 700; letter-spacing: 0.02em; }
+.ui-engraved-certificate-small { font-size: 18px; font-style: italic; letter-spacing: 0.06em; }
+.ui-engraved-certificate-name { font-size: 62px; font-style: italic; font-weight: 600; fill: var(--engraved-certificate-ink) !important; }
+.ui-engraved-certificate-cite { font-size: 21px; }
+.ui-engraved-certificate-meta { font-size: 16px; letter-spacing: 0.06em; font-variant-numeric: lining-nums; }
+.ui-engraved-certificate-demo { box-sizing: border-box; width: 100%; height: 100%; min-height: 160px; padding: 10px; display: grid; background: radial-gradient(90% 90% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 16%, var(--surface, #fff)), var(--surface, #fff)); }
+.ui-engraved-certificate-draw path { stroke-dasharray: 1; stroke-dashoffset: 0; animation: ui-engraved-certificate-in 2.2s cubic-bezier(0.4, 0, 0.2, 1) both; }
+@keyframes ui-engraved-certificate-in { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .ui-engraved-certificate-draw path { animation: none; stroke-dasharray: none; } }
+.ui-engraved-certificate-root::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(circle at var(--engraved-certificate-gx) var(--engraved-certificate-gy), rgba(255, 255, 255, 0.28), transparent 38%); transition: opacity 0.3s; }
+.ui-engraved-certificate-root:hover::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce), (pointer: coarse) { .ui-engraved-certificate-root::after { display: none; } }

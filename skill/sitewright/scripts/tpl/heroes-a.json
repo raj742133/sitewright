@@ -1,0 +1,41 @@
+[
+  {
+    "id": "hero-night-temple",
+    "label": "Night temple hero",
+    "desc": "Cinematic dark landing page for a lantern-lit mountain retreat: procedural night scene with parallax ridges, a lit pagoda and drifting embers, a lantern toggle, scroll-linked night timeline, room cards with a validated booking dialog, rituals and a letters form.",
+    "source": "Original",
+    "group": "page",
+    "files": [
+      "HeroNightTemple.tsx",
+      "_ha-kit.tsx",
+      "_ha-night.tsx",
+      "_ha-night-book.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-heroes-a",
+      "tpl-hero-night-temple"
+    ],
+    "use": "travel, hospitality or event landing page with an atmospheric night hero"
+  },
+  {
+    "id": "hero-living-green",
+    "label": "Living green hero",
+    "desc": "Organic botanical landing page: a WebGL moss field that drifts and follows the pointer (Canvas 2D fallback), liquid-metal CTA, swaying procedural fern, glass feature cards, a filterable and sortable shelf with a working basket and checkout, a self-drawing vine timeline and a newsletter form.",
+    "source": "Original",
+    "group": "page",
+    "files": [
+      "HeroLivingGreen.tsx",
+      "_ha-kit.tsx",
+      "_ha-green-gl.tsx",
+      "_ha-green-art.tsx",
+      "_ha-green-cart.tsx",
+      "_dash.tsx"
+    ],
+    "css": [
+      "tpl-heroes-a",
+      "tpl-hero-living-green"
+    ],
+    "use": "organic product, skincare, wellness or garden brand landing page"
+  }
+]

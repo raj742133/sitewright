@@ -29,13 +29,13 @@ export const FISH: FishSpec[] = [
 const N = 30;
 interface P { x: number; y: number; a: number; w: number }
 function spine(t: number, f: FishSpec): P {
-  const x = (u: number) => 208 - u * 168;
-  const y = (u: number) => 100 + f.bend * Math.sin(2.3 * u + f.phase) * (0.3 + u);
+  const x = (u: number) => 226 - u * 186;
+  const y = (u: number) => 100 + f.bend * 1.7 * Math.sin(2.6 * u + f.phase) * (0.25 + u);
   const e = 0.004;
   const dx = x(t + e) - x(t - e);
   const dy = y(t + e) - y(t - e);
   const tt = Math.pow(t, 0.8);
-  const w = 21 * Math.sqrt(Math.max(0, 4 * tt * (1 - tt))) * (1 - 0.35 * t) + (t > 0.9 ? 2.2 : 0);
+  const w = 30 * Math.sqrt(Math.max(0, 4 * tt * (1 - tt))) * (1 - 0.35 * t) + (t > 0.9 ? 2.2 : 0);
   return { x: x(t), y: y(t), a: Math.atan2(dy, dx), w };
 }
 const off = (p: P, k: number): [number, number] => [p.x - Math.sin(p.a) * p.w * k, p.y + Math.cos(p.a) * p.w * k];
@@ -53,8 +53,8 @@ function bodyPath(f: FishSpec): string {
   }
   return `M${top.join('L')}L${bot.reverse().join('L')}Z`;
 }
-const TAIL = 'M0 0C12 -5 26 -18 40 -27C32 -10 36 -3 30 0C36 3 32 10 40 27C26 18 12 5 0 0Z';
-const FIN = 'M0 0C6 -3 14 -2 20 4C14 6 6 4 0 0Z';
+const TAIL = 'M0 0C14 -6 32 -22 52 -34C42 -13 47 -4 38 0C47 4 42 13 52 34C32 22 14 6 0 0Z';
+const FIN = 'M0 0C10 -5 26 -3 38 9C24 13 10 8 0 0Z';
 const deg = (r: number) => (r * 180) / Math.PI;
 
 /** Draws one fish study on a 250x200 sheet. `swim` animates tail and fins (CSS). */
@@ -65,8 +65,8 @@ export function FishArt({ spec, swim }: { spec: FishSpec; swim: boolean }) {
   const head = spine(0.04, spec);
   const pec = spine(0.24, spec);
   const dor = spine(0.55, spec);
-  const [pxT, pyT] = off(pec, 0.95);
-  const [pxB, pyB] = off(pec, -0.95);
+  const [pxT, pyT] = off(pec, 0.8);
+  const [pxB, pyB] = off(pec, -0.8);
   const spinePts: string[] = [];
   for (let i = 3; i <= N - 2; i++) { const p = spine((i / N) * 0.97, spec); spinePts.push(`${fmt(p.x)} ${fmt(p.y)}`); }
   const [e1x, e1y] = off(head, 0.62);
@@ -86,8 +86,6 @@ export function FishArt({ spec, swim }: { spec: FishSpec; swim: boolean }) {
       <rect width="250" height="200" fill={`url(#${uid}w)`} />
       <g className="ui-koi-studies-shadow" transform="translate(7 11)"><path d={body} /></g>
 
-      <g className="ui-koi-studies-fin-l" transform={`translate(${fmt(pxT)} ${fmt(pyT)}) rotate(${fmt(deg(pec.a) - 150)})`}><path d={FIN} fill={spec.fin} className={swim ? 'is-swim' : ''} /></g>
-      <g className="ui-koi-studies-fin-r" transform={`translate(${fmt(pxB)} ${fmt(pyB)}) rotate(${fmt(deg(pec.a) + 150)}) scale(1 -1)`}><path d={FIN} fill={spec.fin} className={swim ? 'is-swim' : ''} /></g>
       <g transform={`translate(${fmt(tailP.x)} ${fmt(tailP.y)}) rotate(${fmt(deg(tailP.a) + 180)}) scale(-1 1)`}>
         <g className={swim ? 'ui-koi-studies-tail is-swim' : 'ui-koi-studies-tail'}><path d={TAIL} fill={spec.fin} opacity="0.9" /></g>
       </g>
@@ -104,6 +102,8 @@ export function FishArt({ spec, swim }: { spec: FishSpec; swim: boolean }) {
         <rect width="250" height="200" fill={`url(#${uid}d)`} mask={`url(#${uid}m)`} opacity="0.55" />
       </g>
       <path d={body} fill="none" stroke="#0a0f1a" strokeOpacity="0.35" strokeWidth="1" />
+      <g className="ui-koi-studies-fin-l" transform={`translate(${fmt(pxT)} ${fmt(pyT)}) rotate(${fmt(deg(pec.a) - 150)})`}><path d={FIN} fill={spec.fin} fillOpacity="0.88" stroke="#0a0f1a" strokeOpacity="0.25" strokeWidth="0.8" className={swim ? 'is-swim' : ''} /></g>
+      <g className="ui-koi-studies-fin-r" transform={`translate(${fmt(pxB)} ${fmt(pyB)}) rotate(${fmt(deg(pec.a) + 150)}) scale(1 -1)`}><path d={FIN} fill={spec.fin} fillOpacity="0.88" stroke="#0a0f1a" strokeOpacity="0.25" strokeWidth="0.8" className={swim ? 'is-swim' : ''} /></g>
       <circle cx={fmt(e1x)} cy={fmt(e1y)} r="2.4" fill="#0a0f1a" /><circle cx={fmt(e2x)} cy={fmt(e2y)} r="2.4" fill="#0a0f1a" />
       <circle cx={fmt(e1x - 0.7)} cy={fmt(e1y - 0.8)} r="0.7" fill="#fff" /><circle cx={fmt(e2x - 0.7)} cy={fmt(e2y - 0.8)} r="0.7" fill="#fff" />
 

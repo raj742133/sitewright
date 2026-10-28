@@ -12,7 +12,7 @@ export function look(env: Env, time: LandTime, wx: LandWeather): Look {
   const p = env.pal, dk: RGB = [0.02, 0.03, 0.07];
   const base: Record<LandTime, Look> = {
     sunrise: { top: mixc(dk, p.primary, 0.55), hor: mixc(p.signal, [1, 0.72, 0.62], 0.45), sun: mixc(p.signal, WHITE, 0.55), sunX: 0.3, sunY: 0.07, light: 0.78, warm: 0.4, fog: 0.016, stars: 0.1, cover: 0, moon: false },
-    noon: { top: mixc(p.primary, [0.45, 0.7, 1], 0.55), hor: mixc(WHITE, mixc(p.primary, [0.6, 0.8, 1], 0.5), 0.35), sun: [1, 0.97, 0.85], sunX: 0.66, sunY: 0.5, light: 1, warm: 0, fog: 0.012, stars: 0, cover: 0, moon: false },
+    noon: { top: mixc(p.primary, [0.28, 0.55, 0.92], 0.78), hor: mixc([0.8, 0.9, 1], p.primary, 0.12), sun: [1, 0.97, 0.85], sunX: 0.66, sunY: 0.5, light: 1, warm: 0, fog: 0.012, stars: 0, cover: 0, moon: false },
     sunset: { top: mixc(dk, p.primary, 0.42), hor: mixc(p.signal, [1, 0.5, 0.25], 0.35), sun: mixc(p.signal, [1, 0.8, 0.5], 0.4), sunX: 0.74, sunY: 0.06, light: 0.7, warm: 0.55, fog: 0.017, stars: 0.15, cover: 0, moon: false },
     night: { top: mixc(dk, p.primary, 0.1), hor: mixc(dk, p.primary, 0.34), sun: [0.92, 0.95, 1], sunX: 0.28, sunY: 0.42, light: 0.2, warm: 0, fog: 0.014, stars: 1, cover: 0, moon: true },
   };
@@ -32,10 +32,10 @@ export function paintSky(env: Env, L: Look, wx: LandWeather): HTMLCanvasElement 
     const g = c.createLinearGradient(0, 0, 0, hy + 4); g.addColorStop(0, css(L.top)); g.addColorStop(1, css(L.hor)); c.fillStyle = g; c.fillRect(0, 0, w, h);
     if (L.stars > 0.02) for (let i = 0; i < 90; i++) { c.fillStyle = css(WHITE, (0.2 + hash1(i * 3) * 0.6) * L.stars); const s = hash1(i * 7) < 0.1 ? 2 : 1; c.fillRect(hash1(i) * w, hash1(i * 5 + 1) * hy * 0.95, s, s); }
     const sx = w * L.sunX, sy = hy - L.sunY * hy * 1.3, hide = wx === 'fog' ? 0.3 : wx === 'storm' ? 0.08 : wx === 'rain' ? 0.35 : wx === 'snow' ? 0.4 : 1;
-    const sprite = glowSprite(L.sun), R = Math.min(w, h) * (L.moon ? 0.5 : 0.7);
-    c.globalCompositeOperation = 'lighter'; c.globalAlpha = (L.moon ? 0.5 : 0.9) * hide; c.drawImage(sprite, sx - R, sy - R, R * 2, R * 2); c.globalCompositeOperation = 'source-over'; c.globalAlpha = hide;
+    const sprite = glowSprite(L.sun), R = Math.min(w, h) * (L.moon ? 0.5 : 0.5);
+    c.globalCompositeOperation = 'lighter'; c.globalAlpha = (L.moon ? 0.5 : 0.55) * hide; c.drawImage(sprite, sx - R, sy - R, R * 2, R * 2); c.globalCompositeOperation = 'source-over'; c.globalAlpha = hide;
     c.fillStyle = css(L.sun); c.beginPath(); c.arc(sx, sy, Math.min(w, h) * (L.moon ? 0.035 : 0.045), 0, 6.3); c.fill();
-    if (L.moon) { c.fillStyle = css(mixc(L.top, L.hor, 0.5)); c.beginPath(); c.arc(sx + Math.min(w, h) * 0.014, sy - Math.min(w, h) * 0.008, Math.min(w, h) * 0.03, 0, 6.3); c.fill(); }
+    if (L.moon) { c.fillStyle = css(L.top, 0.16); for (const [dx, dy, r] of [[-0.3, -0.2, 0.28], [0.25, 0.1, 0.2], [-0.05, 0.4, 0.15]] as const) { c.beginPath(); c.arc(sx + dx * Math.min(w, h) * 0.035, sy + dy * Math.min(w, h) * 0.035, r * Math.min(w, h) * 0.035, 0, 6.3); c.fill(); } }
     c.globalAlpha = 1;
     if (L.cover > 0) { // soft cloud banks
       for (let i = 0; i < 14; i++) { const cx = hash1(i * 11) * w, cy = hash1(i * 13 + 2) * hy * 0.7, r = w * (0.12 + hash1(i * 17) * 0.14); const gg = c.createRadialGradient(cx, cy, 0, cx, cy, r); const cc = mixc(L.top, L.hor, 0.3 + hash1(i) * 0.3); gg.addColorStop(0, css(cc, 0.5 * L.cover)); gg.addColorStop(1, css(cc, 0)); c.fillStyle = gg; c.fillRect(cx - r, cy - r, r * 2, r * 2); }
@@ -44,44 +44,78 @@ export function paintSky(env: Env, L: Look, wx: LandWeather): HTMLCanvasElement 
   });
 }
 
-const pathX = (zw: number) => Math.sin(zw * 0.045) * 3.2 + Math.sin(zw * 0.013) * 5;
+/* ---- terrain: periodic height tiles (built once), sampled by a front-to-back column marcher (voxel-space style) at low resolution ---- */
+const N = 256, CELL = 0.6, SPAN = N * CELL, TAU = Math.PI * 2;
+interface Tiles { h: Float32Array; m: Float32Array; gx: Float32Array; gz: Float32Array; mgx: Float32Array; mgz: Float32Array }
+let tiles: Tiles | null = null;
+const hi = (a: number, b: number, P: number, sd: number) => { let k = (((a % P) + P) % P) * 374761393 + (((b % P) + P) % P) * 668265263 + sd * 982451653; k = Math.imul(k ^ (k >>> 13), 1274126177); return ((k ^ (k >>> 16)) >>> 0) / 4294967296; };
+function pvn(x: number, y: number, P: number, sd: number) {
+  const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy, ux = fx * fx * (3 - 2 * fx), uy = fy * fy * (3 - 2 * fy);
+  const a = hi(ix, iy, P, sd), b = hi(ix + 1, iy, P, sd), c = hi(ix, iy + 1, P, sd), d = hi(ix + 1, iy + 1, P, sd);
+  return a + (b - a) * ux + (c - a) * uy + (a - b - c + d) * ux * uy;
+}
+export const pathX = (zw: number) => Math.sin((zw / SPAN) * TAU * 3) * 3.2 + Math.sin((zw / SPAN) * TAU) * 5;
+function getTiles(): Tiles {
+  if (tiles) return tiles;
+  const h = new Float32Array(N * N), m = new Float32Array(N * N);
+  for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) {
+    const u = i / N, v = j / N, xw = (i - N / 2) * CELL, zw = j * CELL;
+    const n = 0.5 * pvn(u * 8, v * 8, 8, 1) + 0.3 * pvn(u * 16, v * 16, 16, 2) + 0.2 * pvn(u * 32, v * 32, 32, 3);
+    const valley = smooth(1.2, 9, Math.abs(xw - pathX(zw)));
+    h[j * N + i] = (n - 0.35) * (2 + 8 * valley) * valley + pvn(u * 64, v * 64, 64, 4) * 0.25 * valley;
+    const r = 0.55 * pvn(u * 3, v * 3, 3, 5) + 0.3 * pvn(u * 6, v * 6, 6, 6) + 0.15 * pvn(u * 12, v * 12, 12, 7);
+    m[j * N + i] = Math.pow(r, 1.5) * 20 + 1;
+  }
+  const grad = (src: Float32Array, dir: number) => { const g = new Float32Array(N * N); for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) g[j * N + i] = dir ? (src[((j + 1) % N) * N + i]! - src[((j + N - 1) % N) * N + i]!) / (2 * CELL) : (src[j * N + ((i + 1) % N)]! - src[j * N + ((i + N - 1) % N)]!) / (2 * CELL); return g; };
+  tiles = { h, m, gx: grad(h, 0), gz: grad(h, 1), mgx: grad(m, 0), mgz: grad(m, 1) };
+  return tiles;
+}
+const samp = (a: Float32Array, u: number, v: number) => {
+  const iu = Math.floor(u), iv = Math.floor(v), fu = u - iu, fv = v - iv, x0 = ((iu % N) + N) % N, y0 = ((iv % N) + N) % N, x1 = (x0 + 1) % N, y1 = (y0 + 1) % N;
+  const p = a[y0 * N + x0]!, q = a[y0 * N + x1]!, r = a[y1 * N + x0]!, t = a[y1 * N + x1]!;
+  return p + (q - p) * fu + (r - p) * fv + (p - q - r + t) * fu * fv;
+};
+/** Terrain height at world (x, zw); `z` is the distance from the camera (far mountains rise with it). */
 export function heightAt(x: number, zw: number, z: number) {
-  const dx = Math.abs(x - pathX(zw)), valley = smooth(1.2, 9, dx);
-  const hills = (fbm2(x * 0.09 + 3, zw * 0.09) - 0.3) * (2.5 + 9 * valley);
-  const far = smooth(34, 95, z) * (fbm2(x * 0.04 + 20, zw * 0.035) * 20 + 2);
-  return hills * valley + far + noise2(x * 0.7, zw * 0.7) * 0.25 * valley;
+  const T = getTiles(), far = smooth(40, 105, z);
+  return samp(T.h, x / CELL + N / 2, zw / CELL) + (far > 0 ? far * samp(T.m, x * 0.5 / CELL + N / 2, zw * 0.5 / CELL) : 0);
 }
 
-export interface Rig { rows: number; zNear: number; zFar: number }
-/** Draws the terrain rows far to near. `scroll` moves the camera forward, `cam` shifts it sideways. */
-export function paintTerrain(c: CanvasRenderingContext2D, env: Env, L: Look, wx: LandWeather, scroll: number, cam: number, hy: number, rig: Rig) {
-  const { w, h } = env, f = h * 0.95, cx = w / 2, camH = 3.4, step = Math.max(5, Math.round(w / 110));
-  const low = mixc(hsl(98, 0.3, 0.32), env.pal.primary, 0.07), high = hsl(220, 0.1, 0.45), snowK = wx === 'snow' ? 0.82 : 0.1;
-  const fogC = mixc(L.hor, L.top, 0.15);
-  const lightC = mixc(WHITE, L.sun, 0.35 * L.warm + 0.1);
-  for (let i = 0; i < rig.rows; i++) {
-    const u = 1 - i / (rig.rows - 1), z = rig.zNear * Math.pow(rig.zFar / rig.zNear, u), zw = z + scroll;
-    const pts: number[] = []; let top = h, sumH = 0, n = 0;
-    for (let sx = -step; sx <= w + step; sx += step) {
-      const x = ((sx - cx) / f) * z + cam, Ht = heightAt(x, zw, z), y = hy + ((camH - Ht) * f) / z;
-      pts.push(sx, y); top = Math.min(top, y); sumH += Ht; n++;
+export const VOX_H = 4.4;
+/** Marches every screen column front to back into a small RGBA buffer (alpha 0 = sky). Lit by a side/back sun, fogged by distance, snow on peaks. */
+export function renderTerrain(img: Uint8ClampedArray, RW: number, RH: number, env: Env, L: Look, wx: LandWeather, scroll: number, camX: number, hyN: number) {
+  const T = getTiles(), f = RH * 0.95, hy = RH * hyN, cx = RW / 2;
+  img.fill(0);
+  const fogC = mixc(L.hor, L.top, 0.15), low = mixc(hsl(100, 0.36, 0.36), env.pal.primary, 0.06), high = hsl(220, 0.08, 0.42);
+  const sd = L.sunX < 0.5 ? -1 : 1, lx = sd * 0.6, ly = 0.55, lz = -0.3, ln = Math.hypot(lx, ly, lz);
+  const lightC = mixc(WHITE, L.sun, 0.4 + 0.3 * L.warm), snowK = wx === 'snow' ? 0.78 : 0.0, amb = 0.3 + 0.3 * L.light;
+  const dens = L.fog * 0.6, camY = VOX_H;
+  for (let sx = 0; sx < RW; sx++) {
+    const dir = (sx - cx) / f; let yb = RH, z = 3.2;
+    while (z < 110 && yb > 0) {
+      const x = camX + dir * z, zw = z + scroll, u = x / CELL + N / 2, v = zw / CELL, far = smooth(40, 105, z);
+      let H = samp(T.h, u, v), gx = samp(T.gx, u, v), gz = samp(T.gz, u, v);
+      if (far > 0) { const um = x * 0.5 / CELL + N / 2, vm = zw * 0.5 / CELL; H += far * samp(T.m, um, vm); gx += far * samp(T.mgx, um, vm) * 0.5; gz += far * samp(T.mgz, um, vm) * 0.5; }
+      const y = hy + ((camY - H) * f) / z;
+      if (y < yb) {
+        const nl = ((-gx * lx + ly - gz * lz) / (ln * Math.hypot(gx, 1, gz))), sh = (amb + (1 - amb) * clamp(nl * 1.2 - 0.1, 0, 1)) * (0.45 + 0.75 * L.light);
+        const el = smooth(0, 12, H), snow = clamp(smooth(5, 14, H) * 0.9 + snowK * (0.5 + 0.5 * (1 - el)), 0, 1);
+        const fg = clamp(1 - Math.exp(-z * dens), 0, 0.98);
+        let r = low[0] + (high[0] - low[0]) * el * 0.8, g = low[1] + (high[1] - low[1]) * el * 0.8, b = low[2] + (high[2] - low[2]) * el * 0.8;
+        r += (1 - r) * snow; g += (1 - g) * snow; b += (1 - b) * snow;
+        r = r * sh * (0.6 + 0.4 * lightC[0]) ; g = g * sh * (0.6 + 0.4 * lightC[1]); b = b * sh * (0.6 + 0.4 * lightC[2]);
+        r += (fogC[0] - r) * fg; g += (fogC[1] - g) * fg; b += (fogC[2] - b) * fg;
+        const R = clamp(r, 0, 1) * 255, G = clamp(g, 0, 1) * 255, B = clamp(b, 0, 1) * 255, y0 = Math.max(0, Math.floor(y));
+        for (let yy = y0; yy < yb; yy++) { const k = (yy * RW + sx) * 4; img[k] = R; img[k + 1] = G; img[k + 2] = B; img[k + 3] = 255; }
+        yb = y0;
+      }
+      z += Math.max(0.12, z * 0.022);
     }
-    const avg = sumH / n, fogF = clamp(1 - Math.exp(-z * L.fog * 1.6), 0, 0.97);
-    const elev = smooth(-1, 12, avg), snow = clamp(smooth(5, 15, avg) * 0.85 + snowK * (0.4 + 0.6 * (1 - elev)), 0, 1);
-    let col = mixc(low, high, elev * 0.8);
-    col = col.map((v) => v * (0.25 + 0.95 * L.light)) as RGB; col = mixc(col, lightC, 0.1 * L.light);
-    const topCol = mixc(mixc(col, WHITE, snow * 0.9 * (0.3 + L.light)), lightC, 0.2 * L.light), nearTone = mixc(col, [0, 0, 0], 0.25);
-    const g = c.createLinearGradient(0, top, 0, Math.min(h, top + (h - hy) * 0.22 + 30));
-    g.addColorStop(0, css(mixc(topCol, fogC, fogF))); g.addColorStop(1, css(mixc(nearTone, fogC, fogF)));
-    c.fillStyle = g; c.beginPath(); c.moveTo(pts[0]!, h + 2);
-    for (let k = 0; k < pts.length; k += 2) c.lineTo(pts[k]!, pts[k + 1]!);
-    c.lineTo(pts[pts.length - 2]!, h + 2); c.closePath(); c.fill();
-    if (z > 7) { c.strokeStyle = css(mixc(lightC, fogC, fogF * 0.9), 0.18 * L.light + 0.04); c.lineWidth = 1; c.beginPath(); for (let k = 0; k < pts.length; k += 2) k ? c.lineTo(pts[k]!, pts[k + 1]!) : c.moveTo(pts[k]!, pts[k + 1]!); c.stroke(); }
   }
 }
 /** Grass tufts and stones scattered on the near field, tied to world positions so they slide past with the scroll. */
 export function paintScatter(c: CanvasRenderingContext2D, env: Env, L: Look, wx: LandWeather, scroll: number, cam: number, hy: number) {
-  const { w, h } = env, f = h * 0.95, cx = w / 2, camH = 3.4, span = 16, cell = 1.15;
+  const { w, h } = env, f = h * 0.95, cx = w / 2, camH = VOX_H, span = 16, cell = 1.15;
   const grass = mixc(hsl(95, 0.35, 0.3), env.pal.primary, 0.06).map((v) => v * (0.3 + 0.9 * L.light)) as RGB;
   const stone = mixc(hsl(220, 0.08, 0.4), [0, 0, 0], 0.2).map((v) => v * (0.35 + 0.8 * L.light)) as RGB;
   const items: { z: number; x: number; k: number; id: number }[] = [];

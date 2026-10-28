@@ -19,7 +19,7 @@ const ENSEMBLE: Slot[] = [
   { kind: 'pagoda', x: 0.17, h: 0.5, depth: 0.55 }, { kind: 'spire', x: 0.34, h: 0.42, depth: 0.35 }, { kind: 'minaret', x: 0.68, h: 0.56, depth: 0.2 },
   { kind: 'stupa', x: 0.5, h: 0.44, depth: 0.0 }, { kind: 'pharos', x: 0.86, h: 0.62, depth: 0.4 },
 ];
-interface State { sky: HTMLCanvasElement; land: HTMLCanvasElement; slots: Slot[]; t0: number; sun: HTMLCanvasElement; tint: { hor: RGB; top: RGB; dark: RGB } }
+interface State { pal: Env['pal']; sky: HTMLCanvasElement; land: HTMLCanvasElement; slots: Slot[]; t0: number; sun: HTMLCanvasElement; tint: { hor: RGB; top: RGB; dark: RGB } }
 
 function build(env: Env, variant: TowerVariant): State {
   const { w, h, dpr, pal } = env, dk: RGB = [0.03, 0.035, 0.07];
@@ -28,22 +28,21 @@ function build(env: Env, variant: TowerVariant): State {
   const sky = layer(w, h, dpr, (c) => {
     const g = c.createLinearGradient(0, 0, 0, h * 0.8); g.addColorStop(0, css(top)); g.addColorStop(0.75, css(mixc(top, hor, 0.8))); g.addColorStop(1, css(hor)); c.fillStyle = g; c.fillRect(0, 0, w, h);
     for (let i = 0; i < 40; i++) { c.fillStyle = css(WHITE, 0.5 * Math.max(0, 1 - ((i * 37) % 100) / 60)); c.fillRect(((i * 97) % 100) / 100 * w, ((i * 53) % 100) / 100 * h * 0.35, 1, 1); }
-    const sx = w * 0.5, sy = h * 0.6, R = h * 0.075, gl = c.createRadialGradient(sx, sy, R * 0.6, sx, sy, R * 7); gl.addColorStop(0, css(mixc(hor, WHITE, 0.4), 0.55)); gl.addColorStop(1, css(hor, 0)); c.fillStyle = gl; c.fillRect(0, 0, w, h);
+    const sx = w * 0.56, sy = h * 0.5, R = h * 0.07, gl = c.createRadialGradient(sx, sy, R * 0.6, sx, sy, R * 7); gl.addColorStop(0, css(mixc(hor, WHITE, 0.4), 0.55)); gl.addColorStop(1, css(hor, 0)); c.fillStyle = gl; c.fillRect(0, 0, w, h);
     c.fillStyle = css(mixc(hor, WHITE, 0.7)); c.beginPath(); c.arc(sx, sy, R, 0, 6.3); c.fill();
-    c.fillStyle = css(mixc(top, hor, 0.5), 0.35); for (let i = 0; i < 4; i++) c.fillRect(w * (0.05 + i * 0.27), h * (0.2 + (i % 2) * 0.1), w * 0.2, 2);
   });
   const land = layer(w, h * 1.0, dpr, (c) => {
     [[0.64, 0.12, 0.55, 3], [0.7, 0.1, 0.35, 4]].forEach(([y, a, k, sd]) => { c.fillStyle = css(mixc(hor, dark, k!)); ridgePath(c, w, h, h * y!, h * a!, sd!); c.fill(); });
     c.fillStyle = css(scale(dark, 1.15)); ridgePath(c, w, h, by, h * 0.06, 7); c.fill();
     const wg = c.createLinearGradient(0, by, 0, h); wg.addColorStop(0, css(mixc(hor, dark, 0.6))); wg.addColorStop(1, css(mixc(top, dark, 0.7))); c.fillStyle = wg; c.fillRect(0, by + h * 0.04, w, h);
   });
-  const slots = variant === 'ensemble' ? ENSEMBLE : [{ kind: variant, x: 0.5, h: 0.62, depth: 0 }, { kind: 'pagoda' as TowerKind, x: 0, h: 0, depth: 0 }].slice(0, 1);
-  return { sky, land, slots, t0: env.t, sun: glowSprite(hor), tint: { hor, top, dark } };
+  const slots: Slot[] = variant === 'ensemble' ? ENSEMBLE : [{ kind: variant, x: 0.5, h: 0.62, depth: 0 }];
+  return { pal, sky, land, slots, t0: env.t, sun: glowSprite(hor), tint: { hor, top, dark } };
 }
 
 function frame(assemble: boolean) {
   return (c: CanvasRenderingContext2D, env: Env, s: State) => {
-    const { w, h, t, px } = env, by = h * 0.76, { hor, top, dark } = s.tint;
+    const { w, h, t, px } = env, by = h * 0.76, { hor, top, dark } = s.tint, pal = s.pal;
     c.drawImage(s.sky, 0, 0, w, h);
     c.save(); c.translate(-px * 6, 0); c.drawImage(s.land, 0, 0, w, h); c.restore();
     const order = [...s.slots].sort((a, b) => b.depth - a.depth);
@@ -51,7 +50,7 @@ function frame(assemble: boolean) {
     const lamp = 0.65 + 0.15 * Math.sin(t * 0.5);
     const draw = (reflect: boolean) => order.forEach((sl, i) => {
       const H = Math.min(sl.h * h, w * 0.7) * (s.slots.length === 1 ? 1 : 0.95), x = w * sl.x - px * (4 + (1 - sl.depth) * 8) * (s.slots.length === 1 ? 0.3 : 1);
-      const k = clamp(sl.depth, 0, 0.8), body = mixc(scale(dark, 0.9), hor, k * 0.8), st: TowerStyle = { body, roof: scale(body, 0.8), trim: mixc(body, WHITE, 0.14 + 0.1 * (1 - k)), lit: mixc(hor, WHITE, 0.45), lamp: lamp * (1 - k * 0.5), t };
+      const k = clamp(sl.depth, 0, 0.8), body = mixc(scale(dark, 0.85), mixc(hor, top, 0.3), k * 0.65), st: TowerStyle = { body, roof: scale(body, 0.8), trim: mixc(body, pal.signal, 0.22 + 0.12 * (1 - k)), lit: mixc(pal.signal, WHITE, 0.55), lamp: Math.min(1, lamp * 1.25) * (1 - k * 0.5), t };
       const idx = s.slots.indexOf(sl), p = !assemble || env.reduced ? 1 : clamp((t - s.t0 - 0.2 - idx * 0.55) / 1.8, 0, 1), e = 1 - Math.pow(1 - p, 3);
       void i;
       const y = reflect ? 0 : 0;
@@ -63,7 +62,7 @@ function frame(assemble: boolean) {
     for (let i = 0; i < 16; i++) { const f = i / 15, y = by + h * (0.03 + f * f * 0.2), len = w * (0.04 + f * 0.1), x = ((i * 137.5 + t * (6 + f * 18)) % (w + len * 2)) - len; c.moveTo(x, y); c.lineTo(x + len, y); }
     c.stroke();
     draw(false);
-    c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.25 + 0.05 * Math.sin(t); c.drawImage(s.sun, w * 0.5 - h * 0.5, h * 0.6 - h * 0.5, h, h); c.globalAlpha = 1; c.globalCompositeOperation = 'source-over';
+    c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.25 + 0.05 * Math.sin(t); c.drawImage(s.sun, w * 0.56 - h * 0.5, h * 0.5 - h * 0.5, h, h); c.globalAlpha = 1; c.globalCompositeOperation = 'source-over';
     const vg = c.createRadialGradient(w / 2, h * 0.5, Math.min(w, h) * 0.45, w / 2, h * 0.5, Math.max(w, h) * 0.8); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,8,.35)'); c.fillStyle = vg; c.fillRect(0, 0, w, h);
   };
 }

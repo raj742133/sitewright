@@ -23,11 +23,11 @@ function build(env: Env): State {
   const fg = layer(w, h, dpr, (c) => {
     c.fillStyle = css(T.ridge[3]!); ridgePath(c, w, h, h * 0.93, h * 0.07, 40); c.fill();
     const col = scale(T.ridge[3]!, 0.55), r = rng(8);
-    for (let i = 0; i < 6; i++) pine(c, w * (0.02 + i * 0.05) + r() * 8, h * (0.98 - (i % 2) * 0.03), h * (0.42 - i * 0.04) * (0.9 + r() * 0.2), col);
-    for (let i = 0; i < 3; i++) pine(c, w * (0.94 - i * 0.06), h * (0.99 - (i % 2) * 0.03), h * (0.5 - i * 0.07), col);
+    for (let i = 0; i < 6; i++) pine(c, w * (0.02 + i * 0.05) + r() * 8, h * (0.98 - (i % 2) * 0.03), h * (0.34 - i * 0.04) * (0.9 + r() * 0.2), col);
+    for (let i = 0; i < 3; i++) pine(c, w * (0.94 - i * 0.06), h * (0.99 - (i % 2) * 0.03), h * (0.4 - i * 0.07), col);
     const wg = c.createLinearGradient(0, h * 0.9, 0, h); wg.addColorStop(0, css(mixc(T.sky1, [0, 0, 0], 0.4), 0)); wg.addColorStop(1, css(mixc(T.sky0, [0, 0, 0], 0.5), 0.55)); c.fillStyle = wg; c.fillRect(0, h * 0.9, w, h * 0.1);
   });
-  const lanterns = Array.from({ length: 8 }, (_, i) => { const u = i / 7; return { x: px + H * 0.2 + u * (w * 0.18) + Math.sin(u * 5) * 6, y: by + 2 + u * (h * 0.31), s: 0.7 + u * 0.9 }; });
+  const lanterns = Array.from({ length: 8 }, (_, i) => { const u = i / 7; return { x: px - H * 0.05 - u * (w * 0.3) + Math.sin(u * 5) * 6, y: by + 2 + u * (h * 0.31), s: 0.7 + u * 0.9 }; });
   const mistTile = layer(512, 120, 1, (c) => {
     const r = rng(2);
     for (let i = 0; i < 16; i++) { const x = r() * 512, y = 40 + r() * 40, rad = 40 + r() * 50; for (const dx of [0, -512, 512]) { const g = c.createRadialGradient(x + dx, y, 0, x + dx, y, rad); g.addColorStop(0, css(T.mist, 0.5)); g.addColorStop(1, css(T.mist, 0)); c.fillStyle = g; c.fillRect(x + dx - rad, y - rad, rad * 2, rad * 2); } }

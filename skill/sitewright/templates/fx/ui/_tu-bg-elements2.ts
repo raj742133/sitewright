@@ -91,7 +91,7 @@ export function condensation(f0: Frame): Painter {
       const A = accent(f), B = accent2(f);
       if (!started) { started = true; refog(f, A, 1); for (let i = 0; i < 6; i++) refog(f, A, 0.3); }
       else refog(f, A, f.dt * 0.12);
-      const wipe = (x: number, y: number, rad: number) => { fctx.globalCompositeOperation = 'destination-out'; fctx.fillStyle = '#000'; fctx.beginPath(); fctx.arc(x / 2, y / 2, rad / 2, 0, 6.2832); fctx.fill(); };
+      const wipe = (x: number, y: number, rad: number) => { if (!fctx) return; fctx.globalCompositeOperation = 'destination-out'; fctx.fillStyle = '#000'; fctx.beginPath(); fctx.arc(x / 2, y / 2, rad / 2, 0, 6.2832); fctx.fill(); };
       if (f.ptr.inside && (f.ptr.down || f.coarse)) { if (lastX >= 0) { const n = Math.ceil(Math.hypot(f.ptr.x - lastX, f.ptr.y - lastY) / 6); for (let i = 0; i <= n; i++) wipe(lastX + ((f.ptr.x - lastX) * i) / (n || 1), lastY + ((f.ptr.y - lastY) * i) / (n || 1), 20); } lastX = f.ptr.x; lastY = f.ptr.y; } else { lastX = -1; lastY = -1; }
       for (const t of f.ptr.taps) drops.push({ x: t.x, y: t.y, r: 8, slide: 0, v: 0 });
       if (!f.reduced) {

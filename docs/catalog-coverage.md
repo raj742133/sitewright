@@ -11,19 +11,21 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Source catalogue entries | 261 (218 React Bits-origin + 43 `tu`) |
 | Unique entries | 261 (the 5 heroes are among the 43 `tu` entries) |
 | Existing Sitewright equivalents reused | 30 |
-| New independent implementations present | 85 |
+| New independent implementations present | 222 |
 | Verified (all smoke checks passed) | 0 |
-| Implemented, awaiting tests | 85 |
+| Implemented, awaiting tests | 222 |
 | With failing tests | 0 |
 | Blocked | 0 |
-| Remaining (planned / in progress) | 146 |
-| Full-page heroes completed | 0 / 5 |
+| Remaining (planned / in progress) | 9 |
+| Full-page heroes completed | 3 / 5 |
 | Tactile Glass components complete | 10 / 10 |
-| Registry | 218 components, 12 templates |
+| Registry | 352 components, 15 templates |
 
-## Inconsistencies (1)
+## Inconsistencies (3)
 
-- component file not in any registry entry: templates/fx/ui/Dock.tsx
+- component file not in any registry entry: templates/fx/ui/Landscape.tsx
+- component file not in any registry entry: templates/fx/ui/LandscapeTowers.tsx
+- component file not in any registry entry: templates/fx/ui/NightTempleScene.tsx
 
 ## Provenance and licence
 
@@ -36,59 +38,59 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
-| `tu:kage-landing-page` | Kage | planned | - | none | not implemented yet |
+| `tu:kage-landing-page` | Kage | implemented | `hero-night-temple` | not run | - |
 | `tu:complete-shelf-landing-page` | Complete Shelf | planned | - | none | not implemented yet |
 | `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | planned | - | none | not implemented yet |
-| `tu:sylva-hero` | Sylva | planned | - | none | not implemented yet |
-| `tu:meng-to-sketchbook-landing-page` | Sketchbook | planned | - | none | not implemented yet |
-| `tu:predictive-arc` | Predictive Arc | planned | - | none | not implemented yet |
-| `tu:liquid-form` | Liquid Form | planned | - | none | not implemented yet |
-| `tu:crt` | CRT | planned | - | none | not implemented yet |
-| `tu:energy-orb` | Globe | planned | - | none | not implemented yet |
-| `tu:spark-badge` | Spark Badge | planned | - | none | not implemented yet |
-| `tu:elements` | Elements | planned | - | none | not implemented yet |
+| `tu:sylva-hero` | Sylva | implemented | `hero-living-green` | not run | - |
+| `tu:meng-to-sketchbook-landing-page` | Sketchbook | implemented | `hero-paper-sketchbook` | not run | - |
+| `tu:predictive-arc` | Predictive Arc | implemented | `predictive-arc` | not run | - |
+| `tu:liquid-form` | Liquid Form | implemented | `liquid-form` | not run | - |
+| `tu:crt` | CRT | implemented | `crt-screen` | not run | - |
+| `tu:energy-orb` | Globe | implemented | `network-globe` | not run | - |
+| `tu:spark-badge` | Spark Badge | implemented | `spark-badge` | not run | - |
+| `tu:elements` | Elements | implemented | `elemental-fields` | not run | - |
 | `tu:typography-vortex` | Typography Vortex | implemented | `typography-vortex` | not run | - |
 | `tu:semantic-bloom` | Semantic Bloom | implemented | `semantic-bloom` | not run | - |
 | `tu:globe-study` | Text Path Studies | implemented | `text-path-studies` | not run | - |
 | `tu:gallery-heading` | Gallery Heading | implemented | `gallery-heading` | not run | - |
-| `tu:star-portal` | Shader Buttons | planned | - | none | not implemented yet |
-| `tu:rectangle-buttons` | Rectangle Buttons | planned | - | none | not implemented yet |
-| `tu:circle-buttons` | Circle Buttons | planned | - | none | not implemented yet |
-| `tu:liquid-metal-button` | Liquid Metal Button | planned | - | none | not implemented yet |
-| `tu:character-carousel` | Character Carousel | planned | - | none | not implemented yet |
-| `tu:gallery` | Gallery | planned | - | none | not implemented yet |
-| `tu:sylva-living-world` | Sylva Living World | planned | - | none | not implemented yet |
+| `tu:star-portal` | Shader Buttons | implemented | `shader-buttons` | not run | - |
+| `tu:rectangle-buttons` | Rectangle Buttons | implemented | `rectangle-buttons` | not run | - |
+| `tu:circle-buttons` | Circle Buttons | implemented | `circle-buttons` | not run | - |
+| `tu:liquid-metal-button` | Liquid Metal Button | implemented | `liquid-metal-button` | not run | - |
+| `tu:character-carousel` | Character Carousel | implemented | `character-carousel` | not run | - |
+| `tu:gallery` | Gallery | implemented | `image-ribbon` | not run | - |
+| `tu:sylva-living-world` | Sylva Living World | implemented | `moss-forest-world` | not run | - |
 | `tu:temple-night` | Temple Night | planned | - | none | not implemented yet |
 | `tu:landscape` | Landscape | planned | - | none | not implemented yet |
 | `tu:japanese-tower` | Country Towers | planned | - | none | not implemented yet |
 | `tu:bookshelf` | Bookshelf | planned | - | none | not implemented yet |
 | `tu:structure-flow` | Structure Flow | planned | - | none | not implemented yet |
 | `tu:warp-field` | Warp Field | planned | - | none | not implemented yet |
-| `tu:engraved-certificate` | Engraved Certificate | planned | - | none | not implemented yet |
+| `tu:engraved-certificate` | Engraved Certificate | implemented | `engraved-certificate` | not run | - |
 | `tu:woven-cloth` | Woven Cloth | planned | - | none | not implemented yet |
-| `tu:performance-gauges` | Performance Gauges | planned | - | none | not implemented yet |
-| `tu:uplink-loader` | Uplink Loader | planned | - | none | not implemented yet |
-| `tu:koi-studies` | Koi Studies | planned | - | none | not implemented yet |
+| `tu:performance-gauges` | Performance Gauges | implemented | `performance-gauges` | not run | - |
+| `tu:uplink-loader` | Uplink Loader | implemented | `uplink-loader` | not run | - |
+| `tu:koi-studies` | Koi Studies | implemented | `koi-studies` | not run | - |
 | `tu:article-headings` | Article Headings | implemented | `article-headings` | not run | - |
-| `tu:animated-top-dock` | Animated Top Dock | planned | - | none | not implemented yet |
-| `tu:sketchbook` | Sketchbook | planned | - | none | not implemented yet |
-| `tu:constellation-field` | Constellation Field | planned | - | none | not implemented yet |
-| `tu:portal-field` | Portal Field | planned | - | none | not implemented yet |
-| `tu:diagnostics-panel` | Diagnostics Panel | planned | - | none | not implemented yet |
-| `tu:skeuomorphic-toggle` | Skeuomorphic Toggle | planned | - | none | not implemented yet |
-| `tu:matrix-field` | Laser | planned | - | none | not implemented yet |
-| `tu:wireframe-forms` | Wireframe Forms | planned | - | none | not implemented yet |
-| `tu:brand-orbs` | Brand Orbs | planned | - | none | not implemented yet |
+| `tu:animated-top-dock` | Animated Top Dock | implemented | `animated-top-dock` | not run | - |
+| `tu:sketchbook` | Sketchbook | implemented | `page-curl-book` | not run | - |
+| `tu:constellation-field` | Constellation Field | implemented | `constellation-field` | not run | - |
+| `tu:portal-field` | Portal Field | implemented | `portal-field` | not run | - |
+| `tu:diagnostics-panel` | Diagnostics Panel | implemented | `diagnostics-panel` | not run | - |
+| `tu:skeuomorphic-toggle` | Skeuomorphic Toggle | implemented | `skeuomorphic-toggle` | not run | - |
+| `tu:matrix-field` | Laser | implemented | `laser-field` | not run | - |
+| `tu:wireframe-forms` | Wireframe Forms | implemented | `wireframe-forms` | not run | - |
+| `tu:brand-orbs` | Brand Orbs | implemented | `status-orbs` | not run | - |
 
 ## Full-page heroes (5 of the above)
 
 | Catalogue id | Label | Status | Sitewright id | Tests | Outstanding |
 | --- | --- | --- | --- | --- | --- |
-| `tu:kage-landing-page` | Kage | planned | - | none | not implemented yet |
+| `tu:kage-landing-page` | Kage | implemented | `hero-night-temple` | not run | - |
 | `tu:complete-shelf-landing-page` | Complete Shelf | planned | - | none | not implemented yet |
 | `tu:bestsellers-book-showcase` | Bestsellers Book Showcase | planned | - | none | not implemented yet |
-| `tu:sylva-hero` | Sylva | planned | - | none | not implemented yet |
-| `tu:meng-to-sketchbook-landing-page` | Sketchbook | planned | - | none | not implemented yet |
+| `tu:sylva-hero` | Sylva | implemented | `hero-living-green` | not run | - |
+| `tu:meng-to-sketchbook-landing-page` | Sketchbook | implemented | `hero-paper-sketchbook` | not run | - |
 
 ## The 218 React Bits-origin entries
 
@@ -169,146 +171,146 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | `rb:components/animated-list` | Animated List | implemented | `animated-list` | not run | - |
 | `rb:components/border-glow` | Border Glow | implemented | `border-glow` | not run | - |
 | `rb:components/bounce-cards` | Bounce Cards | implemented | `bounce-cards` | not run | - |
-| `rb:components/bubble-menu` | Bubble Menu | planned | - | none | not implemented yet |
-| `rb:components/card-nav` | Card Nav | planned | - | none | not implemented yet |
+| `rb:components/bubble-menu` | Bubble Menu | implemented | `bubble-menu` | not run | - |
+| `rb:components/card-nav` | Card Nav | implemented | `card-nav` | not run | - |
 | `rb:components/card-swap` | Card Swap | implemented | `card-swap` | not run | - |
 | `rb:components/carousel` | Carousel | implemented | `carousel` | not run | - |
 | `rb:components/chroma-grid` | Chroma Grid | implemented | `chroma-grid` | not run | - |
 | `rb:components/circular-carousel` | Circular Carousel | implemented | `circular-carousel` | not run | - |
 | `rb:components/circular-gallery` | Circular Gallery | implemented | `circular-gallery` | not run | - |
-| `rb:components/counter` | Counter | planned | - | none | not implemented yet |
-| `rb:components/curved-input` | Curved Input | planned | - | none | not implemented yet |
+| `rb:components/counter` | Counter | implemented | `counter` | not run | - |
+| `rb:components/curved-input` | Curved Input | implemented | `curved-input` | not run | - |
 | `rb:components/decay-card` | Decay Card | implemented | `decay-card` | not run | - |
 | `rb:components/depth-carousel` | Depth Carousel | implemented | `depth-carousel` | not run | - |
-| `rb:components/dock` | Dock | planned | - | none | not implemented yet |
+| `rb:components/dock` | Dock | implemented | `dock` | not run | - |
 | `rb:components/dome-gallery` | Dome Gallery | implemented | `dome-gallery` | not run | - |
 | `rb:components/drift-wall` | Drift Wall | implemented | `drift-wall` | not run | - |
-| `rb:components/elastic-slider` | Elastic Slider | planned | - | none | not implemented yet |
+| `rb:components/elastic-slider` | Elastic Slider | implemented | `elastic-slider` | not run | - |
 | `rb:components/flex-carousel` | Flex Carousel | implemented | `flex-carousel` | not run | - |
-| `rb:components/flowing-menu` | Flowing Menu | planned | - | none | not implemented yet |
-| `rb:components/fluid-glass` | Fluid Glass | planned | - | none | not implemented yet |
+| `rb:components/flowing-menu` | Flowing Menu | implemented | `flowing-menu` | not run | - |
+| `rb:components/fluid-glass` | Fluid Glass | implemented | `fluid-glass` | not run | - |
 | `rb:components/flying-posters` | Flying Posters | implemented | `flying-posters` | not run | - |
 | `rb:components/folder` | Folder | implemented | `folder` | not run | - |
-| `rb:components/glass-icons` | Glass Icons | planned | - | none | not implemented yet |
+| `rb:components/glass-icons` | Glass Icons | implemented | `glass-icons` | not run | - |
 | `rb:components/glass-surface` | Glass Surface | existing | `ui:glass-fx` | existing | - |
-| `rb:components/gooey-nav` | Gooey Nav | planned | - | none | not implemented yet |
+| `rb:components/gooey-nav` | Gooey Nav | implemented | `gooey-nav` | not run | - |
 | `rb:components/holo-card` | Holo Card | existing | `ui:holographic-card` | existing | - |
-| `rb:components/infinite-menu` | Infinite Menu | planned | - | none | not implemented yet |
+| `rb:components/infinite-menu` | Infinite Menu | implemented | `infinite-menu` | not run | - |
 | `rb:components/infinite-spiral` | Infinite Spiral | implemented | `infinite-spiral` | not run | - |
-| `rb:components/lanyard` | Lanyard | planned | - | none | not implemented yet |
-| `rb:components/line-sidebar` | Line Sidebar | planned | - | none | not implemented yet |
-| `rb:components/magic-bento` | Magic Bento | planned | - | none | not implemented yet |
+| `rb:components/lanyard` | Lanyard | implemented | `lanyard` | not run | - |
+| `rb:components/line-sidebar` | Line Sidebar | implemented | `line-sidebar` | not run | - |
+| `rb:components/magic-bento` | Magic Bento | implemented | `magic-bento` | not run | - |
 | `rb:components/masonry` | Masonry | implemented | `masonry` | not run | - |
-| `rb:components/model-viewer` | Model Viewer | planned | - | none | not implemented yet |
-| `rb:components/morph-slider` | Morph Slider | planned | - | none | not implemented yet |
-| `rb:components/option-wheel` | Option Wheel | planned | - | none | not implemented yet |
-| `rb:components/pill-nav` | Pill Nav | planned | - | none | not implemented yet |
+| `rb:components/model-viewer` | Model Viewer | implemented | `model-viewer` | not run | - |
+| `rb:components/morph-slider` | Morph Slider | implemented | `morph-slider` | not run | - |
+| `rb:components/option-wheel` | Option Wheel | implemented | `option-wheel` | not run | - |
+| `rb:components/pill-nav` | Pill Nav | implemented | `pill-nav` | not run | - |
 | `rb:components/pixel-card` | Pixel Card | implemented | `pixel-card` | not run | - |
 | `rb:components/profile-card` | Profile Card | implemented | `profile-card` | not run | - |
 | `rb:components/reflective-card` | Reflective Card | implemented | `reflective-card` | not run | - |
 | `rb:components/scroll-stack` | Scroll Stack | implemented | `scroll-stack` | not run | - |
 | `rb:components/specular-button` | Specular Button | existing | `ui:gloss-button` | existing | - |
 | `rb:components/spotlight-card` | Spotlight Card | existing | `fx-micro:spotlight` | existing | - |
-| `rb:components/stack` | Stack | planned | - | none | not implemented yet |
-| `rb:components/staggered-menu` | Staggered Menu | planned | - | none | not implemented yet |
-| `rb:components/stepper` | Stepper | planned | - | none | not implemented yet |
+| `rb:components/stack` | Stack | implemented | `stack` | not run | - |
+| `rb:components/staggered-menu` | Staggered Menu | implemented | `staggered-menu` | not run | - |
+| `rb:components/stepper` | Stepper | implemented | `stepper` | not run | - |
 | `rb:components/tilted-card` | Tilted Card | existing | `ui:tilt-card-3d` | existing | - |
-| `rb:backgrounds/acid-squares` | Acid Squares | planned | - | none | not implemented yet |
-| `rb:backgrounds/aero-shards` | Aero Shards | planned | - | none | not implemented yet |
-| `rb:backgrounds/antigravity` | Antigravity | planned | - | none | not implemented yet |
+| `rb:backgrounds/acid-squares` | Acid Squares | implemented | `acid-squares` | not run | - |
+| `rb:backgrounds/aero-shards` | Aero Shards | implemented | `aero-shards` | not run | - |
+| `rb:backgrounds/antigravity` | Antigravity | implemented | `antigravity` | not run | - |
 | `rb:backgrounds/aurora` | Aurora | existing | `fx-bg:Aurora` | existing | - |
-| `rb:backgrounds/balatro` | Balatro | planned | - | none | not implemented yet |
-| `rb:backgrounds/ballpit` | Ballpit | planned | - | none | not implemented yet |
+| `rb:backgrounds/balatro` | Balatro | implemented | `balatro` | not run | - |
+| `rb:backgrounds/ballpit` | Ballpit | implemented | `ballpit` | not run | - |
 | `rb:backgrounds/beams` | Beams | existing | `fx-bg:Beams` | existing | - |
-| `rb:backgrounds/color-bends` | Color Bends | planned | - | none | not implemented yet |
-| `rb:backgrounds/crtwarp` | CRTWarp | planned | - | none | not implemented yet |
-| `rb:backgrounds/dark-veil` | Dark Veil | planned | - | none | not implemented yet |
-| `rb:backgrounds/dither` | Dither | planned | - | none | not implemented yet |
-| `rb:backgrounds/dot-field` | Dot Field | planned | - | none | not implemented yet |
+| `rb:backgrounds/color-bends` | Color Bends | implemented | `color-bends` | not run | - |
+| `rb:backgrounds/crtwarp` | CRTWarp | implemented | `crtwarp` | not run | - |
+| `rb:backgrounds/dark-veil` | Dark Veil | implemented | `dark-veil` | not run | - |
+| `rb:backgrounds/dither` | Dither | implemented | `dither` | not run | - |
+| `rb:backgrounds/dot-field` | Dot Field | implemented | `dot-field` | not run | - |
 | `rb:backgrounds/dot-grid` | Dot Grid | existing | `fx-bg:Dots` | existing | - |
-| `rb:backgrounds/evil-eye` | Evil Eye | planned | - | none | not implemented yet |
-| `rb:backgrounds/faulty-terminal` | Faulty Terminal | planned | - | none | not implemented yet |
-| `rb:backgrounds/ferrofluid` | Ferrofluid | planned | - | none | not implemented yet |
-| `rb:backgrounds/floating-lines` | Floating Lines | planned | - | none | not implemented yet |
-| `rb:backgrounds/flux-lines` | Flux Lines | planned | - | none | not implemented yet |
-| `rb:backgrounds/galaxy` | Galaxy | planned | - | none | not implemented yet |
-| `rb:backgrounds/ghost-fibers` | Ghost Fibers | planned | - | none | not implemented yet |
-| `rb:backgrounds/gradient-ascii` | Gradient ASCII | planned | - | none | not implemented yet |
-| `rb:backgrounds/gradient-blinds` | Gradient Blinds | planned | - | none | not implemented yet |
-| `rb:backgrounds/gradient-waves` | Gradient Waves | planned | - | none | not implemented yet |
-| `rb:backgrounds/grainient` | Grainient | planned | - | none | not implemented yet |
-| `rb:backgrounds/grid-distortion` | Grid Distortion | planned | - | none | not implemented yet |
-| `rb:backgrounds/grid-motion` | Grid Motion | planned | - | none | not implemented yet |
-| `rb:backgrounds/grid-scan` | Grid Scan | planned | - | none | not implemented yet |
-| `rb:backgrounds/hyperspeed` | Hyperspeed | planned | - | none | not implemented yet |
-| `rb:backgrounds/iridescence` | Iridescence | planned | - | none | not implemented yet |
-| `rb:backgrounds/letter-glitch` | Letter Glitch | planned | - | none | not implemented yet |
-| `rb:backgrounds/lightfall` | Lightfall | planned | - | none | not implemented yet |
-| `rb:backgrounds/lightning` | Lightning | planned | - | none | not implemented yet |
-| `rb:backgrounds/light-pillar` | Light Pillar | planned | - | none | not implemented yet |
-| `rb:backgrounds/light-rays` | Light Rays | planned | - | none | not implemented yet |
-| `rb:backgrounds/light-tunnel` | Light Tunnel | planned | - | none | not implemented yet |
-| `rb:backgrounds/line-waves` | Line Waves | planned | - | none | not implemented yet |
-| `rb:backgrounds/liquid-chrome` | Liquid Chrome | planned | - | none | not implemented yet |
-| `rb:backgrounds/liquid-ether` | Liquid Ether | planned | - | none | not implemented yet |
-| `rb:backgrounds/magic-rings` | Magic Rings | planned | - | none | not implemented yet |
-| `rb:backgrounds/magnet-lines` | Magnet Lines | planned | - | none | not implemented yet |
-| `rb:backgrounds/micro-slats` | Micro Slats | planned | - | none | not implemented yet |
-| `rb:backgrounds/molten-metal` | Molten Metal | planned | - | none | not implemented yet |
+| `rb:backgrounds/evil-eye` | Evil Eye | implemented | `evil-eye` | not run | - |
+| `rb:backgrounds/faulty-terminal` | Faulty Terminal | implemented | `faulty-terminal` | not run | - |
+| `rb:backgrounds/ferrofluid` | Ferrofluid | implemented | `ferrofluid` | not run | - |
+| `rb:backgrounds/floating-lines` | Floating Lines | implemented | `floating-lines` | not run | - |
+| `rb:backgrounds/flux-lines` | Flux Lines | implemented | `flux-lines` | not run | - |
+| `rb:backgrounds/galaxy` | Galaxy | implemented | `galaxy` | not run | - |
+| `rb:backgrounds/ghost-fibers` | Ghost Fibers | implemented | `ghost-fibers` | not run | - |
+| `rb:backgrounds/gradient-ascii` | Gradient ASCII | implemented | `gradient-ascii` | not run | - |
+| `rb:backgrounds/gradient-blinds` | Gradient Blinds | implemented | `gradient-blinds` | not run | - |
+| `rb:backgrounds/gradient-waves` | Gradient Waves | implemented | `gradient-waves` | not run | - |
+| `rb:backgrounds/grainient` | Grainient | implemented | `grainient` | not run | - |
+| `rb:backgrounds/grid-distortion` | Grid Distortion | implemented | `grid-distortion` | not run | - |
+| `rb:backgrounds/grid-motion` | Grid Motion | implemented | `grid-motion` | not run | - |
+| `rb:backgrounds/grid-scan` | Grid Scan | implemented | `grid-scan` | not run | - |
+| `rb:backgrounds/hyperspeed` | Hyperspeed | implemented | `hyperspeed` | not run | - |
+| `rb:backgrounds/iridescence` | Iridescence | implemented | `iridescence` | not run | - |
+| `rb:backgrounds/letter-glitch` | Letter Glitch | implemented | `letter-glitch` | not run | - |
+| `rb:backgrounds/lightfall` | Lightfall | implemented | `lightfall` | not run | - |
+| `rb:backgrounds/lightning` | Lightning | implemented | `lightning` | not run | - |
+| `rb:backgrounds/light-pillar` | Light Pillar | implemented | `light-pillar` | not run | - |
+| `rb:backgrounds/light-rays` | Light Rays | implemented | `light-rays` | not run | - |
+| `rb:backgrounds/light-tunnel` | Light Tunnel | implemented | `light-tunnel` | not run | - |
+| `rb:backgrounds/line-waves` | Line Waves | implemented | `line-waves` | not run | - |
+| `rb:backgrounds/liquid-chrome` | Liquid Chrome | implemented | `liquid-chrome` | not run | - |
+| `rb:backgrounds/liquid-ether` | Liquid Ether | implemented | `liquid-ether` | not run | - |
+| `rb:backgrounds/magic-rings` | Magic Rings | implemented | `magic-rings` | not run | - |
+| `rb:backgrounds/magnet-lines` | Magnet Lines | implemented | `magnet-lines` | not run | - |
+| `rb:backgrounds/micro-slats` | Micro Slats | implemented | `micro-slats` | not run | - |
+| `rb:backgrounds/molten-metal` | Molten Metal | implemented | `molten-metal` | not run | - |
 | `rb:backgrounds/orb` | Orb | existing | `ui:plasma-orb` | existing | - |
 | `rb:backgrounds/particles` | Particles | existing | `fx-bg:Particles` | existing | - |
-| `rb:backgrounds/pattern-waves` | Pattern Waves | planned | - | none | not implemented yet |
-| `rb:backgrounds/pixel-blast` | Pixel Blast | planned | - | none | not implemented yet |
-| `rb:backgrounds/pixel-snow` | Pixel Snow | planned | - | none | not implemented yet |
-| `rb:backgrounds/plasma` | Plasma | planned | - | none | not implemented yet |
-| `rb:backgrounds/plasma-wave` | Plasma Wave | planned | - | none | not implemented yet |
-| `rb:backgrounds/prism` | Prism | planned | - | none | not implemented yet |
-| `rb:backgrounds/prismatic-burst` | Prismatic Burst | planned | - | none | not implemented yet |
-| `rb:backgrounds/radar` | Radar | planned | - | none | not implemented yet |
-| `rb:backgrounds/ripple-grid` | Ripple Grid | planned | - | none | not implemented yet |
-| `rb:backgrounds/scanner` | Scanner | planned | - | none | not implemented yet |
-| `rb:backgrounds/shape-grid` | Shape Grid | planned | - | none | not implemented yet |
-| `rb:backgrounds/shape-waves` | Shape Waves | planned | - | none | not implemented yet |
-| `rb:backgrounds/side-rays` | Side Rays | planned | - | none | not implemented yet |
-| `rb:backgrounds/silk` | Silk | planned | - | none | not implemented yet |
-| `rb:backgrounds/sliced-waves` | Sliced Waves | planned | - | none | not implemented yet |
+| `rb:backgrounds/pattern-waves` | Pattern Waves | implemented | `pattern-waves` | not run | - |
+| `rb:backgrounds/pixel-blast` | Pixel Blast | implemented | `pixel-blast` | not run | - |
+| `rb:backgrounds/pixel-snow` | Pixel Snow | implemented | `pixel-snow` | not run | - |
+| `rb:backgrounds/plasma` | Plasma | implemented | `plasma` | not run | - |
+| `rb:backgrounds/plasma-wave` | Plasma Wave | implemented | `plasma-wave` | not run | - |
+| `rb:backgrounds/prism` | Prism | implemented | `prism` | not run | - |
+| `rb:backgrounds/prismatic-burst` | Prismatic Burst | implemented | `prismatic-burst` | not run | - |
+| `rb:backgrounds/radar` | Radar | implemented | `radar` | not run | - |
+| `rb:backgrounds/ripple-grid` | Ripple Grid | implemented | `ripple-grid` | not run | - |
+| `rb:backgrounds/scanner` | Scanner | implemented | `scanner` | not run | - |
+| `rb:backgrounds/shape-grid` | Shape Grid | implemented | `shape-grid` | not run | - |
+| `rb:backgrounds/shape-waves` | Shape Waves | implemented | `shape-waves` | not run | - |
+| `rb:backgrounds/side-rays` | Side Rays | implemented | `side-rays` | not run | - |
+| `rb:backgrounds/silk` | Silk | implemented | `silk` | not run | - |
+| `rb:backgrounds/sliced-waves` | Sliced Waves | implemented | `sliced-waves` | not run | - |
 | `rb:backgrounds/soft-aurora` | Soft Aurora | existing | `fx-bg:Aurora` | existing | - |
-| `rb:backgrounds/threads` | Threads | planned | - | none | not implemented yet |
-| `rb:backgrounds/topography` | Topography | planned | - | none | not implemented yet |
+| `rb:backgrounds/threads` | Threads | implemented | `threads` | not run | - |
+| `rb:backgrounds/topography` | Topography | implemented | `topography` | not run | - |
 | `rb:backgrounds/waves` | Waves | existing | `fx-bg:Waves` | existing | - |
-| `rb:backgrounds/web-threads` | Web Threads | planned | - | none | not implemented yet |
+| `rb:backgrounds/web-threads` | Web Threads | implemented | `web-threads` | not run | - |
 | `rb:micro/bell-toggle` | Bell Toggle | existing | `ui:bell-button` | existing | - |
-| `rb:micro/branched-menu` | Branched Menu | planned | - | none | not implemented yet |
-| `rb:micro/call-chip` | Call Chip | planned | - | none | not implemented yet |
-| `rb:micro/code-slots` | Code Slots | planned | - | none | not implemented yet |
-| `rb:micro/comet-dial` | Comet Dial | planned | - | none | not implemented yet |
-| `rb:micro/dodge-field` | Dodge Field | planned | - | none | not implemented yet |
-| `rb:micro/flip-card` | Flip Card | planned | - | none | not implemented yet |
-| `rb:micro/flying-button` | Flying Button | planned | - | none | not implemented yet |
-| `rb:micro/folder-float` | Folder Float | planned | - | none | not implemented yet |
-| `rb:micro/fuse-button` | Fuse Button | planned | - | none | not implemented yet |
-| `rb:micro/glide-select` | Glide Select | planned | - | none | not implemented yet |
+| `rb:micro/branched-menu` | Branched Menu | implemented | `branched-menu` | not run | - |
+| `rb:micro/call-chip` | Call Chip | implemented | `call-chip` | not run | - |
+| `rb:micro/code-slots` | Code Slots | implemented | `code-slots` | not run | - |
+| `rb:micro/comet-dial` | Comet Dial | implemented | `comet-dial` | not run | - |
+| `rb:micro/dodge-field` | Dodge Field | implemented | `dodge-field` | not run | - |
+| `rb:micro/flip-card` | Flip Card | implemented | `flip-card` | not run | - |
+| `rb:micro/flying-button` | Flying Button | implemented | `flying-button` | not run | - |
+| `rb:micro/folder-float` | Folder Float | implemented | `folder-float` | not run | - |
+| `rb:micro/fuse-button` | Fuse Button | implemented | `fuse-button` | not run | - |
+| `rb:micro/glide-select` | Glide Select | implemented | `glide-select` | not run | - |
 | `rb:micro/hold-button` | Hold Button | existing | `ui:hold-to-confirm` | existing | - |
-| `rb:micro/jelly-radio` | Jelly Radio | planned | - | none | not implemented yet |
-| `rb:micro/lattice-loader` | Lattice Loader | planned | - | none | not implemented yet |
-| `rb:micro/paper-crumple` | Paper Crumple | planned | - | none | not implemented yet |
-| `rb:micro/peek-rating` | Peek Rating | planned | - | none | not implemented yet |
+| `rb:micro/jelly-radio` | Jelly Radio | implemented | `jelly-radio` | not run | - |
+| `rb:micro/lattice-loader` | Lattice Loader | implemented | `lattice-loader` | not run | - |
+| `rb:micro/paper-crumple` | Paper Crumple | implemented | `paper-crumple` | not run | - |
+| `rb:micro/peek-rating` | Peek Rating | implemented | `peek-rating` | not run | - |
 | `rb:micro/prompt-bar` | Prompt Bar | existing | `ui:ai-input` | existing | - |
-| `rb:micro/pulse-heart` | Pulse Heart | planned | - | none | not implemented yet |
-| `rb:micro/refine-frame` | Refine Frame | planned | - | none | not implemented yet |
-| `rb:micro/rubber-segment` | Rubber Segment | planned | - | none | not implemented yet |
-| `rb:micro/scrub-field` | Scrub Field | planned | - | none | not implemented yet |
-| `rb:micro/shredder` | Shredder | planned | - | none | not implemented yet |
-| `rb:micro/slide-commit` | Slide Commit | planned | - | none | not implemented yet |
-| `rb:micro/sling-button` | Sling Button | planned | - | none | not implemented yet |
-| `rb:micro/slosh-gauge` | Slosh Gauge | planned | - | none | not implemented yet |
-| `rb:micro/spring-check` | Spring Check | planned | - | none | not implemented yet |
+| `rb:micro/pulse-heart` | Pulse Heart | implemented | `pulse-heart` | not run | - |
+| `rb:micro/refine-frame` | Refine Frame | implemented | `refine-frame` | not run | - |
+| `rb:micro/rubber-segment` | Rubber Segment | implemented | `rubber-segment` | not run | - |
+| `rb:micro/scrub-field` | Scrub Field | implemented | `scrub-field` | not run | - |
+| `rb:micro/shredder` | Shredder | implemented | `shredder` | not run | - |
+| `rb:micro/slide-commit` | Slide Commit | implemented | `slide-commit` | not run | - |
+| `rb:micro/sling-button` | Sling Button | implemented | `sling-button` | not run | - |
+| `rb:micro/slosh-gauge` | Slosh Gauge | implemented | `slosh-gauge` | not run | - |
+| `rb:micro/spring-check` | Spring Check | implemented | `spring-check` | not run | - |
 | `rb:micro/squish-switch` | Squish Switch | existing | `ui:spring-toggle` | existing | - |
-| `rb:micro/status-mark` | Status Mark | planned | - | none | not implemented yet |
-| `rb:micro/swipe-row` | Swipe Row | planned | - | none | not implemented yet |
-| `rb:micro/swipe-toast` | Swipe Toast | planned | - | none | not implemented yet |
+| `rb:micro/status-mark` | Status Mark | implemented | `status-mark` | not run | - |
+| `rb:micro/swipe-row` | Swipe Row | implemented | `swipe-row` | not run | - |
+| `rb:micro/swipe-toast` | Swipe Toast | implemented | `swipe-toast` | not run | - |
 | `rb:micro/tear-ticket` | Tear Ticket | existing | `ui:perforated-ticket` | existing | - |
-| `rb:micro/thought-line` | Thought Line | planned | - | none | not implemented yet |
-| `rb:micro/voice-pill` | Voice Pill | planned | - | none | not implemented yet |
-| `rb:micro/wake-slider` | Wake Slider | planned | - | none | not implemented yet |
-| `rb:micro/warm-tooltip` | Warm Tooltip | planned | - | none | not implemented yet |
+| `rb:micro/thought-line` | Thought Line | implemented | `thought-line` | not run | - |
+| `rb:micro/voice-pill` | Voice Pill | implemented | `voice-pill` | not run | - |
+| `rb:micro/wake-slider` | Wake Slider | implemented | `wake-slider` | not run | - |
+| `rb:micro/warm-tooltip` | Warm Tooltip | implemented | `warm-tooltip` | not run | - |

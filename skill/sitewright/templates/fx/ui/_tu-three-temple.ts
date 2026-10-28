@@ -1,5 +1,4 @@
 import { css, layer, mixc, ridgePath, rng, scale, type Env, type RGB } from './_tu-three-kit';
-import { drawTower } from './_tu-three-towers';
 
 /* Night-temple scene pieces: sky, ridges, mist strips, the hall + pagoda terrace, stone steps with lanterns, pines and a wet foreground. */
 
@@ -39,15 +38,11 @@ export function paintNight(env: Env, T: NightTones): HTMLCanvasElement {
     c.fillStyle = css(T.moon, 0.95); c.beginPath(); c.arc(mx, my, mr, 0, 6.3); c.fill();
     c.fillStyle = css(T.sky1, 0.5); c.beginPath(); c.arc(mx + mr * 0.35, my - mr * 0.15, mr * 0.85, 0, 6.3); c.fill();
     const px = w * 0.64;
-    [0.62, 0.7, 0.8].forEach((y, i) => { c.fillStyle = css(T.ridge[i]!); ridgePath(c, w, h, h * y, h * (0.16 - i * 0.02), 10 + i, i === 2 ? px : -1, i === 2 ? h * 0.2 : 0); c.fill(); });
-    const by = h * 0.585, H = h * 0.48;
-    c.fillStyle = css(T.ridge[3]!); c.fillRect(px - H * 0.55, by, H * 1.1, h * 0.3);
-    c.fillStyle = css(scale(T.ridge[3]!, 0.8)); c.fillRect(px - H * 0.5, by - 3, H, 5);
+    [0.6, 0.68].forEach((y, i) => { c.fillStyle = css(T.ridge[i]!); ridgePath(c, w, h, h * y, h * (0.16 - i * 0.02), 10 + i); c.fill(); });
+    const by = h * 0.585, H = h * 0.48, mg = c.createLinearGradient(px - H, by, px + H * 0.8, h);
+    mg.addColorStop(0, css(mixc(T.ridge[2]!, T.moon, 0.06))); mg.addColorStop(1, css(T.ridge[3]!)); c.fillStyle = mg;
+    c.beginPath(); c.moveTo(px - w * 0.7, h); c.bezierCurveTo(px - w * 0.3, h * 0.82, px - H * 0.9, by + h * 0.12, px - H * 0.62, by + h * 0.02);
+    c.lineTo(px - H * 0.55, by); c.lineTo(px + H * 0.62, by); c.bezierCurveTo(px + H * 0.7, by + h * 0.08, px + w * 0.25, h * 0.8, px + w * 0.6, h); c.closePath(); c.fill();
+    c.fillStyle = css(scale(T.ridge[3]!, 0.8)); c.fillRect(px - H * 0.55, by - 2, H * 1.17, 4);
   });
-}
-export function paintTemple(c: CanvasRenderingContext2D, env: Env, T: NightTones, t: number, lamp: number) {
-  const { w, h } = env, px = w * 0.64, by = h * 0.585, H = h * 0.48;
-  hall(c, px - H * 0.5, by, H * 0.5, T, lamp, t);
-  const st = { body: T.body, roof: T.roof, trim: T.trim, lit: T.lamp, lamp, t };
-  drawTower(c, 'pagoda', px + H * 0.12, by, H * 0.9, st);
 }

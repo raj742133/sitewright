@@ -1,6 +1,6 @@
 .ui-performance-gauges-root { width: 100%; height: 100%; min-height: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 6px; container-type: size; }
-@container (min-aspect-ratio: 5/2) { .ui-performance-gauges-root { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); } }
-.ui-performance-gauges-gauge { position: relative; height: 100%; max-width: 100%; aspect-ratio: 1; justify-self: center; align-self: center; container-type: inline-size; border-radius: 50%; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.38)); }
+@container (min-aspect-ratio: 5/2) { .ui-performance-gauges-root { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); } .ui-performance-gauges-gauge { width: min(calc(25cqw - 5px), 100cqh); } }
+.ui-performance-gauges-gauge { position: relative; width: min(calc(50cqw - 3px), calc(50cqh - 3px)); aspect-ratio: 1; justify-self: center; align-self: center; container-type: inline-size; border-radius: 50%; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.38)); }
 .ui-performance-gauges-gauge > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
 .ui-performance-gauges-glass { position: absolute; inset: 6%; border-radius: 50%; pointer-events: none; background: radial-gradient(120% 70% at 30% 8%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 55%), linear-gradient(200deg, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.07)); }
 .ui-performance-gauges-rim { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }

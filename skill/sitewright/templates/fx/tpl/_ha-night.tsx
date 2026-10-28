@@ -56,16 +56,18 @@ const STEP_LANTERNS = [{ x: 770, y: 632 }, { x: 690, y: 676 }, { x: 600, y: 720 
 
 export function NightSky() {
   return (
-    <svg className="hnt-layer hnt-sky" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <svg className="hnt-sky" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMin slice" aria-hidden="true">
       <defs>
         <linearGradient id="hnt-sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="var(--hnt-sky0)" /><stop offset=".55" stopColor="var(--hnt-sky1)" /><stop offset="1" stopColor="var(--hnt-sky2)" /></linearGradient>
         <radialGradient id="hnt-moon"><stop offset="0" stopColor="var(--hnt-moon)" stopOpacity=".5" /><stop offset=".35" stopColor="var(--hnt-moon)" stopOpacity=".14" /><stop offset="1" stopColor="var(--hnt-moon)" stopOpacity="0" /></radialGradient>
       </defs>
       <rect width={W} height={H} fill="url(#hnt-sk)" />
       <g className="hnt-stars">{STARS.map((s, i) => <circle key={i} cx={s.x.toFixed(0)} cy={s.y.toFixed(0)} r={s.s.toFixed(2)} style={{ animationDelay: `${s.d}s` }} />)}</g>
-      <circle cx="430" cy="210" r="260" fill="url(#hnt-moon)" />
-      <circle className="hnt-moondisc" cx="430" cy="210" r="46" />
-      <circle className="hnt-moonshade" cx="452" cy="200" r="42" />
+      <g className="hnt-moonwrap">
+        <mask id="hnt-cres"><rect width={W} height={H} fill="#fff" /><circle cx="926" cy="176" r="40" fill="#000" /></mask>
+        <circle cx="900" cy="190" r="260" fill="url(#hnt-moon)" />
+        <circle className="hnt-moondisc" cx="900" cy="190" r="48" mask="url(#hnt-cres)" />
+      </g>
     </svg>
   );
 }

@@ -33,7 +33,10 @@ function RoomArt({ i }: { i: number }) {
     <svg className="hnt-roomart" viewBox="0 0 240 150" aria-hidden="true">
       <rect className="hnt-ra-sky" width="240" height="150" />
       <circle className="hnt-ra-moon" cx={60 + i * 50} cy="38" r="14" />
+      <path className="hnt-ra-far" d="M0 100 Q50 54 100 84 T200 70 T240 86 V150 H0z" />
       <path className="hnt-ra-hill" d="M0 120 Q60 70 120 104 T240 92 V150 H0z" />
+      <circle className="hnt-ra-halo" cx="120" cy="112" r="42" />
+      {[[30, 20], [170, 30], [210, 52], [96, 18], [140, 14]].map(([x, y], k) => <circle key={k} className="hnt-ra-star" cx={x} cy={y} r="1.2" />)}
       <path className="hnt-ra-roof" d={`M${70 - i * 6} 94 L120 70 L${170 + i * 6} 94 Z`} />
       <rect className="hnt-ra-wall" x={82 - i * 5} y="94" width={76 + i * 10} height="34" />
       <rect className="hnt-ra-glow" x="108" y="100" width="24" height="28" rx="2" />
@@ -108,7 +111,7 @@ export default function HeroNightTemple({ className }: { className?: string }) {
         <div className="hnt-sticky">
           <p className="hnt-kicker">One night on the ridge</p>
           <h2 id="hnt-hj">From dusk to first light, slowly.</h2>
-          <div className="hnt-dial" aria-hidden="true"><svg viewBox="0 0 160 160"><circle className="hnt-dial-ring" cx="80" cy="80" r="70" /><circle className="hnt-dial-arc" cx="80" cy="80" r="70" pathLength="100" /><circle className="hnt-dial-moon" cx="80" cy="80" r="26" /><circle className="hnt-dial-shade" cx="80" cy="80" r="26" /></svg></div>
+          <div className="hnt-dial" aria-hidden="true"><svg viewBox="0 0 160 160"><circle className="hnt-dial-ring" cx="80" cy="80" r="70" /><circle className="hnt-dial-arc" cx="80" cy="80" r="70" pathLength="100" /><path className="hnt-dial-moon" d="M92 52a30 30 0 1 0 0 56a24 24 0 1 1 0-56z" /><g className="hnt-dial-orbit"><circle className="hnt-dial-dot" cx="80" cy="10" r="6" /></g></svg></div>
         </div>
         <ol className="hnt-steps-list">
           {STEPS.map((s, i) => (
