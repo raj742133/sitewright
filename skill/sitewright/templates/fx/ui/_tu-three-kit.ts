@@ -182,3 +182,36 @@ export function useScene<S>(
   useEffect(() => { reset.current(); }, [key]);
   return { wrapRef, canvasRef, ready, redraw: () => kick.current() };
 }
+
+/** deterministic 0..1 hash of an integer-ish seed */
+export const hash1 = (n: number) => { const s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+/** value noise in 2-D (smooth, deterministic) */
+export function noise2(x: number, y: number) {
+  const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy, ux = fx * fx * (3 - 2 * fx), uy = fy * fy * (3 - 2 * fy);
+  const h = (a: number, b: number) => hash1(a * 57.3 + b * 131.9);
+  return lerp(lerp(h(ix, iy), h(ix + 1, iy), ux), lerp(h(ix, iy + 1), h(ix + 1, iy + 1), ux), uy);
+}
+export const fbm2 = (x: number, y: number) => noise2(x, y) * 0.55 + noise2(x * 2.07 + 5, y * 2.07 + 3) * 0.3 + noise2(x * 4.1 + 9, y * 4.1 + 1) * 0.15;
+/** Stateless slanted rain: `n` streaks that fall with time, no per-drop state (so a still frame is stable). */
+export function rainStreaks(c: CanvasRenderingContext2D, w: number, h: number, t: number, n: number, opt: { speed?: number; len?: number; slant?: number; color?: string; width?: number; seed?: number } = {}) {
+  const sp = opt.speed ?? 480, len = opt.len ?? 14, sl = opt.slant ?? 0.18, cyc = h + 60, ww = w + 100, sd = opt.seed ?? 0;
+  c.strokeStyle = opt.color ?? 'rgba(200,215,255,.3)'; c.lineWidth = opt.width ?? 1; c.lineCap = 'round'; c.beginPath();
+  for (let i = 0; i < n; i++) {
+    const v = sp * (0.8 + hash1(i + sd) * 0.4), l = len * (0.7 + hash1(i + 9 + sd) * 0.6);
+    const y = ((hash1(i + 3 + sd) * cyc + t * v) % cyc) - 30, x = (((hash1(i + 1 + sd) * ww - t * v * sl) % ww) + ww) % ww - 50;
+    c.moveTo(x, y); c.lineTo(x - l * sl, y - l);
+  }
+  c.stroke();
+}
+
+/** A soft layered ridge silhouette closed down to the bottom (optionally with one raised peak); fill it yourself. */
+export function ridgePath(c: CanvasRenderingContext2D, W: number, H: number, y: number, amp: number, seed: number, peakX = -1, peakH = 0) {
+  const r = rng(seed), a = r() * 9, b = r() * 9;
+  c.beginPath(); c.moveTo(0, H);
+  for (let x = 0; x <= W + 6; x += 6) {
+    let v = y - (Math.sin(x * 0.006 + a) * 0.5 + Math.sin(x * 0.017 + b) * 0.28 + Math.sin(x * 0.043 + a * b) * 0.12 + 0.5) * amp;
+    if (peakH) v -= peakH * Math.exp(-Math.pow((x - peakX) / (W * 0.16), 2));
+    c.lineTo(x, v);
+  }
+  c.lineTo(W, H); c.closePath();
+}

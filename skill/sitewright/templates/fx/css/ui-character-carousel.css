@@ -1,0 +1,28 @@
+.ui-character-carousel-root { --character-carousel-h: min(84cqh, 118cqw); --character-carousel-w: calc(var(--character-carousel-h) * 0.74); position: relative; container-type: size; width: 100%; height: 100%; min-height: 200px; overflow: hidden; outline: none; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; background: radial-gradient(90% 90% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, var(--surface, #fff)), var(--surface, #fff)); font-family: var(--font-body, system-ui); color: var(--ink, #111827); }
+.ui-character-carousel-root:active { cursor: grabbing; }
+.ui-character-carousel-root:focus-visible { box-shadow: inset 0 0 0 3px var(--primary, #2563eb); }
+.ui-character-carousel-stage { position: absolute; inset: 0; perspective: 900px; perspective-origin: 50% 40%; }
+.ui-character-carousel-card { --character-carousel-o: 0; --character-carousel-sc: 1; --character-carousel-ry: 0; --character-carousel-y: 0; --character-carousel-z: 0; --character-carousel-op: 1; --character-carousel-gr: 0; position: absolute; left: 50%; top: 50%; width: var(--character-carousel-w); height: var(--character-carousel-h); margin: calc(var(--character-carousel-h) / -2) 0 0 calc(var(--character-carousel-w) / -2); display: flex; flex-direction: column; border-radius: calc(var(--radius, 12px) + 2px); overflow: hidden; background: var(--raised, #fff); border: 1px solid var(--line, rgba(0, 0, 0, 0.12)); box-shadow: 0 18px 34px -18px rgba(0, 0, 0, 0.45); opacity: var(--character-carousel-op); filter: grayscale(var(--character-carousel-gr)); transform: translate3d(calc(var(--character-carousel-o) * var(--character-carousel-w) * 1.06), calc(var(--character-carousel-y) * 1px), calc(var(--character-carousel-z) * 1px)) rotateY(calc(var(--character-carousel-ry) * 1deg)) scale(var(--character-carousel-sc)); will-change: transform; cursor: pointer; }
+.ui-character-carousel-card[data-active='true'] { cursor: grab; border-color: var(--primary, #2563eb); }
+.ui-character-carousel-portrait { position: relative; flex: 1 1 0; min-height: 0; overflow: hidden; }
+.ui-character-carousel-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ui-character-carousel-no { position: absolute; left: 8px; top: 8px; padding: 2px 6px; border-radius: 4px; font: 600 10px/1.4 var(--font-mono, monospace); letter-spacing: 0.08em; text-transform: uppercase; background: rgba(10, 12, 18, 0.72); color: #fff; }
+.ui-character-carousel-meta { flex: none; display: grid; gap: 1px; padding: 8px 10px 10px; border-top: 3px solid var(--primary, #2563eb); }
+.ui-character-carousel-meta strong { font: 700 calc(var(--character-carousel-h) * 0.075)/1.15 var(--font-body, system-ui); font-size: clamp(12px, calc(var(--character-carousel-h) * 0.075), 18px); letter-spacing: -0.01em; }
+.ui-character-carousel-meta span { font: 600 10px/1.3 var(--font-mono, monospace); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted, #4b5563); }
+.ui-character-carousel-meta p { margin: 4px 0 0; font-size: 12px; line-height: 1.35; color: var(--muted, #4b5563); display: none; }
+@container (min-height: 340px) { .ui-character-carousel-meta p { display: block; } .ui-character-carousel-card:not([data-active='true']) .ui-character-carousel-meta p { visibility: hidden; } }
+/* filmstrip: a dark film band with sprocket holes behind a flat row */
+.ui-character-carousel-strip { display: none; }
+.ui-character-carousel-filmstrip .ui-character-carousel-strip { display: block; position: absolute; left: 0; right: 0; top: 50%; height: calc(var(--character-carousel-h) + 28px); transform: translateY(-50%); background: color-mix(in srgb, var(--ink, #111827) 90%, var(--primary, #2563eb)); }
+.ui-character-carousel-filmstrip .ui-character-carousel-strip::before, .ui-character-carousel-filmstrip .ui-character-carousel-strip::after { content: ''; position: absolute; left: 0; right: 0; height: 8px; background: radial-gradient(circle, color-mix(in srgb, var(--surface, #fff) 80%, transparent) 0 2px, transparent 2.6px) 0 0 / 16px 8px repeat-x; opacity: 0.55; }
+.ui-character-carousel-filmstrip .ui-character-carousel-strip::before { top: 3px; } .ui-character-carousel-filmstrip .ui-character-carousel-strip::after { bottom: 3px; }
+.ui-character-carousel-filmstrip .ui-character-carousel-card { --character-carousel-h: calc(min(84cqh, 118cqw) - 16px); border-radius: 6px; box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.6); }
+.ui-character-carousel-nav { position: absolute; top: 50%; z-index: 200; width: 44px; height: 44px; margin-top: -22px; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 1px solid var(--line-strong, rgba(0, 0, 0, 0.25)); background: color-mix(in srgb, var(--surface, #fff) 88%, transparent); color: var(--ink, #111827); cursor: pointer; box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.4); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: transform 0.15s, background-color 0.2s; }
+.ui-character-carousel-nav svg { width: 16px; height: 16px; }
+.ui-character-carousel-nav:hover { background: var(--surface, #fff); transform: scale(1.06); }
+.ui-character-carousel-nav:active { transform: scale(0.94); }
+.ui-character-carousel-nav:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 2px; }
+.ui-character-carousel-prev { left: 8px; } .ui-character-carousel-next { right: 8px; }
+.ui-character-carousel-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+@media (prefers-reduced-motion: reduce) { .ui-character-carousel-nav { transition: none; } .ui-character-carousel-nav:hover, .ui-character-carousel-nav:active { transform: none; } }

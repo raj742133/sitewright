@@ -1,0 +1,11 @@
+.ui-network-globe{position:absolute;inset:0;overflow:hidden;cursor:grab;touch-action:pan-y;outline:none;border-radius:var(--radius,12px)}
+.ui-network-globe:active{cursor:grabbing}
+.ui-network-globe:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:-2px}
+.ui-network-globe-fallback{position:absolute;left:50%;top:50%;width:min(70%,70vh);aspect-ratio:1;max-height:70%;transform:translate(-50%,-50%);border-radius:50%;transition:opacity .6s var(--ease,ease);
+  background:radial-gradient(circle at 36% 30%,color-mix(in srgb,var(--signal,#f59e0b) 35%,transparent),color-mix(in srgb,var(--primary,#2563eb) 30%,transparent) 55%,transparent 72%),
+    radial-gradient(circle,color-mix(in srgb,var(--ink,#111) 38%,transparent) 1.1px,transparent 1.5px) 0 0/10px 10px;
+  box-shadow:0 0 50px -6px color-mix(in srgb,var(--primary,#2563eb) 50%,transparent)}
+.ui-network-globe[data-gl='on'] .ui-network-globe-fallback{opacity:0}
+.ui-network-globe-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-network-globe-canvas[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.ui-network-globe-fallback{transition:none}}

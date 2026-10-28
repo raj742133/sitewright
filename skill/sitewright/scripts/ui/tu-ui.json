@@ -1,0 +1,3 @@
+[
+  {"id":"shader-buttons","label":"Shader buttons","desc":"Five different live-drawn call-to-action buttons (plasma and holographic fragment shaders, ignition embers, a particle constellation, a tactile brushed plate) chosen with `variant`; hover, focus and press drive the animation.","source":"Original","group":"buttons","files":["ShaderButtons.tsx","_tu-shader-faces.tsx","_tu-ui-kit.ts","_t1.ts","_t2.ts"],"css":["ui-shader-buttons"],"use":"Primary call to action on a hero or pricing card; pick one variant per page, not all five."}
+]

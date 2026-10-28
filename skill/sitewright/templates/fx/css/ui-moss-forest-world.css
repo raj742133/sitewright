@@ -1,3 +1,9 @@
 .ui-moss-forest-world{position:relative;width:100%;height:100%;min-height:120px;overflow:hidden;pointer-events:none;
   background:radial-gradient(60% 55% at 50% 52%,color-mix(in srgb,var(--signal,#f59e0b) 35%,var(--surface,#fff)),transparent 70%),linear-gradient(180deg,color-mix(in srgb,var(--primary,#2563eb) 14%,#1f3a22),color-mix(in srgb,var(--primary,#2563eb) 8%,#0e1d12))}
 .ui-moss-forest-world-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-moss-forest-world-bar{position:absolute;left:8px;right:8px;bottom:8px;display:flex;justify-content:center;pointer-events:none}
+.ui-moss-forest-world-chips{pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2px;padding:3px;border-radius:999px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1px solid var(--line,#d4d4d8);backdrop-filter:blur(8px)}
+.ui-moss-forest-world-chip{min-height:24px;padding:0 10px;border:0;border-radius:999px;background:transparent;color:var(--ink,#18181b);font:600 11px/1 var(--font-mono,monospace);text-transform:capitalize;cursor:pointer}
+.ui-moss-forest-world-chip.is-on{background:var(--primary,#2563eb);color:#fff}
+.ui-moss-forest-world-chip:focus-visible{outline:2px solid var(--primary,#2563eb);outline-offset:2px}
+@media (pointer:coarse){.ui-moss-forest-world-chip{min-height:44px;padding:0 14px}}

@@ -15,5 +15,52 @@
    "ui-performance-gauges"
   ],
   "use": "Vehicle or device status panels, diagnostics dashboards, telemetry heroes (fills its parent; pass `values`)."
+ },
+ {
+  "id": "uplink-loader",
+  "label": "Uplink loader",
+  "desc": "A cinematic secure-connection loader with a stepped segmented bar, telemetry ticks, scanline and grain; determinate progress with live status text.",
+  "source": "Original",
+  "group": "loaders",
+  "files": [
+   "UplinkLoader.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-uplink-loader"
+  ],
+  "use": "Sign-in handshakes, app boot or sync screens (pass progress 0-100, or leave it to autoplay as a demo)."
+ },
+ {
+  "id": "koi-studies",
+  "label": "Fish card stack",
+  "desc": "A tactile stack of three illustrated fish cards with CSS 3D depth and pointer tilt; drag, tap, buttons or keys bring the next card forward.",
+  "source": "Original",
+  "group": "cards",
+  "files": [
+   "KoiStudies.tsx",
+   "_tu-css-koi.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-koi-studies"
+  ],
+  "use": "Portfolio or gallery teasers, feature highlights, onboarding card stacks (fills its parent)."
+ },
+ {
+  "id": "page-curl-book",
+  "label": "Page curl sketchbook",
+  "desc": "A paper sketchbook of invented SVG drawings with a drag-driven page curl, a magnifier lens, arrow-key page turns and prev/next buttons.",
+  "source": "Original",
+  "group": "media",
+  "files": [
+   "PageCurlBook.tsx",
+   "_tu-css-sketch.tsx",
+   "_t2.ts"
+  ],
+  "css": [
+   "ui-page-curl-book"
+  ],
+  "use": "Portfolio and lookbook showcases, product catalogues, story pages (fills its parent)."
  }
 ]

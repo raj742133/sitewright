@@ -1,0 +1,24 @@
+.ui-liquid-metal-button-b { position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-sizing: border-box; flex: none; padding: 0; border: 0; background: none; color: #fff; cursor: pointer; font: 600 15px/1 var(--font-body, system-ui); letter-spacing: 0.02em; transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s, filter 0.3s; -webkit-tap-highlight-color: transparent; }
+.ui-liquid-metal-button-pill { height: 56px; min-width: 172px; padding: 0 34px; border-radius: 999px; }
+.ui-liquid-metal-button-orb { width: 88px; height: 88px; border-radius: 50%; }
+@media (pointer: coarse) { .ui-liquid-metal-button-b { min-height: 44px; min-width: 44px; } }
+.ui-liquid-metal-button-b:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--primary, #2563eb) 60%, #fff 10%), 0 0 24px -6px rgba(255, 255, 255, 0.35); }
+.ui-liquid-metal-button-b:active:not(:disabled) { transform: scale(0.97); }
+.ui-liquid-metal-button-b:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 4px; }
+.ui-liquid-metal-button-b:disabled { opacity: 0.5; cursor: not-allowed; filter: saturate(0.4); }
+.ui-liquid-metal-button-cv { position: absolute; inset: 0; z-index: -1; display: block; opacity: 0; }
+.ui-liquid-metal-button-cv canvas { width: 100%; height: 100%; display: block; }
+.ui-liquid-metal-button-gl .ui-liquid-metal-button-cv { opacity: 1; }
+.ui-liquid-metal-button-gl .ui-liquid-metal-button-css { opacity: 0; }
+.ui-liquid-metal-button-label, .ui-liquid-metal-button-ico { position: relative; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7); filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.6)); }
+.ui-liquid-metal-button-ico { width: 20px; height: 20px; flex: none; }
+.ui-liquid-metal-button-orb .ui-liquid-metal-button-ico { width: 34%; height: 34%; margin-left: 4%; }
+.ui-liquid-metal-button-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* CSS chrome: the look without WebGL (a conic metal rim around a dark face) */
+.ui-liquid-metal-button-css { position: absolute; inset: 2px; z-index: -1; border-radius: inherit; box-sizing: border-box; border: 7px solid transparent; background: linear-gradient(180deg, #1b1d22, #0a0b0e) padding-box, conic-gradient(from 210deg, #f4f6fa, #7b8394, #1d2026, #aeb6c4, #ffffff, #5c6474, #1d2026, #d8dde6, #f4f6fa) border-box; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 6px 18px -6px rgba(0, 0, 0, 0.6); transition: opacity 0.3s; }
+.ui-liquid-metal-button-tint .ui-liquid-metal-button-css { background: linear-gradient(180deg, color-mix(in srgb, var(--primary, #2563eb) 22%, #0b0c10), #07080b) padding-box, conic-gradient(from 210deg, #f4f6fa, color-mix(in srgb, var(--primary, #2563eb) 60%, #7b8394), #1d2026, #aeb6c4, #ffffff, color-mix(in srgb, var(--primary, #2563eb) 50%, #5c6474), #1d2026, #d8dde6, #f4f6fa) border-box; }
+.ui-liquid-metal-button-orb .ui-liquid-metal-button-css { border-width: 12px; }
+.ui-liquid-metal-button-demo { box-sizing: border-box; width: 100%; height: 100%; min-height: 200px; display: grid; align-content: center; justify-items: center; gap: 16px; padding: 14px; background: radial-gradient(70% 90% at 50% 20%, #2a2f3b, #0c0e13 75%); }
+.ui-liquid-metal-button-row { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+@media (max-height: 280px) { .ui-liquid-metal-button-demo .ui-liquid-metal-button-orb:not([style]) { width: 64px; height: 64px; } .ui-liquid-metal-button-demo { gap: 10px; } }
+@media (prefers-reduced-motion: reduce) { .ui-liquid-metal-button-b { transition: none; } .ui-liquid-metal-button-b:hover:not(:disabled), .ui-liquid-metal-button-b:active:not(:disabled) { transform: none; } }

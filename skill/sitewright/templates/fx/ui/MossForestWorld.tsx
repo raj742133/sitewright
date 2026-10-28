@@ -1,5 +1,6 @@
 'use client';
-import type { CSSProperties } from 'react';
+import { useState, type CSSProperties } from 'react';
+import { Chips } from './_tu-three-chips';
 import { clamp, css, layer, mixc, rng, scale, useScene, type Env, type RGB } from './_tu-three-kit';
 import { FOREST_VARIANTS, SEASONS, fern, glowSprite, leafPath, makeMotes, paintArch, paintGround, paintTrunks, tones, type ForestVariant, type Mote, type Tones } from './_tu-three-forest';
 
@@ -95,9 +96,11 @@ export default function MossForestWorld({ variant = 'moss', density = 1, classNa
 }
 
 export function Demo() {
+  const [v, setV] = useState<ForestVariant>('moss');
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: 150, overflow: 'hidden', borderRadius: 'var(--radius, 12px)' }}>
-      <MossForestWorld />
+      <MossForestWorld variant={v} />
+      <div className="ui-moss-forest-world-bar"><Chips prefix="ui-moss-forest-world" label="Season" value={v} options={FOREST_VARIANTS} onChange={setV} /></div>
     </div>
   );
 }

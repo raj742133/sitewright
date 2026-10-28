@@ -1,0 +1,42 @@
+.ui-page-curl-book-demo { width: 100%; height: 100%; min-height: 0; padding: 8px; box-sizing: border-box; background: linear-gradient(160deg, color-mix(in srgb, var(--primary, #2563eb) 10%, var(--surface, #fafafa)), var(--surface, #fafafa)); }
+.ui-page-curl-book-root { width: 100%; height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 6px; font-family: var(--font-body, system-ui); color: var(--ink, #18181b); }
+.ui-page-curl-book-desk { flex: 1 1 0; min-height: 0; display: grid; place-items: center; container-type: size; perspective: 1400px; }
+.ui-page-curl-book-book { --ui-page-curl-book-w: min(94cqw, 125cqh, 640px); width: var(--ui-page-curl-book-w); aspect-ratio: 4 / 3; position: relative; transform: rotateX(5deg) rotateY(-3deg); transform-style: preserve-3d; border-radius: 3px 8px 8px 3px; outline: none;
+  box-shadow: 1px 1px 0 #ddd3bd, 2px 2px 0 #f1ead8, 3px 3px 0 #d6ccb5, 4px 4px 0 #efe7d3, 14px 20px 26px rgba(0, 0, 0, 0.28); }
+.ui-page-curl-book-book:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 5px; }
+.ui-page-curl-book-sheet { --ui-page-curl-book-s: 0; position: absolute; inset: 0; overflow: hidden; border-radius: inherit; container-type: size; touch-action: pan-y; cursor: default; user-select: none; background: #f6f0e2; }
+.ui-page-curl-book-under, .ui-page-curl-book-top { position: absolute; inset: 0; }
+.ui-page-curl-book-top { clip-path: inset(0 calc(var(--ui-page-curl-book-s) * 100%) 0 0); }
+.ui-page-curl-book-top::after { content: ''; position: absolute; top: 0; bottom: 0; right: 0; width: 6%; background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.14)); opacity: calc(var(--ui-page-curl-book-s) * 40); pointer-events: none; }
+.ui-page-curl-book-cast { position: absolute; top: 0; bottom: 0; left: calc((1 - var(--ui-page-curl-book-s)) * 100%); width: 22%; background: linear-gradient(90deg, rgba(40, 30, 10, 0.38), rgba(40, 30, 10, 0.12) 35%, transparent); opacity: calc(var(--ui-page-curl-book-s) * 40); pointer-events: none; }
+.ui-page-curl-book-flap { position: absolute; top: 0; bottom: 0; left: calc((1 - 2 * var(--ui-page-curl-book-s)) * 100%); width: calc(var(--ui-page-curl-book-s) * 100%); pointer-events: none; transform-origin: 100% 50%; transform: rotateY(-9deg); filter: drop-shadow(-6px 4px 8px rgba(0, 0, 0, 0.3)); }
+.ui-page-curl-book-back { position: absolute; inset: 0; background: linear-gradient(90deg, #cfc4a8 0%, #f2ebd8 22%, #f8f3e4 48%, #e6dcc3 82%, #b9ad90 100%); }
+.ui-page-curl-book-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ui-page-curl-book-paper { fill: #f6f0e2; }
+.ui-page-curl-book-rule { stroke: #b9ad90; stroke-width: 0.6; stroke-dasharray: 2 4; fill: none; }
+.ui-page-curl-book-ink { fill: none; stroke: #3b3d46; stroke-linecap: round; stroke-linejoin: round; }
+.ui-page-curl-book-ink.is-wash-a { fill: color-mix(in srgb, var(--primary, #2563eb) 24%, transparent); }
+.ui-page-curl-book-ink.is-wash-b { fill: color-mix(in srgb, var(--signal, #f59e0b) 38%, transparent); }
+.ui-page-curl-book-ink.is-wash-c { fill: color-mix(in srgb, var(--primary, #2563eb) 12%, #9ec3a0 18%); }
+.ui-page-curl-book-fill.is-wash-b { fill: color-mix(in srgb, var(--signal, #f59e0b) 45%, transparent); }
+.ui-page-curl-book-fill.is-shade { fill: rgba(60, 50, 30, 0.18); }
+.ui-page-curl-book-note { fill: #6b6657; font: 600 9px/1 var(--font-mono, monospace); letter-spacing: 0.08em; }
+.ui-page-curl-book-dogear { position: absolute; right: 0; bottom: 0; width: 7%; aspect-ratio: 1; background: linear-gradient(135deg, transparent 50%, #d8cdb0 50%, #f4eedd 100%); box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.18); pointer-events: none; }
+.ui-page-curl-book-book:not(.has-lens) .ui-page-curl-book-sheet { cursor: pointer; }
+.ui-page-curl-book-lens { position: absolute; z-index: 5; width: 92px; height: 92px; border-radius: 50%; overflow: hidden; pointer-events: none; border: 3px solid #fff; box-shadow: 0 0 0 1.5px #3b3d46, 0 8px 18px rgba(0, 0, 0, 0.35); left: calc(var(--ui-page-curl-book-fx) * 100% - 46px); top: calc(var(--ui-page-curl-book-fy) * 100% - 46px); }
+.ui-page-curl-book-lens::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.45), transparent 45%); }
+.ui-page-curl-book-lens-page { position: absolute; width: calc(var(--ui-page-curl-book-z) * 100cqw); height: calc(var(--ui-page-curl-book-z) * 100cqh); left: calc(46px - var(--ui-page-curl-book-fx) * var(--ui-page-curl-book-z) * 100cqw); top: calc(46px - var(--ui-page-curl-book-fy) * var(--ui-page-curl-book-z) * 100cqh); }
+.ui-page-curl-book-bar { flex: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.ui-page-curl-book-label { display: flex; flex-direction: column; align-items: center; min-width: 0; flex: 0 1 150px; line-height: 1.2; text-align: center; }
+.ui-page-curl-book-label b { font-size: 12px; font-weight: 700; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ui-page-curl-book-label i { font: 600 10px/1.3 var(--font-mono, monospace); color: var(--muted, #52525b); font-style: normal; letter-spacing: 0.04em; }
+.ui-page-curl-book-btn { display: grid; place-items: center; min-width: 28px; height: 28px; padding: 0 6px; border-radius: 50%; border: 1px solid var(--line-strong, #a1a1aa); background: var(--raised, #fff); color: var(--ink, #18181b); font: 700 11px/1 var(--font-mono, monospace); cursor: pointer; }
+.ui-page-curl-book-btn.is-zoom { border-radius: 999px; }
+.ui-page-curl-book-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ui-page-curl-book-btn:hover:not(:disabled) { border-color: var(--primary, #2563eb); }
+.ui-page-curl-book-btn[aria-pressed="true"] { background: var(--primary, #2563eb); border-color: var(--primary, #2563eb); color: #fff; }
+.ui-page-curl-book-btn:disabled { opacity: 0.4; cursor: default; }
+.ui-page-curl-book-btn:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; }
+@media (pointer: coarse) { .ui-page-curl-book-btn { min-width: 44px; height: 44px; } .ui-page-curl-book-sheet { touch-action: none; } }
+.ui-page-curl-book-live { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .ui-page-curl-book-book { transform: none; } }
