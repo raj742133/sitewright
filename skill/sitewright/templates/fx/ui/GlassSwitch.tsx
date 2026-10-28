@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, type ButtonHTMLAttributes } from 'react';
 import { SWITCH_OFF_DEFAULT_PARAMS, SWITCH_ON_DEFAULT_PARAMS, getGlassEngine } from './_tg-engine';
-import { useGlass, type GlassOpticsProps } from './_tg-use';
+import { useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassSwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange' | 'role' | 'children'> {
@@ -11,18 +11,20 @@ export interface GlassSwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonEl
   /** Accessible name when there is no visible label (use aria-labelledby when there is one). */
   label?: string;
   /** Glass settings for the on state. */
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
   /** Glass settings for the off state (defaults are a frostier, darker glass). */
   opticsOff?: GlassOpticsProps;
 }
 
 /** An on/off switch: a glass track with a molded glass thumb that refracts what is under it. A real button with role="switch"; Space and Enter toggle it. */
-export default function GlassSwitch({ checked, defaultChecked = false, onChange, label = 'Toggle', optics, opticsOff, disabled, className = '', ...props }: GlassSwitchProps) {
+export default function GlassSwitch({ checked, defaultChecked = false, onChange, label = 'Toggle', variant, optics, opticsOff, disabled, className = '', ...props }: GlassSwitchProps) {
   const [inner, setInner] = useState(defaultChecked);
   const on = checked !== undefined ? checked : inner;
   const { rootRef, canvasRef, dataGlass } = useGlass<HTMLButtonElement>({
     defaults: on ? SWITCH_ON_DEFAULT_PARAMS : SWITCH_OFF_DEFAULT_PARAMS,
-    optics: on ? optics : opticsOff,
+    optics: on ? optics : opticsOff, variant,
     radius: 'pill',
     setup: (inst, root) => {
       inst.getSwitchThumb = () => {

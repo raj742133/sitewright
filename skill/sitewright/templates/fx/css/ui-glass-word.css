@@ -4,5 +4,8 @@
 .ui-glass-word > .ui-glass-canvas { inset: -16px; width: calc(100% + 32px); height: calc(100% + 32px); z-index: 2; border-radius: 0; }
 /* the real text: stays in the page for readers and search, and is what you see without WebGL; with WebGL it is a soft base under the glass */
 .ui-glass-word-text { font: inherit; letter-spacing: inherit; position: relative; z-index: 1; }
-.ui-glass-word[data-glass="css"] .ui-glass-word-text { color: transparent; -webkit-text-fill-color: transparent; background: linear-gradient(100deg, color-mix(in srgb, var(--tg-accent) 78%, var(--tg-ink)), color-mix(in srgb, var(--tg-accent-2) 60%, var(--tg-ink)) 60%, color-mix(in srgb, var(--tg-accent) 78%, var(--tg-ink))); -webkit-background-clip: text; background-clip: text; }
+.ui-glass-word:is([data-glass="css"], [data-glass="frosted"]) .ui-glass-word-text { color: transparent; -webkit-text-fill-color: transparent; background: linear-gradient(100deg, color-mix(in srgb, var(--tg-accent) 78%, var(--tg-ink)), color-mix(in srgb, var(--tg-accent-2) 60%, var(--tg-ink)) 60%, color-mix(in srgb, var(--tg-accent) 78%, var(--tg-ink))); -webkit-background-clip: text; background-clip: text; }
 .ui-glass-word[data-glass="gl"] .ui-glass-word-text { color: color-mix(in srgb, var(--tg-ink) 58%, transparent); }
+
+.ui-glass-word[data-glass="frosted"] .ui-glass-word-text { filter: drop-shadow(0 2px 12px color-mix(in srgb, var(--tg-accent) 32%, transparent)); }
+.ui-glass-word[data-glass="frosted"] > .ui-glass-canvas { display: none; }

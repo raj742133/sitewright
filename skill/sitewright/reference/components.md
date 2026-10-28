@@ -173,7 +173,7 @@ Small interactive pieces you import by name from `@/components/fx/ui`: buttons, 
 
 ## Glass
 
-Ten liquid-glass pieces ported from [Tactile Glass UI](https://github.com/uixninja/tactile-glass-ui) by uixNinja (MIT; the licence ships with them as `src/components/fx/ui/LICENSE-tactile-glass.txt` and must stay). One shared WebGL2 engine draws all of them (a single canvas, however many are on the page); rim light, caustics and ripples use the theme's `--primary` and `--signal`, and everything is scoped under `.ui-glass`. Without WebGL2 (or after a lost context) each falls back to frosted CSS glass; with reduced motion they draw still frames. Pass `optics={{ refraction, frost, sheen, fluidBrightness, ... }}` to tune the glass. Glass shows best over colour or imagery.
+Ten liquid-glass pieces (and eight frosted CSS-only versions of them, `frosted-*`, which take the same props and never use WebGL: pass `variant="frosted"` to any `Glass*` component for the same effect) ported from [Tactile Glass UI](https://github.com/uixninja/tactile-glass-ui) by uixNinja (MIT; the licence ships with them as `src/components/fx/ui/LICENSE-tactile-glass.txt` and must stay). One shared WebGL2 engine draws all of them (a single canvas, however many are on the page); rim light, caustics and ripples use the theme's `--primary` and `--signal`, and everything is scoped under `.ui-glass`. Without WebGL2 (or after a lost context) each falls back to frosted CSS glass; with reduced motion they draw still frames. Pass `optics={{ refraction, frost, sheen, fluidBrightness, ... }}` to tune the glass. Glass shows best over colour or imagery.
 
 | id | what it does | use it for | idea from |
 |---|---|---|---|
@@ -187,6 +187,14 @@ Ten liquid-glass pieces ported from [Tactile Glass UI](https://github.com/uixnin
 | `glass-switch` | An on/off switch: a glass track with a molded glass thumb that refracts what is under it. A real button with role switch. | Settings toggles on rich backgrounds. | Tactile Glass UI (uixNinja, MIT) |
 | `glass-tabs` | A segmented control: a glass capsule with a molded indicator that slides to the chosen tab; arrow keys, Home and End move between tabs. | Section switchers, view toggles. | Tactile Glass UI (uixNinja, MIT) |
 | `glass-audio-player` | A spatial audio deck in liquid glass with a procedural Web Audio synth (no files): play, previous / next, draggable timeline, live spectrum, repeat. Sound starts only when you press play. | Music or podcast teasers, ambient sound on a landing page. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-button` | The glass button as thick frosted glass: heavy backdrop blur, grain, a lit edge and a sheen that follows the pointer. Pure CSS, no WebGL. | Primary calls to action over photos or gradients. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-card` | The dark payment card as frosted glass under a moving sheen. Pure CSS. | Checkout, wallet and billing screens. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-prompt-input` | The AI prompt box on frosted glass; a real labelled textarea. | Chat and AI products over a hero image. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-switch` | The switch on a frosted track with a light glass thumb; role switch. | Settings over rich backgrounds. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-tabs` | The tab bar as frosted glass with a sliding highlight; arrow keys, Home and End. | Segmented navigation floating over imagery. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-audio-player` | The dark audio deck as frosted glass with the synthesised demo track; never autoplays. | Music, podcast or ambient-sound features. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-panel` | Wraps any content in a frosted glass panel: blur, grain, lit edge, pointer sheen. | Overlays, hero cards, menus and popovers. | Tactile Glass UI (uixNinja, MIT) |
+| `frosted-backdrop` | A soft drifting colour field under fine grain, in the brand colours; the stage for frosted panes. | Behind a hero or sign-in panel. | Tactile Glass UI (uixNinja, MIT) |
 
 ## Loaders
 

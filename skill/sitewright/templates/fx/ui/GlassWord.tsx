@@ -1,24 +1,26 @@
 'use client';
 import { useState, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactNode } from 'react';
 import { HEADING_DEFAULT_PARAMS } from './_tg-engine';
-import { useGlass, type GlassOpticsProps } from './_tg-use';
+import { useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassWordProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
   children?: ReactNode;
   /** Words to cycle through when the word is clicked (or Enter / Space is pressed). */
   cycleWords?: string[];
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
 }
 
 /** A word whose letter shapes are liquid glass: the glyphs catch rim light and flowing caustics, and react to the pointer. The text stays real text; without WebGL it is gradient lettering. */
-export default function GlassWord({ children, cycleWords, optics, className = '', style, onClick, onKeyDown, ...props }: GlassWordProps) {
+export default function GlassWord({ children, cycleWords, variant, optics, className = '', style, onClick, onKeyDown, ...props }: GlassWordProps) {
   const [n, setN] = useState(0);
   const cycling = !!cycleWords && cycleWords.length > 1;
   const shown: ReactNode = cycleWords && cycleWords.length > 0 ? cycleWords[n % cycleWords.length] : children;
   const text = typeof shown === 'string' || typeof shown === 'number' ? String(shown) : '';
   const { rootRef, canvasRef, dataGlass } = useGlass<HTMLSpanElement>({
-    defaults: HEADING_DEFAULT_PARAMS, optics: { body: 40, ...optics }, radius: 0, deps: [text],
+    defaults: HEADING_DEFAULT_PARAMS, optics: { body: 40, ...optics }, variant, radius: 0, deps: [text],
     measure: (el) => [el.offsetWidth + 32, el.offsetHeight + 32],
     setup: (inst, root, resize) => {
       const font = () => {

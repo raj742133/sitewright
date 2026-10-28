@@ -1,7 +1,7 @@
 'use client';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { BUTTON_DEFAULT_PARAMS } from './_tg-engine';
-import { useGlass, type GlassOpticsProps } from './_tg-use';
+import { useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,12 +13,14 @@ export interface GlassButtonProps extends ButtonHTMLAttributes<HTMLButtonElement
   /** 'accent' tints the glass with the brand colour. */
   tone?: 'neutral' | 'accent';
   /** Fine-tune the glass: refraction, frost, sheen, fluidBrightness, ... (see GlassOptics). */
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
 }
 
 /** A pill button made of liquid glass: the rim catches light, caustics flow through it and a click sends a ripple. Falls back to frosted CSS glass without WebGL. */
-export default function GlassButton({ children, shape = 'pill', size = 'lg', tone = 'neutral', optics, className = '', type = 'button', ...props }: GlassButtonProps) {
-  const { rootRef, canvasRef, dataGlass } = useGlass<HTMLButtonElement>({ defaults: BUTTON_DEFAULT_PARAMS, optics, radius: 'pill' });
+export default function GlassButton({ children, shape = 'pill', size = 'lg', tone = 'neutral', variant, optics, className = '', type = 'button', ...props }: GlassButtonProps) {
+  const { rootRef, canvasRef, dataGlass } = useGlass<HTMLButtonElement>({ defaults: BUTTON_DEFAULT_PARAMS, optics, variant, radius: 'pill' });
   return (
     <button ref={rootRef} type={type} data-glass={dataGlass} data-shape={shape} data-size={size} data-tone={tone} className={`ui-glass ui-glass-pane ui-glass-btn ${className}`.trim()} {...props}>
       <canvas ref={canvasRef} className="ui-glass-canvas" aria-hidden="true" />

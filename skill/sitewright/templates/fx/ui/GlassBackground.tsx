@@ -1,18 +1,20 @@
 'use client';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { BACKGROUND_DEFAULT_PARAMS } from './_tg-engine';
-import { useGlass, type GlassOpticsProps } from './_tg-use';
+import { useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 
 export interface GlassBackgroundProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   /** Corner radius in px (default: the element's own, 16). */
   radius?: number;
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
 }
 
 /** A full-section backdrop of liquid light: caustics flow under a tinted glass panel, the pointer bends them and a click sends a ripple through. Other glass components placed inside refract it. */
-export default function GlassBackground({ children, radius, optics, className = '', style, ...props }: GlassBackgroundProps) {
-  const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({ defaults: BACKGROUND_DEFAULT_PARAMS, optics, radius: radius ?? 'css' });
+export default function GlassBackground({ children, radius, variant, optics, className = '', style, ...props }: GlassBackgroundProps) {
+  const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({ defaults: BACKGROUND_DEFAULT_PARAMS, optics, variant, radius: radius ?? 'css' });
   return (
     <div ref={rootRef} data-glass={dataGlass} className={`ui-glass ui-glass-bg ${className}`.trim()} style={{ borderRadius: radius !== undefined ? radius : undefined, ...style }} {...props}>
       <canvas ref={canvasRef} className="ui-glass-canvas" aria-hidden="true" />

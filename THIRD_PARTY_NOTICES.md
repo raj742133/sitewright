@@ -73,6 +73,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+The `frosted-*` components and the `variant="frosted"` option are written for Sitewright (plain CSS: backdrop blur, grain, edge light); they reuse only the component structure and props of the ported glass components.
+
 Every generated project that uses a glass component carries this notice in `src/components/fx/ui/LICENSE-tactile-glass.txt`.
 
 ## Better Icons and Iconify

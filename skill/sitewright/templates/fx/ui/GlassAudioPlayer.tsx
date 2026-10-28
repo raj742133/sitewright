@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useRef, useState, type HTMLAttributes, type KeyboardEvent, type PointerEvent } from 'react';
 import { AUDIO_DEFAULT_PARAMS, getGlassEngine } from './_tg-engine';
-import { attachTilt, useGlass, type GlassOpticsProps } from './_tg-use';
+import { attachTilt, useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { getGlassAudioSynth } from './_tg-audio';
 import { GlassStage } from './_tg-stage';
 
@@ -21,6 +21,8 @@ export interface GlassAudioPlayerProps extends Omit<HTMLAttributes<HTMLDivElemen
   onTrackChange?: (index: number, track: GlassAudioTrack) => void;
   tilt3d?: boolean;
   maxTilt?: number;
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
 }
 
@@ -31,7 +33,7 @@ const BARS = 70;
  * A spatial audio deck in liquid glass with a procedural synth: play, previous / next, a timeline you can drag, a live spectrum and repeat.
  * Sound starts only after you press play (browsers require a gesture and so does this) and stops when you pause or leave the page.
  */
-export default function GlassAudioPlayer({ tracks = DEFAULT_AUDIO_TRACKS, defaultTrackIndex = 0, onPlayChange, onTrackChange, tilt3d = true, maxTilt = 10, optics, className = '', ...props }: GlassAudioPlayerProps) {
+export default function GlassAudioPlayer({ tracks = DEFAULT_AUDIO_TRACKS, defaultTrackIndex = 0, onPlayChange, onTrackChange, tilt3d = true, maxTilt = 10, variant, optics, className = '', ...props }: GlassAudioPlayerProps) {
   const [idx, setIdx] = useState(Math.max(0, Math.min(tracks.length - 1, defaultTrackIndex)));
   const [playing, setPlaying] = useState(false);
   const [repeat, setRepeat] = useState(false);
@@ -45,7 +47,7 @@ export default function GlassAudioPlayer({ tracks = DEFAULT_AUDIO_TRACKS, defaul
   live.current = { idx, repeat, tracks, track, onTrackChange };
 
   const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({
-    defaults: AUDIO_DEFAULT_PARAMS, optics, radius: 'css', deps: [tilt3d, maxTilt],
+    defaults: AUDIO_DEFAULT_PARAMS, optics, variant, radius: 'css', deps: [tilt3d, maxTilt],
     measure: (el) => [el.offsetWidth, el.offsetHeight + Math.ceil(48 * Math.min(1, el.offsetWidth / 480))],
     onResize: (root, canvas) => {
       const scale = Math.min(1, root.offsetWidth / 480);

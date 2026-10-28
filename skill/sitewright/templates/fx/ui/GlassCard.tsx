@@ -1,7 +1,7 @@
 'use client';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { CARD_DEFAULT_PARAMS } from './_tg-engine';
-import { attachTilt, useGlass, type GlassOpticsProps } from './_tg-use';
+import { attachTilt, useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassCardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
@@ -17,13 +17,15 @@ export interface GlassCardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ti
   tilt3d?: boolean;
   /** Maximum tilt in degrees. */
   maxTilt?: number;
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
 }
 
 /** A payment card in liquid glass (ISO ID-1 proportions, always a dark face so the text keeps its contrast). Tilts toward the pointer and the glass refracts the tilted surface. */
-export default function GlassCard({ children, cardNumber = '••••  ••••  ••••  8042', cardHolder = 'AMELIA ROSS', validThru = '08 / 29', bankName = 'NORTHWIND', tier = '', showContactless = true, tilt3d = true, maxTilt = 12, optics, className = '', ...props }: GlassCardProps) {
+export default function GlassCard({ children, cardNumber = '••••  ••••  ••••  8042', cardHolder = 'AMELIA ROSS', validThru = '08 / 29', bankName = 'NORTHWIND', tier = '', showContactless = true, tilt3d = true, maxTilt = 12, variant, optics, className = '', ...props }: GlassCardProps) {
   const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({
-    defaults: CARD_DEFAULT_PARAMS, optics, radius: 'css', deps: [tilt3d, maxTilt],
+    defaults: CARD_DEFAULT_PARAMS, optics, variant, radius: 'css', deps: [tilt3d, maxTilt],
     onResize: (root) => root.style.setProperty('--s', Math.min(1, root.offsetWidth / 444).toFixed(4)),
     setup: (inst, root) => (tilt3d ? attachTilt(root, inst, { max: maxTilt, kx: 1.08, ky: 0.92, scale: 1.03, easeIn: 0.12, easeOut: 0.08 }) : undefined),
   });

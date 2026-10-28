@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useMemo, useRef, useState, type HTMLAttributes, type KeyboardEvent, type ReactNode } from 'react';
 import { TABS_DEFAULT_PARAMS, getGlassEngine } from './_tg-engine';
-import { useGlass, type GlassOpticsProps } from './_tg-use';
+import { useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassTabItem { value: string; label: ReactNode; icon?: ReactNode; disabled?: boolean }
@@ -11,11 +11,13 @@ export interface GlassTabsProps extends Omit<HTMLAttributes<HTMLDivElement>, 'on
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
 }
 
 /** A segmented control: a glass capsule with a molded glass indicator that slides to the chosen tab. Arrow keys, Home and End move between tabs. */
-export default function GlassTabs({ items, value, defaultValue, onChange, optics, className = '', ...props }: GlassTabsProps) {
+export default function GlassTabs({ items, value, defaultValue, onChange, variant, optics, className = '', ...props }: GlassTabsProps) {
   const list = useMemo<GlassTabItem[]>(() => items.map((i) => (typeof i === 'string' ? { value: i, label: i } : i)), [items]);
   const [inner, setInner] = useState(defaultValue ?? list[0]?.value ?? '');
   const active = value !== undefined ? value : inner;
@@ -29,7 +31,7 @@ export default function GlassTabs({ items, value, defaultValue, onChange, optics
   }, [active]);
 
   const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({
-    defaults: TABS_DEFAULT_PARAMS, optics, radius: 'pill', onResize: place,
+    defaults: TABS_DEFAULT_PARAMS, optics, variant, radius: 'pill', onResize: place,
     setup: (inst, root) => {
       inst.getSwitchThumb = () => {
         const ind = root.querySelector('.ui-glass-tabs-indicator');
