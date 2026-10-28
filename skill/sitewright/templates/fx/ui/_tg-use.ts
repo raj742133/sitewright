@@ -30,6 +30,8 @@ export interface GlassOptics {
   /** a click sends a ripple (default true) */ clickShockwave: boolean;
 }
 export type GlassOpticsProps = Partial<GlassOptics>;
+/** 'optical' draws real refraction with WebGL2; 'frosted' is pure CSS (backdrop blur, grain, a soft pointer-following sheen) and never touches the engine. */
+export type GlassVariant = 'optical' | 'frosted';
 export type GlassDefaults = Omit<GlassParams, 'radius'>;
 
 export function toParams(d: GlassDefaults, o: GlassOpticsProps = {}): GlassParams {
@@ -78,17 +80,43 @@ export interface UseGlassOptions {
   measure?: (root: HTMLElement) => [number, number];
   /** runs once per registration: set getRect / getSwitchThumb / isAudioDeck / textMask / tilt. May return a cleanup. */
   setup?: (inst: GlassInstance, root: HTMLElement, resize: () => void) => void | (() => void);
+  /** 'frosted' skips WebGL entirely. Default 'optical'. */
+  variant?: GlassVariant;
   /** register again when these change */
   deps?: readonly unknown[];
   /** called after the canvas was resized */
   onResize?: (root: HTMLElement, canvas: HTMLCanvasElement) => void;
 }
 
+/** Frosted variant: no engine. The pointer position (in %) goes to --tg-mx / --tg-my so the CSS sheen can follow it; --tg-hover fades it in and out. */
+function trackSheen(root: HTMLElement): () => void {
+  if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
+  const move = (e: PointerEvent) => {
+    const r = root.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    root.style.setProperty('--tg-mx', `${(((e.clientX - r.left) / r.width) * 100).toFixed(1)}%`);
+    root.style.setProperty('--tg-my', `${(((e.clientY - r.top) / r.height) * 100).toFixed(1)}%`);
+    root.style.setProperty('--tg-hover', '1');
+  };
+  const leave = () => root.style.setProperty('--tg-hover', '0');
+  root.addEventListener('pointermove', move);
+  root.addEventListener('pointerenter', move);
+  root.addEventListener('pointerleave', leave);
+  root.addEventListener('pointercancel', leave);
+  return () => {
+    root.removeEventListener('pointermove', move);
+    root.removeEventListener('pointerenter', move);
+    root.removeEventListener('pointerleave', leave);
+    root.removeEventListener('pointercancel', leave);
+    root.style.removeProperty('--tg-mx'); root.style.removeProperty('--tg-my'); root.style.removeProperty('--tg-hover');
+  };
+}
+
 /**
  * Registers `rootRef`'s element with the shared engine and draws into `canvasRef`. `gl` is true while WebGL is working; when it is false
  * (no WebGL2, context lost) the component keeps its CSS look and the canvas stays empty.
  */
-export function useGlass<T extends HTMLElement>(o: UseGlassOptions): { rootRef: RefObject<T | null>; canvasRef: RefObject<HTMLCanvasElement | null>; instRef: RefObject<GlassInstance | null>; gl: boolean; dataGlass: 'gl' | 'css' } {
+export function useGlass<T extends HTMLElement>(o: UseGlassOptions): { rootRef: RefObject<T | null>; canvasRef: RefObject<HTMLCanvasElement | null>; instRef: RefObject<GlassInstance | null>; gl: boolean; dataGlass: 'gl' | 'css' | 'frosted' } {
   const id = useId();
   const rootRef = useRef<T | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -110,6 +138,15 @@ export function useGlass<T extends HTMLElement>(o: UseGlassOptions): { rootRef: 
     const root = rootRef.current;
     const canvas = canvasRef.current;
     if (!root || !canvas) return;
+    if (o.variant === 'frosted') {
+      // no engine: just the sheen, plus the layout callbacks (card / audio scale, tab indicator) which are plain DOM work
+      const off = trackSheen(root);
+      const lay = () => optionsRef.current.onResize?.(root, canvas);
+      lay();
+      const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(lay) : null;
+      ro?.observe(root);
+      return () => { off(); ro?.disconnect(); };
+    }
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) { setGl(false); return; }
     const engine = getGlassEngine();
@@ -187,9 +224,9 @@ export function useGlass<T extends HTMLElement>(o: UseGlassOptions): { rootRef: 
       root.removeEventListener('pointerdown', onDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, ...(o.deps ?? [])]);
+  }, [id, o.variant, ...(o.deps ?? [])]);
 
-  return { rootRef, canvasRef, instRef, gl, dataGlass: gl ? 'gl' : 'css' };
+  return { rootRef, canvasRef, instRef, gl, dataGlass: o.variant === 'frosted' ? 'frosted' : gl ? 'gl' : 'css' };
 }
 
 export interface TiltOptions {

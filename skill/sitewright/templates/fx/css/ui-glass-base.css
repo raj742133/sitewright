@@ -74,5 +74,55 @@
 .ui-glass-stage > .ui-glass-orb:nth-child(2) { width: 38%; aspect-ratio: 1; right: -6%; bottom: -26%; background: radial-gradient(circle at 40% 30%, color-mix(in srgb, var(--signal, #f59e0b) 95%, #fff), color-mix(in srgb, var(--signal, #f59e0b) 50%, transparent) 70%); animation: ui-glass-drift 17s ease-in-out infinite alternate-reverse; }
 .ui-glass-stage > .ui-glass-ring { position: absolute; left: 50%; top: 50%; width: 70%; aspect-ratio: 1; border-radius: 50%; border: 3px solid color-mix(in srgb, var(--ink, #111827) 38%, transparent); transform: translate(-50%, -50%); pointer-events: none; z-index: 0; }
 .ui-glass-stage > .ui-glass-ring + .ui-glass-ring { width: 42%; border-width: 6px; }
-.ui-glass-stage-in { box-sizing: border-box; position: relative; z-index: 1; display: grid; place-items: center; gap: 14px; width: 100%; padding: 22px 18px; min-width: 0; }
+.ui-glass-stage-in { box-sizing: border-box; position: relative; z-index: 1; display: grid; place-items: center; gap: 14px; width: 100%; padding: 22px 12px; min-width: 0; }
 @keyframes ui-glass-drift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(7%, 9%, 0) scale(1.1); } }
+
+/* ---- Frosted variant (variant="frosted"): pure CSS, no WebGL. A thick milky pane: strong backdrop blur, fine grain, a lit edge that fades round the
+   corner and a soft sheen that follows the pointer (--tg-mx / --tg-my / --tg-hover are set by the component). ---- */
+@property --tg-mx { syntax: '<percentage>'; inherits: true; initial-value: 28%; }
+@property --tg-my { syntax: '<percentage>'; inherits: true; initial-value: 0%; }
+.ui-glass[data-glass="frosted"] { --tg-frost-blur: 22px; transition: --tg-mx .28s var(--tg-ease), --tg-my .28s var(--tg-ease); }
+.ui-glass[data-glass="frosted"] > .ui-glass-canvas { display: none; }
+.ui-glass-pane[data-glass="frosted"] {
+  isolation: isolate;
+  background:
+    linear-gradient(165deg, color-mix(in srgb, var(--tg-raised) 62%, transparent), color-mix(in srgb, var(--tg-raised) 34%, transparent));
+  -webkit-backdrop-filter: blur(var(--tg-frost-blur)) saturate(1.7) brightness(1.05);
+  backdrop-filter: blur(var(--tg-frost-blur)) saturate(1.7) brightness(1.05);
+  border: 1px solid color-mix(in srgb, #ffffff 26%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, #ffffff 60%, transparent),
+    inset 0 -1px 0 color-mix(in srgb, #ffffff 14%, transparent),
+    inset 0 0 22px color-mix(in srgb, #ffffff 9%, transparent),
+    0 1px 2px color-mix(in srgb, #000000 18%, transparent),
+    0 22px 44px -20px color-mix(in srgb, #000000 46%, transparent);
+}
+.ui-glass-pane[data-glass="frosted"]::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(130% 95% at var(--tg-mx, 28%) var(--tg-my, 0%), color-mix(in srgb, #ffffff 46%, transparent), transparent 58%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.38'/></svg>");
+  opacity: calc(.6 + .4 * var(--tg-hover, 0)); transition: opacity .3s ease;
+}
+.ui-glass-pane[data-glass="frosted"]::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; z-index: 0;
+  background: linear-gradient(140deg, color-mix(in srgb, #ffffff 80%, transparent), color-mix(in srgb, #ffffff 6%, transparent) 38%, transparent 62%, color-mix(in srgb, #ffffff 38%, transparent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+/* content sits above the sheen; zero specificity so a component's own position / z-index always wins */
+:where(.ui-glass-pane[data-glass="frosted"] > *:not(.ui-glass-canvas)) { position: relative; z-index: 1; }
+.ui-glass-dark.ui-glass-pane[data-glass="frosted"] {
+  background: linear-gradient(165deg, color-mix(in srgb, var(--tg-on-raised) 70%, transparent), color-mix(in srgb, var(--tg-on-surface) 46%, transparent));
+  border-color: color-mix(in srgb, #ffffff 20%, transparent);
+}
+.ui-glass-btn[data-tone="accent"][data-glass="frosted"] { background: linear-gradient(165deg, color-mix(in srgb, var(--tg-accent) 52%, transparent), color-mix(in srgb, var(--tg-accent) 26%, transparent)); }
+.ui-glass-pane[data-glass="frosted"]:is(button):hover { --tg-hover: 1; }
+.ui-glass-bg[data-glass="frosted"]::before { content: ""; position: absolute; inset: -20%; z-index: 0; pointer-events: none; filter: blur(34px) saturate(1.3);
+  background: radial-gradient(40% 46% at 24% 30%, color-mix(in srgb, var(--tg-accent) 55%, transparent), transparent 70%), radial-gradient(38% 44% at 76% 70%, color-mix(in srgb, var(--tg-accent-2) 50%, transparent), transparent 70%);
+  animation: ui-glass-drift 14s ease-in-out infinite alternate; }
+.ui-glass-bg[data-glass="frosted"]::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: inherit; opacity: .55;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.38'/></svg>"); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .ui-glass-pane[data-glass="frosted"] { background: linear-gradient(165deg, color-mix(in srgb, var(--tg-raised) 90%, transparent), color-mix(in srgb, var(--tg-raised) 76%, transparent)); }
+}

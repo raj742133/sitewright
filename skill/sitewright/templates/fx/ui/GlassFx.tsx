@@ -1,20 +1,22 @@
 'use client';
 import type { HTMLAttributes, ReactNode } from 'react';
 import { BUTTON_DEFAULT_PARAMS } from './_tg-engine';
-import { useGlass, type GlassOpticsProps } from './_tg-use';
+import { useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassFxProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
   /** The glass is drawn over the children; raise it if they have their own stacking (default 2). */
   overlayZIndex?: number;
 }
 
 /** A wrapper that puts the glass finish on anything: it takes the wrapper's border-radius, draws the rim light and caustics over the content, and follows a switch thumb or tab indicator inside it. */
-export default function GlassFx({ children, optics, overlayZIndex = 2, className = '', style, ...props }: GlassFxProps) {
+export default function GlassFx({ children, variant, optics, overlayZIndex = 2, className = '', style, ...props }: GlassFxProps) {
   const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({
-    defaults: BUTTON_DEFAULT_PARAMS, optics, radius: 'css',
+    defaults: BUTTON_DEFAULT_PARAMS, optics, variant, radius: 'css',
     setup: (inst, root) => {
       inst.getSwitchThumb = () => {
         const thumb = root.querySelector('.ui-glass-switch-thumb, [data-switch-thumb], .ui-glass-tabs-indicator, [data-tabs-indicator]');

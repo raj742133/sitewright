@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState, type ChangeEvent, type KeyboardEvent } from 'react';
 import { PROMPT_DEFAULT_PARAMS } from './_tg-engine';
-import { useGlass, type GlassOpticsProps } from './_tg-use';
+import { useGlass, type GlassOpticsProps, type GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassPromptInputProps {
@@ -20,14 +20,16 @@ export interface GlassPromptInputProps {
   modeLabel?: string;
   onModeClick?: () => void;
   className?: string;
+  /** 'optical' (default) bends what is behind it with WebGL2; 'frosted' is pure CSS frosted glass: blur, grain and a soft pointer-following sheen. */
+  variant?: GlassVariant;
   optics?: GlassOpticsProps;
 }
 
 const MODES = [{ key: 'agent', hint: '' }, { key: 'plan', hint: 'Plan architecture, @ to mention, / for actions' }, { key: 'ask', hint: 'Ask a question, @ to mention, / for actions' }];
 
 /** An AI prompt box on a glass pane: auto-growing text area (Enter sends, Shift+Enter adds a line), an add-context button, a mode pill and a send button. */
-export default function GlassPromptInput({ value, defaultValue = '', placeholder = 'Ask anything, @ to mention, / for actions', label = 'Prompt', onChange, onSubmit, onMentionClick, agentLabel = 'Agent', onAgentClick, modeLabel, onModeClick, className = '', optics }: GlassPromptInputProps) {
-  const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({ defaults: PROMPT_DEFAULT_PARAMS, optics, radius: 'css' });
+export default function GlassPromptInput({ value, defaultValue = '', placeholder = 'Ask anything, @ to mention, / for actions', label = 'Prompt', onChange, onSubmit, onMentionClick, agentLabel = 'Agent', onAgentClick, modeLabel, onModeClick, className = '', variant, optics }: GlassPromptInputProps) {
+  const { rootRef, canvasRef, dataGlass } = useGlass<HTMLDivElement>({ defaults: PROMPT_DEFAULT_PARAMS, optics, variant, radius: 'css' });
   const area = useRef<HTMLTextAreaElement | null>(null);
   const [inner, setInner] = useState(defaultValue);
   const text = value !== undefined ? value : inner;

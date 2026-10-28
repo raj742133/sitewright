@@ -1,6 +1,7 @@
 'use client';
 import { Fragment, type ElementType, type HTMLAttributes, type ReactNode } from 'react';
 import GlassWord, { type GlassWordProps } from './GlassWord';
+import type { GlassVariant } from './_tg-use';
 import { GlassStage } from './_tg-stage';
 
 export interface GlassHeadingProps extends Omit<HTMLAttributes<HTMLHeadingElement>, 'title'> {
@@ -18,13 +19,15 @@ export interface GlassHeadingProps extends Omit<HTMLAttributes<HTMLHeadingElemen
   badge?: ReactNode;
   /** Props for the glass word (optics, ...). */
   wordProps?: Partial<GlassWordProps>;
+  /** 'optical' (WebGL2, default) or 'frosted' (pure CSS), passed to the glass words. */
+  variant?: GlassVariant;
   children?: ReactNode;
 }
 
 const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /** Display typography with glass lettering: give a title and the word(s) to highlight, or compose your own children with <GlassWord>. */
-export default function GlassHeading({ level = 'h2', size = 'hero', align = 'center', title, highlight, highlightCycle, subtitle, badge, wordProps, className = '', children, ...props }: GlassHeadingProps) {
+export default function GlassHeading({ level = 'h2', size = 'hero', align = 'center', title, highlight, highlightCycle, subtitle, badge, wordProps, variant, className = '', children, ...props }: GlassHeadingProps) {
   const Tag = level as ElementType;
   const targets = [...(Array.isArray(highlight) ? highlight : highlight ? [highlight] : [])];
   if (highlightCycle?.length && !targets.includes(highlightCycle[0]!)) targets.push(highlightCycle[0]!);
@@ -33,7 +36,7 @@ export default function GlassHeading({ level = 'h2', size = 'hero', align = 'cen
     const parts = title.split(new RegExp(`(${targets.map(esc).join('|')})`, 'gi'));
     body = parts.map((part, i) =>
       targets.some((t) => t.toLowerCase() === part.toLowerCase())
-        ? <GlassWord key={i} cycleWords={highlightCycle?.length ? highlightCycle : undefined} {...wordProps}>{part}</GlassWord>
+        ? <GlassWord key={i} cycleWords={highlightCycle?.length ? highlightCycle : undefined} variant={variant} {...wordProps}>{part}</GlassWord>
         : <Fragment key={i}>{part}</Fragment>);
   }
   const items = align === 'left' ? 'flex-start' : align === 'right' ? 'flex-end' : 'center';

@@ -1,12 +1,356 @@
 [
-  {"id":"glass-background","label":"Glass background","desc":"A full-section backdrop of flowing liquid light under a tinted glass panel; the pointer bends the light, a click sends a ripple, and glass placed inside it refracts it.","source":"Tactile Glass UI","group":"glass","files":["GlassBackground.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-background"],"use":"Behind a hero, feature block or sign-in panel (fills its parent; children are centred)."},
-  {"id":"glass-button","label":"Glass button","desc":"A pill button of liquid glass: the rim catches light, caustics flow through it and a click sends a ripple. Frosted CSS glass without WebGL.","source":"Tactile Glass UI","group":"glass","files":["GlassButton.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-button"],"use":"Primary call to action on a rich or photographic background; round icon buttons."},
-  {"id":"glass-card","label":"Glass card","desc":"A payment card in dark liquid glass that tilts toward the pointer while the glass refracts the tilted surface; accent colours come from the theme.","source":"Tactile Glass UI","group":"glass","files":["GlassCard.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-card"],"use":"Checkout, wallet or billing screens; a showpiece for fintech landing pages."},
-  {"id":"glass-fx","label":"Glass wrapper","desc":"Wraps any element and gives it the glass finish: rim light, caustics and ripples drawn over its content, following its border-radius.","source":"Tactile Glass UI","group":"glass","files":["GlassFx.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-fx"],"use":"Put glass on your own cards, pills or panels without rebuilding them."},
-  {"id":"glass-word","label":"Glass word","desc":"A word whose letter shapes are liquid glass, with rim light and flowing caustics that react to the pointer; click cycles through a list. Real text underneath.","source":"Tactile Glass UI","group":"glass","files":["GlassWord.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-word"],"use":"One highlighted word in a hero headline."},
-  {"id":"glass-heading","label":"Glass heading","desc":"Display heading with one or more words in liquid glass, optional badge and subtitle, and a size that follows its container.","source":"Tactile Glass UI","group":"glass","files":["GlassHeading.tsx","GlassWord.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-word","ui-glass-heading"],"use":"Hero and section headings on landing pages."},
-  {"id":"glass-prompt-input","label":"Glass prompt input","desc":"An AI prompt box on a glass pane: auto-growing text area (Enter sends), add-context button, a mode pill that cycles Agent / Plan / Ask, and a send button.","source":"Tactile Glass UI","group":"glass","files":["GlassPromptInput.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-prompt"],"use":"Assistant and chat entry points, command bars."},
-  {"id":"glass-switch","label":"Glass switch","desc":"An on/off switch: a glass track with a molded glass thumb that refracts what is under it. A real button with role switch.","source":"Tactile Glass UI","group":"glass","files":["GlassSwitch.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-switch"],"use":"Settings toggles on rich backgrounds."},
-  {"id":"glass-tabs","label":"Glass tabs","desc":"A segmented control: a glass capsule with a molded indicator that slides to the chosen tab; arrow keys, Home and End move between tabs.","source":"Tactile Glass UI","group":"glass","files":["GlassTabs.tsx","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-tabs"],"use":"Section switchers, view toggles."},
-  {"id":"glass-audio-player","label":"Glass audio player","desc":"A spatial audio deck in liquid glass with a procedural Web Audio synth (no files): play, previous / next, draggable timeline, live spectrum, repeat. Sound starts only when you press play.","source":"Tactile Glass UI","group":"glass","files":["GlassAudioPlayer.tsx","_tg-audio.ts","_tg-engine.ts","_tg-use.ts","_tg-stage.tsx","LICENSE-tactile-glass.txt"],"css":["ui-glass-base","ui-glass-audio"],"use":"Music or podcast teasers, ambient sound on a landing page."}
+  {
+    "id": "glass-background",
+    "label": "Glass background",
+    "desc": "A full-section backdrop of flowing liquid light under a tinted glass panel; the pointer bends the light, a click sends a ripple, and glass placed inside it refracts it.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassBackground.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-background"
+    ],
+    "use": "Behind a hero, feature block or sign-in panel (fills its parent; children are centred)."
+  },
+  {
+    "id": "glass-button",
+    "label": "Glass button",
+    "desc": "A pill button of liquid glass: the rim catches light, caustics flow through it and a click sends a ripple. Frosted CSS glass without WebGL.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassButton.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-button"
+    ],
+    "use": "Primary call to action on a rich or photographic background; round icon buttons."
+  },
+  {
+    "id": "glass-card",
+    "label": "Glass card",
+    "desc": "A payment card in dark liquid glass that tilts toward the pointer while the glass refracts the tilted surface; accent colours come from the theme.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassCard.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-card"
+    ],
+    "use": "Checkout, wallet or billing screens; a showpiece for fintech landing pages."
+  },
+  {
+    "id": "glass-fx",
+    "label": "Glass wrapper",
+    "desc": "Wraps any element and gives it the glass finish: rim light, caustics and ripples drawn over its content, following its border-radius.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassFx.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-fx"
+    ],
+    "use": "Put glass on your own cards, pills or panels without rebuilding them."
+  },
+  {
+    "id": "glass-word",
+    "label": "Glass word",
+    "desc": "A word whose letter shapes are liquid glass, with rim light and flowing caustics that react to the pointer; click cycles through a list. Real text underneath.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassWord.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-word"
+    ],
+    "use": "One highlighted word in a hero headline."
+  },
+  {
+    "id": "glass-heading",
+    "label": "Glass heading",
+    "desc": "Display heading with one or more words in liquid glass, optional badge and subtitle, and a size that follows its container.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassHeading.tsx",
+      "GlassWord.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-word",
+      "ui-glass-heading"
+    ],
+    "use": "Hero and section headings on landing pages."
+  },
+  {
+    "id": "glass-prompt-input",
+    "label": "Glass prompt input",
+    "desc": "An AI prompt box on a glass pane: auto-growing text area (Enter sends), add-context button, a mode pill that cycles Agent / Plan / Ask, and a send button.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassPromptInput.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-prompt"
+    ],
+    "use": "Assistant and chat entry points, command bars."
+  },
+  {
+    "id": "glass-switch",
+    "label": "Glass switch",
+    "desc": "An on/off switch: a glass track with a molded glass thumb that refracts what is under it. A real button with role switch.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassSwitch.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-switch"
+    ],
+    "use": "Settings toggles on rich backgrounds."
+  },
+  {
+    "id": "glass-tabs",
+    "label": "Glass tabs",
+    "desc": "A segmented control: a glass capsule with a molded indicator that slides to the chosen tab; arrow keys, Home and End move between tabs.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassTabs.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-tabs"
+    ],
+    "use": "Section switchers, view toggles."
+  },
+  {
+    "id": "glass-audio-player",
+    "label": "Glass audio player",
+    "desc": "A spatial audio deck in liquid glass with a procedural Web Audio synth (no files): play, previous / next, draggable timeline, live spectrum, repeat. Sound starts only when you press play.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "GlassAudioPlayer.tsx",
+      "_tg-audio.ts",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-audio"
+    ],
+    "use": "Music or podcast teasers, ambient sound on a landing page."
+  },
+  {
+    "id": "frosted-button",
+    "label": "Frosted button",
+    "desc": "A pill button of thick frosted glass: heavy backdrop blur, fine grain, a lit edge and a soft sheen that follows the pointer. Pure CSS, no WebGL.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedButton.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassButton.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-button"
+    ],
+    "use": "Primary calls to action over photos, gradients or video where an opaque button would feel heavy."
+  },
+  {
+    "id": "frosted-card",
+    "label": "Frosted card",
+    "desc": "A dark frosted payment card that tilts toward the pointer under a moving sheen; pure CSS, so it is light on the GPU.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedCard.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassCard.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-card"
+    ],
+    "use": "Checkout, wallet or billing screens, and fintech landing pages."
+  },
+  {
+    "id": "frosted-prompt-input",
+    "label": "Frosted prompt input",
+    "desc": "An AI prompt box on frosted glass with agent and mode chips and a send button; a real labelled textarea.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedPromptInput.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassPromptInput.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-prompt"
+    ],
+    "use": "Chat and AI products: a composer that floats over a hero image or gradient."
+  },
+  {
+    "id": "frosted-switch",
+    "label": "Frosted switch",
+    "desc": "An on/off switch on a frosted track with a light glass thumb; a real button with role=\"switch\".",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedSwitch.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassSwitch.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-switch"
+    ],
+    "use": "Settings panels on rich backgrounds."
+  },
+  {
+    "id": "frosted-tabs",
+    "label": "Frosted tabs",
+    "desc": "A pill tab bar on frosted glass with a sliding highlight; arrow keys, Home and End.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedTabs.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassTabs.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-tabs"
+    ],
+    "use": "Segmented navigation floating over imagery."
+  },
+  {
+    "id": "frosted-audio-player",
+    "label": "Frosted audio player",
+    "desc": "A dark frosted music deck with a synthesised demo track: play, next, volume and a progress slider; never autoplays.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedAudioPlayer.tsx",
+      "_tg-audio.ts",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassAudioPlayer.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-audio"
+    ],
+    "use": "Music, podcast or ambient-sound features."
+  },
+  {
+    "id": "frosted-panel",
+    "label": "Frosted panel",
+    "desc": "Wrap any content in a frosted glass panel: blur, grain, lit edge and a sheen that follows the pointer.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedPanel.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassFx.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-fx"
+    ],
+    "use": "Overlays, hero cards, menus and popovers over busy backgrounds."
+  },
+  {
+    "id": "frosted-backdrop",
+    "label": "Frosted backdrop",
+    "desc": "A soft drifting colour field under fine grain, made of the brand colours; the stage for frosted panes.",
+    "source": "Tactile Glass UI",
+    "group": "glass",
+    "files": [
+      "FrostedBackdrop.tsx",
+      "_tg-engine.ts",
+      "_tg-use.ts",
+      "_tg-stage.tsx",
+      "LICENSE-tactile-glass.txt",
+      "GlassBackground.tsx"
+    ],
+    "css": [
+      "ui-glass-base",
+      "ui-glass-background"
+    ],
+    "use": "Behind a hero or sign-in panel; pairs with the other frosted components."
+  }
 ]

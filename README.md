@@ -13,7 +13,7 @@
   <b>A Claude Code skill that builds your website.</b><br>
   Landing page, sign-in, authenticator MFA, records dashboard, release publishing and a connect-your-phone page,<br>
   restyled with your brand, wired to a real backend, and tested in a real browser.<br>
-  Two design themes, 10 animated backgrounds, 22 interactive line figures, 125 live components, 12 full-page templates (7 dashboards) and 200,000+ icons, all optional.
+  Two design themes, 10 animated backgrounds, 22 interactive line figures, 133 live components, 12 full-page templates (7 dashboards) and 200,000+ icons, all optional.
 </p>
 
 <p align="center">
@@ -237,7 +237,7 @@ Put one anywhere in your own pages by name, nothing to register: `<Figure name="
 
 ## Components (optional)
 
-A library of 125 small interactive components you import by name from `@/components/fx/ui`. They are original code (except the ten `glass-*` pieces, ported from Tactile Glass UI, MIT, see THIRD_PARTY_NOTICES.md) with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
+A library of 133 small interactive components you import by name from `@/components/fx/ui`. They are original code (except the ten `glass-*` pieces, ported from Tactile Glass UI, MIT, see THIRD_PARTY_NOTICES.md) with no animation or chart library, respect `prefers-reduced-motion`, and work with touch and keyboard. Choose them in `site.json` (`"effects": { "components": "all" }` or a list) or with `--components`, and change the set later in place with `--apply-effects`.
 
 | Group | Components |
 | --- | --- |
@@ -247,6 +247,7 @@ A library of 125 small interactive components you import by name from `@/compone
 | Motion | stagger grid, line draw, shape morph, motion path, scroll timeline, timeline sequence, spring playground, presence list, drag to reorder |
 | Navigation | nav tabs, glow sidebar, liquid-glass nav (stretching pill), underline nav |
 | Hover interactions | rotating, magnetic and rolling-text buttons, expanding fill, arrow relay, spotlight border, waving hand, image list preview, image stack, blinds, image accordion, cursor reveal, peel, caption reveal, layer explorer, jelly text, holographic and parallax cards, orbiting accents, hover marquee, text shadow, squishy labels, repelling dots |
+| Frosted glass | frosted button, card, prompt input, switch, tabs, audio player, panel and backdrop: the glass pieces as pure CSS (backdrop blur, grain, lit edge, pointer-following sheen), no WebGL |
 | 3D and shaders | shader gradient and waves, particle sphere, wire terrain, plasma orb, tilt card, cube carousel, globe with arcs, 3D phone, lit torus (raw WebGL and CSS 3D, no three.js; static fallback when WebGL is missing) |
 | Feedback | toast (call `toast('Saved')` from anywhere; mount `<Toaster />` once) |
 | Loaders and text | seasons tree, step loader, logo-trace loader, animated signature, scramble text, plucked text, receipt printer |

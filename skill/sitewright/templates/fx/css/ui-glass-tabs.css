@@ -1,7 +1,7 @@
 .ui-glass-tabs { display: inline-flex; align-items: center; max-width: 100%; height: 56px; padding: 4px; border-radius: 999px; user-select: none; -webkit-user-select: none; }
 .ui-glass-tabs-indicator { position: absolute; z-index: 1; left: 0; top: 4px; height: 48px; border-radius: 999px; pointer-events: none; transition: transform 0.25s var(--tg-ease), width 0.25s var(--tg-ease);
   background: linear-gradient(160deg, color-mix(in srgb, var(--tg-accent) 30%, var(--tg-raised)), color-mix(in srgb, var(--tg-accent) 14%, var(--tg-raised))); border: 1px solid color-mix(in srgb, var(--tg-accent) 40%, transparent); box-shadow: 0 2px 8px -3px color-mix(in srgb, #000000 40%, transparent); }
-.ui-glass-tab { position: relative; z-index: 2; display: inline-flex; align-items: center; justify-content: center; gap: 12px; flex: 0 1 auto; min-width: 44px; height: 48px; padding: 0 20px; overflow: hidden; text-overflow: ellipsis; border: 0; border-radius: 999px; background: transparent; appearance: none; cursor: pointer;
+.ui-glass-tab { position: relative; z-index: 2; display: inline-flex; align-items: center; justify-content: center; gap: 12px; flex: 0 1 auto; min-width: 44px; height: 48px; padding: 0 16px; overflow: hidden; text-overflow: ellipsis; border: 0; border-radius: 999px; background: transparent; appearance: none; cursor: pointer;
   color: var(--tg-muted); font: 500 16px/1 var(--tg-font); white-space: nowrap; transition: color 0.15s ease; }
 .ui-glass-tab:hover, .ui-glass-tab[aria-selected="true"] { color: var(--tg-ink); }
 .ui-glass-tab:disabled { opacity: 0.4; cursor: not-allowed; }
