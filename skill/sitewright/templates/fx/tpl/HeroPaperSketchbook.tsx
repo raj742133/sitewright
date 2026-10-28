@@ -105,8 +105,7 @@ export default function HeroPaperSketchbook({ name = 'Odile Marsh', className }:
           <a href="#hps-contact" className="hps-links-cta" onClick={jump('hps-contact')}>Contact</a>
         </nav>
         <button type="button" className="hps-btn hps-btn-sm hps-nav-cta" onClick={() => dlg.current?.showModal()}>Rates</button>
-        <button type="button" className="hps-menu-btn" aria-expanded={menu} aria-controls="hps-menu" onClick={() => setMenu((v) => !v)}>
-          <span className="hps-sr">{menu ? 'Close menu' : 'Open menu'}</span>
+        <button type="button" className="hps-menu-btn" aria-label={menu ? 'Close menu' : 'Open menu'} aria-expanded={menu} aria-controls="hps-menu" onClick={() => setMenu((v) => !v)}>
           <svg viewBox="0 0 24 24" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg>
         </button>
       </header>

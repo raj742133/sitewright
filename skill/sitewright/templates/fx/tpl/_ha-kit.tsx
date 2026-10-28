@@ -189,7 +189,7 @@ export function Dialog({ open, onClose, title, children, cls }: { open: boolean;
 export const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /** Newsletter form with inline validation and a confirmation state. `cls` is the page prefix used by the buttons and fields. */
-export function Subscribe({ cls, label = 'Email address', cta = 'Subscribe', doneTitle, doneText, extra, id }: { cls: string; label?: string; cta?: string; doneTitle: (email: string) => string; doneText: string; extra?: ReactNode; id: string }) {
+export function Subscribe({ cls, label = 'Email address', hideLabel, cta = 'Subscribe', doneTitle, doneText, extra, id }: { cls: string; label?: string; hideLabel?: boolean; cta?: string; doneTitle: (email: string) => string; doneText: string; extra?: ReactNode; id: string }) {
   const [v, setV] = useState('');
   const [err, setErr] = useState('');
   const [done, setDone] = useState('');
@@ -211,8 +211,8 @@ export function Subscribe({ cls, label = 'Email address', cta = 'Subscribe', don
   return (
     <form className={`ha-sub ${cls}-sub`} onSubmit={submit} noValidate>
       <div className="ha-fld" data-bad={err ? 'true' : undefined}>
-        <label htmlFor={`${id}-em`}>{label}</label>
-        <input id={`${id}-em`} type="email" inputMode="email" autoComplete="email" placeholder="you@example.com" value={v} onChange={(e) => { setV(e.target.value); if (err) setErr(''); }} aria-invalid={!!err} aria-describedby={err ? `${id}-er` : undefined} />
+        {!hideLabel && <label htmlFor={`${id}-em`}>{label}</label>}
+        <input id={`${id}-em`} aria-label={hideLabel ? label : undefined} type="email" inputMode="email" autoComplete="email" placeholder="you@example.com" value={v} onChange={(e) => { setV(e.target.value); if (err) setErr(''); }} aria-invalid={!!err} aria-describedby={err ? `${id}-er` : undefined} />
         {err && <small id={`${id}-er`} role="alert">{err}</small>}
       </div>
       {extra}

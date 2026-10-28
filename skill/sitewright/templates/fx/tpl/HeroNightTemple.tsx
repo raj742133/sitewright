@@ -83,7 +83,7 @@ export default function HeroNightTemple({ className }: { className?: string }) {
         <a className="hnt-brand" href="#nt-top" onClick={go('nt-top')} aria-label="Lanternfall, back to top"><Mark /><span>Lanternfall</span></a>
         <nav className="hnt-links" aria-label="Sections">{NAV.map(([id, l]) => <a key={id} href={`#${id}`} onClick={go(id)}>{l}</a>)}</nav>
         <button type="button" className="hnt-pill" onClick={() => setBook('ridge')}>Plan a stay</button>
-        <button type="button" className="hnt-burger" aria-expanded={menu} aria-controls="hnt-menu" onClick={() => setMenu((v) => !v)}><span className="ha-sr">{menu ? 'Close menu' : 'Open menu'}</span><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg></button>
+        <button type="button" className="hnt-burger" aria-expanded={menu} aria-controls="hnt-menu" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((v) => !v)}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg></button>
         {menu && <div id="hnt-menu" className="hnt-menu">{NAV.map(([id, l]) => <a key={id} href={`#${id}`} onClick={go(id)}>{l}</a>)}<button type="button" className="hnt-cta" onClick={() => { setMenu(false); setBook('ridge'); }}>Plan a stay</button></div>}
       </header>
 
@@ -100,7 +100,7 @@ export default function HeroNightTemple({ className }: { className?: string }) {
             <button type="button" className="hnt-cta" onClick={() => setBook('ridge')}>Plan your stay</button>
             <a className="hnt-ghost" href="#nt-journey" onClick={go('nt-journey')}>Follow the night<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg></a>
           </div>
-          <button type="button" className="hnt-lit" aria-pressed={lit} onClick={toggleLit}><i aria-hidden="true" />{lit ? 'Lanterns lit' : 'Lanterns out'}<span className="ha-sr">, toggle</span></button>
+          <button type="button" className="hnt-lit" aria-pressed={lit} aria-label={`Lanterns, ${lit ? 'lit' : 'out'}`} onClick={toggleLit}><i aria-hidden="true" />{lit ? 'Lanterns lit' : 'Lanterns out'}</button>
         </div>
         <dl className="hnt-facts" aria-label="At a glance">
           <div><dt>Altitude</dt><dd>1,140 m</dd></div><div><dt>Guests a night</dt><dd>12</dd></div><div><dt>Season</dt><dd>Sep to Dec</dd></div>
@@ -157,7 +157,7 @@ export default function HeroNightTemple({ className }: { className?: string }) {
         <div className="hnt-letterbox">
           <h2 id="hnt-hl">Letters from the ridge</h2>
           <p>One short note when the first frost arrives and when the lanterns return. No more than six a year.</p>
-          <Subscribe id="hnt" cls="hnt" cta="Send me the letters" doneTitle={(e) => `The first note is on its way to ${e}.`} doneText="Expect it with the first frost. You can leave at any time." />
+          <Subscribe id="hnt" cls="hnt" hideLabel cta="Send me the letters" doneTitle={(e) => `The first note is on its way to ${e}.`} doneText="Expect it with the first frost. You can leave at any time." />
         </div>
       </section>
 

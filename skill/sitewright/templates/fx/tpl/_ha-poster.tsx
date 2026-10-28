@@ -68,8 +68,8 @@ export function Player({ reduced }: { reduced: boolean }) {
         </button>
       </div>
       <div className="hbs-ctl">
-        <label className="hbs-scrub"><span className="ha-sr">Seek</span>
-          <input type="range" min={0} max={DUR} step={1} value={Math.round(pos)} onChange={(e) => setPos(Number(e.target.value))} aria-valuetext={`${fmt(pos)} of ${fmt(DUR)}`} style={{ '--v': `${(pos / DUR) * 100}%` } as React.CSSProperties} />
+        <label className="hbs-scrub">
+          <input aria-label="Seek" type="range" min={0} max={DUR} step={1} value={Math.round(pos)} onChange={(e) => setPos(Number(e.target.value))} aria-valuetext={`${fmt(pos)} of ${fmt(DUR)}`} style={{ '--v': `${(pos / DUR) * 100}%` } as React.CSSProperties} />
         </label>
         <output className="hbs-time">{fmt(pos)} / {fmt(DUR)}</output>
         <button type="button" className="hbs-sm" onClick={() => setRate((r) => (r === 1 ? 1.25 : r === 1.25 ? 1.5 : 1))} aria-label={`Playback speed ${rate}x, change`}>{rate}x</button>

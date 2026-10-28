@@ -52,7 +52,7 @@ export default function HeroBookShowcase({ className }: { className?: string }) 
         <a className="hbs-brand" href="#hbs-top" onClick={go('hbs-top')} aria-label="Quillfold Press, back to top"><span>Quillfold</span><small>Press</small></a>
         <nav className="hbs-links" aria-label="Sections">{NAV.map(([id, l]) => <a key={id} href={`#${id}`} onClick={go(id)}>{l}</a>)}</nav>
         <button type="button" className="hbs-listbtn" onClick={() => setPanel({ k: 'list' })}>Reading list<b data-n={saved.length}>{saved.length}</b></button>
-        <button type="button" className="hbs-burger" aria-expanded={menu} aria-controls="hbs-menu" onClick={() => setMenu((v) => !v)}><span className="ha-sr">{menu ? 'Close menu' : 'Open menu'}</span><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg></button>
+        <button type="button" className="hbs-burger" aria-expanded={menu} aria-controls="hbs-menu" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((v) => !v)}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg></button>
         {menu && <div id="hbs-menu" className="hbs-menu">{NAV.map(([id, l]) => <a key={id} href={`#${id}`} onClick={go(id)}>{l}</a>)}</div>}
       </header>
 
@@ -72,8 +72,7 @@ export default function HeroBookShowcase({ className }: { className?: string }) 
         </div>
       </section>
 
-      <section id="hbs-list" className="hbs-shelf" aria-labelledby="hbs-hl" tabIndex={-1}>
-        <h2 id="hbs-hl" className="ha-sr">The autumn list</h2>
+      <section id="hbs-list" className="hbs-shelf" aria-label="The autumn list" tabIndex={-1}>
         <div className="hbs-row" role="tablist" aria-label="Autumn list, choose a book" aria-orientation="horizontal">
           {BOOKS.map((x, i) => (
             <button key={x.id} ref={(el) => { tabs.current[i] = el; }} type="button" role="tab" id={`hbs-tab-${i}`} aria-selected={sel === i} aria-controls="hbs-panel" tabIndex={sel === i ? 0 : -1} className="hbs-book" style={{ '--i': i - 2.5, '--y': (i - 2.5) * (i - 2.5) * 5 } as React.CSSProperties} onClick={() => setSel(i)} onKeyDown={(e) => key(e, i)} aria-label={`${x.title}, ${x.author}`}>

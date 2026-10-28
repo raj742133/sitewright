@@ -37,8 +37,8 @@ export function Demo() {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: 150, overflow: 'hidden', borderRadius: 'var(--radius, 12px)', background: 'var(--surface, #fff)' }}>
       <SparkBadge />
-      <p style={{ position: 'absolute', left: 12, right: 12, bottom: 10, margin: 0, textAlign: 'center', font: '600 clamp(11px, 1.6vw, 13px)/1.3 var(--font-body, system-ui)', color: 'var(--ink, #111)' }}>
-        <span style={{ padding: '3px 10px', borderRadius: 999, background: 'color-mix(in srgb, var(--surface, #fff) 90%, transparent)', border: '1px solid var(--line, #d4d4d8)' }}>Move the pointer through the badge, or click it.</span>
+      <p style={{ position: 'absolute', left: 12, right: 12, bottom: 10, margin: 0, textAlign: 'center', whiteSpace: 'nowrap', font: '600 clamp(11px, 1.6vw, 13px)/1.3 var(--font-body, system-ui)', color: 'var(--ink, #111)' }}>
+        <span style={{ padding: '3px 10px', borderRadius: 999, background: 'color-mix(in srgb, var(--surface, #fff) 90%, transparent)', border: '1px solid var(--line, #d4d4d8)' }}>Move through the badge or click</span>
       </p>
     </div>
   );

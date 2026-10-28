@@ -32,7 +32,7 @@ export function Shelf({ tools, index, onSelect, reduced, owned }: ShelfProps) {
   const place = useCallback(() => {
     const vw = view.current?.clientWidth ?? 0, H = meas.current?.offsetHeight ?? 0;
     if (!vw || !H) return;
-    const widths = tools.map((t, i) => H * t.thick * 1.25 + (i === index ? H * (t.tall / 100) * 0.72 + 18 : 0));
+    const widths = tools.map((t, i) => Math.max(44, H * t.thick * 1.25) + (i === index ? H * (t.tall / 100) * 0.72 + 18 : 0));
     const total = EXTRA_L + PAD * 2 + EXTRA_R + widths.reduce((a, b) => a + b, 0) + GAP * (tools.length + 1);
     if (total <= vw) { setTx((vw - total) / 2); return; }
     let left = PAD + EXTRA_L;

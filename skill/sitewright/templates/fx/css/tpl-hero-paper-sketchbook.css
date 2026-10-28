@@ -159,10 +159,10 @@
 .hps-jobs button { display: grid; grid-template-columns: 52px 1fr auto; align-items: center; gap: 14px; width: 100%; min-height: 64px; padding: 10px 12px 10px 8px; border: 0; border-bottom: 1px dashed color-mix(in srgb, var(--hps-ink) 40%, transparent); background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: background .15s, padding .2s; }
 .hps-jobs button:hover { background: color-mix(in srgb, var(--signal, #f59e0b) 14%, transparent); }
 .hps-jobs button[aria-pressed='true'] { background: color-mix(in srgb, var(--signal, #f59e0b) 24%, transparent); padding-left: 16px; box-shadow: inset 4px 0 0 var(--hps-ink); }
-.hps-job-y { font-family: var(--font-mono, monospace); font-size: 13px; color: var(--muted, #5b6472); }
+.hps-job-y { font-family: var(--font-mono, monospace); font-size: 13px; color: color-mix(in srgb, var(--hps-ink) 78%, transparent); }
 .hps-job-t { display: grid; }
 .hps-job-t b { font-family: var(--hps-serif); font-size: 19px; line-height: 1.2; }
-.hps-job-t small { font-size: 13px; color: var(--muted, #5b6472); }
+.hps-job-t small { font-size: 13px; color: color-mix(in srgb, var(--hps-ink) 78%, transparent); }
 .hps-job-k { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid color-mix(in srgb, var(--hps-ink) 50%, transparent); border-radius: 99px; }
 .hps-job-card { display: grid; grid-template-columns: minmax(110px, 38%) 1fr; gap: 20px; padding: 18px; background: var(--hps-paper-2); border: 1px solid color-mix(in srgb, var(--hps-ink) 25%, transparent); box-shadow: 0 1px 1px rgba(0, 0, 0, .18), 0 18px 28px -16px rgba(0, 0, 0, .4); transform: rotate(1deg); animation: hps-rise .45s both; align-items: center; }
 .hps-job-art { aspect-ratio: 100 / 130; }
@@ -249,6 +249,8 @@
   .hps-job-card { grid-template-columns: 1fr; transform: none; }
   .hps-job-art { width: 46%; margin-inline: auto; }
   .hps-lp-meta div { grid-template-columns: 1fr; gap: 2px; }
+  .hps-lp-pick { grid-template-columns: 1fr; gap: 8px; }
+  .hps-thumb { grid-template-columns: 44px 1fr; align-items: center; gap: 12px; }
   .hps-count { margin-left: 0; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {

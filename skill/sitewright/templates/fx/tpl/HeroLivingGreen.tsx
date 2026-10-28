@@ -87,7 +87,7 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6zM9 8a3 3 0 016 0" /></svg>
           <b data-n={count} aria-hidden="true">{count}</b>
         </button>
-        <button type="button" className="hlg-burger" aria-expanded={menu} aria-controls="hlg-menu" onClick={() => setMenu((v) => !v)}><span className="ha-sr">{menu ? 'Close menu' : 'Open menu'}</span><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg></button>
+        <button type="button" className="hlg-burger" aria-expanded={menu} aria-controls="hlg-menu" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu((v) => !v)}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg></button>
         {menu && <div id="hlg-menu" className="hlg-menu">{NAV.map(([id, l]) => <a key={id} href={`#${id}`} onClick={go(id)}>{l}</a>)}</div>}
       </header>
 
@@ -117,7 +117,7 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
           {FEATURES.map((f) => (
             <li key={f.h} className="hlg-feat">
               <span className="hlg-ficon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={f.d} /></svg></span>
-              <h3>{f.h}</h3><p>{f.p}</p>
+              <h2>{f.h}</h2><p>{f.p}</p>
             </li>
           ))}
         </ul>
@@ -154,7 +154,7 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
         <div className="hlg-groveinner">
           <h2 id="hlg-hg">Join the grove</h2>
           <p>A monthly note from the greenhouse: what is fermenting, what is flowering and when the next batch of sixty is poured. First access to every small drop.</p>
-          <Subscribe id="hlg" cls="hlg" cta="Join the grove" doneTitle={(e) => `Welcome to the grove, ${e}.`} doneText="Your first note arrives with the next full moon. Unsubscribe whenever you like." />
+          <Subscribe id="hlg" cls="hlg" hideLabel cta="Join the grove" doneTitle={(e) => `Welcome to the grove, ${e}.`} doneText="Your first note arrives with the next full moon. Unsubscribe whenever you like." />
         </div>
       </section>
 

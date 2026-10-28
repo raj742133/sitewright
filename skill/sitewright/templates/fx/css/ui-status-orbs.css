@@ -4,7 +4,7 @@
 .ui-status-orbs-demo { container-type: inline-size; box-sizing: border-box; width: 100%; height: 100%; min-height: 200px; padding: 14px; display: flex; flex-direction: column; justify-content: center; gap: 14px; background: radial-gradient(80% 90% at 50% 0%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent), var(--surface, #fff); color: var(--ink, #111827); font-family: var(--font-body, system-ui); }
 .ui-status-orbs-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; justify-items: center; }
 .ui-status-orbs-cell { display: grid; justify-items: center; gap: 6px; }
-.ui-status-orbs-cap { font: 600 10px/1.2 var(--font-mono, monospace); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted, #4b5563); }
+.ui-status-orbs-cap { font: 600 11px/1.2 var(--font-mono, monospace); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted, #4b5563); }
 .ui-status-orbs-inline { list-style: none; margin: 0; padding: 8px 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; border: 1px solid var(--line, rgba(0, 0, 0, 0.12)); border-radius: var(--radius, 12px); background: var(--raised, #fff); }
 .ui-status-orbs-inline li { display: inline-flex; align-items: center; gap: 6px; font: 500 12px/1 var(--font-body, system-ui); color: var(--ink, #111827); }
 @media (max-width: 300px) { .ui-status-orbs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

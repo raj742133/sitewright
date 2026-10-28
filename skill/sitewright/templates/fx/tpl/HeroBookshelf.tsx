@@ -93,8 +93,7 @@ export default function HeroBookshelf({ studio = 'Marrow & Pine', tools = TOOLS,
         </nav>
         <button type="button" className="hbs-btn hbs-btn-ghost hbs-btn-sm hbs-cat-btn" onClick={() => dlg.current?.showModal()}>Catalogue{owned.length > 0 && <span className="hbs-badge" aria-label={`${owned.length} on your shelf`}>{owned.length}</span>}</button>
         <a href="#hbs-contact" className="hbs-btn hbs-btn-sm hbs-nav-cta" onClick={jump('hbs-contact')}>Book a call</a>
-        <button type="button" className="hbs-menu-btn" aria-expanded={menu} aria-controls="hbs-menu" onClick={() => setMenu((v) => !v)}>
-          <span style={SR}>{menu ? 'Close menu' : 'Open menu'}</span>
+        <button type="button" className="hbs-menu-btn" aria-label={menu ? 'Close menu' : 'Open menu'} aria-expanded={menu} aria-controls="hbs-menu" onClick={() => setMenu((v) => !v)}>
           <svg viewBox="0 0 24 24" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg>
         </button>
       </header>
