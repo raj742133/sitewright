@@ -171,8 +171,7 @@
    "Masonry.tsx",
    "_t2.ts",
    "_galleries-data.tsx",
-   "_galleries-hooks.ts",
-   "_galleries-ui.tsx"
+   "_galleries-hooks.ts"
   ],
   "css": [
    "ui-masonry"
@@ -189,8 +188,7 @@
    "ScrollStack.tsx",
    "_t2.ts",
    "_galleries-data.tsx",
-   "_galleries-hooks.ts",
-   "_galleries-ui.tsx"
+   "_galleries-hooks.ts"
   ],
   "css": [
    "ui-scroll-stack"

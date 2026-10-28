@@ -1,0 +1,26 @@
+.ui-pulse-heart-stage { height: 100%; min-height: 200px; display: grid; place-items: center; background: radial-gradient(60% 70% at 50% 100%, color-mix(in srgb, var(--critical, #dc2626) 14%, transparent), transparent 70%), var(--surface, #fafafa); }
+.ui-pulse-heart { --ph: var(--critical, #dc2626); position: relative; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px 0 14px; border-radius: 999px; border: 1px solid var(--line-strong, #c4c4cc); background: var(--raised, #fff); color: var(--ink, #18181b); font: 600 14px/1 var(--font-body, system-ui, sans-serif); cursor: pointer; transition: border-color .2s, background-color .2s, transform .15s; }
+.ui-pulse-heart:hover { background: var(--raised-2, #f4f4f5); }
+.ui-pulse-heart:active { transform: scale(.95); }
+.ui-pulse-heart:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 3px; }
+.ui-pulse-heart[data-on] { border-color: var(--ph); background: color-mix(in srgb, var(--ph) 8%, var(--raised, #fff)); }
+.ui-pulse-heart-icon { display: inline-grid; place-items: center; width: 28px; height: 28px; transform-origin: 50% 60%; }
+.ui-pulse-heart-icon svg { fill: transparent; stroke: var(--ink, #18181b); stroke-width: 1.9; stroke-linejoin: round; transition: fill .2s, stroke .2s; }
+.ui-pulse-heart[data-on] .ui-pulse-heart-icon svg { fill: var(--ph); stroke: var(--ph); }
+.ui-pulse-heart[data-on] .ui-pulse-heart-icon[data-burst] { animation: ui-pulse-heart-pop .6s cubic-bezier(.3, 1, .4, 1) both, ui-pulse-heart-beat 1.6s ease-in-out .7s infinite; }
+.ui-pulse-heart[data-on]:not([data-live]) .ui-pulse-heart-icon { animation-play-state: paused; }
+.ui-pulse-heart-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ui-pulse-heart-count { min-width: 2.2ch; font-family: var(--font-mono, monospace); font-size: 14px; font-variant-numeric: tabular-nums; }
+.ui-pulse-heart-fx { position: absolute; left: 28px; top: 50%; width: 0; height: 0; pointer-events: none; }
+.ui-pulse-heart-ripple { position: absolute; left: -16px; top: -16px; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ph); opacity: 0; animation: ui-pulse-heart-ripple .7s ease-out; }
+.ui-pulse-heart-bit { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--ph); opacity: 0; animation: ui-pulse-heart-bit .6s cubic-bezier(.2, .8, .3, 1); }
+.ui-pulse-heart-bit[data-k='b'] { background: var(--signal, #f59e0b); width: 5px; height: 5px; }
+@keyframes ui-pulse-heart-pop { 0% { transform: scale(.4); } 35% { transform: scale(1.4); } 60% { transform: scale(.9); } 100% { transform: scale(1); } }
+@keyframes ui-pulse-heart-beat { 0%, 36%, 100% { transform: scale(1); } 12% { transform: scale(1.14); } 24% { transform: scale(.97); } 30% { transform: scale(1.08); } }
+@keyframes ui-pulse-heart-ripple { 0% { transform: scale(.4); opacity: .7; } 100% { transform: scale(2.1); opacity: 0; } }
+@keyframes ui-pulse-heart-bit { 0% { transform: translate(0, 0) scale(.4); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) scale(1); opacity: 0; } }
+@media (pointer: coarse) { .ui-pulse-heart { min-height: 52px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-pulse-heart, .ui-pulse-heart *, .ui-pulse-heart-icon { animation: none !important; transition: none !important; }
+  .ui-pulse-heart-fx { display: none; }
+}

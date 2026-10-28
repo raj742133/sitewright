@@ -1,0 +1,4 @@
+.ui-dot-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;background-color:var(--surface,#fff);
+  background-image:radial-gradient(color-mix(in srgb,var(--ink,#111) 38%,transparent) 1.6px,transparent 2px);background-size:22px 22px}
+.ui-dot-field-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ui-dot-field[data-ready='off'] .ui-dot-field-canvas{display:none}

@@ -1,0 +1,13 @@
+.ui-lattice-loader-stage { height: 100%; min-height: 200px; display: grid; place-items: center; background: radial-gradient(70% 70% at 50% 45%, color-mix(in srgb, var(--primary, #2563eb) 12%, transparent), transparent 75%), var(--surface, #fafafa); }
+.ui-lattice-loader { display: inline-grid; justify-items: center; gap: 12px; color: var(--primary, #2563eb); font-family: var(--font-body, system-ui, sans-serif); }
+.ui-lattice-loader-svg { width: var(--ll-size, 72px); height: var(--ll-size, 72px); display: block; overflow: visible; }
+.ui-lattice-loader-link { stroke: var(--line-strong, #c4c4cc); stroke-width: 1.4; stroke-linecap: round; animation: ui-lattice-loader-link 1.8s ease-in-out infinite; animation-delay: calc(var(--d) * 0.9s); }
+.ui-lattice-loader-node { fill: var(--primary, #2563eb); transform-box: fill-box; transform-origin: center; animation: ui-lattice-loader-node 1.8s ease-in-out infinite; animation-delay: calc(var(--d) * 0.9s); }
+.ui-lattice-loader:not([data-live]) .ui-lattice-loader-link, .ui-lattice-loader:not([data-live]) .ui-lattice-loader-node { animation-play-state: paused; }
+.ui-lattice-loader-label { font-size: 12.5px; font-weight: 600; letter-spacing: .04em; color: var(--muted, #52525b); }
+@keyframes ui-lattice-loader-node { 0%, 100% { transform: scale(.55); opacity: .4; } 30% { transform: scale(1.35); opacity: 1; fill: var(--signal, #f59e0b); } 60% { transform: scale(.8); opacity: .65; } }
+@keyframes ui-lattice-loader-link { 0%, 100% { stroke: var(--line-strong, #c4c4cc); } 30% { stroke: var(--signal, #f59e0b); } 60% { stroke: var(--line-strong, #c4c4cc); } }
+@media (prefers-reduced-motion: reduce) {
+  .ui-lattice-loader-link, .ui-lattice-loader-node { animation: none !important; }
+  .ui-lattice-loader-node { opacity: calc(1 - var(--d) * .6); transform: scale(calc(1.2 - var(--d) * .6)); }
+}

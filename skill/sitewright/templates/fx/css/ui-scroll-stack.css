@@ -7,7 +7,7 @@
 .ui-scroll-stack-face:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 2px; }
 .ui-scroll-stack-art { position: relative; min-height: 0; }
 .ui-scroll-stack-copy { display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; padding: 14px 18px; }
-.ui-scroll-stack-num { font: 600 11px/1 var(--font-mono, ui-monospace, monospace); letter-spacing: 0.08em; color: var(--primary, #2563eb); }
+.ui-scroll-stack-num { font: 600 12px/1 var(--font-mono, ui-monospace, monospace); letter-spacing: 0.08em; color: var(--primary, #2563eb); }
 .ui-scroll-stack-copy h3 { margin: 0; font-size: clamp(16px, 2.6vw, 24px); line-height: 1.15; font-weight: 700; }
 .ui-scroll-stack-copy p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--ink, #18181b); }
 .ui-scroll-stack-copy .ui-scroll-stack-sub { font-size: 12px; color: var(--muted, #52525b); }

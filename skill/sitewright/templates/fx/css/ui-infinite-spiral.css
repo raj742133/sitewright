@@ -7,7 +7,7 @@
 .ui-infinite-spiral-hit { position: absolute; inset: 0; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; border-radius: inherit; }
 .ui-infinite-spiral-hit:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: -3px; box-shadow: inset 0 0 0 5px rgba(255,255,255,0.9); }
 .ui-infinite-spiral-btn:focus-visible { outline: 3px solid var(--primary, #2563eb); outline-offset: 3px; }
-.ui-infinite-spiral-bar { display: flex; align-items: center; justify-content: center; gap: 12px; flex: none; }
+.ui-infinite-spiral-bar { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; flex: none; }
 .ui-infinite-spiral-cap { display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 0; flex: 0 1 260px; text-align: center; }
 .ui-infinite-spiral-cap strong { max-width: 100%; font-size: 15px; font-weight: 700; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ui-infinite-spiral-cap span { max-width: 100%; font-size: 12px; line-height: 1.3; color: var(--muted, #52525b); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

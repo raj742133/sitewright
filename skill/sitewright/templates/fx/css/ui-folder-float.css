@@ -1,0 +1,29 @@
+.ui-folder-float { width: 100%; max-width: 300px; font-family: var(--font-body, system-ui, sans-serif); color: var(--ink, #111); }
+.ui-folder-float-stage { position: relative; width: 100%; height: 190px; animation: ui-folder-float-bob 5s ease-in-out infinite; }
+.ui-folder-float-back { position: absolute; left: 50%; bottom: 0; width: 196px; height: 108px; margin-left: -98px; border-radius: 0 12px 12px 12px; background: color-mix(in srgb, var(--primary, #2563eb) 62%, #000); }
+.ui-folder-float-tab { position: absolute; left: 0; top: -14px; width: 70px; height: 16px; border-radius: 10px 10px 0 0; background: inherit; }
+.ui-folder-float-files { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; }
+.ui-folder-float-slot { position: absolute; left: 50%; bottom: 40px; width: 104px; margin-left: -52px; transform: translate(0, 0) rotate(0deg) scale(.92); transition: transform .5s cubic-bezier(.3,1.35,.45,1) calc(var(--i) * 70ms); }
+.ui-folder-float.is-open .ui-folder-float-slot { transform: translate(var(--x), var(--lift)) rotate(var(--r)) scale(1); pointer-events: auto; }
+.ui-folder-float.is-open .ui-folder-float-slot { animation: ui-folder-float-hover 3.6s ease-in-out calc(.6s + var(--i) * .4s) infinite; }
+.ui-folder-float-file { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; width: 100%; height: 92px; padding: 10px; border-radius: 8px; border: 1px solid var(--line-strong, #bbb); background: var(--raised, #fff); color: var(--ink, #111); font: inherit; text-align: left; cursor: pointer; box-shadow: 0 8px 16px -10px rgba(0,0,0,.45); transition: border-color .15s, box-shadow .15s; }
+.ui-folder-float-file svg { color: var(--primary, #2563eb); margin-bottom: 4px; }
+.ui-folder-float-file strong { font: 700 13px/1.1 var(--font-body, system-ui, sans-serif); }
+.ui-folder-float-file span { font: 500 10.5px/1.2 var(--font-mono, monospace); color: var(--muted, #555); }
+.ui-folder-float-file:hover { border-color: var(--primary, #2563eb); box-shadow: 0 12px 20px -10px rgba(0,0,0,.5); }
+.ui-folder-float-file:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 2px; z-index: 3; }
+.ui-folder-float-slot:focus-within, .ui-folder-float-slot:hover { z-index: 3; }
+.ui-folder-float-btn { position: absolute; left: 50%; bottom: 0; width: 196px; height: 88px; margin-left: -98px; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 6px 6px 12px 12px; perspective: 600px; color: #fff; }
+.ui-folder-float-btn:focus-visible { outline: 2px solid var(--ink, #111); outline-offset: 4px; }
+.ui-folder-float-front { position: absolute; inset: 0; border-radius: 6px 6px 12px 12px; background: linear-gradient(180deg, var(--primary, #2563eb), color-mix(in srgb, var(--primary, #2563eb) 78%, #000)); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 -6px 14px -10px rgba(0,0,0,.4); transform-origin: bottom; transition: transform .45s cubic-bezier(.3,1.3,.5,1); }
+.ui-folder-float.is-open .ui-folder-float-front { transform: rotateX(-24deg); }
+.ui-folder-float-btn:hover .ui-folder-float-front { transform: rotateX(-8deg); }
+.ui-folder-float.is-open .ui-folder-float-btn:hover .ui-folder-float-front { transform: rotateX(-30deg); }
+.ui-folder-float-title { position: absolute; left: 14px; right: 14px; bottom: 10px; display: flex; flex-direction: column; gap: 2px; text-align: left; }
+.ui-folder-float-title strong { font: 700 14px/1.1 var(--font-body, system-ui, sans-serif); }
+.ui-folder-float-title span { font: 500 11px/1.1 var(--font-mono, monospace); opacity: .9; }
+.ui-folder-float-demo { display: grid; place-items: end center; height: 100%; min-height: 200px; padding: 8px 8px 14px; box-sizing: border-box; background: radial-gradient(100% 100% at 50% 100%, color-mix(in srgb, var(--primary, #2563eb) 14%, var(--surface, #fafafa)), var(--surface, #fafafa) 75%); overflow: hidden; }
+@keyframes ui-folder-float-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes ui-folder-float-hover { 0%,100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+@media (pointer: coarse) { .ui-folder-float-file { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-folder-float-stage, .ui-folder-float-slot { animation: none !important; } .ui-folder-float *, .ui-folder-float-slot { transition: none !important; } }

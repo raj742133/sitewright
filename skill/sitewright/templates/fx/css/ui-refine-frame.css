@@ -1,0 +1,31 @@
+.ui-refine-frame-stage { height: 100%; min-height: 200px; display: grid; place-items: center; padding: 14px; box-sizing: border-box; background: linear-gradient(135deg, var(--surface, #fafafa), var(--raised-2, #f0f0f2)); }
+.ui-refine-frame { --rf-in: 14px; display: grid; gap: 8px; width: min(100%, 280px); padding: 0; border: 0; background: none; color: var(--ink, #18181b); font-family: var(--font-body, system-ui, sans-serif); text-align: left; cursor: pointer; border-radius: var(--radius, 12px); }
+.ui-refine-frame:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 4px; }
+.ui-refine-frame:hover, .ui-refine-frame:focus-visible { --rf-in: 10px; }
+.ui-refine-frame[data-on] { --rf-in: 5px; }
+.ui-refine-frame-window { position: relative; display: block; aspect-ratio: 8 / 5; overflow: hidden; border-radius: calc(var(--radius, 12px) - 2px); border: 1px solid var(--line-strong, #c4c4cc); background: var(--raised, #fff); }
+.ui-refine-frame-pic { position: absolute; inset: 0; display: block; filter: blur(7px) saturate(.55) contrast(.85); transform: scale(1.08); transition: filter .6s cubic-bezier(.3, .8, .3, 1), transform .6s cubic-bezier(.3, .8, .3, 1); }
+.ui-refine-frame:hover .ui-refine-frame-pic, .ui-refine-frame:focus-visible .ui-refine-frame-pic { filter: blur(4px) saturate(.8) contrast(.92); transform: scale(1.04); }
+.ui-refine-frame[data-on] .ui-refine-frame-pic { filter: none; transform: none; }
+.ui-refine-frame-art { width: 100%; height: 100%; display: block; }
+.ui-refine-frame-sky { fill: color-mix(in srgb, var(--primary, #2563eb) 22%, var(--raised, #fff)); }
+.ui-refine-frame-sun { fill: var(--signal, #f59e0b); }
+.ui-refine-frame-far { fill: color-mix(in srgb, var(--primary, #2563eb) 55%, var(--ink, #18181b) 10%); }
+.ui-refine-frame-near { fill: color-mix(in srgb, var(--primary, #2563eb) 85%, var(--ink, #18181b) 35%); }
+.ui-refine-frame-fine path { stroke: color-mix(in srgb, var(--raised, #fff) 55%, transparent); stroke-width: 1.5; fill: none; }
+.ui-refine-frame-grain { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, color-mix(in srgb, var(--raised, #fff) 28%, transparent) 0 1px, transparent 1px 4px), repeating-linear-gradient(90deg, color-mix(in srgb, var(--raised, #fff) 28%, transparent) 0 1px, transparent 1px 4px); opacity: .9; transition: opacity .5s; pointer-events: none; }
+.ui-refine-frame[data-on] .ui-refine-frame-grain { opacity: 0; }
+.ui-refine-frame-sweep { position: absolute; left: 0; right: 0; top: 0; height: 26%; pointer-events: none; opacity: 0; background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--signal, #f59e0b) 45%, transparent) 70%, var(--signal, #f59e0b) 100%); border-bottom: 2px solid var(--signal, #f59e0b); }
+.ui-refine-frame[data-on] .ui-refine-frame-sweep { animation: ui-refine-frame-sweep .7s ease-out; }
+.ui-refine-frame-corner { position: absolute; width: 22px; height: 22px; border: 0 solid var(--raised, #fff); transition: inset .45s cubic-bezier(.3, 1.4, .5, 1), border-color .3s; filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, .55)); }
+.ui-refine-frame[data-on] .ui-refine-frame-corner { border-color: var(--signal, #f59e0b); }
+.ui-refine-frame-corner[data-c='tl'] { left: var(--rf-in); top: var(--rf-in); border-width: 3px 0 0 3px; border-top-left-radius: 4px; }
+.ui-refine-frame-corner[data-c='tr'] { right: var(--rf-in); top: var(--rf-in); border-width: 3px 3px 0 0; border-top-right-radius: 4px; }
+.ui-refine-frame-corner[data-c='bl'] { left: var(--rf-in); bottom: var(--rf-in); border-width: 0 0 3px 3px; border-bottom-left-radius: 4px; }
+.ui-refine-frame-corner[data-c='br'] { right: var(--rf-in); bottom: var(--rf-in); border-width: 0 3px 3px 0; border-bottom-right-radius: 4px; }
+.ui-refine-frame-chip { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); padding: 3px 10px; border-radius: 999px; background: var(--ink, #18181b); color: var(--surface, #fafafa); font: 700 10.5px/1.4 var(--font-mono, monospace); letter-spacing: .08em; text-transform: uppercase; }
+.ui-refine-frame-cap { display: grid; gap: 1px; font-size: 12.5px; line-height: 1.35; color: var(--muted, #52525b); }
+.ui-refine-frame-cap strong { font-size: 14px; color: var(--ink, #18181b); }
+@keyframes ui-refine-frame-sweep { 0% { transform: translateY(-100%); opacity: 1; } 100% { transform: translateY(400%); opacity: 0; } }
+@media (pointer: coarse) { .ui-refine-frame { min-height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .ui-refine-frame-pic, .ui-refine-frame-grain, .ui-refine-frame-corner { transition: none !important; } .ui-refine-frame-sweep { animation: none !important; } }
