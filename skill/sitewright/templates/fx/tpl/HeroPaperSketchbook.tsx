@@ -119,8 +119,11 @@ export default function HeroPaperSketchbook({ name = 'Odile Marsh', className }:
 
       <footer className="hps-foot">
         <p className="hps-sign" aria-hidden="true">{first}</p>
-        <span>&copy; 2026 {name}. Every drawing remains the artist&rsquo;s.</span>
-        <button type="button" className="hps-btn hps-btn-ghost hps-btn-sm" onClick={() => scrollTo('hps-top')}>Back to top</button>
+        <div className="hps-foot-col">
+          <p className="hps-colophon">Drawn in Porto, on 300 gsm paper, by the light of a north window. Every drawing remains the artist&rsquo;s.</p>
+          <nav className="hps-foot-links" aria-label="Footer">{TABS.map((t) => <a key={t.id} href={`#${t.id}`} onClick={jump(t.id, t.focus)}>{t.label}</a>)}<button type="button" className="hps-link" onClick={rates}>Rates</button></nav>
+          <div className="hps-foot-end"><span>&copy; 2026 {name}</span><button type="button" className="hps-btn hps-btn-ghost hps-btn-sm" onClick={() => scrollTo('hps-top')}>Back to top</button></div>
+        </div>
       </footer>
 
       <RatesDialog dlg={dlg} onAsk={() => scrollTo('hps-contact', true)} />

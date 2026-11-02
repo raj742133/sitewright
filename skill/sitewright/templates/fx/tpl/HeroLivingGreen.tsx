@@ -97,7 +97,7 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
         <Legend />
         <Atmosphere hero={hero} reduced={reduced} />
         <Frame />
-        <GradualBlur edges={['bottom']} size={72} strength={10} layers={6} tint="var(--hg-bg0)" tintOpacity={0.5} />
+        <GradualBlur edges={['bottom']} size={72} strength={9} layers={4} tint="var(--hg-bg0)" tintOpacity={0.5} />
       </section>
 
       <section className="hlg-story" aria-labelledby="hlg-hw">

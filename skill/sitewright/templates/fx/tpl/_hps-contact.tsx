@@ -1,6 +1,7 @@
 'use client';
 // The contact note (validated, with a confirmation) and the rates dialog (a native <dialog>).
 import { useState, type FormEvent, type ReactNode, type RefObject } from 'react';
+import { Plate } from './_hps-art';
 
 const RATES: [string, string][] = [['Spot illustration', 'from 350 EUR'], ['Half-page editorial', 'from 620 EUR'], ['Book jacket', 'from 1,400 EUR'], ['Packaging set of three', 'from 2,600 EUR']];
 type Errs = Partial<Record<'name' | 'email' | 'topic' | 'msg', string>>;
@@ -38,6 +39,7 @@ export function Contact({ first, focusField }: { first: string; focusField: (k: 
         <h2 id="hps-hc" className="hps-h2">Tell me <em>what you are making.</em></h2>
         <p className="hps-lede">A paragraph is plenty. I reply to every message within three working days.</p>
       </div>
+      <div className="hps-contact-grid">
       {done ? (
         <div className="hps-ok hps-paper" role="status">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M7 12.5l3.5 3.5L17 9" /></svg>
@@ -57,6 +59,16 @@ export function Contact({ first, focusField }: { first: string; focusField: (k: 
           <button type="submit" className="hps-btn">Send to {first}</button>
         </form>
       )}
+      <aside className="hps-aside" aria-label="Studio details">
+        <figure className="hps-polaroid hps-paper"><span className="hps-tape hps-tape-a" aria-hidden="true" /><div><Plate kind="cat" /></div><figcaption>Nap, mid-commission</figcaption></figure>
+        <dl className="hps-notes">
+          <div><dt>Studio</dt><dd>Rua das Flores, Porto, by appointment</dd></div>
+          <div><dt>Hours</dt><dd>Tuesday to Friday, mornings</dd></div>
+          <div><dt>Replies</dt><dd>Within three working days</dd></div>
+          <div><dt>Next slot</dt><dd>January</dd></div>
+        </dl>
+      </aside>
+      </div>
     </section>
   );
 }

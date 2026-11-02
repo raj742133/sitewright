@@ -178,7 +178,7 @@ export function useStory(get: () => Els | null, reduced: boolean, onPhase: (s: S
       const vh = window.innerHeight || 800;
       const rr = root.getBoundingClientRect(), hr = hero.getBoundingClientRect(), jr = journey.getBoundingClientRect();
       const T = 36;
-      const overNight = (hr.top <= T && hr.bottom > T) || (jr.top <= T && jr.bottom > T + 60);
+      const overNight = (hr.top <= T && hr.bottom > T) || (jr.top <= T && jr.bottom > 300);
       const nt = overNight ? 'night' : 'day';
       if (nt !== tone) { tone = nt; nav.dataset.tone = nt; }
       if (reduced) {
