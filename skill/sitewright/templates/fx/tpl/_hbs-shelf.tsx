@@ -62,7 +62,7 @@ export function Shelf({ tools, index, onSelect, reduced, owned }: ShelfProps) {
     const first = slots.current[0]?.parentElement, last = slots.current[tools.length - 1]?.parentElement;
     if (!vw || !H || !r || !first || !last) return;
     const lead = first.offsetLeft, trail = r.offsetWidth - (last.offsetLeft + last.offsetWidth);
-    const widths = tools.map((t, i) => Math.max(MINW, H * t.thick * WF) + (i === index ? H * (t.tall / 100) * 0.72 + 18 : 0));
+    const widths = tools.map((t, i) => Math.max(MINW, H * t.thick * WF) + (i === index ? H * (t.tall / 100) * 0.72 + 22 - Math.max(MINW, H * t.thick * WF) : 0));
     const total = lead + trail + widths.reduce((a, b) => a + b, 0) + GAP * (tools.length - 1);
     const before = widths.slice(0, index).reduce((a, b) => a + b + GAP, 0);
     const center = lead + before + widths[index]! / 2;

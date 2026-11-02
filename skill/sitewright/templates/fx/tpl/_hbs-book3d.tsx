@@ -54,7 +54,7 @@ export function useBookStage(r: StageRefs, reduced: boolean) {
     const ptr = { x: 0, y: 0, cx: 0, cy: 0 };
     const geo = () => {
       const sw = stage.offsetWidth, sh = stage.offsetHeight;
-      W = Math.min(sw * 0.86, (sh * 0.9) / 1.5); H = W * 1.5; D = W * 0.17;
+      W = Math.min(sw * 0.94, (sh * 0.9) / 1.5); H = W * 1.5; D = W * 0.17;
       stage.style.setProperty('--bw', W.toFixed(1) + 'px'); stage.style.setProperty('--bh', H.toFixed(1) + 'px'); stage.style.setProperty('--bd', D.toFixed(1) + 'px');
     };
     const paint = () => {
@@ -130,18 +130,17 @@ export function HeroCover() {
       </defs>
       <rect width="200" height="300" fill="url(#hbs-hc-bg)" />
       <g clipPath="url(#hbs-hc-clip)" fill="none" stroke="#f1e7d0" strokeWidth=".5">
-        {Array.from({ length: 9 }, (_, i) => <path key={i} d={`M0 ${112 + i * 13}H200`} opacity=".14" />)}
-        <path d="M58 104V232M150 104V232" opacity=".14" />
-        {[34, 58, 84, 112, 142].map((r, i) => <circle key={r} cx="100" cy="246" r={r} opacity={0.22 - i * 0.03} />)}
+        {Array.from({ length: 11 }, (_, i) => <path key={i} d={`M0 ${52 + i * 13}H200`} opacity=".13" />)}
+        <path d="M58 40V190M150 40V190" opacity=".13" />
+        {[34, 58, 84, 112, 142].map((r, i) => <circle key={r} cx="100" cy="266" r={r} opacity={0.22 - i * 0.03} />)}
       </g>
-      <circle cx="100" cy="246" r="26" fill="#e8743b" />
-      {[0, 1, 2, 3, 4].map((i) => <path key={i} d={`M0 ${236 + i * 13} q25 -7 50 0 t50 0 t50 0 t50 0 V300 H0z`} fill="#0c1f33" opacity={0.3 + i * 0.17} />)}
+      <circle cx="100" cy="266" r="21" fill="#e8743b" />
+      {[0, 1, 2, 3].map((i) => <path key={i} d={`M0 ${262 + i * 10} q25 -7 50 0 t50 0 t50 0 t50 0 V300 H0z`} fill="#0c1f33" opacity={0.3 + i * 0.2} />)}
       <rect x="11" y="11" width="178" height="278" fill="none" stroke="#f1e7d0" strokeWidth=".6" opacity=".4" />
       <g fill="#f1e7d0" fontFamily={SERIF}>
-        <text x="22" y="34" fontSize="7.4" letterSpacing="2.6" fontFamily="system-ui, sans-serif" opacity=".85">A NOVEL</text>
-        <text x="22" y="64" fontSize="31" fontWeight="700" letterSpacing="-.6">The Salt</text>
-        <text x="22" y="92" fontSize="31" fontStyle="italic" letterSpacing="-.6">Ledger</text>
-        <text x="100" y="285" textAnchor="middle" fontSize="7.6" letterSpacing="2.8" fontFamily="system-ui, sans-serif">INES VALCOURT</text>
+        <text x="22" y="198" fontSize="27" fontWeight="700" letterSpacing="-.5">The Salt</text>
+        <text x="22" y="224" fontSize="27" fontStyle="italic" letterSpacing="-.5">Ledger</text>
+        <text x="100" y="287" textAnchor="middle" fontSize="7.4" letterSpacing="2.8" fontFamily="system-ui, sans-serif">INES VALCOURT</text>
       </g>
       <rect x="0" y="0" width="7" height="300" fill="#000" opacity=".18" /><rect x="7" y="0" width="1.4" height="300" fill="#fff" opacity=".22" />
     </svg>

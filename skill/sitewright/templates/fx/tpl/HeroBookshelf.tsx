@@ -111,10 +111,10 @@ export default function HeroBookshelf({ studio = 'Marrow & Pine', tools = TOOLS,
             <div className="hbs-title">
               <p className="hbs-eyebrow">Software studio, Ghent<i aria-hidden="true" />Est. 2017</p>
               <h1 id="hbs-h1" className="hbs-h1"><span>Small tools,</span> <em>well bound.</em></h1>
-              <div className="hbs-intro">
-                <p className="hbs-lede">Seven quiet programs for people who work for themselves, each one finished like a book.</p>
-                <a href="#hbs-contact" className="hbs-btn" onClick={jump('hbs-contact')}>Book a call</a>
-              </div>
+            </div>
+            <div className="hbs-intro">
+              <p className="hbs-lede">Seven quiet programs for people who work for themselves, each one finished like a book.</p>
+              <a href="#hbs-contact" className="hbs-btn" onClick={jump('hbs-contact')}>Book a call</a>
             </div>
             <nav className="hbs-toc" aria-label="Contents">
               <b>Contents</b>
@@ -164,12 +164,17 @@ export default function HeroBookshelf({ studio = 'Marrow & Pine', tools = TOOLS,
         </section>
 
         <section id="hbs-method" tabIndex={-1} className="hbs-sec" aria-labelledby="hbs-hm">
-          <p className="hbs-eyebrow">Method</p>
-          <h2 id="hbs-hm" className="hbs-h2">Three rules for binding a tool.</h2>
-          <div className="hbs-stack">
-            <ScrollStack label="Three rules" height="100%" offset={18} items={PRINCIPLES.map(([n, h, p]) => ({ title: h, subtitle: `Rule ${n}`, text: p, media: <span className="hbs-rule-n" aria-hidden="true">{n}</span> }))} />
+          <div className="hbs-method-grid">
+            <div>
+              <p className="hbs-eyebrow">Method</p>
+              <h2 id="hbs-hm" className="hbs-h2">Three rules for binding a tool.</h2>
+              <p className="hbs-lede">Everything we ship follows the same three habits. They are why a tool from 2018 still opens exactly as you left it.</p>
+              <ul className="hbs-stats" aria-label="The studio in numbers">{STATS.map(([n, l]) => <li key={l}><b>{n}</b><span>{l}</span></li>)}</ul>
+            </div>
+            <div className="hbs-stack">
+              <ScrollStack label="Three rules" height="100%" offset={18} items={PRINCIPLES.map(([n, h, p]) => ({ title: h, subtitle: `Rule ${n}`, text: p, media: <span className="hbs-rule-n" aria-hidden="true">{n}</span> }))} />
+            </div>
           </div>
-          <ul className="hbs-stats" aria-label="The studio in numbers">{STATS.map(([n, l]) => <li key={l}><b>{n}</b><span>{l}</span></li>)}</ul>
         </section>
 
         <section id="hbs-journal" tabIndex={-1} className="hbs-sec hbs-journal" aria-labelledby="hbs-hj">

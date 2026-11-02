@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, type RefObject } from 'react';
+import { useEffect, useRef, type ReactNode, type RefObject } from 'react';
 import { clamp, seeded, useCanvasLoop } from './_ha-kit';
 
 /* Lanternfall helpers: a still SVG night scene (the fallback under the canvas scene), the falling petals and rising embers, the
@@ -129,7 +129,7 @@ export { CLOCK };
  * The journey art: a sky that goes from night to dawn as --p (0..1, set by the scroll loop on the stage) grows. Everything is CSS-driven
  * from that one variable: sky cross-fade, stars, moon setting, sun rising, far ridges taking light, lanterns dimming.
  */
-export function DawnArt() {
+export function DawnArt({ rays }: { rays?: ReactNode }) {
   return (
     <div className="hnt-art" aria-hidden="true">
       <div className="hnt-sky hnt-sky-n" />
@@ -137,11 +137,17 @@ export function DawnArt() {
       <svg className="hnt-stars" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMin slice" focusable="false">
         {STARS.map((s, i) => <circle key={i} cx={s.x.toFixed(0)} cy={(s.y * 0.8).toFixed(0)} r={s.s.toFixed(2)} style={{ animationDelay: `${s.d}s` }} />)}
       </svg>
-      <div className="hnt-sun" />
       <div className="hnt-moon" />
+      <div className="hnt-sun" />
+      <div className="hnt-sunrays">{rays}</div>
       <svg className="hnt-ridges" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMax slice" focusable="false">
         <path className="hnt-rg hnt-rg-0" d={R_FAR} />
-        <g className="hnt-rg-t"><Pagoda cx={1020} by={640} /></g>
+      </svg>
+      <svg className="hnt-pagoda" viewBox="-270 -372 540 372" focusable="false">
+        <path className="hnt-rg hnt-rg-1" d="M-270,500 L-270,56 Q-150,14 -60,6 L60,6 Q150,14 270,56 L270,500 Z" />
+        <g className="hnt-rg-t"><Pagoda cx={0} by={0} /></g>
+      </svg>
+      <svg className="hnt-ridges" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMax slice" focusable="false">
         <path className="hnt-rg hnt-rg-1" d={R_MID} />
         <path className="hnt-rg hnt-rg-2" d={R_NEAR} />
         {PINES.map((p, i) => <path key={i} className="hnt-rg hnt-rg-3" d={`M${p.x - 18},${H} L${p.x},${H - p.h - 40} L${p.x + 18},${H} Z`} />)}
@@ -184,7 +190,7 @@ export function useStory(get: () => Els | null, reduced: boolean, onPhase: (s: S
       hero.style.setProperty('--exit', clamp(-hr.top / Math.max(1, hr.height), 0, 1).toFixed(3));
       const p = clamp(-jr.top / Math.max(1, jr.height - vh), 0, 1);
       stage.style.setProperty('--p', p.toFixed(3));
-      const s = Math.min(3, Math.floor(p * 4 - 0.0001 * 0)), after = jr.bottom <= vh * 0.55;
+      const s = Math.min(3, Math.floor(p * 4)), after = jr.bottom <= vh * 0.55;
       const ph = after ? 5 : jr.top > vh * 0.5 ? 0 : 1 + s;
       if (s !== step || ph !== phase) { step = s; phase = ph; cb.current({ step: s, phase: ph }); }
     };

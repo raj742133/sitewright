@@ -102,6 +102,7 @@ export default function HeroBookShowcase({ className }: { className?: string }) 
               <div><dt>Author</dt><dd>{FEATURED.author}</dd></div>
               <div><dt>Form</dt><dd>{FEATURED.form}, {FEATURED.pages} pp.</dd></div>
               <div><dt>Price</dt><dd className="hbs-num-s">${FEATURED.price}.00</dd></div>
+              <div className="hbs-sample"><dt>A first look</dt><dd><button type="button" className="hbs-link" onClick={() => setPanel({ k: 'excerpt', id: FEATURED.id })}>Read page one<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></button></dd></div>
             </dl>
           </div>
           <section className="hbs-quotes" aria-label="What readers and critics say">

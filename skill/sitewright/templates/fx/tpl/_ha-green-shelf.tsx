@@ -8,13 +8,14 @@ import { Art, PRODUCTS } from './_ha-green-art';
 
 type Sort = 'featured' | 'low' | 'high';
 const CATS = ['All', 'Face', 'Home', 'Soil'] as const;
+const FEATURED = ['dome', 'mist', 'balm', 'wash', 'packet', 'mix'];
 const MOSAIC: BentoCell['size'][] = ['big', 'small', 'small', 'wide', 'wide', 'wide'];
 
 export function Shelf({ cart, add, say }: { cart: Record<string, number>; add: (id: string, name: string) => void; say: (s: string) => void }) {
   const [cat, setCat] = useState<(typeof CATS)[number]>('All');
   const [sort, setSort] = useState<Sort>('featured');
   const shown = useMemo(() => {
-    const l = PRODUCTS.filter((p) => cat === 'All' || p.cat === cat);
+    const l = PRODUCTS.filter((p) => cat === 'All' || p.cat === cat).sort((a, b) => FEATURED.indexOf(a.id) - FEATURED.indexOf(b.id));
     return sort === 'low' ? [...l].sort((a, b) => a.price - b.price) : sort === 'high' ? [...l].sort((a, b) => b.price - a.price) : l;
   }, [cat, sort]);
   const cells: BentoCell[] = shown.map((p, i) => {

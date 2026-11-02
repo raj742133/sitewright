@@ -43,7 +43,7 @@
   {
     "id": "hero-living-green",
     "label": "Living green hero",
-    "desc": "Organic botanical landing page: a WebGL moss field that drifts and follows the pointer (Canvas 2D fallback), liquid-metal CTA, swaying procedural fern, glass feature cards, a filterable and sortable shelf with a working basket and checkout, a self-drawing vine timeline and a newsletter form.",
+    "desc": "A botanical landing page whose first screen is one object: a glass terrarium with a miniature moss forest inside (refracting rim, condensation, running drops, chrome base) centred between a split serif headline, with hairline callouts, drifting spores, pointer parallax and a liquid-metal CTA. Below: a scroll-revealed story, a filterable and sortable bento shelf with a working basket and checkout, a self-drawing vine timeline and a newsletter form.",
     "source": "Original",
     "group": "page",
     "files": [
@@ -52,18 +52,43 @@
       "_ha-green-gl.tsx",
       "_ha-green-art.tsx",
       "_ha-green-cart.tsx",
-      "_dash.tsx"
+      "_ha-green-jar.tsx",
+      "_ha-green-shelf.tsx",
+      "_dash.tsx",
+      "../ui/MossForestWorld.tsx",
+      "../ui/_tu-three-kit.ts",
+      "../ui/_tu-three-forest.ts",
+      "../ui/_tu-three-chips.tsx",
+      "../ui/LiquidMetalButton.tsx",
+      "../ui/_tu-liquid-metal.ts",
+      "../ui/_tu-ui-kit.ts",
+      "../ui/GradualBlur.tsx",
+      "../ui/_motion-a.tsx",
+      "../ui/MagicBento.tsx",
+      "../ui/ScrollReveal.tsx",
+      "../ui/_text-b.ts",
+      "../ui/Grainient.tsx",
+      "../ui/_bg-c-demo.tsx",
+      "../ui/_inputs-lensmap.ts",
+      "../ui/_t1.ts",
+      "../ui/_t2.ts"
     ],
     "css": [
       "tpl-heroes-a",
+      "ui-moss-forest-world",
+      "ui-liquid-metal-button",
+      "ui-gradual-blur",
+      "ui-magic-bento",
+      "ui-scroll-reveal",
+      "ui-grainient",
       "tpl-hero-living-green"
     ],
-    "use": "organic product, skincare, wellness or garden brand landing page"
+    "use": "organic product, skincare, wellness or garden brand landing page whose hero is one hero object"
   },
   {
     "id": "hero-book-showcase",
     "label": "Book showcase hero",
-    "desc": "Editorial publisher landing page: oversized serif headline that slides on scroll, a fan of six SVG book covers that works as a keyboard tab list with a detail panel, excerpt dialog and reading list, a canvas-poster media player with seek, speed, captions and a clickable transcript, and a validated newsletter.",
+    "desc": "Editorial publisher landing page on a 12-column grid: an enormous serif headline crosses a tall CSS-3D book (cover, spine, page block, slow turn, pointer tilt) and is cut along its real silhouette, small-caps facts, a lede, one action, a marquee of review quotes, a keyboard tab list of six covers with a 3D detail panel, excerpt and reading-list dialogs, a canvas-poster player with seek, speed, captions and a clickable transcript, and a validated newsletter.",
     "source": "Original",
     "group": "page",
     "files": [
@@ -71,11 +96,22 @@
       "_ha-kit.tsx",
       "_ha-books.tsx",
       "_ha-poster.tsx",
-      "_dash.tsx"
+      "_hbs-book3d.tsx",
+      "_dash.tsx",
+      "../ui/LogoLoop.tsx",
+      "../ui/_motion-a.tsx",
+      "../ui/_t2.ts",
+      "../ui/ScrollFloat.tsx",
+      "../ui/_text-b.ts",
+      "../ui/VariableProximity.tsx",
+      "../ui/_text-c.ts"
     ],
     "css": [
       "tpl-heroes-a",
-      "tpl-hero-book-showcase"
+      "tpl-hero-book-showcase",
+      "ui-logo-loop",
+      "ui-scroll-float",
+      "ui-variable-proximity"
     ],
     "use": "publisher, bookshop, magazine or editorial landing page"
   }

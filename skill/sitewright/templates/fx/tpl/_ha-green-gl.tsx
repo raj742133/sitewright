@@ -14,10 +14,10 @@ function sprite(color: string): HTMLCanvasElement | null {
   const c = document.createElement('canvas'); c.width = c.height = 64;
   const g = c.getContext('2d'); if (!g) return null;
   const r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-  r.addColorStop(0, color); r.addColorStop(0.18, color); r.addColorStop(0.42, 'rgba(255,255,255,0.0)');
+  r.addColorStop(0, color); r.addColorStop(0.2, color); r.addColorStop(0.5, 'rgba(255,255,255,0.0)');
   g.fillStyle = r; g.fillRect(0, 0, 64, 64);
   const h = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-  h.addColorStop(0, 'rgba(255,255,255,.9)'); h.addColorStop(0.1, 'rgba(255,255,255,.35)'); h.addColorStop(0.5, 'rgba(255,255,255,0)');
+  h.addColorStop(0, 'rgba(255,255,255,.55)'); h.addColorStop(0.08, 'rgba(255,255,255,.18)'); h.addColorStop(0.3, 'rgba(255,255,255,0)');
   g.globalCompositeOperation = 'lighter'; g.fillStyle = h; g.fillRect(0, 0, 64, 64);
   return c;
 }

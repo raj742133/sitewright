@@ -152,31 +152,29 @@ export default function HeroNightTemple({ className }: { className?: string }) {
       <section id="nt-top" ref={hero} className="hnt-hero hnt-night" onPointerMove={move} onPointerLeave={leave} aria-labelledby="hnt-h1" tabIndex={-1} data-lit={lit}>
         <div className="hnt-scene" aria-hidden="true">
           <FallbackScene />
-          {canvasOk && <NightTempleScene key={lit ? 'on' : 'off'} className="hnt-scene-cv" rain={0.55} mist={0.85} glow={lit ? 0.95 : 0.05} />}
+          {canvasOk && <NightTempleScene key={lit ? 'on' : 'off'} className="hnt-scene-cv" rain={0.55} mist={0.4} glow={lit ? 0.95 : 0.05} />}
         </div>
-        <div className="hnt-moonrays" aria-hidden="true"><LightRays rays={9} speed={0.6} interactive={false} /></div>
+        <div className="hnt-moonrays" aria-hidden="true"><LightRays rays={7} speed={0.5} interactive={false} /></div>
         <div className="hnt-dim" aria-hidden="true" />
         <div className="hnt-pool" aria-hidden="true" />
         <Drift reduced={reduced} lit={litRef} />
         <div className="hnt-fg" aria-hidden="true"><HangingLantern /></div>
         <div className="hnt-vig" aria-hidden="true" />
         <div className="hnt-copy">
-          <p className="hnt-place"><span aria-hidden="true" />Amane Ridge, 1,140 metres<span aria-hidden="true" /></p>
           <h1 id="hnt-h1" ref={title}><span>Stay until</span><span>first light</span></h1>
-          <p className="hnt-lede">Twelve guests, one bell, three hundred stone steps. A lantern-lit retreat for slow evenings, and a sky with nothing in the way.</p>
+          <p className="hnt-lede">Twelve guests, one bell, three hundred stone steps.</p>
           <GlareHover className="hnt-ctaglare" intensity={0.55} color="#fff7e3" idleEvery={6}><button type="button" className="hnt-cta hnt-cta-lg" onClick={() => setBook('ridge')}>Stay the night<Arrow /></button></GlareHover>
         </div>
         <div className="hnt-base">
-          <dl className="hnt-facts" aria-label="At a glance"><div><dt>Season</dt><dd>Sep to Dec</dd></div><div><dt>Guests a night</dt><dd>12</dd></div></dl>
+          <dl className="hnt-facts" aria-label="At a glance"><div><dt>Amane Ridge</dt><dd>1,140 m</dd></div><div><dt>Season</dt><dd>Sep to Dec</dd></div><div><dt>Guests a night</dt><dd>12</dd></div></dl>
           <a className="hnt-cue" href="#nt-journey" onClick={go('nt-journey')} aria-label="Follow the night, scroll down"><span>Scroll</span><i aria-hidden="true" /></a>
           <button type="button" className="hnt-lit" aria-pressed={lit} onClick={toggleLit}><i aria-hidden="true" />{lit ? 'Lanterns lit' : 'Lanterns out'}</button>
         </div>
       </section>
 
-      <section id="nt-journey" ref={journey} className="hnt-journey" aria-labelledby="hnt-hj" tabIndex={-1}>
+      <section id="nt-journey" ref={journey} className="hnt-journey" aria-label="One night on the ridge" tabIndex={-1}>
         <div ref={stage} className="hnt-stage hnt-night" data-step={story.step}>
-          <DawnArt />
-          <div className="hnt-sunrays" aria-hidden="true"><LightRays rays={11} speed={0.5} interactive={false} /></div>
+          <DawnArt rays={<LightRays rays={11} speed={0.5} interactive={false} />} />
           <div className="hnt-scrim" aria-hidden="true" />
           <div className="hnt-jwrap">
             <div className="hnt-jhead">
@@ -191,7 +189,7 @@ export default function HeroNightTemple({ className }: { className?: string }) {
               <ol className="hnt-steps">
                 {STEPS.map((s, i) => (
                   <li key={s.h} className="hnt-step" data-on={i === story.step} aria-hidden={!reduced && i !== story.step ? true : undefined}>
-                    <p className="hnt-time">{reduced ? `${CLOCK[i]} · ` : ''}{s.t}</p>
+                    {reduced && <p className="hnt-time">{CLOCK[i]} · {s.t}</p>}
                     <h3>{s.h}</h3>
                     <p>{s.p}</p>
                   </li>
@@ -207,7 +205,7 @@ export default function HeroNightTemple({ className }: { className?: string }) {
         </div>
       </section>
 
-      <section id="nt-stays" className="hnt-sec hnt-stays" aria-labelledby="hnt-hs" tabIndex={-1}>
+      <section id="nt-stays" className="hnt-sec hnt-stays" aria-label="Rooms" tabIndex={-1}>
         <div className="hnt-sechead">
           <p className="hnt-kicker">Where you sleep</p>
           <ScrollFloat as="h2" text="Three rooms, none of them loud." className="hnt-h2" stagger={0.5} />

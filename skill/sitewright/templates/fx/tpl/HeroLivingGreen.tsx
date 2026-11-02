@@ -4,7 +4,7 @@ import { Preview } from './_dash';
 import { useScheme, Dialog, Subscribe, jump, useReduced, useScrollLinked } from './_ha-kit';
 import { Atmosphere } from './_ha-green-gl';
 import { frond, LeafMark } from './_ha-green-art';
-import { Terrarium } from './_ha-green-jar';
+import { Terrarium, Legend } from './_ha-green-jar';
 import { Shelf } from './_ha-green-shelf';
 import { CartBody } from './_ha-green-cart';
 import LiquidMetalButton from '../ui/LiquidMetalButton';
@@ -30,6 +30,7 @@ const STEPS = [
   { h: 'Blend', p: 'Small batches of sixty jars. Each one is labelled with the date it was poured and the tank it came from.' },
   { h: 'Grow back', p: 'Return the jar, plant the packaging, repeat. The loop is the product.' },
 ];
+const NOTES = [['No. 059', 'Fern balm, a batch of sixty', '14 Oct'], ['No. 058', 'Moss mist, now in spring water', '29 Sep'], ['No. 057', 'The refill pouch, redesigned', '12 Sep']] as const;
 const STORY = 'We pour sixty jars at a time. Nothing is extracted, nothing is rushed, and everything that is left over goes back into the garden bed it came from.';
 
 /** big out-of-focus fronds that frame the hero corners, like a lens close to a plant */
@@ -88,11 +89,12 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
           <Terrarium />
           <p className="hlg-lede">Moss and fern, fermented slowly into mists, balms and living terrarium kits. Everything arrives with the soil still on it.</p>
         </div>
-        <div className="hlg-cta">
-          <LiquidMetalButton onClick={() => jump('hlg-shelf', reduced)({ preventDefault() {} })} size={56}>Shop the living shelf</LiquidMetalButton>
+        <div className="hlg-act">
+          <LiquidMetalButton onClick={() => jump('hlg-shelf', reduced)({ preventDefault() {} })} size={56} dispersion={0.5}>Shop the living shelf</LiquidMetalButton>
           <a className="hlg-ghost" href="#hlg-method" onClick={go('hlg-method')}>How it grows</a>
         </div>
         <ul className="hlg-rail" aria-label="In numbers">{RAIL.map(([n, u, l]) => <li key={l}><b>{n}<small>{u}</small></b><span>{l}</span></li>)}</ul>
+        <Legend />
         <Atmosphere hero={hero} reduced={reduced} />
         <Frame />
         <GradualBlur edges={['bottom']} size={72} strength={10} layers={6} tint="var(--hg-bg0)" tintOpacity={0.5} />
@@ -108,19 +110,30 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
       <section id="hlg-shelf" className="hlg-sec hlg-shelf" aria-labelledby="hlg-hs" tabIndex={-1}><Shelf cart={cart} add={add} say={setLive} /></section>
 
       <section id="hlg-method" className="hlg-sec hlg-method" data-sl="pass" aria-labelledby="hlg-hm" tabIndex={-1}>
+        <div className="hlg-mcol">
         <p className="hlg-kicker">How a jar is made</p><h2 id="hlg-hm">From the north slope to your shelf, <em>and back.</em></h2>
         <div className="hlg-vine">
           <svg viewBox="0 0 40 1000" preserveAspectRatio="none" aria-hidden="true"><path className="hlg-vine-bg" d="M20 0 C-6 120 46 200 20 330 S-6 560 20 680 46 860 20 1000" /><path className="hlg-vine-fg" pathLength="100" d="M20 0 C-6 120 46 200 20 330 S-6 560 20 680 46 860 20 1000" /></svg>
           <ol>{STEPS.map((s, i) => <li key={s.h} className="hlg-vstep" data-sl="pass"><span className="hlg-node" aria-hidden="true">{i + 1}</span><div><h3>{s.h}</h3><p>{s.p}</p></div></li>)}</ol>
         </div>
+        </div>
+        <aside className="hlg-grow" aria-hidden="true">
+          <svg viewBox="0 0 360 600" focusable="false"><g transform="translate(120 590)"><path className="hlg-gf" pathLength="100" d={frond(520, 0.28, 18)} /></g><g transform="translate(120 590) rotate(-34)"><path className="hlg-gf hlg-gf2" pathLength="100" d={frond(270, -0.35, 12)} /></g><g transform="translate(120 590) rotate(30)"><path className="hlg-gf hlg-gf2" pathLength="100" d={frond(230, 0.4, 11)} /></g><circle className="hlg-gdot" cx="120" cy="590" r="6" /></svg>
+          <span className="hlg-wk hlg-wk-a">Week 0</span><span className="hlg-wk hlg-wk-b">Week 9</span>
+        </aside>
       </section>
 
       <section id="hlg-grove" className="hlg-sec hlg-grove" aria-labelledby="hlg-hg" tabIndex={-1}>
         <div className="hlg-groveinner">
+          <div className="hlg-gl">
           <h2 id="hlg-hg">Join the <em>grove</em></h2>
           <p>A monthly note from the greenhouse: what is fermenting, what is flowering and when the next batch of sixty is poured. First access to every small drop.</p>
           <Subscribe id="hlg" cls="hlg" hideLabel cta="Join the grove" doneTitle={(e) => `Welcome to the grove, ${e}.`} doneText="Your first note arrives with the next full moon. Unsubscribe whenever you like." />
           <p className="hlg-code">First jar, 10% off with <b>MOSS10</b><button type="button" onClick={copy}>{copied ? 'Copied' : 'Copy code'}</button></p>
+          </div>
+          <div className="hlg-gr"><p className="hlg-kicker">From the last three notes</p>
+            <ol className="hlg-notes">{NOTES.map(([n, t, d]) => <li key={n}><span>{n}</span><b>{t}</b><time>{d}</time></li>)}</ol>
+          </div>
         </div>
       </section>
 
