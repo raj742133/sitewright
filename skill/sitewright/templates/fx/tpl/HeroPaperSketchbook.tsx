@@ -17,7 +17,7 @@ export interface HeroPaperSketchbookProps {
   className?: string;
 }
 
-const TABS: TabItem[] = [{ id: 'hps-book', label: 'Sketchbook', focus: true }, { id: 'hps-loupe', label: 'Loupe' }, { id: 'hps-work', label: 'Commissions' }, { id: 'hps-about', label: 'About' }, { id: 'hps-contact', label: 'Contact' }];
+const TABS: TabItem[] = [{ id: 'hps-book', label: 'Sketchbook', focus: true }, { id: 'hps-loupe', label: 'Loupe', focus: true }, { id: 'hps-work', label: 'Commissions', focus: true }, { id: 'hps-about', label: 'About', focus: true }, { id: 'hps-contact', label: 'Contact', focus: true }];
 const NOW = ['a book jacket for a salt-marsh essay', 'three tea tins and one teapot', 'a poster for a night tram', 'a wren, four seconds long'];
 
 /** Personal portfolio for an illustrator, built as one desk: the first screen is an open sketchbook whose page corner curls under the pointer, with a loupe over the drawings and the navigation as index tabs. Warm window light by day, a lamp at night. */
