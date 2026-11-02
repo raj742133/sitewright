@@ -1,39 +1,52 @@
 [
-  {
-    "id": "hero-paper-sketchbook",
-    "label": "Paper sketchbook hero",
-    "desc": "An illustrator's portfolio built as a paper world: drawn SVG plates on warm paper, a sketchbook whose pages turn by drag or arrow keys with a 3D leaf and travelling shade, a magnifier loupe over the artwork, a filterable commissions index, a rates dialog and a validated contact form.",
-    "source": "Original",
-    "group": "page",
-    "files": [
-      "HeroPaperSketchbook.tsx",
-      "_hps-art.tsx",
-      "_hps-book.tsx",
-      "_hps-loupe.tsx",
-      "_dash.tsx",
-      "_shared.tsx"
-    ],
-    "css": [
-      "tpl-hero-paper-sketchbook"
-    ],
-    "use": "illustrator, artist or designer portfolio; any personal site that should feel handmade"
-  },
-  {
-    "id": "hero-bookshelf",
-    "label": "Bookshelf studio hero",
-    "desc": "A studio portfolio whose tools are books on a shelf: CSS 3D cuboid books with drawn spines and covers that swing out on select, a sliding carousel row with keyboard, swipe and pointer tilt, a detail panel with working actions, a catalogue dialog, journal accordion and a validated booking form.",
-    "source": "Original",
-    "group": "page",
-    "files": [
-      "HeroBookshelf.tsx",
-      "_hbs-data.tsx",
-      "_hbs-shelf.tsx",
-      "_dash.tsx",
-      "_shared.tsx"
-    ],
-    "css": [
-      "tpl-hero-bookshelf"
-    ],
-    "use": "studio, product or tool-maker portfolio; any catalogue of a handful of items"
-  }
+ {
+  "id": "hero-paper-sketchbook",
+  "label": "Paper sketchbook hero",
+  "desc": "An illustrator's portfolio built as a paper world: drawn SVG plates on warm paper, a sketchbook whose pages turn by drag or arrow keys with a 3D leaf and travelling shade, a magnifier loupe over the artwork, a filterable commissions index, a rates dialog and a validated contact form.",
+  "source": "Original",
+  "group": "page",
+  "files": [
+   "HeroPaperSketchbook.tsx",
+   "_hps-art.tsx",
+   "_hps-book.tsx",
+   "_hps-loupe.tsx",
+   "_dash.tsx",
+   "_shared.tsx"
+  ],
+  "css": [
+   "tpl-hero-paper-sketchbook"
+  ],
+  "use": "illustrator, artist or designer portfolio; any personal site that should feel handmade"
+ },
+ {
+  "id": "hero-bookshelf",
+  "label": "Bookshelf studio hero",
+  "desc": "A studio portfolio whose first screen is a lit room: a full-width oak shelf of seven CSS 3D books with a pooled spotlight (daylight library or lamp-lit study), drag, arrow keys or a magnifying dock to pull one forward and show its cover, a detail strip with working actions, a stacking method section, catalogue dialog, journal accordion and a validated booking form.",
+  "source": "Original",
+  "group": "page",
+  "files": [
+   "HeroBookshelf.tsx",
+   "_hbs-data.tsx",
+   "_hbs-shelf.tsx",
+   "_ha-kit.tsx",
+   "_dash.tsx",
+   "_shared.tsx",
+   "../ui/LightRays.tsx",
+   "../ui/_bg-a.tsx",
+   "../ui/_t2.ts",
+   "../ui/Dock.tsx",
+   "../ui/_menus-kit.tsx",
+   "../ui/ScrollStack.tsx",
+   "../ui/_galleries-data.tsx",
+   "../ui/_galleries-hooks.ts"
+  ],
+  "css": [
+   "tpl-hero-bookshelf",
+   "ui-light-rays",
+   "ui-dock",
+   "ui-menus-stage",
+   "ui-scroll-stack"
+  ],
+  "use": "studio, product or tool-maker portfolio; any catalogue of a handful of items"
+ }
 ]

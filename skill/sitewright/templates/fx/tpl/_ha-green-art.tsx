@@ -1,7 +1,6 @@
 'use client';
-import { seeded } from './_ha-kit';
 
-/* Hollowfern page art: a procedural fern, a moss mound, product drawings and the product list. Pure functions of fixed numbers, so
+/* Hollowfern page art: the fern-frond path generator, product drawings and the product list. Pure functions of fixed numbers, so
    server and client render the same markup. Colours are CSS variables defined per theme in the page css. */
 
 export interface Product { id: string; name: string; kind: 'mist' | 'balm' | 'wash' | 'dome' | 'packet' | 'mix'; cat: 'Face' | 'Home' | 'Soil'; price: number; note: string; tag: string }
@@ -15,7 +14,7 @@ export const PRODUCTS: Product[] = [
 ];
 
 /** a fern frond growing up from (0,0): curved stem with paired leaflets, as one path */
-function frond(len: number, bend: number, n: number): string {
+export function frond(len: number, bend: number, n: number): string {
   const ctrl = { x: bend * len * 0.6, y: -len * 0.55 }, end = { x: bend * len, y: -len };
   const pt = (t: number) => ({ x: 2 * (1 - t) * t * ctrl.x + t * t * end.x, y: 2 * (1 - t) * t * ctrl.y + t * t * end.y });
   const tg = (t: number) => { const dx = 2 * (1 - t) * ctrl.x + 2 * t * (end.x - ctrl.x), dy = 2 * (1 - t) * ctrl.y + 2 * t * (end.y - ctrl.y); const l = Math.hypot(dx, dy) || 1; return { x: dx / l, y: dy / l }; };
@@ -32,33 +31,6 @@ function frond(len: number, bend: number, n: number): string {
   }
   return d;
 }
-const FRONDS = [
-  { len: 330, bend: -0.55, n: 15, rot: -28, x: 150, c: 1, delay: 0 },
-  { len: 380, bend: 0.4, n: 17, rot: 14, x: 200, c: 0, delay: -2 },
-  { len: 300, bend: 0.7, n: 14, rot: 40, x: 240, c: 2, delay: -4 },
-  { len: 260, bend: -0.3, n: 12, rot: -6, x: 190, c: 2, delay: -1 },
-  { len: 230, bend: 0.2, n: 11, rot: 66, x: 250, c: 1, delay: -3 },
-  { len: 215, bend: -0.5, n: 11, rot: -62, x: 140, c: 0, delay: -5 },
-].map((f) => ({ ...f, d: frond(f.len, f.bend, f.n) }));
-const MOUND = (() => { const r = seeded(31); return Array.from({ length: 70 }, () => ({ x: 20 + r() * 360, y: 468 + r() * 40, r: 3 + r() * 9, c: Math.floor(r() * 3) })); })();
-const DEW = [[120, 300], [262, 214], [210, 120], [310, 340], [170, 210]];
-
-/** the hero plant: swaying fern fronds on a moss mound, drawn in SVG */
-export function Fern() {
-  return (
-    <svg className="hlg-fern" viewBox="0 0 400 520" role="img" aria-label="Illustration of green fern fronds growing from a mound of moss">
-      <g transform="translate(0 482)">
-        {FRONDS.map((f, i) => (
-          <g key={i} transform={`translate(${f.x} 0)`}><g className="hlg-sway" style={{ animationDelay: `${f.delay}s`, transform: `rotate(${f.rot}deg)` }}><path className={`hlg-frond hlg-f${f.c}`} d={f.d} /></g></g>
-        ))}
-      </g>
-      <path className="hlg-mound" d="M-10 520 V478 Q60 440 130 458 Q200 424 270 456 Q340 436 410 480 V520 Z" />
-      {MOUND.map((m, i) => <circle key={i} className={`hlg-moss hlg-m${m.c}`} cx={m.x} cy={m.y} r={m.r} />)}
-      {DEW.map(([x, y], i) => <circle key={i} className="hlg-dew" cx={x} cy={y} r="3.2" style={{ animationDelay: `${i * -1.3}s` }} />)}
-    </svg>
-  );
-}
-
 /** product drawings: small and flat, each in the same three greens */
 export function Art({ kind }: { kind: Product['kind'] }) {
   return (
