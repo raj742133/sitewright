@@ -101,8 +101,7 @@ export default function HeroLivingGreen({ className }: { className?: string }) {
       </section>
 
       <section className="hlg-story" aria-labelledby="hlg-hw">
-        <h2 id="hlg-hw" className="ha-sr">Why Hollowfern</h2>
-        <p className="hlg-kicker">Slow by design</p>
+        <h2 id="hlg-hw" className="hlg-kicker">Slow by design</h2>
         <ScrollReveal text={STORY} className="hlg-reveal" rail={false} blur={4} dim={0.22} start={0.92} end={0.55} />
         <ul className="hlg-pillars">{PILLARS.map((f, i) => <li key={f.h}><span className="hlg-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span><h3>{f.h}</h3><p>{f.p}</p></li>)}</ul>
       </section>

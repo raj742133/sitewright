@@ -103,7 +103,7 @@
 .hbs .hbs-vp.ui-variable-proximity-root { text-wrap: balance; text-align: left; font-size: clamp(42px, 8.2cqi, 140px); line-height: 1; letter-spacing: -.045em; touch-action: auto; }
 .hbs-vp .ui-variable-proximity-size { font: italic 700 1em / 1 var(--hbs-serif); }
 .hbs-vp .ui-variable-proximity-a { font: 700 1em / 1 var(--hbs-serif); letter-spacing: -.045em; }
-.hbs-vp .ui-variable-proximity-b { font: italic 400 1em / 1 var(--hbs-serif); letter-spacing: -.03em; }
+.hbs-vp .ui-variable-proximity-b { font: italic 700 1em / 1 var(--hbs-serif); letter-spacing: -.04em; color: color-mix(in srgb, var(--primary, #2563eb) 72%, var(--ink, #111)); }
 .hbs-vp .ui-variable-proximity-halo { display: none; }
 .hbs-aside { font: 400 18px / 1.5 var(--hbs-serif); color: var(--muted, #5b6472); max-width: 38ch; }
 .hbs-shelf .hbs-aside { grid-column: 9 / -1; align-self: end; margin-bottom: clamp(28px, 4cqi, 60px); }

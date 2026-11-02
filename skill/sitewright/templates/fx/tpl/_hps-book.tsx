@@ -124,7 +124,6 @@ export function Sketchbook({ reduced, name, lead, pages = PAGES, onTurn }: Sketc
     else if (e.key === 'End') { e.preventDefault(); jump(L); }
   };
 
-  const total = pages.length;
   const label = turned === 0 ? 'Cover spread' : turned >= L ? 'The last page' : `Spread ${turned + 1} of ${L + 1}`;
   const shown = [pages[turned * 2 - 1], pages[turned * 2]].filter(Boolean).map((p) => p!.title).join(' and ');
   const sh = act ? Math.sin(Math.PI * act.p) : 0;
@@ -187,7 +186,7 @@ export function Sketchbook({ reduced, name, lead, pages = PAGES, onTurn }: Sketc
       </div>
       <div className="hps-bk-bar">
         <button type="button" className="hps-ib" onClick={() => go(-1)} disabled={turned <= 0} aria-label="Previous page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <p className="hps-bk-label" aria-live="polite"><b>{label}</b><span>{shown || `${name}'s desk`}</span><span className="hps-sr"> {total} pages in all.</span></p>
+        <p className="hps-bk-label" aria-live="polite"><b>{label}</b><span>{shown || `${name}'s desk`}</span></p>
         <div className="hps-bk-dots" role="group" aria-label="Jump to a spread">
           {Array.from({ length: L + 1 }, (_, n) => <button key={n} type="button" className="hps-dot" aria-label={`Spread ${n + 1} of ${L + 1}`} aria-current={n === turned ? 'true' : undefined} onClick={() => jump(n)}><i /></button>)}
         </div>

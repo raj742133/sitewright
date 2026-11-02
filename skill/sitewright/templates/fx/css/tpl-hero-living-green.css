@@ -66,7 +66,7 @@
 .hlg-h-r { grid-column: 3; padding-left: clamp(10px, 1.6cqi, 28px); translate: calc(var(--p) * 70px) 0; opacity: calc(1 - var(--p) * 1.4); }
 .hlg-ln { display: block; }
 .hlg h1 em { font-size: 1.22em; letter-spacing: -.045em; line-height: .9; }
-.hlg-lede { grid-column: 3; grid-row: 3; align-self: start; z-index: 3; margin: 22px 0 0 clamp(10px, 1.6cqi, 28px); max-width: 29ch; font-size: clamp(14.5px, 1.15cqi, 17px); line-height: 1.55; color: var(--hg-muted); }
+.hlg-lede { grid-column: 3; grid-row: 3; align-self: start; z-index: 3; margin: 22px 0 0 clamp(10px, 1.6cqi, 28px); max-width: 29ch; font-size: 16px; line-height: 1.55; color: var(--hg-muted); }
 .hlg-jar { grid-column: 2; grid-row: 1 / 4; position: relative; z-index: 2; width: var(--jar-w); height: var(--jar-h); }
 .hlg-halo { position: absolute; inset: -14% -46% -4% -46%; z-index: -1; background: radial-gradient(closest-side, color-mix(in srgb, var(--hg-amber-lit) 34%, transparent), transparent 72%); }
 :root:root .hlg[data-scheme='dark'] .hlg-halo { background: radial-gradient(closest-side, color-mix(in srgb, var(--hg-leaf2) 24%, transparent), transparent 72%); }
@@ -120,7 +120,7 @@
 .hlg-calls li > * { max-width: calc(var(--len) - 14px); }
 .hlg-calls li[data-side='r'] > * { justify-self: end; }
 .hlg-calls b { font: 600 11px/1.3 var(--font-mono, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--hg-deep); }
-.hlg-call-p { font-size: 12.5px; line-height: 1.35; color: var(--hg-muted); max-width: 27ch; text-shadow: 0 0 10px var(--hg-bg0), 0 0 3px var(--hg-bg0); }
+.hlg-call-p { font-size: 13px; line-height: 1.35; color: var(--hg-muted); max-width: 27ch; text-shadow: 0 0 10px var(--hg-bg0), 0 0 3px var(--hg-bg0); }
 .hlg-calls li[data-side='r'] .hlg-call-p { margin-left: auto; }
 .hlg-legend, .hlg-call-n { display: none; }
 .hlg-act { position: relative; z-index: 4; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 16px; margin-top: 26px; }
@@ -133,8 +133,8 @@
 .hlg-rail li { display: grid; gap: 2px; padding: 12px 20px 16px; border-left: 1px solid var(--hg-line); }
 .hlg-rail li:first-child { border-left: 0; padding-left: 0; }
 .hlg-rail b { font: 400 clamp(30px, 3cqi, 44px)/1 var(--hg-serif); letter-spacing: -.03em; color: var(--hg-deep); font-variant-numeric: lining-nums tabular-nums; }
-.hlg-rail small { font: 600 12px/1 var(--font-mono, monospace); margin-left: 4px; color: var(--hg-amber-ink); letter-spacing: .06em; text-transform: uppercase; }
-.hlg-rail span { font-size: 12.5px; color: var(--hg-muted); }
+.hlg-rail small { font: 600 12px/1 var(--font-mono, monospace); margin-left: 4px; font-size: 13px; color: var(--hg-amber-ink); letter-spacing: .06em; text-transform: uppercase; }
+.hlg-rail span { font-size: 13px; color: var(--hg-muted); }
 .hlg-hero .ui-gradual-blur { z-index: 1; }
 
 /* entrance: staggered rises, the jar emerges, hairlines draw (all off under reduced motion) */
@@ -148,8 +148,8 @@
 
 /* ---------- story ---------- */
 .hlg-story { position: relative; padding: clamp(72px, 11cqi, 150px) clamp(16px, 5cqi, 72px) clamp(48px, 7cqi, 96px); max-width: 1400px; margin: 0 auto; }
-.hlg-kicker { font: 600 12.5px/1.2 var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; color: var(--hg-muted); margin-bottom: 14px; }
-.hlg .hlg-reveal { font: 400 clamp(28px, 4.5cqi, 64px)/1.14 var(--hg-serif); letter-spacing: -.025em; max-width: 21em; color: var(--hg-deep); }
+.hlg .hlg-kicker { max-width: none; font: 600 12px/1.2 var(--font-mono, monospace); letter-spacing: .16em; text-transform: uppercase; color: var(--hg-muted); margin-bottom: 14px; }
+.hlg .hlg-reveal { font: 400 clamp(28px, 4.5cqi, 64px)/1.2 var(--hg-serif); letter-spacing: -.025em; max-width: 21em; color: var(--hg-deep); }
 .hlg-pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 4cqi, 64px); margin-top: clamp(48px, 7cqi, 96px); }
 .hlg-pillars li { border-top: 1px solid var(--hg-deep); padding-top: 16px; display: grid; gap: 8px; align-content: start; }
 .hlg-num { font: italic 400 28px/1 var(--hg-serif); color: var(--hg-amber-ink); font-variant-numeric: lining-nums tabular-nums; }
@@ -186,7 +186,7 @@
 .hlg-a-leaf { fill: var(--hg-leaf2); }
 .hlg-a-amber { fill: var(--hg-amber-lit); } .hlg-a-cream { fill: var(--hg-cream); } .hlg-a-hi { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; opacity: .65; }
 .hlg-bento .ui-magic-bento-cell p.hlg-pnote { order: 3; display: block; -webkit-line-clamp: unset; overflow: visible; font-size: 14px; line-height: 1.45; color: var(--hg-muted); }
-.hlg-bento .ui-magic-bento-cell[data-size='big'] p.hlg-pnote { font-size: 15.5px; max-width: 40ch; }
+.hlg-bento .ui-magic-bento-cell[data-size='big'] p.hlg-pnote { font-size: 15px; max-width: 40ch; }
 .hlg-buy { order: 4; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px; }
 .hlg-price { font: 400 26px/1 var(--hg-serif); font-variant-numeric: lining-nums tabular-nums; color: var(--hg-deep); }
 .hlg-add { min-height: 44px; padding: 0 18px; border-radius: 99px; border: 1px solid var(--hg-deep); background: transparent; color: var(--hg-deep); font-weight: 700; font-size: 14px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
@@ -283,7 +283,7 @@
   .hlg-legend li { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-content: start; padding: 10px 0 12px; border-top: 1px solid var(--hg-line); }
   .hlg-legend span { grid-row: 1 / 3; font: 600 11px/1.5 var(--font-mono, monospace); color: var(--hg-amber-ink); }
   .hlg-legend b { font: 600 11px/1.5 var(--font-mono, monospace); letter-spacing: .1em; text-transform: uppercase; color: var(--hg-deep); }
-  .hlg-legend em { font-style: normal; font-size: 12.5px; line-height: 1.4; color: var(--hg-muted); }
+  .hlg-legend em { font-style: normal; font-size: 13px; line-height: 1.4; color: var(--hg-muted); }
   .hlg-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hlg-rail li:nth-child(odd) { border-left: 0; padding-left: 0; }
   .hlg-pillars { grid-template-columns: 1fr; gap: 28px; }
@@ -318,6 +318,7 @@
 @media (pointer: coarse) { .hlg-pins li { width: 26px; height: 26px; } }
 @media (prefers-reduced-motion: reduce) {
   .hlg *, .hlg *::before, .hlg *::after { animation: none !important; transition: none !important; }
+  .hlg-trail { opacity: 0; }
   .hlg-vine-fg { stroke-dashoffset: 30; }
   .hlg-vstep { opacity: 1; transform: none; }
 }
