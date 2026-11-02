@@ -2,7 +2,7 @@
 // The desk around the open sketchbook: light that is a window by day and a lamp by night (both drawn in CSS from the host tokens), a
 // tea ring, a pencil and an eraser lying on the wood, floating dust in the lamp light, and the index-tab ribbon that is the navigation.
 import type { MouseEvent } from 'react';
-import { rng } from './_hps-art';
+import { Plate, rng } from './_hps-art';
 
 export function Room() {
   const rnd = rng(7);
@@ -21,6 +21,7 @@ export function Objects() {
   return (
     <>
       <span className="hps-ring" aria-hidden="true" />
+      <div className="hps-loose" aria-hidden="true"><span className="hps-tape hps-tape-a" /><Plate kind="teapot" /></div>
       <svg className="hps-pencil" viewBox="0 0 330 30" aria-hidden="true">
         <g className="hps-pen-shadow"><rect x="64" y="6" width="226" height="22" rx="3" /></g>
         <path className="hps-pen-wood" d="M70 3L12 15L70 27Z" />

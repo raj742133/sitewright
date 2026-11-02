@@ -29,6 +29,20 @@ export function Atmosphere({ hero, reduced }: { hero: RefObject<HTMLElement | nu
   const sp = useRef<HTMLCanvasElement | null>(null);
   const ptr = useRef({ x: 0, y: 0, tx: 0, ty: 0, last: -9, coarse: false });
   useEffect(() => { sp.current = sprite(pal.current['hg-spore'] || 'rgba(255,214,120,.9)'); }, [pal, rev]);
+  // spores keep clear of text: the boxes of the headline, lede and callouts, in hero coordinates
+  const keep = useRef<number[][]>([]);
+  useEffect(() => {
+    const el = hero.current; if (!el) return;
+    const meas = () => {
+      const o = el.getBoundingClientRect();
+      keep.current = Array.from(el.querySelectorAll('.hlg-h-l, .hlg-h-r, .hlg-lede, .hlg-calls li, .hlg-legend')).map((n) => { const r = n.getBoundingClientRect(); return [r.left - o.left, r.top - o.top, r.right - o.left, r.bottom - o.top]; });
+    };
+    meas();
+    const ro = new ResizeObserver(meas); ro.observe(el);
+    const t = window.setTimeout(meas, 900);
+    document.fonts?.ready.then(meas).catch(() => {});
+    return () => { ro.disconnect(); window.clearTimeout(t); };
+  }, [hero, rev]);
   useEffect(() => {
     const el = hero.current; if (!el) return;
     ptr.current.coarse = !!window.matchMedia?.('(pointer: coarse)').matches;
@@ -65,7 +79,9 @@ export function Atmosphere({ hero, reduced }: { hero: RefObject<HTMLElement | nu
       const X = xx * w - p.x * 26 * z, Y = yy * h - p.y * 14 * z;
       const size = (7 + s.z * 17) * Math.min(1.3, w / 900 + 0.5);
       const tw = 0.55 + 0.45 * Math.sin(t * 1.1 * s.w + s.ph);
-      ctx.globalAlpha = (0.25 + 0.55 * tw) * (0.5 + 0.5 * s.z);
+      let al = (0.25 + 0.55 * tw) * (0.5 + 0.5 * s.z);
+      for (const k of keep.current) if (X > k[0]! - size && X < k[2]! + size && Y > k[1]! - size && Y < k[3]! + size) { al *= 0.08; break; }
+      ctx.globalAlpha = al;
       ctx.drawImage(img, X - size, Y - size, size * 2, size * 2);
     }
     ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';

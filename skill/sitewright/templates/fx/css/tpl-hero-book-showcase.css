@@ -43,6 +43,7 @@
 .hbs-h1 i { font-weight: 400; color: color-mix(in srgb, var(--primary, #2563eb) 72%, var(--ink, #111)); letter-spacing: -.04em; }
 .hbs-h1-over { position: absolute; inset: 0; padding-top: inherit; color: #f4ead2; clip-path: polygon(0 0, 0 0, 0 0); user-select: none; -webkit-user-select: none; }
 .hbs-h1-over i { color: #ffb88f; }
+.hbs-h1-pg, .hbs-h1-pg i { color: #26231d; }
 .hbs-stage { --bw: 300px; --bh: 450px; --bd: 51px; grid-column: 7 / span 4; grid-row: 2 / span 2; position: relative; z-index: 1; min-height: clamp(380px, 66svh, 780px); }
 .hbs-stage3d { position: absolute; inset: 0; perspective: 1600px; perspective-origin: 50% 50%; pointer-events: none; }
 .hbs-floor { position: absolute; left: 50%; top: calc(50% + var(--bh) / 2 + 10px); width: calc(var(--bw) * 1.1); height: calc(var(--bw) * .14); margin-left: calc(var(--bw) * -.55); border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, .5), transparent); filter: blur(9px); pointer-events: none; }

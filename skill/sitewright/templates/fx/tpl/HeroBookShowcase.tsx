@@ -51,7 +51,7 @@ export default function HeroBookShowcase({ className }: { className?: string }) 
   const [panel, setPanel] = useState<Panel>(null);
   const [live, setLive] = useState('');
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
-  const refs = { hero: useRef<HTMLElement>(null), stage: useRef<HTMLDivElement>(null), book: useRef<HTMLDivElement>(null), hl: useRef<HTMLDivElement>(null), over: useRef<HTMLDivElement>(null), ink: useRef<HTMLHeadingElement>(null), floor: useRef<HTMLDivElement>(null) };
+  const refs = { hero: useRef<HTMLElement>(null), stage: useRef<HTMLDivElement>(null), book: useRef<HTMLDivElement>(null), hl: useRef<HTMLDivElement>(null), over: useRef<HTMLDivElement>(null), pg: useRef<HTMLDivElement>(null), floor: useRef<HTMLDivElement>(null) };
   const stageRefs = useRef(refs).current;
   useBookStage(stageRefs, reduced);
   const b = BOOKS[sel]!;
@@ -82,8 +82,9 @@ export default function HeroBookShowcase({ className }: { className?: string }) 
           <div className="hbs-wrap">
             <ul className="hbs-run" aria-label="This edition"><li>Autumn list 2026</li><li>Fiction, essays, poems</li><li>Twelve new books</li></ul>
             <div className="hbs-hl" ref={refs.hl}>
-              <h1 id="hbs-h1" ref={refs.ink} className="hbs-h1"><Lines /></h1>
+              <h1 id="hbs-h1" className="hbs-h1"><Lines /></h1>
               <div className="hbs-h1 hbs-h1-over" ref={refs.over} aria-hidden="true"><Lines /></div>
+              <div className="hbs-h1 hbs-h1-over hbs-h1-pg" ref={refs.pg} aria-hidden="true"><Lines /></div>
             </div>
             <div className="hbs-stage" ref={refs.stage}>
               <div className="hbs-floor" ref={refs.floor} aria-hidden="true" />

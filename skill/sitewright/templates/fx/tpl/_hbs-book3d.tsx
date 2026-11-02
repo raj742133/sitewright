@@ -4,8 +4,8 @@ import { clamp } from './_ha-kit';
 import type { Book } from './_ha-books';
 
 /* Quillfold Press: the tall 3D book of the first screen. Pure CSS 3D (front board, spine, page block, top and bottom edges, back) driven by
-   one rAF loop that also projects the book's corners to the screen, so the headline can be cut along the real silhouette:
-   ink where it crosses the page, paper-coloured where it crosses the cover. */
+   one rAF loop that also projects the book's corners to the screen, so the headline can be redrawn along the real silhouette:
+   page-coloured ink on the page, paper-coloured over the cover, dark over the paper edge of the book. */
 
 export const PERSP = 1600;
 const SERIF = "'Iowan Old Style', 'Palatino Linotype', Palatino, Charter, 'Bitstream Charter', Georgia, serif";
@@ -31,24 +31,28 @@ function hull(pts: [number, number][]): [number, number][] {
   return lo.slice(0, -1).concat(up.slice(0, -1));
 }
 
-/** Screen polygon of the cover and (when it faces the viewer) the spine, in px relative to the book centre. */
-function coverPoly(w: number, h: number, d: number, pose: Pose): [number, number][] {
+const visible = (n: V3, c: V3, pose: Pose) => { const nn = xf(n, { ...pose, ty: 0 }), cc = xf(c, pose); return nn[0] * (0 - cc[0]) + nn[1] * (0 - cc[1]) + nn[2] * (PERSP - cc[2]) > 0; };
+
+/** Screen polygons (px from the book centre) of the dark faces (cover, plus the spine when it faces the viewer) and of the paper faces (page block, top, bottom). */
+function silhouettes(w: number, h: number, d: number, pose: Pose): { cover: [number, number][]; paper: [number, number][] } {
   const hw = w / 2, hh = h / 2, hd = d / 2;
-  const pts: [number, number][] = [];
-  ([[-hw, -hh, hd], [hw, -hh, hd], [hw, hh, hd], [-hw, hh, hd]] as V3[]).forEach((c) => pts.push(proj(xf(c, pose))));
-  // spine faces left; it is visible when its rotated normal points towards the camera
-  const n = xf([-1, 0, 0], { ...pose, ty: 0 }), c = xf([-hw, 0, 0], pose);
-  if (n[0] * (0 - c[0]) + n[1] * (0 - c[1]) + n[2] * (PERSP - c[2]) > 0) ([[-hw, -hh, -hd], [-hw, hh, -hd]] as V3[]).forEach((q) => pts.push(proj(xf(q, pose))));
-  return hull(pts);
+  const cover: [number, number][] = [], paper: [number, number][] = [];
+  const add = (to: [number, number][], pts: V3[]) => pts.forEach((c) => to.push(proj(xf(c, pose))));
+  add(cover, [[-hw, -hh, hd], [hw, -hh, hd], [hw, hh, hd], [-hw, hh, hd]]);
+  if (visible([-1, 0, 0], [-hw, 0, 0], pose)) add(cover, [[-hw, -hh, -hd], [-hw, hh, -hd]]);
+  if (visible([1, 0, 0], [hw, 0, 0], pose)) add(paper, [[hw, -hh + 3, hd], [hw, hh - 3, hd], [hw, hh - 3, -hd], [hw, -hh + 3, -hd]]);
+  if (visible([0, -1, 0], [0, -hh, 0], pose)) add(paper, [[-hw + 2, -hh + 3, hd], [hw - 2, -hh + 3, hd], [hw - 2, -hh + 3, -hd], [-hw + 2, -hh + 3, -hd]]);
+  if (visible([0, 1, 0], [0, hh, 0], pose)) add(paper, [[-hw + 2, hh - 3, hd], [hw - 2, hh - 3, hd], [hw - 2, hh - 3, -hd], [-hw + 2, hh - 3, -hd]]);
+  return { cover: hull(cover), paper: paper.length ? hull(paper) : [] };
 }
 
-export interface StageRefs { hero: RefObject<HTMLElement | null>; stage: RefObject<HTMLElement | null>; book: RefObject<HTMLElement | null>; hl: RefObject<HTMLElement | null>; over: RefObject<HTMLElement | null>; ink: RefObject<HTMLElement | null>; floor: RefObject<HTMLElement | null> }
+export interface StageRefs { hero: RefObject<HTMLElement | null>; stage: RefObject<HTMLElement | null>; book: RefObject<HTMLElement | null>; hl: RefObject<HTMLElement | null>; over: RefObject<HTMLElement | null>; pg: RefObject<HTMLElement | null>; floor: RefObject<HTMLElement | null> }
 
 /** Drives the hero book: slow turn, pointer tilt, scroll exit, intro; keeps the headline clip paths in step. One loop, paused off screen. */
 export function useBookStage(r: StageRefs, reduced: boolean) {
   useEffect(() => {
-    const hero = r.hero.current, stage = r.stage.current, book = r.book.current, hl = r.hl.current, over = r.over.current, ink = r.ink.current, floor = r.floor.current;
-    if (!hero || !stage || !book || !hl || !over || !ink) return;
+    const hero = r.hero.current, stage = r.stage.current, book = r.book.current, hl = r.hl.current, over = r.over.current, pg = r.pg.current, floor = r.floor.current;
+    if (!hero || !stage || !book || !hl || !over || !pg) return;
     const coarse = !!window.matchMedia?.('(pointer: coarse)').matches;
     let W = 0, H = 0, D = 0, raf = 0, last = 0, t = 0, inView = true, vis = !document.hidden;
     const ptr = { x: 0, y: 0, cx: 0, cy: 0 };
@@ -77,11 +81,10 @@ export function useBookStage(r: StageRefs, reduced: boolean) {
       const sr = stage.getBoundingClientRect(), lr = hl.getBoundingClientRect();
       const k = sr.width / Math.max(1, stage.offsetWidth) || 1;
       const ox = (sr.left + sr.width / 2 - lr.left) / k, oy = (sr.top + sr.height / 2 - lr.top) / k;
-      const poly = coverPoly(W, H, D, pose).map(([x, y]) => [x + ox, y + oy] as [number, number]);
-      const bw = hl.offsetWidth, bh = hl.offsetHeight;
-      const pts = poly.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`);
-      over.style.clipPath = `polygon(${poly.map(([x, y]) => `${x.toFixed(1)}px ${y.toFixed(1)}px`).join(',')})`;
-      ink.style.clipPath = `path(evenodd,'M0 0H${bw}V${bh}H0Z M${pts.join(' L')} Z')`;
+      const sil = silhouettes(W, H, D, pose);
+      const clip = (q: [number, number][]) => (q.length < 3 ? 'polygon(0 0, 0 0, 0 0)' : `polygon(${q.map(([x, y]) => `${(x + ox).toFixed(1)}px ${(y + oy).toFixed(1)}px`).join(',')})`);
+      over.style.clipPath = clip(sil.cover);
+      pg.style.clipPath = clip(sil.paper);
     };
     const frame = (now: number) => {
       raf = 0;
