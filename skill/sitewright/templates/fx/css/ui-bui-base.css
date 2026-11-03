@@ -75,7 +75,7 @@
 .bui-demo.is-center { align-items: center; justify-content: center; } .bui-demo.is-stack { gap: 16px; } .bui-demo.is-scroll { overflow: auto; }
 .bui-demo-col { width: 100%; max-width: 440px; display: grid; gap: 12px; justify-items: center; } .bui-demo-col.is-auth { max-width: 420px; } .bui-demo-col > * { width: 100%; }
 .bui-demo-note { margin: 0; font-size: 13px; color: var(--muted, #5c5851); text-align: center; }
-.bui-demo.is-sb { flex-direction: row; gap: 14px; padding: 12px; } .bui-demo.is-sb > .bui-sb { height: 100%; }
+.bui-demo.is-sb { background: var(--surface, #fff); flex-direction: row; gap: 14px; padding: 12px; } .bui-demo.is-sb > .bui-sb { height: 100%; }
 .bui-sb-demo-main { flex: 1; min-width: 0; padding: 16px; } .bui-sb-demo-main h2 { margin: 0 0 6px; font-size: 20px; }
 .bui-chips-demo .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center; } .bui-chips-demo .lbl { font-size: 13px; color: var(--muted, #5c5851); }
 /* phones and touch screens: 44px targets and 16px field text (no zoom on focus) */
