@@ -1,0 +1,36 @@
+/* Adapted from BoardUI (MIT), Copyright (c) 2026 Mertcan Dundar Esmergul (BoardUI). See THIRD_PARTY_NOTICES.md. Data table: sort, filter, paginate, select. */
+.bui-dt { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; min-width: 0; }
+.bui-dt-card { width: 100%; min-width: 0; padding: 8px 0 0; border-radius: var(--bui-r); border: 1px solid var(--bui-line2); background: var(--bui-card); }
+.bui-dt-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 12px; }
+.bui-dt-total p { margin: 0; font-weight: 500; white-space: nowrap; color: var(--bui-mut2); } .bui-dt-total p + p { color: var(--bui-ink); } .bui-dt-total b { font-weight: 600; }
+.bui-dt-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.bui-search { display: inline-flex; align-items: center; gap: 8px; height: 36px; width: 170px; padding: 0 12px; border-radius: 999px; background: var(--bui-inset); color: var(--bui-mut); }
+.bui-search:focus-within { box-shadow: 0 0 0 2px var(--bui-pri); }
+.bui-search input { min-width: 0; flex: 1; align-self: stretch; height: 36px; border: 0; background: none; outline: none; color: var(--bui-ink); font-weight: 500; } .bui-search input::placeholder { color: var(--bui-mut2); }
+.bui-dt-scroll { margin-top: 8px; overflow-x: auto; }
+.bui-dt-scroll:focus-visible { outline-offset: -2px; }
+.bui-dt table { width: 100%; min-width: 900px; border-collapse: collapse; }
+.bui-dt th, .bui-dt td { border-bottom: 0; font-size: 14px; line-height: 20px; letter-spacing: normal; text-transform: none; padding: 12px; text-align: start; vertical-align: middle; border-top: 1px solid var(--bui-line); font-weight: 500; }
+.bui-dt thead th { padding-block: 10px; border-top: 1px solid var(--bui-line); border-bottom: 0; color: var(--bui-mut2); white-space: nowrap; background: color-mix(in srgb, var(--bui-inset) 55%, var(--bui-card)); }
+.bui-dt tbody th { font-weight: 500; background: none; color: var(--bui-ink); }
+.bui-dt tbody tr.is-sel { background: var(--bui-inset); }
+.bui-dt-name { width: 250px; } .bui-dt-ar { text-align: end !important; }
+.bui-dt-hn, .bui-dt-cn { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.bui-dt-nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bui-dt-edit { min-width: 0; width: 100%; height: 30px; padding: 0 8px; border-radius: 8px; border: 1px solid var(--bui-pri); background: var(--bui-card); color: var(--bui-ink); font-weight: 500; }
+.bui-dt-date { white-space: nowrap; }
+.bui-dt-act { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.bui-dt-none { padding: 56px 12px !important; text-align: center !important; color: var(--bui-mut2); }
+.bui-pur { display: inline-flex; align-items: center; gap: 4px; }
+.bui-sort { display: inline-flex; align-items: center; gap: 2px; min-height: 28px; padding: 0; border: 0; background: none; color: inherit; font-weight: 500; }
+.bui-sort:hover { color: var(--bui-ink); }
+.bui-sort-i { opacity: .55; transition: transform .15s, opacity .15s; } .bui-sort-i.is-on { opacity: 1; color: var(--bui-ink); } .bui-sort-i.is-asc { transform: rotate(180deg); }
+.bui-dt-foot { padding: 12px; border-top: 1px solid var(--bui-line); }
+.bui-pg { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.bui-pg ul { display: flex; gap: 4px; margin: 0; padding: 0; list-style: none; } .bui-pg li { display: grid; place-items: center; min-width: 32px; color: var(--bui-mut2); }
+.bui-pg-n { width: 32px; height: 32px; border: 0; border-radius: 8px; background: none; color: var(--bui-mut); font-weight: 500; } .bui-pg-n:hover { background: var(--bui-inset); } .bui-pg-n.is-on { background: var(--bui-inset); color: var(--bui-ink); box-shadow: inset 0 0 0 1px var(--bui-line2); }
+.bui-pg-m { display: none; margin: 0; color: var(--bui-mut); }
+@container (max-width: 560px) { .bui-pg ul { display: none; } .bui-pg-m { display: block; } }
+.bui-dt.is-sm th, .bui-dt.is-sm td { padding-block: 6px; font-size: 13px; }
+.bui-dt.is-sm thead th { padding-block: 6px; }
+@media (max-width: 560px) { .bui-pg ul { display: none; } .bui-pg-m { display: block; } .bui-search { width: 100%; } }

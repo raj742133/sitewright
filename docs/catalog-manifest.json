@@ -1,6 +1,6 @@
 {
  "summary": {
-  "generated": "2026-11-03T01:50:35.344Z",
+  "generated": "2026-11-03T12:07:34.616Z",
   "sourceCatalogEntries": 261,
   "uniqueEntries": 261,
   "note": "the 5 full-page heroes are 5 of the 43 tu entries (see overlap), so unique = rb + tu",
@@ -27,6 +27,13 @@
    "completed": 5,
    "verified": 5
   },
+  "boardUi": {
+   "total": 10,
+   "components": 9,
+   "templates": 1,
+   "complete": 10,
+   "verified": 9
+  },
   "tactileGlass": {
    "total": 10,
    "registered": 10,
@@ -40,9 +47,9 @@
   "blocked": 0,
   "remainingUnimplemented": 0,
   "registry": {
-   "components": 359,
-   "templates": 17,
-   "registeredNotInCatalog": 133
+   "components": 368,
+   "templates": 18,
+   "registeredNotInCatalog": 142
   },
   "problems": []
  },
@@ -7483,6 +7490,108 @@
    "registered": true,
    "missing": [],
    "demo": true
+  }
+ ],
+ "boardUi": [
+  {
+   "id": "stat-cards",
+   "kind": "component",
+   "files": 4,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "revenue-chart-card",
+   "kind": "component",
+   "files": 4,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "orders-chart-card",
+   "kind": "component",
+   "files": 4,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "segmented-control",
+   "kind": "component",
+   "files": 3,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "notification-center",
+   "kind": "component",
+   "files": 4,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "data-table",
+   "kind": "component",
+   "files": 5,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "dashboard-sidebar",
+   "kind": "component",
+   "files": 4,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "auth-card",
+   "kind": "component",
+   "files": 3,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "badges-chips",
+   "kind": "component",
+   "files": 3,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": true,
+   "source": "Adapted from BoardUI (MIT)"
+  },
+  {
+   "id": "boardui-overview",
+   "kind": "template",
+   "files": 13,
+   "missing": [],
+   "demo": true,
+   "licenceFile": true,
+   "verified": null,
+   "source": "Adapted from BoardUI (MIT)"
   }
  ]
 }

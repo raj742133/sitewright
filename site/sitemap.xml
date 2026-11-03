@@ -84,6 +84,15 @@
   <url><loc>https://sitewright-skill.vercel.app/components/threads/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/components/topography/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/components/web-threads/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/stat-cards/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/revenue-chart-card/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/orders-chart-card/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/segmented-control/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/notification-center/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/data-table/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/dashboard-sidebar/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/auth-card/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/components/badges-chips/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/components/otp-input/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/components/payment-card/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/components/nav-tabs/</loc></url>
@@ -363,6 +372,7 @@
   <url><loc>https://sitewright-skill.vercel.app/components/skeuomorphic-toggle/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/components/wireframe-forms/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/components/status-orbs/</loc></url>
+  <url><loc>https://sitewright-skill.vercel.app/dashboards/boardui-overview/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/dashboards/bento-board/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/dashboards/analytics-dashboard/</loc></url>
   <url><loc>https://sitewright-skill.vercel.app/dashboards/assistant-dashboard/</loc></url>

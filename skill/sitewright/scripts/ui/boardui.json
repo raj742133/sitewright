@@ -1,0 +1,163 @@
+[
+ {
+  "id": "stat-cards",
+  "label": "Stat cards",
+  "desc": "KPI cards in two looks: a compact plain row (icon tile, label, value, delta chip) and a footer variant with a tinted gradient icon tile, an info tooltip, a display-size value and a comparison band with a delta pill; they reflow from one to four columns with their container.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "cards",
+  "files": [
+   "StatCards.tsx",
+   "_bui-pop.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-stat-cards"
+  ],
+  "use": "Top row of a dashboard: revenue, orders, customers, refunds (give it the page width)."
+ },
+ {
+  "id": "revenue-chart-card",
+  "label": "Revenue chart card",
+  "desc": "A year of monthly revenue as a smooth area and line against last year's dashed line; hover or arrow keys swap the headline for that month with its year-earlier figure and delta, and the numbers count up.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "charts",
+  "files": [
+   "RevenueChartCard.tsx",
+   "_bui-chart.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-bui-chart"
+  ],
+  "use": "Dashboard home or reports page: revenue this year against last (set a height or let it be 344px)."
+ },
+ {
+  "id": "orders-chart-card",
+  "label": "Orders chart card",
+  "desc": "A year of monthly orders as paired bars, this year beside last, with the same headline, delta chip, legend and hover or arrow-key reading as the revenue card; bars grow in once.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "charts",
+  "files": [
+   "OrdersChartCard.tsx",
+   "_bui-chart.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-bui-chart"
+  ],
+  "use": "Dashboard home or reports page: volume this year against last, next to the revenue card."
+ },
+ {
+  "id": "segmented-control",
+  "label": "Segmented control",
+  "desc": "A single-select switch on a tinted track with a thumb that slides to the chosen segment; a native radio group with arrow keys, Home and End, plus a plain variant that only bolds the choice.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "inputs",
+  "files": [
+   "SegmentedControl.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-segmented-control"
+  ],
+  "use": "Weekly / Monthly / Yearly switches, view toggles, table density."
+ },
+ {
+  "id": "notification-center",
+  "label": "Notification center",
+  "desc": "An inbox card with All, Mentions and System tabs and counts, grouped notifications with avatars or status icons, unread dots, action buttons that mark an item read, Mark all read, and an empty state.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "feedback",
+  "files": [
+   "NotificationCenter.tsx",
+   "SegmentedControl.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-segmented-control",
+   "ui-notification-center"
+  ],
+  "use": "A bell popover, an inbox page or a settings panel (max width 430px, or pass a class to widen)."
+ },
+ {
+  "id": "data-table",
+  "label": "Data table",
+  "desc": "A customers table with sortable columns, price, product and region filters, search, row selection with select-all, per-row purchase status, inline rename, delete, a more menu, pagination and a Normal or Compact density switch.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "cards",
+  "files": [
+   "DataTable.tsx",
+   "SegmentedControl.tsx",
+   "_bui-pop.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-segmented-control",
+   "ui-data-table"
+  ],
+  "use": "Customer, order or user lists in a dashboard (scrolls sideways in narrow containers)."
+ },
+ {
+  "id": "dashboard-sidebar",
+  "label": "Dashboard sidebar",
+  "desc": "A floating app sidebar that collapses to an icon rail (labels fade and shrink), with a filterable quick search (press /), counter badges, an account menu at the top and a team menu at the bottom.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "navigation",
+  "files": [
+   "DashboardSidebar.tsx",
+   "_bui-pop.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-dashboard-sidebar"
+  ],
+  "use": "Left rail of an admin app (fills its parent's height)."
+ },
+ {
+  "id": "auth-card",
+  "label": "Auth card",
+  "desc": "A sign-in, sign-up and one-time-code card with validated fields (messages on the field), password reveal, remember me, provider buttons in stacked, inline or grid layout, and an optional split with artwork.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "inputs",
+  "files": [
+   "AuthCard.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base",
+   "ui-auth-card"
+  ],
+  "use": "Sign-in, sign-up or verify pages and modals (400px wide, or 880px split)."
+ },
+ {
+  "id": "badges-chips",
+  "label": "Badges and chips",
+  "desc": "The small status parts of a dashboard: tinted chips in ten colours and three sizes, counter badges, status dots with a halo, and keyboard hint pills.",
+  "source": "Adapted from BoardUI (MIT)",
+  "group": "feedback",
+  "files": [
+   "BadgesChips.tsx",
+   "_bui.tsx",
+   "LICENSE-boardui.txt"
+  ],
+  "css": [
+   "ui-bui-base"
+  ],
+  "use": "Status and delta labels in tables and cards, nav counters, shortcut hints."
+ }
+]

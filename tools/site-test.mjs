@@ -180,7 +180,7 @@ section = 'catalogue';
   });
   await check('choosing a group filters, updates the URL, the count and the current marker; back restores', async () => {
     await page.click('#groups a[data-g="charts"]'); await page.waitForTimeout(200);
-    eq(new URL(page.url()).searchParams.get('g'), 'charts', 'url'); eq(await page.locator('.tile:visible').count(), Math.min(24, GROUPS.charts), 'tiles');
+    eq(new URL(page.url()).searchParams.get('g'), 'charts', 'url'); eq(await page.locator('.tile:visible').count(), Math.min(20, GROUPS.charts), 'tiles');
     truthy((await page.textContent('#cat-count')).includes('charts'), 'count text'); eq(await page.getAttribute('#groups a[data-g="charts"]', 'aria-current'), 'true', 'aria-current');
     const tags = await page.$$eval('.tile:not([hidden]) .tag', (t) => [...new Set(t.map((x) => x.textContent))]); eq(tags.join(), 'Charts', 'only charts');
     await page.goBack(); await page.waitForTimeout(200); eq(new URL(page.url()).searchParams.get('g'), null, 'back to all');

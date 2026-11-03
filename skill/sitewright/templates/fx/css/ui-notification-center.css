@@ -1,0 +1,27 @@
+/* Adapted from BoardUI (MIT), Copyright (c) 2026 Mertcan Dundar Esmergul (BoardUI). See THIRD_PARTY_NOTICES.md. */
+.bui-nc { display: flex; flex-direction: column; width: 100%; max-width: 430px; overflow: hidden; border-radius: 24px; border: 1px solid var(--bui-line2); background: var(--bui-card); box-shadow: 0 14px 36px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .05); }
+.bui-nc.is-wide { max-width: none; }
+.bui-nc-h { display: grid; gap: 12px; padding: 16px 16px 6px; }
+.bui-nc-hr { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.bui-nc-title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: -.01em; }
+.bui-nc-sub { margin: 0; color: var(--bui-mut); }
+.bui-nc-tab { display: inline-flex; align-items: center; gap: 6px; }
+.bui-nc-count { display: inline-flex; min-width: 20px; justify-content: center; padding: 0 4px; border-radius: 4px; background: color-mix(in srgb, var(--bui-mut) 14%, var(--bui-card)); color: var(--bui-mut); font-size: 12px; line-height: 18px; font-weight: 500; }
+.bui-nc-wrap { padding: 6px; }
+.bui-nc-scroll { max-height: 516px; overflow-y: auto; overscroll-behavior: contain; padding: 8px; border-radius: 18px; background: var(--bui-inset); display: grid; gap: 8px; align-content: start; }
+.bui-nc-scroll:focus-visible { outline-offset: -2px; }
+.bui-nc-g { display: grid; gap: 8px; }
+.bui-nc-gh { margin: 0; padding: 4px 6px 0; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--bui-mut2); }
+.bui-nc-i { display: flex; gap: 12px; padding: 12px; border-radius: 16px; background: var(--bui-card); border: 1px solid var(--bui-line); }
+.bui-nc-vis { --c: var(--bui-mut); display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%; background: color-mix(in srgb, var(--c) 15%, var(--bui-card)); color: color-mix(in srgb, var(--c) 78%, var(--bui-ink)); }
+.bui-nc-vis.s-information { --c: var(--bui-blue); } .bui-nc-vis.s-success { --c: var(--bui-lime); } .bui-nc-vis.s-error { --c: var(--bui-rose); }
+.bui-nc-body { display: grid; gap: 2px; min-width: 0; flex: 1; align-content: start; }
+.bui-nc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.bui-nc-it { margin: 0; min-width: 0; font-weight: 500; }
+.bui-nc-meta { display: inline-flex; flex: none; align-items: center; gap: 8px; font-size: 12px; line-height: 20px; color: var(--bui-mut2); }
+.bui-nc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--bui-pri); }
+.bui-nc-d { margin: 0; color: var(--bui-mut); }
+.bui-nc-act { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.bui-nc-empty { display: grid; justify-items: center; align-content: center; gap: 8px; min-height: 256px; padding: 24px; border-radius: 16px; background: var(--bui-card); text-align: center; }
+.bui-nc-empty > span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bui-inset); color: var(--bui-mut); }
+.bui-nc-et { margin: 0; font-weight: 500; } .bui-nc-ed { margin: 0; max-width: 256px; color: var(--bui-mut); }

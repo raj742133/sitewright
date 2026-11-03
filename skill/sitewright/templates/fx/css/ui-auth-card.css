@@ -1,0 +1,33 @@
+/* Adapted from BoardUI (MIT), Copyright (c) 2026 Mertcan Dundar Esmergul (BoardUI). See THIRD_PARTY_NOTICES.md. Sign in, sign up and one-time-code card. */
+.bui-auth-root { container: bui-auth / inline-size; display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+.bui-auth { width: 100%; max-width: 400px; border-radius: 24px; border: 1px solid var(--bui-line2); background: var(--bui-card); box-shadow: 0 1px 2px rgba(0, 0, 0, .05); overflow: hidden; }
+.bui-auth.is-split { max-width: 880px; display: grid; grid-template-columns: minmax(0, 1fr); }
+.bui-auth-pane { display: flex; flex-direction: column; padding: 24px; }
+@container bui-auth (min-width: 480px) { .bui-auth-pane { padding: 32px; } }
+.bui-auth-media { display: none; position: relative; background: var(--bui-inset); }
+@container bui-auth (min-width: 720px) { .bui-auth.is-split { grid-template-columns: 1fr 1fr; } .bui-auth.is-split .bui-auth-media { display: block; } }
+.bui-auth-mark { display: flex; margin-bottom: 20px; color: var(--bui-ink); } .bui-auth-mark.is-c { justify-content: center; }
+.bui-auth-logo { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--bui-pri); color: var(--bui-onpri); }
+.bui-auth-head { display: grid; gap: 6px; } .bui-auth-head.is-c { text-align: center; }
+.bui-auth-t { margin: 0; font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -.01em; } .bui-auth-d { margin: 0; color: var(--bui-mut); } .bui-auth-d b { color: var(--bui-ink); font-weight: 500; }
+.bui-auth-form { display: grid; gap: 16px; margin-top: 24px; }
+.bui-fld { display: grid; gap: 6px; } .bui-fld label, .bui-fld-l { font-weight: 500; color: var(--bui-ink); }
+.bui-fld-in { position: relative; }
+.bui-fld-in input { width: 100%; height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--bui-line2); background: var(--bui-card); color: var(--bui-ink); }
+.bui-fld-in input::placeholder { color: var(--bui-mut2); }
+.bui-fld-in input:focus-visible { outline: 2px solid var(--bui-pri); outline-offset: 1px; border-color: transparent; }
+.bui-fld-in:has(.bui-fld-eye) input { padding-inline-end: 40px; }
+.bui-fld.has-err .bui-fld-in input { border-color: var(--bui-rose); }
+.bui-fld-eye { position: absolute; inset-inline-end: 4px; top: 4px; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--bui-mut); } .bui-fld-eye:hover { color: var(--bui-ink); background: var(--bui-inset); }
+.bui-fld-h { margin: 0; font-size: 13px; line-height: 18px; color: var(--bui-mut2); } .bui-fld-h.is-err { color: color-mix(in srgb, var(--bui-rose) 80%, var(--bui-ink)); }
+.bui-auth-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bui-chk { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.bui-auth-fine { margin: 0; font-size: 12px; line-height: 16px; color: var(--bui-mut2); }
+.bui-auth-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; font-size: 13px; color: var(--bui-mut2); } .bui-auth-or::before, .bui-auth-or::after { content: ""; flex: 1; height: 1px; background: var(--bui-line); }
+.bui-auth-soc.is-stacked { display: grid; gap: 10px; } .bui-auth-soc.is-stacked .bui-btn { width: 100%; }
+.bui-auth-soc.is-inline { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; } .bui-auth-soc.is-inline .bui-btn { width: 44px; padding: 0; }
+.bui-auth-soc.is-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 10px; } .bui-auth-soc.is-grid .bui-btn { width: 100%; padding: 0; }
+.bui-auth-sw { margin: 24px 0 0; text-align: center; color: var(--bui-mut); }
+.bui-auth-foot { max-width: 520px; margin: 0; font-size: 12px; line-height: 16px; text-align: center; color: var(--bui-mut2); }
+.bui-otp { display: flex; gap: 8px; } .bui-otp-i { flex: 1 1 0; min-width: 0; max-width: 52px; height: 52px; padding: 0; border-radius: 10px; border: 1px solid var(--bui-line2); background: var(--bui-card); color: var(--bui-ink); font-size: 20px; font-weight: 600; text-align: center; }
+.bui-otp-i.is-gap { margin-inline-start: 12px; } .bui-otp-i:focus-visible { outline: 2px solid var(--bui-pri); outline-offset: 1px; border-color: transparent; }

@@ -19,14 +19,15 @@ Status vocabulary: **existing** (Sitewright already ships an equivalent), **plan
 | Remaining (planned / in progress) | 0 |
 | Full-page heroes completed | 5 / 5 |
 | Tactile Glass components complete | 10 / 10 |
-| Registry | 359 components, 17 templates |
+| BoardUI (MIT) adaptations complete | 10 / 10 (9 components, 1 template; 9 components verified) |
+| Registry | 368 components, 18 templates |
 
 ## Provenance and licence
 
 - React Bits-origin entries (MIT + Commons Clause, see THIRD_PARTY_NOTICES.md): the components are not redistributed. Every one is either mapped to a Sitewright equivalent or independently implemented from the entry's name and category; the implementing authors never opened upstream source, and none was ported.
 - `tu` entries are authored works by third parties; their source and artwork are not redistributed. The underlying techniques are implemented independently, without their names, text, artwork or any company marks.
 - The 35 "Micro Interaction" entries carry the `rb:` prefix but their folder is not part of the public React Bits layout: provenance unresolved, handled as restricted.
-- Tactile Glass UI (MIT, uixNinja) is redistributed with its licence and credit.
+- Tactile Glass UI (MIT, uixNinja) and BoardUI free tier (MIT, Mertcan Dundar Esmergul) are redistributed, adapted, with their licences and credit. BoardUI Pro (paid) is not used.
 
 ## The 43 `tu` entries
 

@@ -77,6 +77,45 @@ The `frosted-*` components and the `variant="frosted"` option are written for Si
 
 Every generated project that uses a glass component carries this notice in `src/components/fx/ui/LICENSE-tactile-glass.txt`.
 
+## BoardUI (free tier)
+
+Sitewright's nine BoardUI-style components (`skill/sitewright/templates/fx/ui/`: `StatCards`, `RevenueChartCard`, `OrdersChartCard`, `SegmentedControl`, `NotificationCenter`, `DataTable`, `DashboardSidebar`, `AuthCard`, `BadgesChips`, with the shared `_bui.tsx`, `_bui-pop.tsx` and `_bui-chart.tsx`) are adapted from the
+MIT-licensed free tier of BoardUI by Mertcan Dundar Esmergul. The structure, states, sizes, default demo figures and behaviour follow upstream; what changed:
+
+- Tailwind classes are plain CSS on the host's tokens (`--primary`, `--signal`, `--ink`, `--muted`, `--surface`, `--raised`, `--raised-2`, `--line`, `--radius`), with light and dark themes; upstream's own colour and type tokens are not used;
+- `react-aria-components`, `@remixicon/react`, `recharts`, `@tanstack/react-table`, `motion` and `tailwind-merge` are replaced by small hand-written parts: native radio groups, selects and checkboxes, inline SVG icons, SVG charts (monotone paths, nice ticks, crosshair, screen-reader table), a portalled popover and menu, and plain state for sort, filter, paginate and select; no dependency beyond React is added;
+- accessibility and robustness additions: arrow-key chart reading, `aria-sort`, an indeterminate select-all, live regions, field-level validation messages, reduced-motion safe animation, and a first render that contains nothing random or time dependent;
+- not included: upstream's AI chat route and agent components, the data grid, the settings modal, theme toggle, mobile drawer, media carousel, brand artwork, avatar photographs and the language selector; the three social-provider glyphs are the monochrome Simple Icons paths (CC0) that upstream also uses;
+- the `BoardUI-style Overview` template, its views, copy and data, and every demo are new, written for Sitewright. None of BoardUI's paid (Pro) code, templates or artwork was fetched, read or reproduced.
+
+Every ported file carries a header comment naming BoardUI, and a generated project that uses any of them carries the licence in `src/components/fx/ui/LICENSE-boardui.txt`.
+
+BoardUI is released under the MIT licence:
+
+```
+MIT License
+
+Copyright (c) 2026 Mertcan Dundar Esmergul (BoardUI)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
 ## Better Icons and Iconify
 
 Sitewright's icon support (`skill/sitewright/scripts/lib/icons.mjs`) follows the approach of
@@ -112,7 +151,7 @@ The 226 components and 5 hero pages added under `docs/catalog-map.json` were che
 - **React Bits-origin entries (MIT with the Commons Clause, (c) David Haz):** the licence does not allow redistributing the components, alone, in a bundle or as a ported version, so none of them is included. Each entry is either mapped to an existing Sitewright equivalent (30 entries, listed in `docs/catalog-map.json`) or was written from scratch from nothing more than the entry's plain name and category, by authors who were forbidden to open the library. Names such as "scroll float" or "ripple distortion" describe a technique, and a technique is not protected expression. If you believe any component here reproduces protected expression, open an issue and it will be rewritten or removed.
 - **The 35 "Micro Interaction" entries** carry the `rb:` prefix but their folder is not part of the public React Bits layout, so their origin is unresolved; they were treated as restricted and written the same way.
 - **`tu` entries** are complete works authored by third parties (several are described as "preserved unchanged"). Their code, artwork, copy, names and any company marks are not redistributed. Only the general technique behind each was re-implemented, with invented names, copy and art (for example a CRT-screen shader, a liquid-metal button, procedural terrain). The five hero pages are original compositions in the same genres, with their own invented brands; they do not reproduce those pages. Real company logos and marks are deliberately not recreated.
-- **Tactile Glass UI (MIT, (c) 2026 uixNinja)** is the one ported piece; see its section above.
+- **Tactile Glass UI (MIT, (c) 2026 uixNinja)** and **BoardUI (MIT, (c) 2026 Mertcan Dundar Esmergul)** are ported pieces, added separately from this catalogue; see their sections above.
 
 The per-entry status, provenance note and verification result is in `docs/catalog-manifest.json` and `docs/catalog-coverage.md`.
 

@@ -1,0 +1,13 @@
+/* Adapted from BoardUI (MIT), Copyright (c) 2026 Mertcan Dundar Esmergul (BoardUI). See THIRD_PARTY_NOTICES.md. */
+.bui-seg { position: relative; display: inline-flex; align-items: flex-start; gap: 2px; max-width: 100%; border-radius: 12px; }
+.bui-seg.is-full { display: flex; width: 100%; }
+.bui-seg.is-solid { padding: 4px; background: var(--bui-inset); }
+.bui-seg-thumb { position: absolute; left: 0; top: 0; z-index: 0; border-radius: 8px; background: var(--bui-card); box-shadow: 0 0 0 1px var(--bui-line), 0 1px 2px rgba(0, 0, 0, .1); pointer-events: none; transition: transform .2s ease, width .2s ease, height .2s ease; }
+.bui-seg-i { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; padding: 4px 10px; border: 0; border-radius: 8px; background: none; color: var(--bui-mut); font-weight: 500; text-align: center; white-space: nowrap; transition: color .2s ease; }
+.bui-seg.is-full .bui-seg-i { flex: 1; }
+.bui-seg-i:hover:not(:disabled) { color: var(--bui-ink); }
+.bui-seg-i[aria-checked="true"] { color: var(--bui-ink); }
+.bui-seg.is-solid:not([data-thumb]) .bui-seg-i[aria-checked="true"] { background: var(--bui-card); box-shadow: 0 0 0 1px var(--bui-line), 0 1px 2px rgba(0, 0, 0, .1); }
+.bui-seg.is-plain .bui-seg-i[aria-checked="true"] { font-weight: 700; }
+.bui-seg-i:disabled { opacity: .5; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { .bui-seg-thumb { transition: none; } }
