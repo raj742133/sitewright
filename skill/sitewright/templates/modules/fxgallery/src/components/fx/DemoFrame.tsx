@@ -1,6 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef, type ReactNode } from 'react';
+import { Suspense, useLayoutEffect, useRef, type ReactNode } from 'react';
 
 /**
  * Hosts one component demo. Most demos size themselves, but a demo whose root is a plain block holding only absolutely positioned layers
@@ -23,7 +23,10 @@ export function DemoFrame({ className, children }: { className: string; children
     const t = window.setTimeout(check, 350);
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(check) : null;
     ro?.observe(el);
-    return () => { window.clearTimeout(t); ro?.disconnect(); };
+    // the demo is loaded on demand: look again when it arrives
+    const mo = new MutationObserver(() => { window.setTimeout(check, 60); });
+    mo.observe(el, { childList: true });
+    return () => { window.clearTimeout(t); ro?.disconnect(); mo.disconnect(); };
   }, []);
-  return <span ref={ref} className={className}>{children}</span>;
+  return <span ref={ref} className={className}><Suspense fallback={null}>{children}</Suspense></span>;
 }

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { UI_DEMOS } from './ui/demos';
 import { DemoFrame } from './DemoFrame';
-import { BACKGROUND_COMPONENTS, FIGURE_FACTORIES } from './catalog';
 
 export type EmbedKind = 'c' | 'f' | 'bg';
 
@@ -18,14 +17,31 @@ function ComponentView({ id }: { id: string }) {
   return <DemoFrame className="fxe-demo"><d.Demo /></DemoFrame>;
 }
 
+/** One animated background. The backgrounds library is loaded here, not for every embed page. */
+function BackgroundView({ id }: { id: string }) {
+  const [Bg, setBg] = useState<React.ComponentType | null>(null);
+  useEffect(() => {
+    let dead = false;
+    import('./catalog').then(({ BACKGROUND_COMPONENTS }) => { const C = BACKGROUND_COMPONENTS[id]; if (!dead && C) setBg(() => C); });
+    return () => { dead = true; };
+  }, [id]);
+  return Bg ? <Bg /> : null;
+}
+
 /** One figure, live. The pointer moves it, as on the gallery. */
 function FigureView({ id }: { id: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const make = FIGURE_FACTORIES[id];
-    if (!make || !ref.current) return;
-    const f = make(ref.current, { intensity: 0.5, onRead: () => {} });
-    return () => f.destroy();
+    let off: (() => void) | undefined;
+    let dead = false;
+    // the figure engines are large and only this page kind needs them
+    import('./catalog').then(({ FIGURE_FACTORIES }) => {
+      const make = FIGURE_FACTORIES[id];
+      if (dead || !make || !ref.current) return;
+      const f = make(ref.current, { intensity: 0.5, onRead: () => {} });
+      off = () => f.destroy();
+    });
+    return () => { dead = true; off?.(); };
   }, [id]);
   return <div className="fxe-fig"><div ref={ref} className="fxe-fig-box" /></div>;
 }
@@ -53,8 +69,7 @@ export function EmbedStage({ kind, id }: { kind: EmbedKind; id: string }) {
   }, []);
 
   if (kind === 'bg') {
-    const Bg = BACKGROUND_COMPONENTS[id];
-    return <div className="fxe fxe-bg" data-embed="bg" data-ready={ready ? '1' : '0'}>{Bg ? <Bg /> : null}</div>;
+    return <div className="fxe fxe-bg" data-embed="bg" data-ready={ready ? '1' : '0'}><BackgroundView id={id} /></div>;
   }
   return (
     <div className="fxe" data-embed={kind} data-id={id} data-ready={ready ? '1' : '0'}>
