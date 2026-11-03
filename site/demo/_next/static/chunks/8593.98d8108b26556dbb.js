@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[8593],{68593:(e,t,n)=>{n.r(t),n.d(t,{Demo:()=>f,default:()=>a});var r=n(95155),s=n(16611),u=n(52368);function a(e){return(0,r.jsx)(s.default,{...e,variant:"frosted"})}function f(){return(0,r.jsx)(u.l,{children:(0,r.jsx)(a,{style:{width:"min(100%, 340px)"}})})}}}]);
