@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { LogoMark } from '@/components/brand/Logo';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
@@ -9,7 +10,7 @@ export function GalleryNav({ active }: { active: 'effects' | 'components' | 'tem
     <header className="fxg-bar">
       <a className="fxg-brand" href="/" aria-label="__BRAND__ home"><span className="brand-mark"><LogoMark size={26} /></span><b>__BRAND__</b></a>
       <nav className="fxg-nav" aria-label="Gallery">
-        {LINKS.map((l) => <a key={l.id} href={l.href} aria-current={l.id === active ? 'page' : undefined}>{l.label}</a>)}
+        {LINKS.map((l) => <Link key={l.id} href={l.href} prefetch={false} aria-current={l.id === active ? 'page' : undefined}>{l.label}</Link>)}
       </nav>
       <ThemeToggle />
     </header>

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { TPL_ITEMS } from './tpl/demos';
 
@@ -35,7 +36,7 @@ export function TemplateView({ id }: { id: string }) {
     <div className="fxe-tpl" data-embed="b" data-id={id} data-top={top ? '1' : '0'}>
       {top && (
         <div className="fxe-tpl-bar" role="toolbar" aria-label="Preview controls">
-          <a className="btn sm" href="/effects/templates/">← All templates</a>
+          <Link className="btn sm" href="/effects/templates/" prefetch={false}>← All templates</Link>
           <b>{t.label}</b>
           <span className="fxe-tpl-sp" />
           <div className="fxe-tpl-seg" role="group" aria-label="Device">
