@@ -1,0 +1,37 @@
+/* Composed from the BoardUI-style components (adapted from BoardUI, MIT; see THIRD_PARTY_NOTICES.md). Host tokens only; answers its container's width. */
+.tbu { container: tbu / inline-size; position: relative; height: 100%; min-height: 680px; background: var(--surface, #f4f2ef); color: var(--ink, #15130e); text-align: start; }
+.tbu-frame { display: flex; gap: 12px; height: 100%; min-height: inherit; padding: 12px; }
+.tbu-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 4px 8px 20px; overflow: auto; }
+.tbu-main:focus { outline: none; }
+.tbu-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.tbu-head h1 { margin: 0; font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -.015em; } .tbu-head h1:focus { outline: none; } .tbu-head h1:focus-visible { outline: 2px solid var(--primary, #2563eb); outline-offset: 4px; border-radius: 4px; }
+.tbu-head p { margin: 0; color: var(--muted, #5c5851); }
+.tbu-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.tbu-bell { position: relative; width: 36px; height: 36px; }
+.tbu-bell-n { position: absolute; top: -6px; right: -6px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--bui-pri); color: var(--bui-onpri); font: 600 11px/18px var(--font-body, system-ui, sans-serif); font-style: normal; text-align: center; box-shadow: 0 0 0 2px var(--surface, #f4f2ef); }
+.tbu-two { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+@container tbu (min-width: 1040px) { .tbu-two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tbu-two.is-top { align-items: start; }
+.tbu-sec { display: grid; gap: 10px; }
+.tbu-sech { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; } .tbu-sech h2 { margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; }
+.tbu-ncw { display: grid; }
+.tbu-card { display: grid; gap: 14px; align-content: start; padding: 18px; border-radius: var(--bui-r); border: 1px solid var(--bui-line); background: var(--bui-card); }
+.tbu-card h2 { margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; }
+.tbu-form, .tbu-set { display: grid; gap: 14px; }
+.tbu-set { max-width: 560px; }
+.tbu-form label, .tbu-set > label { display: grid; gap: 6px; font-weight: 500; }
+.tbu-form textarea, .tbu-set input:not([type=checkbox]) { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--bui-line2); background: var(--bui-card); color: var(--bui-ink); font: inherit; }
+.tbu-set input:not([type=checkbox]) { height: 40px; padding-block: 0; }
+.tbu-form textarea { resize: vertical; min-height: 110px; }
+.tbu-form .bui-select { width: 100%; height: 40px; }
+.tbu-form button, .tbu-set button[type=submit] { justify-self: start; }
+.tbu-err { margin: 0; font-size: 13px; color: color-mix(in srgb, var(--bui-rose) 80%, var(--bui-ink)); }
+.tbu-grp { display: grid; gap: 8px; margin: 0; padding: 0; border: 0; font-weight: 500; } .tbu-grp legend { padding: 0; margin-bottom: 8px; font-weight: 500; }
+.tbu-chk { display: flex !important; grid-template-columns: none; align-items: center; gap: 10px !important; font-weight: 400 !important; }
+.tbu-faq { display: grid; gap: 6px; } .tbu-faq details { border-radius: 10px; background: var(--bui-inset); padding: 10px 12px; }
+.tbu-faq summary { cursor: pointer; font-weight: 500; } .tbu-faq p { margin: 8px 0 0; color: var(--bui-mut); }
+.tbu-toast { position: absolute; left: 50%; bottom: 20px; z-index: 5; margin: 0; max-width: calc(100% - 32px); padding: 10px 16px; border-radius: 12px; background: var(--ink, #15130e); color: var(--raised, #fff); font-weight: 500; opacity: 0; transform: translate(-50%, 8px); pointer-events: none; transition: opacity .2s, transform .2s; }
+.tbu-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.bui-pop.is-flush { padding: 0; border-radius: 24px; overflow: hidden; } .bui-pop .bui-nc.tbu-nc { box-shadow: none; border: 0; }
+@container tbu (max-width: 560px) { .tbu-frame { padding: 8px; gap: 8px; } .tbu-main { padding-inline: 4px; } .tbu-head h1 { font-size: 20px; line-height: 28px; } }
+@media (prefers-reduced-motion: reduce) { .tbu-toast { transition: none; } }

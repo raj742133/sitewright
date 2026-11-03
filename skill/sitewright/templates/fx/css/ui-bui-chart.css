@@ -1,0 +1,29 @@
+/* Adapted from BoardUI (MIT), Copyright (c) 2026 Mertcan Dundar Esmergul (BoardUI). See THIRD_PARTY_NOTICES.md. Year-over-year chart cards (revenue area, orders bars). */
+.bui-yc { --bui-cur: var(--bui-pri); --bui-prev: color-mix(in srgb, var(--bui-mut) 42%, var(--bui-card)); container: bui-yc / inline-size; display: flex; flex-direction: column; gap: 20px; min-width: 0; height: 344px; padding: 16px 16px 12px; border-radius: var(--bui-r); background: var(--bui-card); border: 1px solid var(--bui-line); }
+.bui-yc.is-orders { --bui-cur: var(--bui-sig); }
+.bui-yc-h { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; justify-content: space-between; }
+.bui-yc-t { display: grid; gap: 2px; min-width: 0; }
+.bui-yc-l { font-weight: 500; color: var(--bui-mut); }
+.bui-yc-v { display: flex; align-items: center; gap: 8px; }
+.bui-yc-n { margin: 0; font-size: 24px; line-height: 32px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; }
+.bui-yc-c { margin: 0; font-size: 13px; line-height: 18px; color: var(--bui-mut2); }
+.bui-yc-lg { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 13px; color: var(--bui-mut); }
+.bui-yc-lg div { display: flex; align-items: center; gap: 6px; } .bui-yc-lg dt { margin: 0; }
+.bui-yc-dot { width: 8px; height: 8px; border-radius: 50%; } .bui-yc-dot.is-cur { background: var(--bui-cur); } .bui-yc-dot.is-prev { background: var(--bui-prev); }
+.bui-yc-plot { position: relative; flex: 1; min-height: 120px; border-radius: 8px; cursor: crosshair; touch-action: pan-y; }
+.bui-yc-plot svg { position: absolute; inset: 0; display: block; overflow: visible; }
+.bui-yc-grid { stroke: var(--bui-line); stroke-width: 1; opacity: .7; }
+.bui-yc-ty, .bui-yc-tx { fill: var(--bui-mut2); font: 12px var(--font-body, system-ui, sans-serif); font-variant-numeric: tabular-nums; }
+.bui-yc-prev { stroke: var(--bui-prev); stroke-width: 2; stroke-dasharray: 5 5; }
+.bui-yc-cur { stroke: var(--bui-cur); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; animation: bui-draw .9s cubic-bezier(.3, .6, .2, 1) both; }
+.bui-yc-area { animation: bui-fade .8s ease-out both; }
+.bui-yc-cross { stroke: color-mix(in srgb, var(--bui-mut) 60%, transparent); stroke-width: 1; stroke-dasharray: 4 4; }
+.bui-yc-pt { fill: var(--bui-cur); stroke: var(--bui-card); stroke-width: 2; }
+.bui-yc-bprev { fill: var(--bui-prev); transform-box: fill-box; transform-origin: 50% 100%; animation: bui-grow .55s cubic-bezier(.2, .7, .2, 1) both; }
+.bui-yc-bcur { fill: var(--bui-cur); transform-box: fill-box; transform-origin: 50% 100%; animation: bui-grow .55s cubic-bezier(.2, .7, .2, 1) both; transition: opacity .15s; }
+.bui-yc-bg.is-on .bui-yc-bcur { opacity: .82; }
+.bui-yc-track { fill: color-mix(in srgb, var(--bui-mut) 12%, transparent); }
+@keyframes bui-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes bui-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@container bui-yc (max-width: 380px) { .bui-yc-n { font-size: 20px; line-height: 28px; } }
+@media (prefers-reduced-motion: reduce) { .bui-yc-cur, .bui-yc-area, .bui-yc-bprev, .bui-yc-bcur { animation: none !important; } }

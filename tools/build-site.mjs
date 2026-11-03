@@ -191,7 +191,7 @@ function detail(e) {
   const files = e.files.map((f) => `<li><code>components/fx/ui/${esc(f)}</code></li>`).join('') + e.css.map((c) => `<li><code>${esc(c)}.css</code> <span class="muted">styles</span></li>`).join('');
   const rail = list.map((x) => `<li><a href="/components/${x.id}/"${x.id === e.id ? ' aria-current="page"' : ''}>${esc(x.label)}</a></li>`).join('');
   const pn = list.length > 1 ? `<div class="pn"><a rel="prev" href="/components/${prev.id}/"><small>&larr; Previous</small><b>${esc(prev.label)}</b></a><a rel="next" href="/components/${next.id}/"><small>Next &rarr;</small><b>${esc(next.label)}</b></a></div>` : '';
-  const credit = e.source === 'Original' ? 'Original to Sitewright. MIT licensed.' : `Idea from <b>${esc(e.source)}</b>; the code is written for this kit.`;
+  const credit = e.source === 'Original' ? 'Original to Sitewright. MIT licensed.' : /^Adapted from/.test(e.source) ? `<b>${esc(e.source)}</b>. Restyled in plain CSS and rewritten without its libraries; the upstream licence and notice are kept (see THIRD_PARTY_NOTICES.md).` : `Idea from <b>${esc(e.source)}</b>; the code is written for this kit.`;
   const main = `<div class="wrap det">
   <div class="det-main">
     <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/components/">Components</a></li><li><a href="/components/?g=${e.group}">${gl}</a></li><li aria-current="page">${esc(e.label)}</li></ol></nav>
@@ -309,7 +309,7 @@ function tplDetail(e) {
     </section>
     <section class="blk two">
       <div><h2>Files</h2><ul class="files">${files}</ul></div>
-      <div><h2>About it</h2><p>${e.source === 'Original' ? 'Original to Sitewright. MIT licensed.' : `Idea from <b>${esc(e.source)}</b>; the code is written for this kit.`} Demo data is fictional and deterministic. Every control on the page works, so try it before you take it.</p><p class="muted small">It answers its own width rather than the screen's, so the tablet and phone buttons show the real responsive behaviour. Templates are not components: they are chosen with <code>templates</code>, not <code>components</code>.</p></div>
+      <div><h2>About it</h2><p>${e.source === 'Original' ? 'Original to Sitewright. MIT licensed.' : /^Adapted from/.test(e.source) ? `<b>${esc(e.source)}</b>, composed into a new screen; the upstream licence and notice are kept (see THIRD_PARTY_NOTICES.md).` : `Idea from <b>${esc(e.source)}</b>; the code is written for this kit.`} Demo data is fictional and deterministic. Every control on the page works, so try it before you take it.</p><p class="muted small">It answers its own width rather than the screen's, so the tablet and phone buttons show the real responsive behaviour. Templates are not components: they are chosen with <code>templates</code>, not <code>components</code>.</p></div>
     </section>
     ${pn}
   </div>

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "boardui-overview",
+    "label": "BoardUI-style Overview",
+    "desc": "A shop dashboard built from the BoardUI-style components with six working views: an overview (period switch, four KPI cards with info tips, revenue and orders charts against last year, recent customers), a customers table with sort, filters, selection and edit, reports with CSV export, a notification inbox shared with the bell, support and settings forms. The sidebar collapses to a rail and the layout follows its container.",
+    "source": "Adapted from BoardUI (MIT)",
+    "group": "dashboard",
+    "files": [
+      "BoardUIOverview.tsx",
+      "_dash.tsx",
+      "../ui/DashboardSidebar.tsx",
+      "../ui/StatCards.tsx",
+      "../ui/RevenueChartCard.tsx",
+      "../ui/OrdersChartCard.tsx",
+      "../ui/SegmentedControl.tsx",
+      "../ui/NotificationCenter.tsx",
+      "../ui/DataTable.tsx",
+      "../ui/_bui.tsx",
+      "../ui/_bui-pop.tsx",
+      "../ui/_bui-chart.tsx",
+      "../ui/LICENSE-boardui.txt"
+    ],
+    "css": [
+      "ui-bui-base",
+      "ui-bui-chart",
+      "ui-segmented-control",
+      "ui-stat-cards",
+      "ui-notification-center",
+      "ui-data-table",
+      "ui-dashboard-sidebar",
+      "tpl-boardui-overview"
+    ],
+    "use": "Shop, SaaS or subscription admin home: revenue, orders, customers, notifications."
+  }
+]

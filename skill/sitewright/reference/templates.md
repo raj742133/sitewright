@@ -2,7 +2,7 @@
 
 Full-screen dashboards and pages. They are not components: each is a complete responsive screen with working interactions and sample data, rendered under `@/components/fx/tpl`. Choose with `effects.templates` in `site.json` (`"all"` or a list of ids) or `--templates`; change later with `--apply-effects`. Browse at `/effects/templates/`.
 
-Dashboards share one kit (`_dash.tsx` + `tpl-dash.css`): they respond to their own container width, not the viewport, so they work embedded in a page or full screen. Replace the sample data with yours; keep the structure.
+Dashboards share one kit (`_dash.tsx` + `tpl-dash.css`; `boardui-overview` uses its own BoardUI-style components instead): they respond to their own container width, not the viewport, so they work embedded in a page or full screen. Replace the sample data with yours; keep the structure.
 
 ## Dashboards
 
@@ -10,6 +10,7 @@ Dashboards share one kit (`_dash.tsx` + `tpl-dash.css`): they respond to their o
 | --- | --- | --- |
 | `analytics-dashboard` | Analytics | Web analytics: visitors with period comparison, a live traffic chart with crosshair tooltip, sources, top pages, countries and devices, and a realtime strip. |
 | `assistant-dashboard` | AI assistant | A conversation next to the answer: ask in plain words and the panel on the right builds a chart or table with its sources and a short summary. |
+| `boardui-overview` | BoardUI-style Overview | A shop admin home built from the BoardUI-style components (adapted from the BoardUI free tier, MIT): a collapsible sidebar with account and team menus, a Weekly / Monthly / Yearly switch, four KPI cards with info tips, revenue and orders charts against last year, recent customers, then six working views: customers (sort, filter, select, rename, delete), reports with CSV export, a notification inbox shared with the bell, support and settings forms. |
 | `finance-dashboard` | Finance | A business banking home: total balance with a 30-day line and Send / Request / Transfer, cash in vs out, accounts, a searchable transactions table with a detail drawer and approvals, upcoming bills you can pay, and spend by category. |
 | `inbox-dashboard` | Support inbox | A three-pane inbox: conversation list with filters and search, the thread with a composer and canned replies, and a customer panel with history. |
 | `operations-dashboard` | Operations | A workshop operations console: KPI strip, a six-station production line with live throughput, a sortable inventory table that builds purchase orders, orders against capacity, supplier lead times and late shipments. |

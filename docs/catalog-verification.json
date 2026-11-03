@@ -2770,5 +2770,113 @@
    "cleanup": "pass"
   },
   "date": "2026-11-03T01:03:46.707Z"
+ },
+ "stat-cards": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "revenue-chart-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "orders-chart-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "segmented-control": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "notification-center": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "data-table": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "dashboard-sidebar": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "auth-card": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
+ },
+ "badges-chips": {
+  "pass": true,
+  "checks": {
+   "render": "pass",
+   "keyboard": "pass",
+   "phone": "pass",
+   "reduced": "pass",
+   "no-webgl": "pass",
+   "cleanup": "pass"
+  },
+  "date": "2026-11-03T12:07:22.351Z"
  }
 }
