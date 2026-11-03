@@ -308,7 +308,7 @@
 .hps .hps-dlg h2 { font: 500 34px/1.05 var(--hps-serif); font-style: italic; margin: 0 0 10px; }
 .hps .hps-dlg p { margin: 0 0 14px; color: var(--hm); }
 .hps-rates { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
-.hps-rates th, .hps-rates td { padding: 12px 0; border-bottom: 1px dashed var(--hl); text-align: left; font-weight: 400; font-size: 16px; font-family: var(--hps-serif); color: var(--hpi); }
+.hps-rates th, .hps-rates td { text-transform: none; letter-spacing: normal; white-space: normal; padding: 12px 0; border-bottom: 1px dashed var(--hl); text-align: left; font-weight: 400; font-size: 16px; font-family: var(--hps-serif); color: var(--hpi); }
 .hps-rates td { text-align: right; font: 500 13.5px var(--hps-mono); font-variant-numeric: tabular-nums; }
 .hps .hps-dlg-note { display: flex; align-items: center; gap: 10px; color: var(--hpi); font-weight: 600; }
 .hps-dlg-note i { width: 10px; height: 10px; border-radius: 50%; background: var(--ok, #1c7a5b); }
