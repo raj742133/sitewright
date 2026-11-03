@@ -122,29 +122,48 @@ function Wren({ detail }: { detail?: boolean }) {
   );
 }
 
+const FW = 'M50 58C36 30 10 28 8 50C8 66 30 70 50 66Z';
+const HW = 'M50 68C34 72 20 92 30 104C42 108 50 88 50 72Z';
+
+/** the moth study: veined wings, eye spots, a furred thorax, a feathered antenna and the pencil guides still showing underneath */
 function Moth({ detail }: { detail?: boolean }) {
+  const fwVeins = [[34, 33], [22, 34], [13, 40], [9, 49], [12, 59], [24, 66]];
+  const hwVeins = [[34, 78], [27, 88], [28, 100], [40, 100]];
+  const feather = (s: number) => Array.from({ length: 9 }, (_, k) => { const t = (k + 1) / 10; const x = 50 + s * (2 + 20 * t), y = 49 - 17 * t - 7 * t * t; return <path key={k} d={`M${r2(x)} ${r2(y)}l${r2(s * 2.4)} ${r2(-2.6 + t * 1.2)}M${r2(x)} ${r2(y)}l${r2(s * 1.2)} ${r2(2.4)}`} strokeWidth=".35" />; });
   const wing = (
     <g>
-      <path className={O} d="M50 58C36 30 10 28 8 50C8 66 30 70 50 66Z" />
-      <path className={I} d="M50 58C36 30 10 28 8 50C8 66 30 70 50 66Z" />
-      <path className={R} d="M50 68C34 72 20 92 30 104C42 108 50 88 50 72Z" />
-      <path className={I} d="M50 68C34 72 20 92 30 104C42 108 50 88 50 72Z" />
-      <circle className={I} cx="26" cy="50" r="7" /><circle className={B} cx="26" cy="50" r="4.2" /><circle className={F} cx="26" cy="50" r="1.6" />
-      <path className={I} d="M48 60C38 50 28 42 16 40M48 62C34 60 22 60 12 58M42 78C36 88 34 94 34 98" strokeWidth=".5" />
+      <path className={O} d={FW} /><path className={R} d={HW} />
+      <g clipPath="url(#hps-fw)">
+        <g className={I} strokeWidth=".38" opacity=".75">{fwVeins.map(([x, y], k) => <path key={k} d={`M49 61Q${r2((49 + x) / 2)} ${r2((61 + y) / 2 - 3)} ${x} ${y}`} />)}</g>
+        <path className={I} d="M11 52C13 40 22 33 36 32" strokeWidth=".3" strokeDasharray="1.2 1.2" opacity=".6" />
+        <Stipple n={detail ? 40 : 90} seed={44} x={8} y={30} w={42} h={38} />
+      </g>
+      <g clipPath="url(#hps-hw)">
+        <g className={I} strokeWidth=".38" opacity=".75">{hwVeins.map(([x, y], k) => <path key={k} d={`M49 70Q${r2((49 + x) / 2)} ${r2((70 + y) / 2)} ${x} ${y}`} />)}</g>
+      </g>
+      <path className={I} d={FW} strokeWidth="1" /><path className={I} d={HW} strokeWidth="1" />
+      <circle className={I} cx="26" cy="50" r="8.6" strokeWidth=".4" strokeDasharray="1 1.1" />
+      <circle className={I} cx="26" cy="50" r="7" /><circle className={B} cx="26" cy="50" r="4.4" /><circle className={I} cx="26" cy="50" r="4.4" strokeWidth=".5" /><circle className={F} cx="26" cy="50" r="1.8" /><circle fill="#fff" fillOpacity=".7" cx="24.8" cy="48.8" r=".7" />
+      <circle className={I} cx="37" cy="93" r="3.4" strokeWidth=".6" /><circle className={F} cx="37" cy="93" r="1.2" />
     </g>
   );
   return (
     <g>
+      <g className="hps-pen" fill="none">
+        <path d="M50 22V112M8 66H92" /><circle cx="50" cy="66" r="42" /><path d="M6 123H94M6 121v4M28 121v4M50 121v4M72 121v4M94 121v4" strokeWidth=".35" />
+      </g>
       {wing}
       <g transform="translate(100 0) scale(-1 1)">{wing}</g>
-      <ellipse className={F} cx="50" cy="68" rx="3.4" ry="18" opacity=".85" />
-      <path className={I} d="M48 50C44 40 38 34 30 32M52 50C56 40 62 34 70 32" />
-      {detail && (
-        <g clipPath="url(#hps-moth-clip)">
-          <Stipple n={300} seed={12} x={8} y={28} w={84} h={80} />
-        </g>
-      )}
-      <clipPath id="hps-moth-clip"><path d="M50 58C36 30 10 28 8 50C8 66 30 70 50 66ZM50 68C34 72 20 92 30 104C42 108 50 88 50 72Z" /><path transform="translate(100 0) scale(-1 1)" d="M50 58C36 30 10 28 8 50C8 66 30 70 50 66ZM50 68C34 72 20 92 30 104C42 108 50 88 50 72Z" /></clipPath>
+      <ellipse className={F} cx="50" cy="56" rx="3.4" ry="6" opacity=".9" />
+      <g className={F}>{Array.from({ length: 6 }, (_, k) => <ellipse key={k} cx="50" cy={65 + k * 4.4} rx={3.2 - k * 0.32} ry="2.3" opacity={0.9 - k * 0.04} />)}</g>
+      <g stroke="var(--hps-paper)" strokeWidth=".35" opacity=".8">{Array.from({ length: 5 }, (_, k) => <path key={k} d={`M${r2(46.8 + k * 0.3)} ${r2(67 + k * 4.4)}H${r2(53.2 - k * 0.3)}`} />)}</g>
+      <circle className={F} cx="50" cy="47.6" r="2.8" /><circle fill="#fff" fillOpacity=".55" cx="48.8" cy="46.8" r=".6" />
+      <path className={I} d="M48.4 46C44 36 36 31 28 30M51.6 46C56 36 64 31 72 30" strokeWidth=".7" />
+      <g className={I} fill="none">{feather(-1)}{feather(1)}</g>
+            <text className="hps-hand" x="50" y="119.6" fontSize="4.4" textAnchor="middle">wingspan 4.2 cm</text>
+      <path className={I} d="M13 26.5Q15 36 19.6 43" strokeWidth=".35" /><text className="hps-hand" x="4" y="24" fontSize="4.2">eye spot, stippled</text>
+      {detail && <g clipPath="url(#hps-fw)"><Stipple n={300} seed={12} x={8} y={28} w={42} h={42} /></g>}
+      {detail && <g transform="translate(100 0) scale(-1 1)" clipPath="url(#hps-fw)"><Stipple n={300} seed={13} x={8} y={28} w={42} h={42} /></g>}
     </g>
   );
 }
@@ -220,9 +239,11 @@ export function PlateDefs() {
   return (
     <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true" focusable="false">
       <defs>
+        <clipPath id="hps-fw"><path d={FW} /></clipPath><clipPath id="hps-hw"><path d={HW} /></clipPath>
+        <filter id="hps-ink" x="-3%" y="-8%" width="106%" height="116%"><feTurbulence type="fractalNoise" baseFrequency=".02 .05" numOctaves="2" seed="9" result="n" /><feDisplacementMap in="SourceGraphic" in2="n" scale="1.5" /></filter>
         <filter id="hps-wob" x="-5%" y="-5%" width="110%" height="110%">
           <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="4" result="n" />
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale=".9" />
         </filter>
       </defs>
     </svg>
@@ -231,11 +252,11 @@ export function PlateDefs() {
 
 export interface PageData { kind: PlateKind; title: string; note: string }
 export const PAGES: PageData[] = [
+  { kind: 'moth', title: 'Moth, found on the sill', note: 'Left wing drawn from memory.' },
   { kind: 'fern', title: 'Fern, north window', note: 'Ink first, then one wet green.' },
   { kind: 'tram', title: 'Number 28, wet morning', note: 'Sketched through a bus shelter.' },
   { kind: 'teapot', title: 'Teapot with lemon', note: 'The lemon moved twice.' },
   { kind: 'wren', title: 'Wren on the fence', note: 'Four seconds. Then gone.' },
-  { kind: 'moth', title: 'Moth, found on the sill', note: 'Left wing drawn from memory.' },
   { kind: 'cat', title: 'Nap, mid-commission', note: 'A model who never charges.' },
   { kind: 'light', title: 'The light at Foz', note: 'Salt in the paint water.' },
   { kind: 'mushroom', title: 'Three after rain', note: 'Cap, gills, mud on the knee.' },

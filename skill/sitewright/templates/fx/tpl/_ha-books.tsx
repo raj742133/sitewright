@@ -41,8 +41,13 @@ function Art({ id, b }: { id: string; b: Book }) {
 
 /** one book cover (200 x 300); `lang` sets whether title text is drawn on it */
 export function Cover({ b, title = true }: { b: Book; title?: boolean }) {
-  const lines = b.title.length > 14 ? b.title.split(/ (?=[A-Z])/).length > 1 ? b.title.split(' ') : [b.title] : [b.title];
-  const merged = lines.length > 3 ? [lines.slice(0, 2).join(' '), lines.slice(2).join(' ')] : lines;
+  const words = b.title.split(' ');
+  let merged = [b.title];
+  if (b.title.length > 14 || words.length > 2) {
+    let best = 1, gap = 99;
+    for (let k = 1; k < words.length; k++) { const g = Math.abs(words.slice(0, k).join(' ').length - words.slice(k).join(' ').length); if (g < gap) { gap = g; best = k; } }
+    merged = words.length > 1 ? [words.slice(0, best).join(' '), words.slice(best).join(' ')] : [b.title];
+  }
   const dark = b.id === 'trains' || b.id === 'maps';
   return (
     <svg className="hbs-cover" viewBox="0 0 200 300" aria-hidden="true" focusable="false">

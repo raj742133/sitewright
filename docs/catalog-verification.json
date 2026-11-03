@@ -2721,7 +2721,7 @@
    "no-webgl": "pass",
    "cleanup": "pass"
   },
-  "date": "2026-10-28T22:07:55.003Z"
+  "date": "2026-11-03T01:03:46.707Z"
  },
  "hero-bookshelf": {
   "pass": true,
@@ -2733,7 +2733,7 @@
    "no-webgl": "pass",
    "cleanup": "pass"
   },
-  "date": "2026-10-28T22:07:55.003Z"
+  "date": "2026-11-03T01:03:46.707Z"
  },
  "hero-book-showcase": {
   "pass": true,
@@ -2745,7 +2745,7 @@
    "no-webgl": "pass",
    "cleanup": "pass"
   },
-  "date": "2026-10-28T22:07:55.003Z"
+  "date": "2026-11-03T01:03:46.707Z"
  },
  "hero-living-green": {
   "pass": true,
@@ -2757,7 +2757,7 @@
    "no-webgl": "pass",
    "cleanup": "pass"
   },
-  "date": "2026-10-28T22:07:55.003Z"
+  "date": "2026-11-03T01:03:46.707Z"
  },
  "hero-paper-sketchbook": {
   "pass": true,
@@ -2769,6 +2769,6 @@
    "no-webgl": "pass",
    "cleanup": "pass"
   },
-  "date": "2026-10-28T22:07:55.003Z"
+  "date": "2026-11-03T01:03:46.707Z"
  }
 }

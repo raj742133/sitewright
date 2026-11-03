@@ -4,6 +4,10 @@ import { Preview } from './_dash';
 import { SR, useReducedMotion } from './_shared';
 import { TOOLS, type Tool } from './_hbs-data';
 import { Shelf } from './_hbs-shelf';
+import { useScheme, useScrollLinked } from './_ha-kit';
+import LightRays from '../ui/LightRays';
+import Dock from '../ui/Dock';
+import ScrollStack from '../ui/ScrollStack';
 
 export interface HeroBookshelfProps {
   /** studio name (invented by default) */
@@ -41,6 +45,8 @@ export default function HeroBookshelf({ studio = 'Marrow & Pine', tools = TOOLS,
   const [note, setNote] = useState('');
   const dlg = useRef<HTMLDialogElement>(null);
   const root = useRef<HTMLDivElement>(null);
+  useScheme(root);
+  useScrollLinked(root, reduced);
   const t = tools[index] ?? tools[0]!;
 
   const to = (id: string, focus = false) => {
@@ -92,39 +98,51 @@ export default function HeroBookshelf({ studio = 'Marrow & Pine', tools = TOOLS,
           <a href="#hbs-contact" onClick={jump('hbs-contact')} className="hbs-links-cta">Book a call</a>
         </nav>
         <button type="button" className="hbs-btn hbs-btn-ghost hbs-btn-sm hbs-cat-btn" onClick={() => dlg.current?.showModal()}>Catalogue{owned.length > 0 && <span className="hbs-badge" aria-label={`${owned.length} on your shelf`}>{owned.length}</span>}</button>
-        <a href="#hbs-contact" className="hbs-btn hbs-btn-sm hbs-nav-cta" onClick={jump('hbs-contact')}>Book a call</a>
         <button type="button" className="hbs-menu-btn" aria-label={menu ? 'Close menu' : 'Open menu'} aria-expanded={menu} aria-controls="hbs-menu" onClick={() => setMenu((v) => !v)}>
           <svg viewBox="0 0 24 24" aria-hidden="true">{menu ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}</svg>
         </button>
       </header>
 
       <main id="hbs-top" tabIndex={-1}>
-        <section className="hbs-hero" aria-labelledby="hbs-h1">
-          <div className="hbs-hero-top">
-            <div>
+        <section id="hbs-shelf" tabIndex={-1} className="hbs-stage" aria-labelledby="hbs-h1" data-sl="exit">
+          <LightRays rays={11} speed={0.6} />
+          <div className="hbs-wall" aria-hidden="true" />
+          <div className="hbs-top">
+            <div className="hbs-title">
               <p className="hbs-eyebrow">Software studio, Ghent<i aria-hidden="true" />Est. 2017</p>
-              <h1 id="hbs-h1" className="hbs-h1">Small tools, <em>well bound.</em></h1>
-              <p className="hbs-lede">{studio} makes seven quiet programs for people who work for themselves. Each one is finished like a book: a good cover, a short manual and nothing you will need to relearn next spring.</p>
-              <div className="hbs-cta">
-                <button type="button" className="hbs-btn" onClick={() => to('hbs-shelf', true)}>Browse the shelf<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg></button>
-                <button type="button" className="hbs-btn hbs-btn-ghost" onClick={() => dlg.current?.showModal()}>Open the catalogue</button>
-              </div>
+              <h1 id="hbs-h1" className="hbs-h1"><span>Small tools,</span> <em>well bound.</em></h1>
+            </div>
+            <div className="hbs-intro">
+              <p className="hbs-lede">Seven quiet programs for people who work for themselves, each one finished like a book.</p>
+              <a href="#hbs-contact" className="hbs-btn" onClick={jump('hbs-contact')}>Book a call</a>
             </div>
             <nav className="hbs-toc" aria-label="Contents">
               <b>Contents</b>
-              <ol>{tools.map((x, i) => <li key={x.id}><button type="button" aria-current={i === index ? 'true' : undefined} onClick={() => { select(i); to('hbs-shelf'); }}><span>{String(i + 1).padStart(2, '0')}</span><em>{x.title}</em><small>{x.kind}</small></button></li>)}</ol>
+              <ol>{tools.map((x, i) => <li key={x.id}><button type="button" aria-current={i === index ? 'true' : undefined} onClick={() => select(i)}><span>{String(i + 1).padStart(2, '0')}</span><em>{x.title}</em><small>{x.kind}</small></button></li>)}</ol>
             </nav>
           </div>
+          <Shelf tools={tools} index={index} onSelect={select} reduced={reduced} owned={owned} />
+          <div className="hbs-strip">
+            <div className="hbs-s-info" key={t.id}>
+              <p className="hbs-eyebrow">No. {String(index + 1).padStart(2, '0')} of {String(tools.length).padStart(2, '0')}<i aria-hidden="true" />{t.kind}<span className="hbs-pill" data-s={t.status}>{t.status} {t.version}</span></p>
+              <p className="hbs-s-title">{t.title}</p>
+              <p className="hbs-s-line">{t.line}</p>
+            </div>
+            <div className="hbs-s-mid">
+              <button type="button" className="hbs-ib" aria-label="Previous tool" onClick={() => select((index - 1 + tools.length) % tools.length)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
+              <Dock label="Jump to a title" value={t.id} onChange={(id) => select(Math.max(0, tools.findIndex((x) => x.id === id)))}
+                items={tools.map((x) => ({ id: x.id, label: x.title, icon: <svg viewBox="0 0 20 32" className="hbs-dk" aria-hidden="true"><rect x="3" y="2" width="14" height="28" rx="2" fill={x.bind} /><path d="M3 8h14M3 24h14" stroke="rgba(255,255,255,.55)" strokeWidth="1" /><path d="M7 12v8" stroke="rgba(255,255,255,.7)" strokeWidth="1.4" strokeLinecap="round" /></svg> }))} />
+              <button type="button" className="hbs-ib" aria-label="Next tool" onClick={() => select((index + 1) % tools.length)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></button>
+            </div>
+            <div className="hbs-s-act">
+              <button type="button" className="hbs-btn hbs-btn-sm" aria-pressed={owned.includes(t.id)} onClick={toggleOwn}>{owned.includes(t.id) ? <>On your shelf<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" /></svg></> : <>Add to my shelf</>}</button>
+              <a href="#hbs-detail" className="hbs-btn hbs-btn-ghost hbs-btn-sm" onClick={jump('hbs-detail')}>About {t.title}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg></a>
+            </div>
+          </div>
+          <p style={SR} aria-live="polite">{note}</p>
         </section>
 
-        <section id="hbs-shelf" tabIndex={-1} className="hbs-shelf-sec" aria-label="The shelf">
-          <Shelf tools={tools} index={index} onSelect={select} reduced={reduced} owned={owned} />
-          <div className="hbs-bar">
-            <button type="button" className="hbs-ib" aria-label="Previous tool" onClick={() => select((index - 1 + tools.length) % tools.length)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg></button>
-            <p className="hbs-count"><b>No. {String(index + 1).padStart(2, '0')}</b> of {String(tools.length).padStart(2, '0')}<span>{t.title}</span></p>
-            <div className="hbs-prog" aria-hidden="true">{tools.map((x, i) => <i key={x.id} data-on={i === index ? 'true' : undefined} />)}</div>
-            <button type="button" className="hbs-ib" aria-label="Next tool" onClick={() => select((index + 1) % tools.length)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg></button>
-          </div>
+        <section id="hbs-detail" tabIndex={-1} className="hbs-shelf-sec" aria-label="About the front title">
           <article className="hbs-detail" key={t.id} aria-labelledby="hbs-dt">
             <header>
               <p className="hbs-eyebrow">No. {String(index + 1).padStart(2, '0')}<i aria-hidden="true" />{t.kind}<span className="hbs-pill" data-s={t.status}>{t.status} {t.version}</span></p>
@@ -135,21 +153,28 @@ export default function HeroBookshelf({ studio = 'Marrow & Pine', tools = TOOLS,
               <p>{t.blurb}</p>
               <ul className="hbs-feat">{t.features.map((x) => <li key={x}>{x}</li>)}</ul>
               <div className="hbs-cta">
-                <button type="button" className="hbs-btn" aria-pressed={owned.includes(t.id)} onClick={toggleOwn}>{owned.includes(t.id) ? <>On your shelf<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" /></svg></> : <>Add {t.title} to your shelf</>}</button>
+                <button type="button" className="hbs-btn" aria-pressed={owned.includes(t.id)} onClick={toggleOwn}>{owned.includes(t.id) ? <>On your shelf<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" /></svg></> : <>Add {t.title} to my shelf</>}</button>
                 <button type="button" className="hbs-btn hbs-btn-ghost" aria-expanded={read} aria-controls="hbs-ex" onClick={() => setRead((v) => !v)}>{read ? 'Close the first page' : 'Read the first page'}</button>
+                <button type="button" className="hbs-btn hbs-btn-ghost" onClick={() => to('hbs-shelf', true)}>Back to the shelf</button>
               </div>
               <div id="hbs-ex" hidden={!read} className="hbs-excerpt"><p>{t.excerpt}</p></div>
             </div>
             <dl className="hbs-facts">{t.facts.map(([a, b]) => <div key={a}><dt>{a}</dt><dd>{b}</dd></div>)}<div><dt>First printed</dt><dd>{t.year}</dd></div></dl>
           </article>
-          <p style={SR} aria-live="polite">{note}</p>
         </section>
 
         <section id="hbs-method" tabIndex={-1} className="hbs-sec" aria-labelledby="hbs-hm">
-          <p className="hbs-eyebrow">Method</p>
-          <h2 id="hbs-hm" className="hbs-h2">Three rules for binding a tool.</h2>
-          <ol className="hbs-rules">{PRINCIPLES.map(([n, h, p]) => <li key={n}><span aria-hidden="true">{n}</span><h3>{h}</h3><p>{p}</p></li>)}</ol>
-          <ul className="hbs-stats" aria-label="The studio in numbers">{STATS.map(([n, l]) => <li key={l}><b>{n}</b><span>{l}</span></li>)}</ul>
+          <div className="hbs-method-grid">
+            <div>
+              <p className="hbs-eyebrow">Method</p>
+              <h2 id="hbs-hm" className="hbs-h2">Three rules for binding a tool.</h2>
+              <p className="hbs-lede">Everything we ship follows the same three habits. They are why a tool from 2018 still opens exactly as you left it.</p>
+              <ul className="hbs-stats" aria-label="The studio in numbers">{STATS.map(([n, l]) => <li key={l}><b>{n}</b><span>{l}</span></li>)}</ul>
+            </div>
+            <div className="hbs-stack">
+              <ScrollStack label="Three rules" height="100%" offset={18} items={PRINCIPLES.map(([n, h, p]) => ({ title: h, subtitle: `Rule ${n}`, text: p, media: <span className="hbs-rule-n" aria-hidden="true">{n}</span> }))} />
+            </div>
+          </div>
         </section>
 
         <section id="hbs-journal" tabIndex={-1} className="hbs-sec hbs-journal" aria-labelledby="hbs-hj">
