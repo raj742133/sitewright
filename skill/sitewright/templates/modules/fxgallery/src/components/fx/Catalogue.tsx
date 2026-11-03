@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 import { DemoFrame } from './DemoFrame';
 import { UI_DEMOS } from './ui/demos';
 import { GalleryNav } from './GalleryNav';
@@ -69,7 +70,7 @@ export function Catalogue() {
             <p className="muted small"><b>Use it for.</b> {cur.use}</p>
             <div className="fxc-code"><div><span>Import</span><Copy what="import line" text={`import { ${name} } from '@/components/fx/ui';`} /></div><pre>{`import { ${name} } from '@/components/fx/ui';`}</pre></div>
             <div className="fxc-code"><div><span>site.json</span><Copy what="config" text={`"effects": { "components": ["${cur.id}"] }`} /></div><pre>{`"effects": { "components": ["${cur.id}"] }`}</pre></div>
-            <a className="btn primary" href={`/effects/c/${cur.id}/`}>Open full screen</a>
+            <Link className="btn primary" href={`/effects/c/${cur.id}/`} prefetch={false}>Open full screen</Link>
           </aside>
         )}
       </div>
