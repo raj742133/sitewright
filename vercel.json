@@ -31,6 +31,11 @@
   ],
   "redirects": [
     {
+      "source": "/effects/:path+/",
+      "destination": "/demo/effects/:path+/",
+      "permanent": false
+    },
+    {
       "source": "/effects",
       "destination": "/demo/effects/",
       "permanent": false
